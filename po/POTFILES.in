@@ -1,0 +1,6 @@
+data/com.benzler.colors.desktop.in.in
+data/com.benzler.colors.gschema.xml.in
+data/com.benzler.colors.metainfo.xml.in.in
+data/resources/ui/shortcuts.ui
+data/resources/ui/window.ui
+src/application.rs

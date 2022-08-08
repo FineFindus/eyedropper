@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Color Picker
+Comment=Write a GTK + Rust application
+Type=Application
+Exec=color-picker
+Terminal=false
+Categories=GNOME;GTK;
+# Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+Keywords=Gnome;GTK;
+# Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+Icon=@icon@
+StartupNotify=true
