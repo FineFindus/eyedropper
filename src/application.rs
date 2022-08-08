@@ -11,6 +11,7 @@ use crate::window::ExampleApplicationWindow;
 
 mod imp {
     use super::*;
+    use adw::subclass::prelude::AdwApplicationImpl;
     use glib::WeakRef;
     use once_cell::sync::OnceCell;
 
@@ -23,7 +24,7 @@ mod imp {
     impl ObjectSubclass for ExampleApplication {
         const NAME: &'static str = "ExampleApplication";
         type Type = super::ExampleApplication;
-        type ParentType = gtk::Application;
+        type ParentType = adw::Application;
     }
 
     impl ObjectImpl for ExampleApplication {}
@@ -61,6 +62,7 @@ mod imp {
     }
 
     impl GtkApplicationImpl for ExampleApplication {}
+    impl AdwApplicationImpl for ExampleApplication {}
 }
 
 glib::wrapper! {
@@ -74,10 +76,7 @@ impl ExampleApplication {
         glib::Object::new(&[
             ("application-id", &Some(APP_ID)),
             ("flags", &gio::ApplicationFlags::empty()),
-            (
-                "resource-base-path",
-                &Some("/com/benzler/colors/"),
-            ),
+            ("resource-base-path", &Some("/com/benzler/colors/")),
         ])
         .expect("Application initialization failed...")
     }
@@ -125,7 +124,7 @@ impl ExampleApplication {
         let dialog = gtk::AboutDialog::builder()
             .logo_icon_name(APP_ID)
             // Insert your license of choice here
-            // .license_type(gtk::License::MitX11)
+            .license_type(gtk::License::Mpl20)
             // Insert your website here
             // .website("https://gitlab.gnome.org/bilelmoussaoui/color-picker/")
             .version(VERSION)

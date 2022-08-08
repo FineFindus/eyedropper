@@ -8,13 +8,14 @@ use crate::config::{APP_ID, PROFILE};
 mod imp {
     use super::*;
 
+    use adw::subclass::prelude::AdwApplicationWindowImpl;
     use gtk::CompositeTemplate;
 
     #[derive(Debug, CompositeTemplate)]
     #[template(resource = "/com/benzler/colors/ui/window.ui")]
     pub struct ExampleApplicationWindow {
         #[template_child]
-        pub headerbar: TemplateChild<gtk::HeaderBar>,
+        pub headerbar: TemplateChild<adw::HeaderBar>,
         pub settings: gio::Settings,
     }
 
@@ -31,7 +32,7 @@ mod imp {
     impl ObjectSubclass for ExampleApplicationWindow {
         const NAME: &'static str = "ExampleApplicationWindow";
         type Type = super::ExampleApplicationWindow;
-        type ParentType = gtk::ApplicationWindow;
+        type ParentType = adw::ApplicationWindow;
 
         fn class_init(klass: &mut Self::Class) {
             Self::bind_template(klass);
@@ -71,6 +72,7 @@ mod imp {
     }
 
     impl ApplicationWindowImpl for ExampleApplicationWindow {}
+    impl AdwApplicationWindowImpl for ExampleApplicationWindow {}
 }
 
 glib::wrapper! {
