@@ -27,11 +27,23 @@
                 <property name="title" translatable="yes">GTK Rust Template</property>
               </object>
             </property>
+            <!-- <child>
+              <object class="GtkButton" id="color_picker_button">
+                <property name="icon-name">color-picker</property>
+              </object>
+            </child> -->
             <child type="end">
               <object class="GtkMenuButton" id="appmenu_button">
                 <property name="icon-name">open-menu-symbolic</property>
                 <property name="menu-model">primary_menu</property>
               </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwBin">
+            <child>
+              <object class="GtkEntry" id="hex_entry"></object>
             </child>
           </object>
         </child>

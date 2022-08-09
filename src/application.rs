@@ -10,26 +10,29 @@ use crate::config::{APP_ID, PKGDATADIR, PROFILE, VERSION};
 use crate::window::ExampleApplicationWindow;
 
 mod imp {
+    use crate::model::Color;
+
     use super::*;
     use adw::subclass::prelude::AdwApplicationImpl;
     use glib::WeakRef;
     use once_cell::sync::OnceCell;
 
     #[derive(Debug, Default)]
-    pub struct ExampleApplication {
+    pub struct App {
+        pub color: Color,
         pub window: OnceCell<WeakRef<ExampleApplicationWindow>>,
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for ExampleApplication {
+    impl ObjectSubclass for App {
         const NAME: &'static str = "ExampleApplication";
         type Type = super::ExampleApplication;
         type ParentType = adw::Application;
     }
 
-    impl ObjectImpl for ExampleApplication {}
+    impl ObjectImpl for App {}
 
-    impl ApplicationImpl for ExampleApplication {
+    impl ApplicationImpl for App {
         fn activate(&self, app: &Self::Type) {
             debug!("GtkApplication<ExampleApplication>::activate");
             self.parent_activate(app);
@@ -61,12 +64,12 @@ mod imp {
         }
     }
 
-    impl GtkApplicationImpl for ExampleApplication {}
-    impl AdwApplicationImpl for ExampleApplication {}
+    impl GtkApplicationImpl for App {}
+    impl AdwApplicationImpl for App {}
 }
 
 glib::wrapper! {
-    pub struct ExampleApplication(ObjectSubclass<imp::ExampleApplication>)
+    pub struct ExampleApplication(ObjectSubclass<imp::App>)
         @extends gio::Application, gtk::Application,
         @implements gio::ActionMap, gio::ActionGroup;
 }

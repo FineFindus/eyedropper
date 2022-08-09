@@ -4,6 +4,7 @@ use gtk::{gio, glib};
 
 use crate::application::ExampleApplication;
 use crate::config::{APP_ID, PROFILE};
+use crate::model::Color;
 
 mod imp {
     use super::*;
@@ -16,6 +17,8 @@ mod imp {
     pub struct ExampleApplicationWindow {
         #[template_child]
         pub headerbar: TemplateChild<adw::HeaderBar>,
+        #[template_child]
+        pub hex_entry: TemplateChild<gtk::Entry>,
         pub settings: gio::Settings,
     }
 
@@ -23,6 +26,7 @@ mod imp {
         fn default() -> Self {
             Self {
                 headerbar: TemplateChild::default(),
+                hex_entry: TemplateChild::default(),
                 settings: gio::Settings::new(APP_ID),
             }
         }
@@ -55,6 +59,7 @@ mod imp {
 
             // Load latest window state
             obj.load_window_size();
+            obj.setup_callbacks();
         }
     }
 
@@ -113,5 +118,18 @@ impl ExampleApplicationWindow {
         if is_maximized {
             self.maximize();
         }
+    }
+
+    fn setup_callbacks(&self) {
+        //load imp
+        let imp = self.imp();
+
+        imp.hex_entry.connect_activate(|entry| {
+            let buffer = entry.buffer();
+            let content = buffer.text();
+            let color = Color::from_hex(&content);
+            log::info!("Hex Color: {}", content);
+            log::info!("Hex Color: {:?}", color);
+        });
     }
 }
