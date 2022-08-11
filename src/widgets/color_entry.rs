@@ -1,5 +1,7 @@
 use std::str::FromStr;
 
+use gtk::prelude::*;
+use gtk::subclass::prelude::*;
 use gtk::{
     gdk, glib,
     prelude::{ObjectExt, ToValue},
@@ -8,20 +10,14 @@ use gtk::{
 use crate::model::Color;
 
 mod imp {
+    use super::*;
     use std::cell::RefCell;
 
-    use gtk::{
-        gdk,
-        glib::{self, ParamSpec, ParamSpecBoxed},
-        prelude::{InitializingWidgetExt, StaticType, ToValue},
-        subclass::prelude::*,
-        traits::{EditableExt, WidgetExt},
-        CompositeTemplate,
-    };
+    use gtk::glib::{ParamSpec, ParamSpecBoxed};
     use once_cell::sync::Lazy;
 
     // Object holding the state
-    #[derive(CompositeTemplate)]
+    #[derive(gtk::CompositeTemplate)]
     #[template(resource = "/com/benzler/colors/ui/color-entry.ui")]
     pub struct ColorEntry {
         pub color: RefCell<gdk::RGBA>,
@@ -30,7 +26,7 @@ mod imp {
     #[gtk::template_callbacks]
     impl ColorEntry {
         #[template_callback]
-        fn icon_pressed(&self, pos: gtk::EntryIconPosition, _entry: &gtk::Entry) {
+        fn on_icon_pressed(&self, pos: gtk::EntryIconPosition, _entry: &gtk::Entry) {
             if pos == gtk::EntryIconPosition::Secondary {
                 self.instance().pick_color();
             }
@@ -47,12 +43,13 @@ mod imp {
 
         fn new() -> Self {
             Self {
-                color: RefCell::new(gdk::RGBA::BLACK),
+                color: RefCell::new(gdk::RGBA::BLUE),
             }
         }
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
+            Self::bind_template_callbacks(klass);
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -102,8 +99,8 @@ mod imp {
             self.parent_constructed(obj);
             obj.set_direction(gtk::TextDirection::Ltr);
             obj.setup_signals();
-            obj.set_width_chars(7);
-            obj.set_max_width_chars(7);
+            // obj.set_width_chars(7);
+            // obj.set_max_width_chars(7);
         }
     }
 
@@ -129,6 +126,7 @@ impl ColorEntry {
     }
 
     pub fn set_color(&self, new_color: gdk::RGBA) {
+        log::debug!("Setting new color to {}", Color::from(new_color));
         self.set_property("color", &new_color);
     }
 
@@ -152,22 +150,15 @@ impl ColorEntry {
     }
 
     fn pick_color(&self) {
-        log::info!("Picking a color");
+        log::debug!("Picking a color using the color picker");
         gtk_macros::spawn!(glib::clone!(@weak self as entry => async move {
 
-                let connection = ashpd::zbus::Connection::session().await.unwrap();
-        let proxy = ashpd::desktop::screenshot::ScreenshotProxy::new(&connection).await.unwrap();
-
-        let color = proxy.pick_color(&ashpd::WindowIdentifier::default()).await.unwrap();
-        println!("({}, {}, {})", color.red(), color.green(), color.blue());
-
-                // let root = entry.root().unwrap();
-
-                // let identifier = ashpd::WindowIdentifier::from_native(&root).await;
-                // match screenshot::pick_color(&identifier).await {
-                //     Ok(color) => entry.set_color(color.into()),
-                //     Err(err) => tracing::error!("Failed to pick a color {}", err),
-                // };
-            }));
+        let connection = ashpd::zbus::Connection::session().await.expect("Failed to open connection to zbus");
+        let proxy = ashpd::desktop::screenshot::ScreenshotProxy::new(&connection).await.expect("Failed to open screenshot proxy");
+        match proxy.pick_color(&ashpd::WindowIdentifier::default()).await {
+            Ok(color) => entry.set_color(gdk::RGBA::new(color.red() as f32, color.green() as f32, color.blue() as f32, 1f32)),
+            Err(err) => log::error!("{}", err),
+        };
+        }));
     }
 }

@@ -45,21 +45,13 @@
             <property name="child">
               <object class="GtkBox">
                 <property name="orientation">vertical</property>
+                <property name="halign">center</property>
+                <property name="spacing">3</property>
                 <child>
-                  <object class="AdwBin">
+                  <object class="AdwClamp">
                     <child>
                       <object class="ColorEntry" id="hex_entry"></object>
                     </child>
-                  </object>
-                </child>
-                <child>
-                  <object class="GtkLabel" id="label">
-                    <property name="label" translatable="yes">Hello world!</property>
-                    <property name="hexpand">True</property>
-                    <property name="vexpand">True</property>
-                    <style>
-                      <class name="title-header" />
-                    </style>
                   </object>
                 </child>
               </object>

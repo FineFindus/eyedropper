@@ -101,6 +101,7 @@ impl ExampleApplicationWindow {
         let imp = self.imp();
 
         let (width, height) = self.default_size();
+        log::debug!("Window Size: {}x{}", width, height);
 
         imp.settings.set_int("window-width", width)?;
         imp.settings.set_int("window-height", height)?;
@@ -128,6 +129,7 @@ impl ExampleApplicationWindow {
     fn setup_callbacks(&self) {
         //load imp
         let imp = self.imp();
+        //clone self to show toast
         let captured = self.clone();
 
         imp.hex_entry.connect_activate(move |entry| {
@@ -142,11 +144,13 @@ impl ExampleApplicationWindow {
                 );
             } else {
                 //show error toast
-                captured
-                    .imp()
-                    .toast_overlay
-                    .add_toast(&adw::Toast::new("Failed to read color"));
+                captured.show_toast("Failed to read color");
             }
         });
+    }
+
+    /// Shows a basic toast with the given text.
+    fn show_toast(&self, text: &str) {
+        self.imp().toast_overlay.add_toast(&adw::Toast::new(text));
     }
 }
