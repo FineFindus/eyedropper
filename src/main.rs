@@ -2,6 +2,8 @@ mod application;
 #[rustfmt::skip]
 mod config;
 mod model;
+mod utils;
+mod widgets;
 mod window;
 
 use gettextrs::{gettext, LocaleCategory};

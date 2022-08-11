@@ -7,6 +7,8 @@ use crate::config::{APP_ID, PROFILE};
 use crate::model::Color;
 
 mod imp {
+    use crate::widgets;
+
     use super::*;
 
     use adw::subclass::prelude::AdwApplicationWindowImpl;
@@ -18,7 +20,9 @@ mod imp {
         #[template_child]
         pub headerbar: TemplateChild<adw::HeaderBar>,
         #[template_child]
-        pub hex_entry: TemplateChild<gtk::Entry>,
+        pub toast_overlay: TemplateChild<adw::ToastOverlay>,
+        #[template_child]
+        pub hex_entry: TemplateChild<widgets::color_entry::ColorEntry>,
         pub settings: gio::Settings,
     }
 
@@ -26,6 +30,7 @@ mod imp {
         fn default() -> Self {
             Self {
                 headerbar: TemplateChild::default(),
+                toast_overlay: TemplateChild::default(),
                 hex_entry: TemplateChild::default(),
                 settings: gio::Settings::new(APP_ID),
             }
@@ -123,13 +128,25 @@ impl ExampleApplicationWindow {
     fn setup_callbacks(&self) {
         //load imp
         let imp = self.imp();
+        let captured = self.clone();
 
-        imp.hex_entry.connect_activate(|entry| {
+        imp.hex_entry.connect_activate(move |entry| {
             let buffer = entry.buffer();
             let content = buffer.text();
-            let color = Color::from_hex(&content);
-            log::info!("Hex Color: {}", content);
-            log::info!("Hex Color: {:?}", color);
+            log::debug!("ColorEntry buffer: {}", content);
+            if let Ok(color) = Color::from_hex(&content, crate::model::AlphaPosition::End) {
+                log::info!("Hex Color: {:?}", color);
+                log::info!(
+                    "Hex Color as hex: {:?}",
+                    color.to_hex_string(crate::model::AlphaPosition::End)
+                );
+            } else {
+                //show error toast
+                captured
+                    .imp()
+                    .toast_overlay
+                    .add_toast(&adw::Toast::new("Failed to read color"));
+            }
         });
     }
 }

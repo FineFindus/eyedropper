@@ -1,14 +1,19 @@
 use core::fmt;
 
+use crate::utils;
+
 /// Position of the alpha value for hex strings.
 ///
 /// In most cases (for example hex strings in the browser) the alpha value is
 /// the last two characters of the hex string. But in some cases it is the first two characters.
 /// For example Android Color Values use this format.
+///
+/// Defaults to no alpha value
 #[derive(Debug, Default)]
 pub enum AlphaPosition {
     Start,
     #[default]
+    None,
     End,
 }
 
@@ -43,17 +48,10 @@ impl Color {
         }
     }
 
-    ///Returns the color as in hex form, including the alpha position.
+    /// Returns the color as in hex form.
     ///
-    ///This will not include the alpha values.
-    pub fn to_hex_string(&self) -> String {
-        format!("#{:02x}{:02x}{:02x}", self.red, self.green, self.blue)
-    }
-
-    ///Returns the color as in hex from.
-    ///
-    ///This will not include the alpha values.
-    pub fn to_hex_string_with_alpha(&self, alpha_position: AlphaPosition) -> String {
+    /// The alpha position will indicate where the alpha value is stored.
+    pub fn to_hex_string(&self, alpha_position: AlphaPosition) -> String {
         match alpha_position {
             AlphaPosition::Start => format!(
                 "#{:02x}{:02x}{:02x}{:02x}",
@@ -65,61 +63,42 @@ impl Color {
                     self.red, self.green, self.blue, self.alpha
                 )
             }
+            AlphaPosition::None => format!("#{:02x}{:02x}{:02x}", self.red, self.green, self.blue),
         }
     }
 
-    /// Create a color from a hex string without alpha values.
+    /// Create a color from a hex string.
     ///
     /// The hex color optionally start with '#'.
     /// It returns an error, if the given string (ignoring the #) is not
-    /// 6 characters long, or cannot be parsed as a hex string.
-    pub fn from_hex(hex_color: &str) -> Result<Color, ColorError> {
-        let mut hex_color = hex_color.to_owned();
-        //remove #
-        if hex_color.starts_with('#') {
-            hex_color = hex_color.replace("#", "");
-        }
-
-        if hex_color.len() == 6 {
-            //red color from hex values
-            let red = u8::from_str_radix(hex_color.split_at(2).0, 16)?;
-            let green = u8::from_str_radix(hex_color.split_at(2).0, 16)?;
-            let blue = u8::from_str_radix(hex_color.split_at(2).0, 16)?;
-            let color = Color::rgb(red, green, blue);
-            Ok(color)
-        } else {
-            Err(ColorError::HexConversion(String::from(
-                "Could not convert color, color is not a hex color",
-            )))
-        }
-    }
-
-    /// Create a color from a hex string without alpha values.
-    ///
-    /// The hex color optionally start with '#'.
-    /// It returns an error, if the given string (ignoring the #) is not
-    /// 8 characters long, or cannot be parsed as a hex string.
+    /// 6 or 8 characters long, or cannot be parsed as a hex string.
     ///
     /// The alpha_position indicates where the alpha values is stored. View [AlphaPosition] for more information.
-    pub fn from_hex_with_alpha(
-        hex_color: &str,
-        alpha_position: AlphaPosition,
-    ) -> Result<Color, ColorError> {
+    /// If the the has less than 8 chars, and thus cannot contain a alpha value it will be handled the same as being given
+    /// `AlphaPosition::None`.
+    pub fn from_hex(hex_color: &str, alpha_position: AlphaPosition) -> Result<Color, ColorError> {
         let mut hex_color = hex_color.to_owned();
         //remove #
         if hex_color.starts_with('#') {
             hex_color = hex_color.replace("#", "");
         }
 
-        if hex_color.len() == 8 {
-            let alpha = match alpha_position {
-                AlphaPosition::Start => u8::from_str_radix(hex_color.split_at(2).0, 16)?,
-                AlphaPosition::End => u8::from_str_radix(hex_color.split_at(6).1, 16)?,
+        if hex_color.len() == 6 || hex_color.len() == 8 {
+            //read alpha values first
+            let alpha = if hex_color.len() == 8 {
+                //only check alpha values if string has 8 chars
+                match alpha_position {
+                    AlphaPosition::Start => utils::hex_value(&mut hex_color)?,
+                    AlphaPosition::End => u8::from_str_radix(hex_color.split_at(6).1, 16)?,
+                    AlphaPosition::None => 255,
+                }
+            } else {
+                255
             };
-            //red color from hex values
-            let red = u8::from_str_radix(hex_color.split_at(2).0, 16)?;
-            let green = u8::from_str_radix(hex_color.split_at(2).0, 16)?;
-            let blue = u8::from_str_radix(hex_color.split_at(2).0, 16)?;
+            //get color from hex values
+            let red = utils::hex_value(&mut hex_color)?;
+            let green = utils::hex_value(&mut hex_color)?;
+            let blue = utils::hex_value(&mut hex_color)?;
             let color = Color::rgba(red, green, blue, alpha);
             Ok(color)
         } else {
@@ -147,6 +126,17 @@ impl fmt::Display for Color {
             f,
             "[RGB ({:03}, {:03}, {:03}); Hex (#{:02x}{:02x}{:02x})]",
             self.red, self.green, self.blue, self.red, self.green, self.blue,
+        )
+    }
+}
+
+impl From<gtk::gdk::RGBA> for Color {
+    fn from(color: gtk::gdk::RGBA) -> Self {
+        Color::rgba(
+            (255f32 * color.red()) as u8,
+            (255f32 * color.green()) as u8,
+            (255f32 * color.blue()) as u8,
+            (255f32 * color.alpha()) as u8,
         )
     }
 }
