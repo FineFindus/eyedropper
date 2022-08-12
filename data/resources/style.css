@@ -2,3 +2,18 @@
   font-size: 36px;
   font-weight: bold;
 }
+
+.redScale trough highlight {
+  background-color: red;
+  color: red;
+}
+
+.greenScale trough highlight {
+  background-color: green;
+  color: green;
+}
+
+.blueScale trough highlight {
+  background-color: blue;
+  color: blue;
+}

@@ -144,7 +144,7 @@ impl ExampleApplicationWindow {
                 );
             } else {
                 //show error toast
-                captured.show_toast("Failed to read color");
+                captured.show_toast("Failed to parse color");
             }
         });
     }

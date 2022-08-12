@@ -99,8 +99,8 @@ mod imp {
             self.parent_constructed(obj);
             obj.set_direction(gtk::TextDirection::Ltr);
             obj.setup_signals();
-            // obj.set_width_chars(7);
-            // obj.set_max_width_chars(7);
+            obj.set_width_chars(9);
+            obj.set_max_width_chars(9);
         }
     }
 
