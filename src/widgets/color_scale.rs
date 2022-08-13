@@ -115,18 +115,14 @@ impl ColorScale {
         self.property::<u32>("color-value") as u8
     }
 
-    pub fn set_color_value(&self, new_value: u32) {
-        log::debug!("Setting scale value to {}", new_value);
-        if self.color_value() as u32 != new_value {
-            self.set_property("color-value", &new_value);
+    pub fn set_color_value(&self, new_value: u8) {
+        //only updated value if value has changed, this avoids a loop where everything thinks it changed
+        if self.color_value() as u32 != new_value as u32 {
+            self.set_property("color-value", &(new_value as u32));
             //manually update scale value, since property binding doesn't work
             self.imp().scale.set_value(new_value as f64);
         }
     }
-
-    // pub fn connect_value_changed<F: Fn(&gtk::Scale)>(&self, f: F) {
-    //     f;
-    // }
 
     fn setup_signals(&self) {
         self.bind_property("color-value", &self.imp().scale.get().adjustment(), "value")

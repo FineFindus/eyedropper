@@ -27,11 +27,12 @@
                 <property name="title" translatable="yes">GTK Rust Template</property>
               </object>
             </property>
-            <!-- <child>
+            <child>
               <object class="GtkButton" id="color_picker_button">
-                <property name="icon-name">color-picker</property>
+                <property name="icon-name">color-select-symbolic</property>
+                <signal name="clicked" handler="color_picker_button_clicked" swapped="true" />
               </object>
-            </child> -->
+            </child>
             <child type="end">
               <object class="GtkMenuButton" id="appmenu_button">
                 <property name="icon-name">open-menu-symbolic</property>
@@ -59,51 +60,22 @@
                     </style>
                   </object>
                 </child>
-                <!-- <child>
-                  <object class="GtkScale" id="red_color_scale">
-                    <property name="adjustment">color_scale_red</property>
-                    <property name="digits">0</property>
-                    <property name="draw-value">True</property>
-                    <property name="round-digits">0</property>
-                    <property name="show-fill-level">True</property>
-                    <property name="value-pos">right</property>
-                    <style>
-                      <class name="redScale" />
-                    </style>
-                  </object>
-                </child> -->
                 <child>
-                  <object class="GtkScale" id="green_color_scale">
-                    <property name="adjustment">color_scale_green</property>
-                    <property name="digits">0</property>
-                    <property name="draw-value">True</property>
-                    <property name="round-digits">1</property>
-                    <property name="value-pos">right</property>
-                    <property name="name">Red</property>
+                  <object class="ColorScale" id="green_scale">
                     <style>
                       <class name="greenScale" />
                     </style>
                   </object>
                 </child>
                 <child>
-                  <object class="GtkScale" id="blue_color_scale">
-                    <property name="adjustment">color_scale_blue</property>
-                    <property name="digits">0</property>
-                    <property name="draw-value">True</property>
-                    <property name="round-digits">0</property>
-                    <property name="value-pos">right</property>
+                  <object class="ColorScale" id="blue_scale">
                     <style>
                       <class name="blueScale" />
                     </style>
                   </object>
                 </child>
                 <child>
-                  <object class="GtkScale" id="alpha_color_scale">
-                    <property name="adjustment">color_scale_alpha</property>
-                    <property name="digits">0</property>
-                    <property name="draw-value">True</property>
-                    <property name="round-digits">1</property>
-                    <property name="value-pos">right</property>
+                  <object class="ColorScale" id="alpha_scale">
                     <style>
                       <class name="alphaScale" />
                     </style>

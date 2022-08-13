@@ -1,5 +1,3 @@
-use std::ops::Deref;
-
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gio, glib};
@@ -24,11 +22,19 @@ mod imp {
         #[template_child]
         pub headerbar: TemplateChild<adw::HeaderBar>,
         #[template_child]
+        pub color_picker_button: TemplateChild<gtk::Button>,
+        #[template_child]
         pub toast_overlay: TemplateChild<adw::ToastOverlay>,
         #[template_child]
         pub hex_entry: TemplateChild<widgets::color_entry::ColorEntry>,
         #[template_child]
         pub red_scale: TemplateChild<widgets::color_scale::ColorScale>,
+        #[template_child]
+        pub green_scale: TemplateChild<widgets::color_scale::ColorScale>,
+        #[template_child]
+        pub blue_scale: TemplateChild<widgets::color_scale::ColorScale>,
+        #[template_child]
+        pub alpha_scale: TemplateChild<widgets::color_scale::ColorScale>,
         pub settings: gio::Settings,
         pub color: RefCell<Color>,
     }
@@ -37,12 +43,24 @@ mod imp {
         fn default() -> Self {
             Self {
                 headerbar: TemplateChild::default(),
+                color_picker_button: TemplateChild::default(),
                 toast_overlay: TemplateChild::default(),
                 hex_entry: TemplateChild::default(),
                 red_scale: TemplateChild::default(),
+                green_scale: TemplateChild::default(),
+                blue_scale: TemplateChild::default(),
+                alpha_scale: TemplateChild::default(),
                 settings: gio::Settings::new(APP_ID),
                 color: RefCell::new(Color::rgba(46, 52, 64, 255)),
             }
+        }
+    }
+
+    #[gtk::template_callbacks]
+    impl ExampleApplicationWindow {
+        #[template_callback]
+        fn color_picker_button_clicked(&self) {
+            self.instance().pick_color();
         }
     }
 
@@ -54,6 +72,7 @@ mod imp {
 
         fn class_init(klass: &mut Self::Class) {
             Self::bind_template(klass);
+            Self::bind_template_callbacks(klass);
         }
 
         // You must call `Widget`'s `init_template()` within `instance_init()`.
@@ -102,8 +121,11 @@ glib::wrapper! {
 
 impl ExampleApplicationWindow {
     pub fn new(app: &ExampleApplication) -> Self {
-        glib::Object::new(&[("application", app)])
-            .expect("Failed to create ExampleApplicationWindow")
+        let window: Self = glib::Object::new(&[("application", app)])
+            .expect("Failed to create ExampleApplicationWindow");
+        //preset a color, so all scales have a set position
+        window.set_color(Color::rgba(46, 52, 64, 255));
+        window
     }
 
     fn save_window_size(&self) -> Result<(), glib::BoolError> {
@@ -135,15 +157,33 @@ impl ExampleApplicationWindow {
         }
     }
 
+    fn pick_color(&self) {
+        log::debug!("Picking a color using the color picker");
+        gtk_macros::spawn!(glib::clone!(@weak self as window => async move {
+
+        let connection = ashpd::zbus::Connection::session().await.expect("Failed to open connection to zbus");
+        let proxy = ashpd::desktop::screenshot::ScreenshotProxy::new(&connection).await.expect("Failed to open screenshot proxy");
+        match proxy.pick_color(&ashpd::WindowIdentifier::default()).await {
+            Ok(color) => window.set_color(Color::from(color)),
+            Err(_) => window.show_toast("Failed to pick a color"),
+        };
+        }));
+    }
+
     fn set_color(&self, color: Color) {
+        log::info!(
+            "Hex Color: {:?}",
+            color.to_hex_string(crate::model::AlphaPosition::End)
+        );
         let imp = self.imp();
         imp.color.replace(color);
 
-        imp.red_scale.set_color_value(color.red as u32);
+        imp.red_scale.set_color_value(color.red);
+        imp.green_scale.set_color_value(color.green);
+        imp.blue_scale.set_color_value(color.blue);
+        imp.alpha_scale.set_color_value(color.alpha);
         imp.hex_entry.set_color(color.into());
     }
-
-    // fn change_color(&self, color: Color) {}
 
     fn setup_callbacks(&self) {
         //load imp
@@ -151,49 +191,54 @@ impl ExampleApplicationWindow {
 
         //get scales
         let red_scale = imp.red_scale.get().imp().scale.get();
-        // let bg_entry = imp.bg_entry.get();
+        let green_scale = imp.green_scale.get().imp().scale.get();
+        let blue_scale = imp.blue_scale.get().imp().scale.get();
+        let alpha_scale = imp.alpha_scale.get().imp().scale.get();
 
-        let on_scale_value_changed = glib::clone!(@weak red_scale,
-            //@weak bg_entry,
+        let on_scale_value_changed = glib::clone!(
+            @weak red_scale,
+            @weak green_scale,
+            @weak blue_scale,
+            @weak alpha_scale,
              @weak self as window => move |_scale: &gtk::Scale| {
             let red = red_scale.value() as u8;
-            let green = red_scale.value() as u8;
-            let blue = red_scale.value() as u8;
-            let alpha = red_scale.value() as u8;
+            let green = green_scale.value() as u8;
+            let blue = blue_scale.value() as u8;
+            let alpha = alpha_scale.value() as u8;
 
             let color = Color::rgba(red, green, blue, alpha);
 
             window.set_color(color);
         });
 
-        red_scale.connect_value_changed(on_scale_value_changed.clone());
-        // let fg_handle = fg_entry.connect_changed(on_entry_changed);
+        let red_handle = red_scale.connect_value_changed(on_scale_value_changed.clone());
+        let green_handle = green_scale.connect_value_changed(on_scale_value_changed.clone());
+        let blue_handle = blue_scale.connect_value_changed(on_scale_value_changed.clone());
+        let alpha_handle = alpha_scale.connect_value_changed(on_scale_value_changed);
 
-        //clone self to show toast
-        let captured = self.clone();
+        imp.hex_entry.connect_changed(glib::clone!(
+                @weak red_scale,
+                @weak green_scale,
+                @weak blue_scale,
+                @weak alpha_scale,
+                @weak self as window => move |entry| {
 
-        imp.hex_entry.connect_changed(move |entry| {
+            //block all signals, so no endless loop with updating signals can be created
+            red_scale.block_signal(&red_handle);
+            green_scale.block_signal(&green_handle);
+            blue_scale.block_signal(&blue_handle);
+            alpha_scale.block_signal(&alpha_handle);
+
+            //get color
             let gdk_color = entry.color();
             let color = Color::from(gdk_color);
-            // captured.show_toast(&format!(
-            //     "Color: {}",
-            //     hex_color.to_hex_string(crate::model::AlphaPosition::End)
-            // ))
-
-            // if let Ok(color) = Color::from(&gdk_color) {
-            log::info!("Hex Color: {:?}", color);
-            if color != captured.imp().color.borrow().to_owned() {
-                captured.set_color(color);
-            }
-            //     log::info!(
-            //         "Hex Color as hex: {:?}",
-            //         color.to_hex_string(crate::model::AlphaPosition::End)
-            //     );
-            // } else {
-            //     //show error toast
-            //     captured.show_toast("Failed to parse color");
-            // }
-        });
+            window.set_color(color);
+            //unblock after updating color
+            red_scale.unblock_signal(&red_handle);
+            green_scale.unblock_signal(&green_handle);
+            blue_scale.unblock_signal(&blue_handle);
+            alpha_scale.unblock_signal(&alpha_handle);
+        }));
     }
 
     /// Shows a basic toast with the given text.

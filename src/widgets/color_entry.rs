@@ -126,8 +126,10 @@ impl ColorEntry {
     }
 
     pub fn set_color(&self, new_color: gdk::RGBA) {
-        log::debug!("Setting new color to {}", Color::from(new_color));
-        self.set_property("color", &new_color);
+        //only updated value if value has changed, this avoids a loop where everything thinks it changed
+        if self.color() != new_color {
+            self.set_property("color", &new_color);
+        }
     }
 
     fn setup_signals(&self) {
