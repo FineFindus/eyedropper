@@ -1,3 +1,5 @@
+use std::ops::Deref;
+
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gio, glib};
@@ -7,6 +9,8 @@ use crate::config::{APP_ID, PROFILE};
 use crate::model::Color;
 
 mod imp {
+    use std::cell::RefCell;
+
     use crate::widgets;
 
     use super::*;
@@ -23,7 +27,10 @@ mod imp {
         pub toast_overlay: TemplateChild<adw::ToastOverlay>,
         #[template_child]
         pub hex_entry: TemplateChild<widgets::color_entry::ColorEntry>,
+        #[template_child]
+        pub red_scale: TemplateChild<widgets::color_scale::ColorScale>,
         pub settings: gio::Settings,
+        pub color: RefCell<Color>,
     }
 
     impl Default for ExampleApplicationWindow {
@@ -32,7 +39,9 @@ mod imp {
                 headerbar: TemplateChild::default(),
                 toast_overlay: TemplateChild::default(),
                 hex_entry: TemplateChild::default(),
+                red_scale: TemplateChild::default(),
                 settings: gio::Settings::new(APP_ID),
+                color: RefCell::new(Color::rgba(46, 52, 64, 255)),
             }
         }
     }
@@ -126,26 +135,64 @@ impl ExampleApplicationWindow {
         }
     }
 
+    fn set_color(&self, color: Color) {
+        let imp = self.imp();
+        imp.color.replace(color);
+
+        imp.red_scale.set_color_value(color.red as u32);
+        imp.hex_entry.set_color(color.into());
+    }
+
+    // fn change_color(&self, color: Color) {}
+
     fn setup_callbacks(&self) {
         //load imp
         let imp = self.imp();
+
+        //get scales
+        let red_scale = imp.red_scale.get().imp().scale.get();
+        // let bg_entry = imp.bg_entry.get();
+
+        let on_scale_value_changed = glib::clone!(@weak red_scale,
+            //@weak bg_entry,
+             @weak self as window => move |_scale: &gtk::Scale| {
+            let red = red_scale.value() as u8;
+            let green = red_scale.value() as u8;
+            let blue = red_scale.value() as u8;
+            let alpha = red_scale.value() as u8;
+
+            let color = Color::rgba(red, green, blue, alpha);
+
+            window.set_color(color);
+        });
+
+        red_scale.connect_value_changed(on_scale_value_changed.clone());
+        // let fg_handle = fg_entry.connect_changed(on_entry_changed);
+
         //clone self to show toast
         let captured = self.clone();
 
-        imp.hex_entry.connect_activate(move |entry| {
-            let buffer = entry.buffer();
-            let content = buffer.text();
-            log::debug!("ColorEntry buffer: {}", content);
-            if let Ok(color) = Color::from_hex(&content, crate::model::AlphaPosition::End) {
-                log::info!("Hex Color: {:?}", color);
-                log::info!(
-                    "Hex Color as hex: {:?}",
-                    color.to_hex_string(crate::model::AlphaPosition::End)
-                );
-            } else {
-                //show error toast
-                captured.show_toast("Failed to parse color");
+        imp.hex_entry.connect_changed(move |entry| {
+            let gdk_color = entry.color();
+            let color = Color::from(gdk_color);
+            // captured.show_toast(&format!(
+            //     "Color: {}",
+            //     hex_color.to_hex_string(crate::model::AlphaPosition::End)
+            // ))
+
+            // if let Ok(color) = Color::from(&gdk_color) {
+            log::info!("Hex Color: {:?}", color);
+            if color != captured.imp().color.borrow().to_owned() {
+                captured.set_color(color);
             }
+            //     log::info!(
+            //         "Hex Color as hex: {:?}",
+            //         color.to_hex_string(crate::model::AlphaPosition::End)
+            //     );
+            // } else {
+            //     //show error toast
+            //     captured.show_toast("Failed to parse color");
+            // }
         });
     }
 

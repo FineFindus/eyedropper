@@ -53,6 +53,13 @@
                   <object class="ColorEntry" id="hex_entry"></object>
                 </child>
                 <child>
+                  <object class="ColorScale" id="red_scale">
+                    <style>
+                      <class name="redScale" />
+                    </style>
+                  </object>
+                </child>
+                <!-- <child>
                   <object class="GtkScale" id="red_color_scale">
                     <property name="adjustment">color_scale_red</property>
                     <property name="digits">0</property>
@@ -64,7 +71,7 @@
                       <class name="redScale" />
                     </style>
                   </object>
-                </child>
+                </child> -->
                 <child>
                   <object class="GtkScale" id="green_color_scale">
                     <property name="adjustment">color_scale_green</property>
@@ -72,6 +79,7 @@
                     <property name="draw-value">True</property>
                     <property name="round-digits">1</property>
                     <property name="value-pos">right</property>
+                    <property name="name">Red</property>
                     <style>
                       <class name="greenScale" />
                     </style>
@@ -96,6 +104,9 @@
                     <property name="draw-value">True</property>
                     <property name="round-digits">1</property>
                     <property name="value-pos">right</property>
+                    <style>
+                      <class name="alphaScale" />
+                    </style>
                   </object>
                 </child>
               </object>

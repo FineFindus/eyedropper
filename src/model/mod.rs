@@ -9,7 +9,7 @@ use crate::utils;
 /// For example Android Color Values use this format.
 ///
 /// Defaults to no alpha value
-#[derive(Debug, Default)]
+#[derive(Debug, Default, PartialEq)]
 pub enum AlphaPosition {
     Start,
     #[default]
@@ -17,7 +17,7 @@ pub enum AlphaPosition {
     End,
 }
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq)]
 pub struct Color {
     pub alpha: u8,
     pub red: u8,
@@ -137,6 +137,17 @@ impl From<gtk::gdk::RGBA> for Color {
             (255f32 * color.green()) as u8,
             (255f32 * color.blue()) as u8,
             (255f32 * color.alpha()) as u8,
+        )
+    }
+}
+
+impl Into<gtk::gdk::RGBA> for Color {
+    fn into(self) -> gtk::gdk::RGBA {
+        gtk::gdk::RGBA::new(
+            self.red as f32 / 255f32,
+            self.green as f32 / 255f32,
+            self.blue as f32 / 255f32,
+            self.alpha as f32 / 255f32,
         )
     }
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+    <template class="ColorScale" parent="GtkBox">
+        <child>
+            <object class="GtkLabel">
+                <property name="label" translatable="yes">Red:</property>
+            </object>
+        </child>
+        <child>
+            <object class="GtkScale" id="scale">
+                <property name="adjustment">color_scale_red</property>
+                <property name="digits">0</property>
+                <property name="draw-value">True</property>
+                <property name="round-digits">0</property>
+                <property name="show-fill-level">True</property>
+                <property name="value-pos">right</property>
+                <property name="hexpand">True</property>
+                <property name="round-digits">0</property>
+                <property name="valign">start</property>
+                <property name="value-pos">right</property>
+            </object>
+        </child>
+    </template>
+    <object class="GtkAdjustment" id="color_scale_red">
+        <property name="step-increment">1.0</property>
+        <property name="upper">255.0</property>
+    </object>
+</interface>
