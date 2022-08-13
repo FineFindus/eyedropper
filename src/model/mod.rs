@@ -65,6 +65,7 @@ impl Color {
             }
             AlphaPosition::None => format!("#{:02x}{:02x}{:02x}", self.red, self.green, self.blue),
         }
+        .to_ascii_uppercase()
     }
 
     /// Create a color from a hex string.

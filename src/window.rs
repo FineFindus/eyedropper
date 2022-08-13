@@ -5,6 +5,7 @@ use gtk::{gio, glib};
 use crate::application::ExampleApplication;
 use crate::config::{APP_ID, PROFILE};
 use crate::model::Color;
+use crate::widgets::color_entry::ColorEntry;
 
 mod imp {
     use std::cell::RefCell;
@@ -239,6 +240,15 @@ impl ExampleApplicationWindow {
             blue_scale.unblock_signal(&blue_handle);
             alpha_scale.unblock_signal(&alpha_handle);
         }));
+
+        let captured = self.clone();
+        imp.hex_entry.connect_closure(
+            "copied-color",
+            false,
+            glib::closure_local!(move |_: ColorEntry, color: String| {
+                captured.show_toast(&format!("Copied color {}", color))
+            }),
+        );
     }
 
     /// Shows a basic toast with the given text.

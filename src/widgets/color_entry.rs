@@ -13,7 +13,7 @@ mod imp {
     use super::*;
     use std::cell::RefCell;
 
-    use gtk::glib::{ParamSpec, ParamSpecBoxed};
+    use gtk::glib::{subclass::Signal, ParamSpec, ParamSpecBoxed};
     use once_cell::sync::Lazy;
 
     // Object holding the state
@@ -28,7 +28,7 @@ mod imp {
         #[template_callback]
         fn on_icon_pressed(&self, pos: gtk::EntryIconPosition, _entry: &gtk::Entry) {
             if pos == gtk::EntryIconPosition::Secondary {
-                self.instance().pick_color();
+                self.instance().copy_color();
             }
         }
     }
@@ -59,6 +59,21 @@ mod imp {
 
     // Trait shared by all GObjects
     impl ObjectImpl for ColorEntry {
+        fn signals() -> &'static [Signal] {
+            static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
+                vec![Signal::builder(
+                    // Signal name
+                    "copied-color",
+                    // Types of the values which will be sent to the signal handler
+                    &[String::static_type().into()],
+                    // Type of the value the signal handler sends back
+                    <()>::static_type().into(),
+                )
+                .build()]
+            });
+            SIGNALS.as_ref()
+        }
+
         fn properties() -> &'static [ParamSpec] {
             static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
                 vec![ParamSpecBoxed::new(
@@ -151,16 +166,11 @@ impl ColorEntry {
             .build();
     }
 
-    fn pick_color(&self) {
-        log::debug!("Picking a color using the color picker");
-        gtk_macros::spawn!(glib::clone!(@weak self as entry => async move {
-
-        let connection = ashpd::zbus::Connection::session().await.expect("Failed to open connection to zbus");
-        let proxy = ashpd::desktop::screenshot::ScreenshotProxy::new(&connection).await.expect("Failed to open screenshot proxy");
-        match proxy.pick_color(&ashpd::WindowIdentifier::default()).await {
-            Ok(color) => entry.set_color(gdk::RGBA::new(color.red() as f32, color.green() as f32, color.blue() as f32, 1f32)),
-            Err(err) => log::error!("{}", err),
-        };
-        }));
+    fn copy_color(&self) {
+        log::debug!("Coping selected color");
+        let clipboard = self.clipboard();
+        let color = self.text().to_string();
+        clipboard.set_text(&color);
+        self.emit_by_name("copied-color", &[&color.to_value()])
     }
 }

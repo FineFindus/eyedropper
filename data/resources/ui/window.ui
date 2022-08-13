@@ -20,6 +20,7 @@
     <property name="content">
       <object class="GtkBox">
         <property name="orientation">vertical</property>
+        <property name="vexpand">true</property>
         <child>
           <object class="AdwHeaderBar" id="headerbar">
             <property name="title-widget">
