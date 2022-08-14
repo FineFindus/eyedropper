@@ -19,7 +19,7 @@ mod imp {
 
     #[derive(Debug, CompositeTemplate)]
     #[template(resource = "/com/benzler/colors/ui/window.ui")]
-    pub struct ExampleApplicationWindow {
+    pub struct AppWindow {
         #[template_child]
         pub headerbar: TemplateChild<adw::HeaderBar>,
         #[template_child]
@@ -40,7 +40,7 @@ mod imp {
         pub color: RefCell<Color>,
     }
 
-    impl Default for ExampleApplicationWindow {
+    impl Default for AppWindow {
         fn default() -> Self {
             Self {
                 headerbar: TemplateChild::default(),
@@ -58,7 +58,7 @@ mod imp {
     }
 
     #[gtk::template_callbacks]
-    impl ExampleApplicationWindow {
+    impl AppWindow {
         #[template_callback]
         fn color_picker_button_clicked(&self) {
             self.instance().pick_color();
@@ -66,9 +66,9 @@ mod imp {
     }
 
     #[glib::object_subclass]
-    impl ObjectSubclass for ExampleApplicationWindow {
-        const NAME: &'static str = "ExampleApplicationWindow";
-        type Type = super::ExampleApplicationWindow;
+    impl ObjectSubclass for AppWindow {
+        const NAME: &'static str = "AppWindow";
+        type Type = super::AppWindow;
         type ParentType = adw::ApplicationWindow;
 
         fn class_init(klass: &mut Self::Class) {
@@ -82,7 +82,7 @@ mod imp {
         }
     }
 
-    impl ObjectImpl for ExampleApplicationWindow {
+    impl ObjectImpl for AppWindow {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
 
@@ -97,8 +97,8 @@ mod imp {
         }
     }
 
-    impl WidgetImpl for ExampleApplicationWindow {}
-    impl WindowImpl for ExampleApplicationWindow {
+    impl WidgetImpl for AppWindow {}
+    impl WindowImpl for AppWindow {
         // Save window state on delete event
         fn close_request(&self, window: &Self::Type) -> gtk::Inhibit {
             if let Err(err) = window.save_window_size() {
@@ -110,26 +110,26 @@ mod imp {
         }
     }
 
-    impl ApplicationWindowImpl for ExampleApplicationWindow {}
-    impl AdwApplicationWindowImpl for ExampleApplicationWindow {}
+    impl ApplicationWindowImpl for AppWindow {}
+    impl AdwApplicationWindowImpl for AppWindow {}
 }
 
 glib::wrapper! {
-    pub struct ExampleApplicationWindow(ObjectSubclass<imp::ExampleApplicationWindow>)
+    pub struct AppWindow(ObjectSubclass<imp::AppWindow>)
         @extends gtk::Widget, gtk::Window, gtk::ApplicationWindow,
         @implements gio::ActionMap, gio::ActionGroup, gtk::Root;
 }
 
-impl ExampleApplicationWindow {
+impl AppWindow {
     pub fn new(app: &ExampleApplication) -> Self {
-        let window: Self = glib::Object::new(&[("application", app)])
-            .expect("Failed to create ExampleApplicationWindow");
-        //set scale labels
+        let window: Self =
+            glib::Object::new(&[("application", app)]).expect("Failed to create AppWindow");
+        //set scale labels with only initials
         let imp = window.imp();
-        imp.red_scale.set_label(String::from("Red"));
-        imp.green_scale.set_label(String::from("Green"));
-        imp.blue_scale.set_label(String::from("Blue"));
-        imp.alpha_scale.set_label(String::from("Alpha"));
+        imp.red_scale.set_label(String::from("R"));
+        imp.green_scale.set_label(String::from("G"));
+        imp.blue_scale.set_label(String::from("B"));
+        imp.alpha_scale.set_label(String::from("A"));
         //preset a color, so all scales have a set position
         window.set_color(Color::rgba(46, 52, 64, 255));
         window

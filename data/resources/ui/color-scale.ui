@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
     <template class="ColorScale" parent="GtkBox">
+        <property name="margin-start">12</property>
         <child>
             <object class="GtkLabel" id="label"></object>
         </child>

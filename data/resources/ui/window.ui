@@ -16,11 +16,12 @@
       </item>
     </section>
   </menu>
-  <template class="ExampleApplicationWindow" parent="AdwApplicationWindow">
+  <template class="AppWindow" parent="AdwApplicationWindow">
     <property name="content">
       <object class="GtkBox">
         <property name="orientation">vertical</property>
         <property name="vexpand">true</property>
+        <property name="vexpand-set">True</property>
         <child>
           <object class="AdwHeaderBar" id="headerbar">
             <property name="title-widget">
@@ -48,8 +49,8 @@
               <object class="GtkBox">
                 <property name="orientation">vertical</property>
                 <property name="halign">fill</property>
-                <property name="margin-start">6</property>
-                <property name="margin-end">6</property>
+                <property name="vexpand">True</property>
+                <property name="vexpand-set">True</property>
                 <property name="spacing">3</property>
                 <child>
                   <object class="ColorEntry" id="hex_entry"></object>
