@@ -2,9 +2,7 @@
 <interface>
     <template class="ColorScale" parent="GtkBox">
         <child>
-            <object class="GtkLabel">
-                <property name="label" translatable="yes">Red:</property>
-            </object>
+            <object class="GtkLabel" id="label"></object>
         </child>
         <child>
             <object class="GtkScale" id="scale">

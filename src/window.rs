@@ -124,6 +124,12 @@ impl ExampleApplicationWindow {
     pub fn new(app: &ExampleApplication) -> Self {
         let window: Self = glib::Object::new(&[("application", app)])
             .expect("Failed to create ExampleApplicationWindow");
+        //set scale labels
+        let imp = window.imp();
+        imp.red_scale.set_label(String::from("Red"));
+        imp.green_scale.set_label(String::from("Green"));
+        imp.blue_scale.set_label(String::from("Blue"));
+        imp.alpha_scale.set_label(String::from("Alpha"));
         //preset a color, so all scales have a set position
         window.set_color(Color::rgba(46, 52, 64, 255));
         window

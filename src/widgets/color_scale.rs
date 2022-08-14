@@ -18,6 +18,8 @@ mod imp {
     #[template(resource = "/com/benzler/colors/ui/color-scale.ui")]
     pub struct ColorScale {
         #[template_child]
+        pub label: TemplateChild<gtk::Label>,
+        #[template_child]
         pub scale: TemplateChild<gtk::Scale>,
         pub color_value: RefCell<u32>, //this is technically a u32, but handle it as an u8
     }
@@ -32,6 +34,7 @@ mod imp {
 
         fn new() -> Self {
             Self {
+                label: TemplateChild::default(),
                 scale: TemplateChild::default(),
                 color_value: RefCell::new(0),
             }
@@ -109,6 +112,10 @@ impl ColorScale {
     #[allow(clippy::new_without_default)]
     pub fn new() -> Self {
         glib::Object::new::<Self>(&[]).expect("Failed to create a ColorScale")
+    }
+
+    pub fn set_label(&self, label: String) {
+        self.imp().label.set_label(&label);
     }
 
     pub fn color_value(&self) -> u8 {
