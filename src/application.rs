@@ -25,8 +25,8 @@ mod imp {
 
     #[glib::object_subclass]
     impl ObjectSubclass for App {
-        const NAME: &'static str = "ExampleApplication";
-        type Type = super::ExampleApplication;
+        const NAME: &'static str = "App";
+        type Type = super::App;
         type ParentType = adw::Application;
     }
 
@@ -34,7 +34,7 @@ mod imp {
 
     impl ApplicationImpl for App {
         fn activate(&self, app: &Self::Type) {
-            debug!("GtkApplication<ExampleApplication>::activate");
+            debug!("GtkApplication<App>::activate");
             self.parent_activate(app);
 
             if let Some(window) = self.window.get() {
@@ -52,7 +52,7 @@ mod imp {
         }
 
         fn startup(&self, app: &Self::Type) {
-            debug!("GtkApplication<ExampleApplication>::startup");
+            debug!("GtkApplication<App>::startup");
             self.parent_startup(app);
 
             // Set icons for shell
@@ -69,12 +69,12 @@ mod imp {
 }
 
 glib::wrapper! {
-    pub struct ExampleApplication(ObjectSubclass<imp::App>)
+    pub struct App(ObjectSubclass<imp::App>)
         @extends gio::Application, gtk::Application,
         @implements gio::ActionMap, gio::ActionGroup;
 }
 
-impl ExampleApplication {
+impl App {
     pub fn new() -> Self {
         glib::Object::new(&[
             ("application-id", &Some(APP_ID)),
@@ -108,6 +108,7 @@ impl ExampleApplication {
 
     // Sets up keyboard shortcuts
     fn setup_accels(&self) {
+        //quit app
         self.set_accels_for_action("app.quit", &["<Control>q"]);
     }
 
@@ -142,7 +143,7 @@ impl ExampleApplication {
     }
 
     pub fn run(&self) {
-        info!("Color Picker ({})", APP_ID);
+        info!("Eyedropper ({})", APP_ID);
         info!("Version: {} ({})", VERSION, PROFILE);
         info!("Datadir: {}", PKGDATADIR);
 

@@ -2,7 +2,7 @@ use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gio, glib};
 
-use crate::application::ExampleApplication;
+use crate::application::App;
 use crate::config::{APP_ID, PROFILE};
 use crate::model::Color;
 use crate::widgets::color_entry::ColorEntry;
@@ -121,7 +121,7 @@ glib::wrapper! {
 }
 
 impl AppWindow {
-    pub fn new(app: &ExampleApplication) -> Self {
+    pub fn new(app: &App) -> Self {
         let window: Self =
             glib::Object::new(&[("application", app)]).expect("Failed to create AppWindow");
         //set scale labels with only initials

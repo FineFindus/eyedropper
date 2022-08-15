@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Color Picker
+Name=Eyedropper
 Comment=Write a GTK + Rust application
 Type=Application
 Exec=color-picker
