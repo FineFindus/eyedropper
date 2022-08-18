@@ -10,7 +10,7 @@
     <property name="placeholder-text" translatable="yes">Insert a color</property>
     <property name="margin-end">6</property>
     <property name="margin-start">6</property>
-    <property name="margin-top">3</property>
+    <property name="margin-top">12</property>
     <style>
       <class name="monospace" />
     </style>

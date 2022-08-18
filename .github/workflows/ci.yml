@@ -29,10 +29,10 @@ jobs:
       image: bilelmoussaoui/flatpak-github-actions:gnome-42
       options: --privileged
     steps:
-    - uses: actions/checkout@v2
-    - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v4
-      with:
-        bundle: color-picker.flatpak
-        manifest-path: build-aux/com.benzler.colors.Devel.json
-        run-tests: true
-        cache-key: flatpak-builder-${{ github.sha }}
+      - uses: actions/checkout@v2
+      - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v4
+        with:
+          bundle: eyedropper.flatpak
+          manifest-path: build-aux/com.github.finefindus.eyedropper.Devel.json
+          run-tests: true
+          cache-key: flatpak-builder-${{ github.sha }}

@@ -18,7 +18,7 @@ mod imp {
     use gtk::CompositeTemplate;
 
     #[derive(Debug, CompositeTemplate)]
-    #[template(resource = "/com/benzler/colors/ui/window.ui")]
+    #[template(resource = "/com/github/finefindus/eyedropper/ui/window.ui")]
     pub struct AppWindow {
         #[template_child]
         pub headerbar: TemplateChild<adw::HeaderBar>,
@@ -52,7 +52,7 @@ mod imp {
                 blue_scale: TemplateChild::default(),
                 alpha_scale: TemplateChild::default(),
                 settings: gio::Settings::new(APP_ID),
-                color: RefCell::new(Color::rgba(46, 52, 64, 255)),
+                color: RefCell::new(Color::rgba(0, 0, 0, 0)),
             }
         }
     }
@@ -178,18 +178,21 @@ impl AppWindow {
     }
 
     fn set_color(&self, color: Color) {
-        log::info!(
-            "Hex Color: {:?}",
-            color.to_hex_string(crate::model::AlphaPosition::End)
-        );
-        let imp = self.imp();
-        imp.color.replace(color);
+        //only update when necessary, to avoid infinite loop
+        if self.imp().color.borrow().clone() != color {
+            log::info!(
+                "Hex Color: {:?}",
+                color.to_hex_string(crate::model::AlphaPosition::End)
+            );
+            let imp = self.imp();
+            imp.color.replace(color);
 
-        imp.red_scale.set_color_value(color.red);
-        imp.green_scale.set_color_value(color.green);
-        imp.blue_scale.set_color_value(color.blue);
-        imp.alpha_scale.set_color_value(color.alpha);
-        imp.hex_entry.set_color(color.into());
+            imp.red_scale.set_color_value(color.red);
+            imp.green_scale.set_color_value(color.green);
+            imp.blue_scale.set_color_value(color.blue);
+            imp.alpha_scale.set_color_value(color.alpha);
+            imp.hex_entry.set_color(color.into());
+        }
     }
 
     fn setup_callbacks(&self) {

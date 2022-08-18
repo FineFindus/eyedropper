@@ -3,15 +3,15 @@ stages:
   - test
 
 flatpak:
-  image: 'quay.io/gnome_infrastructure/gnome-runtime-images:gnome-42'
+  image: "quay.io/gnome_infrastructure/gnome-runtime-images:gnome-42"
   stage: test
   tags:
     - flatpak
   variables:
-    BUNDLE: "color-picker-nightly.flatpak"
-    MANIFEST_PATH: "build-aux/com.benzler.colors.Devel.json"
-    FLATPAK_MODULE: "color-picker"
-    APP_ID: "com.benzler.colors.Devel"
+    BUNDLE: "eyedropper-nightly.flatpak"
+    MANIFEST_PATH: "build-aux/com.github.finefindus.eyedropper.Devel.json"
+    FLATPAK_MODULE: "eyedropper"
+    APP_ID: "com.github.finefindus.eyedropper.Devel"
     RUNTIME_REPO: "https://nightly.gnome.org/gnome-nightly.flatpakrepo"
   script:
     - >
@@ -19,13 +19,13 @@ flatpak:
       flatpak-builder --keep-build-dirs --user --disable-rofiles-fuse flatpak_app --repo=repo ${BRANCH:+--default-branch=$BRANCH} ${MANIFEST_PATH}
     - flatpak build-bundle repo ${BUNDLE} --runtime-repo=${RUNTIME_REPO} ${APP_ID} ${BRANCH}
   artifacts:
-    name: 'Flatpak artifacts'
-    expose_as: 'Get Flatpak bundle here'
-    when: 'always'
+    name: "Flatpak artifacts"
+    expose_as: "Get Flatpak bundle here"
+    when: "always"
     paths:
       - "${BUNDLE}"
-      - '.flatpak-builder/build/${FLATPAK_MODULE}/_flatpak_build/meson-logs/meson-log.txt'
-      - '.flatpak-builder/build/${FLATPAK_MODULE}/_flatpak_build/meson-logs/testlog.txt'
+      - ".flatpak-builder/build/${FLATPAK_MODULE}/_flatpak_build/meson-logs/meson-log.txt"
+      - ".flatpak-builder/build/${FLATPAK_MODULE}/_flatpak_build/meson-logs/testlog.txt"
     expire_in: 14 days
 
 # Configure and run rustfmt

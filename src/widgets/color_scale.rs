@@ -15,7 +15,7 @@ mod imp {
 
     // Object holding the state
     #[derive(gtk::CompositeTemplate)]
-    #[template(resource = "/com/benzler/colors/ui/color-scale.ui")]
+    #[template(resource = "/com/github/finefindus/eyedropper/ui/color-scale.ui")]
     pub struct ColorScale {
         #[template_child]
         pub label: TemplateChild<gtk::Label>,

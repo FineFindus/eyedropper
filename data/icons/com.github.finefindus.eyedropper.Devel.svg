@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg height="128px" viewBox="0 0 128 128" width="128px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <linearGradient id="a" gradientUnits="userSpaceOnUse" x1="19.21986061152" x2="81.79918667936" y1="109.83474564841" y2="48.30810869718">
-        <stop offset="0" stop-color="#200dd1"/>
-        <stop offset="0.386581" stop-color="#3e78c5"/>
-        <stop offset="0.75" stop-color="#10e88a"/>
-        <stop offset="1" stop-color="#41c2d2"/>
+    <linearGradient id="a" gradientUnits="userSpaceOnUse" x1="19.21984961151" x2="81.79917567936" y1="109.83483964841" y2="48.30820269718">
+        <stop offset="0.0610516" stop-color="#5c32d4"/>
+        <stop offset="0.19672" stop-color="#8c56e7"/>
+        <stop offset="0.387228" stop-color="#776ff6"/>
+        <stop offset="0.629894" stop-color="#31c2f2"/>
+        <stop offset="0.80582" stop-color="#4ef3c8"/>
     </linearGradient>
     <clipPath id="b">
         <path d="m 71 15 h 44 v 44 h -44 z m 0 0"/>

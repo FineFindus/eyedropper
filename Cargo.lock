@@ -210,20 +210,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 
 [[package]]
-name = "color-picker"
-version = "0.1.0"
-dependencies = [
- "ashpd",
- "gettext-rs",
- "gtk-macros",
- "gtk4",
- "libadwaita",
- "log",
- "once_cell",
- "pretty_env_logger",
-]
-
-[[package]]
 name = "concurrent-queue"
 version = "1.2.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -302,6 +288,21 @@ name = "event-listener"
 version = "2.5.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0206175f82b8d6bf6652ff7d71a1e27fd2e4efde587fd368662814d6ec1d9ce0"
+
+[[package]]
+name = "eyedropper"
+version = "0.1.0"
+dependencies = [
+ "ashpd",
+ "gettext-rs",
+ "glib",
+ "gtk-macros",
+ "gtk4",
+ "libadwaita",
+ "log",
+ "once_cell",
+ "pretty_env_logger",
+]
 
 [[package]]
 name = "fastrand"
@@ -398,9 +399,9 @@ dependencies = [
 
 [[package]]
 name = "futures-sink"
-version = "0.3.21"
+version = "0.3.23"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "21163e139fa306126e6eedaf49ecdb4588f939600f0b1e770f4205ee4b7fa868"
+checksum = "ca0bae1fe9752cf7fd9b0064c674ae63f97b37bc714d745cbde0afb7ec4e6765"
 
 [[package]]
 name = "futures-task"

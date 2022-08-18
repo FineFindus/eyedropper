@@ -1,5 +1,3 @@
-use std::str::FromStr;
-
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{
@@ -18,7 +16,7 @@ mod imp {
 
     // Object holding the state
     #[derive(gtk::CompositeTemplate)]
-    #[template(resource = "/com/benzler/colors/ui/color-entry.ui")]
+    #[template(resource = "/com/github/finefindus/eyedropper/ui/color-entry.ui")]
     pub struct ColorEntry {
         pub color: RefCell<gdk::RGBA>,
     }
@@ -114,6 +112,7 @@ mod imp {
             self.parent_constructed(obj);
             obj.set_direction(gtk::TextDirection::Ltr);
             obj.setup_signals();
+            obj.set_max_length(9);
             obj.set_width_chars(9);
             obj.set_max_width_chars(9);
         }
@@ -160,7 +159,10 @@ impl ColorEntry {
             })
             .transform_from(move |_, val| {
                 let text: String = val.get().unwrap();
-                gdk::RGBA::from_str(&text).ok().map(|c| c.to_value())
+                match Color::from_hex(&text, crate::model::AlphaPosition::End) {
+                    Ok(color) => Some(gdk::RGBA::from(color.into()).to_value()),
+                    Err(_) => None,
+                }
             })
             .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
             .build();

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+    <template class="PreferencesWindow" parent="AdwPreferencesWindow">
+        <property name="default-width">550</property>
+        <property name="default-height">570</property>
+        <property name="can-navigate-back">True</property>
+        <child>
+            <object class="AdwPreferencesPage">
+                <property name="icon-name">applications-system-symbolic</property>
+                <property name="title" translatable="yes">General</property>
+                <child>
+                    <object class="AdwPreferencesGroup" id="dark_mode_group">
+                        <property name="title" translatable="yes">Appearance</property>
+                        <child>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">_Dark Mode</property>
+                                <property name="use-underline">True</property>
+                                <property name="activatable-widget">dark_mode_switch</property>
+                                <property name="subtitle" translatable="yes">Whether the application should use a dark mode</property>
+                                <child>
+                                    <object class="GtkSwitch" id="dark_mode_switch">
+                                        <property name="valign">center</property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+                <child>
+                    <object class="AdwPreferencesGroup">
+                        <property name="title" translatable="yes">Privacy</property>
+                        <child>
+                            <object class="AdwComboRow">
+                                <property name="title" translatable="yes">Combo Row</property>
+                                <property name="model">
+                                    <object class="GtkStringList">
+                                        <items>
+                                            <item translatable="yes">Foo</item>
+                                            <item translatable="yes">Bar</item>
+                                            <item translatable="yes">Baz</item>
+                                        </items>
+                                    </object>
+                                </property>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">_Auto Lock the Application</property>
+                                <property name="use-underline">True</property>
+                                <property name="activatable-widget">auto_lock_switch</property>
+                                <property name="subtitle" translatable="yes">Whether to automatically lock the application</property>
+                                <child>
+                                    <object class="GtkSwitch" id="auto_lock_switch">
+                                        <property name="valign">center</property>
+                                        <!-- <property name="sensitive" bind-source="PreferencesWindow" bind-property="has-set-password" bind-flags="sync-create" /> -->
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Auto Lock _Timeout</property>
+                                <property name="subtitle" translatable="yes">The time in minutes</property>
+                                <property name="activatable-widget">lock_timeout_spin_btn</property>
+                                <property name="use-underline">True</property>
+                                <child>
+                                    <object class="GtkSpinButton" id="lock_timeout_spin_btn">
+                                        <property name="valign">center</property>
+                                        <property name="halign">center</property>
+                                        <!-- <property name="sensitive" bind-source="auto_lock_switch" bind-property="sensitive" bind-flags="sync-create" /> -->
+                                        <property name="climb-rate">1</property>
+                                        <property name="numeric">True</property>
+                                        <property name="update-policy">if-valid</property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+            </object>
+        </child>
+        <child>
+            <object class="AdwPreferencesPage">
+                <property name="icon-name">document-save-as-symbolic</property>
+                <property name="title" translatable="yes">Backup/Restore</property>
+                <child>
+                    <object class="AdwPreferencesGroup" id="backup_group">
+                        <property name="title" translatable="yes">Backup</property>
+                    </object>
+                </child>
+                <child>
+                    <object class="AdwPreferencesGroup" id="restore_group">
+                        <property name="title" translatable="yes">Restore</property>
+                    </object>
+                </child>
+            </object>
+        </child>
+    </template>
+</interface>

@@ -9,12 +9,24 @@ use crate::utils;
 /// For example Android Color Values use this format.
 ///
 /// Defaults to no alpha value
-#[derive(Debug, Default, PartialEq)]
+#[derive(Debug, Default, PartialEq, Copy, Clone)]
+#[repr(u32)]
 pub enum AlphaPosition {
-    Start,
     #[default]
-    None,
     End,
+    Start,
+    None,
+}
+
+impl From<u32> for AlphaPosition {
+    fn from(u: u32) -> Self {
+        match u {
+            0 => Self::End,
+            1 => Self::Start,
+            2 => Self::None,
+            _ => Self::default(),
+        }
+    }
 }
 
 #[derive(Debug, Clone, Copy, PartialEq)]
@@ -131,17 +143,6 @@ impl fmt::Display for Color {
     }
 }
 
-impl From<gtk::gdk::RGBA> for Color {
-    fn from(color: gtk::gdk::RGBA) -> Self {
-        Color::rgba(
-            (255f32 * color.red()) as u8,
-            (255f32 * color.green()) as u8,
-            (255f32 * color.blue()) as u8,
-            (255f32 * color.alpha()) as u8,
-        )
-    }
-}
-
 impl From<ashpd::desktop::screenshot::Color> for Color {
     fn from(color: ashpd::desktop::screenshot::Color) -> Self {
         Color::rgba(
@@ -149,6 +150,17 @@ impl From<ashpd::desktop::screenshot::Color> for Color {
             (255f64 * color.green()) as u8,
             (255f64 * color.blue()) as u8,
             255,
+        )
+    }
+}
+
+impl From<gtk::gdk::RGBA> for Color {
+    fn from(color: gtk::gdk::RGBA) -> Self {
+        Color::rgba(
+            (255f32 * color.red()) as u8,
+            (255f32 * color.green()) as u8,
+            (255f32 * color.blue()) as u8,
+            (255f32 * color.alpha()) as u8,
         )
     }
 }

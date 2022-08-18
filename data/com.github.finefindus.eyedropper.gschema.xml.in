@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schemalist>
+  <!-- <enum id="com.github.finefindus.eyedropper.AlphaPosition">
+    <value nick="End" value="0" />
+    <value nick="Start" value="1" />
+    <value nick="None" value="2" />
+  </enum> -->
+  <!-- <enum id="org.gnome.design.Lorem.Unit">
+    <value nick="paragraphs" value="0" />
+    <value nick="words" value="1" />
+  </enum> -->
+
+
+  <schema path="/com/github/finefindus/eyedropper/" id="@app-id@" gettext-domain="@gettext-package@">
+    <key name="window-width" type="i">
+      <default>600</default>
+      <summary>Window width</summary>
+    </key>
+    <key name="window-height" type="i">
+      <default>400</default>
+      <summary>Window height</summary>
+    </key>
+    <key name="is-maximized" type="b">
+      <default>false</default>
+      <summary>Window maximized state</summary>
+    </key>
+    <key name="dark-theme" type="b">
+      <default>false</default>
+      <summary>Dark Mode</summary>
+      <description>Whether the application should use a dark mode.</description>
+    </key>
+
+    <!-- <key name="alpha-position" type="com.github.finefindus.eyedropper.AlphaPosition">
+      <default>End</default>
+      <summary>Alpha Value Position</summary>
+      <description>Where the alpha value is postioned in the hex string..</description>
+    </key> -->
+
+    <!-- <key name="alpha-position" enum="org.gnome.design.Lorem.Unit">
+      <default>"paragraphs"</default>
+      <summary>TODO</summary>
+    <description>TODO.</description>
+    </key>
+    -->
+  </schema>
+</schemalist>

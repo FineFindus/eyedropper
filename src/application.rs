@@ -7,6 +7,7 @@ use gtk::subclass::prelude::*;
 use gtk::{gdk, gio, glib};
 
 use crate::config::{APP_ID, PKGDATADIR, PROFILE, VERSION};
+use crate::widgets::preferences::PreferencesWindow;
 use crate::window::AppWindow;
 
 mod imp {
@@ -79,7 +80,10 @@ impl App {
         glib::Object::new(&[
             ("application-id", &Some(APP_ID)),
             ("flags", &gio::ApplicationFlags::empty()),
-            ("resource-base-path", &Some("/com/benzler/colors/")),
+            (
+                "resource-base-path",
+                &Some("/com/github/finefindus/eyedropper/"),
+            ),
         ])
         .expect("Application initialization failed...")
     }
@@ -89,6 +93,14 @@ impl App {
     }
 
     fn setup_gactions(&self) {
+        // Settings
+        let action_quit = gio::SimpleAction::new("preferences", None);
+        action_quit.connect_activate(clone!(@weak self as app => move |_, _| {
+            // This is needed to trigger the delete event and saving the window state
+            app.show_settings_dialog();
+        }));
+        self.add_action(&action_quit);
+
         // Quit
         let action_quit = gio::SimpleAction::new("quit", None);
         action_quit.connect_activate(clone!(@weak self as app => move |_, _| {
@@ -114,7 +126,7 @@ impl App {
 
     fn setup_css(&self) {
         let provider = gtk::CssProvider::new();
-        provider.load_from_resource("/com/benzler/colors/style.css");
+        provider.load_from_resource("/com/github/finefindus/eyedropper/style.css");
         if let Some(display) = gdk::Display::default() {
             gtk::StyleContext::add_provider_for_display(
                 &display,
@@ -130,7 +142,7 @@ impl App {
             // Insert your license of choice here
             .license_type(gtk::License::Mpl20)
             // Insert your website here
-            // .website("https://gitlab.gnome.org/bilelmoussaoui/color-picker/")
+            // .website("https://gitlab.gnome.org/bilelmoussaoui/eyedropper/")
             .version(VERSION)
             .transient_for(&self.main_window())
             .translator_credits(&gettext("translator-credits"))
@@ -140,6 +152,14 @@ impl App {
             .build();
 
         dialog.present();
+    }
+
+    fn show_settings_dialog(&self) {
+        let preferences = PreferencesWindow::new();
+
+        preferences.set_transient_for(Some(&self.main_window()));
+        // preferences.set_transient_for(Some(&window));
+        preferences.show();
     }
 
     pub fn run(&self) {

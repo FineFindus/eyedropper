@@ -1,6 +1,6 @@
 # Eyedropper
 
-![Eyedropper](data/icons/com.benzler.colors.svg)
+![Eyedropper](data/icons/com.github.finefindus.eyedropper.svg)
 
 A simple to use color picker and editor.
 
