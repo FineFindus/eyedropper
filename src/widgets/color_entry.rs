@@ -5,13 +5,18 @@ use gtk::{
     prelude::{ObjectExt, ToValue},
 };
 
-use crate::model::Color;
+use crate::model::{AlphaPosition, Color};
 
 mod imp {
+    use crate::config;
+
     use super::*;
     use std::cell::RefCell;
 
-    use gtk::glib::{subclass::Signal, ParamSpec, ParamSpecBoxed};
+    use gtk::{
+        gio,
+        glib::{subclass::Signal, ParamSpec, ParamSpecBoxed},
+    };
     use once_cell::sync::Lazy;
 
     // Object holding the state
@@ -19,6 +24,7 @@ mod imp {
     #[template(resource = "/com/github/finefindus/eyedropper/ui/color-entry.ui")]
     pub struct ColorEntry {
         pub color: RefCell<gdk::RGBA>,
+        pub settings: gio::Settings,
     }
 
     #[gtk::template_callbacks]
@@ -42,6 +48,7 @@ mod imp {
         fn new() -> Self {
             Self {
                 color: RefCell::new(gdk::RGBA::BLUE),
+                settings: gio::Settings::new(config::APP_ID),
             }
         }
 
@@ -139,33 +146,40 @@ impl ColorEntry {
         self.property("color")
     }
 
+    pub fn update_alpha_position(&self) {
+        let hex_color = Color::from(self.color());
+        let pos = AlphaPosition::from(self.imp().settings.int("alpha-position") as u32);
+        let hex = hex_color.to_hex_string(pos);
+
+        self.set_text(&hex);
+    }
+
     pub fn set_color(&self, new_color: gdk::RGBA) {
         //only updated value if value has changed, this avoids a loop where everything thinks it changed
         if self.color() != new_color {
             self.set_property("color", &new_color);
+            let hex_color = Color::from(new_color);
+            let pos = AlphaPosition::from(self.imp().settings.int("alpha-position") as u32);
+            let hex = hex_color.to_hex_string(pos);
+
+            self.set_text(&hex);
         }
     }
 
     fn setup_signals(&self) {
-        self.bind_property("color", self, "text")
-            .transform_to(move |_, val| {
-                let gdk_color: gdk::RGBA = val.get().unwrap();
-                let hex_color = Color::from(gdk_color);
-                Some(
-                    hex_color
-                        .to_hex_string(crate::model::AlphaPosition::End)
-                        .to_value(),
-                )
-            })
-            .transform_from(move |_, val| {
-                let text: String = val.get().unwrap();
-                match Color::from_hex(&text, crate::model::AlphaPosition::End) {
-                    Ok(color) => Some(gdk::RGBA::from(color.into()).to_value()),
-                    Err(_) => None,
-                }
-            })
-            .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
-            .build();
+        self.connect_changed(|entry| {
+            let text = entry.buffer().text();
+            let pos = AlphaPosition::from(entry.imp().settings.int("alpha-position") as u32);
+
+            let gdk_color = match Color::from_hex(&text, pos) {
+                Ok(color) => Some(gdk::RGBA::from(color.into())),
+                Err(_) => None,
+            };
+
+            if gdk_color.is_some() {
+                entry.set_color(gdk_color.unwrap());
+            }
+        });
     }
 
     fn copy_color(&self) {

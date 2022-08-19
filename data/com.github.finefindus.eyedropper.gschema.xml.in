@@ -30,11 +30,11 @@
       <description>Whether the application should use a dark mode.</description>
     </key>
 
-    <!-- <key name="alpha-position" type="com.github.finefindus.eyedropper.AlphaPosition">
-      <default>End</default>
+    <key name="alpha-position" type="i">
+      <default>0</default>
       <summary>Alpha Value Position</summary>
       <description>Where the alpha value is postioned in the hex string..</description>
-    </key> -->
+    </key>
 
     <!-- <key name="alpha-position" enum="org.gnome.design.Lorem.Unit">
       <default>"paragraphs"</default>

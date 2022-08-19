@@ -1,3 +1,4 @@
+use adw::traits::ComboRowExt;
 use gtk::glib;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
@@ -15,10 +16,8 @@ mod imp {
     #[template(resource = "/com/github/finefindus/eyedropper/ui/preferences.ui")]
     pub struct PreferencesWindow {
         pub settings: gtk::gio::Settings,
-        #[template_child(id = "dark_mode_switch")]
-        pub dark_mode_switch: TemplateChild<gtk::Switch>,
-        #[template_child]
-        pub dark_mode_group: TemplateChild<adw::PreferencesGroup>,
+        #[template_child()]
+        pub alpha_pos_box: TemplateChild<adw::ComboRow>,
     }
 
     // The central trait for subclassing a GObject
@@ -32,8 +31,7 @@ mod imp {
         fn new() -> Self {
             Self {
                 settings: gtk::gio::Settings::new(config::APP_ID),
-                dark_mode_switch: TemplateChild::default(),
-                dark_mode_group: TemplateChild::default(),
+                alpha_pos_box: TemplateChild::default(),
             }
         }
 
@@ -51,7 +49,6 @@ mod imp {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
             obj.setup_signals();
-            obj.setup_widgets();
         }
     }
 
@@ -73,30 +70,10 @@ impl PreferencesWindow {
     }
 
     fn setup_signals(&self) {
-        // self.bind_property("color-value", &self.imp().scale.get().adjustment(), "value")
-        //     //transform_to is not working, no idea why
-        //     .transform_from(move |_, val| {
-        //         //scale value to color value
-        //         let value = val.get::<f64>().unwrap() as u32;
-        //         Some(value.to_value())
-        //     })
-        //     .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
-        //     .build();
-    }
-
-    fn setup_widgets(&self) {
         let imp = self.imp();
 
-        let style_manager = adw::StyleManager::default();
-        log::info!(
-            "System Supports Color Schemes: {}",
-            style_manager.system_supports_color_schemes()
-        );
-        imp.dark_mode_group
-            .set_visible(style_manager.system_supports_color_schemes());
-
         imp.settings
-            .bind("dark-theme", &*imp.dark_mode_switch, "active")
+            .bind("alpha-position", &*imp.alpha_pos_box, "selected")
             .build();
     }
 }

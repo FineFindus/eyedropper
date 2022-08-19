@@ -258,6 +258,16 @@ impl AppWindow {
                 captured.show_toast(&format!("Copied color {}", color))
             }),
         );
+
+        //update hex entry with new alpha position
+        self.imp().settings.connect_changed(
+            Some("alpha-position"),
+            glib::clone!(@weak self as window => move |_, _| {
+                window.imp()
+                    .hex_entry
+                    .update_alpha_position()
+            }),
+        );
     }
 
     /// Shows a basic toast with the given text.

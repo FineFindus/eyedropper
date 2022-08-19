@@ -121,6 +121,7 @@ impl App {
     // Sets up keyboard shortcuts
     fn setup_accels(&self) {
         //quit app
+        self.set_accels_for_action("app.preferences", &["<Control>comma"]);
         self.set_accels_for_action("app.quit", &["<Control>q"]);
     }
 
@@ -142,11 +143,12 @@ impl App {
             // Insert your license of choice here
             .license_type(gtk::License::Mpl20)
             // Insert your website here
-            // .website("https://gitlab.gnome.org/bilelmoussaoui/eyedropper/")
+            .website("https://github.com/finefindus/eyedropper/")
             .version(VERSION)
             .transient_for(&self.main_window())
             .translator_credits(&gettext("translator-credits"))
             .modal(true)
+            .copyright("© 2022 FineFindus")
             .authors(vec!["FineFindus".into()])
             .artists(vec!["FineFindus".into()])
             .build();
