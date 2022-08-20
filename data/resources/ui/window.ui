@@ -3,6 +3,12 @@
   <menu id="primary_menu">
     <section>
       <item>
+        <attribute name="label" translatable="yes">_Random Color</attribute>
+        <attribute name="action">app.random_color</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
         <attribute name="label" translatable="yes">_Preferences</attribute>
         <attribute name="action">app.preferences</attribute>
       </item>
@@ -47,39 +53,53 @@
           <object class="AdwToastOverlay" id="toast_overlay">
             <property name="child">
               <object class="GtkBox">
-                <property name="orientation">vertical</property>
+                <property name="orientation">horizontal</property>
                 <property name="halign">fill</property>
                 <property name="vexpand">True</property>
                 <property name="vexpand-set">True</property>
                 <property name="spacing">3</property>
                 <child>
-                  <object class="ColorEntry" id="hex_entry"></object>
-                </child>
-                <child>
-                  <object class="ColorScale" id="red_scale">
-                    <style>
-                      <class name="redScale" />
-                    </style>
+                  <object class="GtkBox">
+                    <property name="orientation">vertical</property>
+                    <child>
+                      <object class="ColorEntry" id="hex_entry"></object>
+                    </child>
+                    <child>
+                      <object class="ColorScale" id="red_scale">
+                        <style>
+                          <class name="redScale" />
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ColorScale" id="green_scale">
+                        <style>
+                          <class name="greenScale" />
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ColorScale" id="blue_scale">
+                        <style>
+                          <class name="blueScale" />
+                        </style>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ColorScale" id="alpha_scale">
+                        <style>
+                          <class name="alphaScale" />
+                        </style>
+                      </object>
+                    </child>
                   </object>
                 </child>
                 <child>
-                  <object class="ColorScale" id="green_scale">
+                  <object class="GtkListBox" id="palette_list">
+                    <property name="visible">False</property>
+                    <property name="selection-mode">none</property>
                     <style>
-                      <class name="greenScale" />
-                    </style>
-                  </object>
-                </child>
-                <child>
-                  <object class="ColorScale" id="blue_scale">
-                    <style>
-                      <class name="blueScale" />
-                    </style>
-                  </object>
-                </child>
-                <child>
-                  <object class="ColorScale" id="alpha_scale">
-                    <style>
-                      <class name="alphaScale" />
+                      <class name="boxed-list" />
                     </style>
                   </object>
                 </child>
@@ -90,20 +110,4 @@
       </object>
     </property>
   </template>
-  <object class="GtkAdjustment" id="color_scale_alpha">
-    <property name="step-increment">1.0</property>
-    <property name="upper">255.0</property>
-  </object>
-  <object class="GtkAdjustment" id="color_scale_blue">
-    <property name="step-increment">1.0</property>
-    <property name="upper">255.0</property>
-  </object>
-  <object class="GtkAdjustment" id="color_scale_green">
-    <property name="step-increment">1.0</property>
-    <property name="upper">255.0</property>
-  </object>
-  <object class="GtkAdjustment" id="color_scale_red">
-    <property name="step-increment">1.0</property>
-    <property name="upper">255.0</property>
-  </object>
 </interface>

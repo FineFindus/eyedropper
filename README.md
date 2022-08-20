@@ -10,11 +10,12 @@ A simple to use color picker and editor.
 
 - Pick a Color
 - Edit a color using hex values or RGBA Sliders
-
-### Future Features
-
 - Parse RGBA/ARGB Colors
+
+### Future Features/Roadmap
+
 - Add HSV/HSL color models
+- Generate a palette of similar colors
 
 ## Building
 

@@ -10,7 +10,6 @@ use crate::utils;
 ///
 /// Defaults to no alpha value
 #[derive(Debug, Default, PartialEq, Copy, Clone)]
-#[repr(u32)]
 pub enum AlphaPosition {
     #[default]
     End,
@@ -18,6 +17,7 @@ pub enum AlphaPosition {
     None,
 }
 
+//Convert from U32. Needed for converting from the settings comborow, which use indexes for values.
 impl From<u32> for AlphaPosition {
     fn from(u: u32) -> Self {
         match u {
@@ -58,6 +58,18 @@ impl Color {
             blue,
             alpha,
         }
+    }
+
+    /// Generate a random color.
+    ///
+    /// Although teh RGB values will be randomized, the alpha value will be maximized,
+    /// so the color will not be transparent.
+    pub fn random() -> Self {
+        Color::rgb(
+            rand::random::<u8>(),
+            rand::random::<u8>(),
+            rand::random::<u8>(),
+        )
     }
 
     /// Returns the color as in hex form.

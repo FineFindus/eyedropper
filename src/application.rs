@@ -7,6 +7,7 @@ use gtk::subclass::prelude::*;
 use gtk::{gdk, gio, glib};
 
 use crate::config::{APP_ID, PKGDATADIR, PROFILE, VERSION};
+use crate::model::Color;
 use crate::widgets::preferences::PreferencesWindow;
 use crate::window::AppWindow;
 
@@ -94,10 +95,17 @@ impl App {
 
     fn setup_gactions(&self) {
         // Settings
+        let action_quit = gio::SimpleAction::new("random_color", None);
+        action_quit.connect_activate(clone!(@weak self as app => move |_, _| {
+            // Set the color to a random color
+            app.main_window().set_color(Color::random());
+        }));
+        self.add_action(&action_quit);
+
+        // Preferences
         let action_quit = gio::SimpleAction::new("preferences", None);
         action_quit.connect_activate(clone!(@weak self as app => move |_, _| {
-            // This is needed to trigger the delete event and saving the window state
-            app.show_settings_dialog();
+            app.show_preferences_dialog();
         }));
         self.add_action(&action_quit);
 
@@ -121,6 +129,7 @@ impl App {
     // Sets up keyboard shortcuts
     fn setup_accels(&self) {
         //quit app
+        self.set_accels_for_action("app.random_color", &["<Control>r"]);
         self.set_accels_for_action("app.preferences", &["<Control>comma"]);
         self.set_accels_for_action("app.quit", &["<Control>q"]);
     }
@@ -156,7 +165,7 @@ impl App {
         dialog.present();
     }
 
-    fn show_settings_dialog(&self) {
+    fn show_preferences_dialog(&self) {
         let preferences = PreferencesWindow::new();
 
         preferences.set_transient_for(Some(&self.main_window()));

@@ -177,11 +177,11 @@ impl AppWindow {
         }));
     }
 
-    fn set_color(&self, color: Color) {
+    pub fn set_color(&self, color: Color) {
         //only update when necessary, to avoid infinite loop
         if self.imp().color.borrow().clone() != color {
             log::info!(
-                "Hex Color: {:?}",
+                "Changing Hex Color: {:?}",
                 color.to_hex_string(crate::model::AlphaPosition::End)
             );
             let imp = self.imp();
@@ -263,6 +263,7 @@ impl AppWindow {
         self.imp().settings.connect_changed(
             Some("alpha-position"),
             glib::clone!(@weak self as window => move |_, _| {
+                log::debug!("Updating AlphaPosition");
                 window.imp()
                     .hex_entry
                     .update_alpha_position()
