@@ -75,7 +75,7 @@ impl Color {
     /// Returns the color as in hex form.
     ///
     /// The alpha position will indicate where the alpha value is stored.
-    pub fn to_hex_string(&self, alpha_position: AlphaPosition) -> String {
+    pub fn to_hex_string(self, alpha_position: AlphaPosition) -> String {
         match alpha_position {
             AlphaPosition::Start => format!(
                 "#{:02x}{:02x}{:02x}{:02x}",
@@ -105,7 +105,7 @@ impl Color {
         let mut hex_color = hex_color.to_owned();
         //remove #
         if hex_color.starts_with('#') {
-            hex_color = hex_color.replace("#", "");
+            hex_color = hex_color.replace('#', "");
         }
 
         if hex_color.len() == 6 || hex_color.len() == 8 {
@@ -201,6 +201,8 @@ impl From<std::num::ParseIntError> for ColorError {
 
 impl fmt::Display for ColorError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "{}", self.to_string())
+        match self {
+            ColorError::HexConversion(err) => write!(f, "{}", err),
+        }
     }
 }

@@ -172,12 +172,12 @@ impl ColorEntry {
             let pos = AlphaPosition::from(entry.imp().settings.int("alpha-position") as u32);
 
             let gdk_color = match Color::from_hex(&text, pos) {
-                Ok(color) => Some(gdk::RGBA::from(color.into())),
+                Ok(color) => Some(color.into()),
                 Err(_) => None,
             };
 
-            if gdk_color.is_some() {
-                entry.set_color(gdk_color.unwrap());
+            if let Some(gdk_color) = gdk_color {
+                entry.set_color(gdk_color);
             }
         });
     }

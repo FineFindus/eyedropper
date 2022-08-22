@@ -77,6 +77,7 @@ glib::wrapper! {
 }
 
 impl App {
+    #[allow(clippy::new_without_default)]
     pub fn new() -> Self {
         glib::Object::new(&[
             ("application-id", &Some(APP_ID)),

@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <schemalist>
-  <!-- <enum id="com.github.finefindus.eyedropper.AlphaPosition">
-    <value nick="End" value="0" />
-    <value nick="Start" value="1" />
-    <value nick="None" value="2" />
-  </enum> -->
-  <!-- <enum id="org.gnome.design.Lorem.Unit">
-    <value nick="paragraphs" value="0" />
-    <value nick="words" value="1" />
-  </enum> -->
-
-
   <schema path="/com/github/finefindus/eyedropper/" id="@app-id@" gettext-domain="@gettext-package@">
     <key name="window-width" type="i">
       <default>600</default>
@@ -35,12 +24,5 @@
       <summary>Alpha Value Position</summary>
       <description>Where the alpha value is postioned in the hex string..</description>
     </key>
-
-    <!-- <key name="alpha-position" enum="org.gnome.design.Lorem.Unit">
-      <default>"paragraphs"</default>
-      <summary>TODO</summary>
-    <description>TODO.</description>
-    </key>
-    -->
   </schema>
 </schemalist>
