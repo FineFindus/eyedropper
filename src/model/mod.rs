@@ -17,13 +17,13 @@ pub enum AlphaPosition {
     None,
 }
 
-//Convert from U32. Needed for converting from the settings comborow, which use indexes for values.
+//Convert from U32. Needed for converting from the settings AdwComboRow, which use indexes for values.
 impl From<u32> for AlphaPosition {
     fn from(u: u32) -> Self {
         match u {
-            0 => Self::End,
-            1 => Self::Start,
-            2 => Self::None,
+            0 => Self::None,
+            1 => Self::End,
+            2 => Self::Start,
             _ => Self::default(),
         }
     }
@@ -90,6 +90,136 @@ impl Color {
             AlphaPosition::None => format!("#{:02x}{:02x}{:02x}", self.red, self.green, self.blue),
         }
         .to_ascii_uppercase()
+    }
+
+    /// Converts the color to HSV values.
+    ///
+    /// Formula from <https://en.wikipedia.org/wiki/HSL_and_HSV>
+    pub fn to_hsv(self) -> (u16, u8, u8) {
+        let red = self.red as f32 / 255f32;
+        let green = self.green as f32 / 255f32;
+        let blue = self.blue as f32 / 255f32;
+        log::debug!("RGB({red},{green},{blue})");
+
+        //find the max out of 3 values
+        let max = red.max(green.max(blue));
+        log::debug!("Max: {max}");
+        let min = red.min(green.min(blue));
+        log::debug!("Min: {min}");
+
+        let hue = self.calculate_hue();
+
+        let saturation = utils::round_percent(if max == 0f32 { 0f32 } else { (max - min) / max });
+
+        log::debug!(
+            "HSV: {}°, {}%, {}% ",
+            hue,
+            saturation,
+            utils::round_percent(max)
+        );
+        (hue, saturation, utils::round_percent(max))
+    }
+
+    /// Converts the color to HSL values.
+    ///
+    /// Formula from <https://en.wikipedia.org/wiki/HSL_and_HSV>
+    pub fn to_hsl(self) -> (u16, u8, u8) {
+        let red = self.red as f32 / 255f32;
+        let green = self.green as f32 / 255f32;
+        let blue = self.blue as f32 / 255f32;
+        log::debug!("RGB({red},{green},{blue})");
+
+        //find the max out of 3 values
+        let max = red.max(green.max(blue));
+        log::debug!("Max: {max}");
+        let min = red.min(green.min(blue));
+        log::debug!("Min: {min}");
+
+        let hue = self.calculate_hue();
+
+        let saturation = utils::round_percent(if max == 0f32 || min == 1f32 {
+            0f32
+        } else {
+            (max - min) / (1f32 - (max + min - 1f32).abs())
+        });
+
+        let lightness = utils::round_percent((max + min) / 2f32);
+
+        log::debug!("HSV: {}°, {}%, {}% ", hue, saturation, lightness);
+        (hue, saturation, lightness)
+    }
+
+    /// Calculates the hue of the color.
+    ///
+    /// This is used when converting from RGB to HSL or HSV.
+    /// Formula from <https://en.wikipedia.org/wiki/HSL_and_HSV>
+    fn calculate_hue(&self) -> u16 {
+        let red = self.red as f32 / 255f32;
+        let green = self.green as f32 / 255f32;
+        let blue = self.blue as f32 / 255f32;
+        log::debug!("RGB({red},{green},{blue})");
+
+        //find the max out of 3 values
+        let max = red.max(green.max(blue));
+        log::debug!("Max: {max}");
+        let min = red.min(green.min(blue));
+        log::debug!("Min: {min}");
+
+        let mut hue: f32 = 0f32;
+
+        if max == min {
+            hue = 0f32;
+        } else if max == red {
+            hue = 60f32 * (0f32 + (green - blue) / (max - min))
+        } else if max == green {
+            hue = 60f32 * (2f32 + (blue - red) / (max - min))
+        } else if max == blue {
+            hue = 60f32 * (4f32 + (red - green) / (max - min))
+        }
+
+        if hue < 0f32 {
+            hue = hue + 360f32;
+        }
+
+        hue.round() as u16
+    }
+
+    /// Returns the CMYK values of the color
+    ///
+    /// Based on <https://www.easyrgb.com/en/math.php>
+    pub fn to_cmyk(&self) -> (u8, u8, u8, u8) {
+        let mut c = 1f32 - (self.red as f32 / 255f32);
+        let mut m = 1f32 - (self.green as f32 / 255f32);
+        let mut y = 1f32 - (self.blue as f32 / 255f32);
+
+        let mut k = 1f32;
+        if c < k {
+            k = c;
+        }
+        if m < k {
+            k = m;
+        }
+        if y < k {
+            k = y;
+        }
+
+        if k == 1f32 {
+            //only black
+            c = 0f32;
+            m = 0f32;
+            y = 0f32;
+        } else {
+            c = (c - k) / (1f32 - k);
+            m = (m - k) / (1f32 - k);
+            y = (y - k) / (1f32 - k);
+        }
+
+        (
+            utils::round_percent(c),
+            utils::round_percent(m),
+            utils::round_percent(y),
+            utils::round_percent(k),
+        )
     }
 
     /// Create a color from a hex string.

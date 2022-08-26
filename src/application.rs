@@ -151,7 +151,7 @@ impl App {
         let dialog = gtk::AboutDialog::builder()
             .logo_icon_name(APP_ID)
             // Insert your license of choice here
-            .license_type(gtk::License::Mpl20)
+            .license_type(gtk::License::Gpl30)
             // Insert your website here
             .website("https://github.com/finefindus/eyedropper/")
             .version(VERSION)

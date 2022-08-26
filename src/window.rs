@@ -4,8 +4,8 @@ use gtk::{gio, glib};
 
 use crate::application::App;
 use crate::config::{APP_ID, PROFILE};
-use crate::model::Color;
-use crate::widgets::color_entry::ColorEntry;
+use crate::model::{AlphaPosition, Color};
+use crate::widgets::color_model_entry::ColorModelEntry;
 
 mod imp {
     use std::cell::RefCell;
@@ -27,15 +27,15 @@ mod imp {
         #[template_child]
         pub toast_overlay: TemplateChild<adw::ToastOverlay>,
         #[template_child]
-        pub hex_entry: TemplateChild<widgets::color_entry::ColorEntry>,
+        pub hex_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
         #[template_child]
-        pub red_scale: TemplateChild<widgets::color_scale::ColorScale>,
+        pub rgb_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
         #[template_child]
-        pub green_scale: TemplateChild<widgets::color_scale::ColorScale>,
+        pub hsl_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
         #[template_child]
-        pub blue_scale: TemplateChild<widgets::color_scale::ColorScale>,
+        pub hsv_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
         #[template_child]
-        pub alpha_scale: TemplateChild<widgets::color_scale::ColorScale>,
+        pub cmyk_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
         pub settings: gio::Settings,
         pub color: RefCell<Color>,
     }
@@ -47,10 +47,10 @@ mod imp {
                 color_picker_button: TemplateChild::default(),
                 toast_overlay: TemplateChild::default(),
                 hex_entry: TemplateChild::default(),
-                red_scale: TemplateChild::default(),
-                green_scale: TemplateChild::default(),
-                blue_scale: TemplateChild::default(),
-                alpha_scale: TemplateChild::default(),
+                rgb_entry: TemplateChild::default(),
+                hsl_entry: TemplateChild::default(),
+                hsv_entry: TemplateChild::default(),
+                cmyk_entry: TemplateChild::default(),
                 settings: gio::Settings::new(APP_ID),
                 color: RefCell::new(Color::rgba(0, 0, 0, 0)),
             }
@@ -124,12 +124,6 @@ impl AppWindow {
     pub fn new(app: &App) -> Self {
         let window: Self =
             glib::Object::new(&[("application", app)]).expect("Failed to create AppWindow");
-        //set scale labels with only initials
-        let imp = window.imp();
-        imp.red_scale.set_label(String::from("R"));
-        imp.green_scale.set_label(String::from("G"));
-        imp.blue_scale.set_label(String::from("B"));
-        imp.alpha_scale.set_label(String::from("A"));
         //preset a color, so all scales have a set position
         window.set_color(Color::rgba(46, 52, 64, 255));
         window
@@ -187,11 +181,30 @@ impl AppWindow {
             let imp = self.imp();
             imp.color.replace(color);
 
-            imp.red_scale.set_color_value(color.red);
-            imp.green_scale.set_color_value(color.green);
-            imp.blue_scale.set_color_value(color.blue);
-            imp.alpha_scale.set_color_value(color.alpha);
-            imp.hex_entry.set_color(color.into());
+            let hex_alpha_position =
+                AlphaPosition::from(self.imp().settings.int("alpha-position") as u32);
+
+            imp.hex_entry
+                .set_color(color.to_hex_string(hex_alpha_position));
+
+            imp.rgb_entry.set_color(format!(
+                "rgb({}, {}, {})",
+                color.red, color.green, color.blue
+            ));
+
+            let hsl = color.to_hsl();
+            imp.hsl_entry
+                .set_color(format!("hsl({}, {}%, {}%)", hsl.0, hsl.1, hsl.2));
+
+            let hsv = color.to_hsv();
+            imp.hsv_entry
+                .set_color(format!("hsv({}, {}%, {}%)", hsv.0, hsv.1, hsv.2));
+
+            let cmyk = color.to_cmyk();
+            imp.cmyk_entry.set_color(format!(
+                "cmyk({}%, {}%, {}%, {}%)",
+                cmyk.0, cmyk.1, cmyk.2, cmyk.3
+            ));
         }
     }
 
@@ -199,74 +212,30 @@ impl AppWindow {
         //load imp
         let imp = self.imp();
 
-        //get scales
-        let red_scale = imp.red_scale.get().imp().scale.get();
-        let green_scale = imp.green_scale.get().imp().scale.get();
-        let blue_scale = imp.blue_scale.get().imp().scale.get();
-        let alpha_scale = imp.alpha_scale.get().imp().scale.get();
-
-        let on_scale_value_changed = glib::clone!(
-            @weak red_scale,
-            @weak green_scale,
-            @weak blue_scale,
-            @weak alpha_scale,
-             @weak self as window => move |_scale: &gtk::Scale| {
-            let red = red_scale.value() as u8;
-            let green = green_scale.value() as u8;
-            let blue = blue_scale.value() as u8;
-            let alpha = alpha_scale.value() as u8;
-
-            let color = Color::rgba(red, green, blue, alpha);
-
-            window.set_color(color);
+        //show a toast when copying values
+        let show_toast_closure = glib::closure_local!(@watch self as window => move |_: ColorModelEntry, text: String| {
+            window.show_toast(&format!("Copied to clipboard: “{}”", text))
         });
 
-        let red_handle = red_scale.connect_value_changed(on_scale_value_changed.clone());
-        let green_handle = green_scale.connect_value_changed(on_scale_value_changed.clone());
-        let blue_handle = blue_scale.connect_value_changed(on_scale_value_changed.clone());
-        let alpha_handle = alpha_scale.connect_value_changed(on_scale_value_changed);
-
-        imp.hex_entry.connect_changed(glib::clone!(
-                @weak red_scale,
-                @weak green_scale,
-                @weak blue_scale,
-                @weak alpha_scale,
-                @weak self as window => move |entry| {
-
-            //block all signals, so no endless loop with updating signals can be created
-            red_scale.block_signal(&red_handle);
-            green_scale.block_signal(&green_handle);
-            blue_scale.block_signal(&blue_handle);
-            alpha_scale.block_signal(&alpha_handle);
-
-            //get color
-            let gdk_color = entry.color();
-            let color = Color::from(gdk_color);
-            window.set_color(color);
-            //unblock after updating color
-            red_scale.unblock_signal(&red_handle);
-            green_scale.unblock_signal(&green_handle);
-            blue_scale.unblock_signal(&blue_handle);
-            alpha_scale.unblock_signal(&alpha_handle);
-        }));
-
-        let captured = self.clone();
-        imp.hex_entry.connect_closure(
-            "copied-color",
-            false,
-            glib::closure_local!(move |_: ColorEntry, color: String| {
-                captured.show_toast(&format!("Copied color {}", color))
-            }),
-        );
+        imp.hex_entry
+            .connect_closure("copied-color", false, show_toast_closure.clone());
+        imp.rgb_entry
+            .connect_closure("copied-color", false, show_toast_closure.clone());
+        imp.hsl_entry
+            .connect_closure("copied-color", false, show_toast_closure.clone());
+        imp.hsv_entry
+            .connect_closure("copied-color", false, show_toast_closure.clone());
+        imp.cmyk_entry
+            .connect_closure("copied-color", false, show_toast_closure);
 
         //update hex entry with new alpha position
         self.imp().settings.connect_changed(
             Some("alpha-position"),
-            glib::clone!(@weak self as window => move |_, _| {
+            glib::clone!(@weak self as window => move |settings, _| {
                 log::debug!("Updating AlphaPosition");
-                window.imp()
-                    .hex_entry
-                    .update_alpha_position()
+                let color = window.imp().color.borrow().clone();
+                let hex_alpha_position = AlphaPosition::from(settings.int("alpha-position") as u32);
+                window.imp().hex_entry.set_color(color.to_hex_string(hex_alpha_position));
             }),
         );
     }

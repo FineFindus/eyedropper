@@ -18,6 +18,7 @@
                                 <property name="model">
                                     <object class="GtkStringList">
                                         <items>
+                                            <item translatable="yes">None</item>
                                             <item translatable="yes">End</item>
                                             <item translatable="yes">Start</item>
                                         </items>

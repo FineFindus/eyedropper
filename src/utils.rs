@@ -13,3 +13,14 @@ pub fn hex_value(hex_string: &mut String) -> Result<u8, ParseIntError> {
     hex_string.remove(0);
     Ok(value)
 }
+
+/// Converts a less than 1 float (percent) to a integer percent value.
+///
+/// # Example
+/// ```
+/// let value = 0.345f32;
+/// assert_eq!(35, round_tenth(value));
+/// ```
+pub fn round_percent(v: f32) -> u8 {
+    (v * 100f32).round() as u8
+}
