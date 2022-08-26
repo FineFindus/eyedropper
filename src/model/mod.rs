@@ -9,7 +9,7 @@ use crate::utils;
 /// For example Android Color Values use this format.
 ///
 /// Defaults to no alpha value
-#[derive(Debug, Default, PartialEq, Copy, Clone)]
+#[derive(Debug, Default, Copy, Clone, PartialEq, Eq)]
 pub enum AlphaPosition {
     #[default]
     End,
@@ -29,7 +29,7 @@ impl From<u32> for AlphaPosition {
     }
 }
 
-#[derive(Debug, Clone, Copy, PartialEq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct Color {
     pub alpha: u8,
     pub red: u8,
@@ -99,13 +99,10 @@ impl Color {
         let red = self.red as f32 / 255f32;
         let green = self.green as f32 / 255f32;
         let blue = self.blue as f32 / 255f32;
-        log::debug!("RGB({red},{green},{blue})");
 
         //find the max out of 3 values
         let max = red.max(green.max(blue));
-        log::debug!("Max: {max}");
         let min = red.min(green.min(blue));
-        log::debug!("Min: {min}");
 
         let hue = self.calculate_hue();
 
@@ -127,13 +124,10 @@ impl Color {
         let red = self.red as f32 / 255f32;
         let green = self.green as f32 / 255f32;
         let blue = self.blue as f32 / 255f32;
-        log::debug!("RGB({red},{green},{blue})");
 
         //find the max out of 3 values
         let max = red.max(green.max(blue));
-        log::debug!("Max: {max}");
         let min = red.min(green.min(blue));
-        log::debug!("Min: {min}");
 
         let hue = self.calculate_hue();
 
@@ -145,7 +139,7 @@ impl Color {
 
         let lightness = utils::round_percent((max + min) / 2f32);
 
-        log::debug!("HSV: {}°, {}%, {}% ", hue, saturation, lightness);
+        log::debug!("HSL: {}°, {}%, {}% ", hue, saturation, lightness);
         (hue, saturation, lightness)
     }
 
@@ -157,13 +151,10 @@ impl Color {
         let red = self.red as f32 / 255f32;
         let green = self.green as f32 / 255f32;
         let blue = self.blue as f32 / 255f32;
-        log::debug!("RGB({red},{green},{blue})");
 
         //find the max out of 3 values
         let max = red.max(green.max(blue));
-        log::debug!("Max: {max}");
         let min = red.min(green.min(blue));
-        log::debug!("Min: {min}");
 
         let mut hue: f32 = 0f32;
 
@@ -178,7 +169,7 @@ impl Color {
         }
 
         if hue < 0f32 {
-            hue = hue + 360f32;
+            hue += 360f32;
         }
 
         hue.round() as u16
@@ -187,7 +178,7 @@ impl Color {
     /// Returns the CMYK values of the color
     ///
     /// Based on <https://www.easyrgb.com/en/math.php>
-    pub fn to_cmyk(&self) -> (u8, u8, u8, u8) {
+    pub fn to_cmyk(self) -> (u8, u8, u8, u8) {
         let mut c = 1f32 - (self.red as f32 / 255f32);
         let mut m = 1f32 - (self.green as f32 / 255f32);
         let mut y = 1f32 - (self.blue as f32 / 255f32);
@@ -307,13 +298,13 @@ impl From<gtk::gdk::RGBA> for Color {
     }
 }
 
-impl Into<gtk::gdk::RGBA> for Color {
-    fn into(self) -> gtk::gdk::RGBA {
+impl From<Color> for gtk::gdk::RGBA {
+    fn from(color: Color) -> Self {
         gtk::gdk::RGBA::new(
-            self.red as f32 / 255f32,
-            self.green as f32 / 255f32,
-            self.blue as f32 / 255f32,
-            self.alpha as f32 / 255f32,
+            color.red as f32 / 255f32,
+            color.green as f32 / 255f32,
+            color.blue as f32 / 255f32,
+            color.alpha as f32 / 255f32,
         )
     }
 }
