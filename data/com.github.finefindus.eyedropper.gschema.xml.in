@@ -2,11 +2,11 @@
 <schemalist>
   <schema path="/com/github/finefindus/eyedropper/" id="@app-id@" gettext-domain="@gettext-package@">
     <key name="window-width" type="i">
-      <default>600</default>
+      <default>300</default>
       <summary>Window width</summary>
     </key>
     <key name="window-height" type="i">
-      <default>400</default>
+      <default>350</default>
       <summary>Window height</summary>
     </key>
     <key name="is-maximized" type="b">
