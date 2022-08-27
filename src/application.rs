@@ -95,20 +95,27 @@ impl App {
     }
 
     fn setup_gactions(&self) {
-        // Settings
-        let action_quit = gio::SimpleAction::new("random_color", None);
-        action_quit.connect_activate(clone!(@weak self as app => move |_, _| {
+        // Pick a color using the picker button
+        let action_pick_color = gio::SimpleAction::new("pick_color", None);
+        action_pick_color.connect_activate(clone!(@weak self as app => move |_, _| {
+            app.main_window().pick_color();
+        }));
+        self.add_action(&action_pick_color);
+
+        // Randomize the current color
+        let action_random_color = gio::SimpleAction::new("random_color", None);
+        action_random_color.connect_activate(clone!(@weak self as app => move |_, _| {
             // Set the color to a random color
             app.main_window().set_color(Color::random());
         }));
-        self.add_action(&action_quit);
+        self.add_action(&action_random_color);
 
         // Preferences
-        let action_quit = gio::SimpleAction::new("preferences", None);
-        action_quit.connect_activate(clone!(@weak self as app => move |_, _| {
+        let action_preferences = gio::SimpleAction::new("preferences", None);
+        action_preferences.connect_activate(clone!(@weak self as app => move |_, _| {
             app.show_preferences_dialog();
         }));
-        self.add_action(&action_quit);
+        self.add_action(&action_preferences);
 
         // Quit
         let action_quit = gio::SimpleAction::new("quit", None);
@@ -130,6 +137,7 @@ impl App {
     // Sets up keyboard shortcuts
     fn setup_accels(&self) {
         //quit app
+        self.set_accels_for_action("app.pick_color", &["<Control>p"]);
         self.set_accels_for_action("app.random_color", &["<Control>r"]);
         self.set_accels_for_action("app.preferences", &["<Control>comma"]);
         self.set_accels_for_action("app.quit", &["<Control>q"]);

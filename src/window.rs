@@ -161,7 +161,7 @@ impl AppWindow {
         }
     }
 
-    fn pick_color(&self) {
+    pub fn pick_color(&self) {
         log::debug!("Picking a color using the color picker");
         gtk_macros::spawn!(glib::clone!(@weak self as window => async move {
 
