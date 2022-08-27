@@ -150,9 +150,7 @@ impl App {
     fn show_about_dialog(&self) {
         let dialog = gtk::AboutDialog::builder()
             .logo_icon_name(APP_ID)
-            // Insert your license of choice here
             .license_type(gtk::License::Gpl30)
-            // Insert your website here
             .website("https://github.com/finefindus/eyedropper/")
             .version(VERSION)
             .transient_for(&self.main_window())

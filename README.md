@@ -29,3 +29,4 @@ Huge Thanks to these projects who served either as inspiration or as code exampl
 
 - [GTK Rust Template](https://gitlab.gnome.org/World/Rust/gtk-rust-template)
 - [Contrast](https://gitlab.gnome.org/World/design/contrast)
+- [Microsoft Color Picker Utility](https://docs.microsoft.com/en-us/windows/powertoys/color-picker) - Inspirations on the design

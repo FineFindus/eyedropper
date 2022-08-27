@@ -169,7 +169,10 @@ impl AppWindow {
         let proxy = ashpd::desktop::screenshot::ScreenshotProxy::new(&connection).await.expect("Failed to open screenshot proxy");
         match proxy.pick_color(&ashpd::WindowIdentifier::default()).await {
             Ok(color) => window.set_color(Color::from(color)),
-            Err(_) => window.show_toast("Failed to pick a color"),
+            Err(err) => {
+                log::error!("{}", err);
+                window.show_toast("Failed to pick a color");
+            },
         };
         }));
     }

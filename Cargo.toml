@@ -3,6 +3,11 @@ name = "eyedropper"
 version = "0.1.0"
 authors = ["FineFindus <finefindusgh@gmail.com>"]
 edition = "2021"
+description = "A simple to use color picker and editor."
+readme = "README.md"
+license-file = "LICENSE"
+homepage = "https://github.com/finefindus/eyedropper"
+repository = "https://github.com/finefindus/eyedropper"
 
 [dependencies]
 log = "0.4"
