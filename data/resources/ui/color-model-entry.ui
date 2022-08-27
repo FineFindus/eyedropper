@@ -8,12 +8,6 @@
         <style>
             <class name="linked" />
         </style>
-        <!-- <child>
-            <object class="GtkButton">
-                <property name="icon-name">edit-symbolic</property>
-                <signal name="clicked" handler="on_edit_pressed" swapped="true" />
-            </object>
-        </child> -->
         <child>
             <object class="GtkEntry" id="entry">
                 <property name="hexpand">True</property>

@@ -23,6 +23,8 @@ mod imp {
         #[template_child]
         pub headerbar: TemplateChild<adw::HeaderBar>,
         #[template_child]
+        pub color_button: TemplateChild<gtk::ColorButton>,
+        #[template_child]
         pub color_picker_button: TemplateChild<gtk::Button>,
         #[template_child]
         pub toast_overlay: TemplateChild<adw::ToastOverlay>,
@@ -44,6 +46,7 @@ mod imp {
         fn default() -> Self {
             Self {
                 headerbar: TemplateChild::default(),
+                color_button: TemplateChild::default(),
                 color_picker_button: TemplateChild::default(),
                 toast_overlay: TemplateChild::default(),
                 hex_entry: TemplateChild::default(),
@@ -60,7 +63,7 @@ mod imp {
     #[gtk::template_callbacks]
     impl AppWindow {
         #[template_callback]
-        fn color_picker_button_clicked(&self) {
+        fn on_color_picker_button_clicked(&self) {
             self.instance().pick_color();
         }
     }
@@ -181,6 +184,8 @@ impl AppWindow {
             let imp = self.imp();
             imp.color.replace(color);
 
+            imp.color_button.set_rgba(&color.into());
+
             let hex_alpha_position =
                 AlphaPosition::from(self.imp().settings.int("alpha-position") as u32);
 
@@ -212,9 +217,16 @@ impl AppWindow {
         //load imp
         let imp = self.imp();
 
+        //connect color button to selected color
+        imp.color_button.connect_color_set(
+            glib::clone!(@weak self as window => move |color_button| {
+                window.set_color(color_button.rgba().into());
+            }),
+        );
+
         //show a toast when copying values
         let show_toast_closure = glib::closure_local!(@watch self as window => move |_: ColorModelEntry, text: String| {
-            window.show_toast(&format!("Copied to clipboard: “{}”", text))
+            window.show_toast(&format!("Copied: “{}”", text))
         });
 
         imp.hex_entry
