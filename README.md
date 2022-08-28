@@ -1,3 +1,6 @@
+![maintenance-status](https://img.shields.io/badge/maintenance-actively--developed-brightgreen.svg)
+[![CI](https://github.com/FineFindus/eyedropper/actions/workflows/ci.yml/badge.svg)](https://github.com/FineFindus/eyedropper/actions/workflows/ci.yml)
+
 # Eyedropper
 
 ![Eyedropper](data/icons/com.github.finefindus.eyedropper.svg)
