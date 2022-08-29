@@ -68,7 +68,7 @@
                   </object>
                 </child>
                 <child>
-                  <object class="ColorModelEntry" id="hex_entry" />
+                  <object class="HexEntry" id="hex_entry" />
                 </child>
                 <child>
                   <object class="ColorModelEntry" id="rgb_entry" />

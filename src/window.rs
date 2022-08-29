@@ -6,6 +6,7 @@ use crate::application::App;
 use crate::config::{APP_ID, PROFILE};
 use crate::model::{AlphaPosition, Color};
 use crate::widgets::color_model_entry::ColorModelEntry;
+use crate::widgets::hex_entry::HexEntry;
 
 mod imp {
     use std::cell::RefCell;
@@ -29,7 +30,7 @@ mod imp {
         #[template_child]
         pub toast_overlay: TemplateChild<adw::ToastOverlay>,
         #[template_child]
-        pub hex_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
+        pub hex_entry: TemplateChild<widgets::hex_entry::HexEntry>,
         #[template_child]
         pub rgb_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
         #[template_child]
@@ -229,11 +230,16 @@ impl AppWindow {
 
         //show a toast when copying values
         let show_toast_closure = glib::closure_local!(@watch self as window => move |_: ColorModelEntry, text: String| {
-            window.show_toast(&format!("Copied: “{}”", text))
+            window.show_toast(&format!("Copied: “{}”", text));
         });
 
-        imp.hex_entry
-            .connect_closure("copied-color", false, show_toast_closure.clone());
+        imp.hex_entry.connect_closure(
+            "copied-color",
+            false,
+            glib::closure_local!(@watch self as window => move |_: HexEntry, text: String| {
+                window.show_toast(&format!("Copied: “{}”", text));
+            }),
+        );
         imp.rgb_entry
             .connect_closure("copied-color", false, show_toast_closure.clone());
         imp.hsl_entry
@@ -251,6 +257,19 @@ impl AppWindow {
                 let color = *window.imp().color.borrow();
                 let hex_alpha_position = AlphaPosition::from(settings.int("alpha-position") as u32);
                 window.imp().hex_entry.set_color(color.to_hex_string(hex_alpha_position));
+            }),
+        );
+
+        imp.hex_entry.connect_closure(
+            "color-changed",
+            false,
+            glib::closure_local!(@watch self as window => move |_: HexEntry, color: String| {
+                log::debug!("Changed hex entry: {color}");
+                let hex_alpha_position = AlphaPosition::from(window.imp().settings.int("alpha-position") as u32);
+                match Color::from_hex(&color, hex_alpha_position) {
+                    Ok(color) => window.set_color(color),
+                    Err(_) => log::debug!("Failed to parse color: {color}"),
+                }
             }),
         );
     }

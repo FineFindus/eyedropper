@@ -229,6 +229,12 @@ impl Color {
             hex_color = hex_color.replace('#', "");
         }
 
+        if alpha_position != AlphaPosition::None && hex_color.len() != 8 {
+            return Err(ColorError::HexConversion(String::from(
+                "Could not convert color, color is not a hex color",
+            )));
+        }
+
         if hex_color.len() == 6 || hex_color.len() == 8 {
             //read alpha values first
             let alpha = if hex_color.len() == 8 {
@@ -236,7 +242,7 @@ impl Color {
                 match alpha_position {
                     AlphaPosition::Start => utils::hex_value(&mut hex_color)?,
                     AlphaPosition::End => u8::from_str_radix(hex_color.split_at(6).1, 16)?,
-                    AlphaPosition::None => 255,
+                    _ => 255,
                 }
             } else {
                 255
