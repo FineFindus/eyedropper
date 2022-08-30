@@ -6,7 +6,6 @@
     <file compressed="true" preprocess="xml-stripblanks">ui/window.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/preferences.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/hex-entry.ui</file>
-    <file compressed="true" preprocess="xml-stripblanks">ui/color-scale.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/color-model-entry.ui</file>
     <file compressed="true">style.css</file>
   </gresource>
