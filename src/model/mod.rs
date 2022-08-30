@@ -29,7 +29,7 @@ impl From<u32> for AlphaPosition {
     }
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub struct Color {
     pub alpha: u8,
     pub red: u8,

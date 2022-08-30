@@ -5,13 +5,14 @@ use gtk::{gio, glib};
 use crate::application::App;
 use crate::config::{APP_ID, PROFILE};
 use crate::model::{AlphaPosition, Color};
+use crate::utils;
 use crate::widgets::color_model_entry::ColorModelEntry;
 use crate::widgets::hex_entry::HexEntry;
 
 mod imp {
     use std::cell::RefCell;
 
-    use crate::widgets;
+    use crate::{utils, widgets};
 
     use super::*;
 
@@ -97,6 +98,7 @@ mod imp {
 
             // Load latest window state
             obj.load_window_size();
+            obj.restore_history();
             obj.setup_callbacks();
         }
     }
@@ -105,8 +107,19 @@ mod imp {
     impl WindowImpl for AppWindow {
         // Save window state on delete event
         fn close_request(&self, window: &Self::Type) -> gtk::Inhibit {
+            //save current window size
             if let Err(err) = window.save_window_size() {
                 log::warn!("Failed to save window state, {}", &err);
+            }
+
+            let data = vec![*window.imp().color.borrow()];
+
+            if let Ok(path) = utils::history_file_path() {
+                if let Ok(history_file) = std::fs::File::create(path) {
+                    // Save state in file
+                    serde_json::to_writer(history_file, &data)
+                        .expect("Could not write data to json file");
+                }
             }
 
             // Pass close request on to the parent
@@ -131,6 +144,29 @@ impl AppWindow {
         //preset a color, so all scales have a set position
         window.set_color(Color::rgba(46, 52, 64, 255));
         window
+    }
+
+    fn restore_history(&self) {
+        if let Ok(path) = utils::history_file_path() {
+            match std::fs::read_to_string(path) {
+                Ok(data) => match serde_json::from_str::<Vec<Color>>(&data) {
+                    Ok(data) => {
+                        for color in data {
+                            log::debug!(
+                                "History Color: {}",
+                                color.to_hex_string(AlphaPosition::End)
+                            )
+                        }
+                    }
+                    Err(err) => {
+                        log::error!("Failed to read history data: {err}")
+                    }
+                },
+                Err(err) => {
+                    log::error!("Failed to read history data: {err}")
+                }
+            }
+        }
     }
 
     fn save_window_size(&self) -> Result<(), glib::BoolError> {
