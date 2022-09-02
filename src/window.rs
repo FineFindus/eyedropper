@@ -1,18 +1,18 @@
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
-use gtk::{gio, glib};
+use gtk::{gio, glib, ColorButton};
 
 use crate::application::App;
 use crate::config::{APP_ID, PROFILE};
-use crate::model::{AlphaPosition, Color};
-use crate::utils;
+use crate::model::color::{AlphaPosition, Color};
+use crate::model::history::HistoryObject;
 use crate::widgets::color_model_entry::ColorModelEntry;
 use crate::widgets::hex_entry::HexEntry;
 
 mod imp {
     use std::cell::RefCell;
 
-    use crate::{utils, widgets};
+    use crate::widgets;
 
     use super::*;
 
@@ -40,6 +40,9 @@ mod imp {
         pub hsv_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
         #[template_child]
         pub cmyk_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
+        #[template_child]
+        pub history_list: TemplateChild<gtk::ListBox>,
+        pub history: RefCell<Option<gio::ListStore>>,
         pub settings: gio::Settings,
         pub color: RefCell<Color>,
     }
@@ -56,6 +59,8 @@ mod imp {
                 hsl_entry: TemplateChild::default(),
                 hsv_entry: TemplateChild::default(),
                 cmyk_entry: TemplateChild::default(),
+                history_list: TemplateChild::default(),
+                history: Default::default(),
                 settings: gio::Settings::new(APP_ID),
                 color: RefCell::new(Color::rgba(0, 0, 0, 0)),
             }
@@ -98,7 +103,7 @@ mod imp {
 
             // Load latest window state
             obj.load_window_size();
-            obj.restore_history();
+            obj.setup_history();
             obj.setup_callbacks();
         }
     }
@@ -110,16 +115,6 @@ mod imp {
             //save current window size
             if let Err(err) = window.save_window_size() {
                 log::warn!("Failed to save window state, {}", &err);
-            }
-
-            let data = vec![*window.imp().color.borrow()];
-
-            if let Ok(path) = utils::history_file_path() {
-                if let Ok(history_file) = std::fs::File::create(path) {
-                    // Save state in file
-                    serde_json::to_writer(history_file, &data)
-                        .expect("Could not write data to json file");
-                }
             }
 
             // Pass close request on to the parent
@@ -143,32 +138,89 @@ impl AppWindow {
             glib::Object::new(&[("application", app)]).expect("Failed to create AppWindow");
         //preset a color, so all scales have a set position
         window.set_color(Color::rgba(46, 52, 64, 255));
+        window.clear_history();
         window
     }
 
-    fn restore_history(&self) {
-        if let Ok(path) = utils::history_file_path() {
-            match std::fs::read_to_string(path) {
-                Ok(data) => match serde_json::from_str::<Vec<Color>>(&data) {
-                    Ok(data) => {
-                        for color in data {
-                            log::debug!(
-                                "History Color: {}",
-                                color.to_hex_string(AlphaPosition::End)
-                            )
-                        }
-                    }
-                    Err(err) => {
-                        log::error!("Failed to read history data: {err}")
-                    }
-                },
-                Err(err) => {
-                    log::error!("Failed to read history data: {err}")
-                }
-            }
-        }
+    /// Returns the history list store object.
+    fn history(&self) -> gio::ListStore {
+        // Get state
+        self.imp()
+            .history
+            .borrow()
+            .clone()
+            .expect("Could not get current history.")
     }
 
+    /// Clear the history by removing all items from the list.
+    fn clear_history(&self) {
+        let history = self.history();
+        history.remove_all();
+    }
+
+    /// Setup the history by setting up a model
+    fn setup_history(&self) {
+        // Create new model
+        let model = gio::ListStore::new(HistoryObject::static_type());
+
+        // Get state and set model
+        self.imp().history.replace(Some(model));
+
+        // Wrap model with selection and pass it to the list view
+        let selection_model = gtk::NoSelection::new(Some(&self.history()));
+        self.imp().history_list.bind_model(
+            Some(&selection_model),
+            glib::clone!(@weak self as window => @default-panic, move |obj| {
+                let history_object = obj.downcast_ref().expect("The object is not of type `HistoryObject`.");
+                let hist = window.create_history_item(history_object);
+                hist.upcast()
+            }),
+        );
+
+        // Assure that the history list is only visible when it is supposed to
+        self.set_history_list_visible(&self.history());
+        self.history().connect_items_changed(
+            glib::clone!(@weak self as window => move |items, _, _, _| {
+                window.set_history_list_visible(items);
+            }),
+        );
+    }
+
+    /// Assure that history is only visible
+    /// if the number of items is greater than 0
+    fn set_history_list_visible(&self, history: &gio::ListStore) {
+        self.imp().history_list.set_visible(history.n_items() > 0);
+    }
+
+    /// Create a new history item
+    fn create_history_item(&self, history_object: &HistoryObject) -> gtk::ColorButton {
+        let color_button = ColorButton::builder()
+            .rgba(&history_object.color().into())
+            .build();
+
+        // Create a click gesture
+        let gesture = gtk::GestureClick::new();
+
+        // Assign your handler to an event of the gesture (e.g. the `pressed` event)
+        gesture.connect_pressed(
+            glib::clone!(@weak self as window, @weak history_object => move |gesture, _, _, _| {
+                gesture.set_state(gtk::EventSequenceState::Claimed);
+                window.set_color(history_object.color());
+                //remove from history when clicking on it
+                match window.history().find(&history_object) {
+                    Some(index) => window.history().remove(index),
+                    None => log::error!("Failed to find index for {}", history_object.color()),
+                }
+            }),
+        );
+
+        // Assign the gesture
+        color_button.add_controller(&gesture);
+
+        color_button
+    }
+
+    /// Save the window size when closing the window
     fn save_window_size(&self) -> Result<(), glib::BoolError> {
         let imp = self.imp();
 
@@ -184,6 +236,7 @@ impl AppWindow {
         Ok(())
     }
 
+    ///Load the last saved window size and apply it
     fn load_window_size(&self) {
         let imp = self.imp();
 
@@ -198,6 +251,9 @@ impl AppWindow {
         }
     }
 
+    /// Pick a color from the desktop using [ashpd].
+    ///
+    /// It will show a toast when failing to pick a color, for example when the user cancels the action.
     pub fn pick_color(&self) {
         log::debug!("Picking a color using the color picker");
         gtk_macros::spawn!(glib::clone!(@weak self as window => async move {
@@ -217,9 +273,13 @@ impl AppWindow {
     pub fn set_color(&self, color: Color) {
         //only update when necessary, to avoid infinite loop
         if *self.imp().color.borrow() != color {
+            //append previous color to history
+            let history_item = HistoryObject::new(*self.imp().color.borrow());
+            self.history().insert(0, &history_item);
+
             log::info!(
                 "Changing Hex Color: {:?}",
-                color.to_hex_string(crate::model::AlphaPosition::End)
+                color.to_hex_string(crate::model::color::AlphaPosition::End)
             );
             let imp = self.imp();
             imp.color.replace(color);
