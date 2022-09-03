@@ -23,3 +23,8 @@
   background-color: black;
   color: black;
 }
+
+button#history-item {
+  padding: 0px;
+  /* padding-left: 0; padding-right: 0;  */
+}

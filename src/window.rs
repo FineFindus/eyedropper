@@ -1,4 +1,3 @@
-use glib::object::GObject;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gio, glib};
@@ -204,6 +203,7 @@ impl AppWindow {
                     .can_focus(false)
                     .build(),
             )
+            .css_name("history-item")
             .build();
 
         //switch to color when clicked
