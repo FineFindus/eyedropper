@@ -1,6 +1,7 @@
+use glib::object::GObject;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
-use gtk::{gio, glib, ColorButton};
+use gtk::{gio, glib};
 
 use crate::application::App;
 use crate::config::{APP_ID, PROFILE};
@@ -193,18 +194,21 @@ impl AppWindow {
     }
 
     /// Create a new history item
-    fn create_history_item(&self, history_object: &HistoryObject) -> gtk::ColorButton {
-        let color_button = ColorButton::builder()
-            .rgba(&history_object.color().into())
+    fn create_history_item(&self, history_object: &HistoryObject) -> gtk::Button {
+        //create a button so that keyboard focus and selecting works.
+        //there seem to be a bug, which makes the focus on the button invisible, no idea on how to fix it though
+        let color_button = gtk::Button::builder()
+            .child(
+                &gtk::ColorButton::builder()
+                    .rgba(&history_object.color().into())
+                    .can_focus(false)
+                    .build(),
+            )
             .build();
 
-        // Create a click gesture
-        let gesture = gtk::GestureClick::new();
-
-        // Assign your handler to an event of the gesture (e.g. the `pressed` event)
-        gesture.connect_pressed(
-            glib::clone!(@weak self as window, @weak history_object => move |gesture, _, _, _| {
-                gesture.set_state(gtk::EventSequenceState::Claimed);
+        //switch to color when clicked
+        color_button.connect_clicked(
+            glib::clone!(@weak self as window, @weak history_object => move |_, | {
                 window.set_color(history_object.color());
                 //remove from history when clicking on it
                 match window.history().find(&history_object) {
@@ -213,9 +217,6 @@ impl AppWindow {
                 }
             }),
         );
-
-        // Assign the gesture
-        color_button.add_controller(&gesture);
 
         color_button
     }

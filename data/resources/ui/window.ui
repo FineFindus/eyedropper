@@ -101,6 +101,9 @@
                       <object class="GtkListBox" id="history_list">
                         <property name="visible">True</property>
                         <property name="selection-mode">none</property>
+                        <style>
+                          <class name="background" />
+                        </style>
                       </object>
                     </child>
                   </object>
