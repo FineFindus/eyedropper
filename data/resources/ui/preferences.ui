@@ -30,11 +30,12 @@
                 </child>
                 <child>
                     <object class="AdwPreferencesGroup">
-                        <property name="title" translatable="yes">Color Models</property>
+                        <property name="title" translatable="yes">Color Formats</property>
+                        <property name="description" translatable="yes">Choose which formats will be visible</property>
                         <child>
                             <object class="AdwActionRow">
-                                <property name="title" translatable="yes">Show Hex Code</property>
-                                <property name="subtitle" translatable="yes">If the Hex-Code should be shown</property>
+                                <property name="title" translatable="yes">Hex Code</property>
+                                <property name="subtitle" translatable="no" context="Example of a hex formatted string">#2E3440FF</property>
                                 <property name="activatable-widget">hex_model_switch</property>
                                 <child>
                                     <object class="GtkSwitch" id="hex_model_switch">
@@ -45,8 +46,8 @@
                         </child>
                         <child>
                             <object class="AdwActionRow">
-                                <property name="title" translatable="yes">Show RGB</property>
-                                <property name="subtitle" translatable="yes">If the RGB-Code should be shown</property>
+                                <property name="title" translatable="yes">RGB</property>
+                                <property name="subtitle" translatable="no" context="Example of a RGB formatted string">rgb(46, 52, 64)</property>
                                 <property name="activatable-widget">rgb_model_switch</property>
                                 <child>
                                     <object class="GtkSwitch" id="rgb_model_switch">
@@ -57,8 +58,8 @@
                         </child>
                         <child>
                             <object class="AdwActionRow">
-                                <property name="title" translatable="yes">Show HSL</property>
-                                <property name="subtitle" translatable="yes">If the HSL-Code should be shown</property>
+                                <property name="title" translatable="yes">HSL</property>
+                                <property name="subtitle" translatable="no" context="Example of a HSL formatted string">hsl(220, 16%, 22%)</property>
                                 <property name="activatable-widget">hsl_model_switch</property>
                                 <child>
                                     <object class="GtkSwitch" id="hsl_model_switch">
@@ -69,8 +70,8 @@
                         </child>
                         <child>
                             <object class="AdwActionRow">
-                                <property name="title" translatable="yes">Show HSV</property>
-                                <property name="subtitle" translatable="yes">If the HSV-Code should be shown</property>
+                                <property name="title" translatable="yes">HSV</property>
+                                <property name="subtitle" translatable="no" context="Example of a HSV formatted string">hsv(220, 28%, 25%)</property>
                                 <property name="activatable-widget">hsv_model_switch</property>
                                 <child>
                                     <object class="GtkSwitch" id="hsv_model_switch">
@@ -81,8 +82,8 @@
                         </child>
                         <child>
                             <object class="AdwActionRow">
-                                <property name="title" translatable="yes">Show CMKY</property>
-                                <property name="subtitle" translatable="yes">If the CMYK-Code should be shown</property>
+                                <property name="title" translatable="yes">CMKY</property>
+                                <property name="subtitle" translatable="no" context="Example of a CMYK formatted string">cmyk(28%, 19%, 0%, 75%)</property>
                                 <property name="activatable-widget">cmyk_model_switch</property>
                                 <child>
                                     <object class="GtkSwitch" id="cmyk_model_switch">
@@ -91,7 +92,6 @@
                                 </child>
                             </object>
                         </child>
-
                     </object>
                 </child>
             </object>
