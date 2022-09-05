@@ -28,6 +28,72 @@
                         </child>
                     </object>
                 </child>
+                <child>
+                    <object class="AdwPreferencesGroup">
+                        <property name="title" translatable="yes">Color Models</property>
+                        <child>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Show Hex Code</property>
+                                <property name="subtitle" translatable="yes">If the Hex-Code should be shown</property>
+                                <property name="activatable-widget">hex_model_switch</property>
+                                <child>
+                                    <object class="GtkSwitch" id="hex_model_switch">
+                                        <property name="valign">center</property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Show RGB</property>
+                                <property name="subtitle" translatable="yes">If the RGB-Code should be shown</property>
+                                <property name="activatable-widget">rgb_model_switch</property>
+                                <child>
+                                    <object class="GtkSwitch" id="rgb_model_switch">
+                                        <property name="valign">center</property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Show HSL</property>
+                                <property name="subtitle" translatable="yes">If the HSL-Code should be shown</property>
+                                <property name="activatable-widget">hsl_model_switch</property>
+                                <child>
+                                    <object class="GtkSwitch" id="hsl_model_switch">
+                                        <property name="valign">center</property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Show HSV</property>
+                                <property name="subtitle" translatable="yes">If the HSV-Code should be shown</property>
+                                <property name="activatable-widget">hsv_model_switch</property>
+                                <child>
+                                    <object class="GtkSwitch" id="hsv_model_switch">
+                                        <property name="valign">center</property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Show CMKY</property>
+                                <property name="subtitle" translatable="yes">If the CMYK-Code should be shown</property>
+                                <property name="activatable-widget">cmyk_model_switch</property>
+                                <child>
+                                    <object class="GtkSwitch" id="cmyk_model_switch">
+                                        <property name="valign">center</property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+
+                    </object>
+                </child>
             </object>
         </child>
     </template>

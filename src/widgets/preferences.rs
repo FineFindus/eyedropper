@@ -17,6 +17,16 @@ mod imp {
         pub settings: gtk::gio::Settings,
         #[template_child()]
         pub alpha_pos_box: TemplateChild<adw::ComboRow>,
+        #[template_child()]
+        pub hex_model_switch: TemplateChild<gtk::Switch>,
+        #[template_child()]
+        pub rgb_model_switch: TemplateChild<gtk::Switch>,
+        #[template_child()]
+        pub hsl_model_switch: TemplateChild<gtk::Switch>,
+        #[template_child()]
+        pub hsv_model_switch: TemplateChild<gtk::Switch>,
+        #[template_child()]
+        pub cmyk_model_switch: TemplateChild<gtk::Switch>,
     }
 
     // The central trait for subclassing a GObject
@@ -31,6 +41,11 @@ mod imp {
             Self {
                 settings: gtk::gio::Settings::new(config::APP_ID),
                 alpha_pos_box: TemplateChild::default(),
+                hex_model_switch: TemplateChild::default(),
+                rgb_model_switch: TemplateChild::default(),
+                hsl_model_switch: TemplateChild::default(),
+                hsv_model_switch: TemplateChild::default(),
+                cmyk_model_switch: TemplateChild::default(),
             }
         }
 
@@ -73,6 +88,26 @@ impl PreferencesWindow {
 
         imp.settings
             .bind("alpha-position", &*imp.alpha_pos_box, "selected")
+            .build();
+
+        imp.settings
+            .bind("show-hex-model", &*imp.hex_model_switch, "state")
+            .build();
+
+        imp.settings
+            .bind("show-rgb-model", &*imp.rgb_model_switch, "state")
+            .build();
+
+        imp.settings
+            .bind("show-hsl-model", &*imp.hsl_model_switch, "state")
+            .build();
+
+        imp.settings
+            .bind("show-hsv-model", &*imp.hsv_model_switch, "state")
+            .build();
+
+        imp.settings
+            .bind("show-cmyk-model", &*imp.cmyk_model_switch, "state")
             .build();
     }
 }

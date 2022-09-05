@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Issue and feature-request templates
 - Change the color using hex values in the hex field
+- Previous colors are now visible in the history list
+- Disable unwanted color models
 
 ## [0.1.0] - 2022-08-28
 

@@ -58,16 +58,24 @@
                   <object class="GtkBox">
                     <property name="orientation">vertical</property>
                     <property name="halign">fill</property>
-                    <property name="vexpand">True</property>
-                    <property name="vexpand-set">True</property>
-                    <!-- <property name="spacing">3</property> -->
+                    <property name="vexpand">False</property>
+                    <property name="vexpand-set">False</property>
+                    <property name="margin-bottom">12</property>
+                    <property name="valign">start</property>
                     <child>
-                      <object class="GtkColorButton" id="color_button">
-                        <property name="margin-top">12</property>
-                        <property name="margin-start">12</property>
-                        <property name="margin-end">12</property>
-                        <property name="vexpand">True</property>
-                        <property name="width-request">20</property>
+                      <object class="AdwClamp">
+                        <property name="orientation">vertical</property>
+                        <property name="tightening-threshold">35</property>
+                        <property name="maximum-size">50</property>
+                        <property name="child">
+                          <object class="GtkColorButton" id="color_button">
+                            <property name="margin-top">12</property>
+                            <property name="margin-start">12</property>
+                            <property name="margin-end">12</property>
+                            <property name="vexpand">True</property>
+                            <property name="width-request">267</property>
+                          </object>
+                        </property>
                       </object>
                     </child>
                     <child>
@@ -83,9 +91,7 @@
                       <object class="ColorModelEntry" id="hsv_entry" />
                     </child>
                     <child>
-                      <object class="ColorModelEntry" id="cmyk_entry">
-                        <property name="margin-bottom">12</property>
-                      </object>
+                      <object class="ColorModelEntry" id="cmyk_entry" />
                     </child>
                   </object>
                 </child>

@@ -104,6 +104,7 @@ mod imp {
             // Load latest window state
             obj.load_window_size();
             obj.setup_history();
+            obj.load_settings();
             obj.setup_callbacks();
         }
     }
@@ -252,6 +253,82 @@ impl AppWindow {
         }
     }
 
+    fn load_settings(&self) {
+        let imp = self.imp();
+        let settings = &imp.settings;
+
+        //update hex entry with new alpha position
+        settings.connect_changed(
+            Some("alpha-position"),
+            glib::clone!(@weak self as window => move |settings, _| {
+                log::debug!("Updating AlphaPosition");
+                let color = *window.imp().color.borrow();
+                let hex_alpha_position = AlphaPosition::from(settings.int("alpha-position") as u32);
+                window.imp().hex_entry.set_color(color.to_hex_string(hex_alpha_position));
+            }),
+        );
+
+        //first setup when loading
+        let show_hex_model = settings.boolean("show-hex-model");
+        imp.hex_entry.set_visible(show_hex_model);
+        //refresh when settings change
+        settings.connect_changed(
+            Some("show-hex-model"),
+            glib::clone!(@weak self as window => move |settings, _| {
+            let show_hex_model = settings.boolean("show-hex-model");
+            window.imp().hex_entry.set_visible(show_hex_model);
+            }),
+        );
+
+        //first setup when loading
+        let show_rgb_model = settings.boolean("show-rgb-model");
+        imp.rgb_entry.set_visible(show_rgb_model);
+        //refresh when settings change
+        settings.connect_changed(
+            Some("show-rgb-model"),
+            glib::clone!(@weak self as window => move |settings, _| {
+            let show_rgb_model = settings.boolean("show-rgb-model");
+            window.imp().rgb_entry.set_visible(show_rgb_model);
+            }),
+        );
+
+        //first setup when loading
+        let show_hsl_model = settings.boolean("show-hsl-model");
+        imp.hsl_entry.set_visible(show_hsl_model);
+        //refresh when settings change
+        settings.connect_changed(
+            Some("show-hsl-model"),
+            glib::clone!(@weak self as window => move |settings, _| {
+            let show_hsl_model = settings.boolean("show-hsl-model");
+            window.imp().hsl_entry.set_visible(show_hsl_model);
+            }),
+        );
+
+        //first setup when loading
+        let show_hsv_model = settings.boolean("show-hsv-model");
+        imp.hsv_entry.set_visible(show_hsv_model);
+        //refresh when settings change
+        settings.connect_changed(
+            Some("show-hsv-model"),
+            glib::clone!(@weak self as window => move |settings, _| {
+            let show_hsv_model = settings.boolean("show-hsv-model");
+            window.imp().hsv_entry.set_visible(show_hsv_model);
+            }),
+        );
+
+        //first setup when loading
+        let show_cmyk_model = settings.boolean("show-cmyk-model");
+        imp.cmyk_entry.set_visible(show_cmyk_model);
+        //refresh when settings change
+        settings.connect_changed(
+            Some("show-cmyk-model"),
+            glib::clone!(@weak self as window => move |settings, _| {
+            let show_cmyk_model = settings.boolean("show-cmyk-model");
+            window.imp().cmyk_entry.set_visible(show_cmyk_model);
+            }),
+        );
+    }
+
     /// Pick a color from the desktop using [ashpd].
     ///
     /// It will show a toast when failing to pick a color, for example when the user cancels the action.
@@ -286,6 +363,28 @@ impl AppWindow {
             imp.color.replace(color);
 
             imp.color_button.set_rgba(&color.into());
+
+            imp.color_button.add_palette(
+                gtk::Orientation::Vertical,
+                5,
+                &[
+                    Color::from_hex("#2e3440", AlphaPosition::None)
+                        .unwrap()
+                        .into(),
+                    Color::from_hex("#3B4252", AlphaPosition::None)
+                        .unwrap()
+                        .into(),
+                    Color::from_hex("#434C5E", AlphaPosition::None)
+                        .unwrap()
+                        .into(),
+                    Color::from_hex("#4C566A", AlphaPosition::None)
+                        .unwrap()
+                        .into(),
+                    Color::from_hex("#5E81AC", AlphaPosition::None)
+                        .unwrap()
+                        .into(),
+                ],
+            );
 
             let hex_alpha_position =
                 AlphaPosition::from(self.imp().settings.int("alpha-position") as u32);
@@ -345,17 +444,6 @@ impl AppWindow {
             .connect_closure("copied-color", false, show_toast_closure.clone());
         imp.cmyk_entry
             .connect_closure("copied-color", false, show_toast_closure);
-
-        //update hex entry with new alpha position
-        self.imp().settings.connect_changed(
-            Some("alpha-position"),
-            glib::clone!(@weak self as window => move |settings, _| {
-                log::debug!("Updating AlphaPosition");
-                let color = *window.imp().color.borrow();
-                let hex_alpha_position = AlphaPosition::from(settings.int("alpha-position") as u32);
-                window.imp().hex_entry.set_color(color.to_hex_string(hex_alpha_position));
-            }),
-        );
 
         imp.hex_entry.connect_closure(
             "color-changed",

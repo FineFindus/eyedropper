@@ -13,16 +13,35 @@
       <default>false</default>
       <summary>Window maximized state</summary>
     </key>
-    <key name="dark-theme" type="b">
-      <default>false</default>
-      <summary>Dark Mode</summary>
-      <description>Whether the application should use a dark mode.</description>
-    </key>
-
     <key name="alpha-position" type="i">
       <default>0</default>
       <summary>Alpha Value Position</summary>
-      <description>Where the alpha value is postioned in the hex string..</description>
+      <description>Where the alpha value is postioned in the hex string.</description>
+    </key>
+    <key name="show-hex-model" type="b">
+      <default>true</default>
+      <summary>Show Hex Model</summary>
+      <description>Whether the application should show the hex code.</description>
+    </key>
+    <key name="show-rgb-model" type="b">
+      <default>true</default>
+      <summary>Show RGB Model</summary>
+      <description>Whether the application should show the RGB code.</description>
+    </key>
+    <key name="show-hsl-model" type="b">
+      <default>true</default>
+      <summary>Show HSL Model</summary>
+      <description>Whether the application should show the HSl code.</description>
+    </key>
+    <key name="show-hsv-model" type="b">
+      <default>true</default>
+      <summary>Show HSV Model</summary>
+      <description>Whether the application should show the HSV code.</description>
+    </key>
+    <key name="show-cmyk-model" type="b">
+      <default>true</default>
+      <summary>Show CMYK Model</summary>
+      <description>Whether the application should show the CMYK code.</description>
     </key>
   </schema>
 </schemalist>
