@@ -379,28 +379,6 @@ impl AppWindow {
 
             imp.color_button.set_rgba(&color.into());
 
-            imp.color_button.add_palette(
-                gtk::Orientation::Vertical,
-                5,
-                &[
-                    Color::from_hex("#2e3440", AlphaPosition::None)
-                        .unwrap()
-                        .into(),
-                    Color::from_hex("#3B4252", AlphaPosition::None)
-                        .unwrap()
-                        .into(),
-                    Color::from_hex("#434C5E", AlphaPosition::None)
-                        .unwrap()
-                        .into(),
-                    Color::from_hex("#4C566A", AlphaPosition::None)
-                        .unwrap()
-                        .into(),
-                    Color::from_hex("#5E81AC", AlphaPosition::None)
-                        .unwrap()
-                        .into(),
-                ],
-            );
-
             let hex_alpha_position =
                 AlphaPosition::from(self.imp().settings.int("alpha-position") as u32);
 
