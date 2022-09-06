@@ -177,7 +177,6 @@ impl App {
         let preferences = PreferencesWindow::new();
 
         preferences.set_transient_for(Some(&self.main_window()));
-        // preferences.set_transient_for(Some(&window));
         preferences.show();
     }
 
