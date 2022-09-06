@@ -92,6 +92,18 @@
                                 </child>
                             </object>
                         </child>
+                        <child>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">XYZ</property>
+                                <property name="subtitle" translatable="no" context="Example of a XYZ formatted string">XYZ(3.280, 3.407, 5.335)</property>
+                                <property name="activatable-widget">xyz_model_switch</property>
+                                <child>
+                                    <object class="GtkSwitch" id="xyz_model_switch">
+                                        <property name="valign">center</property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
                     </object>
                 </child>
             </object>

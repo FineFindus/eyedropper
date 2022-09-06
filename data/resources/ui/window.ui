@@ -93,6 +93,11 @@
                     <child>
                       <object class="ColorModelEntry" id="cmyk_entry" />
                     </child>
+                    <child>
+                      <object class="ColorModelEntry" id="xyz_entry">
+                        <property name="visible">False</property>
+                      </object>
+                    </child>
                   </object>
                 </child>
                 <child>

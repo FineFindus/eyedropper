@@ -27,6 +27,8 @@ mod imp {
         pub hsv_model_switch: TemplateChild<gtk::Switch>,
         #[template_child()]
         pub cmyk_model_switch: TemplateChild<gtk::Switch>,
+        #[template_child()]
+        pub xyz_model_switch: TemplateChild<gtk::Switch>,
     }
 
     // The central trait for subclassing a GObject
@@ -46,6 +48,7 @@ mod imp {
                 hsl_model_switch: TemplateChild::default(),
                 hsv_model_switch: TemplateChild::default(),
                 cmyk_model_switch: TemplateChild::default(),
+                xyz_model_switch: TemplateChild::default(),
             }
         }
 
@@ -108,6 +111,10 @@ impl PreferencesWindow {
 
         imp.settings
             .bind("show-cmyk-model", &*imp.cmyk_model_switch, "state")
+            .build();
+
+        imp.settings
+            .bind("show-xyz-model", &*imp.xyz_model_switch, "state")
             .build();
     }
 }

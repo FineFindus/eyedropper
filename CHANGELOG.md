@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Change the color using hex values in the hex field
 - Previous colors are now visible in the history list
 - Disable unwanted color models
+- Colors can now be shown as XYZ format
 
 ## [0.1.0] - 2022-08-28
 

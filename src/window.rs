@@ -41,6 +41,8 @@ mod imp {
         #[template_child]
         pub cmyk_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
         #[template_child]
+        pub xyz_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
+        #[template_child]
         pub history_list: TemplateChild<gtk::ListBox>,
         pub history: RefCell<Option<gio::ListStore>>,
         pub settings: gio::Settings,
@@ -59,6 +61,7 @@ mod imp {
                 hsl_entry: TemplateChild::default(),
                 hsv_entry: TemplateChild::default(),
                 cmyk_entry: TemplateChild::default(),
+                xyz_entry: TemplateChild::default(),
                 history_list: TemplateChild::default(),
                 history: Default::default(),
                 settings: gio::Settings::new(APP_ID),
@@ -327,6 +330,18 @@ impl AppWindow {
             window.imp().cmyk_entry.set_visible(show_cmyk_model);
             }),
         );
+
+        //first setup when loading
+        let show_xyz_model = settings.boolean("show-xyz-model");
+        imp.xyz_entry.set_visible(show_xyz_model);
+        //refresh when settings change
+        settings.connect_changed(
+            Some("show-xyz-model"),
+            glib::clone!(@weak self as window => move |settings, _| {
+            let show_xyz_model = settings.boolean("show-xyz-model");
+            window.imp().xyz_entry.set_visible(show_xyz_model);
+            }),
+        );
     }
 
     /// Pick a color from the desktop using [ashpd].
@@ -410,6 +425,10 @@ impl AppWindow {
                 "cmyk({}%, {}%, {}%, {}%)",
                 cmyk.0, cmyk.1, cmyk.2, cmyk.3
             ));
+
+            let xyz = color.to_xyz();
+            imp.xyz_entry
+                .set_color(format!("XYZ({:.3}, {:.3}, {:.3})", xyz.0, xyz.1, xyz.2));
         }
     }
 
@@ -443,6 +462,8 @@ impl AppWindow {
         imp.hsv_entry
             .connect_closure("copied-color", false, show_toast_closure.clone());
         imp.cmyk_entry
+            .connect_closure("copied-color", false, show_toast_closure.clone());
+        imp.xyz_entry
             .connect_closure("copied-color", false, show_toast_closure);
 
         imp.hex_entry.connect_closure(
