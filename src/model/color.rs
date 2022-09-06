@@ -213,6 +213,44 @@ impl Color {
         )
     }
 
+    /// Return the color as its XYZ equivalent.
+    ///
+    /// Formula from <http://www.easyrgb.com/en/math.php#text2>
+    pub fn to_xyz(&self) -> (f32, f32, f32) {
+        //normalize color between 0 and 1
+        let mut red = self.red as f32 / 255f32;
+        let mut green = self.green as f32 / 255f32;
+        let mut blue = self.blue as f32 / 255f32;
+
+        if red > 0.04045 {
+            red = f32::powf(((red + 0.055) / 1.055), 2.4);
+        } else {
+            red = red / 12.92;
+        }
+
+        if green > 0.04045 {
+            green = f32::powf(((green + 0.055) / 1.055), 2.4);
+        } else {
+            green = green / 12.92;
+        }
+
+        if blue > 0.04045 {
+            blue = f32::powf(((blue + 0.055) / 1.055), 2.4);
+        } else {
+            blue = blue / 12.92;
+        }
+
+        red = red * 100f32;
+        green = green * 100f32;
+        blue = blue * 100f32;
+
+        let x = red * 0.4124 + green * 0.3576 + blue * 0.1805;
+        let y = red * 0.2126 + green * 0.7152 + blue * 0.0722;
+        let z = red * 0.0193 + green * 0.1192 + blue * 0.9505;
+
+        (x, y, z)
+    }
+
     /// Create a color from a hex string.
     ///
     /// The hex color optionally start with '#'.
