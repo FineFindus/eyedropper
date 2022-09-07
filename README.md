@@ -12,11 +12,33 @@ An easy-to-use color picker and editor.
 - Pick a Color
 - Edit a color using hex values or RGBA Sliders
 - Parse RGBA/ARGB Colors
-- View color as RGB, HSV, HSL and CMYK models
+- View colors in RGB, HSV, HSL, CMYK, XYZ and CIE-L*ab formats
 
 ### Future Features & Roadmap
 
 - Generate a palette of similar colors
+- Add more color formats 
+
+## Installation
+
+### Official
+
+Download the latest release from the [release tab](https://github.com/FineFindus/eyedropper/releases).
+
+The app will be made available on [flathub](flathub.org) soon.
+
+### Inofficial
+
+> :warning: **These installtion methods are not recommended**: Installing them may result in bugs or unexpected behaviour.
+
+#### Nightly Flatpak
+Download the latest artifact from the [CI](https://github.com/FineFindus/eyedropper/actions/workflows/ci.yml).
+
+#### [AUR](https://aur.archlinux.org/packages/eyedropper)
+
+```sh
+yay -S eyedropper
+```
 
 ## Building
 
