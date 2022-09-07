@@ -251,6 +251,48 @@ impl Color {
         (x, y, z)
     }
 
+
+    /// Return the colors as CIE-L*ab vales.
+    ///
+    /// The color will be first converted to XYZ values and then to CIE-L*ab values.
+    /// Formula from <http://www.easyrgb.com/en/math.php>
+    pub fn to_cie_lab(&self) -> (f32, f32, f32) {
+        //refernce xyz for D65 (sRGB) from http://www.easyrgb.com/en/math.php
+        let reference_x = 95.047;
+        let reference_y = 100.000;
+        let reference_z = 108.883;
+
+        let xyz = self.to_xyz();
+
+        let mut x = xyz.0 / reference_x;
+        let mut y = xyz.1 / reference_y;
+        let mut z = xyz.2 / reference_z;
+
+        x = if x > 0.008856 {
+            f32::powf(x, 1f32 / 3f32)
+        } else {
+            (7.787 * x) + 16f32 / 116f32
+        };
+
+        y = if y > 0.008856 {
+            f32::powf(y, 1f32 / 3f32)
+        } else {
+            (7.787 * y) + 16f32 / 116f32
+        };
+
+        z = if z > 0.008856 {
+            f32::powf(z, 1f32 / 3f32)
+        } else {
+            (7.787 * z) + 16f32 / 116f32
+        };
+
+        let cie_l = (116f32 * y) - 16f32;
+        let cie_a = 500f32 * (x - y);
+        let cie_b = 200f32 * (y - z);
+
+        (cie_l, cie_a, cie_b)
+    }
+
     /// Create a color from a hex string.
     ///
     /// The hex color optionally start with '#'.
