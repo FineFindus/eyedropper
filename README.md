@@ -6,16 +6,18 @@
 # Eyedropper
 
 An easy-to-use color picker and editor.
+
 ![Dark UI](data/resources/screenshots/main_window_ui_dark.png)
-![Light UI](data/resources/screenshots/main_window_ui_light.png)
 
 <details>
   <summary>More screenshots</summary>
   
-  ![Customize the shown formats](data/resources/screenshots/customized_formats_dark1.png)
-  
-  ![Customize the shown formats](data/resources/screenshots/customized_formats_dark2.png)
-  
+![Light UI](data/resources/screenshots/main_window_ui_light.png)
+
+![Customize the shown formats](data/resources/screenshots/customized_formats_dark1.png)
+
+![Customize the shown formats](data/resources/screenshots/customized_formats_dark2.png)
+
 </details>
 
 ## Features
