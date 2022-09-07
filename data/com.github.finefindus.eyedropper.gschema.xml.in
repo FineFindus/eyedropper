@@ -48,5 +48,10 @@
       <summary>Show XYZ Model</summary>
       <description>Whether the application should show the XYZ code.</description>
     </key>
+    <key name="show-cie-lab-model" type="b">
+      <default>false</default>
+      <summary>Show XYZ Model</summary>
+      <description>Whether the application should show the CIELAB code.</description>
+    </key>
   </schema>
 </schemalist>

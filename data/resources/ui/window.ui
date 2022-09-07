@@ -98,6 +98,11 @@
                         <property name="visible">False</property>
                       </object>
                     </child>
+                    <child>
+                      <object class="ColorModelEntry" id="cie_lab_entry">
+                        <property name="visible">False</property>
+                      </object>
+                    </child>
                   </object>
                 </child>
                 <child>

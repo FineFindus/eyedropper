@@ -251,10 +251,9 @@ impl Color {
         (x, y, z)
     }
 
-
-    /// Return the colors as CIE-L*ab vales.
+    /// Return the colors as CIELAB vales.
     ///
-    /// The color will be first converted to XYZ values and then to CIE-L*ab values.
+    /// The color will be first converted to XYZ values and then to CIELAB values.
     /// Formula from <http://www.easyrgb.com/en/math.php>
     pub fn to_cie_lab(&self) -> (f32, f32, f32) {
         //refernce xyz for D65 (sRGB) from http://www.easyrgb.com/en/math.php

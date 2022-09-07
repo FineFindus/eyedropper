@@ -104,6 +104,18 @@
                                 </child>
                             </object>
                         </child>
+                        <child>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">CIELAB</property>
+                                <property name="subtitle" translatable="no" context="Example of a CIELAB formatted string">CIELAB(81.06, -42.15, 49.51)</property>
+                                <property name="activatable-widget">cie_lab_model_switch</property>
+                                <child>
+                                    <object class="GtkSwitch" id="cie_lab_model_switch">
+                                        <property name="valign">center</property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
                     </object>
                 </child>
             </object>
