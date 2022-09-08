@@ -1,26 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- FineFindus 2019 <finefindusgh@gmail.com> -->
+<!-- FineFindus 2022 <finefindusgh@gmail.com> -->
 <component type="desktop-application">
   <id>@app-id@</id>
   <metadata_license>CC0</metadata_license>
-  <!-- Insert your license of choice here -->
-  <!-- <project_license>MIT</project_license> -->
+  <project_license>GPL-3.0</project_license>
   <name>Eyedropper</name>
-  <summary>Write a GTK + Rust application</summary>
+  <summary>An easy-to-use color picker and editor</summary>
   <description>
-    <p>A boilerplate template for GTK + Rust. It uses Meson as a build system and has flatpak support by default.</p>
+    <p>
+      Pick any color from your screen and view it in different formats. Change the picked color or go back to
+      a previously picked color from the history list.
+    </p>
+    <p>Available Formats:</p>
+    <ul>
+      <li>Hex</li>
+      <li>RGB</li>
+      <li>HSL</li>
+      <li>HSV</li>
+      <li>CMYK</li>
+      <li>XYZ</li>
+      <li>CIELAB</li>
+    </ul>
   </description>
   <screenshots>
     <screenshot type="default">
-      <image>https://gitlab.gnome.org/bilelmoussaoui/eyedropper/raw/master/data/resources/screenshots/screenshot1.png</image>
-      <caption>Main window</caption>
+      <image>https://raw.githubusercontent.com/FineFindus/eyedropper/master/data/resources/screenshots/main_window_ui_dark.png</image>
+      <caption>Main window dark</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/FineFindus/eyedropper/master/data/resources/screenshots/main_window_ui_light.png</image>
+      <caption>Main window light</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/FineFindus/eyedropper/master/data/resources/screenshots/customized_formats_dark1.png</image>
+      <caption>Customized color formatting</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/FineFindus/eyedropper/master/data/resources/screenshots/customized_formats_dark2.png</image>
+      <caption>Customized color formatting</caption>
     </screenshot>
   </screenshots>
-  <url type="homepage">https://gitlab.gnome.org/bilelmoussaoui/eyedropper</url>
-  <url type="bugtracker">https://gitlab.gnome.org/bilelmoussaoui/eyedropper/issues</url>
+  <url type="homepage">https://github.com/FineFindus/eyedropper</url>
+  <url type="bugtracker">https://github.com/FineFindus/eyedropper/issues</url>
   <content_rating type="oars-1.0" />
   <releases>
-    <release version="0.1.0" date="2019-07-11" />
+    <release version="0.1.0" date="2022-08-28">
+      <p>Added:</p>
+      <ul>
+        <li>Issue and feature-request templates</li>
+        <li>Change the color using hex values in the hex field</li>
+        <li>Previous colors are now visible in the history list</li>
+        <li>Disable unwanted color models</li>
+        <li>Colors can now be shown as XYZ format</li>
+      </ul>
+    </release>
   </releases>
   <kudos>
     <!--
