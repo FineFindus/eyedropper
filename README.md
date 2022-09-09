@@ -5,7 +5,7 @@
 
 # Eyedropper
 
-An easy-to-use color picker and editor.
+An easy-to-use color picker and formatter.
 
 ![Dark UI](data/resources/screenshots/main_window_ui_dark.png)
 
@@ -23,7 +23,7 @@ An easy-to-use color picker and editor.
 ## Features
 
 - Pick a Color
-- Edit a color using hex values or RGBA Sliders
+- Edit a color using hex values
 - Parse RGBA/ARGB Colors
 - View colors in RGB, HSV, HSL, CMYK, XYZ and CIE-Lab formats
 
