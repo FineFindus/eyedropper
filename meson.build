@@ -1,7 +1,7 @@
 project(
   'eyedropper',
   'rust',
-  version: '0.1.0',
+  version: '0.2.0',
   meson_version: '>= 0.59',
   # license: 'MIT',
 )

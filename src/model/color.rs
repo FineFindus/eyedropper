@@ -255,7 +255,7 @@ impl Color {
     ///
     /// The color will be first converted to XYZ values and then to CIELAB values.
     /// Formula from <http://www.easyrgb.com/en/math.php>
-    pub fn to_cie_lab(&self) -> (f32, f32, f32) {
+    pub fn to_cie_lab(self) -> (f32, f32, f32) {
         //refernce xyz for D65 (sRGB) from http://www.easyrgb.com/en/math.php
         let reference_x = 95.047;
         let reference_y = 100.000;
