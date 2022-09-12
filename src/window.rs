@@ -162,8 +162,33 @@ impl AppWindow {
 
     /// Clear the history by removing all items from the list.
     fn clear_history(&self) {
+        //clear history
         let history = self.history();
         history.remove_all();
+        //clear added palettes
+        utils::add_palette(
+            &self.imp().color_button.get(),
+            gtk::Orientation::Horizontal,
+            0,
+            None,
+        );
+
+        //re-add palette of the current color
+        utils::add_palette(
+            &self.imp().color_button.get(),
+            gtk::Orientation::Horizontal,
+            10,
+            Some(
+                &self
+                    .imp()
+                    .color
+                    .borrow()
+                    .generate_palette(10, 0.1)
+                    .into_iter()
+                    .map(|color| gtk::gdk::RGBA::from(color))
+                    .collect::<Vec<gtk::gdk::RGBA>>(),
+            ),
+        );
     }
 
     /// Setup the history by setting up a model
@@ -402,13 +427,32 @@ impl AppWindow {
 
             //generate a palette by shading and tinting the color
             let colors = color
-                .generate_palette(10)
+                .generate_palette(10, 0.1)
                 .into_iter()
                 .map(|color| gtk::gdk::RGBA::from(color))
                 .collect::<Vec<gtk::gdk::RGBA>>();
 
             //add new palettes
             utils::add_palette(&btn, gtk::Orientation::Horizontal, 10, Some(&colors));
+
+            //add palettes of the last 3 history items
+            self.history()
+                .snapshot()
+                .iter()
+                .take(3)
+                .filter_map(Cast::downcast_ref::<HistoryObject>)
+                .for_each(|item| {
+                    //generate a palette by shading and tinting the color
+                    let colors = item
+                        .color()
+                        .generate_palette(10, 0.1)
+                        .into_iter()
+                        .map(|color| gtk::gdk::RGBA::from(color))
+                        .collect::<Vec<gtk::gdk::RGBA>>();
+
+                    //add new palettes
+                    utils::add_palette(&btn, gtk::Orientation::Horizontal, 10, Some(&colors));
+                });
 
             let hex_alpha_position =
                 AlphaPosition::from(self.imp().settings.int("alpha-position") as u32);

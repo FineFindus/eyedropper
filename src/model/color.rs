@@ -339,15 +339,20 @@ impl Color {
         }
     }
 
-    pub fn generate_palette(&self, n: usize) -> Vec<Self> {
+    /// Generates a palette consisting of n shades and n tints from the given color.
+    ///
+    /// The tints/shades are tinted/shaded by the factor.
+    pub fn generate_palette(&self, n: usize, factor: f32) -> Vec<Self> {
         let mut colors = Vec::with_capacity(n);
 
+        //generate darker shades
         for i in 0..n {
-            colors.push(self.shade(i as f32 * 0.1))
+            colors.push(self.shade(i as f32 * factor))
         }
 
+        //generate lighter tints
         for i in 0..n {
-            colors.push(self.tint(i as f32 * 0.1))
+            colors.push(self.tint(i as f32 * factor))
         }
 
         colors
