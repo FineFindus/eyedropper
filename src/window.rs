@@ -1,11 +1,12 @@
-use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gio, glib};
+use gtk::{prelude::*, ColorButton};
 
 use crate::application::App;
 use crate::config::{APP_ID, PROFILE};
 use crate::model::color::{AlphaPosition, Color};
 use crate::model::history::HistoryObject;
+use crate::utils;
 use crate::widgets::color_model_entry::ColorModelEntry;
 use crate::widgets::hex_entry::HexEntry;
 
@@ -393,6 +394,21 @@ impl AppWindow {
             imp.color.replace(color);
 
             imp.color_button.set_rgba(&color.into());
+
+            let btn: ColorButton = imp.color_button.get();
+
+            //clear current palette set
+            utils::add_palette(&btn, gtk::Orientation::Horizontal, 0, None);
+
+            //generate a palette by shading and tinting the color
+            let colors = color
+                .generate_palette(10)
+                .into_iter()
+                .map(|color| gtk::gdk::RGBA::from(color))
+                .collect::<Vec<gtk::gdk::RGBA>>();
+
+            //add new palettes
+            utils::add_palette(&btn, gtk::Orientation::Horizontal, 10, Some(&colors));
 
             let hex_alpha_position =
                 AlphaPosition::from(self.imp().settings.int("alpha-position") as u32);
