@@ -26,10 +26,11 @@ These steps should be performed when making a new release. Do not commit marked 
 
 The following Version numbers have been updates
 
-- [ ] CHANGELOG.md
-- [ ] Cargo.toml
-- [ ] config.rs
-- [ ] meson.build
+- [ ] [CHANGELOG.md](CHANGELOG.md)
+- [ ] [Cargo.toml](Cargo.toml)
+- [ ] [config.rs](src/config.rs)
+- [ ] [meson.build](meson.build)
+- [ ] [metainfo.xml](data/com.github.finefindus.eyedropper.metainfo.xml.in.in)
 
 ### After Committing
 

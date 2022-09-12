@@ -44,14 +44,24 @@
   <url type="bugtracker">https://github.com/FineFindus/eyedropper/issues</url>
   <content_rating type="oars-1.0" />
   <releases>
-    <release version="0.1.0" date="2022-08-28">
+    <release version="0.2.0" date="2022-09-08">
       <p>Added:</p>
       <ul>
         <li>Issue and feature-request templates</li>
         <li>Change the color using hex values in the hex field</li>
         <li>Previous colors are now visible in the history list</li>
         <li>Disable unwanted color models</li>
-        <li>Colors can now be shown as XYZ format</li>
+        <li>Colors can now be shown as XYZ or CIELAB format</li>
+      </ul>
+    </release>
+    <release version="0.1.0" date="2022-08-28">
+      <p>Added:</p>
+      <ul>
+        <li>Basic UI</li>
+        <li>Pick a color using the color picker button</li>
+        <li>Copy the color in different color models</li>
+        <li>Change the position of the alpha values in hex values</li>
+        <li>Added License</li>
       </ul>
     </release>
   </releases>
