@@ -36,9 +36,7 @@ An easy-to-use color picker and formatter.
 
 ### Official
 
-Download the latest release from the [release tab](https://github.com/FineFindus/eyedropper/releases).
-
-The app will be made available on [flathub](flathub.org) soon.
+Install from [flathub](https://flathub.org/apps/details/com.github.finefindus.eyedropper) or download the latest release from the [release tab](https://github.com/FineFindus/eyedropper/releases).
 
 ### Inofficial
 
