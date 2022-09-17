@@ -14,7 +14,7 @@
                         <child>
                             <object class="AdwComboRow" id="alpha_pos_box">
                                 <property name="title" translatable="yes">Alpha-Value-Position</property>
-                                <property name="subtitle" translatable="yes">Where the Alpahvalue is positioned in the Hexstring</property>
+                                <property name="subtitle" translatable="yes">Where the Alphavalue is positioned in the Hexstring</property>
                                 <property name="model">
                                     <object class="GtkStringList">
                                         <items>
@@ -82,7 +82,7 @@
                         </child>
                         <child>
                             <object class="AdwActionRow">
-                                <property name="title" translatable="yes">CMKY</property>
+                                <property name="title" translatable="yes">CMYK</property>
                                 <property name="subtitle" translatable="no" context="Example of a CMYK formatted string">cmyk(28%, 19%, 0%, 75%)</property>
                                 <property name="activatable-widget">cmyk_model_switch</property>
                                 <child>
