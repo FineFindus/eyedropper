@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gtk/-/issues/\n"
-"POT-Creation-Date: 2022-09-17 18:17+0200\n"
+"POT-Creation-Date: 2022-09-17 22:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,6 +70,7 @@ msgid "HSV"
 msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
+#: data/resources/ui/preferences.ui:85
 msgid "CMYK"
 msgstr ""
 
@@ -113,7 +114,7 @@ msgid "Alpha-Value-Position"
 msgstr ""
 
 #: data/resources/ui/preferences.ui:17
-msgid "Where the Alpahvalue is positioned in the Hexstring"
+msgid "Where the Alphavalue is positioned in the Hexstring"
 msgstr ""
 
 #: data/resources/ui/preferences.ui:21
@@ -138,10 +139,6 @@ msgstr ""
 
 #: data/resources/ui/preferences.ui:37
 msgid "Hex Code"
-msgstr ""
-
-#: data/resources/ui/preferences.ui:85
-msgid "CMKY"
 msgstr ""
 
 #: data/resources/ui/shortcuts.ui:11

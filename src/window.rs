@@ -1,3 +1,4 @@
+use gettextrs::gettext;
 use gtk::subclass::prelude::*;
 use gtk::{gio, glib};
 use gtk::{prelude::*, ColorButton};
@@ -398,7 +399,7 @@ impl AppWindow {
             Ok(color) => window.set_color(Color::from(color)),
             Err(err) => {
                 log::error!("{}", err);
-                window.show_toast("Failed to pick a color");
+                window.show_toast(&gettext("Failed to pick a color"));
             },
         };
         }));
