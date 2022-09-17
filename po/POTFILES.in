@@ -1,5 +1,6 @@
 data/com.github.finefindus.eyedropper.desktop.in.in
-data/com.github.finefindus.eyedropper.gschema.xml.in
+# This file includes the settings variables and their descriptions, it should not be translated
+#data/com.github.finefindus.eyedropper.gschema.xml.in
 data/com.github.finefindus.eyedropper.metainfo.xml.in.in
 data/resources/ui/preferences.ui
 data/resources/ui/shortcuts.ui

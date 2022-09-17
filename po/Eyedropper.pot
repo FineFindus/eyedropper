@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gtk/-/issues/\n"
-"POT-Creation-Date: 2022-09-17 17:29+0200\n"
+"POT-Creation-Date: 2022-09-17 18:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,79 +34,6 @@ msgstr ""
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
 msgid "Gnome;GTK;Color;Color Picker;Picker;Palette;"
-msgstr ""
-
-#: data/com.github.finefindus.eyedropper.gschema.xml.in:6
-msgid "Window width"
-msgstr ""
-
-#: data/com.github.finefindus.eyedropper.gschema.xml.in:10
-msgid "Window height"
-msgstr ""
-
-#: data/com.github.finefindus.eyedropper.gschema.xml.in:14
-msgid "Window maximized state"
-msgstr ""
-
-#: data/com.github.finefindus.eyedropper.gschema.xml.in:18
-msgid "Alpha Value Position"
-msgstr ""
-
-#: data/com.github.finefindus.eyedropper.gschema.xml.in:19
-msgid "Where the alpha value is postioned in the hex string."
-msgstr ""
-
-#: data/com.github.finefindus.eyedropper.gschema.xml.in:23
-msgid "Show Hex Model"
-msgstr ""
-
-#: data/com.github.finefindus.eyedropper.gschema.xml.in:24
-msgid "Whether the application should show the hex code."
-msgstr ""
-
-#: data/com.github.finefindus.eyedropper.gschema.xml.in:28
-msgid "Show RGB Model"
-msgstr ""
-
-#: data/com.github.finefindus.eyedropper.gschema.xml.in:29
-msgid "Whether the application should show the RGB code."
-msgstr ""
-
-#: data/com.github.finefindus.eyedropper.gschema.xml.in:33
-msgid "Show HSL Model"
-msgstr ""
-
-#: data/com.github.finefindus.eyedropper.gschema.xml.in:34
-msgid "Whether the application should show the HSl code."
-msgstr ""
-
-#: data/com.github.finefindus.eyedropper.gschema.xml.in:38
-msgid "Show HSV Model"
-msgstr ""
-
-#: data/com.github.finefindus.eyedropper.gschema.xml.in:39
-msgid "Whether the application should show the HSV code."
-msgstr ""
-
-#: data/com.github.finefindus.eyedropper.gschema.xml.in:43
-msgid "Show CMYK Model"
-msgstr ""
-
-#: data/com.github.finefindus.eyedropper.gschema.xml.in:44
-msgid "Whether the application should show the CMYK code."
-msgstr ""
-
-#: data/com.github.finefindus.eyedropper.gschema.xml.in:48
-#: data/com.github.finefindus.eyedropper.gschema.xml.in:53
-msgid "Show XYZ Model"
-msgstr ""
-
-#: data/com.github.finefindus.eyedropper.gschema.xml.in:49
-msgid "Whether the application should show the XYZ code."
-msgstr ""
-
-#: data/com.github.finefindus.eyedropper.gschema.xml.in:54
-msgid "Whether the application should show the CIELAB code."
 msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
@@ -268,7 +195,7 @@ msgstr ""
 msgid "_About Eyedropper"
 msgstr ""
 
-#. Translators: This is a place to put your credits (formats: "Name https://example.com" or "Name <email@example.com>", no quotes) and is not meant to be translated literally.
+#. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/application.rs:167
 msgid "translator-credits"
 msgstr ""
