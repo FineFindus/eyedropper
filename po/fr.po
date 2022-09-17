@@ -1,0 +1,206 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Irénée THIRION <irenee.thirion@e.email>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: unnamed project\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gtk/-/issues/\n"
+"POT-Creation-Date: 2022-09-17 18:17+0200\n"
+"PO-Revision-Date: 2022-09-17 19:31+0200\n"
+"Last-Translator: Irénée THIRION <irenee.thirion@e.email>\n"
+"Language-Team: French <gnomefr@traduc.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"X-Generator: Gtranslator 42.0\n"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:3
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
+#: data/resources/ui/window.ui:35
+msgid "Eyedropper"
+msgstr "Pipette"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:4
+msgid "Color Picker"
+msgstr "Sélecteur de couleurs"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:5
+msgid "An easy-to-use color picker"
+msgstr "Un sélecteur de couleurs facile à utiliser"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/com.github.finefindus.eyedropper.desktop.in.in:11
+msgid "Gnome;GTK;Color;Color Picker;Picker;Palette;"
+msgstr "Gnome;GTK;Color;Color Picker;Picker;Palette;Pipette;couleur;sélecteur;"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
+msgid "An easy-to-use color picker and editor"
+msgstr "Un sélecteur et éditeur de couleurs facile à utiliser"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
+msgid ""
+"Pick any color from your screen and view it in different formats. Change the "
+"picked color or go back to a previously picked color from the history list."
+msgstr ""
+"Choisissez une couleur de votre écran et visualisez-la dans différents "
+"formats. Changez la couleur sélectionnée ou retournez à une couleur "
+"précédemment sélectionnée depuis l’historique."
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
+msgid "Available Formats:"
+msgstr "Formats disponibles"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:16
+msgid "Hex"
+msgstr "Hexadécimal"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
+#: data/resources/ui/preferences.ui:49
+msgid "RGB"
+msgstr "RGB"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:18
+#: data/resources/ui/preferences.ui:61
+msgid "HSL"
+msgstr "HSL"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
+#: data/resources/ui/preferences.ui:73
+msgid "HSV"
+msgstr "HSV"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
+msgid "CMYK"
+msgstr "CMYK"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
+#: data/resources/ui/preferences.ui:97
+msgid "XYZ"
+msgstr "XYZ"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
+#: data/resources/ui/preferences.ui:109
+msgid "CIELAB"
+msgstr "CIELAB"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:28
+msgid "Main window dark"
+msgstr "Fenêtre principale sombre"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:32
+msgid "Main window light"
+msgstr "Fenêtre principale claire"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:36
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:40
+msgid "Customized color formatting"
+msgstr "Formatage personnalisé des couleurs"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:76
+msgid "FineFindus"
+msgstr "FineFindus"
+
+#: data/resources/ui/preferences.ui:10
+msgid "General"
+msgstr "Général"
+
+#: data/resources/ui/preferences.ui:13
+msgid "Format"
+msgstr "Format"
+
+#: data/resources/ui/preferences.ui:16
+msgid "Alpha-Value-Position"
+msgstr "Position de la valeur alpha"
+
+#: data/resources/ui/preferences.ui:17
+msgid "Where the Alpahvalue is positioned in the Hexstring"
+msgstr "Position de la valeur alpha dans la chaîne hexadécimale"
+
+#: data/resources/ui/preferences.ui:21
+msgid "None"
+msgstr "Aucune"
+
+#: data/resources/ui/preferences.ui:22
+msgid "End"
+msgstr "Fin"
+
+#: data/resources/ui/preferences.ui:23
+msgid "Start"
+msgstr "Début"
+
+#: data/resources/ui/preferences.ui:33
+msgid "Color Formats"
+msgstr "Formats de couleur"
+
+#: data/resources/ui/preferences.ui:34
+msgid "Choose which formats will be visible"
+msgstr "Choisissez quels formats seront visibles"
+
+#: data/resources/ui/preferences.ui:37
+msgid "Hex Code"
+msgstr "Code hexadécimal"
+
+#: data/resources/ui/preferences.ui:85
+msgid "CMKY"
+msgstr "CMYK"
+
+#: data/resources/ui/shortcuts.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Général"
+
+#: data/resources/ui/shortcuts.ui:14
+msgctxt "shortcut window"
+msgid "Show Preferences"
+msgstr "Afficher les préférences"
+
+#: data/resources/ui/shortcuts.ui:20
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Afficher les raccourcis"
+
+#: data/resources/ui/shortcuts.ui:26
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Quitter"
+
+#: data/resources/ui/shortcuts.ui:34
+msgctxt "shortcut window"
+msgid "Color"
+msgstr "Couleur"
+
+#: data/resources/ui/shortcuts.ui:37
+msgctxt "shortcut window"
+msgid "Pick a new Color"
+msgstr "Choisir une nouvelle couleur"
+
+#: data/resources/ui/shortcuts.ui:43
+msgctxt "shortcut window"
+msgid "Randomize the Color"
+msgstr "Randomiser la couleur"
+
+#: data/resources/ui/window.ui:6
+msgid "_Random Color"
+msgstr "Couleur _aléatoire"
+
+#: data/resources/ui/window.ui:12
+msgid "_Preferences"
+msgstr "_Préférences"
+
+#: data/resources/ui/window.ui:16
+msgid "_Keyboard Shortcuts"
+msgstr "Raccourcis _clavier"
+
+#: data/resources/ui/window.ui:20
+msgid "_About Eyedropper"
+msgstr "À _propos de Pipette"
+
+#. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
+#: src/application.rs:167
+msgid "translator-credits"
+msgstr "Irénée Thirion"
