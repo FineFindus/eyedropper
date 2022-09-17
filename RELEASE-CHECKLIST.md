@@ -15,6 +15,8 @@ These steps should be performed when making a new release. Do not commit marked 
 - [ ] Build version matches version in Cargo.toml
 - [ ] Example images still represents the project accurately
 - [ ] Documentation has been updated to reflect the changes
+- [ ] [Translation Template](po/Eyedropper.pot) is updated
+- [ ] If possible: App was translated
 
 #### Changelog
 

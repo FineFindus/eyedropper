@@ -163,6 +163,7 @@ impl App {
             .website("https://github.com/finefindus/eyedropper/")
             .version(VERSION)
             .transient_for(&self.main_window())
+            // Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
             .translator_credits(&gettext("translator-credits"))
             .modal(true)
             .copyright("© 2022 FineFindus")
