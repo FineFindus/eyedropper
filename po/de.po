@@ -1,0 +1,202 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gtk/-/issues/\n"
+"POT-Creation-Date: 2022-09-17 22:01+0200\n"
+"PO-Revision-Date: 2022-09-18 10:45+0200\n"
+"Last-Translator: FineFindus <FineFindusGH@gmail.com>\n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.1\n"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:3
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
+#: data/resources/ui/window.ui:35
+msgid "Eyedropper"
+msgstr "Eyedropper"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:4
+msgid "Color Picker"
+msgstr "Farbwähler"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:5
+msgid "An easy-to-use color picker"
+msgstr "Ein benutzerfreundlicher Farbwähler"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/com.github.finefindus.eyedropper.desktop.in.in:11
+msgid "Gnome;GTK;Color;Color Picker;Picker;Palette;"
+msgstr "Gnome;GTK;Farben;Farbwähler;Wähler;"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
+msgid "An easy-to-use color picker and editor"
+msgstr "Ein benutzerfreundlicher Farbwähler and Editor"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
+msgid ""
+"Pick any color from your screen and view it in different formats. Change the "
+"picked color or go back to a previously picked color from the history list."
+msgstr ""
+"Wähle eine Farbe vom Bildschirm und betrachte die verschiedenen Farbformate. "
+"Ändere die ausgewählte Farbe, oder wähle eine vorherige ausgewählte Farbe "
+"aus dem Verlauf."
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
+msgid "Available Formats:"
+msgstr "Verfügbare Formate:"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:16
+msgid "Hex"
+msgstr "Hex"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
+#: data/resources/ui/preferences.ui:49
+msgid "RGB"
+msgstr "RGB"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:18
+#: data/resources/ui/preferences.ui:61
+msgid "HSL"
+msgstr "HSL"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
+#: data/resources/ui/preferences.ui:73
+msgid "HSV"
+msgstr "HSV"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
+#: data/resources/ui/preferences.ui:85
+msgid "CMYK"
+msgstr "CMYK"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
+#: data/resources/ui/preferences.ui:97
+msgid "XYZ"
+msgstr "XYZ"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
+#: data/resources/ui/preferences.ui:109
+msgid "CIELAB"
+msgstr "CIELAB"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:28
+msgid "Main window dark"
+msgstr "Hauptfenster dunkel"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:32
+msgid "Main window light"
+msgstr "Hauptfenster hell"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:36
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:40
+msgid "Customized color formatting"
+msgstr "Benutzerdefiniertes Farbformate"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:76
+msgid "FineFindus"
+msgstr "FineFindus"
+
+#: data/resources/ui/preferences.ui:10
+msgid "General"
+msgstr "Allgemein"
+
+#: data/resources/ui/preferences.ui:13
+msgid "Format"
+msgstr "Format"
+
+#: data/resources/ui/preferences.ui:16
+msgid "Alpha-Value-Position"
+msgstr "Alphawertposition"
+
+#: data/resources/ui/preferences.ui:17
+msgid "Where the Alphavalue is positioned in the Hexstring"
+msgstr "An welcher Stelle der Alphawert angezeigt wird"
+
+#: data/resources/ui/preferences.ui:21
+msgid "None"
+msgstr "Nicht anzeigen"
+
+#: data/resources/ui/preferences.ui:22
+msgid "End"
+msgstr "Ende"
+
+#: data/resources/ui/preferences.ui:23
+msgid "Start"
+msgstr "Start"
+
+#: data/resources/ui/preferences.ui:33
+msgid "Color Formats"
+msgstr "Farbformate"
+
+#: data/resources/ui/preferences.ui:34
+msgid "Choose which formats will be visible"
+msgstr "Wähle welche Farbformate angezeigt werden"
+
+#: data/resources/ui/preferences.ui:37
+msgid "Hex Code"
+msgstr "Hexadezimal-Code"
+
+#: data/resources/ui/shortcuts.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Allgemein"
+
+#: data/resources/ui/shortcuts.ui:14
+msgctxt "shortcut window"
+msgid "Show Preferences"
+msgstr "Zeige Einstellungen"
+
+#: data/resources/ui/shortcuts.ui:20
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Zeige Tastenkürzel"
+
+#: data/resources/ui/shortcuts.ui:26
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Schließen"
+
+#: data/resources/ui/shortcuts.ui:34
+msgctxt "shortcut window"
+msgid "Color"
+msgstr "Farben"
+
+#: data/resources/ui/shortcuts.ui:37
+msgctxt "shortcut window"
+msgid "Pick a new Color"
+msgstr "Wähle eine neue Farbe"
+
+#: data/resources/ui/shortcuts.ui:43
+msgctxt "shortcut window"
+msgid "Randomize the Color"
+msgstr "Zufällige Farbe"
+
+#: data/resources/ui/window.ui:6
+msgid "_Random Color"
+msgstr "_Zufällige Farbe"
+
+#: data/resources/ui/window.ui:12
+msgid "_Preferences"
+msgstr "_Einstellungen"
+
+#: data/resources/ui/window.ui:16
+msgid "_Keyboard Shortcuts"
+msgstr "_Tastenkombinationen"
+
+#: data/resources/ui/window.ui:20
+msgid "_About Eyedropper"
+msgstr "_Info zu Eyedropper"
+
+#. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
+#: src/application.rs:167
+msgid "translator-credits"
+msgstr "FineFindus <https://github.com/FineFindus>"
