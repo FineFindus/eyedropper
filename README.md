@@ -36,11 +36,11 @@ An easy-to-use color picker and formatter.
 
 ### Official
 
-Install from [flathub](https://flathub.org/apps/details/com.github.finefindus.eyedropper) or download the latest release from the [release tab](https://github.com/FineFindus/eyedropper/releases).
+Install from [Flathub](https://flathub.org/apps/details/com.github.finefindus.eyedropper) or download the latest release from the [release tab](https://github.com/FineFindus/eyedropper/releases).
 
 ### Inofficial
 
-> :warning: **These installtion methods are not recommended**: Installing them may result in bugs or unexpected behaviour.
+> :warning: **These installation methods are not recommended**: Installing them may result in bugs or unexpected behavior.
 
 #### Nightly Flatpak
 
