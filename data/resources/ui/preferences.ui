@@ -29,91 +29,15 @@
                     </object>
                 </child>
                 <child>
-                    <object class="AdwPreferencesGroup">
+                    <object class="AdwPreferencesGroup" id="format_group">
                         <property name="title" translatable="yes">Color Formats</property>
                         <property name="description" translatable="yes">Choose which formats will be visible</property>
                         <child>
-                            <object class="AdwActionRow">
-                                <property name="title" translatable="yes">Hex Code</property>
-                                <property name="subtitle" translatable="no" context="Example of a hex formatted string">#2E3440FF</property>
-                                <property name="activatable-widget">hex_model_switch</property>
-                                <child>
-                                    <object class="GtkSwitch" id="hex_model_switch">
-                                        <property name="valign">center</property>
-                                    </object>
-                                </child>
-                            </object>
-                        </child>
-                        <child>
-                            <object class="AdwActionRow">
-                                <property name="title" translatable="yes">RGB</property>
-                                <property name="subtitle" translatable="no" context="Example of a RGB formatted string">rgb(46, 52, 64)</property>
-                                <property name="activatable-widget">rgb_model_switch</property>
-                                <child>
-                                    <object class="GtkSwitch" id="rgb_model_switch">
-                                        <property name="valign">center</property>
-                                    </object>
-                                </child>
-                            </object>
-                        </child>
-                        <child>
-                            <object class="AdwActionRow">
-                                <property name="title" translatable="yes">HSL</property>
-                                <property name="subtitle" translatable="no" context="Example of a HSL formatted string">hsl(220, 16%, 22%)</property>
-                                <property name="activatable-widget">hsl_model_switch</property>
-                                <child>
-                                    <object class="GtkSwitch" id="hsl_model_switch">
-                                        <property name="valign">center</property>
-                                    </object>
-                                </child>
-                            </object>
-                        </child>
-                        <child>
-                            <object class="AdwActionRow">
-                                <property name="title" translatable="yes">HSV</property>
-                                <property name="subtitle" translatable="no" context="Example of a HSV formatted string">hsv(220, 28%, 25%)</property>
-                                <property name="activatable-widget">hsv_model_switch</property>
-                                <child>
-                                    <object class="GtkSwitch" id="hsv_model_switch">
-                                        <property name="valign">center</property>
-                                    </object>
-                                </child>
-                            </object>
-                        </child>
-                        <child>
-                            <object class="AdwActionRow">
-                                <property name="title" translatable="yes">CMYK</property>
-                                <property name="subtitle" translatable="no" context="Example of a CMYK formatted string">cmyk(28%, 19%, 0%, 75%)</property>
-                                <property name="activatable-widget">cmyk_model_switch</property>
-                                <child>
-                                    <object class="GtkSwitch" id="cmyk_model_switch">
-                                        <property name="valign">center</property>
-                                    </object>
-                                </child>
-                            </object>
-                        </child>
-                        <child>
-                            <object class="AdwActionRow">
-                                <property name="title" translatable="yes">XYZ</property>
-                                <property name="subtitle" translatable="no" context="Example of a XYZ formatted string">XYZ(3.280, 3.407, 5.335)</property>
-                                <property name="activatable-widget">xyz_model_switch</property>
-                                <child>
-                                    <object class="GtkSwitch" id="xyz_model_switch">
-                                        <property name="valign">center</property>
-                                    </object>
-                                </child>
-                            </object>
-                        </child>
-                        <child>
-                            <object class="AdwActionRow">
-                                <property name="title" translatable="yes">CIELAB</property>
-                                <property name="subtitle" translatable="no" context="Example of a CIELAB formatted string">CIELAB(81.06, -42.15, 49.51)</property>
-                                <property name="activatable-widget">cie_lab_model_switch</property>
-                                <child>
-                                    <object class="GtkSwitch" id="cie_lab_model_switch">
-                                        <property name="valign">center</property>
-                                    </object>
-                                </child>
+                            <object class="GtkListBox" id="format_list">
+                                <property name="selection-mode">none</property>
+                                <style>
+                                    <class name="boxed-list" />
+                                </style>
                             </object>
                         </child>
                     </object>
