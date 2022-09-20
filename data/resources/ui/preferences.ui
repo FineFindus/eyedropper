@@ -34,7 +34,7 @@
                         <property name="description" translatable="yes">Choose which formats will be visible. Rearrange them using drag and drop.</property>
                         <child type="header-suffix">
                             <object class="GtkButton">
-                                <property name="icon-name">entry-clear-symbolic</property>
+                                <property name="icon-name">edit-clear-symbolic</property>
                                 <property name="tooltip-text" translatable="true" context="Tooltip of the button to reset the format order">Reset Order</property>
                                 <signal name="clicked" handler="on_reset_pressed" swapped="true" />
                                 <style>
