@@ -16,7 +16,7 @@
     <key name="format-order" type="as">
       <default>[ 'hex', 'rgb', 'hsl', 'hsv', 'cmyk', 'xyz', 'cielab' ]</default>
       <summary>Order of the formats</summary>
-      <description>In which order the formats should be displayed. Only possible values should the formats.</description>
+      <description>In which order the formats should be displayed. Only possible values should the format names.</description>
     </key>
     <key name="alpha-position" type="i">
       <default>0</default>

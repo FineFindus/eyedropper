@@ -37,6 +37,7 @@
             </property>
             <child>
               <object class="GtkButton" id="color_picker_button">
+                <property name="tooltip-text" translatable="true" context="Tooltip of the colorpicker button">Pick a Color</property>
                 <property name="icon-name">color-select-symbolic</property>
                 <signal name="clicked" handler="on_color_picker_button_clicked" swapped="true" />
               </object>
