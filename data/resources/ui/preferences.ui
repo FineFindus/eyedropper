@@ -29,9 +29,18 @@
                     </object>
                 </child>
                 <child>
-                    <object class="AdwPreferencesGroup" id="format_group">
+                    <object class="AdwPreferencesGroup">
                         <property name="title" translatable="yes">Color Formats</property>
                         <property name="description" translatable="yes">Choose which formats will be visible</property>
+                        <child type="header-suffix">
+                            <object class="GtkButton">
+                                <property name="icon-name">entry-clear-symbolic</property>
+                                <signal name="clicked" handler="on_reset_pressed" swapped="true" />
+                                <style>
+                                    <class name="flat" />
+                                </style>
+                            </object>
+                        </child>
                         <child>
                             <object class="GtkListBox" id="format_list">
                                 <property name="selection-mode">none</property>

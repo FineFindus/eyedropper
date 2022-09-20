@@ -30,8 +30,14 @@ mod imp {
         #[template_child()]
         pub format_list: TemplateChild<gtk::ListBox>,
         pub formats: RefCell<Option<gio::ListStore>>,
-        #[template_child()]
-        pub format_group: TemplateChild<adw::PreferencesGroup>,
+    }
+
+    #[gtk::template_callbacks]
+    impl PreferencesWindow {
+        #[template_callback]
+        fn on_reset_pressed(&self, _button: &gtk::Button) {
+            self.instance().reset_order();
+        }
     }
 
     // The central trait for subclassing a GObject
@@ -46,13 +52,13 @@ mod imp {
             Self {
                 settings: gtk::gio::Settings::new(config::APP_ID),
                 format_list: TemplateChild::default(),
-                format_group: TemplateChild::default(),
                 formats: Default::default(),
             }
         }
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
+            klass.bind_template_callbacks();
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -103,6 +109,14 @@ impl PreferencesWindow {
             .filter_map(Cast::downcast_ref::<ColorFormatObject>)
             .map(|format| format.identifier())
             .collect()
+    }
+
+    /// Resets the current order by resetting the setting and repopulating the list.
+    fn reset_order(&self) {
+        log::debug!("Resetting order");
+        self.formats().remove_all();
+        self.imp().settings.reset("format-order");
+        self.add_options();
     }
 
     /// Assure that history is only visible
@@ -190,6 +204,10 @@ impl PreferencesWindow {
         drop_target.connect_drop(glib::clone!(@weak self as widget, @weak item => @default-return false, move |_, value, _, _| {
 
             let value = value.get::<ColorFormatObject>().expect("Failed to get index value");
+
+            if item == value {
+                return  false;
+            }
 
             //remove dragged row
             match widget.formats().find(&value) {
