@@ -27,11 +27,13 @@ mod imp {
         #[template_child]
         pub headerbar: TemplateChild<adw::HeaderBar>,
         #[template_child]
+        pub toast_overlay: TemplateChild<adw::ToastOverlay>,
+        #[template_child]
+        pub format_box: TemplateChild<gtk::Box>,
+        #[template_child]
         pub color_button: TemplateChild<gtk::ColorButton>,
         #[template_child]
         pub color_picker_button: TemplateChild<gtk::Button>,
-        #[template_child]
-        pub toast_overlay: TemplateChild<adw::ToastOverlay>,
         #[template_child]
         pub hex_entry: TemplateChild<widgets::hex_entry::HexEntry>,
         #[template_child]
@@ -60,6 +62,7 @@ mod imp {
                 color_button: TemplateChild::default(),
                 color_picker_button: TemplateChild::default(),
                 toast_overlay: TemplateChild::default(),
+                format_box: TemplateChild::default(),
                 hex_entry: TemplateChild::default(),
                 rgb_entry: TemplateChild::default(),
                 hsl_entry: TemplateChild::default(),
@@ -114,6 +117,8 @@ mod imp {
             obj.setup_history();
             obj.load_settings();
             obj.setup_callbacks();
+
+            obj.set_order();
         }
     }
 
@@ -186,7 +191,7 @@ impl AppWindow {
                     .borrow()
                     .generate_palette(10, 0.1)
                     .into_iter()
-                    .map(|color| gtk::gdk::RGBA::from(color))
+                    .map(gtk::gdk::RGBA::from)
                     .collect::<Vec<gtk::gdk::RGBA>>(),
             ),
         );
@@ -290,6 +295,15 @@ impl AppWindow {
         let imp = self.imp();
         let settings = &imp.settings;
 
+        //update order
+        settings.connect_changed(
+            Some("format-order"),
+            glib::clone!(@weak self as window => move |_, _| {
+                log::debug!("Updating format order");
+                window.set_order();
+            }),
+        );
+
         //update hex entry with new alpha position
         settings.connect_changed(
             Some("alpha-position"),
@@ -386,6 +400,49 @@ impl AppWindow {
         );
     }
 
+    /// Insert the formats in the order in which they are saved in the settings.
+    fn set_order(&self) {
+        let imp = self.imp();
+        let format_box = &imp.format_box;
+        //clear box
+
+        //remove all children that are color model entries
+        format_box
+            .observe_children()
+            .snapshot()
+            .iter()
+            .filter_map(Cast::downcast_ref::<ColorModelEntry>)
+            .for_each(|entry| format_box.remove(entry));
+
+        //remove hex entry
+        format_box.remove(&imp.hex_entry.get());
+
+        //parse current order
+        let order = imp.settings.get::<Vec<String>>("format-order");
+
+        //insert items in order
+        for item in order {
+            let child = match item.to_lowercase().as_str() {
+                "hex" => {
+                    //append the hex entry directly, as it is not a ColorModelEntry
+                    format_box.append(&imp.hex_entry.get());
+                    continue;
+                }
+                "rgb" => &imp.rgb_entry,
+                "hsl" => &imp.hsl_entry,
+                "hsv" => &imp.hsv_entry,
+                "cmyk" => &imp.cmyk_entry,
+                "xyz" => &imp.xyz_entry,
+                "cielab" => &imp.cie_lab_entry,
+                _ => {
+                    log::error!("Failed to find format: {}", item);
+                    continue;
+                }
+            };
+
+            format_box.append(&child.get());
+        }
+    }
     /// Pick a color from the desktop using [ashpd].
     ///
     /// It will show a toast when failing to pick a color, for example when the user cancels the action.
@@ -430,7 +487,7 @@ impl AppWindow {
             let colors = color
                 .generate_palette(10, 0.1)
                 .into_iter()
-                .map(|color| gtk::gdk::RGBA::from(color))
+                .map(gtk::gdk::RGBA::from)
                 .collect::<Vec<gtk::gdk::RGBA>>();
 
             //add new palettes
@@ -448,7 +505,7 @@ impl AppWindow {
                         .color()
                         .generate_palette(10, 0.1)
                         .into_iter()
-                        .map(|color| gtk::gdk::RGBA::from(color))
+                        .map(gtk::gdk::RGBA::from)
                         .collect::<Vec<gtk::gdk::RGBA>>();
 
                     //add new palettes

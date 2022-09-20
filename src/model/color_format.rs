@@ -11,22 +11,12 @@ mod imp {
     use once_cell::sync::Lazy;
 
     // Object holding the state
+    #[derive(Debug, Default)]
     pub struct ColorFormatObject {
         pub identifier: RefCell<String>,
         pub label: RefCell<String>,
         pub example: RefCell<String>,
         pub settings_name: RefCell<String>,
-    }
-
-    impl Default for ColorFormatObject {
-        fn default() -> Self {
-            Self {
-                identifier: Default::default(),
-                label: Default::default(),
-                example: Default::default(),
-                settings_name: Default::default(),
-            }
-        }
     }
 
     // The central trait for subclassing a GObject

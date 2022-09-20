@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Palettes, consisting of darker shades and lighter tints, are now generated from the currently picked color as well as the previous 3
 - The app has been translated into French by [rene-coty](https://github.com/rene-coty)
 - A German translation has been added
+- Change the order of the color formats by dragging and dropping them in the settings
 
 ## [0.2.0] - 2022-09-08
 

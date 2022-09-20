@@ -55,7 +55,7 @@
               <object class="GtkBox">
                 <property name="orientation">horizontal</property>
                 <child>
-                  <object class="GtkBox">
+                  <object class="GtkBox" id="format_box">
                     <property name="orientation">vertical</property>
                     <property name="halign">fill</property>
                     <property name="vexpand">False</property>

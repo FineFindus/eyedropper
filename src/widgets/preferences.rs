@@ -168,7 +168,7 @@ impl PreferencesWindow {
 
         let row = adw::ActionRow::builder()
             .title(&item.label())
-            .subtitle(&item.example().to_string())
+            .subtitle(&item.example())
             .activatable_widget(&switch)
             .build();
 
@@ -248,57 +248,57 @@ impl PreferencesWindow {
 
         for item in order {
             let format = match item.to_lowercase().as_str() {
-                "hex" => Some(ColorFormatObject::new(
+                "hex" => ColorFormatObject::new(
                     item,
                     gettext("Hex"),
                     color.to_hex_string(crate::model::color::AlphaPosition::None),
                     "show-hex-model",
-                )),
-                "rgb" => Some(ColorFormatObject::new(
+                ),
+                "rgb" => ColorFormatObject::new(
                     item,
                     gettext("RGB"),
                     format!("rgb({}, {}, {})", color.red, color.green, color.blue),
                     "show-rgb-model",
-                )),
+                ),
                 "hsl" => {
                     let hsl = color.to_hsl();
-                    Some(ColorFormatObject::new(
+                    ColorFormatObject::new(
                         item,
                         gettext("HSL"),
                         format!("hsl({}, {}%, {}%)", hsl.0, hsl.1, hsl.2),
                         "show-hsl-model",
-                    ))
+                    )
                 }
                 "hsv" => {
                     let hsv = color.to_hsv();
-                    Some(ColorFormatObject::new(
+                    ColorFormatObject::new(
                         item,
                         gettext("HSV"),
                         format!("hsv({}, {}%, {}%)", hsv.0, hsv.1, hsv.2),
                         "show-hsv-model",
-                    ))
+                    )
                 }
                 "cmyk" => {
                     let cmyk = color.to_cmyk();
-                    Some(ColorFormatObject::new(
+                    ColorFormatObject::new(
                         item,
                         gettext("CMYK"),
                         format!("cmyk({}%, {}%, {}%, {}%)", cmyk.0, cmyk.1, cmyk.2, cmyk.3),
                         "show-cmyk-model",
-                    ))
+                    )
                 }
                 "xyz" => {
                     let xyz = color.to_xyz();
-                    Some(ColorFormatObject::new(
+                    ColorFormatObject::new(
                         item,
                         gettext("XYZ"),
                         format!("XYZ({:.3}, {:.3}, {:.3})", xyz.0, xyz.1, xyz.2),
                         "show-xyz-model",
-                    ))
+                    )
                 }
                 "cielab" => {
                     let cie_lab = color.to_cie_lab();
-                    Some(ColorFormatObject::new(
+                    ColorFormatObject::new(
                         item,
                         gettext("CIELAB"),
                         format!(
@@ -306,12 +306,15 @@ impl PreferencesWindow {
                             cie_lab.0, cie_lab.1, cie_lab.2
                         ),
                         "show-cie-lab-model",
-                    ))
+                    )
                 }
-                _ => None,
+                _ => {
+                    log::error!("Failed to find format: {item}");
+                    continue;
+                }
             };
 
-            self.formats().append(&format.unwrap());
+            self.formats().append(&format);
         }
     }
 }
