@@ -203,7 +203,8 @@ impl PreferencesWindow {
                 if let Some(index) = window.formats().find(&item) {
                     log::debug!("Moving {} down", item.label());
                     window.formats().remove(index);
-                    window.formats().insert(index + 1, &item);
+                    //index should not be larger than the largest index
+                    window.formats().insert((index + 1).min(window.formats().n_items()), &item);
                 }
             }),
         );
