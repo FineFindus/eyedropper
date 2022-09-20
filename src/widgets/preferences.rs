@@ -3,6 +3,8 @@ use gettextrs::gettext;
 use gtk::gdk;
 use gtk::gio;
 use gtk::gio::ListStore;
+use gtk::gio::Menu;
+use gtk::gio::MenuItem;
 use gtk::glib;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
@@ -173,6 +175,55 @@ impl PreferencesWindow {
             .build();
 
         row.add_suffix(&switch);
+        row.add_suffix(
+            &gtk::Separator::builder()
+                .orientation(gtk::Orientation::Vertical)
+                .margin_bottom(12)
+                .margin_top(12)
+                .build(),
+        );
+
+        //create actions for accessability reasons
+        let actions = gtk::gio::SimpleActionGroup::new();
+        let up_action = gio::SimpleAction::new("move-up", None);
+        up_action.connect_activate(
+            glib::clone!(@weak self as window, @weak item => move |_, _| {
+                if let Some(index) = window.formats().find(&item) {
+                    log::debug!("Moving {} up", item.label());
+                    window.formats().remove(index);
+                    window.formats().insert(index.saturating_sub(1), &item);
+                }
+            }),
+        );
+        actions.add_action(&up_action);
+
+        let down_action = gio::SimpleAction::new("move-down", None);
+        down_action.connect_activate(
+            glib::clone!(@weak self as window, @weak item => move |_, _| {
+                if let Some(index) = window.formats().find(&item) {
+                    log::debug!("Moving {} down", item.label());
+                    window.formats().remove(index);
+                    window.formats().insert(index + 1, &item);
+                }
+            }),
+        );
+        actions.add_action(&down_action);
+
+        let menu = Menu::new();
+        let up_item = MenuItem::new(Some(&gettext("Move Up")), Some("row.move-up"));
+        menu.append_item(&up_item);
+        let down_item = MenuItem::new(Some(&gettext("Move Down")), Some("row.move-down"));
+        menu.append_item(&down_item);
+
+        let menu_button = gtk::MenuButton::builder()
+            .valign(gtk::Align::Center)
+            .icon_name("view-more-symbolic")
+            .menu_model(&menu)
+            .build();
+        menu_button.add_css_class("flat");
+        menu_button.insert_action_group("row", Some(&actions));
+
+        row.add_suffix(&menu_button);
 
         //drag handle
         let handle = gtk::Image::from_icon_name("list-drag-handle-symbolic");
