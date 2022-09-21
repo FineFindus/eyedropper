@@ -8,20 +8,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gtk/-/issues/\n"
-"POT-Creation-Date: 2022-09-17 18:17+0200\n"
-"PO-Revision-Date: 2022-09-17 19:31+0200\n"
-"Last-Translator: Irénée THIRION <irenee.thirion@e.email>\n"
+"POT-Creation-Date: 2022-09-21 16:06+0200\n"
+"PO-Revision-Date: 2022-09-21 17:24+0200\n"
+"Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
 "Language-Team: French <gnomefr@traduc.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
-"X-Generator: Gtranslator 42.0\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:35
+#: data/resources/ui/window.ui:35 src/main.rs:24
 msgid "Eyedropper"
 msgstr "Pipette"
 
@@ -45,46 +45,49 @@ msgstr "Un sélecteur et éditeur de couleurs facile à utiliser"
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
 msgid ""
 "Pick any color from your screen and view it in different formats. Change the "
-"picked color or go back to a previously picked color from the history list."
+"picked color or go back to a previously picked color from the history list. "
+"Generate a list of different shades fromt he picked color."
 msgstr ""
 "Choisissez une couleur de votre écran et visualisez-la dans différents "
 "formats. Changez la couleur sélectionnée ou retournez à une couleur "
-"précédemment sélectionnée depuis l’historique."
+"précédemment sélectionnée depuis l’historique. Générez une liste de "
+"différentes nuances à partir de la couleur choisie."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
 msgid "Available Formats:"
-msgstr "Formats disponibles"
+msgstr "Formats disponibles :"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:16
 msgid "Hex"
 msgstr "Hexadécimal"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
-#: data/resources/ui/preferences.ui:49
+#: src/widgets/preferences.rs:311
 msgid "RGB"
 msgstr "RGB"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:18
-#: data/resources/ui/preferences.ui:61
+#: src/widgets/preferences.rs:319
 msgid "HSL"
 msgstr "HSL"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
-#: data/resources/ui/preferences.ui:73
+#: src/widgets/preferences.rs:328
 msgid "HSV"
 msgstr "HSV"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
+#: src/widgets/preferences.rs:337
 msgid "CMYK"
 msgstr "CMYK"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
-#: data/resources/ui/preferences.ui:97
+#: src/widgets/preferences.rs:346
 msgid "XYZ"
 msgstr "XYZ"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
-#: data/resources/ui/preferences.ui:109
+#: src/widgets/preferences.rs:355
 msgid "CIELAB"
 msgstr "CIELAB"
 
@@ -97,6 +100,9 @@ msgid "Main window light"
 msgstr "Fenêtre principale claire"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:36
+msgid "Customized color formatting in dark mode"
+msgstr "Formatage personnalisé des couleurs en mode sombre"
+
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:40
 msgid "Customized color formatting"
 msgstr "Formatage personnalisé des couleurs"
@@ -105,20 +111,30 @@ msgstr "Formatage personnalisé des couleurs"
 msgid "FineFindus"
 msgstr "FineFindus"
 
+#: data/resources/ui/color-model-entry.ui:22
+msgctxt "Tooltip of the copy button for format rows"
+msgid "Copy Format"
+msgstr "Copier le format"
+
+#: data/resources/ui/hex-entry.ui:22
+msgctxt "Tooltip of the copy button for the hex format"
+msgid "Copy Format"
+msgstr "Copier le format"
+
 #: data/resources/ui/preferences.ui:10
 msgid "General"
 msgstr "Général"
 
 #: data/resources/ui/preferences.ui:13
-msgid "Format"
-msgstr "Format"
+msgid "Formatting"
+msgstr "Formatage"
 
 #: data/resources/ui/preferences.ui:16
 msgid "Alpha-Value-Position"
 msgstr "Position de la valeur alpha"
 
 #: data/resources/ui/preferences.ui:17
-msgid "Where the Alpahvalue is positioned in the Hexstring"
+msgid "Where the Alphavalue is positioned in the Hexstring"
 msgstr "Position de la valeur alpha dans la chaîne hexadécimale"
 
 #: data/resources/ui/preferences.ui:21
@@ -138,16 +154,13 @@ msgid "Color Formats"
 msgstr "Formats de couleur"
 
 #: data/resources/ui/preferences.ui:34
-msgid "Choose which formats will be visible"
-msgstr "Choisissez quels formats seront visibles"
+msgid "Customize the visible formats and in which order they are displayed."
+msgstr "Personnalisez les formats visibles et leur ordre d’affichage."
 
-#: data/resources/ui/preferences.ui:37
-msgid "Hex Code"
-msgstr "Code hexadécimal"
-
-#: data/resources/ui/preferences.ui:85
-msgid "CMKY"
-msgstr "CMYK"
+#: data/resources/ui/preferences.ui:38
+msgctxt "Tooltip of the button to reset the format order"
+msgid "Reset Order"
+msgstr "Réinitialiser l’ordre"
 
 #: data/resources/ui/shortcuts.ui:11
 msgctxt "shortcut window"
@@ -200,7 +213,34 @@ msgstr "Raccourcis _clavier"
 msgid "_About Eyedropper"
 msgstr "À _propos de Pipette"
 
+#: data/resources/ui/window.ui:40
+msgctxt "Tooltip of the colorpicker button"
+msgid "Pick a Color"
+msgstr "Choisir une couleur"
+
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/application.rs:167
 msgid "translator-credits"
 msgstr "Irénée Thirion"
+
+#: src/widgets/preferences.rs:214
+msgid "Move Up"
+msgstr "Déplacer vers le haut"
+
+#: src/widgets/preferences.rs:216
+msgid "Move Down"
+msgstr "Déplacer vers le bas"
+
+#: src/widgets/preferences.rs:305
+msgid "Hex-Code"
+msgstr "Code hexadécimal"
+
+#: src/window.rs:460
+msgid "Failed to pick a color"
+msgstr "Échec de la sélection de la couleur"
+
+#~ msgid "Choose which formats will be visible"
+#~ msgstr "Choisissez quels formats seront visibles"
+
+#~ msgid "CMKY"
+#~ msgstr "CMYK"
