@@ -9,7 +9,7 @@
   <description>
     <p>
       Pick any color from your screen and view it in different formats. Change the picked color or go back to
-      a previously picked color from the history list.
+      a previously picked color from the history list. Generate a list of different shades fromt he picked color.
     </p>
     <p>Available Formats:</p>
     <ul>
@@ -32,11 +32,11 @@
       <caption>Main window light</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/FineFindus/eyedropper/master/data/resources/screenshots/customized_formats_dark1.png</image>
-      <caption>Customized color formatting</caption>
+      <image>https://raw.githubusercontent.com/FineFindus/eyedropper/master/data/resources/screenshots/customized_formats_dark.png</image>
+      <caption>Customized color formatting in dark mode</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/FineFindus/eyedropper/master/data/resources/screenshots/customized_formats_dark2.png</image>
+      <image>https://raw.githubusercontent.com/FineFindus/eyedropper/master/data/resources/screenshots/customized_formats_light.png</image>
       <caption>Customized color formatting</caption>
     </screenshot>
   </screenshots>

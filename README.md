@@ -14,9 +14,11 @@ An easy-to-use color picker and formatter.
   
 ![Light UI](data/resources/screenshots/main_window_ui_light.png)
 
-![Customize the shown formats](data/resources/screenshots/customized_formats_dark1.png)
+![Customize the shown formats (Dark UI)](data/resources/screenshots/customized_formats_dark.png)
 
-![Customize the shown formats](data/resources/screenshots/customized_formats_dark2.png)
+![Customize the shown formats (Light UI)](data/resources/screenshots/customized_formats_light.png)
+
+![Preferences](data/resources/screenshots/preference_window_dark.png)
 
 </details>
 
@@ -26,7 +28,8 @@ An easy-to-use color picker and formatter.
 - Edit a color using hex values
 - Parse RGBA/ARGB Colors
 - View colors in RGB, HSV, HSL, CMYK, XYZ and CIE-Lab formats
-- Customize which and in which order the formats appear
+- Customize which formats appear as well as their order
+- Generate a palette of different shades
 
 ### Future Features & Roadmap
 

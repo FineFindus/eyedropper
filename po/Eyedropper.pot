@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gtk/-/issues/\n"
-"POT-Creation-Date: 2022-09-21 15:30+0200\n"
+"POT-Creation-Date: 2022-09-21 15:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,7 +43,8 @@ msgstr ""
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
 msgid ""
 "Pick any color from your screen and view it in different formats. Change the "
-"picked color or go back to a previously picked color from the history list."
+"picked color or go back to a previously picked color from the history list. "
+"Generate a list of different shades fromt he picked color."
 msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
@@ -93,6 +94,9 @@ msgid "Main window light"
 msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:36
+msgid "Customized color formatting in dark mode"
+msgstr ""
+
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:40
 msgid "Customized color formatting"
 msgstr ""
@@ -205,6 +209,6 @@ msgstr ""
 msgid "Hex-Code"
 msgstr ""
 
-#: src/window.rs:459
+#: src/window.rs:460
 msgid "Failed to pick a color"
 msgstr ""

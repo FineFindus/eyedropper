@@ -109,6 +109,7 @@ mod imp {
 
             // Devel Profile
             if PROFILE == "Devel" {
+                log::debug!("Running in DEVEL mode");
                 obj.add_css_class("devel");
             }
 
