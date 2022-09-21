@@ -35,7 +35,7 @@
                         <child type="header-suffix">
                             <object class="GtkButton">
                                 <property name="icon-name">edit-clear-symbolic</property>
-                                <property name="tooltip-text" translatable="true" context="Tooltip of the button to reset the format order">Reset Order</property>
+                                <property name="tooltip-text" translatable="yes" context="Tooltip of the button to reset the format order">Reset Order</property>
                                 <signal name="clicked" handler="on_reset_pressed" swapped="true" />
                                 <style>
                                     <class name="flat" />

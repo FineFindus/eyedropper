@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gtk/-/issues/\n"
-"POT-Creation-Date: 2022-09-21 15:56+0200\n"
+"POT-Creation-Date: 2022-09-21 16:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -105,6 +105,16 @@ msgstr ""
 msgid "FineFindus"
 msgstr ""
 
+#: data/resources/ui/color-model-entry.ui:22
+msgctxt "Tooltip of the copy button for format rows"
+msgid "Copy Format"
+msgstr ""
+
+#: data/resources/ui/hex-entry.ui:22
+msgctxt "Tooltip of the copy button for the hex format"
+msgid "Copy Format"
+msgstr ""
+
 #: data/resources/ui/preferences.ui:10
 msgid "General"
 msgstr ""
@@ -139,6 +149,11 @@ msgstr ""
 
 #: data/resources/ui/preferences.ui:34
 msgid "Customize the visible formats and in which order they are displayed."
+msgstr ""
+
+#: data/resources/ui/preferences.ui:38
+msgctxt "Tooltip of the button to reset the format order"
+msgid "Reset Order"
 msgstr ""
 
 #: data/resources/ui/shortcuts.ui:11
@@ -190,6 +205,11 @@ msgstr ""
 
 #: data/resources/ui/window.ui:20
 msgid "_About Eyedropper"
+msgstr ""
+
+#: data/resources/ui/window.ui:40
+msgctxt "Tooltip of the colorpicker button"
+msgid "Pick a Color"
 msgstr ""
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
