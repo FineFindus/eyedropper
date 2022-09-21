@@ -5,7 +5,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gtk/-/issues/\n"
 "POT-Creation-Date: 2022-09-21 16:06+0200\n"
 "PO-Revision-Date: 2022-09-21 16:09+0200\n"
@@ -49,7 +49,7 @@ msgid ""
 msgstr ""
 "Wähle eine Farbe vom Bildschirm und betrachte die verschiedenen Farbformate. "
 "Ändere die ausgewählte Farbe, oder wähle eine vorherige ausgewählte Farbe "
-"aus dem Verlauf. Generiere verschiedene Farbtöne von der ausgewählten Farbe."
+"aus dem Verlauf. Generiere verschiedene Farbtöne basierend auf der ausgewählten Farbe."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
 msgid "Available Formats:"
