@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The app has been translated into French by [rene-coty](https://github.com/rene-coty)
 - A German translation has been added
 - Change the order of the color formats by dragging and dropping them in the settings
+- Adjusted some strings to be easier to understand
 
 ## [0.2.0] - 2022-09-08
 

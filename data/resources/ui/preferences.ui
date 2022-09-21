@@ -31,7 +31,7 @@
                 <child>
                     <object class="AdwPreferencesGroup">
                         <property name="title" translatable="yes">Color Formats</property>
-                        <property name="description" translatable="yes">Choose which formats will be visible. Rearrange them using drag and drop.</property>
+                        <property name="description" translatable="yes">Customize the visible formats and in which order they are displayed.</property>
                         <child type="header-suffix">
                             <object class="GtkButton">
                                 <property name="icon-name">edit-clear-symbolic</property>

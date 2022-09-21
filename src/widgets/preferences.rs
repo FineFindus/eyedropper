@@ -302,7 +302,7 @@ impl PreferencesWindow {
             let format = match item.to_lowercase().as_str() {
                 "hex" => ColorFormatObject::new(
                     item,
-                    gettext("Hex"),
+                    gettext("Hex-Code"),
                     color.to_hex_string(crate::model::color::AlphaPosition::None),
                     "show-hex-model",
                 ),
