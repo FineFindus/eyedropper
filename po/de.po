@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gtk/-/issues/\n"
-"POT-Creation-Date: 2022-09-17 22:01+0200\n"
-"PO-Revision-Date: 2022-09-18 10:45+0200\n"
+"POT-Creation-Date: 2022-09-21 16:06+0200\n"
+"PO-Revision-Date: 2022-09-21 16:09+0200\n"
 "Last-Translator: FineFindus <FineFindusGH@gmail.com>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:35
+#: data/resources/ui/window.ui:35 src/main.rs:24
 msgid "Eyedropper"
 msgstr "Eyedropper"
 
@@ -44,11 +44,12 @@ msgstr "Ein benutzerfreundlicher Farbwähler and Editor"
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
 msgid ""
 "Pick any color from your screen and view it in different formats. Change the "
-"picked color or go back to a previously picked color from the history list."
+"picked color or go back to a previously picked color from the history list. "
+"Generate a list of different shades fromt he picked color."
 msgstr ""
 "Wähle eine Farbe vom Bildschirm und betrachte die verschiedenen Farbformate. "
 "Ändere die ausgewählte Farbe, oder wähle eine vorherige ausgewählte Farbe "
-"aus dem Verlauf."
+"aus dem Verlauf. Generiere verschiedene Farbtöne von der ausgewählten Farbe."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
 msgid "Available Formats:"
@@ -59,44 +60,47 @@ msgid "Hex"
 msgstr "Hex"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
-#: data/resources/ui/preferences.ui:49
+#: src/widgets/preferences.rs:311
 msgid "RGB"
 msgstr "RGB"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:18
-#: data/resources/ui/preferences.ui:61
+#: src/widgets/preferences.rs:319
 msgid "HSL"
 msgstr "HSL"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
-#: data/resources/ui/preferences.ui:73
+#: src/widgets/preferences.rs:328
 msgid "HSV"
 msgstr "HSV"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
-#: data/resources/ui/preferences.ui:85
+#: src/widgets/preferences.rs:337
 msgid "CMYK"
 msgstr "CMYK"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
-#: data/resources/ui/preferences.ui:97
+#: src/widgets/preferences.rs:346
 msgid "XYZ"
 msgstr "XYZ"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
-#: data/resources/ui/preferences.ui:109
+#: src/widgets/preferences.rs:355
 msgid "CIELAB"
 msgstr "CIELAB"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:28
 msgid "Main window dark"
-msgstr "Hauptfenster dunkel"
+msgstr "Hauptfenster im dunklen Modus"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:32
 msgid "Main window light"
-msgstr "Hauptfenster hell"
+msgstr "Hauptfenster im hellen Modus"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:36
+msgid "Customized color formatting in dark mode"
+msgstr "Benutzerdefinierte Farbformate im dunklen Modus"
+
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:40
 msgid "Customized color formatting"
 msgstr "Benutzerdefiniertes Farbformate"
@@ -105,13 +109,23 @@ msgstr "Benutzerdefiniertes Farbformate"
 msgid "FineFindus"
 msgstr "FineFindus"
 
+#: data/resources/ui/color-model-entry.ui:22
+msgctxt "Tooltip of the copy button for format rows"
+msgid "Copy Format"
+msgstr "Format kopieren"
+
+#: data/resources/ui/hex-entry.ui:22
+msgctxt "Tooltip of the copy button for the hex format"
+msgid "Copy Format"
+msgstr "Format kopieren"
+
 #: data/resources/ui/preferences.ui:10
 msgid "General"
 msgstr "Allgemein"
 
 #: data/resources/ui/preferences.ui:13
-msgid "Format"
-msgstr "Format"
+msgid "Formatting"
+msgstr "Formatierung"
 
 #: data/resources/ui/preferences.ui:16
 msgid "Alpha-Value-Position"
@@ -138,12 +152,14 @@ msgid "Color Formats"
 msgstr "Farbformate"
 
 #: data/resources/ui/preferences.ui:34
-msgid "Choose which formats will be visible"
-msgstr "Wähle welche Farbformate angezeigt werden"
+msgid "Customize the visible formats and in which order they are displayed."
+msgstr ""
+"Passe an ob und in welcher Reihenfolge die Farbformate angezeigt werden."
 
-#: data/resources/ui/preferences.ui:37
-msgid "Hex Code"
-msgstr "Hexadezimal-Code"
+#: data/resources/ui/preferences.ui:38
+msgctxt "Tooltip of the button to reset the format order"
+msgid "Reset Order"
+msgstr "Reihenfolge zurücksetzen"
 
 #: data/resources/ui/shortcuts.ui:11
 msgctxt "shortcut window"
@@ -196,7 +212,31 @@ msgstr "_Tastenkombinationen"
 msgid "_About Eyedropper"
 msgstr "_Info zu Eyedropper"
 
+#: data/resources/ui/window.ui:40
+msgctxt "Tooltip of the colorpicker button"
+msgid "Pick a Color"
+msgstr "Neue Farbe auswählen"
+
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/application.rs:167
 msgid "translator-credits"
 msgstr "FineFindus <https://github.com/FineFindus>"
+
+#: src/widgets/preferences.rs:214
+msgid "Move Up"
+msgstr "Nach oben verschieben"
+
+#: src/widgets/preferences.rs:216
+msgid "Move Down"
+msgstr "Nach unten verschieben"
+
+#: src/widgets/preferences.rs:305
+msgid "Hex-Code"
+msgstr "Hexadezimal-Code"
+
+#: src/window.rs:460
+msgid "Failed to pick a color"
+msgstr "Farbauswahl fehlgeschlagen"
+
+#~ msgid "Choose which formats will be visible"
+#~ msgstr "Wähle welche Farbformate angezeigt werden"
