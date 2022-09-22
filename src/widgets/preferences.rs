@@ -30,6 +30,8 @@ mod imp {
     pub struct PreferencesWindow {
         pub settings: gtk::gio::Settings,
         #[template_child()]
+        pub alpha_pos_box: TemplateChild<adw::ComboRow>,
+        #[template_child()]
         pub format_list: TemplateChild<gtk::ListBox>,
         pub formats: RefCell<Option<gio::ListStore>>,
     }
@@ -53,6 +55,7 @@ mod imp {
         fn new() -> Self {
             Self {
                 settings: gtk::gio::Settings::new(config::APP_ID),
+                alpha_pos_box: TemplateChild::default(),
                 format_list: TemplateChild::default(),
                 formats: Default::default(),
             }
@@ -73,6 +76,7 @@ mod imp {
         fn constructed(&self, obj: &Self::Type) {
             self.parent_constructed(obj);
             obj.setup_format_list();
+            obj.setup_settings();
             obj.add_options();
         }
     }
@@ -92,6 +96,14 @@ impl PreferencesWindow {
     #[allow(clippy::new_without_default)]
     pub fn new() -> Self {
         glib::Object::new::<Self>(&[]).expect("Failed to create a PreferencesWindow")
+    }
+
+    fn setup_settings(&self) {
+        let imp = self.imp();
+
+        imp.settings
+            .bind("alpha-position", &*imp.alpha_pos_box, "selected")
+            .build();
     }
 
     /// Returns the history list store object.
