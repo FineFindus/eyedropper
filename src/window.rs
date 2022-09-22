@@ -563,14 +563,15 @@ impl AppWindow {
 
         //show a toast when copying values
         let show_toast_closure = glib::closure_local!(@watch self as window => move |_: ColorModelEntry, text: String| {
-            window.show_toast(&format!("Copied: “{}”", text));
+            //Translators: Do not replace the {}. These are used as placeholders for the copied values
+            window.show_toast(&gettext("Copied: “{}”").replace("{}", &text));
         });
 
         imp.hex_entry.connect_closure(
             "copied-color",
             false,
             glib::closure_local!(@watch self as window => move |_: HexEntry, text: String| {
-                window.show_toast(&format!("Copied: “{}”", text));
+                window.show_toast(&gettext("Copied: “{}”").replace("{}", &text));
             }),
         );
         imp.rgb_entry
