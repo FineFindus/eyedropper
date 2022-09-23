@@ -312,7 +312,26 @@ impl AppWindow {
                 log::debug!("Updating AlphaPosition");
                 let color = *window.imp().color.borrow();
                 let hex_alpha_position = AlphaPosition::from(settings.int("alpha-position") as u32);
+                //update hex to show alpha
                 window.imp().hex_entry.set_color(color.to_hex_string(hex_alpha_position));
+                //update rgb to switch to argb/rgba
+                window.imp().rgb_entry.set_color(match hex_alpha_position {
+                    AlphaPosition::None => {
+                        format!("rgb({}, {}, {})", color.red, color.green, color.blue)
+                    }
+                    AlphaPosition::Start => {
+                        format!(
+                            "argb({}, {}, {}, {})",
+                            color.alpha, color.red, color.green, color.blue
+                        )
+                    }
+                    AlphaPosition::End => {
+                        format!(
+                            "rgba({}, {}, {}, {})",
+                            color.red, color.green, color.blue, color.alpha
+                        )
+                    }
+                });
             }),
         );
 
@@ -513,16 +532,28 @@ impl AppWindow {
                     utils::add_palette(&btn, gtk::Orientation::Horizontal, 10, Some(&colors));
                 });
 
-            let hex_alpha_position =
-                AlphaPosition::from(self.imp().settings.int("alpha-position") as u32);
+            let hex_alpha_position = AlphaPosition::from(imp.settings.int("alpha-position") as u32);
 
             imp.hex_entry
                 .set_color(color.to_hex_string(hex_alpha_position));
 
-            imp.rgb_entry.set_color(format!(
-                "rgb({}, {}, {})",
-                color.red, color.green, color.blue
-            ));
+            imp.rgb_entry.set_color(match hex_alpha_position {
+                AlphaPosition::None => {
+                    format!("rgb({}, {}, {})", color.red, color.green, color.blue)
+                }
+                AlphaPosition::Start => {
+                    format!(
+                        "argb({}, {}, {}, {})",
+                        color.alpha, color.red, color.green, color.blue
+                    )
+                }
+                AlphaPosition::End => {
+                    format!(
+                        "rgba({}, {}, {}, {})",
+                        color.red, color.green, color.blue, color.alpha
+                    )
+                }
+            });
 
             let hsl = color.to_hsl();
             imp.hsl_entry
