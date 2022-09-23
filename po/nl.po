@@ -1,0 +1,247 @@
+# Dutch translations for eyedropper package.
+# Copyright (C) 2022 THE eyedropper'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the eyedropper package.
+# Automatically generated, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: eyedropper\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-23 13:53+0200\n"
+"PO-Revision-Date: 2022-09-23 14:06+0200\n"
+"Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
+"Language-Team: none\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.1.1\n"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:3
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
+#: data/resources/ui/window.ui:35 src/main.rs:24
+msgid "Eyedropper"
+msgstr "Eyedropper"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:4
+msgid "Color Picker"
+msgstr "Kleurenkiezer"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:5
+msgid "An easy-to-use color picker"
+msgstr "Een eenvoudig te gebruiken kleurenkiezer"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/com.github.finefindus.eyedropper.desktop.in.in:11
+msgid "Gnome;GTK;Color;Color Picker;Picker;Palette;"
+msgstr ""
+"Gnome;GTK;Color;Color Picker;Picker;Palette;Kleur;Kleurenkiezer;Kiezer;"
+"Selecteren;Palet;"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
+msgid "An easy-to-use color picker and editor"
+msgstr "Een eenvoudig te gebruiken kleurenkiezer en -bewerker"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
+msgid ""
+"Pick any color from your screen and view it in different formats. Change the "
+"picked color or go back to a previously picked color from the history list. "
+"Generate a list of different shades fromt he picked color."
+msgstr ""
+"Selecteer een kleur op uw scherm en bekijk het in verschillende formaten. "
+"Verander de gekozen kleur, of ga terug naar een eerder gekozen kleur via de "
+"geschiedenislijst. Genereer een lijst met verschillende tinten vanuit de "
+"gekozen kleur."
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
+msgid "Available Formats:"
+msgstr "Beschikbare formaten:"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:16
+msgid "Hex"
+msgstr "Hex"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
+#: src/widgets/preferences.rs:311
+msgid "RGB"
+msgstr "RGB"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:18
+#: src/widgets/preferences.rs:319
+msgid "HSL"
+msgstr "HSL"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
+#: src/widgets/preferences.rs:328
+msgid "HSV"
+msgstr "HSV (KVW)"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
+#: src/widgets/preferences.rs:337
+msgid "CMYK"
+msgstr "CMYK"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
+#: src/widgets/preferences.rs:346
+msgid "XYZ"
+msgstr "XYZ"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
+#: src/widgets/preferences.rs:355
+msgid "CIELAB"
+msgstr "CIELAB"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:28
+msgid "Main window dark"
+msgstr "Hoofdvenster (donker)"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:32
+msgid "Main window light"
+msgstr "Hoofdvenster (licht)"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:36
+msgid "Customized color formatting in dark mode"
+msgstr "Aangepast kleurformaat in donkere modus"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:40
+msgid "Customized color formatting"
+msgstr "Aangepast kleurformaat"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:86
+msgid "FineFindus"
+msgstr "FineFindus"
+
+#: data/resources/ui/color-model-entry.ui:22
+msgctxt "Tooltip of the copy button for format rows"
+msgid "Copy Format"
+msgstr "Formaat kopiëren"
+
+#: data/resources/ui/hex-entry.ui:22
+msgctxt "Tooltip of the copy button for the hex format"
+msgid "Copy Format"
+msgstr "Formaat kopiëren"
+
+#: data/resources/ui/preferences.ui:10
+msgid "General"
+msgstr "Algemeen"
+
+#: data/resources/ui/preferences.ui:13
+msgid "Formatting"
+msgstr "Opmaak"
+
+#: data/resources/ui/preferences.ui:16
+msgid "Alpha-Value-Position"
+msgstr "Alfawaardelocatie"
+
+#: data/resources/ui/preferences.ui:17
+msgid "Where the Alphavalue is positioned in the Hexstring"
+msgstr "Waar de alfawaarde is gepositioneerd in de hexstring"
+
+#: data/resources/ui/preferences.ui:21
+msgid "None"
+msgstr "Nergens"
+
+#: data/resources/ui/preferences.ui:22
+msgid "End"
+msgstr "Einde"
+
+#: data/resources/ui/preferences.ui:23
+msgid "Start"
+msgstr "Begin"
+
+#: data/resources/ui/preferences.ui:33
+msgid "Color Formats"
+msgstr "Kleurformaten"
+
+#: data/resources/ui/preferences.ui:34
+msgid "Customize the visible formats and in which order they are displayed."
+msgstr ""
+"Pas de zichtbare kleurformaten aan en de volgorde waarin ze zijn weergegeven."
+
+#: data/resources/ui/preferences.ui:38
+msgctxt "Tooltip of the button to reset the format order"
+msgid "Reset Order"
+msgstr "Volgorde resetten"
+
+#: data/resources/ui/shortcuts.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Algemeen"
+
+#: data/resources/ui/shortcuts.ui:14
+msgctxt "shortcut window"
+msgid "Show Preferences"
+msgstr "Voorkeuren tonen"
+
+#: data/resources/ui/shortcuts.ui:20
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Sneltoetsen tonen"
+
+#: data/resources/ui/shortcuts.ui:26
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Afsluiten"
+
+#: data/resources/ui/shortcuts.ui:34
+msgctxt "shortcut window"
+msgid "Color"
+msgstr "Kleur"
+
+#: data/resources/ui/shortcuts.ui:37
+msgctxt "shortcut window"
+msgid "Pick a new Color"
+msgstr "Nieuwe kleur kiezen"
+
+#: data/resources/ui/shortcuts.ui:43
+msgctxt "shortcut window"
+msgid "Randomize the Color"
+msgstr "Willekeurige kleur kiezen"
+
+#: data/resources/ui/window.ui:6
+msgid "_Random Color"
+msgstr "_Willekeurige kleur"
+
+#: data/resources/ui/window.ui:12
+msgid "_Preferences"
+msgstr "_Voorkeuren"
+
+#: data/resources/ui/window.ui:16
+msgid "_Keyboard Shortcuts"
+msgstr "_Sneltoetsen"
+
+#: data/resources/ui/window.ui:20
+msgid "_About Eyedropper"
+msgstr "_Over Eyedropper"
+
+#: data/resources/ui/window.ui:40
+msgctxt "Tooltip of the colorpicker button"
+msgid "Pick a Color"
+msgstr "Kleur kiezen"
+
+#. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
+#: src/application.rs:167
+msgid "translator-credits"
+msgstr "Philip Goto <philip.goto@gmail.com>"
+
+#: src/widgets/preferences.rs:214
+msgid "Move Up"
+msgstr "Naar boven verplaatsen"
+
+#: src/widgets/preferences.rs:216
+msgid "Move Down"
+msgstr "Naar beneden verplaatsen"
+
+#: src/widgets/preferences.rs:305
+msgid "Hex-Code"
+msgstr "Hex-code"
+
+#: src/window.rs:460
+msgid "Failed to pick a color"
+msgstr "Kleur kiezen mislukt"
+
+#. Translators: Do not replace the {}. These are used as placeholders for the copied values
+#: src/window.rs:567 src/window.rs:574
+msgid "Copied: “{}”"
+msgstr "‘{}’ gekopieerd"
