@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gtk/-/issues/\n"
-"POT-Creation-Date: 2022-09-21 16:06+0200\n"
-"PO-Revision-Date: 2022-09-21 17:24+0200\n"
+"POT-Creation-Date: 2022-09-22 18:09+0200\n"
+"PO-Revision-Date: 2022-09-23 15:39+0200\n"
 "Last-Translator: Irénée Thirion <irenee.thirion@e.email>\n"
 "Language-Team: French <gnomefr@traduc.org>\n"
 "Language: fr\n"
@@ -36,7 +36,9 @@ msgstr "Un sélecteur de couleurs facile à utiliser"
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
 msgid "Gnome;GTK;Color;Color Picker;Picker;Palette;"
-msgstr "Gnome;GTK;Color;Color Picker;Picker;Palette;Pipette;couleur;sélecteur;"
+msgstr ""
+"Gnome;GTK;Color;Color Picker;Picker;Palette;Pipette;couleur;sélecteur;"
+"eyedropper;"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
 msgid "An easy-to-use color picker and editor"
@@ -107,7 +109,7 @@ msgstr "Formatage personnalisé des couleurs en mode sombre"
 msgid "Customized color formatting"
 msgstr "Formatage personnalisé des couleurs"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:76
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:86
 msgid "FineFindus"
 msgstr "FineFindus"
 
@@ -238,6 +240,11 @@ msgstr "Code hexadécimal"
 #: src/window.rs:460
 msgid "Failed to pick a color"
 msgstr "Échec de la sélection de la couleur"
+
+#. Translators: Do not replace the {}. These are used as placeholders for the copied values
+#: src/window.rs:567 src/window.rs:574
+msgid "Copied: “{}”"
+msgstr "Copié : « {} »"
 
 #~ msgid "Choose which formats will be visible"
 #~ msgstr "Choisissez quels formats seront visibles"
