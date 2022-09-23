@@ -44,6 +44,9 @@
   <url type="bugtracker">https://github.com/FineFindus/eyedropper/issues</url>
   <content_rating type="oars-1.0" />
   <releases>
+    <release version="0.3.1" date="2022-09-23">
+      Fixed a few bugs and added Dutch translations. 
+    </release>
     <release version="0.3.0" date="2022-09-21">
       <p>Added:</p>
       <ul>

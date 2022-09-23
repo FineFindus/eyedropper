@@ -21,6 +21,7 @@ These steps should be performed when making a new release. Do not commit marked 
 #### Changelog
 
 - [ ] All changes were documented in the Changelog
+- [ ] All changes were documented in the Metainfo-file
 - [ ] Added the correct semantic version in the Changelog
 - [ ] Changed the changes from Unreleased to the new version in the Changelog
 
