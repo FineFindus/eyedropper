@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Translation for the "Copied" message
+- A symbolic icon
+
+## [0.3.0] - 2022-09-21
+
+### Added
+
 - Palettes, consisting of darker shades and lighter tints, are now generated from the currently picked color as well as the previous 3
 - The app has been translated into French by [rene-coty](https://github.com/rene-coty)
 - A German translation has been added
