@@ -44,7 +44,7 @@ msgstr ""
 msgid ""
 "Pick any color from your screen and view it in different formats. Change the "
 "picked color or go back to a previously picked color from the history list. "
-"Generate a list of different shades fromt he picked color."
+"Generate a list of different shades from the picked color."
 msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
