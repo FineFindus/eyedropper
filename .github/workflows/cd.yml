@@ -3,8 +3,8 @@
 name: Release
 on:
   #switch for debugging
-  push:
-    branches: [master]
+  # push:
+  #   branches: [master]
   release:
     types: [published]
 
