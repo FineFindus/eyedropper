@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: com.github.finefindus.eyedropper\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gtk/-/issues/\n"
+"Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper/issues\n"
 "POT-Creation-Date: 2022-09-22 18:09+0200\n"
 "PO-Revision-Date: 2022-09-25 22:32+0200\n"
 "Last-Translator: Sergio Varela <sergiovg01@outlook.com>\n"
