@@ -88,7 +88,7 @@ Alternatively, it is possible to build the project manually using `flatpak-build
 First install the required sdks:
 
 ```sh
-flatpak install org.gnome.Sdk//41 org.freedesktop.Sdk.Extension.rust-stable//21.08 org.gnome.Platform//41
+flatpak install org.gnome.Sdk//43 org.freedesktop.Sdk.Extension.rust-stable//22.08 org.gnome.Platform//43
 ```
 
 Then build it using:
@@ -110,3 +110,4 @@ A huge thanks to these projects who served either as an inspiration or as code e
 - [GTK Rust Template](https://gitlab.gnome.org/World/Rust/gtk-rust-template)
 - [Contrast](https://gitlab.gnome.org/World/design/contrast)
 - [Microsoft Color Picker Utility](https://docs.microsoft.com/en-us/windows/powertoys/color-picker) - Inspirations on the design
+- All the other FOSS-Gtk apps
