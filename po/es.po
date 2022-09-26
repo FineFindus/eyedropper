@@ -242,4 +242,4 @@ msgstr "No se ha podido elegir un color"
 #. Translators: Do not replace the {}. These are used as placeholders for the copied values
 #: src/window.rs:567 src/window.rs:574
 msgid "Copied: “{}”"
-msgstr "\"{}\" copiado."
+msgstr "«{}» copiado."
