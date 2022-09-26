@@ -1,239 +1,245 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Sergio Varela <sergiovg01@outlook.com>, 2022.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gtk/-/issues/\n"
+"Project-Id-Version: com.github.finefindus.eyedropper\n"
+"Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper/issues\n"
 "POT-Creation-Date: 2022-09-22 18:09+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2022-09-25 22:22+0200\n"
+"Last-Translator: Sergio Varela <sergiovg01@outlook.com>\n"
+"Language-Team: Spanish - Spain <sergiovg01@outlook.com>\n"
+"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 40.0\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
 #: data/resources/ui/window.ui:35 src/main.rs:24
 msgid "Eyedropper"
-msgstr ""
+msgstr "Eyedropper"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:4
 msgid "Color Picker"
-msgstr ""
+msgstr "Selector de color"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 msgid "An easy-to-use color picker"
-msgstr ""
+msgstr "Un selector de colores fácil de usar"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
 msgid "Gnome;GTK;Color;Color Picker;Picker;Palette;"
-msgstr ""
+msgstr "Gnome;GTK;Color;Selector de color;Selector;Paleta;"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
 msgid "An easy-to-use color picker and editor"
-msgstr ""
+msgstr "Un selector y editor de colores fácil de usar"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
 msgid ""
 "Pick any color from your screen and view it in different formats. Change the "
 "picked color or go back to a previously picked color from the history list. "
-"Generate a list of different shades from the picked color."
+"Generate a list of different shades fromt he picked color."
 msgstr ""
+"Elige cualquier color de tu pantalla y visualízalo en diferentes formatos. "
+"Cambia el color elegido o vuelve a un color previamente elegido de la lista "
+"del historial. Genera una lista de diferentes tonos a partir del color "
+"elegido."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
 msgid "Available Formats:"
-msgstr ""
+msgstr "Formatos disponibles:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:16
 msgid "Hex"
-msgstr ""
+msgstr "Hex"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
 #: src/widgets/preferences.rs:311
 msgid "RGB"
-msgstr ""
+msgstr "RGB"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:18
 #: src/widgets/preferences.rs:319
 msgid "HSL"
-msgstr ""
+msgstr "HSL"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
 #: src/widgets/preferences.rs:328
 msgid "HSV"
-msgstr ""
+msgstr "HSV"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
 #: src/widgets/preferences.rs:337
 msgid "CMYK"
-msgstr ""
+msgstr "CMYK"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
 #: src/widgets/preferences.rs:346
 msgid "XYZ"
-msgstr ""
+msgstr "XYZ"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
 #: src/widgets/preferences.rs:355
 msgid "CIELAB"
-msgstr ""
+msgstr "CIELAB"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:28
 msgid "Main window dark"
-msgstr ""
+msgstr "Ventana principal oscurecida"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:32
 msgid "Main window light"
-msgstr ""
+msgstr "Ventana principal iluminada"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:36
 msgid "Customized color formatting in dark mode"
-msgstr ""
+msgstr "Formato de color personalizado en modo oscuro"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:40
 msgid "Customized color formatting"
-msgstr ""
+msgstr "Formato de color personalizado"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:86
 msgid "FineFindus"
-msgstr ""
+msgstr "FineFindus"
 
 #: data/resources/ui/color-model-entry.ui:22
 msgctxt "Tooltip of the copy button for format rows"
 msgid "Copy Format"
-msgstr ""
+msgstr "Copiar formato"
 
 #: data/resources/ui/hex-entry.ui:22
 msgctxt "Tooltip of the copy button for the hex format"
 msgid "Copy Format"
-msgstr ""
+msgstr "Copiar formato"
 
 #: data/resources/ui/preferences.ui:10
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #: data/resources/ui/preferences.ui:13
 msgid "Formatting"
-msgstr ""
+msgstr "Formato"
 
 #: data/resources/ui/preferences.ui:16
 msgid "Alpha-Value-Position"
-msgstr ""
+msgstr "Valor-Alfa-Posición"
 
 #: data/resources/ui/preferences.ui:17
 msgid "Where the Alphavalue is positioned in the Hexstring"
-msgstr ""
+msgstr "Dónde se sitúa el valor alfabético en la cadena hexadecimal"
 
 #: data/resources/ui/preferences.ui:21
 msgid "None"
-msgstr ""
+msgstr "Ninguno"
 
 #: data/resources/ui/preferences.ui:22
 msgid "End"
-msgstr ""
+msgstr "Fin"
 
 #: data/resources/ui/preferences.ui:23
 msgid "Start"
-msgstr ""
+msgstr "Inicio"
 
 #: data/resources/ui/preferences.ui:33
 msgid "Color Formats"
-msgstr ""
+msgstr "Formatos de color"
 
 #: data/resources/ui/preferences.ui:34
 msgid "Customize the visible formats and in which order they are displayed."
-msgstr ""
+msgstr "Personaliza los formatos visibles y el orden en que se muestran."
 
 #: data/resources/ui/preferences.ui:38
 msgctxt "Tooltip of the button to reset the format order"
 msgid "Reset Order"
-msgstr ""
+msgstr "Restablecer orden"
 
 #: data/resources/ui/shortcuts.ui:11
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #: data/resources/ui/shortcuts.ui:14
 msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr ""
+msgstr "Mostrar preferencias"
 
 #: data/resources/ui/shortcuts.ui:20
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "Mostrar accesos directos"
 
 #: data/resources/ui/shortcuts.ui:26
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr ""
+msgstr "Salir"
 
 #: data/resources/ui/shortcuts.ui:34
 msgctxt "shortcut window"
 msgid "Color"
-msgstr ""
+msgstr "Color"
 
 #: data/resources/ui/shortcuts.ui:37
 msgctxt "shortcut window"
 msgid "Pick a new Color"
-msgstr ""
+msgstr "Elegir un nuevo color"
 
 #: data/resources/ui/shortcuts.ui:43
 msgctxt "shortcut window"
 msgid "Randomize the Color"
-msgstr ""
+msgstr "Aleatorizar el color"
 
 #: data/resources/ui/window.ui:6
 msgid "_Random Color"
-msgstr ""
+msgstr "_Color aleatorio"
 
 #: data/resources/ui/window.ui:12
 msgid "_Preferences"
-msgstr ""
+msgstr "_Preferencias"
 
 #: data/resources/ui/window.ui:16
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Atajos del teclado"
 
 #: data/resources/ui/window.ui:20
 msgid "_About Eyedropper"
-msgstr ""
+msgstr "_Acerca de Eyedropper"
 
 #: data/resources/ui/window.ui:40
 msgctxt "Tooltip of the colorpicker button"
 msgid "Pick a Color"
-msgstr ""
+msgstr "Elige un color"
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/application.rs:167
 msgid "translator-credits"
-msgstr ""
+msgstr "Sergio Varela https://github.com/IngrownMink4"
 
 #: src/widgets/preferences.rs:214
 msgid "Move Up"
-msgstr ""
+msgstr "Subir de categoría"
 
 #: src/widgets/preferences.rs:216
 msgid "Move Down"
-msgstr ""
+msgstr "Bajar de categoría"
 
 #: src/widgets/preferences.rs:305
 msgid "Hex-Code"
-msgstr ""
+msgstr "Código hexadecimal"
 
 #: src/window.rs:460
 msgid "Failed to pick a color"
-msgstr ""
+msgstr "No se ha podido elegir un color"
 
 #. Translators: Do not replace the {}. These are used as placeholders for the copied values
 #: src/window.rs:567 src/window.rs:574
 msgid "Copied: “{}”"
-msgstr ""
+msgstr "«{}» copiado."
