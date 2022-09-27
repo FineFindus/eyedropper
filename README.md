@@ -36,6 +36,9 @@ An easy-to-use color picker and formatter.
 - Generate a palette of similar colors
 - Add more color formats
 
+### When should I use this? And when not?
+This application is geared towards advanced users (developers, designers, etc…), who not only need to pick a color but also modify or view it in different formats. For simply picking a color on Gnome, the [color-picker extension](https://github.com/tuberry/color-picker) is far better suited.
+
 ## Installation
 
 ### Official
