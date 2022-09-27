@@ -22,7 +22,7 @@ gettext-rs = { version = "0.7", features = ["gettext-system"] }
 once_cell = "1.13.1"
 gtk = {version = "0.4", package = "gtk4"}
 glib = "0.15.12"
-adw = {package = "libadwaita", version = "0.1.1"}
+adw = {package = "libadwaita", version = "0.2.0-alpha.3", features = ["v1_2"]}
 gtk-macros = "0.3"
 ashpd = "0.3.2"
 rand = "0.8.5"

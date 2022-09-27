@@ -25,9 +25,9 @@ An easy-to-use color picker and formatter.
 ## Features
 
 - Pick a Color
-- Edit a color using hex values
-- Parse RGBA/ARGB Colors
-- View colors in RGB, HSV, HSL, CMYK, XYZ and CIE-Lab formats
+- Enter a color in Hex-Format
+- Parse RGBA/ARGB Hex-Colors
+- View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format
 - Customize which formats appear as well as their order
 - Generate a palette of different shades
 

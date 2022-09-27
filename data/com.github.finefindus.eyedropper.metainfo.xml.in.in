@@ -11,15 +11,14 @@
       Pick any color from your screen and view it in different formats. Change the picked color or go back to
       a previously picked color from the history list. Generate a list of different shades from the picked color.
     </p>
-    <p>Available Formats:</p>
+    <p>Features</p>
     <ul>
-      <li>Hex</li>
-      <li>RGB</li>
-      <li>HSL</li>
-      <li>HSV</li>
-      <li>CMYK</li>
-      <li>XYZ</li>
-      <li>CIELAB</li>
+      <li>Pick a Color</li>
+      <li>Enter a color in Hex-Format</li>
+      <li>Parse RGBA/ARGB Hex-Colors</li>
+      <li>View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format</li>
+      <li>Customize which formats appear as well as their order</li>
+      <li>Generate a palette of different shades</li>
     </ul>
   </description>
   <screenshots>

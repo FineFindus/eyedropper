@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 
 ### Added
+- The App now uses the AdwAboutWindow
 - The following translations have been added
     - Spanish by [IngrownMink4](https://github.com/IngrownMink4)  
     - Basque by [IngrownMink4](https://github.com/IngrownMink4)  
