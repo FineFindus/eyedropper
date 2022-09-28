@@ -38,7 +38,7 @@ jobs:
       - name: Install dependencies
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
-          packages: libgtk-4-dev build-essential gettext desktop-file-utils libadwaita-1-dev
+          packages: libgtk-4-dev build-essential gettext desktop-file-utils valac
           version: 1.0
 
       - name: Setup Python
@@ -48,6 +48,19 @@ jobs:
 
       - name: Install Python Dependencies
         run: pip install meson ninja
+
+        #this is needed until ubuntu 22.10 is available, 22.04 does not have libadwaita 1.2
+      - name: Install libadwaita
+        shell: bash
+        run: |
+          git clone https://gitlab.gnome.org/GNOME/libadwaita.git
+          cd libadwaita
+          #use the 1.2 release commit
+          git checkout a905117bd2150de9e85d65f8cdce8d8fb001b89e
+          meson . _build
+          ninja -C _build
+          ninja -C _build install
+
 
       - name: Build tarball
         shell: bash
