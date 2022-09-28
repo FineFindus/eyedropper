@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eyedropper\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-23 13:53+0200\n"
-"PO-Revision-Date: 2022-09-23 14:06+0200\n"
+"POT-Creation-Date: 2022-09-28 11:51+0200\n"
+"PO-Revision-Date: 2022-09-28 11:59+0200\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: none\n"
 "Language: nl\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:35 src/main.rs:24
+#: data/resources/ui/window.ui:35 src/main.rs:24 src/widgets/about_window.rs:44
 msgid "Eyedropper"
 msgstr "Eyedropper"
 
@@ -40,14 +40,16 @@ msgstr ""
 "Selecteren;Palet;"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
+#: src/widgets/about_window.rs:74
 msgid "An easy-to-use color picker and editor"
 msgstr "Een eenvoudig te gebruiken kleurenkiezer en -bewerker"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
+#: src/widgets/about_window.rs:77
 msgid ""
 "Pick any color from your screen and view it in different formats. Change the "
 "picked color or go back to a previously picked color from the history list. "
-"Generate a list of different shades fromt he picked color."
+"Generate a list of different shades from the picked color."
 msgstr ""
 "Selecteer een kleur op uw scherm en bekijk het in verschillende formaten. "
 "Verander de gekozen kleur, of ga terug naar een eerder gekozen kleur via de "
@@ -55,60 +57,59 @@ msgstr ""
 "gekozen kleur."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
-msgid "Available Formats:"
-msgstr "Beschikbare formaten:"
+#: src/widgets/about_window.rs:82
+msgid "Features"
+msgstr "Functies"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:16
-msgid "Hex"
-msgstr "Hex"
+#: src/widgets/about_window.rs:86
+msgid "Pick a Color"
+msgstr "Kies een kleur van het scherm"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
-#: src/widgets/preferences.rs:311
-msgid "RGB"
-msgstr "RGB"
+#: src/widgets/about_window.rs:87
+msgid "Enter a color in Hex-Format"
+msgstr "Voer een kleur in als hex-formaat"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:18
-#: src/widgets/preferences.rs:319
-msgid "HSL"
-msgstr "HSL"
+#: src/widgets/about_window.rs:88
+msgid "Parse RGBA/ARGB Hex-Colors"
+msgstr "Verwerk RGBA-/ARGB-hex-kleuren"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
-#: src/widgets/preferences.rs:328
-msgid "HSV"
-msgstr "HSV (KVW)"
+#: src/widgets/about_window.rs:89
+msgid "View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format"
+msgstr ""
+"Bekijk kleuren in de volgende formaten: Hex, RGB, HSV, HSL, CMYK, XYZ en CIE-"
+"Lab"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
-#: src/widgets/preferences.rs:337
-msgid "CMYK"
-msgstr "CMYK"
+#: src/widgets/about_window.rs:90
+msgid "Customize which formats appear as well as their order"
+msgstr "Pas aan welke formaten verschijnen samen met hun volgorde"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
-#: src/widgets/preferences.rs:346
-msgid "XYZ"
-msgstr "XYZ"
+#: src/widgets/about_window.rs:91
+msgid "Generate a palette of different shades"
+msgstr "Genereer een palet van verschillende tinten"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
-#: src/widgets/preferences.rs:355
-msgid "CIELAB"
-msgstr "CIELAB"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:28
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:27
 msgid "Main window dark"
 msgstr "Hoofdvenster (donker)"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:32
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:31
 msgid "Main window light"
 msgstr "Hoofdvenster (licht)"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:36
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:35
 msgid "Customized color formatting in dark mode"
 msgstr "Aangepast kleurformaat in donkere modus"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:40
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:39
 msgid "Customized color formatting"
 msgstr "Aangepast kleurformaat"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:86
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:88
 msgid "FineFindus"
 msgstr "FineFindus"
 
@@ -221,27 +222,75 @@ msgid "Pick a Color"
 msgstr "Kleur kiezen"
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
-#: src/application.rs:167
+#: src/widgets/about_window.rs:50
 msgid "translator-credits"
 msgstr "Philip Goto <philip.goto@gmail.com>"
 
-#: src/widgets/preferences.rs:214
+#: src/widgets/about_window.rs:110
+msgctxt ""
+"The changelog of the current version. Should be similar to the CHANGELOG.md "
+"file at the project root. Please ensure that the tags have a matching "
+"closing tag. Since xgettext does not recognize rust multiline strings, this "
+"should be on a single line using line breaks (\\n) for new lines."
+msgid ""
+"<p>This is a minor release, improving on the currently available features.</"
+"p>\n"
+"<p> Features:</p>\n"
+"<ul><li> Added new translations</li><li>Fixed minor issues</li></ul>"
+msgstr ""
+"<p>Dit is een kleine uitgave die verbeteringen brengt op bestaande functies."
+"</p>\n"
+"<p>Functies:</p>\n"
+"<ul><li>Nieuwe vertalingen toegevoegd</li><li>Enkele fouten opgelost</li></"
+"ul>"
+
+#: src/widgets/preferences.rs:226
 msgid "Move Up"
 msgstr "Naar boven verplaatsen"
 
-#: src/widgets/preferences.rs:216
+#: src/widgets/preferences.rs:228
 msgid "Move Down"
 msgstr "Naar beneden verplaatsen"
 
-#: src/widgets/preferences.rs:305
+#: src/widgets/preferences.rs:317
 msgid "Hex-Code"
 msgstr "Hex-code"
 
-#: src/window.rs:460
+#: src/widgets/preferences.rs:323
+msgid "RGB"
+msgstr "RGB"
+
+#: src/widgets/preferences.rs:331
+msgid "HSL"
+msgstr "HSL"
+
+#: src/widgets/preferences.rs:340
+msgid "HSV"
+msgstr "HSV (KVW)"
+
+#: src/widgets/preferences.rs:349
+msgid "CMYK"
+msgstr "CMYK"
+
+#: src/widgets/preferences.rs:358
+msgid "XYZ"
+msgstr "XYZ"
+
+#: src/widgets/preferences.rs:367
+msgid "CIELAB"
+msgstr "CIELAB"
+
+#: src/window.rs:479
 msgid "Failed to pick a color"
 msgstr "Kleur kiezen mislukt"
 
 #. Translators: Do not replace the {}. These are used as placeholders for the copied values
-#: src/window.rs:567 src/window.rs:574
+#: src/window.rs:598 src/window.rs:605
 msgid "Copied: “{}”"
 msgstr "‘{}’ gekopieerd"
+
+#~ msgid "Available Formats:"
+#~ msgstr "Beschikbare formaten:"
+
+#~ msgid "Hex"
+#~ msgstr "Hex"
