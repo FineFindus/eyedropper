@@ -11,7 +11,7 @@ data/resources/ui/window.ui
 
 #find all rust files with strings
 # grep gettext src/**/*.rs | cut -d: -f1 | uniq 
-src/application.rs
 src/main.rs
+src/widgets/about_window.rs
 src/widgets/preferences.rs
 src/window.rs

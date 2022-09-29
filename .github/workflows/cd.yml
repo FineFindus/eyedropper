@@ -1,0 +1,80 @@
+# This workflow builds and publishes all releases artifacts after a release, including flatpak build files, sha256sums and more future installation methods.
+
+name: Release
+on:
+  #switch for debugging
+  # push:
+  #   branches: [master]
+  release:
+    types: [published]
+
+jobs:
+  release_flatpak_tarball:
+    name: Release tarball for Flathub
+    #create and release the tarball for flathub
+    runs-on: ubuntu-22.04	#this is not the same as ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+      
+      - name: Install rust stable toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Install dependencies
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: libgtk-4-dev build-essential gettext desktop-file-utils valac
+          version: 1.0
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install Python Dependencies
+        run: pip install meson ninja
+
+        #this is needed until ubuntu 22.10 is available, 22.04 does not have libadwaita 1.2
+      - name: Install libadwaita
+        shell: bash
+        run: |
+          git clone https://gitlab.gnome.org/GNOME/libadwaita.git
+          cd libadwaita
+          #use the 1.2 release commit
+          git checkout a905117bd2150de9e85d65f8cdce8d8fb001b89e
+          meson . _build
+          ninja -C _build
+          ninja -C _build install
+
+
+      - name: Build tarball
+        shell: bash
+        run: |
+          #configure meson directory
+          meson _builddir --prefix=/tmp
+          #create the tarball
+          meson dist -C _builddir --allow-dirty
+
+      - name: Upload Release Artifacts
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            _builddir/meson-dist/eyedropper-*.tar.xz
+            _builddir/meson-dist/eyedropper-*.tar.xz.sha256sum
+          draft: true
+          prerelease: true

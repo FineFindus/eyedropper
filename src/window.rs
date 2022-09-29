@@ -482,6 +482,8 @@ impl AppWindow {
         }));
     }
 
+    ///Update the current color to the given color.
+    /// The old color will be added to the history list.
     pub fn set_color(&self, color: Color) {
         //only update when necessary, to avoid infinite loop
         if *self.imp().color.borrow() != color {

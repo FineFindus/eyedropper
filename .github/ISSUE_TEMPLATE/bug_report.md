@@ -30,6 +30,19 @@ If applicable, add screenshots to help explain your problem.
 - GTK-Theme/Adwaita-Style: [e.g. Adwaita, Dark]
 - Version: [e.g. 0.1.0]
 
+<details>
+  <summary>Debugging Information</summary>
+
+<!--
+     Please paste the debugging information from the about dialog between backticks below. The debugging information can be found under
+     About → Troubleshooting → Debugging Information.
+-->
+
+```
+```
+
+</details>
+
 **Additional context**
 Add any other context about the problem here.
 >

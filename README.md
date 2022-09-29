@@ -25,9 +25,9 @@ An easy-to-use color picker and formatter.
 ## Features
 
 - Pick a Color
-- Edit a color using hex values
-- Parse RGBA/ARGB Colors
-- View colors in RGB, HSV, HSL, CMYK, XYZ and CIE-Lab formats
+- Enter a color in Hex-Format
+- Parse RGBA/ARGB Hex-Colors
+- View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format
 - Customize which formats appear as well as their order
 - Generate a palette of different shades
 
@@ -35,6 +35,9 @@ An easy-to-use color picker and formatter.
 
 - Generate a palette of similar colors
 - Add more color formats
+
+### When should I use this? And when not?
+This application is geared towards advanced users (developers, designers, etc…), who not only need to pick a color but also modify or view it in different formats. For simply picking a color on Gnome, the [color-picker extension](https://github.com/tuberry/color-picker) is far better suited.
 
 ## Installation
 
@@ -88,7 +91,7 @@ Alternatively, it is possible to build the project manually using `flatpak-build
 First install the required sdks:
 
 ```sh
-flatpak install org.gnome.Sdk//41 org.freedesktop.Sdk.Extension.rust-stable//21.08 org.gnome.Platform//41
+flatpak install org.gnome.Sdk//43 org.freedesktop.Sdk.Extension.rust-stable//22.08 org.gnome.Platform//43
 ```
 
 Then build it using:
@@ -110,3 +113,4 @@ A huge thanks to these projects who served either as an inspiration or as code e
 - [GTK Rust Template](https://gitlab.gnome.org/World/Rust/gtk-rust-template)
 - [Contrast](https://gitlab.gnome.org/World/design/contrast)
 - [Microsoft Color Picker Utility](https://docs.microsoft.com/en-us/windows/powertoys/color-picker) - Inspirations on the design
+- All the other FOSS-Gtk apps

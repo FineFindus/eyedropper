@@ -6,5 +6,5 @@ option(
     'development'
   ],
   value: 'default',
-  description: 'The build profile for Color Picker. One of "default" or "development".'
+  description: 'The build profile for Eyedropper. One of "default" or "development".'
 )
