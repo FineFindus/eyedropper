@@ -106,6 +106,13 @@ To run it:
 flatpak-builder --run flatpak_app build-aux/com.github.finefindus.eyedropper.Devel.json eyedropper
 ```
 
+#### Build without flatpak
+```sh
+meson --prefix=/usr build
+ninja -C build
+sudo ninja -C build install
+```
+
 ## Credits
 
 A huge thanks to these projects who served either as an inspiration or as code examples on how to use gtk-rs.
