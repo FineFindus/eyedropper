@@ -390,7 +390,6 @@ impl Color {
             green = hue2rgb(p, q, hue);
             blue = hue2rgb(p, q, hue - (1f32 / 3f32));
         }
-        log::debug!("RGB: {},{},{}", red, green, blue);
         Self::rgb(
             (red * 255f32).floor() as u8,
             (green * 255f32).floor() as u8,
