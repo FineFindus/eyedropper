@@ -137,6 +137,23 @@ impl EyedropperAbout {
             " - Version: {:?}\n",
             gtk::glib::os_info("VERSION").unwrap_or_else(|| "Failed to get VERSION".into())
         ));
+        information.push_str(&format!(
+            " - GTK_THEME: {:?}\n",
+            gtk::glib::getenv("GTK_THEME").unwrap_or_else(|| "Unset".into())
+        ));
+        let gtk_settings = gtk::Settings::builder().build();
+        information.push_str(&format!(
+            " - Theme: {:?}\n",
+            gtk_settings
+                .gtk_theme_name()
+                .unwrap_or_else(|| "None".into())
+        ));
+        information.push_str(&format!(
+            " - IconTheme: {:?}\n",
+            gtk_settings
+                .gtk_icon_theme_name()
+                .unwrap_or_else(|| "None".into())
+        ));
         information.push('\n');
 
         //flatpak
@@ -157,6 +174,7 @@ impl EyedropperAbout {
             adw::minor_version(),
             adw::micro_version()
         ));
+        information.push('\n');
 
         information
     }

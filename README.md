@@ -42,8 +42,8 @@ This application is geared towards advanced users (developers, designers, etc…
 ## Installation
 
 ### Official
+<a href='https://flathub.org/apps/details/com.github.finefindus.eyedropper'><img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-i-en.png'/></a>
 
-Install from [Flathub](https://flathub.org/apps/details/com.github.finefindus.eyedropper) or download the latest release from the [release tab](https://github.com/FineFindus/eyedropper/releases).
 
 ### Inofficial
 
@@ -104,6 +104,13 @@ To run it:
 
 ```sh
 flatpak-builder --run flatpak_app build-aux/com.github.finefindus.eyedropper.Devel.json eyedropper
+```
+
+#### Build without flatpak
+```sh
+meson --prefix=/usr build
+ninja -C build
+sudo ninja -C build install
 ```
 
 ## Credits

@@ -181,21 +181,7 @@ impl AppWindow {
         );
 
         //re-add palette of the current color
-        utils::add_palette(
-            &self.imp().color_button.get(),
-            gtk::Orientation::Horizontal,
-            10,
-            Some(
-                &self
-                    .imp()
-                    .color
-                    .borrow()
-                    .generate_palette(10, 0.1)
-                    .into_iter()
-                    .map(gtk::gdk::RGBA::from)
-                    .collect::<Vec<gtk::gdk::RGBA>>(),
-            ),
-        );
+        self.add_palettes();
     }
 
     /// Setup the history by setting up a model
@@ -482,6 +468,54 @@ impl AppWindow {
         }));
     }
 
+    ///Generates palettes of the current color, as well as the last three picked colors.
+    fn add_palettes(&self) {
+        let imp = self.imp();
+        let color = imp.color.borrow();
+        let btn: ColorButton = imp.color_button.get();
+
+        //the color picker widget only accepts gdk::RGBA colors,
+        //but we use our own color struct, This function convert them
+        fn to_gdk_rgb(colors: Vec<Color>) -> Vec<gtk::gdk::RGBA> {
+            colors
+                .into_iter()
+                .map(gtk::gdk::RGBA::from)
+                .collect::<Vec<gtk::gdk::RGBA>>()
+        }
+
+        let analogous_palette = to_gdk_rgb(color.analogous_colors(6));
+
+        //clear current palette set
+        utils::add_palette(&btn, gtk::Orientation::Horizontal, 0, None);
+
+        //generate a palette by shading and tinting the color
+        let colors = to_gdk_rgb(color.generate_palette(10, 0.1));
+
+        //add new palettes
+        utils::add_palette(&btn, gtk::Orientation::Horizontal, 10, Some(&colors));
+
+        utils::add_palette(
+            &btn,
+            gtk::Orientation::Horizontal,
+            10,
+            Some(&analogous_palette),
+        );
+
+        //add palettes of the last 3 history items
+        self.history()
+            .snapshot()
+            .iter()
+            .take(3)
+            .filter_map(Cast::downcast_ref::<HistoryObject>)
+            .for_each(|item| {
+                //generate a palette by shading and tinting the color
+                let colors = to_gdk_rgb(item.color().generate_palette(10, 0.1));
+
+                //add new palettes
+                utils::add_palette(&btn, gtk::Orientation::Horizontal, 10, Some(&colors));
+            });
+    }
+
     ///Update the current color to the given color.
     /// The old color will be added to the history list.
     pub fn set_color(&self, color: Color) {
@@ -500,39 +534,8 @@ impl AppWindow {
 
             imp.color_button.set_rgba(&color.into());
 
-            let btn: ColorButton = imp.color_button.get();
-
-            //clear current palette set
-            utils::add_palette(&btn, gtk::Orientation::Horizontal, 0, None);
-
-            //generate a palette by shading and tinting the color
-            let colors = color
-                .generate_palette(10, 0.1)
-                .into_iter()
-                .map(gtk::gdk::RGBA::from)
-                .collect::<Vec<gtk::gdk::RGBA>>();
-
-            //add new palettes
-            utils::add_palette(&btn, gtk::Orientation::Horizontal, 10, Some(&colors));
-
-            //add palettes of the last 3 history items
-            self.history()
-                .snapshot()
-                .iter()
-                .take(3)
-                .filter_map(Cast::downcast_ref::<HistoryObject>)
-                .for_each(|item| {
-                    //generate a palette by shading and tinting the color
-                    let colors = item
-                        .color()
-                        .generate_palette(10, 0.1)
-                        .into_iter()
-                        .map(gtk::gdk::RGBA::from)
-                        .collect::<Vec<gtk::gdk::RGBA>>();
-
-                    //add new palettes
-                    utils::add_palette(&btn, gtk::Orientation::Horizontal, 10, Some(&colors));
-                });
+            //generate pallettes
+            self.add_palettes();
 
             let hex_alpha_position = AlphaPosition::from(imp.settings.int("alpha-position") as u32);
 
@@ -558,8 +561,13 @@ impl AppWindow {
             });
 
             let hsl = color.to_hsl();
-            imp.hsl_entry
-                .set_color(format!("hsl({}, {}%, {}%)", hsl.0, hsl.1, hsl.2));
+            imp.hsl_entry.set_color(format!(
+                "hsl({}, {}%, {}%)",
+                hsl.0,
+                //round to full percentages
+                utils::round_percent(hsl.1),
+                utils::round_percent(hsl.2)
+            ));
 
             let hsv = color.to_hsv();
             imp.hsv_entry
