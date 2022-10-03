@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Eyedropper master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gtk/-/issues/\n"
 "POT-Creation-Date: 2022-09-27 20:01+0200\n"
-"PO-Revision-Date: 2022-09-29 12:20+0200\n"
+"PO-Revision-Date: 2022-10-03 23:11+0200\n"
 "Last-Translator: Davide Ferracin <davide.ferracin@protonmail.com>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "Language: it\n"
@@ -21,7 +21,7 @@ msgstr ""
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
 #: data/resources/ui/window.ui:35 src/main.rs:24 src/widgets/about_window.rs:45
 msgid "Eyedropper"
-msgstr "Eyedropper"
+msgstr "Contagocce"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:4
 msgid "Color Picker"
@@ -210,7 +210,7 @@ msgstr "_Scorciatoie da tastiera"
 
 #: data/resources/ui/window.ui:20
 msgid "_About Eyedropper"
-msgstr "_Informazioni su Pipetta"
+msgstr "_Informazioni su Contagocce"
 
 #: data/resources/ui/window.ui:40
 msgctxt "Tooltip of the colorpicker button"
