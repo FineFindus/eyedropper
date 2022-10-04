@@ -498,7 +498,8 @@ impl Color {
         let mut colors = Vec::with_capacity(n);
         colors.push(*self);
 
-        for i in 0..n {
+        //always shift by at least 1 slice
+        for i in 1..n {
             //add hue degrees
             hue = (hue + part * i as u16) % 360;
             colors.push(Self::from_hsl(hue, saturation, lightness));

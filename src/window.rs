@@ -10,6 +10,7 @@ use crate::model::history::HistoryObject;
 use crate::utils;
 use crate::widgets::color_model_entry::ColorModelEntry;
 use crate::widgets::hex_entry::HexEntry;
+use crate::widgets::palette_dialog::PaletteDialog;
 
 mod imp {
     use std::cell::RefCell;
@@ -84,6 +85,11 @@ mod imp {
         fn on_color_picker_button_clicked(&self) {
             self.instance().pick_color();
         }
+
+        #[template_callback]
+        fn on_palettes_button_clicked(&self) {
+            self.instance().open_palette_dialog();
+        }
     }
 
     #[glib::object_subclass]
@@ -143,7 +149,7 @@ mod imp {
 
 glib::wrapper! {
     pub struct AppWindow(ObjectSubclass<imp::AppWindow>)
-        @extends gtk::Widget, gtk::Window, gtk::ApplicationWindow,
+        @extends gtk::Widget, gtk::Window,  gtk::ApplicationWindow,
         @implements gio::ActionMap, gio::ActionGroup, gtk::Root;
 }
 
@@ -449,6 +455,32 @@ impl AppWindow {
             format_box.append(&child.get());
         }
     }
+
+    fn open_palette_dialog(&self) {
+        let palette_dialog = PaletteDialog::new(*self.imp().color.borrow());
+        palette_dialog.set_transient_for(Some(self));
+        palette_dialog.show();
+
+        //when a palette is chosen, add all colors of the palette in reverse order to the history
+        palette_dialog.connect_closure(
+            "palette-clicked",
+            false,
+            glib::closure_local!(@watch self as window => move |_: PaletteDialog, palette: String| {
+                log::debug!("Palette: {palette}");
+
+                palette
+                .split(" ")
+                .for_each(|slice| match Color::from_hex(slice, AlphaPosition::None) {
+                    Ok(color) => window.set_color(color),
+                    Err(_) => {
+                        log::error!("Failed to parse color {}", slice);
+                        window.show_toast(&gettext("Failed to get palette color"))
+                },
+            });
+            }),
+        );
+    }
+
     /// Pick a color from the desktop using [ashpd].
     ///
     /// It will show a toast when failing to pick a color, for example when the user cancels the action.
@@ -483,8 +515,6 @@ impl AppWindow {
                 .collect::<Vec<gtk::gdk::RGBA>>()
         }
 
-        let analogous_palette = to_gdk_rgb(color.analogous_colors(6));
-
         //clear current palette set
         utils::add_palette(&btn, gtk::Orientation::Horizontal, 0, None);
 
@@ -498,7 +528,28 @@ impl AppWindow {
             &btn,
             gtk::Orientation::Horizontal,
             10,
-            Some(&analogous_palette),
+            Some(&to_gdk_rgb(color.analogous_colors(6))),
+        );
+
+        utils::add_palette(
+            &btn,
+            gtk::Orientation::Horizontal,
+            10,
+            Some(&to_gdk_rgb(color.split_complementary_color())),
+        );
+
+        utils::add_palette(
+            &btn,
+            gtk::Orientation::Horizontal,
+            10,
+            Some(&to_gdk_rgb(color.triadic_colors())),
+        );
+
+        utils::add_palette(
+            &btn,
+            gtk::Orientation::Horizontal,
+            10,
+            Some(&to_gdk_rgb(color.tetradic_colors())),
         );
 
         //add palettes of the last 3 history items

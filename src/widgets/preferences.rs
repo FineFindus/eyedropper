@@ -106,14 +106,14 @@ impl PreferencesWindow {
             .build();
     }
 
-    /// Returns the history list store object.
+    /// Returns the formats list store object.
     fn formats(&self) -> gio::ListStore {
         // Get state
         self.imp()
             .formats
             .borrow()
             .clone()
-            .expect("Could not get current history.")
+            .expect("Could not get current formats.")
     }
 
     fn format_order_list(&self) -> Vec<String> {
@@ -133,10 +133,10 @@ impl PreferencesWindow {
         self.add_options();
     }
 
-    /// Assure that history is only visible
+    /// Assure that formats is only visible
     /// if the number of items is greater than 0
-    fn set_format_list_visible(&self, history: &gio::ListStore) {
-        self.imp().format_list.set_visible(history.n_items() > 0);
+    fn set_format_list_visible(&self, formats: &gio::ListStore) {
+        self.imp().format_list.set_visible(formats.n_items() > 0);
     }
 
     ///Setup the format list
@@ -152,13 +152,13 @@ impl PreferencesWindow {
         self.imp().format_list.bind_model(
             Some(&selection_model),
             glib::clone!(@weak self as widget => @default-panic, move |obj| {
-                let history_object = obj.downcast_ref().expect("The object is not of type `ColorFormatObject`.");
-                let hist = widget.create_format_row(history_object);
+                let formats_object = obj.downcast_ref().expect("The object is not of type `ColorFormatObject`.");
+                let hist = widget.create_format_row(formats_object);
                 hist.upcast()
             }),
         );
 
-        // Assure that the history list is only visible when it is supposed to
+        // Assure that the formats list is only visible when it is supposed to
         self.set_format_list_visible(&self.formats());
         self.formats().connect_items_changed(
             glib::clone!(@weak self as window => move |items, _, _, _| {

@@ -69,12 +69,21 @@
                         <property name="tightening-threshold">35</property>
                         <property name="maximum-size">50</property>
                         <property name="child">
-                          <object class="GtkColorButton" id="color_button">
+                          <object class="GtkButton">
                             <property name="margin-top">12</property>
                             <property name="margin-start">12</property>
                             <property name="margin-end">12</property>
                             <property name="vexpand">True</property>
                             <property name="width-request">267</property>
+                            <child>
+                              <object class="GtkColorButton" id="color_button">
+                                <property name="can_focus">False</property>
+                              </object>
+                            </child>
+                            <signal name="clicked" handler="on_palettes_button_clicked" swapped="true" />
+                            <style>
+                              <class name="no-padding" />
+                            </style>
                           </object>
                         </property>
                       </object>

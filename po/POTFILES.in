@@ -1,10 +1,11 @@
 data/com.github.finefindus.eyedropper.desktop.in.in
+data/com.github.finefindus.eyedropper.metainfo.xml.in.in
 # This file includes the settings variables and their descriptions, it should not be translated
 # find all ui files with new strings
 # find data -name "*.ui*" -print
-data/com.github.finefindus.eyedropper.metainfo.xml.in.in
 data/resources/ui/color-model-entry.ui
 data/resources/ui/hex-entry.ui
+data/resources/ui/palette_window.ui
 data/resources/ui/preferences.ui
 data/resources/ui/shortcuts.ui
 data/resources/ui/window.ui
@@ -13,5 +14,6 @@ data/resources/ui/window.ui
 # grep gettext src/**/*.rs | cut -d: -f1 | uniq 
 src/main.rs
 src/widgets/about_window.rs
+src/widgets/palette_dialog.rs
 src/widgets/preferences.rs
 src/window.rs
