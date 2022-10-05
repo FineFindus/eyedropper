@@ -397,53 +397,53 @@ impl Color {
         )
     }
 
-    /// Generates a palette consisting of n shades and n tints from the given color.
-    ///
-    /// The tints/shades are tinted/shaded by the factor.
-    pub fn generate_palette(&self, n: usize, factor: f32) -> Vec<Self> {
-        let mut colors = Vec::with_capacity(n);
-
-        //generate darker shades
-        for i in 0..n {
-            colors.push(self.shade(i as f32 * factor))
-        }
-
-        //generate lighter tints
-        for i in 0..n {
-            colors.push(self.tint(i as f32 * factor))
-        }
-
-        colors
-    }
-
-    /// Tints (adding pure white) a given color by the tint factor.
+    /// Return n tints (adding pure white) of the color by the tint factor.
     ///
     /// The following formula from <https://maketintsandshades.com/about> will be used to calculate tinted RGB values:
     /// ```
     /// New value = current value + ((255 - current value) x tint factor)
     /// ```
-    fn tint(&self, factor: f32) -> Self {
-        //New value = current value + ((255 - current value) x tint factor)
-        let red = self.red as f32 + ((255f32 - self.red as f32) * factor);
-        let green = self.green as f32 + ((255f32 - self.green as f32) * factor);
-        let blue = self.blue as f32 + ((255f32 - self.blue as f32) * factor);
+    pub fn tints(&self, factor: f32, n: usize) -> Vec<Self> {
+        let mut colors = Vec::with_capacity(n);
 
-        Color::rgb(red.round() as u8, green.round() as u8, blue.round() as u8)
+        for i in 0..n {
+            //New value = current value + ((255 - current value) x tint factor)
+            let red = self.red as f32 + ((255f32 - self.red as f32) * (i as f32 * factor));
+            let green = self.green as f32 + ((255f32 - self.green as f32) * (i as f32 * factor));
+            let blue = self.blue as f32 + ((255f32 - self.blue as f32) * (i as f32 * factor));
+
+            colors.push(Color::rgb(
+                red.round() as u8,
+                green.round() as u8,
+                blue.round() as u8,
+            ));
+        }
+        colors
     }
 
-    /// Shades (adding pure black) a given color by the tint factor.
+    /// Return n shades (adding pure black) of the color.
     ///
     /// The following formula from <https://maketintsandshades.com/about> will be used to calculate tinted RGB values:
     /// ```
     /// New value = current value x shade factor
     /// ```
-    fn shade(&self, factor: f32) -> Self {
-        //New value = current value x shade factor
-        let red = self.red as f32 * factor;
-        let green = self.green as f32 * factor;
-        let blue = self.blue as f32 * factor;
+    pub fn shades(&self, factor: f32, n: usize) -> Vec<Self> {
+        let mut colors = Vec::with_capacity(n);
 
-        Color::rgb(red.round() as u8, green.round() as u8, blue.round() as u8)
+        //go reverse, so the lighter stuff comes first
+        for i in (0..n).rev() {
+            //New value = current value x shade factor
+            let red = self.red as f32 * (i as f32 * factor);
+            let green = self.green as f32 * (i as f32 * factor);
+            let blue = self.blue as f32 * (i as f32 * factor);
+
+            colors.push(Color::rgb(
+                red.round() as u8,
+                green.round() as u8,
+                blue.round() as u8,
+            ));
+        }
+        colors
     }
 
     /// Returns the complementary/opposite to self.

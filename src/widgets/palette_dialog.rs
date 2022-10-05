@@ -126,7 +126,14 @@ impl PaletteDialog {
         let palettes = &imp.palettes_list;
 
         let color: Color = self.color();
-
+        palettes.append(&self.create_palette_row(
+            &pgettext("Name for tints (lighter variants) of the color", "Tints"),
+            color.tints(0.15, 5),
+        ));
+        palettes.append(&self.create_palette_row(
+            &pgettext("Name for shades (darker variants) of the color", "Shades"),
+            color.shades(0.15, 5),
+        ));
         palettes.append(&self.create_palette_row(
             &pgettext(
                 "Name for the opposite/complementary color (e.g. blue ⇔ yellow)",

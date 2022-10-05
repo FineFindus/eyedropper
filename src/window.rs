@@ -519,10 +519,6 @@ impl AppWindow {
         utils::add_palette(&btn, gtk::Orientation::Horizontal, 0, None);
 
         //generate a palette by shading and tinting the color
-        let colors = to_gdk_rgb(color.generate_palette(10, 0.1));
-
-        //add new palettes
-        utils::add_palette(&btn, gtk::Orientation::Horizontal, 10, Some(&colors));
 
         utils::add_palette(
             &btn,
@@ -551,20 +547,6 @@ impl AppWindow {
             10,
             Some(&to_gdk_rgb(color.tetradic_colors())),
         );
-
-        //add palettes of the last 3 history items
-        self.history()
-            .snapshot()
-            .iter()
-            .take(3)
-            .filter_map(Cast::downcast_ref::<HistoryObject>)
-            .for_each(|item| {
-                //generate a palette by shading and tinting the color
-                let colors = to_gdk_rgb(item.color().generate_palette(10, 0.1));
-
-                //add new palettes
-                utils::add_palette(&btn, gtk::Orientation::Horizontal, 10, Some(&colors));
-            });
     }
 
     ///Update the current color to the given color.
