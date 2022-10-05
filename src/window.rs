@@ -1,7 +1,7 @@
 use gettextrs::gettext;
+use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gio, glib};
-use gtk::{prelude::*, ColorButton};
 
 use crate::application::App;
 use crate::config::{APP_ID, PROFILE};
