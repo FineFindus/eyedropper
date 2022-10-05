@@ -18,6 +18,8 @@ An easy-to-use color picker and formatter.
 
 ![Customize the shown formats (Light UI)](data/resources/screenshots/customized_formats_light.png)
 
+![Generate Color Palettes](data/resources/screenshots/palette_dialog_dark.png)
+
 ![Preferences](data/resources/screenshots/preference_window_dark.png)
 
 </details>

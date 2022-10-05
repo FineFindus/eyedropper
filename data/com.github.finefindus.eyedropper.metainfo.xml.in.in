@@ -38,6 +38,10 @@
       <image>https://raw.githubusercontent.com/FineFindus/eyedropper/master/data/resources/screenshots/customized_formats_light.png</image>
       <caption>Customized color formatting</caption>
     </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/FineFindus/eyedropper/master/data/resources/screenshots/palette_dialog_dark.png</image>
+      <caption>Generated color palettes</caption>
+    </screenshot>
   </screenshots>
   <url type="homepage">https://github.com/FineFindus/eyedropper</url>
   <url type="bugtracker">https://github.com/FineFindus/eyedropper/issues</url>
