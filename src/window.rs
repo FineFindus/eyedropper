@@ -7,7 +7,6 @@ use crate::application::App;
 use crate::config::{APP_ID, PROFILE};
 use crate::model::color::{AlphaPosition, Color};
 use crate::model::history::HistoryObject;
-use crate::utils;
 use crate::widgets::color_model_entry::ColorModelEntry;
 use crate::widgets::hex_entry::HexEntry;
 use crate::widgets::palette_dialog::PaletteDialog;
@@ -293,27 +292,13 @@ impl AppWindow {
             glib::clone!(@weak self as window => move |settings, _| {
                 log::debug!("Updating AlphaPosition");
                 let color = *window.imp().color.borrow();
-                let hex_alpha_position = AlphaPosition::from(settings.int("alpha-position") as u32);
+                let alpha_position = AlphaPosition::from(settings.int("alpha-position") as u32);
                 //update hex to show alpha
-                window.imp().hex_entry.set_color(color.to_hex_string(hex_alpha_position));
-                //update rgb to switch to argb/rgba
-                window.imp().rgb_entry.set_color(match hex_alpha_position {
-                    AlphaPosition::None => {
-                        format!("rgb({}, {}, {})", color.red, color.green, color.blue)
-                    }
-                    AlphaPosition::Start => {
-                        format!(
-                            "argb({}, {}, {}, {})",
-                            color.alpha, color.red, color.green, color.blue
-                        )
-                    }
-                    AlphaPosition::End => {
-                        format!(
-                            "rgba({}, {}, {}, {})",
-                            color.red, color.green, color.blue, color.alpha
-                        )
-                    }
-                });
+                window.imp().hex_entry.set_color(color.to_hex_string(alpha_position));
+                //update rgb to switch between rgb and rgba
+                window.imp().rgb_entry.set_color(color.to_rgb_string(alpha_position));
+                //update hsl to switch between hsl and hsla
+                window.imp().hsl_entry.set_color(color.to_hsl_string(alpha_position));
             }),
         );
 
@@ -508,37 +493,13 @@ impl AppWindow {
 
             imp.color_button.set_rgba(&color.into());
 
-            let hex_alpha_position = AlphaPosition::from(imp.settings.int("alpha-position") as u32);
+            let alpha_position = AlphaPosition::from(imp.settings.int("alpha-position") as u32);
 
-            imp.hex_entry
-                .set_color(color.to_hex_string(hex_alpha_position));
+            imp.hex_entry.set_color(color.to_hex_string(alpha_position));
 
-            imp.rgb_entry.set_color(match hex_alpha_position {
-                AlphaPosition::None => {
-                    format!("rgb({}, {}, {})", color.red, color.green, color.blue)
-                }
-                AlphaPosition::Start => {
-                    format!(
-                        "argb({}, {}, {}, {})",
-                        color.alpha, color.red, color.green, color.blue
-                    )
-                }
-                AlphaPosition::End => {
-                    format!(
-                        "rgba({}, {}, {}, {})",
-                        color.red, color.green, color.blue, color.alpha
-                    )
-                }
-            });
+            imp.rgb_entry.set_color(color.to_rgb_string(alpha_position));
 
-            let hsl = color.to_hsl();
-            imp.hsl_entry.set_color(format!(
-                "hsl({}, {}%, {}%)",
-                hsl.0,
-                //round to full percentages
-                utils::round_percent(hsl.1),
-                utils::round_percent(hsl.2)
-            ));
+            imp.hsl_entry.set_color(color.to_hsl_string(alpha_position));
 
             let hsv = color.to_hsv();
             imp.hsv_entry

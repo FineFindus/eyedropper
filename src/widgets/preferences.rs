@@ -321,18 +321,15 @@ impl PreferencesWindow {
                 "rgb" => ColorFormatObject::new(
                     item,
                     gettext("RGB"),
-                    format!("rgb({}, {}, {})", color.red, color.green, color.blue),
+                    color.to_rgb_string(crate::model::color::AlphaPosition::None),
                     "show-rgb-model",
                 ),
-                "hsl" => {
-                    let hsl = color.to_hsl();
-                    ColorFormatObject::new(
-                        item,
-                        gettext("HSL"),
-                        format!("hsl({}, {}%, {}%)", hsl.0, hsl.1, hsl.2),
-                        "show-hsl-model",
-                    )
-                }
+                "hsl" => ColorFormatObject::new(
+                    item,
+                    gettext("HSL"),
+                    color.to_hsl_string(crate::model::color::AlphaPosition::None),
+                    "show-hsl-model",
+                ),
                 "hsv" => {
                     let hsv = color.to_hsv();
                     ColorFormatObject::new(
