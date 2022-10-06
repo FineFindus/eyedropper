@@ -5,7 +5,7 @@
   <metadata_license>CC0</metadata_license>
   <project_license>GPL-3.0</project_license>
   <name>Eyedropper</name>
-  <summary>An easy-to-use color picker and editor</summary>
+  <summary>A powerful color picker and formatter</summary>
   <description>
     <p>
       Pick any color from your screen and view it in different formats. Change the picked color or go back to
