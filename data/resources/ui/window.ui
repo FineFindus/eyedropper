@@ -113,6 +113,11 @@
                         <property name="visible">False</property>
                       </object>
                     </child>
+                    <child>
+                      <object class="ColorModelEntry" id="hwb_entry">
+                        <property name="visible">False</property>
+                      </object>
+                    </child>
                   </object>
                 </child>
                 <child>

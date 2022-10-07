@@ -7,6 +7,7 @@ use crate::application::App;
 use crate::config::{APP_ID, PROFILE};
 use crate::model::color::{AlphaPosition, Color};
 use crate::model::history::HistoryObject;
+use crate::utils;
 use crate::widgets::color_model_entry::ColorModelEntry;
 use crate::widgets::hex_entry::HexEntry;
 use crate::widgets::palette_dialog::PaletteDialog;
@@ -49,6 +50,8 @@ mod imp {
         #[template_child]
         pub cie_lab_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
         #[template_child]
+        pub hwb_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
+        #[template_child]
         pub history_list: TemplateChild<gtk::ListBox>,
         pub history: RefCell<Option<gio::ListStore>>,
         pub settings: gio::Settings,
@@ -70,6 +73,7 @@ mod imp {
                 cmyk_entry: TemplateChild::default(),
                 xyz_entry: TemplateChild::default(),
                 cie_lab_entry: TemplateChild::default(),
+                hwb_entry: TemplateChild::default(),
                 history_list: TemplateChild::default(),
                 history: Default::default(),
                 settings: gio::Settings::new(APP_ID),
@@ -385,6 +389,18 @@ impl AppWindow {
             window.imp().cie_lab_entry.set_visible(show_cie_lab_model);
             }),
         );
+
+        //first setup when loading
+        let show_hwb_model = settings.boolean("show-hwb-model");
+        imp.hwb_entry.set_visible(show_hwb_model);
+        //refresh when settings change
+        settings.connect_changed(
+            Some("show-hwb-model"),
+            glib::clone!(@weak self as window => move |settings, _| {
+            let show_hwb_model = settings.boolean("show-hwb-model");
+            window.imp().hwb_entry.set_visible(show_hwb_model);
+            }),
+        );
     }
 
     /// Insert the formats in the order in which they are saved in the settings.
@@ -421,6 +437,7 @@ impl AppWindow {
                 "cmyk" => &imp.cmyk_entry,
                 "xyz" => &imp.xyz_entry,
                 "cielab" => &imp.cie_lab_entry,
+                "hwb" => &imp.hwb_entry,
                 _ => {
                     log::error!("Failed to find format: {}", item);
                     continue;
@@ -520,6 +537,14 @@ impl AppWindow {
                 "CIELAB({:.2}, {:.2}, {:.2})",
                 cie_lab.0, cie_lab.1, cie_lab.2
             ));
+
+            let hwb = color.to_hwb();
+            imp.hwb_entry.set_color(format!(
+                "hwb({}, {}%, {}%)",
+                hwb.0,
+                utils::round_percent(hwb.1),
+                utils::round_percent(hwb.2)
+            ));
         }
     }
 
@@ -558,6 +583,8 @@ impl AppWindow {
         imp.xyz_entry
             .connect_closure("copied-color", false, show_toast_closure.clone());
         imp.cie_lab_entry
+            .connect_closure("copied-color", false, show_toast_closure.clone());
+        imp.hwb_entry
             .connect_closure("copied-color", false, show_toast_closure);
 
         imp.hex_entry.connect_closure(

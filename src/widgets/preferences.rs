@@ -12,6 +12,7 @@ use gtk::Switch;
 
 use crate::model::color::Color;
 use crate::model::color_format::ColorFormatObject;
+use crate::utils;
 
 mod imp {
 
@@ -307,8 +308,27 @@ impl PreferencesWindow {
     fn add_options(&self) {
         let color = Color::rgb(46, 52, 64);
 
-        let order = self.imp().settings.get::<Vec<String>>("format-order");
+        let mut order = self.imp().settings.get::<Vec<String>>("format-order");
         log::debug!("Order: {:?}", order);
+
+        let default_order = self
+            .imp()
+            .settings
+            .default_value("format-order")
+            .expect("Failed to get default format-order");
+
+        //It is theoretically possible to remove formats from the settings, so they would not show up
+        //on the page. I couldn't find any docs about what happens when the defaults are updated, which happens whenever
+        //a new format is added, so we just manually check if all formats are in the saved setting
+        for item in default_order
+            .array_iter_str()
+            .expect("Failed to get default format-order array")
+        {
+            if !order.contains(&item.to_owned()) {
+                log::debug!("Saved order does not contain {}", item);
+                order.push(item.to_owned());
+            }
+        }
 
         for item in order {
             let format = match item.to_lowercase().as_str() {
@@ -367,6 +387,20 @@ impl PreferencesWindow {
                             cie_lab.0, cie_lab.1, cie_lab.2
                         ),
                         "show-cie-lab-model",
+                    )
+                }
+                "hwb" => {
+                    let hwb = color.to_hwb();
+                    ColorFormatObject::new(
+                        item,
+                        gettext("HWB"),
+                        format!(
+                            "hwb({}, {}%, {}%)",
+                            hwb.0,
+                            utils::round_percent(hwb.1),
+                            utils::round_percent(hwb.2)
+                        ),
+                        "show-hwb-model",
                     )
                 }
                 _ => {

@@ -163,6 +163,21 @@ impl Color {
         (hue, saturation, utils::round_percent(max))
     }
 
+    /// Returns the [HWB](https://en.wikipedia.org/wiki/HWB_color_model) values of the color.
+    ///
+    /// The color is converted from RGB according to the formula on the wikipedia page.
+    pub fn to_hwb(self) -> (u16, f32, f32) {
+        //rescale rgb to be between 0 and 1
+        let red = self.red as f32 / 255f32;
+        let green = self.green as f32 / 255f32;
+        let blue = self.blue as f32 / 255f32;
+
+        let hue = self.calculate_hue();
+        let white = red.min(green.min(blue));
+        let black = 1f32 - red.max(green.max(blue));
+        (hue, white, black)
+    }
+
     /// Converts the color to HSL values.
     ///
     /// Formula from <https://en.wikipedia.org/wiki/HSL_and_HSV>
