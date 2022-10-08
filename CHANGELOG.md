@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Palettes are now shown in the palette dialog, accessible by clicking on the large color button
 - The App now uses the AdwAboutWindow
 - HSL does now support alpha values
-- HWB is now supported
+- HWB and CIELCh are now supported
 - The following translations have been added
     - Spanish by [IngrownMink4](https://github.com/IngrownMink4)  
     - Basque by [IngrownMink4](https://github.com/IngrownMink4)  

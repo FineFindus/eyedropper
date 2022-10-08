@@ -342,6 +342,20 @@ impl Color {
         (cie_l, cie_a, cie_b)
     }
 
+    pub fn to_hcl(self) -> (f32, f32, f32) {
+        //convert color to lab first
+        let (luminance, a, b) = self.to_cie_lab();
+
+        let hue = b.atan2(a).to_degrees();
+        let chroma = (a.powi(2) + b.powi(2)).sqrt();
+
+        (
+            if hue >= 0.0 { hue } else { hue + 360.0 },
+            chroma,
+            luminance,
+        )
+    }
+
     /// Create a color from a hex string.
     ///
     /// The hex color optionally start with '#'.

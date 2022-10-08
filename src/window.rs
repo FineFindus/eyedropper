@@ -52,6 +52,8 @@ mod imp {
         #[template_child]
         pub hwb_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
         #[template_child]
+        pub hcl_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
+        #[template_child]
         pub history_list: TemplateChild<gtk::ListBox>,
         pub history: RefCell<Option<gio::ListStore>>,
         pub settings: gio::Settings,
@@ -74,6 +76,7 @@ mod imp {
                 xyz_entry: TemplateChild::default(),
                 cie_lab_entry: TemplateChild::default(),
                 hwb_entry: TemplateChild::default(),
+                hcl_entry: TemplateChild::default(),
                 history_list: TemplateChild::default(),
                 history: Default::default(),
                 settings: gio::Settings::new(APP_ID),
@@ -401,6 +404,18 @@ impl AppWindow {
             window.imp().hwb_entry.set_visible(show_hwb_model);
             }),
         );
+
+        //first setup when loading
+        let show_hcl_model = settings.boolean("show-hcl-model");
+        imp.hcl_entry.set_visible(show_hcl_model);
+        //refresh when settings change
+        settings.connect_changed(
+            Some("show-hcl-model"),
+            glib::clone!(@weak self as window => move |settings, _| {
+            let show_hcl_model = settings.boolean("show-hcl-model");
+            window.imp().hcl_entry.set_visible(show_hcl_model);
+            }),
+        );
     }
 
     /// Insert the formats in the order in which they are saved in the settings.
@@ -438,6 +453,7 @@ impl AppWindow {
                 "xyz" => &imp.xyz_entry,
                 "cielab" => &imp.cie_lab_entry,
                 "hwb" => &imp.hwb_entry,
+                "hcl" => &imp.hcl_entry,
                 _ => {
                     log::error!("Failed to find format: {}", item);
                     continue;
@@ -545,6 +561,10 @@ impl AppWindow {
                 utils::round_percent(hwb.1),
                 utils::round_percent(hwb.2)
             ));
+
+            let lch = color.to_hcl();
+            imp.hcl_entry
+                .set_color(format!("lch({:.2}, {:.2}, {:.2})", lch.2, lch.1, lch.0));
         }
     }
 
@@ -585,6 +605,8 @@ impl AppWindow {
         imp.cie_lab_entry
             .connect_closure("copied-color", false, show_toast_closure.clone());
         imp.hwb_entry
+            .connect_closure("copied-color", false, show_toast_closure.clone());
+        imp.hcl_entry
             .connect_closure("copied-color", false, show_toast_closure);
 
         imp.hex_entry.connect_closure(

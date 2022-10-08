@@ -118,6 +118,11 @@
                         <property name="visible">False</property>
                       </object>
                     </child>
+                    <child>
+                      <object class="ColorModelEntry" id="hcl_entry">
+                        <property name="visible">False</property>
+                      </object>
+                    </child>
                   </object>
                 </child>
                 <child>

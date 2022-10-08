@@ -327,6 +327,15 @@ impl PreferencesWindow {
             if !order.contains(&item.to_owned()) {
                 log::debug!("Saved order does not contain {}", item);
                 order.push(item.to_owned());
+                //override previously saved order
+                match self
+                    .imp()
+                    .settings
+                    .set("format-order", &self.format_order_list())
+                {
+                    Ok(_) => {}
+                    Err(err) => log::error!("Failed to save format-order: {}", err),
+                }
             }
         }
 
@@ -401,6 +410,15 @@ impl PreferencesWindow {
                             utils::round_percent(hwb.2)
                         ),
                         "show-hwb-model",
+                    )
+                }
+                "hcl" => {
+                    let hcl = color.to_hcl();
+                    ColorFormatObject::new(
+                        item,
+                        gettext("CIELCh / HCL"),
+                        format!("lch({:.2}, {:.2}, {:.2})", hcl.2, hcl.1, hcl.0),
+                        "show-hcl-model",
                     )
                 }
                 _ => {

@@ -14,7 +14,7 @@
       <summary>Window maximized state</summary>
     </key>
     <key name="format-order" type="as">
-      <default>[ 'hex', 'rgb', 'hsl', 'hsv', 'cmyk', 'xyz', 'cielab', 'hwb' ]</default>
+      <default>[ 'hex', 'rgb', 'hsl', 'hsv', 'cmyk', 'xyz', 'cielab', 'hwb', 'hcl' ]</default>
       <summary>Order of the formats</summary>
       <description>In which order the formats should be displayed. Only possible values should the format names.</description>
     </key>
@@ -62,6 +62,11 @@
       <default>false</default>
       <summary>Show HWB Model</summary>
       <description>Whether the application should show the HWB code.</description>
+    </key>
+    <key name="show-hcl-model" type="b">
+      <default>false</default>
+      <summary>Show HCL Model</summary>
+      <description>Whether the application should show the HCL code.</description>
     </key>
   </schema>
 </schemalist>
