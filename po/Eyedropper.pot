@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gtk/-/issues/\n"
-"POT-Creation-Date: 2022-10-06 18:05+0200\n"
+"POT-Creation-Date: 2022-10-08 18:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -273,51 +273,59 @@ msgctxt "Color palette consisting of six slight shifted colors"
 msgid "Analogous"
 msgstr ""
 
-#: src/widgets/preferences.rs:226
+#: src/widgets/preferences.rs:227
 msgid "Move Up"
 msgstr ""
 
-#: src/widgets/preferences.rs:228
+#: src/widgets/preferences.rs:229
 msgid "Move Down"
 msgstr ""
 
-#: src/widgets/preferences.rs:317
+#: src/widgets/preferences.rs:346
 msgid "Hex-Code"
 msgstr ""
 
-#: src/widgets/preferences.rs:323
+#: src/widgets/preferences.rs:352
 msgid "RGB"
 msgstr ""
 
-#: src/widgets/preferences.rs:331
+#: src/widgets/preferences.rs:358
 msgid "HSL"
 msgstr ""
 
-#: src/widgets/preferences.rs:340
+#: src/widgets/preferences.rs:366
 msgid "HSV"
 msgstr ""
 
-#: src/widgets/preferences.rs:349
+#: src/widgets/preferences.rs:375
 msgid "CMYK"
 msgstr ""
 
-#: src/widgets/preferences.rs:358
+#: src/widgets/preferences.rs:384
 msgid "XYZ"
 msgstr ""
 
-#: src/widgets/preferences.rs:367
+#: src/widgets/preferences.rs:393
 msgid "CIELAB"
 msgstr ""
 
-#: src/window.rs:467
+#: src/widgets/preferences.rs:405
+msgid "HWB"
+msgstr ""
+
+#: src/widgets/preferences.rs:419
+msgid "CIELCh / HCL"
+msgstr ""
+
+#: src/window.rs:485
 msgid "Failed to get palette color"
 msgstr ""
 
-#: src/window.rs:487
+#: src/window.rs:505
 msgid "Failed to pick a color"
 msgstr ""
 
 #. Translators: Do not replace the {}. These are used as placeholders for the copied values
-#: src/window.rs:579 src/window.rs:586
+#: src/window.rs:585 src/window.rs:592
 msgid "Copied: “{}”"
 msgstr ""
