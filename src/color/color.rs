@@ -1,4 +1,5 @@
 use core::fmt;
+use std::collections::HashMap;
 
 use crate::utils;
 
@@ -29,7 +30,7 @@ impl From<u32> for AlphaPosition {
     }
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct Color {
     pub alpha: u8,
     pub red: u8,

@@ -2,7 +2,7 @@ use adw::{prelude::*, subclass::prelude::*};
 use gettextrs::pgettext;
 use gtk::{glib, CompositeTemplate};
 
-use crate::model::color::{AlphaPosition, Color};
+use crate::color::color::{AlphaPosition, Color};
 
 mod imp {
 
