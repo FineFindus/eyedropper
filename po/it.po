@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gtk/-/issues/\n"
-"POT-Creation-Date: 2022-09-27 20:01+0200\n"
-"PO-Revision-Date: 2022-10-03 23:15+0200\n"
+"POT-Creation-Date: 2022-10-08 18:15+0200\n"
+"PO-Revision-Date: 2022-10-09 23:53+0200\n"
 "Last-Translator: Davide Ferracin <davide.ferracin@protonmail.com>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "Language: it\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:35 src/main.rs:24 src/widgets/about_window.rs:45
+#: data/resources/ui/window.ui:35 src/main.rs:24 src/widgets/about_window.rs:44
 msgid "Eyedropper"
 msgstr "Contagocce"
 
@@ -28,8 +28,10 @@ msgid "Color Picker"
 msgstr "Selettore di colori"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
-msgid "An easy-to-use color picker"
-msgstr "Un selettore di colori facile da usare"
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
+#: src/widgets/about_window.rs:74
+msgid "A powerful color picker and formatter"
+msgstr "Un potente selettore ed editor di colori"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
@@ -38,13 +40,8 @@ msgstr ""
 "Gnome;GTK;Color;Color Picker;Picker;Palette;pipetta;colore;selettore;"
 "eyedropper;tavolozza;contagocce;"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
-#: src/widgets/about_window.rs:75
-msgid "An easy-to-use color picker and editor"
-msgstr "Un selettore ed editor di colori facile da usare"
-
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
-#: src/widgets/about_window.rs:78
+#: src/widgets/about_window.rs:77
 msgid ""
 "Pick any color from your screen and view it in different formats. Change the "
 "picked color or go back to a previously picked color from the history list. "
@@ -56,37 +53,39 @@ msgstr ""
 "sfumature a partire dal colore selezionato."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
-#: src/widgets/about_window.rs:83
+#: src/widgets/about_window.rs:82
 msgid "Features"
 msgstr "Funzionalità"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:16
-#: src/widgets/about_window.rs:87
+#: src/widgets/about_window.rs:86
 msgid "Pick a Color"
 msgstr "Prelievo colore"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
-#: src/widgets/about_window.rs:88
+#: src/widgets/about_window.rs:87
 msgid "Enter a color in Hex-Format"
 msgstr "Inserimento di colori in formato esadecimale"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:18
-#: src/widgets/about_window.rs:89
+#: src/widgets/about_window.rs:88
 msgid "Parse RGBA/ARGB Hex-Colors"
 msgstr "Analisi di colori esadecimali RGBA/ARGB"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
-#: src/widgets/about_window.rs:90
+#: src/widgets/about_window.rs:89
 msgid "View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format"
-msgstr "Visualizzazione di colori in formato esadecimale, RGB, HSV, HSL, CMYK, XYZ e CIE-Lab"
+msgstr ""
+"Visualizzazione di colori in formato esadecimale, RGB, HSV, HSL, CMYK, XYZ e "
+"CIE-Lab"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
-#: src/widgets/about_window.rs:91
+#: src/widgets/about_window.rs:90
 msgid "Customize which formats appear as well as their order"
 msgstr "Personalizzazione dei formati visibili e del loro ordine"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
-#: src/widgets/about_window.rs:92
+#: src/widgets/about_window.rs:91
 msgid "Generate a palette of different shades"
 msgstr "Generazione di una tavolozza con varie sfumature"
 
@@ -106,7 +105,11 @@ msgstr "Formattazione dei colori personalizzata nel tema scuro"
 msgid "Customized color formatting"
 msgstr "Formattazione dei colori personalizzata"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:88
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:43
+msgid "Generated color palettes"
+msgstr "Tavolozze di colori generate"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:92
 msgid "FineFindus"
 msgstr "FineFindus"
 
@@ -119,6 +122,10 @@ msgstr "Copia formato"
 msgctxt "Tooltip of the copy button for the hex format"
 msgid "Copy Format"
 msgstr "Copia formato"
+
+#: data/resources/ui/palette_window.ui:5
+msgid "Palettes"
+msgstr "Tavolozze"
 
 #: data/resources/ui/preferences.ui:10
 msgid "General"
@@ -218,71 +225,126 @@ msgid "Pick a Color"
 msgstr "Preleva un colore"
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
-#: src/widgets/about_window.rs:51
+#: src/widgets/about_window.rs:50
 msgid "translator-credits"
 msgstr "Davide Ferracin <davide.ferracin@protonmail.com>"
 
-#: src/widgets/about_window.rs:111
+#: src/widgets/about_window.rs:110
 msgctxt ""
 "The changelog of the current version. Should be similar to the CHANGELOG.md "
 "file at the project root. Please ensure that the tags have a matching "
 "closing tag. Since xgettext does not recognize rust multiline strings, this "
 "should be on a single line using line breaks (\\n) for new lines."
 msgid ""
-"<p>This is a minor release, improving on the currently available features.</"
-"p>\n"
+"<p>This release extends the current available features.</p>\n"
 "<p> Features:</p>\n"
-"<ul><li> Added new translations</li><li>Fixed minor issues</li></ul>"
+"<ul><li> A new Palette dialog showing different color palettes</li><li> "
+"Using the new AdwAboutWindow</li><li> Added new translations</li><li>Fixed "
+"minor issues</li></ul>"
 msgstr ""
-"<p>Questa è una versione minore, che migliora le funzionalità attualmente presenti.</"
-"p>\n"
+"<p>Questa versione estende le funzionalità attualmente disponibili.</p>\n"
 "<p> Funzionalità:</p>\n"
-"<ul><li> Aggiunte nuove traduzioni</li><li>Corretti errori minori</li></ul>"
+"<ul><li> Una nuova finestra di dialogo Tavolozza che mostra diverse tavolozze "
+"di colori</li><li> Utilizzo della nuova AdwAboutWindow</li><li> Aggiunte nuove "
+"traduzioni</li><li> Corretti errori minori</li></ul>"
 
-#: src/widgets/preferences.rs:226
+#: src/widgets/palette_dialog.rs:130
+msgctxt "Name for tints (lighter variants) of the color"
+msgid "Tints"
+msgstr "Tinte chiare"
+
+#: src/widgets/palette_dialog.rs:134
+msgctxt "Name for shades (darker variants) of the color"
+msgid "Shades"
+msgstr "Tinte scure"
+
+#: src/widgets/palette_dialog.rs:140
+msgctxt "Name for the opposite/complementary color (e.g. blue ⇔ yellow)"
+msgid "Complementary"
+msgstr "Complementare"
+
+#: src/widgets/palette_dialog.rs:147
+msgctxt ""
+"The name of the color palette. Consist of the two opposite colors (e.g. blue "
+"⇔ orange / green)"
+msgid "Split-Complementary"
+msgstr "Bicomplementari"
+
+#: src/widgets/palette_dialog.rs:154
+msgctxt ""
+"Name of the color palette, which would form a triangle above the color wheel"
+msgid "Triadic"
+msgstr "Triadica"
+
+#: src/widgets/palette_dialog.rs:159
+msgctxt "The name of the color palette."
+msgid "Tetradic"
+msgstr "Tetradica"
+
+#: src/widgets/palette_dialog.rs:165
+msgctxt "Color palette consisting of six slight shifted colors"
+msgid "Analogous"
+msgstr "Analoghi"
+
+#: src/widgets/preferences.rs:227
 msgid "Move Up"
 msgstr "Sposta in alto"
 
-#: src/widgets/preferences.rs:228
+#: src/widgets/preferences.rs:229
 msgid "Move Down"
 msgstr "Sposta in basso"
 
-#: src/widgets/preferences.rs:317
+#: src/widgets/preferences.rs:346
 msgid "Hex-Code"
 msgstr "Codice esadecimale"
 
-#: src/widgets/preferences.rs:323
+#: src/widgets/preferences.rs:352
 msgid "RGB"
 msgstr "RGB"
 
-#: src/widgets/preferences.rs:331
+#: src/widgets/preferences.rs:358
 msgid "HSL"
 msgstr "HSL"
 
-#: src/widgets/preferences.rs:340
+#: src/widgets/preferences.rs:366
 msgid "HSV"
 msgstr "HSV"
 
-#: src/widgets/preferences.rs:349
+#: src/widgets/preferences.rs:375
 msgid "CMYK"
 msgstr "CMYK"
 
-#: src/widgets/preferences.rs:358
+#: src/widgets/preferences.rs:384
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/widgets/preferences.rs:367
+#: src/widgets/preferences.rs:393
 msgid "CIELAB"
 msgstr "CIELAB"
 
-#: src/window.rs:479
+#: src/widgets/preferences.rs:405
+msgid "HWB"
+msgstr "HWB"
+
+#: src/widgets/preferences.rs:419
+msgid "CIELCh / HCL"
+msgstr "CIELCh / HCL"
+
+#: src/window.rs:485
+msgid "Failed to get palette color"
+msgstr "Errore nell'ottenere il colore della tavolozza"
+
+#: src/window.rs:505
 msgid "Failed to pick a color"
 msgstr "Errore nel prelievo del colore"
 
 #. Translators: Do not replace the {}. These are used as placeholders for the copied values
-#: src/window.rs:598 src/window.rs:605
+#: src/window.rs:585 src/window.rs:592
 msgid "Copied: “{}”"
 msgstr "Copiato: «{}»"
+
+#~ msgid "An easy-to-use color picker"
+#~ msgstr "Un selettore di colori facile da usare"
 
 #~ msgid "Available Formats:"
 #~ msgstr "Formati disponibili:"
