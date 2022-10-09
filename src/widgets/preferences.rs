@@ -10,8 +10,10 @@ use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::Switch;
 
-use crate::model::color::Color;
-use crate::model::color_format::ColorFormatObject;
+use crate::color::color::Color;
+use crate::utils;
+
+use self::color_format::ColorFormatObject;
 
 mod imp {
 
@@ -106,14 +108,14 @@ impl PreferencesWindow {
             .build();
     }
 
-    /// Returns the history list store object.
+    /// Returns the formats list store object.
     fn formats(&self) -> gio::ListStore {
         // Get state
         self.imp()
             .formats
             .borrow()
             .clone()
-            .expect("Could not get current history.")
+            .expect("Could not get current formats.")
     }
 
     fn format_order_list(&self) -> Vec<String> {
@@ -133,10 +135,10 @@ impl PreferencesWindow {
         self.add_options();
     }
 
-    /// Assure that history is only visible
+    /// Assure that formats is only visible
     /// if the number of items is greater than 0
-    fn set_format_list_visible(&self, history: &gio::ListStore) {
-        self.imp().format_list.set_visible(history.n_items() > 0);
+    fn set_format_list_visible(&self, formats: &gio::ListStore) {
+        self.imp().format_list.set_visible(formats.n_items() > 0);
     }
 
     ///Setup the format list
@@ -152,13 +154,13 @@ impl PreferencesWindow {
         self.imp().format_list.bind_model(
             Some(&selection_model),
             glib::clone!(@weak self as widget => @default-panic, move |obj| {
-                let history_object = obj.downcast_ref().expect("The object is not of type `ColorFormatObject`.");
-                let hist = widget.create_format_row(history_object);
+                let formats_object = obj.downcast_ref().expect("The object is not of type `ColorFormatObject`.");
+                let hist = widget.create_format_row(formats_object);
                 hist.upcast()
             }),
         );
 
-        // Assure that the history list is only visible when it is supposed to
+        // Assure that the formats list is only visible when it is supposed to
         self.set_format_list_visible(&self.formats());
         self.formats().connect_items_changed(
             glib::clone!(@weak self as window => move |items, _, _, _| {
@@ -307,32 +309,57 @@ impl PreferencesWindow {
     fn add_options(&self) {
         let color = Color::rgb(46, 52, 64);
 
-        let order = self.imp().settings.get::<Vec<String>>("format-order");
+        let mut order = self.imp().settings.get::<Vec<String>>("format-order");
         log::debug!("Order: {:?}", order);
+
+        let default_order = self
+            .imp()
+            .settings
+            .default_value("format-order")
+            .expect("Failed to get default format-order");
+
+        //It is theoretically possible to remove formats from the settings, so they would not show up
+        //on the page. I couldn't find any docs about what happens when the defaults are updated, which happens whenever
+        //a new format is added, so we just manually check if all formats are in the saved setting
+        for item in default_order
+            .array_iter_str()
+            .expect("Failed to get default format-order array")
+        {
+            if !order.contains(&item.to_owned()) {
+                log::debug!("Saved order does not contain {}", item);
+                order.push(item.to_owned());
+                //override previously saved order
+                match self
+                    .imp()
+                    .settings
+                    .set("format-order", &self.format_order_list())
+                {
+                    Ok(_) => {}
+                    Err(err) => log::error!("Failed to save format-order: {}", err),
+                }
+            }
+        }
 
         for item in order {
             let format = match item.to_lowercase().as_str() {
                 "hex" => ColorFormatObject::new(
                     item,
                     gettext("Hex-Code"),
-                    color.to_hex_string(crate::model::color::AlphaPosition::None),
+                    color.to_hex_string(crate::color::color::AlphaPosition::None),
                     "show-hex-model",
                 ),
                 "rgb" => ColorFormatObject::new(
                     item,
                     gettext("RGB"),
-                    format!("rgb({}, {}, {})", color.red, color.green, color.blue),
+                    color.to_rgb_string(crate::color::color::AlphaPosition::None),
                     "show-rgb-model",
                 ),
-                "hsl" => {
-                    let hsl = color.to_hsl();
-                    ColorFormatObject::new(
-                        item,
-                        gettext("HSL"),
-                        format!("hsl({}, {}%, {}%)", hsl.0, hsl.1, hsl.2),
-                        "show-hsl-model",
-                    )
-                }
+                "hsl" => ColorFormatObject::new(
+                    item,
+                    gettext("HSL"),
+                    color.to_hsl_string(crate::color::color::AlphaPosition::None),
+                    "show-hsl-model",
+                ),
                 "hsv" => {
                     let hsv = color.to_hsv();
                     ColorFormatObject::new(
@@ -372,6 +399,29 @@ impl PreferencesWindow {
                         "show-cie-lab-model",
                     )
                 }
+                "hwb" => {
+                    let hwb = color.to_hwb();
+                    ColorFormatObject::new(
+                        item,
+                        gettext("HWB"),
+                        format!(
+                            "hwb({}, {}%, {}%)",
+                            hwb.0,
+                            utils::round_percent(hwb.1),
+                            utils::round_percent(hwb.2)
+                        ),
+                        "show-hwb-model",
+                    )
+                }
+                "hcl" => {
+                    let hcl = color.to_hcl();
+                    ColorFormatObject::new(
+                        item,
+                        gettext("CIELCh / HCL"),
+                        format!("lch({:.2}, {:.2}, {:.2})", hcl.2, hcl.1, hcl.0),
+                        "show-hcl-model",
+                    )
+                }
                 _ => {
                     log::error!("Failed to find format: {item}");
                     continue;
@@ -379,6 +429,122 @@ impl PreferencesWindow {
             };
 
             self.formats().append(&format);
+        }
+    }
+}
+
+mod color_format {
+    use glib::{Object, ObjectExt};
+
+    mod imp {
+
+        use std::cell::RefCell;
+
+        use glib::{
+            subclass::{prelude::ObjectImpl, types::ObjectSubclass},
+            ParamSpec, ParamSpecString, ToValue, Value,
+        };
+        use once_cell::sync::Lazy;
+
+        // Object holding the state
+        #[derive(Debug, Default)]
+        pub struct ColorFormatObject {
+            pub identifier: RefCell<String>,
+            pub label: RefCell<String>,
+            pub example: RefCell<String>,
+            pub settings_name: RefCell<String>,
+        }
+
+        // The central trait for subclassing a GObject
+        #[glib::object_subclass]
+        impl ObjectSubclass for ColorFormatObject {
+            const NAME: &'static str = "ColorFormatObject";
+            type Type = super::ColorFormatObject;
+        }
+
+        // Trait shared by all GObjects
+        impl ObjectImpl for ColorFormatObject {
+            fn properties() -> &'static [ParamSpec] {
+                static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
+                    vec![
+                        ParamSpecString::builder("identifier").build(),
+                        ParamSpecString::builder("label").build(),
+                        ParamSpecString::builder("example").build(),
+                        ParamSpecString::builder("settings-name").build(),
+                    ]
+                });
+                PROPERTIES.as_ref()
+            }
+
+            fn set_property(
+                &self,
+                _obj: &Self::Type,
+                _id: usize,
+                value: &Value,
+                pspec: &ParamSpec,
+            ) {
+                match pspec.name() {
+                    "identifier" => {
+                        let input_value = value.get::<String>().unwrap();
+                        self.identifier.replace(input_value);
+                    }
+                    "label" => {
+                        let input_value = value.get::<String>().unwrap();
+                        self.label.replace(input_value);
+                    }
+                    "example" => {
+                        let input_value = value.get::<String>().unwrap();
+                        self.example.replace(input_value);
+                    }
+                    "settings-name" => {
+                        let input_value = value.get::<String>().unwrap();
+                        self.settings_name.replace(input_value);
+                    }
+                    _ => unimplemented!(),
+                }
+            }
+
+            fn property(&self, _obj: &Self::Type, _id: usize, pspec: &ParamSpec) -> Value {
+                match pspec.name() {
+                    "identifier" => self.identifier.borrow().to_value(),
+                    "label" => self.label.borrow().to_value(),
+                    "example" => self.example.borrow().to_value(),
+                    "settings-name" => self.settings_name.borrow().to_value(),
+                    _ => unimplemented!(),
+                }
+            }
+        }
+    }
+
+    glib::wrapper! {
+        pub struct ColorFormatObject(ObjectSubclass<imp::ColorFormatObject>);
+    }
+
+    impl ColorFormatObject {
+        pub fn new(identifier: String, label: String, format: String, settings_name: &str) -> Self {
+            Object::new(&[
+                ("identifier", &identifier),
+                ("label", &label),
+                ("example", &format),
+                ("settings-name", &settings_name),
+            ])
+            .expect("Failed to create `ColorFormatObject`.")
+        }
+
+        pub fn identifier(&self) -> String {
+            self.property("identifier")
+        }
+
+        pub fn label(&self) -> String {
+            self.property("label")
+        }
+
+        pub fn example(&self) -> String {
+            self.property("example")
+        }
+
+        pub fn settings_name(&self) -> String {
+            self.property("settings_name")
         }
     }
 }

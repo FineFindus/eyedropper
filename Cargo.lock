@@ -299,7 +299,6 @@ dependencies = [
  "gtk-macros",
  "gtk4",
  "libadwaita",
- "libc",
  "log",
  "once_cell",
  "pretty_env_logger",

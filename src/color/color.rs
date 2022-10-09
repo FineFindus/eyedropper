@@ -1,4 +1,5 @@
 use core::fmt;
+use std::collections::HashMap;
 
 use crate::utils;
 
@@ -29,7 +30,7 @@ impl From<u32> for AlphaPosition {
     }
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct Color {
     pub alpha: u8,
     pub red: u8,
@@ -81,66 +82,29 @@ impl Color {
                 "#{:02x}{:02x}{:02x}{:02x}",
                 self.alpha, self.red, self.green, self.blue
             ),
-            AlphaPosition::End => {
-                format!(
-                    "#{:02x}{:02x}{:02x}{:02x}",
-                    self.red, self.green, self.blue, self.alpha
-                )
-            }
+            AlphaPosition::End => format!(
+                "#{:02x}{:02x}{:02x}{:02x}",
+                self.red, self.green, self.blue, self.alpha
+            ),
             AlphaPosition::None => format!("#{:02x}{:02x}{:02x}", self.red, self.green, self.blue),
         }
         .to_ascii_uppercase()
     }
 
-    /// Converts the color to HSV values.
+    /// Returns the color as a rgb/rgba string.
     ///
-    /// Formula from <https://en.wikipedia.org/wiki/HSL_and_HSV>
-    pub fn to_hsv(self) -> (u16, u8, u8) {
-        let red = self.red as f32 / 255f32;
-        let green = self.green as f32 / 255f32;
-        let blue = self.blue as f32 / 255f32;
-
-        //find the max out of 3 values
-        let max = red.max(green.max(blue));
-        let min = red.min(green.min(blue));
-
-        let hue = self.calculate_hue();
-
-        let saturation = utils::round_percent(if max == 0f32 { 0f32 } else { (max - min) / max });
-
-        log::debug!(
-            "HSV: {}°, {}%, {}% ",
-            hue,
-            saturation,
-            utils::round_percent(max)
-        );
-        (hue, saturation, utils::round_percent(max))
-    }
-
-    /// Converts the color to HSL values.
-    ///
-    /// Formula from <https://en.wikipedia.org/wiki/HSL_and_HSV>
-    pub fn to_hsl(self) -> (u16, f32, f32) {
-        let red = self.red as f32 / 255f32;
-        let green = self.green as f32 / 255f32;
-        let blue = self.blue as f32 / 255f32;
-
-        //find the max out of 3 values
-        let max = red.max(green.max(blue));
-        let min = red.min(green.min(blue));
-
-        let hue = self.calculate_hue();
-
-        let saturation = if max == 0f32 || min == 1f32 {
-            0f32
-        } else {
-            (max - min) / (1f32 - (max + min - 1f32).abs())
-        };
-
-        let lightness = (max + min) / 2f32;
-
-        log::debug!("HSL: {}°, {}%, {}% ", hue, saturation, lightness);
-        (hue, saturation, lightness)
+    /// If the alpha position is a the end, a rgba string is returned, otherwise
+    /// the normal rgb string.
+    pub fn to_rgb_string(self, alpha_position: AlphaPosition) -> String {
+        match alpha_position {
+            //show alpha at the end (rgba)
+            AlphaPosition::End => format!(
+                "rgba({}, {}, {}, {})",
+                self.red, self.green, self.blue, self.alpha
+            ),
+            // no alpha/ there is no argb
+            _ => format!("rgb({}, {}, {})", self.red, self.green, self.blue),
+        }
     }
 
     /// Calculates the hue of the color.
@@ -173,6 +137,93 @@ impl Color {
         }
 
         hue.round() as u16
+    }
+
+    /// Converts the color to HSV values.
+    ///
+    /// Formula from <https://en.wikipedia.org/wiki/HSL_and_HSV>
+    pub fn to_hsv(self) -> (u16, u8, u8) {
+        let red = self.red as f32 / 255f32;
+        let green = self.green as f32 / 255f32;
+        let blue = self.blue as f32 / 255f32;
+
+        //find the max out of 3 values
+        let max = red.max(green.max(blue));
+        let min = red.min(green.min(blue));
+
+        let hue = self.calculate_hue();
+
+        let saturation = utils::round_percent(if max == 0f32 { 0f32 } else { (max - min) / max });
+
+        log::debug!(
+            "HSV: {}°, {}%, {}% ",
+            hue,
+            saturation,
+            utils::round_percent(max)
+        );
+        (hue, saturation, utils::round_percent(max))
+    }
+
+    /// Returns the [HWB](https://en.wikipedia.org/wiki/HWB_color_model) values of the color.
+    ///
+    /// The color is converted from RGB according to the formula on the wikipedia page.
+    pub fn to_hwb(self) -> (u16, f32, f32) {
+        //rescale rgb to be between 0 and 1
+        let red = self.red as f32 / 255f32;
+        let green = self.green as f32 / 255f32;
+        let blue = self.blue as f32 / 255f32;
+
+        let hue = self.calculate_hue();
+        let white = red.min(green.min(blue));
+        let black = 1f32 - red.max(green.max(blue));
+        (hue, white, black)
+    }
+
+    /// Converts the color to HSL values.
+    ///
+    /// Formula from <https://en.wikipedia.org/wiki/HSL_and_HSV>
+    fn to_hsl(self) -> (u16, f32, f32) {
+        let red = self.red as f32 / 255f32;
+        let green = self.green as f32 / 255f32;
+        let blue = self.blue as f32 / 255f32;
+
+        //find the max out of 3 values
+        let max = red.max(green.max(blue));
+        let min = red.min(green.min(blue));
+
+        let hue = self.calculate_hue();
+
+        let saturation = if max == 0f32 || min == 1f32 {
+            0f32
+        } else {
+            (max - min) / (1f32 - (max + min - 1f32).abs())
+        };
+
+        let lightness = (max + min) / 2f32;
+
+        log::debug!("HSL: {}°, {}%, {}% ", hue, saturation, lightness);
+        (hue, saturation, lightness)
+    }
+
+    pub fn to_hsl_string(self, alpha_position: AlphaPosition) -> String {
+        let (hue, saturation, lightness) = self.to_hsl();
+        //format saturation and lightness to be full percentages
+        let saturation = utils::round_percent(saturation);
+        let lightness = utils::round_percent(lightness);
+        match alpha_position {
+            AlphaPosition::End => format!(
+                "hsla({}, {}%, {}%, {})",
+                hue,
+                saturation,
+                lightness,
+                //convert from [0-255] to [0-1]
+                utils::pretty_print_percent(
+                    utils::round_percent(self.alpha as f32 / 255f32) as f32 / 100f32
+                )
+            ),
+            //normal format for non-alpha/ alpha at start
+            _ => format!("hsl({}, {}%, {}%)", hue, saturation, lightness),
+        }
     }
 
     /// Returns the CMYK values of the color
@@ -292,6 +343,20 @@ impl Color {
         (cie_l, cie_a, cie_b)
     }
 
+    pub fn to_hcl(self) -> (f32, f32, f32) {
+        //convert color to lab first
+        let (luminance, a, b) = self.to_cie_lab();
+
+        let hue = b.atan2(a).to_degrees();
+        let chroma = (a.powi(2) + b.powi(2)).sqrt();
+
+        (
+            if hue >= 0.0 { hue } else { hue + 360.0 },
+            chroma,
+            luminance,
+        )
+    }
+
     /// Create a color from a hex string.
     ///
     /// The hex color optionally start with '#'.
@@ -390,7 +455,6 @@ impl Color {
             green = hue2rgb(p, q, hue);
             blue = hue2rgb(p, q, hue - (1f32 / 3f32));
         }
-        log::debug!("RGB: {},{},{}", red, green, blue);
         Self::rgb(
             (red * 255f32).floor() as u8,
             (green * 255f32).floor() as u8,
@@ -398,58 +462,92 @@ impl Color {
         )
     }
 
-    /// Generates a palette consisting of n shades and n tints from the given color.
-    ///
-    /// The tints/shades are tinted/shaded by the factor.
-    pub fn generate_palette(&self, n: usize, factor: f32) -> Vec<Self> {
-        let mut colors = Vec::with_capacity(n);
-
-        //generate darker shades
-        for i in 0..n {
-            colors.push(self.shade(i as f32 * factor))
-        }
-
-        //generate lighter tints
-        for i in 0..n {
-            colors.push(self.tint(i as f32 * factor))
-        }
-
-        colors
-    }
-
-    /// Tints (adding pure white) a given color by the tint factor.
+    /// Return n tints (adding pure white) of the color by the tint factor.
     ///
     /// The following formula from <https://maketintsandshades.com/about> will be used to calculate tinted RGB values:
     /// ```
     /// New value = current value + ((255 - current value) x tint factor)
     /// ```
-    fn tint(&self, factor: f32) -> Self {
-        //New value = current value + ((255 - current value) x tint factor)
-        let red = self.red as f32 + ((255f32 - self.red as f32) * factor);
-        let green = self.green as f32 + ((255f32 - self.green as f32) * factor);
-        let blue = self.blue as f32 + ((255f32 - self.blue as f32) * factor);
+    pub fn tints(&self, factor: f32, n: usize) -> Vec<Self> {
+        let mut colors = Vec::with_capacity(n);
 
-        Color::rgb(red.round() as u8, green.round() as u8, blue.round() as u8)
+        for i in 0..n {
+            //New value = current value + ((255 - current value) x tint factor)
+            let red = self.red as f32 + ((255f32 - self.red as f32) * (i as f32 * factor));
+            let green = self.green as f32 + ((255f32 - self.green as f32) * (i as f32 * factor));
+            let blue = self.blue as f32 + ((255f32 - self.blue as f32) * (i as f32 * factor));
+
+            colors.push(Color::rgb(
+                red.round() as u8,
+                green.round() as u8,
+                blue.round() as u8,
+            ));
+        }
+        colors
     }
 
-    /// Shades (adding pure black) a given color by the tint factor.
+    /// Return n shades (adding pure black) of the color.
     ///
     /// The following formula from <https://maketintsandshades.com/about> will be used to calculate tinted RGB values:
     /// ```
     /// New value = current value x shade factor
     /// ```
-    fn shade(&self, factor: f32) -> Self {
-        //New value = current value x shade factor
-        let red = self.red as f32 * factor;
-        let green = self.green as f32 * factor;
-        let blue = self.blue as f32 * factor;
+    pub fn shades(&self, factor: f32, n: usize) -> Vec<Self> {
+        let mut colors = Vec::with_capacity(n);
 
-        Color::rgb(red.round() as u8, green.round() as u8, blue.round() as u8)
+        //go reverse, so the lighter stuff comes first
+        for i in (0..n).rev() {
+            //New value = current value x shade factor
+            let red = self.red as f32 * (i as f32 * factor);
+            let green = self.green as f32 * (i as f32 * factor);
+            let blue = self.blue as f32 * (i as f32 * factor);
+
+            colors.push(Color::rgb(
+                red.round() as u8,
+                green.round() as u8,
+                blue.round() as u8,
+            ));
+        }
+        colors
     }
 
     /// Returns the complementary/opposite to self.
     pub fn complementary_color(&self) -> Self {
         Color::rgb(255 - self.red, 255 - self.green, 255 - self.blue)
+    }
+
+    /// Returns slit complementary colors.
+    pub fn split_complementary_color(&self) -> Vec<Self> {
+        let mut colors = Vec::with_capacity(2);
+
+        let (hue, saturation, lightness) = self.to_hsl();
+        colors.push(*self);
+        colors.push(Color::from_hsl((hue + 150) % 360, saturation, lightness));
+        colors.push(Color::from_hsl((hue + 210) % 360, saturation, lightness));
+        colors
+    }
+
+    /// Returns triadic colors.
+    pub fn triadic_colors(&self) -> Vec<Self> {
+        let mut colors = Vec::with_capacity(2);
+
+        let (hue, saturation, lightness) = self.to_hsl();
+        colors.push(*self);
+        colors.push(Color::from_hsl((hue + 120) % 360, saturation, lightness));
+        colors.push(Color::from_hsl((hue + 240) % 360, saturation, lightness));
+        colors
+    }
+
+    /// Returns tetradic colors.
+    pub fn tetradic_colors(&self) -> Vec<Self> {
+        let mut colors = Vec::with_capacity(2);
+
+        let (hue, saturation, lightness) = self.to_hsl();
+        colors.push(*self);
+        colors.push(Color::from_hsl((hue + 90) % 360, saturation, lightness));
+        colors.push(Color::from_hsl((hue + 180) % 360, saturation, lightness));
+        colors.push(Color::from_hsl((hue + 270) % 360, saturation, lightness));
+        colors
     }
 
     /// Returns `n` analogous colors, include itself.
@@ -465,7 +563,8 @@ impl Color {
         let mut colors = Vec::with_capacity(n);
         colors.push(*self);
 
-        for i in 0..n {
+        //always shift by at least 1 slice
+        for i in 1..n {
             //add hue degrees
             hue = (hue + part * i as u16) % 360;
             colors.push(Self::from_hsl(hue, saturation, lightness));

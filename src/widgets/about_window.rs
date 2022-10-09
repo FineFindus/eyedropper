@@ -71,7 +71,7 @@ impl EyedropperAbout {
 
         //heading with summary
         details.push_str("<b>");
-        details.push_str(&gettext("An easy-to-use color picker and editor"));
+        details.push_str(&gettext("A powerful color picker and formatter"));
         details.push_str("</b>\n\n");
 
         details.push_str(&gettext("Pick any color from your screen and view it in different formats. Change the picked color or go back to a previously picked color from the history list. Generate a list of different shades from the picked color."));
@@ -107,7 +107,7 @@ impl EyedropperAbout {
 
         changelog.push_str(&pgettext(
             "The changelog of the current version. Should be similar to the CHANGELOG.md file at the project root. Please ensure that the tags have a matching closing tag. Since xgettext does not recognize rust multiline strings, this should be on a single line using line breaks (\\n) for new lines.",
-            "<p>This is a minor release, improving on the currently available features.</p>\n<p> Features:</p>\n<ul><li> Added new translations</li><li>Fixed minor issues</li></ul>",
+            "<p>This release extends the current available features.</p>\n<p> Features:</p>\n<ul><li> A new Palette dialog showing different color palettes</li><li> Using the new AdwAboutWindow</li><li> Added new translations</li><li>Fixed minor issues</li></ul>",
         ));
 
         changelog

@@ -5,7 +5,7 @@
 
 # Eyedropper
 
-An easy-to-use color picker and formatter.
+A powerful color picker and formatter.
 
 ![Dark UI](data/resources/screenshots/main_window_ui_dark.png)
 
@@ -17,6 +17,8 @@ An easy-to-use color picker and formatter.
 ![Customize the shown formats (Dark UI)](data/resources/screenshots/customized_formats_dark.png)
 
 ![Customize the shown formats (Light UI)](data/resources/screenshots/customized_formats_light.png)
+
+![Generate Color Palettes](data/resources/screenshots/palette_dialog_dark.png)
 
 ![Preferences](data/resources/screenshots/preference_window_dark.png)
 

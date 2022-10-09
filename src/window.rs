@@ -1,15 +1,16 @@
 use gettextrs::gettext;
+use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gio, glib};
-use gtk::{prelude::*, ColorButton};
 
 use crate::application::App;
+use crate::color::color::{AlphaPosition, Color};
 use crate::config::{APP_ID, PROFILE};
-use crate::model::color::{AlphaPosition, Color};
 use crate::model::history::HistoryObject;
 use crate::utils;
 use crate::widgets::color_model_entry::ColorModelEntry;
 use crate::widgets::hex_entry::HexEntry;
+use crate::widgets::palette_dialog::PaletteDialog;
 
 mod imp {
     use std::cell::RefCell;
@@ -49,6 +50,10 @@ mod imp {
         #[template_child]
         pub cie_lab_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
         #[template_child]
+        pub hwb_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
+        #[template_child]
+        pub hcl_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
+        #[template_child]
         pub history_list: TemplateChild<gtk::ListBox>,
         pub history: RefCell<Option<gio::ListStore>>,
         pub settings: gio::Settings,
@@ -70,6 +75,8 @@ mod imp {
                 cmyk_entry: TemplateChild::default(),
                 xyz_entry: TemplateChild::default(),
                 cie_lab_entry: TemplateChild::default(),
+                hwb_entry: TemplateChild::default(),
+                hcl_entry: TemplateChild::default(),
                 history_list: TemplateChild::default(),
                 history: Default::default(),
                 settings: gio::Settings::new(APP_ID),
@@ -83,6 +90,11 @@ mod imp {
         #[template_callback]
         fn on_color_picker_button_clicked(&self) {
             self.instance().pick_color();
+        }
+
+        #[template_callback]
+        fn on_palettes_button_clicked(&self) {
+            self.instance().open_palette_dialog();
         }
     }
 
@@ -143,7 +155,7 @@ mod imp {
 
 glib::wrapper! {
     pub struct AppWindow(ObjectSubclass<imp::AppWindow>)
-        @extends gtk::Widget, gtk::Window, gtk::ApplicationWindow,
+        @extends gtk::Widget, gtk::Window,  gtk::ApplicationWindow,
         @implements gio::ActionMap, gio::ActionGroup, gtk::Root;
 }
 
@@ -172,16 +184,6 @@ impl AppWindow {
         //clear history
         let history = self.history();
         history.remove_all();
-        //clear added palettes
-        utils::add_palette(
-            &self.imp().color_button.get(),
-            gtk::Orientation::Horizontal,
-            0,
-            None,
-        );
-
-        //re-add palette of the current color
-        self.add_palettes();
     }
 
     /// Setup the history by setting up a model
@@ -297,27 +299,13 @@ impl AppWindow {
             glib::clone!(@weak self as window => move |settings, _| {
                 log::debug!("Updating AlphaPosition");
                 let color = *window.imp().color.borrow();
-                let hex_alpha_position = AlphaPosition::from(settings.int("alpha-position") as u32);
+                let alpha_position = AlphaPosition::from(settings.int("alpha-position") as u32);
                 //update hex to show alpha
-                window.imp().hex_entry.set_color(color.to_hex_string(hex_alpha_position));
-                //update rgb to switch to argb/rgba
-                window.imp().rgb_entry.set_color(match hex_alpha_position {
-                    AlphaPosition::None => {
-                        format!("rgb({}, {}, {})", color.red, color.green, color.blue)
-                    }
-                    AlphaPosition::Start => {
-                        format!(
-                            "argb({}, {}, {}, {})",
-                            color.alpha, color.red, color.green, color.blue
-                        )
-                    }
-                    AlphaPosition::End => {
-                        format!(
-                            "rgba({}, {}, {}, {})",
-                            color.red, color.green, color.blue, color.alpha
-                        )
-                    }
-                });
+                window.imp().hex_entry.set_color(color.to_hex_string(alpha_position));
+                //update rgb to switch between rgb and rgba
+                window.imp().rgb_entry.set_color(color.to_rgb_string(alpha_position));
+                //update hsl to switch between hsl and hsla
+                window.imp().hsl_entry.set_color(color.to_hsl_string(alpha_position));
             }),
         );
 
@@ -404,6 +392,30 @@ impl AppWindow {
             window.imp().cie_lab_entry.set_visible(show_cie_lab_model);
             }),
         );
+
+        //first setup when loading
+        let show_hwb_model = settings.boolean("show-hwb-model");
+        imp.hwb_entry.set_visible(show_hwb_model);
+        //refresh when settings change
+        settings.connect_changed(
+            Some("show-hwb-model"),
+            glib::clone!(@weak self as window => move |settings, _| {
+            let show_hwb_model = settings.boolean("show-hwb-model");
+            window.imp().hwb_entry.set_visible(show_hwb_model);
+            }),
+        );
+
+        //first setup when loading
+        let show_hcl_model = settings.boolean("show-hcl-model");
+        imp.hcl_entry.set_visible(show_hcl_model);
+        //refresh when settings change
+        settings.connect_changed(
+            Some("show-hcl-model"),
+            glib::clone!(@weak self as window => move |settings, _| {
+            let show_hcl_model = settings.boolean("show-hcl-model");
+            window.imp().hcl_entry.set_visible(show_hcl_model);
+            }),
+        );
     }
 
     /// Insert the formats in the order in which they are saved in the settings.
@@ -440,6 +452,8 @@ impl AppWindow {
                 "cmyk" => &imp.cmyk_entry,
                 "xyz" => &imp.xyz_entry,
                 "cielab" => &imp.cie_lab_entry,
+                "hwb" => &imp.hwb_entry,
+                "hcl" => &imp.hcl_entry,
                 _ => {
                     log::error!("Failed to find format: {}", item);
                     continue;
@@ -449,6 +463,32 @@ impl AppWindow {
             format_box.append(&child.get());
         }
     }
+
+    fn open_palette_dialog(&self) {
+        let palette_dialog = PaletteDialog::new(*self.imp().color.borrow());
+        palette_dialog.set_transient_for(Some(self));
+        palette_dialog.show();
+
+        //when a palette is chosen, add all colors of the palette in reverse order to the history
+        palette_dialog.connect_closure(
+            "palette-clicked",
+            false,
+            glib::closure_local!(@watch self as window => move |_: PaletteDialog, palette: String| {
+                log::debug!("Palette: {palette}");
+
+                palette
+                .split(" ")
+                .for_each(|slice| match Color::from_hex(slice, AlphaPosition::None) {
+                    Ok(color) => window.set_color(color),
+                    Err(_) => {
+                        log::error!("Failed to parse color {}", slice);
+                        window.show_toast(&gettext("Failed to get palette color"))
+                },
+            });
+            }),
+        );
+    }
+
     /// Pick a color from the desktop using [ashpd].
     ///
     /// It will show a toast when failing to pick a color, for example when the user cancels the action.
@@ -468,54 +508,6 @@ impl AppWindow {
         }));
     }
 
-    ///Generates palettes of the current color, as well as the last three picked colors.
-    fn add_palettes(&self) {
-        let imp = self.imp();
-        let color = imp.color.borrow();
-        let btn: ColorButton = imp.color_button.get();
-
-        //the color picker widget only accepts gdk::RGBA colors,
-        //but we use our own color struct, This function convert them
-        fn to_gdk_rgb(colors: Vec<Color>) -> Vec<gtk::gdk::RGBA> {
-            colors
-                .into_iter()
-                .map(gtk::gdk::RGBA::from)
-                .collect::<Vec<gtk::gdk::RGBA>>()
-        }
-
-        let analogous_palette = to_gdk_rgb(color.analogous_colors(6));
-
-        //clear current palette set
-        utils::add_palette(&btn, gtk::Orientation::Horizontal, 0, None);
-
-        //generate a palette by shading and tinting the color
-        let colors = to_gdk_rgb(color.generate_palette(10, 0.1));
-
-        //add new palettes
-        utils::add_palette(&btn, gtk::Orientation::Horizontal, 10, Some(&colors));
-
-        utils::add_palette(
-            &btn,
-            gtk::Orientation::Horizontal,
-            10,
-            Some(&analogous_palette),
-        );
-
-        //add palettes of the last 3 history items
-        self.history()
-            .snapshot()
-            .iter()
-            .take(3)
-            .filter_map(Cast::downcast_ref::<HistoryObject>)
-            .for_each(|item| {
-                //generate a palette by shading and tinting the color
-                let colors = to_gdk_rgb(item.color().generate_palette(10, 0.1));
-
-                //add new palettes
-                utils::add_palette(&btn, gtk::Orientation::Horizontal, 10, Some(&colors));
-            });
-    }
-
     ///Update the current color to the given color.
     /// The old color will be added to the history list.
     pub fn set_color(&self, color: Color) {
@@ -527,47 +519,20 @@ impl AppWindow {
 
             log::info!(
                 "Changing Hex Color: {:?}",
-                color.to_hex_string(crate::model::color::AlphaPosition::End)
+                color.to_hex_string(crate::color::color::AlphaPosition::End)
             );
             let imp = self.imp();
             imp.color.replace(color);
 
             imp.color_button.set_rgba(&color.into());
 
-            //generate pallettes
-            self.add_palettes();
+            let alpha_position = AlphaPosition::from(imp.settings.int("alpha-position") as u32);
 
-            let hex_alpha_position = AlphaPosition::from(imp.settings.int("alpha-position") as u32);
+            imp.hex_entry.set_color(color.to_hex_string(alpha_position));
 
-            imp.hex_entry
-                .set_color(color.to_hex_string(hex_alpha_position));
+            imp.rgb_entry.set_color(color.to_rgb_string(alpha_position));
 
-            imp.rgb_entry.set_color(match hex_alpha_position {
-                AlphaPosition::None => {
-                    format!("rgb({}, {}, {})", color.red, color.green, color.blue)
-                }
-                AlphaPosition::Start => {
-                    format!(
-                        "argb({}, {}, {}, {})",
-                        color.alpha, color.red, color.green, color.blue
-                    )
-                }
-                AlphaPosition::End => {
-                    format!(
-                        "rgba({}, {}, {}, {})",
-                        color.red, color.green, color.blue, color.alpha
-                    )
-                }
-            });
-
-            let hsl = color.to_hsl();
-            imp.hsl_entry.set_color(format!(
-                "hsl({}, {}%, {}%)",
-                hsl.0,
-                //round to full percentages
-                utils::round_percent(hsl.1),
-                utils::round_percent(hsl.2)
-            ));
+            imp.hsl_entry.set_color(color.to_hsl_string(alpha_position));
 
             let hsv = color.to_hsv();
             imp.hsv_entry
@@ -588,6 +553,18 @@ impl AppWindow {
                 "CIELAB({:.2}, {:.2}, {:.2})",
                 cie_lab.0, cie_lab.1, cie_lab.2
             ));
+
+            let hwb = color.to_hwb();
+            imp.hwb_entry.set_color(format!(
+                "hwb({}, {}%, {}%)",
+                hwb.0,
+                utils::round_percent(hwb.1),
+                utils::round_percent(hwb.2)
+            ));
+
+            let lch = color.to_hcl();
+            imp.hcl_entry
+                .set_color(format!("lch({:.2}, {:.2}, {:.2})", lch.2, lch.1, lch.0));
         }
     }
 
@@ -626,6 +603,10 @@ impl AppWindow {
         imp.xyz_entry
             .connect_closure("copied-color", false, show_toast_closure.clone());
         imp.cie_lab_entry
+            .connect_closure("copied-color", false, show_toast_closure.clone());
+        imp.hwb_entry
+            .connect_closure("copied-color", false, show_toast_closure.clone());
+        imp.hcl_entry
             .connect_closure("copied-color", false, show_toast_closure);
 
         imp.hex_entry.connect_closure(
