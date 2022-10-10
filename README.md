@@ -39,6 +39,7 @@ A powerful color picker and formatter.
 - Add more color formats
 
 ### When should I use this? And when not?
+
 This application is geared towards advanced users (developers, designers, etc…), who not only need to pick a color but also modify or view it in different formats. For simply picking a color on Gnome, the [color-picker extension](https://github.com/tuberry/color-picker) is far better suited.
 
 ## Installation
@@ -109,6 +110,7 @@ flatpak-builder --run flatpak_app build-aux/com.github.finefindus.eyedropper.Dev
 ```
 
 #### Build without flatpak
+
 ```sh
 meson --prefix=/usr build
 ninja -C build
@@ -122,4 +124,4 @@ A huge thanks to these projects who served either as an inspiration or as code e
 - [GTK Rust Template](https://gitlab.gnome.org/World/Rust/gtk-rust-template)
 - [Contrast](https://gitlab.gnome.org/World/design/contrast)
 - [Microsoft Color Picker Utility](https://docs.microsoft.com/en-us/windows/powertoys/color-picker) - Inspirations on the design
-- All the other FOSS-Gtk apps
+- All the other FOSS-GTK apps
