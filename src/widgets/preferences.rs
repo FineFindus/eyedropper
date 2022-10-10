@@ -1,5 +1,6 @@
 use adw::traits::ActionRowExt;
 use gettextrs::gettext;
+use gettextrs::pgettext;
 use gtk::gdk;
 use gtk::gio;
 use gtk::gio::ListStore;
@@ -130,17 +131,23 @@ impl PreferencesWindow {
             .build();
 
         list.append(&self.name_set_row(
-            &gettext("Basic"),
-            &gettext("Show color names from the w3c basic color set"),
+            &pgettext(
+                "Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/#html4",
+                "Basic",
+            ),
+            &gettext("Show color names from the w3c basic color keyword set"),
             "name-source-basic",
         ));
         list.append(&self.name_set_row(
-            &gettext("Extended"),
-            &gettext("Show color names from the w3c extended color set"),
+            &pgettext(
+                "Name of the extended color keyword set from https://www.w3.org/TR/css-color-3/#svg-color",
+                "Extended",
+            ),
+            &gettext("Show color names from the w3c extended color keyword  set"),
             "name-source-extended",
         ));
         list.append(&self.name_set_row(
-            &gettext("xkcd"),
+            &pgettext("Name of the color set from the xkcd color survey", "xkcd"),
             &gettext("Show color names from the xkcd color survey"),
             "name-source-xkcd",
         ));

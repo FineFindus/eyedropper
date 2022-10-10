@@ -1,21 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-    <!-- <menu id="name_sources_menu">
-        <section>
-            <item>
-                <attribute name="label" translatable="yes">Basic</attribute>
-                <attribute name="action">names.basic</attribute>
-            </item>
-            <item>
-                <attribute name="label" translatable="yes">Extended</attribute>
-                <attribute name="action">names.extended</attribute>
-            </item>
-            <item>
-                <attribute name="label" translatable="yes">xkcd</attribute>
-                <attribute name="action">names.xkcd</attribute>
-            </item>
-        </section>
-    </menu> -->
     <template class="PreferencesWindow" parent="AdwPreferencesWindow">
         <property name="default-width">550</property>
         <property name="default-height">570</property>
@@ -44,8 +28,8 @@
                         </child>
                         <child>
                             <object class="AdwActionRow">
-                                <property name="title" translatable="yes">Name Sources</property>
-                                <property name="subtitle" translatable="yes">What sources should be used for the names</property>
+                                <property name="title" translatable="yes">Name Sets</property>
+                                <property name="subtitle" translatable="yes">Which color sets should be used for the names</property>
                                 <property name="activatable">True</property>
                                 <signal name="activated" handler="on_name_row_activated" swapped="true" />
                                 <child type="suffix">

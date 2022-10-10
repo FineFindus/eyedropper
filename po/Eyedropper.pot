@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gtk/-/issues/\n"
-"POT-Creation-Date: 2022-10-08 18:15+0200\n"
+"POT-Creation-Date: 2022-10-10 22:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:35 src/main.rs:24 src/widgets/about_window.rs:44
+#: data/resources/ui/window.ui:35 src/main.rs:25 src/widgets/about_window.rs:44
 msgid "Eyedropper"
 msgstr ""
 
@@ -147,15 +147,23 @@ msgstr ""
 msgid "Start"
 msgstr ""
 
-#: data/resources/ui/preferences.ui:33
+#: data/resources/ui/preferences.ui:31
+msgid "Name Sets"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:32
+msgid "Which color sets should be used for the names"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:46
 msgid "Color Formats"
 msgstr ""
 
-#: data/resources/ui/preferences.ui:34
+#: data/resources/ui/preferences.ui:47
 msgid "Customize the visible formats and in which order they are displayed."
 msgstr ""
 
-#: data/resources/ui/preferences.ui:38
+#: data/resources/ui/preferences.ui:51
 msgctxt "Tooltip of the button to reset the format order"
 msgid "Reset Order"
 msgstr ""
@@ -273,59 +281,99 @@ msgctxt "Color palette consisting of six slight shifted colors"
 msgid "Analogous"
 msgstr ""
 
-#: src/widgets/preferences.rs:227
+#: src/widgets/preferences.rs:136
+msgctxt ""
+"Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
+"#html4"
+msgid "Basic"
+msgstr ""
+
+#: src/widgets/preferences.rs:138
+msgid "Show color names from the w3c basic color keyword set"
+msgstr ""
+
+#: src/widgets/preferences.rs:144
+msgctxt ""
+"Name of the extended color keyword set from https://www.w3.org/TR/css-"
+"color-3/#svg-color"
+msgid "Extended"
+msgstr ""
+
+#: src/widgets/preferences.rs:146
+msgid "Show color names from the w3c extended color keyword  set"
+msgstr ""
+
+#: src/widgets/preferences.rs:150
+msgctxt "Name of the color set from the xkcd color survey"
+msgid "xkcd"
+msgstr ""
+
+#: src/widgets/preferences.rs:151
+msgid "Show color names from the xkcd color survey"
+msgstr ""
+
+#: src/widgets/preferences.rs:290
 msgid "Move Up"
 msgstr ""
 
-#: src/widgets/preferences.rs:229
+#: src/widgets/preferences.rs:292
 msgid "Move Down"
 msgstr ""
 
-#: src/widgets/preferences.rs:346
+#: src/widgets/preferences.rs:412
 msgid "Hex-Code"
 msgstr ""
 
-#: src/widgets/preferences.rs:352
+#: src/widgets/preferences.rs:418
 msgid "RGB"
 msgstr ""
 
-#: src/widgets/preferences.rs:358
+#: src/widgets/preferences.rs:424
 msgid "HSL"
 msgstr ""
 
-#: src/widgets/preferences.rs:366
+#: src/widgets/preferences.rs:432
 msgid "HSV"
 msgstr ""
 
-#: src/widgets/preferences.rs:375
+#: src/widgets/preferences.rs:441
 msgid "CMYK"
 msgstr ""
 
-#: src/widgets/preferences.rs:384
+#: src/widgets/preferences.rs:450
 msgid "XYZ"
 msgstr ""
 
-#: src/widgets/preferences.rs:393
+#: src/widgets/preferences.rs:459
 msgid "CIELAB"
 msgstr ""
 
-#: src/widgets/preferences.rs:405
+#: src/widgets/preferences.rs:471
 msgid "HWB"
 msgstr ""
 
-#: src/widgets/preferences.rs:419
+#: src/widgets/preferences.rs:485
 msgid "CIELCh / HCL"
 msgstr ""
 
-#: src/window.rs:485
+#: src/widgets/preferences.rs:492
+msgid "Name"
+msgstr ""
+
+#: src/window.rs:328 src/window.rs:616
+msgctxt "Information that no name for the color could be found"
+msgid "Not named"
+msgstr ""
+
+#: src/window.rs:523
 msgid "Failed to get palette color"
 msgstr ""
 
-#: src/window.rs:505
+#: src/window.rs:543
 msgid "Failed to pick a color"
 msgstr ""
 
 #. Translators: Do not replace the {}. These are used as placeholders for the copied values
-#: src/window.rs:585 src/window.rs:592
+#: src/window.rs:635 src/window.rs:642
 msgid "Copied: “{}”"
 msgstr ""
