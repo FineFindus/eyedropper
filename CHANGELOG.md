@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 
 ### Added
+- Options to show names of color (from w3c basic, extended and xkcd)
 - Palettes are now shown in the palette dialog, accessible by clicking on the large color button
 - The App now uses the AdwAboutWindow
 - HSL does now support alpha values

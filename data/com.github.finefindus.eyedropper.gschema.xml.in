@@ -14,7 +14,7 @@
       <summary>Window maximized state</summary>
     </key>
     <key name="format-order" type="as">
-      <default>[ 'hex', 'rgb', 'hsl', 'hsv', 'cmyk', 'xyz', 'cielab', 'hwb', 'hcl' ]</default>
+      <default>[ 'name', 'hex', 'rgb', 'hsl', 'hsv', 'cmyk', 'xyz', 'cielab', 'hwb', 'hcl' ]</default>
       <summary>Order of the formats</summary>
       <description>In which order the formats should be displayed. Only possible values should the format names.</description>
     </key>
@@ -67,6 +67,27 @@
       <default>false</default>
       <summary>Show HCL Model</summary>
       <description>Whether the application should show the HCL code.</description>
+    </key>
+    <key name="show-color-name" type="b">
+      <default>false</default>
+      <summary>Show Name</summary>
+      <description>If the name of the color should be shown.</description>
+    </key>
+    <key name="name-source-basic" type="b">
+      <default>true</default>
+      <summary>Show basic color names</summary>
+      <description>Shows names from the w3c basic keyword set.</description>
+    </key>
+    <key name="name-source-extended" type="b">
+      <default>true</default>
+      <summary>Show extended color names</summary>
+      <description>Shows names from the w3c extended keyword set.</description>
+    </key>
+
+    <key name="name-source-xkcd" type="b">
+      <default>false</default>
+      <summary>Show xkcd color names</summary>
+      <description>Shows names from the xkcd color name survey.</description>
     </key>
   </schema>
 </schemalist>

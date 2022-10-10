@@ -1,10 +1,11 @@
-use gettextrs::gettext;
+use gettextrs::{gettext, pgettext};
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gio, glib};
 
 use crate::application::App;
 use crate::color::color::{AlphaPosition, Color};
+use crate::color::color_names;
 use crate::config::{APP_ID, PROFILE};
 use crate::model::history::HistoryObject;
 use crate::utils;
@@ -54,6 +55,8 @@ mod imp {
         #[template_child]
         pub hcl_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
         #[template_child]
+        pub name_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
+        #[template_child]
         pub history_list: TemplateChild<gtk::ListBox>,
         pub history: RefCell<Option<gio::ListStore>>,
         pub settings: gio::Settings,
@@ -77,6 +80,7 @@ mod imp {
                 cie_lab_entry: TemplateChild::default(),
                 hwb_entry: TemplateChild::default(),
                 hcl_entry: TemplateChild::default(),
+                name_entry: TemplateChild::default(),
                 history_list: TemplateChild::default(),
                 history: Default::default(),
                 settings: gio::Settings::new(APP_ID),
@@ -309,6 +313,26 @@ impl AppWindow {
             }),
         );
 
+        //update name when it changes
+        let update_color_names = glib::clone!(@weak self as window => move |settings: &gio::Settings, _: &str| {
+            log::debug!("Updating color names");
+            let color = *window.imp().color.borrow();
+            let name = color_names::name(color,
+                settings.boolean("name-source-basic"),
+                settings.boolean("name-source-extended"),
+                settings.boolean("name-source-xkcd"),
+            );
+            window.
+            imp().name_entry.set_color(name.unwrap_or(pgettext(
+                "Information that no name for the color could be found",
+                "Not named",
+            )));
+        });
+
+        settings.connect_changed(Some("name-source-basic"), update_color_names.clone());
+        settings.connect_changed(Some("name-source-extended"), update_color_names.clone());
+        settings.connect_changed(Some("name-source-xkcd"), update_color_names);
+
         //first setup when loading
         let show_hex_model = settings.boolean("show-hex-model");
         imp.hex_entry.set_visible(show_hex_model);
@@ -416,6 +440,18 @@ impl AppWindow {
             window.imp().hcl_entry.set_visible(show_hcl_model);
             }),
         );
+
+        //first setup when loading
+        let show_name_model = settings.boolean("show-color-name");
+        imp.name_entry.set_visible(show_name_model);
+        //refresh when settings change
+        settings.connect_changed(
+            Some("show-color-name"),
+            glib::clone!(@weak self as window => move |settings, _| {
+            let show_name_model = settings.boolean("show-color-name");
+            window.imp().name_entry.set_visible(show_name_model);
+            }),
+        );
     }
 
     /// Insert the formats in the order in which they are saved in the settings.
@@ -437,6 +473,7 @@ impl AppWindow {
 
         //parse current order
         let order = imp.settings.get::<Vec<String>>("format-order");
+        log::debug!("Format-Order: {:?}", order);
 
         //insert items in order
         for item in order {
@@ -454,6 +491,7 @@ impl AppWindow {
                 "cielab" => &imp.cie_lab_entry,
                 "hwb" => &imp.hwb_entry,
                 "hcl" => &imp.hcl_entry,
+                "name" => &imp.name_entry,
                 _ => {
                     log::error!("Failed to find format: {}", item);
                     continue;
@@ -522,11 +560,12 @@ impl AppWindow {
                 color.to_hex_string(crate::color::color::AlphaPosition::End)
             );
             let imp = self.imp();
+            let settings = &imp.settings;
             imp.color.replace(color);
 
             imp.color_button.set_rgba(&color.into());
 
-            let alpha_position = AlphaPosition::from(imp.settings.int("alpha-position") as u32);
+            let alpha_position = AlphaPosition::from(settings.int("alpha-position") as u32);
 
             imp.hex_entry.set_color(color.to_hex_string(alpha_position));
 
@@ -565,6 +604,17 @@ impl AppWindow {
             let lch = color.to_hcl();
             imp.hcl_entry
                 .set_color(format!("lch({:.2}, {:.2}, {:.2})", lch.2, lch.1, lch.0));
+
+            let name = color_names::name(
+                color,
+                settings.boolean("name-source-basic"),
+                settings.boolean("name-source-extended"),
+                settings.boolean("name-source-xkcd"),
+            );
+            imp.name_entry.set_color(name.unwrap_or(pgettext(
+                "Information that no name for the color could be found",
+                "Not named",
+            )));
         }
     }
 
@@ -607,6 +657,8 @@ impl AppWindow {
         imp.hwb_entry
             .connect_closure("copied-color", false, show_toast_closure.clone());
         imp.hcl_entry
+            .connect_closure("copied-color", false, show_toast_closure.clone());
+        imp.name_entry
             .connect_closure("copied-color", false, show_toast_closure);
 
         imp.hex_entry.connect_closure(
