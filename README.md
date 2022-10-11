@@ -48,7 +48,7 @@ This application is geared towards advanced users (developers, designers, etc…
 <a href='https://flathub.org/apps/details/com.github.finefindus.eyedropper'><img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-i-en.png'/></a>
 
 
-### Inofficial
+### Unofficial
 
 > :warning: **These installation methods are not recommended**: Installing them may result in bugs or unexpected behavior.
 
