@@ -12,7 +12,7 @@ use super::color::AlphaPosition;
 pub fn name(color: Color, basic: bool, extended: bool, xkcd: bool) -> Option<String> {
     //this is horrible syntax
     //it would be easier to do if basic && elt Some...,
-    //but thats not implemented yet
+    //but that's not implemented yet
     if basic {
         if let Some(name) = w3c_basic_names().get(&color) {
             return Some(name.to_string());

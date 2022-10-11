@@ -62,7 +62,7 @@ impl Color {
 
     /// Generate a random color.
     ///
-    /// Although teh RGB values will be randomized, the alpha value will be maximized,
+    /// Although the RGB values will be randomized, the alpha value will be maximized,
     /// so the color will not be transparent.
     pub fn random() -> Self {
         Color::rgb(

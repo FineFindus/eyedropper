@@ -21,7 +21,7 @@
     <key name="alpha-position" type="i">
       <default>0</default>
       <summary>Alpha Value Position</summary>
-      <description>Where the alpha value is postioned in the hex string.</description>
+      <description>Where the alpha value is positioned in the hex string.</description>
     </key>
     <key name="show-hex-model" type="b">
       <default>true</default>
