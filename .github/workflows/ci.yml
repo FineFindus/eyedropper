@@ -37,6 +37,20 @@ jobs:
           run-tests: true
           cache-key: flatpak-builder-${{ github.sha }}
 
+  spell_check:
+    name: Spell Checker
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install Python Dependencies
+        run: pip install codespell
+      - name: Run spellchecker
+        run: codespell  -S po,_build,.git,.flatpak,_builddir,build,target -L crate,rouge,vermillion
+
   notify_translators:
     name: Notify Translators
     runs-on: ubuntu-latest
