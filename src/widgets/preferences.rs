@@ -259,7 +259,7 @@ impl PreferencesWindow {
                 .build(),
         );
 
-        //create actions for accessability reasons
+        //create actions for accessibility reasons
         let actions = gtk::gio::SimpleActionGroup::new();
         let up_action = gio::SimpleAction::new("move-up", None);
         up_action.connect_activate(

@@ -89,42 +89,44 @@
                       </object>
                     </child>
                     <child>
-                      <object class="HexEntry" id="hex_entry" />
-                    </child>
-                    <child>
-                      <object class="ColorModelEntry" id="rgb_entry" />
-                    </child>
-                    <child>
-                      <object class="ColorModelEntry" id="hsl_entry" />
-                    </child>
-                    <child>
-                      <object class="ColorModelEntry" id="hsv_entry" />
-                    </child>
-                    <child>
-                      <object class="ColorModelEntry" id="cmyk_entry" />
-                    </child>
-                    <child>
-                      <object class="ColorModelEntry" id="xyz_entry">
+                      <object class="ColorFormatRow" id="name_row">
                         <property name="visible">False</property>
                       </object>
                     </child>
                     <child>
-                      <object class="ColorModelEntry" id="cie_lab_entry">
+                      <object class="ColorFormatRow" id="hex_row">
+                        <property name="editable">True</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ColorFormatRow" id="rgb_row" />
+                    </child>
+                    <child>
+                      <object class="ColorFormatRow" id="hsl_row" />
+                    </child>
+                    <child>
+                      <object class="ColorFormatRow" id="hsv_row" />
+                    </child>
+                    <child>
+                      <object class="ColorFormatRow" id="cmyk_row" />
+                    </child>
+                    <child>
+                      <object class="ColorFormatRow" id="xyz_row">
                         <property name="visible">False</property>
                       </object>
                     </child>
                     <child>
-                      <object class="ColorModelEntry" id="hwb_entry">
+                      <object class="ColorFormatRow" id="cie_lab_row">
                         <property name="visible">False</property>
                       </object>
                     </child>
                     <child>
-                      <object class="ColorModelEntry" id="hcl_entry">
+                      <object class="ColorFormatRow" id="hwb_row">
                         <property name="visible">False</property>
                       </object>
                     </child>
                     <child>
-                      <object class="ColorModelEntry" id="name_entry">
+                      <object class="ColorFormatRow" id="hcl_row">
                         <property name="visible">False</property>
                       </object>
                     </child>

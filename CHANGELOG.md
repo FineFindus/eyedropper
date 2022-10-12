@@ -18,7 +18,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Basque by [IngrownMink4](https://github.com/IngrownMink4)  
     - Turkish by [libreajans](https://github.com/libreajans)  
     - Dutch by [flipflop97](https://github.com/flipflop97)  
-    - Italian by [phaerrax](https://github.com/phaerrax)  
+    - Italian by [phaerrax](https://github.com/phaerrax)
+- Code refactoring 
 
 ### Removed
 - Removed explicit dependency on the `libc` crate, as it is no longer needed with the new palette dialog

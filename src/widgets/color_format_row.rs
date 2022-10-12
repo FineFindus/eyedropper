@@ -10,46 +10,39 @@ mod imp {
 
     use super::*;
 
-    use glib::{subclass::Signal, ParamSpecString};
+    use glib::{subclass::Signal, ParamSpecBoolean, ParamSpecString};
     use gtk::glib::ParamSpec;
     use once_cell::sync::Lazy;
 
     // Object holding the state
     #[derive(gtk::CompositeTemplate)]
-    #[template(resource = "/com/github/finefindus/eyedropper/ui/hex-entry.ui")]
-    pub struct HexEntry {
+    #[template(resource = "/com/github/finefindus/eyedropper/ui/color-format-row.ui")]
+    pub struct ColorFormatRow {
         #[template_child]
         pub entry: TemplateChild<gtk::Entry>,
         pub color: RefCell<String>,
-    }
-
-    #[gtk::template_callbacks]
-    impl HexEntry {
-        #[template_callback]
-        fn on_copy_pressed(&self, _button: &gtk::Button) {
-            self.instance().copy_color();
-        }
+        pub editable: RefCell<bool>,
     }
 
     // The central trait for subclassing a GObject
     #[glib::object_subclass]
-    impl ObjectSubclass for HexEntry {
+    impl ObjectSubclass for ColorFormatRow {
         // `NAME` needs to match `class` attribute of template
-        const NAME: &'static str = "HexEntry";
+        const NAME: &'static str = "ColorFormatRow";
         type ParentType = gtk::Box;
-        type Type = super::HexEntry;
+        type Type = super::ColorFormatRow;
 
         fn new() -> Self {
             Self {
                 entry: TemplateChild::default(),
                 color: RefCell::new(String::new()),
+                editable: RefCell::new(false),
             }
         }
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
-            // Bind the private callbacks
-            klass.bind_template_callbacks();
+            klass.bind_template_instance_callbacks();
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -58,25 +51,19 @@ mod imp {
     }
 
     // Trait shared by all GObjects
-    impl ObjectImpl for HexEntry {
+    impl ObjectImpl for ColorFormatRow {
         fn signals() -> &'static [Signal] {
             static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
                 vec![
                     Signal::builder(
-                        // Signal name
-                        "copied-color",
-                        // Types of the values which will be sent to the signal handler
+                        "copied-text",
                         &[String::static_type().into()],
-                        // Type of the value the signal handler sends back
                         <()>::static_type().into(),
                     )
                     .build(),
                     Signal::builder(
-                        // Signal name
-                        "color-changed",
-                        // Types of the values which will be sent to the signal handler
+                        "text-edited",
                         &[String::static_type().into()],
-                        // Type of the value the signal handler sends back
                         <()>::static_type().into(),
                     )
                     .build(),
@@ -86,8 +73,14 @@ mod imp {
         }
 
         fn properties() -> &'static [ParamSpec] {
-            static PROPERTIES: Lazy<Vec<ParamSpec>> =
-                Lazy::new(|| vec![ParamSpecString::builder("color").build()]);
+            static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
+                vec![
+                    ParamSpecString::builder("text").build(),
+                    ParamSpecBoolean::builder("editable")
+                        .default_value(false)
+                        .build(),
+                ]
+            });
             PROPERTIES.as_ref()
         }
 
@@ -99,9 +92,13 @@ mod imp {
             pspec: &ParamSpec,
         ) {
             match pspec.name() {
-                "color" => {
+                "text" => {
                     let input_value = value.get::<String>().unwrap();
                     self.color.replace(input_value);
+                }
+                "editable" => {
+                    let input_value = value.get::<bool>().unwrap();
+                    self.editable.replace(input_value);
                 }
                 _ => unimplemented!(),
             }
@@ -109,7 +106,8 @@ mod imp {
 
         fn property(&self, _obj: &Self::Type, _id: usize, pspec: &ParamSpec) -> glib::Value {
             match pspec.name() {
-                "color" => self.color.borrow().to_value(),
+                "text" => self.color.borrow().to_value(),
+                "editable" => self.editable.borrow().to_value(),
                 _ => unimplemented!(),
             }
         }
@@ -118,54 +116,78 @@ mod imp {
             self.parent_constructed(obj);
             obj.set_direction(gtk::TextDirection::Ltr);
             obj.setup_signals();
+            obj.setup_properties();
         }
     }
 
     // Trait shared by all widgets
-    impl WidgetImpl for HexEntry {}
+    impl WidgetImpl for ColorFormatRow {}
 
     // Trait shared by all boxes
-    impl BoxImpl for HexEntry {}
+    impl BoxImpl for ColorFormatRow {}
 }
 
 glib::wrapper! {
-    pub struct HexEntry(ObjectSubclass<imp::HexEntry>)
+    pub struct ColorFormatRow(ObjectSubclass<imp::ColorFormatRow>)
     @extends gtk::Box, gtk::Widget,
     @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget, gtk::Orientable;
 }
 
-impl HexEntry {
+#[gtk::template_callbacks]
+impl ColorFormatRow {
     #[allow(clippy::new_without_default)]
     pub fn new() -> Self {
-        glib::Object::new::<Self>(&[]).expect("Failed to create a ColorModelEntry")
+        glib::Object::new::<Self>(&[]).expect("Failed to create a ColorFormatRow")
     }
 
-    pub fn color(&self) -> String {
-        self.property("color")
+    /// Get the currently shown text.
+    pub fn text(&self) -> String {
+        self.property("text")
     }
 
-    pub fn set_color(&self, new_color: String) {
-        self.set_property("color", &new_color);
+    /// Set the currently shown text
+    pub fn set_text(&self, text: String) {
+        self.set_property("text", &text);
+    }
+
+    fn setup_properties(&self) {
+        //bind texts
+        self.bind_property("text", &*self.imp().entry, "text")
+            .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
+            .build();
+        //bind editable
+        self.bind_property("editable", &*self.imp().entry, "editable")
+            .flags(glib::BindingFlags::SYNC_CREATE)
+            .build();
+        self.bind_property("editable", &*self.imp().entry, "can-focus")
+            .flags(glib::BindingFlags::SYNC_CREATE)
+            .build();
+        self.bind_property("editable", &*self.imp().entry, "can-target")
+            .flags(glib::BindingFlags::SYNC_CREATE)
+            .build();
     }
 
     fn setup_signals(&self) {
-        self.bind_property("color", &*self.imp().entry, "text")
-            .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
-            .build();
-
         self.imp()
             .entry
-            .connect_changed(glib::clone!(@weak self as hex_entry => move |entry| {
+            .connect_changed(glib::clone!(@weak self as format_row => move |entry| {
                 let text = entry.buffer().text();
-                hex_entry.emit_by_name("color-changed", &[&text.to_value()])
+                format_row.emit_by_name("text-edited", &[&text.to_value()])
             }));
     }
 
-    fn copy_color(&self) {
-        log::debug!("Coping selected color");
+    /// Callback when the copy button is pressed.
+    #[template_callback]
+    fn on_copy_pressed(&self, _: &gtk::Button) {
+        self.copy_text();
+    }
+
+    /// Copy the current text to the users clipboard
+    fn copy_text(&self) {
         let clipboard = self.clipboard();
-        let color = self.imp().entry.text().to_string();
-        clipboard.set_text(&color);
-        self.emit_by_name("copied-color", &[&color.to_value()])
+        let text = self.imp().entry.text().to_string();
+        log::debug!("Copied text: {text}");
+        clipboard.set_text(&text);
+        self.emit_by_name("copied-text", &[&text.to_value()])
     }
 }

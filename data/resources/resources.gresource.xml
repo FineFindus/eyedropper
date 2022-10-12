@@ -5,9 +5,9 @@
     <file compressed="true" preprocess="xml-stripblanks" alias="gtk/help-overlay.ui">ui/shortcuts.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/window.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/preferences.ui</file>
-    <file compressed="true" preprocess="xml-stripblanks">ui/palette_window.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks">ui/palette-window.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/hex-entry.ui</file>
-    <file compressed="true" preprocess="xml-stripblanks">ui/color-model-entry.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks">ui/color-format-row.ui</file>
     <file compressed="true">style.css</file>
   </gresource>
 </gresources>
