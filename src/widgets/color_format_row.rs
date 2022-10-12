@@ -24,10 +24,8 @@ mod imp {
         pub editable: RefCell<bool>,
     }
 
-    // The central trait for subclassing a GObject
     #[glib::object_subclass]
     impl ObjectSubclass for ColorFormatRow {
-        // `NAME` needs to match `class` attribute of template
         const NAME: &'static str = "ColorFormatRow";
         type ParentType = gtk::Box;
         type Type = super::ColorFormatRow;
@@ -50,7 +48,6 @@ mod imp {
         }
     }
 
-    // Trait shared by all GObjects
     impl ObjectImpl for ColorFormatRow {
         fn signals() -> &'static [Signal] {
             static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
@@ -120,10 +117,7 @@ mod imp {
         }
     }
 
-    // Trait shared by all widgets
     impl WidgetImpl for ColorFormatRow {}
-
-    // Trait shared by all boxes
     impl BoxImpl for ColorFormatRow {}
 }
 

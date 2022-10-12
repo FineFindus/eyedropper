@@ -15,21 +15,21 @@ pub fn name(color: Color, basic: bool, extended: bool, xkcd: bool) -> Option<Str
     //but that's not implemented yet
     if basic {
         if let Some(name) = w3c_basic_names().get(&color) {
-            return Some(name.to_string());
+            Some(name.to_string())
         } else {
-            return name(color, false, extended, xkcd);
+            name(color, false, extended, xkcd)
         }
     } else if extended {
         if let Some(name) = w3c_extended_names().get(&color) {
-            return Some(name.to_string());
+            Some(name.to_string())
         } else {
-            return name(color, basic, false, xkcd);
+            name(color, basic, false, xkcd)
         }
     } else if xkcd {
         if let Some(name) = xkcd_names().get(&color) {
-            return Some(name.to_string());
+            Some(name.to_string())
         } else {
-            return name(color, basic, extended, false);
+            name(color, basic, extended, false)
         }
     } else {
         None

@@ -322,7 +322,7 @@ impl AppWindow {
                 settings.boolean("name-source-xkcd"),
             );
             window.
-            imp().name_row.set_text(name.unwrap_or(pgettext(
+            imp().name_row.set_text(name.unwrap_or_else(|| pgettext(
                 "Information that no name for the color could be found",
                 "Not named",
             )));
@@ -507,7 +507,7 @@ impl AppWindow {
                 log::debug!("Palette: {palette}");
 
                 palette
-                .split(" ")
+                .split(' ')
                 .for_each(|slice| match Color::from_hex(slice, AlphaPosition::None) {
                     Ok(color) => window.set_color(color),
                     Err(_) => {
@@ -603,10 +603,12 @@ impl AppWindow {
                 settings.boolean("name-source-extended"),
                 settings.boolean("name-source-xkcd"),
             );
-            imp.name_row.set_text(name.unwrap_or(pgettext(
-                "Information that no name for the color could be found",
-                "Not named",
-            )));
+            imp.name_row.set_text(name.unwrap_or_else(|| {
+                pgettext(
+                    "Information that no name for the color could be found",
+                    "Not named",
+                )
+            }));
         }
     }
 

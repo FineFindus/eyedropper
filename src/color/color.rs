@@ -439,7 +439,7 @@ impl Color {
                 if t < (2f32 / 3f32) {
                     return p + (q - p) * (2f32 / 3f32 - t) * 6f32;
                 }
-                return p;
+                p
             }
 
             let q = if lightness < 0.5 {
