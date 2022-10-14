@@ -29,7 +29,7 @@
                         <child>
                             <object class="AdwComboRow" id="observer_box">
                                 <property name="title" translatable="yes">Obersever</property>
-                                <property name="subtitle" translatable="yes">Under which conditions are the colors observerd</property>
+                                <property name="subtitle" translatable="yes">Under which conditions are the colors observed</property>
                                 <property name="model">
                                     <object class="GtkStringList">
                                         <items>
