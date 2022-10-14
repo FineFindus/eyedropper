@@ -18,7 +18,7 @@ mod imp {
     use super::*;
 
     #[derive(Debug, CompositeTemplate)]
-    #[template(resource = "/com/github/finefindus/eyedropper/ui/palette_window.ui")]
+    #[template(resource = "/com/github/finefindus/eyedropper/ui/palette-window.ui")]
     pub struct PaletteDialog {
         pub color: RefCell<gtk::gdk::RGBA>,
         #[template_child]

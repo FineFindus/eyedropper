@@ -1,7 +1,5 @@
 use core::fmt;
 
-use gtk::ObjectExpression;
-
 use crate::utils;
 
 use super::observer::Observer;
