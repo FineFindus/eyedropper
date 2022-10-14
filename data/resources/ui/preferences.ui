@@ -27,7 +27,21 @@
                             </object>
                         </child>
                         <child>
-                            <object class="AdwComboRow" id="observer_box">
+                            <object class="AdwComboRow" id="standard_observer_box">
+                                <property name="title" translatable="yes">CIE standard observer</property>
+                                <property name="subtitle" translatable="yes">Field of view used by the CIE standard observer</property>
+                                <property name="model">
+                                    <object class="GtkStringList">
+                                        <items>
+                                            <item context="ComboRow selection item for obersver degree" translatable="yes">2°</item>
+                                            <item context="ComboRow selection item for obersver degree" translatable="yes">10°</item>
+                                        </items>
+                                    </object>
+                                </property>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="AdwComboRow" id="cie_illuminants_box">
                                 <property name="title" translatable="yes">CIE illuminants</property>
                                 <property name="subtitle" translatable="yes">Under which conditions are the colors observed</property>
                                 <property name="model">
@@ -53,20 +67,6 @@
                                             <item context="ComboRow selection item for color observer" translatable="yes">F10 (Ultralume 50, Philips TL85)</item>
                                             <item context="ComboRow selection item for color observer" translatable="yes">F11 (Ultralume 40, Philips TL84)</item>
                                             <item context="ComboRow selection item for color observer" translatable="yes">F12 (Ultralume 30, Philips TL83)</item>
-                                        </items>
-                                    </object>
-                                </property>
-                            </object>
-                        </child>
-                        <child>
-                            <object class="AdwComboRow" id="observer_degree_box">
-                                <property name="title" translatable="yes">CIE standard observer</property>
-                                <property name="subtitle" translatable="yes">Field of view used by the CIE standard observer</property>
-                                <property name="model">
-                                    <object class="GtkStringList">
-                                        <items>
-                                            <item context="ComboRow selection item for obersver degree" translatable="yes">2°</item>
-                                            <item context="ComboRow selection item for obersver degree" translatable="yes">10°</item>
                                         </items>
                                     </object>
                                 </property>

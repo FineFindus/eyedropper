@@ -316,8 +316,8 @@ impl AppWindow {
         let update_observer_rows = glib::clone!(@weak self as window => move |settings: &gio::Settings, _: &str| {
             log::debug!("Updating observer colors");
             let color = *window.imp().color.borrow();
-            let observer = Observer::from(settings.int("color-observer") as u32);
-            let ten_degrees = utils::int_to_bool(settings.int("ten-degree-observer") as isize);
+            let observer = Observer::from(settings.int("cie-illuminants") as u32);
+            let ten_degrees = utils::int_to_bool(settings.int("cie-standard-observer") as isize);
 
             let cie_lab = color.to_cie_lab(observer, ten_degrees);
             window.imp().cie_lab_row.set_text(format!(
@@ -331,8 +331,8 @@ impl AppWindow {
         });
 
         //update colors that use observer values in their calculation
-        settings.connect_changed(Some("color-observer"), update_observer_rows.clone());
-        settings.connect_changed(Some("ten-degree-observer"), update_observer_rows);
+        settings.connect_changed(Some("cie-illuminants"), update_observer_rows.clone());
+        settings.connect_changed(Some("cie-standard-observer"), update_observer_rows);
 
         //update name when it changes
         let update_color_names = glib::clone!(@weak self as window => move |settings: &gio::Settings, _: &str| {
@@ -581,9 +581,9 @@ impl AppWindow {
 
             let alpha_position = AlphaPosition::from(settings.int("alpha-position") as u32);
 
-            let observer = Observer::from(settings.int("color-observer") as u32);
+            let observer = Observer::from(settings.int("cie-illuminants") as u32);
 
-            let ten_degrees = utils::int_to_bool(settings.int("ten-degree-observer") as isize);
+            let ten_degrees = utils::int_to_bool(settings.int("cie-standard-observer") as isize);
 
             imp.hex_row.set_text(color.to_hex_string(alpha_position));
 

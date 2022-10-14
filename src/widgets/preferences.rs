@@ -36,9 +36,9 @@ mod imp {
         #[template_child()]
         pub alpha_pos_box: TemplateChild<adw::ComboRow>,
         #[template_child()]
-        pub observer_degree_box: TemplateChild<adw::ComboRow>,
+        pub standard_observer_box: TemplateChild<adw::ComboRow>,
         #[template_child()]
-        pub observer_box: TemplateChild<adw::ComboRow>,
+        pub cie_illuminants_box: TemplateChild<adw::ComboRow>,
         #[template_child()]
         pub format_list: TemplateChild<gtk::ListBox>,
         pub formats: RefCell<Option<gio::ListStore>>,
@@ -56,8 +56,8 @@ mod imp {
             Self {
                 settings: gtk::gio::Settings::new(config::APP_ID),
                 alpha_pos_box: TemplateChild::default(),
-                observer_degree_box: TemplateChild::default(),
-                observer_box: TemplateChild::default(),
+                standard_observer_box: TemplateChild::default(),
+                cie_illuminants_box: TemplateChild::default(),
                 format_list: TemplateChild::default(),
                 formats: Default::default(),
             }
@@ -109,11 +109,15 @@ impl PreferencesWindow {
             .build();
 
         imp.settings
-            .bind("color-observer", &*imp.observer_box, "selected")
+            .bind("cie-illuminants", &*imp.cie_illuminants_box, "selected")
             .build();
 
         imp.settings
-            .bind("ten-degree-observer", &*imp.observer_degree_box, "selected")
+            .bind(
+                "cie-standard-observer",
+                &*imp.standard_observer_box,
+                "selected",
+            )
             .build();
     }
 
