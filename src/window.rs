@@ -313,6 +313,27 @@ impl AppWindow {
             }),
         );
 
+        let update_observer_rows = glib::clone!(@weak self as window => move |settings: &gio::Settings, _: &str| {
+            log::debug!("Updating observer colors");
+            let color = *window.imp().color.borrow();
+            let observer = Observer::from(settings.int("color-observer") as u32);
+            let ten_degrees = utils::int_to_bool(settings.int("ten-degree-observer") as isize);
+
+            let cie_lab = color.to_cie_lab(observer, ten_degrees);
+            window.imp().cie_lab_row.set_text(format!(
+                "CIELAB({:.2}, {:.2}, {:.2})",
+                cie_lab.0, cie_lab.1, cie_lab.2
+            ));
+            let lch = color.to_hcl(observer, ten_degrees);
+            window.imp().hcl_row
+            .set_text(format!("lch({:.2}, {:.2}, {:.2})", lch.2, lch.1, lch.0));
+
+        });
+
+        //update colors that use observer values in their calculation
+        settings.connect_changed(Some("color-observer"), update_observer_rows.clone());
+        settings.connect_changed(Some("ten-degree-observer"), update_observer_rows);
+
         //update name when it changes
         let update_color_names = glib::clone!(@weak self as window => move |settings: &gio::Settings, _: &str| {
             log::debug!("Updating color names");
@@ -560,6 +581,10 @@ impl AppWindow {
 
             let alpha_position = AlphaPosition::from(settings.int("alpha-position") as u32);
 
+            let observer = Observer::from(settings.int("color-observer") as u32);
+
+            let ten_degrees = utils::int_to_bool(settings.int("ten-degree-observer") as isize);
+
             imp.hex_row.set_text(color.to_hex_string(alpha_position));
 
             imp.rgb_row.set_text(color.to_rgb_string(alpha_position));
@@ -580,7 +605,7 @@ impl AppWindow {
             imp.xyz_row
                 .set_text(format!("XYZ({:.3}, {:.3}, {:.3})", xyz.0, xyz.1, xyz.2));
 
-            let cie_lab = color.to_cie_lab(Observer::D65);
+            let cie_lab = color.to_cie_lab(observer, ten_degrees);
             imp.cie_lab_row.set_text(format!(
                 "CIELAB({:.2}, {:.2}, {:.2})",
                 cie_lab.0, cie_lab.1, cie_lab.2
@@ -594,7 +619,7 @@ impl AppWindow {
                 utils::round_percent(hwb.2)
             ));
 
-            let lch = color.to_hcl(Observer::D65);
+            let lch = color.to_hcl(observer, ten_degrees);
             imp.hcl_row
                 .set_text(format!("lch({:.2}, {:.2}, {:.2})", lch.2, lch.1, lch.0));
 

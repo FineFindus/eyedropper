@@ -49,3 +49,12 @@ pub fn pretty_print_percent(value: f32) -> String {
         format!("{:.2}", value)
     }
 }
+
+/// Converts an integer to its corresponding bool value.
+pub fn int_to_bool(value: isize) -> bool {
+    if value == 1 {
+        true
+    } else {
+        false
+    }
+}

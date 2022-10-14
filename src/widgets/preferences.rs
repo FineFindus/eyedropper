@@ -36,17 +36,13 @@ mod imp {
         #[template_child()]
         pub alpha_pos_box: TemplateChild<adw::ComboRow>,
         #[template_child()]
+        pub observer_degree_box: TemplateChild<adw::ComboRow>,
+        #[template_child()]
+        pub observer_box: TemplateChild<adw::ComboRow>,
+        #[template_child()]
         pub format_list: TemplateChild<gtk::ListBox>,
         pub formats: RefCell<Option<gio::ListStore>>,
     }
-
-    // #[gtk::template_callbacks]
-    // impl PreferencesWindow {
-    //     #[template_callback]
-    //     fn on_reset_pressed(&self, _button: &gtk::Button) {
-    //         self.instance().reset_order();
-    //     }
-    // }
 
     // The central trait for subclassing a GObject
     #[glib::object_subclass]
@@ -60,6 +56,8 @@ mod imp {
             Self {
                 settings: gtk::gio::Settings::new(config::APP_ID),
                 alpha_pos_box: TemplateChild::default(),
+                observer_degree_box: TemplateChild::default(),
+                observer_box: TemplateChild::default(),
                 format_list: TemplateChild::default(),
                 formats: Default::default(),
             }
@@ -108,6 +106,14 @@ impl PreferencesWindow {
 
         imp.settings
             .bind("alpha-position", &*imp.alpha_pos_box, "selected")
+            .build();
+
+        imp.settings
+            .bind("color-observer", &*imp.observer_box, "selected")
+            .build();
+
+        imp.settings
+            .bind("ten-degree-observer", &*imp.observer_degree_box, "selected")
             .build();
     }
 
@@ -454,7 +460,7 @@ impl PreferencesWindow {
                     )
                 }
                 "cielab" => {
-                    let cie_lab = color.to_cie_lab(Observer::D65);
+                    let cie_lab = color.to_cie_lab(Observer::D65, true);
                     ColorFormatObject::new(
                         item,
                         gettext("CIELAB"),
@@ -480,7 +486,7 @@ impl PreferencesWindow {
                     )
                 }
                 "hcl" => {
-                    let hcl = color.to_hcl(Observer::D65);
+                    let hcl = color.to_hcl(Observer::D65, true);
                     ColorFormatObject::new(
                         item,
                         gettext("CIELCh / HCL"),

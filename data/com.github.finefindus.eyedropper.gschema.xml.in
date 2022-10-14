@@ -89,5 +89,15 @@
       <summary>Show xkcd color names</summary>
       <description>Shows names from the xkcd color name survey.</description>
     </key>
+    <key name="color-observer" type="i">
+      <default>5</default>
+      <summary>Color Observer</summary>
+      <description>Which XYZ Tristimulus will be used as the observer.</description>
+    </key>
+    <key name="ten-degree-observer" type="i">
+      <default>0</default>
+      <summary>Ten degree observer</summary>
+      <description>If 2° or 10° values are used for the CIE standard observer. Can only be 0 (2°) or 1 (10°).</description>
+    </key>
   </schema>
 </schemalist>

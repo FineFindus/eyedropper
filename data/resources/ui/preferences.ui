@@ -27,6 +27,52 @@
                             </object>
                         </child>
                         <child>
+                            <object class="AdwComboRow" id="observer_box">
+                                <property name="title" translatable="yes">Obersever</property>
+                                <property name="subtitle" translatable="yes">Under which conditions are the colors observerd</property>
+                                <property name="model">
+                                    <object class="GtkStringList">
+                                        <items>
+                                            <item context="ComboRow selection item for color observer" translatable="yes">A (Incandescent/tungsten)</item>
+                                            <item context="ComboRow selection item for color observer" translatable="yes">B (Old direct sunlight at noon)</item>
+                                            <item context="ComboRow selection item for color observer" translatable="yes">C (Old daylight)</item>
+                                            <item context="ComboRow selection item for color observer" translatable="yes">D50 (ICC profile PCS)</item>
+                                            <item context="ComboRow selection item for color observer" translatable="yes">D55 (Mid-morning daylight)</item>
+                                            <item context="ComboRow selection item for color observer" translatable="yes">D65 (Daylight, sRGB, Adobe-RGB)</item>
+                                            <item context="ComboRow selection item for color observer" translatable="yes">D75 (North sky daylight)</item>
+                                            <item context="ComboRow selection item for color observer" translatable="yes">E (Equal energy)</item>
+                                            <item context="ComboRow selection item for color observer" translatable="yes">F1 (Daylight Fluorescent)</item>
+                                            <item context="ComboRow selection item for color observer" translatable="yes">F2 (Cool fluorescent)</item>
+                                            <item context="ComboRow selection item for color observer" translatable="yes">F3 (White Fluorescent)</item>
+                                            <item context="ComboRow selection item for color observer" translatable="yes">F4 (Warm White Fluorescent)</item>
+                                            <item context="ComboRow selection item for color observer" translatable="yes">F5 (Daylight Fluorescent)</item>
+                                            <item context="ComboRow selection item for color observer" translatable="yes">F6 (Lite White Fluorescent)</item>
+                                            <item context="ComboRow selection item for color observer" translatable="yes">F7 (Daylight fluorescent, D65 simulator)</item>
+                                            <item context="ComboRow selection item for color observer" translatable="yes">F8 (Sylvania F40, D50 simulator)</item>
+                                            <item context="ComboRow selection item for color observer" translatable="yes">F9 (Cool White Fluorescent)</item>
+                                            <item context="ComboRow selection item for color observer" translatable="yes">F10 (Ultralume 50, Philips TL85)</item>
+                                            <item context="ComboRow selection item for color observer" translatable="yes">F11 (Ultralume 40, Philips TL84)</item>
+                                            <item context="ComboRow selection item for color observer" translatable="yes">F12 (Ultralume 30, Philips TL83)</item>
+                                        </items>
+                                    </object>
+                                </property>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="AdwComboRow" id="observer_degree_box">
+                                <property name="title" translatable="yes">Obersever Degree</property>
+                                <property name="subtitle" translatable="yes">Field of view used by the CIE standard observer</property>
+                                <property name="model">
+                                    <object class="GtkStringList">
+                                        <items>
+                                            <item context="ComboRow selection item for obersver degree" translatable="yes">2°</item>
+                                            <item context="ComboRow selection item for obersver degree" translatable="yes">10°</item>
+                                        </items>
+                                    </object>
+                                </property>
+                            </object>
+                        </child>
+                        <child>
                             <object class="AdwActionRow">
                                 <property name="title" translatable="yes">Name Sets</property>
                                 <property name="subtitle" translatable="yes">Which color sets should be used for the names</property>

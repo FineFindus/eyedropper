@@ -1,6 +1,7 @@
 /// Different Observers for CIELab calculation.
 ///
 /// Values from <https://www.easyrgb.com/en/math.php>
+#[derive(Debug, Clone, Copy, Default)]
 pub enum Observer {
     ///Incandescent/tungsten
     A,
@@ -13,6 +14,7 @@ pub enum Observer {
     ///Mid-morning daylight
     D55,
     ///Daylight, sRGB, Adobe-RGB
+    #[default]
     D65,
     ///North sky daylight
     D75,
@@ -93,6 +95,35 @@ impl Observer {
             Observer::F10 => (99.001, 100.0, 83.134),
             Observer::F11 => (103.866, 100.0, 65.627),
             Observer::F12 => (111.428, 100.0, 40.353),
+        }
+    }
+}
+
+impl From<u32> for Observer {
+    fn from(value: u32) -> Self {
+        match value {
+            0 => Observer::A,
+            1 => Observer::B,
+            2 => Observer::C,
+            3 => Observer::D50,
+            4 => Observer::D55,
+            5 => Observer::D65,
+            6 => Observer::D75,
+            7 => Observer::E,
+            8 => Observer::F1,
+            9 => Observer::F2,
+            10 => Observer::F3,
+            11 => Observer::F4,
+            12 => Observer::F5,
+            13 => Observer::F6,
+            14 => Observer::F7,
+            15 => Observer::F8,
+            16 => Observer::F9,
+            17 => Observer::F10,
+            18 => Observer::F11,
+            19 => Observer::F12,
+            //default to D65
+            _ => Observer::D65,
         }
     }
 }

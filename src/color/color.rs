@@ -21,8 +21,8 @@ pub enum AlphaPosition {
 
 //Convert from U32. Needed for converting from the settings AdwComboRow, which use indexes for values.
 impl From<u32> for AlphaPosition {
-    fn from(u: u32) -> Self {
-        match u {
+    fn from(value: u32) -> Self {
+        match value {
             0 => Self::None,
             1 => Self::End,
             2 => Self::Start,
@@ -305,11 +305,17 @@ impl Color {
 
     /// Return the colors as CIELAB vales.
     ///
+    /// If use_ten_degrees is true, the function will use 10° observer values instead of the 2° ones.
+    ///
     /// The color will be first converted to XYZ values and then to CIELAB values.
     /// Formula from <http://www.easyrgb.com/en/math.php>
-    pub fn to_cie_lab(self, observer: Observer) -> (f32, f32, f32) {
+    pub fn to_cie_lab(self, observer: Observer, use_ten_degrees: bool) -> (f32, f32, f32) {
         //reference xyz for D65 (sRGB) from http://www.easyrgb.com/en/math.php
-        let (reference_x, reference_y, reference_z) = observer.two_degrees();
+        let (reference_x, reference_y, reference_z) = if use_ten_degrees {
+            observer.ten_degrees()
+        } else {
+            observer.two_degrees()
+        };
 
         let xyz = self.to_xyz();
 
@@ -342,9 +348,13 @@ impl Color {
         (cie_l, cie_a, cie_b)
     }
 
-    pub fn to_hcl(self, observer: Observer) -> (f32, f32, f32) {
+    /// Convert the color to hcl/ CIELCh
+    ///
+    /// This steps involves converting the color to CIElab first.
+    /// If use_ten_degrees is true, the function will use 10° observer values instead of the 2° ones.
+    pub fn to_hcl(self, observer: Observer, use_ten_degree: bool) -> (f32, f32, f32) {
         //convert color to lab first
-        let (luminance, a, b) = self.to_cie_lab(observer);
+        let (luminance, a, b) = self.to_cie_lab(observer, use_ten_degree);
 
         let hue = b.atan2(a).to_degrees();
         let chroma = (a.powi(2) + b.powi(2)).sqrt();
