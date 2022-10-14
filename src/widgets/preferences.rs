@@ -12,6 +12,7 @@ use gtk::subclass::prelude::*;
 use gtk::Switch;
 
 use crate::color::color::Color;
+use crate::color::observer::Observer;
 use crate::utils;
 
 use self::color_format::ColorFormatObject;
@@ -453,7 +454,7 @@ impl PreferencesWindow {
                     )
                 }
                 "cielab" => {
-                    let cie_lab = color.to_cie_lab();
+                    let cie_lab = color.to_cie_lab(Observer::D65);
                     ColorFormatObject::new(
                         item,
                         gettext("CIELAB"),
@@ -479,7 +480,7 @@ impl PreferencesWindow {
                     )
                 }
                 "hcl" => {
-                    let hcl = color.to_hcl();
+                    let hcl = color.to_hcl(Observer::D65);
                     ColorFormatObject::new(
                         item,
                         gettext("CIELCh / HCL"),

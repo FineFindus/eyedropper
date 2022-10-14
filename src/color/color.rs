@@ -1,6 +1,10 @@
 use core::fmt;
 
+use gtk::ObjectExpression;
+
 use crate::utils;
+
+use super::observer::Observer;
 
 /// Position of the alpha value for hex strings.
 ///
@@ -305,11 +309,9 @@ impl Color {
     ///
     /// The color will be first converted to XYZ values and then to CIELAB values.
     /// Formula from <http://www.easyrgb.com/en/math.php>
-    pub fn to_cie_lab(self) -> (f32, f32, f32) {
+    pub fn to_cie_lab(self, observer: Observer) -> (f32, f32, f32) {
         //reference xyz for D65 (sRGB) from http://www.easyrgb.com/en/math.php
-        let reference_x = 95.047;
-        let reference_y = 100.000;
-        let reference_z = 108.883;
+        let (reference_x, reference_y, reference_z) = observer.two_degrees();
 
         let xyz = self.to_xyz();
 
@@ -342,9 +344,9 @@ impl Color {
         (cie_l, cie_a, cie_b)
     }
 
-    pub fn to_hcl(self) -> (f32, f32, f32) {
+    pub fn to_hcl(self, observer: Observer) -> (f32, f32, f32) {
         //convert color to lab first
-        let (luminance, a, b) = self.to_cie_lab();
+        let (luminance, a, b) = self.to_cie_lab(observer);
 
         let hue = b.atan2(a).to_degrees();
         let chroma = (a.powi(2) + b.powi(2)).sqrt();

@@ -6,6 +6,7 @@ use gtk::{gio, glib};
 use crate::application::App;
 use crate::color::color::{AlphaPosition, Color};
 use crate::color::color_names;
+use crate::color::observer::Observer;
 use crate::config::{APP_ID, PROFILE};
 use crate::model::history::HistoryObject;
 use crate::utils;
@@ -579,7 +580,7 @@ impl AppWindow {
             imp.xyz_row
                 .set_text(format!("XYZ({:.3}, {:.3}, {:.3})", xyz.0, xyz.1, xyz.2));
 
-            let cie_lab = color.to_cie_lab();
+            let cie_lab = color.to_cie_lab(Observer::D65);
             imp.cie_lab_row.set_text(format!(
                 "CIELAB({:.2}, {:.2}, {:.2})",
                 cie_lab.0, cie_lab.1, cie_lab.2
@@ -593,7 +594,7 @@ impl AppWindow {
                 utils::round_percent(hwb.2)
             ));
 
-            let lch = color.to_hcl();
+            let lch = color.to_hcl(Observer::D65);
             imp.hcl_row
                 .set_text(format!("lch({:.2}, {:.2}, {:.2})", lch.2, lch.1, lch.0));
 
