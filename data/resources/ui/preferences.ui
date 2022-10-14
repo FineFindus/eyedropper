@@ -28,7 +28,7 @@
                         </child>
                         <child>
                             <object class="AdwComboRow" id="observer_box">
-                                <property name="title" translatable="yes">Obersever</property>
+                                <property name="title" translatable="yes">CIE illuminants</property>
                                 <property name="subtitle" translatable="yes">Under which conditions are the colors observed</property>
                                 <property name="model">
                                     <object class="GtkStringList">
@@ -60,7 +60,7 @@
                         </child>
                         <child>
                             <object class="AdwComboRow" id="observer_degree_box">
-                                <property name="title" translatable="yes">Obersever Degree</property>
+                                <property name="title" translatable="yes">CIE standard observer</property>
                                 <property name="subtitle" translatable="yes">Field of view used by the CIE standard observer</property>
                                 <property name="model">
                                     <object class="GtkStringList">

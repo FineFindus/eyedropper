@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gtk/-/issues/\n"
-"POT-Creation-Date: 2022-10-11 20:51+0200\n"
+"POT-Creation-Date: 2022-10-14 21:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -105,69 +105,6 @@ msgstr ""
 msgid "FineFindus"
 msgstr ""
 
-#: data/resources/ui/color-model-entry.ui:22
-msgctxt "Tooltip of the copy button for format rows"
-msgid "Copy Format"
-msgstr ""
-
-#: data/resources/ui/hex-entry.ui:22
-msgctxt "Tooltip of the copy button for the hex format"
-msgid "Copy Format"
-msgstr ""
-
-#: data/resources/ui/palette_window.ui:5
-msgid "Palettes"
-msgstr ""
-
-#: data/resources/ui/preferences.ui:10
-msgid "General"
-msgstr ""
-
-#: data/resources/ui/preferences.ui:13
-msgid "Formatting"
-msgstr ""
-
-#: data/resources/ui/preferences.ui:16
-msgid "Alpha-Value-Position"
-msgstr ""
-
-#: data/resources/ui/preferences.ui:17
-msgid "Where the Alphavalue is positioned in the Hexstring"
-msgstr ""
-
-#: data/resources/ui/preferences.ui:21
-msgid "None"
-msgstr ""
-
-#: data/resources/ui/preferences.ui:22
-msgid "End"
-msgstr ""
-
-#: data/resources/ui/preferences.ui:23
-msgid "Start"
-msgstr ""
-
-#: data/resources/ui/preferences.ui:31
-msgid "Name Sets"
-msgstr ""
-
-#: data/resources/ui/preferences.ui:32
-msgid "Which color sets should be used for the names"
-msgstr ""
-
-#: data/resources/ui/preferences.ui:46
-msgid "Color Formats"
-msgstr ""
-
-#: data/resources/ui/preferences.ui:47
-msgid "Customize the visible formats and in which order they are displayed."
-msgstr ""
-
-#: data/resources/ui/preferences.ui:51
-msgctxt "Tooltip of the button to reset the format order"
-msgid "Reset Order"
-msgstr ""
-
 #: data/resources/ui/shortcuts.ui:11
 msgctxt "shortcut window"
 msgid "General"
@@ -224,6 +161,195 @@ msgctxt "Tooltip of the colorpicker button"
 msgid "Pick a Color"
 msgstr ""
 
+#: data/resources/ui/hex-entry.ui:22
+msgctxt "Tooltip of the copy button for the hex format"
+msgid "Copy Format"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:10
+msgid "General"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:13
+msgid "Formatting"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:16
+msgid "Alpha-Value-Position"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:17
+msgid "Where the Alphavalue is positioned in the Hexstring"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:21
+msgid "None"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:22
+msgid "End"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:23
+msgid "Start"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:31
+msgid "CIE illuminants"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:32
+msgid "Under which conditions are the colors observed"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:36
+msgctxt "ComboRow selection item for color observer"
+msgid "A (Incandescent/tungsten)"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:37
+msgctxt "ComboRow selection item for color observer"
+msgid "B (Old direct sunlight at noon)"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:38
+msgctxt "ComboRow selection item for color observer"
+msgid "C (Old daylight)"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:39
+msgctxt "ComboRow selection item for color observer"
+msgid "D50 (ICC profile PCS)"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:40
+msgctxt "ComboRow selection item for color observer"
+msgid "D55 (Mid-morning daylight)"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:41
+msgctxt "ComboRow selection item for color observer"
+msgid "D65 (Daylight, sRGB, Adobe-RGB)"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:42
+msgctxt "ComboRow selection item for color observer"
+msgid "D75 (North sky daylight)"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:43
+msgctxt "ComboRow selection item for color observer"
+msgid "E (Equal energy)"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:44
+msgctxt "ComboRow selection item for color observer"
+msgid "F1 (Daylight Fluorescent)"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:45
+msgctxt "ComboRow selection item for color observer"
+msgid "F2 (Cool fluorescent)"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:46
+msgctxt "ComboRow selection item for color observer"
+msgid "F3 (White Fluorescent)"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:47
+msgctxt "ComboRow selection item for color observer"
+msgid "F4 (Warm White Fluorescent)"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:48
+msgctxt "ComboRow selection item for color observer"
+msgid "F5 (Daylight Fluorescent)"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:49
+msgctxt "ComboRow selection item for color observer"
+msgid "F6 (Lite White Fluorescent)"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:50
+msgctxt "ComboRow selection item for color observer"
+msgid "F7 (Daylight fluorescent, D65 simulator)"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:51
+msgctxt "ComboRow selection item for color observer"
+msgid "F8 (Sylvania F40, D50 simulator)"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:52
+msgctxt "ComboRow selection item for color observer"
+msgid "F9 (Cool White Fluorescent)"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:53
+msgctxt "ComboRow selection item for color observer"
+msgid "F10 (Ultralume 50, Philips TL85)"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:54
+msgctxt "ComboRow selection item for color observer"
+msgid "F11 (Ultralume 40, Philips TL84)"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:55
+msgctxt "ComboRow selection item for color observer"
+msgid "F12 (Ultralume 30, Philips TL83)"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:63
+msgid "CIE standard observer"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:64
+msgid "Field of view used by the CIE standard observer"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:68
+msgctxt "ComboRow selection item for obersver degree"
+msgid "2°"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:69
+msgctxt "ComboRow selection item for obersver degree"
+msgid "10°"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:77
+msgid "Name Sets"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:78
+msgid "Which color sets should be used for the names"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:92
+msgid "Color Formats"
+msgstr ""
+
+#: data/resources/ui/preferences.ui:93
+msgid "Customize the visible formats and in which order they are displayed."
+msgstr ""
+
+#: data/resources/ui/preferences.ui:97
+msgctxt "Tooltip of the button to reset the format order"
+msgid "Reset Order"
+msgstr ""
+
+#: data/resources/ui/color-format-row.ui:22
+msgctxt "Tooltip of the copy button for format rows"
+msgid "Copy Format"
+msgstr ""
+
+#: data/resources/ui/palette-window.ui:5
+msgid "Palettes"
+msgstr ""
+
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/widgets/about_window.rs:50
 msgid "translator-credits"
@@ -240,7 +366,8 @@ msgid ""
 "p>\n"
 "<ul><li> The name of the color, specified by w3c color keywords and the xkcd "
 "color survey, can now be shown</li><li> A new Palette dialog showing "
-"different color palettes</li><li> Show the CIELCh color format</li><li> "
+"different color palettes</li><li>Choose which CIE standard observer is used, "
+"as well as it's illuminant</li><li> Show the CIELCh color format</li><li> "
 "Using the new AdwAboutWindow</li><li> Added new translations</li><li>Fixed "
 "minor issues</li></ul>"
 msgstr ""
@@ -283,99 +410,99 @@ msgctxt "Color palette consisting of six slight shifted colors"
 msgid "Analogous"
 msgstr ""
 
-#: src/widgets/preferences.rs:136
+#: src/widgets/preferences.rs:143
 msgctxt ""
 "Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
 "#html4"
 msgid "Basic"
 msgstr ""
 
-#: src/widgets/preferences.rs:138
+#: src/widgets/preferences.rs:145
 msgid "Show color names from the w3c basic color keyword set"
 msgstr ""
 
-#: src/widgets/preferences.rs:144
+#: src/widgets/preferences.rs:151
 msgctxt ""
 "Name of the extended color keyword set from https://www.w3.org/TR/css-"
 "color-3/#svg-color"
 msgid "Extended"
 msgstr ""
 
-#: src/widgets/preferences.rs:146
+#: src/widgets/preferences.rs:153
 msgid "Show color names from the w3c extended color keyword  set"
 msgstr ""
 
-#: src/widgets/preferences.rs:150
+#: src/widgets/preferences.rs:157
 msgctxt "Name of the color set from the xkcd color survey"
 msgid "xkcd"
 msgstr ""
 
-#: src/widgets/preferences.rs:151
+#: src/widgets/preferences.rs:158
 msgid "Show color names from the xkcd color survey"
 msgstr ""
 
-#: src/widgets/preferences.rs:290
+#: src/widgets/preferences.rs:297
 msgid "Move Up"
 msgstr ""
 
-#: src/widgets/preferences.rs:292
+#: src/widgets/preferences.rs:299
 msgid "Move Down"
 msgstr ""
 
-#: src/widgets/preferences.rs:412
+#: src/widgets/preferences.rs:419
 msgid "Hex-Code"
 msgstr ""
 
-#: src/widgets/preferences.rs:418
+#: src/widgets/preferences.rs:425
 msgid "RGB"
 msgstr ""
 
-#: src/widgets/preferences.rs:424
+#: src/widgets/preferences.rs:431
 msgid "HSL"
 msgstr ""
 
-#: src/widgets/preferences.rs:432
+#: src/widgets/preferences.rs:439
 msgid "HSV"
 msgstr ""
 
-#: src/widgets/preferences.rs:441
+#: src/widgets/preferences.rs:448
 msgid "CMYK"
 msgstr ""
 
-#: src/widgets/preferences.rs:450
+#: src/widgets/preferences.rs:457
 msgid "XYZ"
 msgstr ""
 
-#: src/widgets/preferences.rs:459
+#: src/widgets/preferences.rs:466
 msgid "CIELAB"
 msgstr ""
 
-#: src/widgets/preferences.rs:471
+#: src/widgets/preferences.rs:478
 msgid "HWB"
 msgstr ""
 
-#: src/widgets/preferences.rs:485
+#: src/widgets/preferences.rs:492
 msgid "CIELCh / HCL"
 msgstr ""
 
-#: src/widgets/preferences.rs:492
+#: src/widgets/preferences.rs:499
 msgid "Name"
 msgstr ""
 
-#: src/window.rs:328 src/window.rs:616
+#: src/window.rs:349 src/window.rs:635
 msgctxt "Information that no name for the color could be found"
 msgid "Not named"
 msgstr ""
 
-#: src/window.rs:523
+#: src/window.rs:537
 msgid "Failed to get palette color"
 msgstr ""
 
-#: src/window.rs:543
+#: src/window.rs:557
 msgid "Failed to pick a color"
 msgstr ""
 
 #. Translators: Do not replace the {}. These are used as placeholders for the copied values
-#: src/window.rs:635 src/window.rs:642
+#: src/window.rs:655
 msgid "Copied: “{}”"
 msgstr ""
