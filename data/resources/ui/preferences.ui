@@ -18,9 +18,9 @@
                                 <property name="model">
                                     <object class="GtkStringList">
                                         <items>
-                                            <item translatable="yes">None</item>
-                                            <item translatable="yes">End</item>
-                                            <item translatable="yes">Start</item>
+                                            <item context="Alpha is not shown" translatable="yes">None</item>
+                                            <item context="Alpha is shown at the end of the string" translatable="yes">End</item>
+                                            <item context="Alpha is shown at the start of the string" translatable="yes">Start</item>
                                         </items>
                                     </object>
                                 </property>
@@ -33,8 +33,8 @@
                                 <property name="model">
                                     <object class="GtkStringList">
                                         <items>
-                                            <item context="ComboRow selection item for obersver degree" translatable="yes">2°</item>
-                                            <item context="ComboRow selection item for obersver degree" translatable="yes">10°</item>
+                                            <item context="CIE 2° standard observer" translatable="yes">2°</item>
+                                            <item context="CIE 10° standard observer" translatable="yes">10°</item>
                                         </items>
                                     </object>
                                 </property>
@@ -75,7 +75,7 @@
                         <child>
                             <object class="AdwActionRow">
                                 <property name="title" translatable="yes">Name Sets</property>
-                                <property name="subtitle" translatable="yes">Which color sets should be used for the names</property>
+                                <property name="subtitle" translatable="yes">Which color name sets should be used for the names</property>
                                 <property name="activatable">True</property>
                                 <signal name="activated" handler="on_name_row_activated" swapped="true" />
                                 <child type="suffix">

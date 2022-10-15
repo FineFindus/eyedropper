@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gtk/-/issues/\n"
-"POT-Creation-Date: 2022-10-14 22:04+0200\n"
+"POT-Creation-Date: 2022-10-15 10:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -183,14 +183,17 @@ msgid "Where the Alphavalue is positioned in the Hexstring"
 msgstr ""
 
 #: data/resources/ui/preferences.ui:21
+msgctxt "Alpha is not shown"
 msgid "None"
 msgstr ""
 
 #: data/resources/ui/preferences.ui:22
+msgctxt "Alpha is shown at the end of the string"
 msgid "End"
 msgstr ""
 
 #: data/resources/ui/preferences.ui:23
+msgctxt "Alpha is shown at the start of the string"
 msgid "Start"
 msgstr ""
 
@@ -203,12 +206,12 @@ msgid "Field of view used by the CIE standard observer"
 msgstr ""
 
 #: data/resources/ui/preferences.ui:36
-msgctxt "ComboRow selection item for obersver degree"
+msgctxt "CIE 2° standard observer"
 msgid "2°"
 msgstr ""
 
 #: data/resources/ui/preferences.ui:37
-msgctxt "ComboRow selection item for obersver degree"
+msgctxt "CIE 10° standard observer"
 msgid "10°"
 msgstr ""
 
@@ -365,7 +368,7 @@ msgid "Name Sets"
 msgstr ""
 
 #: data/resources/ui/preferences.ui:78
-msgid "Which color sets should be used for the names"
+msgid "Which color name sets should be used for the names"
 msgstr ""
 
 #: data/resources/ui/preferences.ui:92
