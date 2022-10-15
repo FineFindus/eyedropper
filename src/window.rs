@@ -317,7 +317,7 @@ impl AppWindow {
             log::debug!("Updating observer colors");
             let color = *window.imp().color.borrow();
             let observer = Observer::from(settings.int("cie-illuminants") as u32);
-            let ten_degrees = utils::int_to_bool(settings.int("cie-standard-observer") as isize);
+            let ten_degrees = settings.int("cie-standard-observer") == 1;
 
             let cie_lab = color.to_cie_lab(observer, ten_degrees);
             window.imp().cie_lab_row.set_text(format!(
@@ -583,7 +583,7 @@ impl AppWindow {
 
             let observer = Observer::from(settings.int("cie-illuminants") as u32);
 
-            let ten_degrees = utils::int_to_bool(settings.int("cie-standard-observer") as isize);
+            let ten_degrees = settings.int("cie-standard-observer") == 1;
 
             imp.hex_row.set_text(color.to_hex_string(alpha_position));
 

@@ -26,11 +26,7 @@ pub fn name(color: Color, basic: bool, extended: bool, xkcd: bool) -> Option<Str
             name(color, basic, false, xkcd)
         }
     } else if xkcd {
-        if let Some(name) = xkcd_names().get(&color) {
-            Some(name.to_string())
-        } else {
-            None
-        }
+        xkcd_names().get(&color).map(|name| name.to_string())
     } else {
         None
     }
@@ -41,34 +37,30 @@ pub fn name(color: Color, basic: bool, extended: bool, xkcd: bool) -> Option<Str
 /// If no color is found, None is returned.
 pub fn color(name: &str, basic: bool, extended: bool, xkcd: bool) -> Option<Color> {
     if basic {
-        if let Some(name) =
+        if let Some(color) =
             w3c_basic_names()
                 .iter()
                 .find_map(|(key, &val)| if val == name { Some(key) } else { None })
         {
-            Some(*name)
+            Some(*color)
         } else {
             color(name, false, extended, xkcd)
         }
     } else if extended {
-        if let Some(name) =
+        if let Some(color) =
             w3c_extended_names()
                 .iter()
                 .find_map(|(key, &val)| if val == name { Some(key) } else { None })
         {
-            Some(*name)
+            Some(*color)
         } else {
             color(name, basic, false, xkcd)
         }
     } else if xkcd {
-        if let Some(name) = xkcd_names()
+        xkcd_names()
             .iter()
             .find_map(|(key, &val)| if val == name { Some(key) } else { None })
-        {
-            Some(*name)
-        } else {
-            None
-        }
+            .map(|color| *color)
     } else {
         None
     }
