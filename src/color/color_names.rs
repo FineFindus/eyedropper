@@ -36,6 +36,44 @@ pub fn name(color: Color, basic: bool, extended: bool, xkcd: bool) -> Option<Str
     }
 }
 
+/// Returns the color to the corresponding name.
+/// It iteratively searches through the different sets, until it finds a color for the name.
+/// If no color is found, None is returned.
+pub fn color(name: &str, basic: bool, extended: bool, xkcd: bool) -> Option<Color> {
+    if basic {
+        if let Some(name) =
+            w3c_basic_names()
+                .iter()
+                .find_map(|(key, &val)| if val == name { Some(key) } else { None })
+        {
+            Some(*name)
+        } else {
+            color(name, false, extended, xkcd)
+        }
+    } else if extended {
+        if let Some(name) =
+            w3c_extended_names()
+                .iter()
+                .find_map(|(key, &val)| if val == name { Some(key) } else { None })
+        {
+            Some(*name)
+        } else {
+            color(name, basic, false, xkcd)
+        }
+    } else if extended {
+        if let Some(name) = xkcd_names()
+            .iter()
+            .find_map(|(key, &val)| if val == name { Some(key) } else { None })
+        {
+            Some(*name)
+        } else {
+            color(name, basic, extended, xkcd)
+        }
+    } else {
+        None
+    }
+}
+
 /// Returns the [w3c basic color keywords](https://www.w3.org/TR/css-color-3/#html4).
 ///
 /// The names are mapped to their corresponding color.

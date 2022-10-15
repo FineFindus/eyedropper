@@ -688,6 +688,21 @@ impl AppWindow {
                 }
             }),
         );
+
+        imp.name_row.connect_closure(
+            "text-edited",
+            false,
+            glib::closure_local!(@watch self as window => move |_: ColorFormatRow, name: String| {
+                log::debug!("Changed name entry: {name}");
+                match color_names::color(&name.trim().to_lowercase(),
+                        window.imp().settings.boolean("name-source-basic"),
+                        window.imp().settings.boolean("name-source-extended"),
+                        window.imp().settings.boolean("name-source-xkcd")) {
+                    Some(color) => window.set_color(color),
+                    None => log::debug!("Failed to find color for name: {name}"),
+                }
+            }),
+        );
     }
 
     /// Shows a basic toast with the given text.

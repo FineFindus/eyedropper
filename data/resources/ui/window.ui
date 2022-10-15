@@ -91,6 +91,7 @@
                     <child>
                       <object class="ColorFormatRow" id="name_row">
                         <property name="visible">False</property>
+                        <property name="editable">True</property>
                       </object>
                     </child>
                     <child>
