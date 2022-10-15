@@ -29,7 +29,7 @@ pub fn name(color: Color, basic: bool, extended: bool, xkcd: bool) -> Option<Str
         if let Some(name) = xkcd_names().get(&color) {
             Some(name.to_string())
         } else {
-            name(color, basic, extended, false)
+            None
         }
     } else {
         None
@@ -60,14 +60,14 @@ pub fn color(name: &str, basic: bool, extended: bool, xkcd: bool) -> Option<Colo
         } else {
             color(name, basic, false, xkcd)
         }
-    } else if extended {
+    } else if xkcd {
         if let Some(name) = xkcd_names()
             .iter()
             .find_map(|(key, &val)| if val == name { Some(key) } else { None })
         {
             Some(*name)
         } else {
-            color(name, basic, extended, xkcd)
+            None
         }
     } else {
         None
