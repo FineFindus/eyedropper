@@ -18,7 +18,7 @@ mod imp {
     use super::*;
 
     #[derive(Debug, CompositeTemplate)]
-    #[template(resource = "/com/github/finefindus/eyedropper/ui/palette_window.ui")]
+    #[template(resource = "/com/github/finefindus/eyedropper/ui/palette-window.ui")]
     pub struct PaletteDialog {
         pub color: RefCell<gtk::gdk::RGBA>,
         #[template_child]
@@ -196,7 +196,7 @@ impl PaletteDialog {
         for color in colors.clone() {
             let class_name = format!(
                 "colorbin-{}",
-                color.to_hex_string(AlphaPosition::None).replace("#", "")
+                color.to_hex_string(AlphaPosition::None).replace('#', "")
             );
             let color_box = adw::Bin::builder()
                 .width_request(32)

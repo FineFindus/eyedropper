@@ -1,15 +1,16 @@
-use gettextrs::gettext;
+use gettextrs::{gettext, pgettext};
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gio, glib};
 
 use crate::application::App;
 use crate::color::color::{AlphaPosition, Color};
+use crate::color::color_names;
+use crate::color::observer::Observer;
 use crate::config::{APP_ID, PROFILE};
 use crate::model::history::HistoryObject;
 use crate::utils;
-use crate::widgets::color_model_entry::ColorModelEntry;
-use crate::widgets::hex_entry::HexEntry;
+use crate::widgets::color_format_row::ColorFormatRow;
 use crate::widgets::palette_dialog::PaletteDialog;
 
 mod imp {
@@ -36,23 +37,25 @@ mod imp {
         #[template_child]
         pub color_picker_button: TemplateChild<gtk::Button>,
         #[template_child]
-        pub hex_entry: TemplateChild<widgets::hex_entry::HexEntry>,
+        pub hex_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
         #[template_child]
-        pub rgb_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
+        pub rgb_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
         #[template_child]
-        pub hsl_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
+        pub hsl_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
         #[template_child]
-        pub hsv_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
+        pub hsv_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
         #[template_child]
-        pub cmyk_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
+        pub cmyk_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
         #[template_child]
-        pub xyz_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
+        pub xyz_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
         #[template_child]
-        pub cie_lab_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
+        pub cie_lab_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
         #[template_child]
-        pub hwb_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
+        pub hwb_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
         #[template_child]
-        pub hcl_entry: TemplateChild<widgets::color_model_entry::ColorModelEntry>,
+        pub hcl_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
+        #[template_child]
+        pub name_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
         #[template_child]
         pub history_list: TemplateChild<gtk::ListBox>,
         pub history: RefCell<Option<gio::ListStore>>,
@@ -68,15 +71,16 @@ mod imp {
                 color_picker_button: TemplateChild::default(),
                 toast_overlay: TemplateChild::default(),
                 format_box: TemplateChild::default(),
-                hex_entry: TemplateChild::default(),
-                rgb_entry: TemplateChild::default(),
-                hsl_entry: TemplateChild::default(),
-                hsv_entry: TemplateChild::default(),
-                cmyk_entry: TemplateChild::default(),
-                xyz_entry: TemplateChild::default(),
-                cie_lab_entry: TemplateChild::default(),
-                hwb_entry: TemplateChild::default(),
-                hcl_entry: TemplateChild::default(),
+                hex_row: TemplateChild::default(),
+                rgb_row: TemplateChild::default(),
+                hsl_row: TemplateChild::default(),
+                hsv_row: TemplateChild::default(),
+                cmyk_row: TemplateChild::default(),
+                xyz_row: TemplateChild::default(),
+                cie_lab_row: TemplateChild::default(),
+                hwb_row: TemplateChild::default(),
+                hcl_row: TemplateChild::default(),
+                name_row: TemplateChild::default(),
                 history_list: TemplateChild::default(),
                 history: Default::default(),
                 settings: gio::Settings::new(APP_ID),
@@ -200,8 +204,8 @@ impl AppWindow {
             Some(&selection_model),
             glib::clone!(@weak self as window => @default-panic, move |obj| {
                 let history_object = obj.downcast_ref().expect("The object is not of type `HistoryObject`.");
-                let hist = window.create_history_item(history_object);
-                hist.upcast()
+                let history_item = window.create_history_item(history_object);
+                history_item.upcast()
             }),
         );
 
@@ -293,7 +297,7 @@ impl AppWindow {
             }),
         );
 
-        //update hex entry with new alpha position
+        //update hex row with new alpha position
         settings.connect_changed(
             Some("alpha-position"),
             glib::clone!(@weak self as window => move |settings, _| {
@@ -301,119 +305,172 @@ impl AppWindow {
                 let color = *window.imp().color.borrow();
                 let alpha_position = AlphaPosition::from(settings.int("alpha-position") as u32);
                 //update hex to show alpha
-                window.imp().hex_entry.set_color(color.to_hex_string(alpha_position));
+                window.imp().hex_row.set_text(color.to_hex_string(alpha_position));
                 //update rgb to switch between rgb and rgba
-                window.imp().rgb_entry.set_color(color.to_rgb_string(alpha_position));
+                window.imp().rgb_row.set_text(color.to_rgb_string(alpha_position));
                 //update hsl to switch between hsl and hsla
-                window.imp().hsl_entry.set_color(color.to_hsl_string(alpha_position));
+                window.imp().hsl_row.set_text(color.to_hsl_string(alpha_position));
             }),
         );
 
+        let update_observer_rows = glib::clone!(@weak self as window => move |settings: &gio::Settings, _: &str| {
+            log::debug!("Updating observer colors");
+            let color = *window.imp().color.borrow();
+            let observer = Observer::from(settings.int("cie-illuminants") as u32);
+            let ten_degrees = settings.int("cie-standard-observer") == 1;
+
+            let cie_lab = color.to_cie_lab(observer, ten_degrees);
+            window.imp().cie_lab_row.set_text(format!(
+                "CIELAB({:.2}, {:.2}, {:.2})",
+                cie_lab.0, cie_lab.1, cie_lab.2
+            ));
+            let lch = color.to_hcl(observer, ten_degrees);
+            window.imp().hcl_row
+            .set_text(format!("lch({:.2}, {:.2}, {:.2})", lch.2, lch.1, lch.0));
+
+        });
+
+        //update colors that use observer values in their calculation
+        settings.connect_changed(Some("cie-illuminants"), update_observer_rows.clone());
+        settings.connect_changed(Some("cie-standard-observer"), update_observer_rows);
+
+        //update name when it changes
+        let update_color_names = glib::clone!(@weak self as window => move |settings: &gio::Settings, _: &str| {
+            log::debug!("Updating color names");
+            let color = *window.imp().color.borrow();
+            let name = color_names::name(color,
+                settings.boolean("name-source-basic"),
+                settings.boolean("name-source-extended"),
+                settings.boolean("name-source-xkcd"),
+            );
+            window.
+            imp().name_row.set_text(name.unwrap_or_else(|| pgettext(
+                "Information that no name for the color could be found",
+                "Not named",
+            )));
+        });
+
+        settings.connect_changed(Some("name-source-basic"), update_color_names.clone());
+        settings.connect_changed(Some("name-source-extended"), update_color_names.clone());
+        settings.connect_changed(Some("name-source-xkcd"), update_color_names);
+
         //first setup when loading
         let show_hex_model = settings.boolean("show-hex-model");
-        imp.hex_entry.set_visible(show_hex_model);
+        imp.hex_row.set_visible(show_hex_model);
         //refresh when settings change
         settings.connect_changed(
             Some("show-hex-model"),
             glib::clone!(@weak self as window => move |settings, _| {
             let show_hex_model = settings.boolean("show-hex-model");
-            window.imp().hex_entry.set_visible(show_hex_model);
+            window.imp().hex_row.set_visible(show_hex_model);
             }),
         );
 
         //first setup when loading
         let show_rgb_model = settings.boolean("show-rgb-model");
-        imp.rgb_entry.set_visible(show_rgb_model);
+        imp.rgb_row.set_visible(show_rgb_model);
         //refresh when settings change
         settings.connect_changed(
             Some("show-rgb-model"),
             glib::clone!(@weak self as window => move |settings, _| {
             let show_rgb_model = settings.boolean("show-rgb-model");
-            window.imp().rgb_entry.set_visible(show_rgb_model);
+            window.imp().rgb_row.set_visible(show_rgb_model);
             }),
         );
 
         //first setup when loading
         let show_hsl_model = settings.boolean("show-hsl-model");
-        imp.hsl_entry.set_visible(show_hsl_model);
+        imp.hsl_row.set_visible(show_hsl_model);
         //refresh when settings change
         settings.connect_changed(
             Some("show-hsl-model"),
             glib::clone!(@weak self as window => move |settings, _| {
             let show_hsl_model = settings.boolean("show-hsl-model");
-            window.imp().hsl_entry.set_visible(show_hsl_model);
+            window.imp().hsl_row.set_visible(show_hsl_model);
             }),
         );
 
         //first setup when loading
         let show_hsv_model = settings.boolean("show-hsv-model");
-        imp.hsv_entry.set_visible(show_hsv_model);
+        imp.hsv_row.set_visible(show_hsv_model);
         //refresh when settings change
         settings.connect_changed(
             Some("show-hsv-model"),
             glib::clone!(@weak self as window => move |settings, _| {
             let show_hsv_model = settings.boolean("show-hsv-model");
-            window.imp().hsv_entry.set_visible(show_hsv_model);
+            window.imp().hsv_row.set_visible(show_hsv_model);
             }),
         );
 
         //first setup when loading
         let show_cmyk_model = settings.boolean("show-cmyk-model");
-        imp.cmyk_entry.set_visible(show_cmyk_model);
+        imp.cmyk_row.set_visible(show_cmyk_model);
         //refresh when settings change
         settings.connect_changed(
             Some("show-cmyk-model"),
             glib::clone!(@weak self as window => move |settings, _| {
             let show_cmyk_model = settings.boolean("show-cmyk-model");
-            window.imp().cmyk_entry.set_visible(show_cmyk_model);
+            window.imp().cmyk_row.set_visible(show_cmyk_model);
             }),
         );
 
         //first setup when loading
         let show_xyz_model = settings.boolean("show-xyz-model");
-        imp.xyz_entry.set_visible(show_xyz_model);
+        imp.xyz_row.set_visible(show_xyz_model);
         //refresh when settings change
         settings.connect_changed(
             Some("show-xyz-model"),
             glib::clone!(@weak self as window => move |settings, _| {
             let show_xyz_model = settings.boolean("show-xyz-model");
-            window.imp().xyz_entry.set_visible(show_xyz_model);
+            window.imp().xyz_row.set_visible(show_xyz_model);
             }),
         );
 
         //first setup when loading
         let show_cie_lab_model = settings.boolean("show-cie-lab-model");
-        imp.cie_lab_entry.set_visible(show_cie_lab_model);
+        imp.cie_lab_row.set_visible(show_cie_lab_model);
         //refresh when settings change
         settings.connect_changed(
             Some("show-cie-lab-model"),
             glib::clone!(@weak self as window => move |settings, _| {
             let show_cie_lab_model = settings.boolean("show-cie-lab-model");
-            window.imp().cie_lab_entry.set_visible(show_cie_lab_model);
+            window.imp().cie_lab_row.set_visible(show_cie_lab_model);
             }),
         );
 
         //first setup when loading
         let show_hwb_model = settings.boolean("show-hwb-model");
-        imp.hwb_entry.set_visible(show_hwb_model);
+        imp.hwb_row.set_visible(show_hwb_model);
         //refresh when settings change
         settings.connect_changed(
             Some("show-hwb-model"),
             glib::clone!(@weak self as window => move |settings, _| {
             let show_hwb_model = settings.boolean("show-hwb-model");
-            window.imp().hwb_entry.set_visible(show_hwb_model);
+            window.imp().hwb_row.set_visible(show_hwb_model);
             }),
         );
 
         //first setup when loading
         let show_hcl_model = settings.boolean("show-hcl-model");
-        imp.hcl_entry.set_visible(show_hcl_model);
+        imp.hcl_row.set_visible(show_hcl_model);
         //refresh when settings change
         settings.connect_changed(
             Some("show-hcl-model"),
             glib::clone!(@weak self as window => move |settings, _| {
             let show_hcl_model = settings.boolean("show-hcl-model");
-            window.imp().hcl_entry.set_visible(show_hcl_model);
+            window.imp().hcl_row.set_visible(show_hcl_model);
+            }),
+        );
+
+        //first setup when loading
+        let show_name_model = settings.boolean("show-color-name");
+        imp.name_row.set_visible(show_name_model);
+        //refresh when settings change
+        settings.connect_changed(
+            Some("show-color-name"),
+            glib::clone!(@weak self as window => move |settings, _| {
+            let show_name_model = settings.boolean("show-color-name");
+            window.imp().name_row.set_visible(show_name_model);
             }),
         );
     }
@@ -429,31 +486,26 @@ impl AppWindow {
             .observe_children()
             .snapshot()
             .iter()
-            .filter_map(Cast::downcast_ref::<ColorModelEntry>)
-            .for_each(|entry| format_box.remove(entry));
-
-        //remove hex entry
-        format_box.remove(&imp.hex_entry.get());
+            .filter_map(Cast::downcast_ref::<ColorFormatRow>)
+            .for_each(|row| format_box.remove(row));
 
         //parse current order
         let order = imp.settings.get::<Vec<String>>("format-order");
+        log::debug!("Format-Order: {:?}", order);
 
         //insert items in order
         for item in order {
             let child = match item.to_lowercase().as_str() {
-                "hex" => {
-                    //append the hex entry directly, as it is not a ColorModelEntry
-                    format_box.append(&imp.hex_entry.get());
-                    continue;
-                }
-                "rgb" => &imp.rgb_entry,
-                "hsl" => &imp.hsl_entry,
-                "hsv" => &imp.hsv_entry,
-                "cmyk" => &imp.cmyk_entry,
-                "xyz" => &imp.xyz_entry,
-                "cielab" => &imp.cie_lab_entry,
-                "hwb" => &imp.hwb_entry,
-                "hcl" => &imp.hcl_entry,
+                "hex" => &imp.hex_row,
+                "rgb" => &imp.rgb_row,
+                "hsl" => &imp.hsl_row,
+                "hsv" => &imp.hsv_row,
+                "cmyk" => &imp.cmyk_row,
+                "xyz" => &imp.xyz_row,
+                "cielab" => &imp.cie_lab_row,
+                "hwb" => &imp.hwb_row,
+                "hcl" => &imp.hcl_row,
+                "name" => &imp.name_row,
                 _ => {
                     log::error!("Failed to find format: {}", item);
                     continue;
@@ -477,7 +529,7 @@ impl AppWindow {
                 log::debug!("Palette: {palette}");
 
                 palette
-                .split(" ")
+                .split(' ')
                 .for_each(|slice| match Color::from_hex(slice, AlphaPosition::None) {
                     Ok(color) => window.set_color(color),
                     Err(_) => {
@@ -522,49 +574,67 @@ impl AppWindow {
                 color.to_hex_string(crate::color::color::AlphaPosition::End)
             );
             let imp = self.imp();
+            let settings = &imp.settings;
             imp.color.replace(color);
 
             imp.color_button.set_rgba(&color.into());
 
-            let alpha_position = AlphaPosition::from(imp.settings.int("alpha-position") as u32);
+            let alpha_position = AlphaPosition::from(settings.int("alpha-position") as u32);
 
-            imp.hex_entry.set_color(color.to_hex_string(alpha_position));
+            let observer = Observer::from(settings.int("cie-illuminants") as u32);
 
-            imp.rgb_entry.set_color(color.to_rgb_string(alpha_position));
+            let ten_degrees = settings.int("cie-standard-observer") == 1;
 
-            imp.hsl_entry.set_color(color.to_hsl_string(alpha_position));
+            imp.hex_row.set_text(color.to_hex_string(alpha_position));
+
+            imp.rgb_row.set_text(color.to_rgb_string(alpha_position));
+
+            imp.hsl_row.set_text(color.to_hsl_string(alpha_position));
 
             let hsv = color.to_hsv();
-            imp.hsv_entry
-                .set_color(format!("hsv({}, {}%, {}%)", hsv.0, hsv.1, hsv.2));
+            imp.hsv_row
+                .set_text(format!("hsv({}, {}%, {}%)", hsv.0, hsv.1, hsv.2));
 
             let cmyk = color.to_cmyk();
-            imp.cmyk_entry.set_color(format!(
+            imp.cmyk_row.set_text(format!(
                 "cmyk({}%, {}%, {}%, {}%)",
                 cmyk.0, cmyk.1, cmyk.2, cmyk.3
             ));
 
             let xyz = color.to_xyz();
-            imp.xyz_entry
-                .set_color(format!("XYZ({:.3}, {:.3}, {:.3})", xyz.0, xyz.1, xyz.2));
+            imp.xyz_row
+                .set_text(format!("XYZ({:.3}, {:.3}, {:.3})", xyz.0, xyz.1, xyz.2));
 
-            let cie_lab = color.to_cie_lab();
-            imp.cie_lab_entry.set_color(format!(
+            let cie_lab = color.to_cie_lab(observer, ten_degrees);
+            imp.cie_lab_row.set_text(format!(
                 "CIELAB({:.2}, {:.2}, {:.2})",
                 cie_lab.0, cie_lab.1, cie_lab.2
             ));
 
             let hwb = color.to_hwb();
-            imp.hwb_entry.set_color(format!(
+            imp.hwb_row.set_text(format!(
                 "hwb({}, {}%, {}%)",
                 hwb.0,
                 utils::round_percent(hwb.1),
                 utils::round_percent(hwb.2)
             ));
 
-            let lch = color.to_hcl();
-            imp.hcl_entry
-                .set_color(format!("lch({:.2}, {:.2}, {:.2})", lch.2, lch.1, lch.0));
+            let lch = color.to_hcl(observer, ten_degrees);
+            imp.hcl_row
+                .set_text(format!("lch({:.2}, {:.2}, {:.2})", lch.2, lch.1, lch.0));
+
+            let name = color_names::name(
+                color,
+                settings.boolean("name-source-basic"),
+                settings.boolean("name-source-extended"),
+                settings.boolean("name-source-xkcd"),
+            );
+            imp.name_row.set_text(name.unwrap_or_else(|| {
+                pgettext(
+                    "Information that no name for the color could be found",
+                    "Not named",
+                )
+            }));
         }
     }
 
@@ -580,44 +650,56 @@ impl AppWindow {
         );
 
         //show a toast when copying values
-        let show_toast_closure = glib::closure_local!(@watch self as window => move |_: ColorModelEntry, text: String| {
+        let show_toast_closure = glib::closure_local!(@watch self as window => move |_: ColorFormatRow, text: String| {
             //Translators: Do not replace the {}. These are used as placeholders for the copied values
             window.show_toast(&gettext("Copied: “{}”").replace("{}", &text));
         });
 
-        imp.hex_entry.connect_closure(
-            "copied-color",
-            false,
-            glib::closure_local!(@watch self as window => move |_: HexEntry, text: String| {
-                window.show_toast(&gettext("Copied: “{}”").replace("{}", &text));
-            }),
-        );
-        imp.rgb_entry
-            .connect_closure("copied-color", false, show_toast_closure.clone());
-        imp.hsl_entry
-            .connect_closure("copied-color", false, show_toast_closure.clone());
-        imp.hsv_entry
-            .connect_closure("copied-color", false, show_toast_closure.clone());
-        imp.cmyk_entry
-            .connect_closure("copied-color", false, show_toast_closure.clone());
-        imp.xyz_entry
-            .connect_closure("copied-color", false, show_toast_closure.clone());
-        imp.cie_lab_entry
-            .connect_closure("copied-color", false, show_toast_closure.clone());
-        imp.hwb_entry
-            .connect_closure("copied-color", false, show_toast_closure.clone());
-        imp.hcl_entry
-            .connect_closure("copied-color", false, show_toast_closure);
+        imp.hex_row
+            .connect_closure("copied-text", false, show_toast_closure.clone());
+        imp.rgb_row
+            .connect_closure("copied-text", false, show_toast_closure.clone());
+        imp.hsl_row
+            .connect_closure("copied-text", false, show_toast_closure.clone());
+        imp.hsv_row
+            .connect_closure("copied-text", false, show_toast_closure.clone());
+        imp.cmyk_row
+            .connect_closure("copied-text", false, show_toast_closure.clone());
+        imp.xyz_row
+            .connect_closure("copied-text", false, show_toast_closure.clone());
+        imp.cie_lab_row
+            .connect_closure("copied-text", false, show_toast_closure.clone());
+        imp.hwb_row
+            .connect_closure("copied-text", false, show_toast_closure.clone());
+        imp.hcl_row
+            .connect_closure("copied-text", false, show_toast_closure.clone());
+        imp.name_row
+            .connect_closure("copied-text", false, show_toast_closure);
 
-        imp.hex_entry.connect_closure(
-            "color-changed",
+        imp.hex_row.connect_closure(
+            "text-edited",
             false,
-            glib::closure_local!(@watch self as window => move |_: HexEntry, color: String| {
+            glib::closure_local!(@watch self as window => move |_: ColorFormatRow, color: String| {
                 log::debug!("Changed hex entry: {color}");
                 let hex_alpha_position = AlphaPosition::from(window.imp().settings.int("alpha-position") as u32);
                 match Color::from_hex(&color, hex_alpha_position) {
                     Ok(color) => window.set_color(color),
                     Err(_) => log::debug!("Failed to parse color: {color}"),
+                }
+            }),
+        );
+
+        imp.name_row.connect_closure(
+            "text-edited",
+            false,
+            glib::closure_local!(@watch self as window => move |_: ColorFormatRow, name: String| {
+                log::debug!("Changed name entry: {name}");
+                match color_names::color(&name.trim().to_lowercase(),
+                        window.imp().settings.boolean("name-source-basic"),
+                        window.imp().settings.boolean("name-source-extended"),
+                        window.imp().settings.boolean("name-source-xkcd")) {
+                    Some(color) => window.set_color(color),
+                    None => log::debug!("Failed to find color for name: {name}"),
                 }
             }),
         );

@@ -1,5 +1,6 @@
 use adw::traits::ActionRowExt;
 use gettextrs::gettext;
+use gettextrs::pgettext;
 use gtk::gdk;
 use gtk::gio;
 use gtk::gio::ListStore;
@@ -11,6 +12,7 @@ use gtk::subclass::prelude::*;
 use gtk::Switch;
 
 use crate::color::color::Color;
+use crate::color::observer::Observer;
 use crate::utils;
 
 use self::color_format::ColorFormatObject;
@@ -34,16 +36,12 @@ mod imp {
         #[template_child()]
         pub alpha_pos_box: TemplateChild<adw::ComboRow>,
         #[template_child()]
+        pub standard_observer_box: TemplateChild<adw::ComboRow>,
+        #[template_child()]
+        pub cie_illuminants_box: TemplateChild<adw::ComboRow>,
+        #[template_child()]
         pub format_list: TemplateChild<gtk::ListBox>,
         pub formats: RefCell<Option<gio::ListStore>>,
-    }
-
-    #[gtk::template_callbacks]
-    impl PreferencesWindow {
-        #[template_callback]
-        fn on_reset_pressed(&self, _button: &gtk::Button) {
-            self.instance().reset_order();
-        }
     }
 
     // The central trait for subclassing a GObject
@@ -58,6 +56,8 @@ mod imp {
             Self {
                 settings: gtk::gio::Settings::new(config::APP_ID),
                 alpha_pos_box: TemplateChild::default(),
+                standard_observer_box: TemplateChild::default(),
+                cie_illuminants_box: TemplateChild::default(),
                 format_list: TemplateChild::default(),
                 formats: Default::default(),
             }
@@ -65,7 +65,7 @@ mod imp {
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
-            klass.bind_template_callbacks();
+            klass.bind_template_instance_callbacks();
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -94,6 +94,7 @@ glib::wrapper! {
     @extends gtk::Widget, gtk::Window, adw::Window, adw::PreferencesWindow;
 }
 
+#[gtk::template_callbacks]
 impl PreferencesWindow {
     #[allow(clippy::new_without_default)]
     pub fn new() -> Self {
@@ -106,6 +107,86 @@ impl PreferencesWindow {
         imp.settings
             .bind("alpha-position", &*imp.alpha_pos_box, "selected")
             .build();
+
+        imp.settings
+            .bind("cie-illuminants", &*imp.cie_illuminants_box, "selected")
+            .build();
+
+        imp.settings
+            .bind(
+                "cie-standard-observer",
+                &*imp.standard_observer_box,
+                "selected",
+            )
+            .build();
+    }
+
+    /// Resets the current order by resetting the setting and repopulating the list.
+    #[template_callback]
+    fn on_reset_pressed(&self, _button: &gtk::Button) {
+        log::debug!("Resetting order");
+        self.formats().remove_all();
+        self.imp().settings.reset("format-order");
+        self.add_options();
+    }
+
+    /// Shows a dialog letting the use choose which name sets should be used.
+    #[template_callback]
+    fn on_name_row_activated(&self, _row: &adw::ActionRow) {
+        let list = gtk::ListBox::builder()
+            .margin_top(12)
+            .margin_start(12)
+            .margin_end(12)
+            .margin_bottom(12)
+            .css_classes(vec!["boxed-list".to_string()])
+            .build();
+
+        list.append(&self.name_set_row(
+            &pgettext(
+                "Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/#html4",
+                "Basic",
+            ),
+            &gettext("Show color names from the w3c basic color keyword set"),
+            "name-source-basic",
+        ));
+        list.append(&self.name_set_row(
+            &pgettext(
+                "Name of the extended color keyword set from https://www.w3.org/TR/css-color-3/#svg-color",
+                "Extended",
+            ),
+            &gettext("Show color names from the w3c extended color keyword  set"),
+            "name-source-extended",
+        ));
+        list.append(&self.name_set_row(
+            &pgettext("Name of the color set from the xkcd color survey", "xkcd"),
+            &gettext("Show color names from the xkcd color survey"),
+            "name-source-xkcd",
+        ));
+
+        let dialog = gtk::Dialog::builder()
+            .transient_for(self)
+            .modal(true)
+            .child(&list)
+            .build();
+        dialog.show();
+    }
+
+    /// Build an ActionRow for the name setting.
+    fn name_set_row(&self, title: &str, subtitle: &str, source: &str) -> adw::ActionRow {
+        let switch = gtk::Switch::builder()
+            .valign(gtk::Align::Center)
+            .can_focus(false)
+            .build();
+
+        self.imp().settings.bind(source, &switch, "state").build();
+
+        let row = adw::ActionRow::builder()
+            .title(title)
+            .subtitle(subtitle)
+            .activatable_widget(&switch)
+            .build();
+        row.add_suffix(&switch);
+        row
     }
 
     /// Returns the formats list store object.
@@ -125,14 +206,6 @@ impl PreferencesWindow {
             .filter_map(Cast::downcast_ref::<ColorFormatObject>)
             .map(|format| format.identifier())
             .collect()
-    }
-
-    /// Resets the current order by resetting the setting and repopulating the list.
-    fn reset_order(&self) {
-        log::debug!("Resetting order");
-        self.formats().remove_all();
-        self.imp().settings.reset("format-order");
-        self.add_options();
     }
 
     /// Assure that formats is only visible
@@ -197,7 +270,7 @@ impl PreferencesWindow {
                 .build(),
         );
 
-        //create actions for accessability reasons
+        //create actions for accessibility reasons
         let actions = gtk::gio::SimpleActionGroup::new();
         let up_action = gio::SimpleAction::new("move-up", None);
         up_action.connect_activate(
@@ -321,13 +394,14 @@ impl PreferencesWindow {
         //It is theoretically possible to remove formats from the settings, so they would not show up
         //on the page. I couldn't find any docs about what happens when the defaults are updated, which happens whenever
         //a new format is added, so we just manually check if all formats are in the saved setting
-        for item in default_order
+        for (index, item) in default_order
             .array_iter_str()
             .expect("Failed to get default format-order array")
+            .enumerate()
         {
             if !order.contains(&item.to_owned()) {
-                log::debug!("Saved order does not contain {}", item);
-                order.push(item.to_owned());
+                log::debug!("Saved order does not contain {} at index {}", item, index);
+                order.insert(index, item.to_owned());
                 //override previously saved order
                 match self
                     .imp()
@@ -339,6 +413,8 @@ impl PreferencesWindow {
                 }
             }
         }
+
+        log::debug!("Order with new items: {:?}", order);
 
         for item in order {
             let format = match item.to_lowercase().as_str() {
@@ -388,7 +464,7 @@ impl PreferencesWindow {
                     )
                 }
                 "cielab" => {
-                    let cie_lab = color.to_cie_lab();
+                    let cie_lab = color.to_cie_lab(Observer::D65, true);
                     ColorFormatObject::new(
                         item,
                         gettext("CIELAB"),
@@ -414,7 +490,7 @@ impl PreferencesWindow {
                     )
                 }
                 "hcl" => {
-                    let hcl = color.to_hcl();
+                    let hcl = color.to_hcl(Observer::D65, true);
                     ColorFormatObject::new(
                         item,
                         gettext("CIELCh / HCL"),
@@ -422,6 +498,12 @@ impl PreferencesWindow {
                         "show-hcl-model",
                     )
                 }
+                "name" => ColorFormatObject::new(
+                    item,
+                    gettext("Name"),
+                    String::from("red"),
+                    "show-color-name",
+                ),
                 _ => {
                     log::error!("Failed to find format: {item}");
                     continue;

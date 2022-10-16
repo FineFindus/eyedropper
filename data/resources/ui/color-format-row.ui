@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-    <template class="ColorModelEntry" parent="GtkBox">
+    <template class="ColorFormatRow" parent="GtkBox">
         <property name="margin-top">12</property>
         <property name="margin-start">12</property>
         <property name="margin-end">12</property>

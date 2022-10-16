@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eyedropper\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-28 11:51+0200\n"
-"PO-Revision-Date: 2022-09-28 11:59+0200\n"
+"POT-Creation-Date: 2022-10-10 14:09+0200\n"
+"PO-Revision-Date: 2022-10-10 14:23+0200\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: none\n"
 "Language: nl\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:35 src/main.rs:24 src/widgets/about_window.rs:44
+#: data/resources/ui/window.ui:35 src/main.rs:25 src/widgets/about_window.rs:44
 msgid "Eyedropper"
 msgstr "Eyedropper"
 
@@ -29,8 +29,10 @@ msgid "Color Picker"
 msgstr "Kleurenkiezer"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
-msgid "An easy-to-use color picker"
-msgstr "Een eenvoudig te gebruiken kleurenkiezer"
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
+#: src/widgets/about_window.rs:74
+msgid "A powerful color picker and formatter"
+msgstr "Een krachtige kleurenkiezer en -formateerder"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
@@ -38,11 +40,6 @@ msgid "Gnome;GTK;Color;Color Picker;Picker;Palette;"
 msgstr ""
 "Gnome;GTK;Color;Color Picker;Picker;Palette;Kleur;Kleurenkiezer;Kiezer;"
 "Selecteren;Palet;"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
-#: src/widgets/about_window.rs:74
-msgid "An easy-to-use color picker and editor"
-msgstr "Een eenvoudig te gebruiken kleurenkiezer en -bewerker"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
 #: src/widgets/about_window.rs:77
@@ -109,7 +106,11 @@ msgstr "Aangepast kleurformaat in donkere modus"
 msgid "Customized color formatting"
 msgstr "Aangepast kleurformaat"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:88
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:43
+msgid "Generated color palettes"
+msgstr "Gegenereerde kleurenpaletten"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:92
 msgid "FineFindus"
 msgstr "FineFindus"
 
@@ -122,6 +123,10 @@ msgstr "Formaat kopiëren"
 msgctxt "Tooltip of the copy button for the hex format"
 msgid "Copy Format"
 msgstr "Formaat kopiëren"
+
+#: data/resources/ui/palette_window.ui:5
+msgid "Palettes"
+msgstr "Paletten"
 
 #: data/resources/ui/preferences.ui:10
 msgid "General"
@@ -233,61 +238,115 @@ msgctxt ""
 "closing tag. Since xgettext does not recognize rust multiline strings, this "
 "should be on a single line using line breaks (\\n) for new lines."
 msgid ""
-"<p>This is a minor release, improving on the currently available features.</"
-"p>\n"
+"<p>This release extends the current available features.</p>\n"
 "<p> Features:</p>\n"
-"<ul><li> Added new translations</li><li>Fixed minor issues</li></ul>"
+"<ul><li> A new Palette dialog showing different color palettes</li><li> "
+"Using the new AdwAboutWindow</li><li> Added new translations</li><li>Fixed "
+"minor issues</li></ul>"
 msgstr ""
-"<p>Dit is een kleine uitgave die verbeteringen brengt op bestaande functies."
-"</p>\n"
+"<p>Deze uitgave breidt uit op de huidige functies.</p>\n"
 "<p>Functies:</p>\n"
-"<ul><li>Nieuwe vertalingen toegevoegd</li><li>Enkele fouten opgelost</li></"
-"ul>"
+"<ul><li>Een nieuw paletdiaoog welke verschillende kleurenpaletten toont</"
+"li><li>Gebruikt de nieuwe AdwAboutWindow</li><li>Nieuwe vertalingen</"
+"li><li>Kleine fouten opgelost</li></ul>"
 
-#: src/widgets/preferences.rs:226
+#: src/widgets/palette_dialog.rs:130
+msgctxt "Name for tints (lighter variants) of the color"
+msgid "Tints"
+msgstr "Tinten"
+
+#: src/widgets/palette_dialog.rs:134
+msgctxt "Name for shades (darker variants) of the color"
+msgid "Shades"
+msgstr "Schakeringen"
+
+#: src/widgets/palette_dialog.rs:140
+msgctxt "Name for the opposite/complementary color (e.g. blue ⇔ yellow)"
+msgid "Complementary"
+msgstr "Complementair"
+
+#: src/widgets/palette_dialog.rs:147
+msgctxt ""
+"The name of the color palette. Consist of the two opposite colors (e.g. blue "
+"⇔ orange / green)"
+msgid "Split-Complementary"
+msgstr "Split-complemetair"
+
+#: src/widgets/palette_dialog.rs:154
+msgctxt ""
+"Name of the color palette, which would form a triangle above the color wheel"
+msgid "Triadic"
+msgstr "Triadisch"
+
+#: src/widgets/palette_dialog.rs:159
+msgctxt "The name of the color palette."
+msgid "Tetradic"
+msgstr "Tetradisch"
+
+#: src/widgets/palette_dialog.rs:165
+msgctxt "Color palette consisting of six slight shifted colors"
+msgid "Analogous"
+msgstr "Harmonisch"
+
+#: src/widgets/preferences.rs:228
 msgid "Move Up"
 msgstr "Naar boven verplaatsen"
 
-#: src/widgets/preferences.rs:228
+#: src/widgets/preferences.rs:230
 msgid "Move Down"
 msgstr "Naar beneden verplaatsen"
 
-#: src/widgets/preferences.rs:317
+#: src/widgets/preferences.rs:347
 msgid "Hex-Code"
 msgstr "Hex-code"
 
-#: src/widgets/preferences.rs:323
+#: src/widgets/preferences.rs:353
 msgid "RGB"
 msgstr "RGB"
 
-#: src/widgets/preferences.rs:331
+#: src/widgets/preferences.rs:359
 msgid "HSL"
 msgstr "HSL"
 
-#: src/widgets/preferences.rs:340
+#: src/widgets/preferences.rs:367
 msgid "HSV"
 msgstr "HSV (KVW)"
 
-#: src/widgets/preferences.rs:349
+#: src/widgets/preferences.rs:376
 msgid "CMYK"
 msgstr "CMYK"
 
-#: src/widgets/preferences.rs:358
+#: src/widgets/preferences.rs:385
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/widgets/preferences.rs:367
+#: src/widgets/preferences.rs:394
 msgid "CIELAB"
 msgstr "CIELAB"
 
-#: src/window.rs:479
+#: src/widgets/preferences.rs:406
+msgid "HWB"
+msgstr "HWB"
+
+#: src/widgets/preferences.rs:420
+msgid "CIELCh / HCL"
+msgstr "CIELCh / HCL"
+
+#: src/window.rs:485
+msgid "Failed to get palette color"
+msgstr "Paletkleur verkrijgen mislukt"
+
+#: src/window.rs:505
 msgid "Failed to pick a color"
 msgstr "Kleur kiezen mislukt"
 
 #. Translators: Do not replace the {}. These are used as placeholders for the copied values
-#: src/window.rs:598 src/window.rs:605
+#: src/window.rs:585 src/window.rs:592
 msgid "Copied: “{}”"
 msgstr "‘{}’ gekopieerd"
+
+#~ msgid "An easy-to-use color picker"
+#~ msgstr "Een eenvoudig te gebruiken kleurenkiezer"
 
 #~ msgid "Available Formats:"
 #~ msgstr "Beschikbare formaten:"

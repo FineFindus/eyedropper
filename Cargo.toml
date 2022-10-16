@@ -1,6 +1,6 @@
 [package]
 name = "eyedropper"
-version = "0.3.1"
+version = "0.4.0"
 authors = ["FineFindus <finefindusgh@gmail.com>"]
 edition = "2021"
 description = "A powerful color picker and formatter"
@@ -10,7 +10,7 @@ homepage = "https://github.com/finefindus/eyedropper"
 repository = "https://github.com/finefindus/eyedropper"
 
 
-#override package level optimazation, to always be maximum
+#override package level optimization, to always be maximum
 [profile.release.package."*"] 
 opt-level = 3
 
