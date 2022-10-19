@@ -552,21 +552,22 @@ msgstr "CIELCh / HCL"
 msgid "Name"
 msgstr "Ad"
 
-#: src/window.rs:349 src/window.rs:635
+#: src/window.rs:348 src/window.rs:478 src/window.rs:498 src/window.rs:663
+#: src/window.rs:729
 msgctxt "Information that no name for the color could be found"
 msgid "Not named"
 msgstr "Adlandırılmamış"
 
-#: src/window.rs:537
+#: src/window.rs:563
 msgid "Failed to get palette color"
 msgstr "Palet rengi alınamadı"
 
-#: src/window.rs:557
+#: src/window.rs:583
 msgid "Failed to pick a color"
 msgstr "Renk alınamadı"
 
 #. Translators: Do not replace the {}. These are used as placeholders for the copied values
-#: src/window.rs:655
+#: src/window.rs:684
 msgid "Copied: “{}”"
 msgstr "Kopyalandı: “{}”"
 
