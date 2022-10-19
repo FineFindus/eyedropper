@@ -134,7 +134,6 @@ mod imp {
             obj.setup_history();
             obj.load_settings();
             obj.setup_callbacks();
-
             obj.set_order();
         }
     }
@@ -465,12 +464,39 @@ impl AppWindow {
         //first setup when loading
         let show_name_model = settings.boolean("show-color-name");
         imp.name_row.set_visible(show_name_model);
+        if show_name_model {
+            //update field to show name
+            let name = color_names::name(
+                *imp.color.borrow(),
+                settings.boolean("name-source-basic"),
+                settings.boolean("name-source-extended"),
+                settings.boolean("name-source-xkcd"),
+            );
+            imp.name_row.set_text(name.unwrap_or_else(|| {
+                pgettext(
+                    "Information that no name for the color could be found",
+                    "Not named",
+                )
+            }));
+        }
         //refresh when settings change
         settings.connect_changed(
             Some("show-color-name"),
             glib::clone!(@weak self as window => move |settings, _| {
             let show_name_model = settings.boolean("show-color-name");
             window.imp().name_row.set_visible(show_name_model);
+            //name is not always update, so update it when it's shown
+            let color = *window.imp().color.borrow();
+            let name = color_names::name(color,
+                settings.boolean("name-source-basic"),
+                settings.boolean("name-source-extended"),
+                settings.boolean("name-source-xkcd"),
+            );
+            window.
+            imp().name_row.set_text(name.unwrap_or_else(|| pgettext(
+                "Information that no name for the color could be found",
+                "Not named",
+            )));
             }),
         );
     }
@@ -623,18 +649,21 @@ impl AppWindow {
             imp.hcl_row
                 .set_text(format!("lch({:.2}, {:.2}, {:.2})", lch.2, lch.1, lch.0));
 
-            let name = color_names::name(
-                color,
-                settings.boolean("name-source-basic"),
-                settings.boolean("name-source-extended"),
-                settings.boolean("name-source-xkcd"),
-            );
-            imp.name_row.set_text(name.unwrap_or_else(|| {
-                pgettext(
-                    "Information that no name for the color could be found",
-                    "Not named",
-                )
-            }));
+            //only update when necessary, to avoid searches, that might be a bit more costly
+            if imp.name_row.is_visible() {
+                let name = color_names::name(
+                    color,
+                    settings.boolean("name-source-basic"),
+                    settings.boolean("name-source-extended"),
+                    settings.boolean("name-source-xkcd"),
+                );
+                imp.name_row.set_text(name.unwrap_or_else(|| {
+                    pgettext(
+                        "Information that no name for the color could be found",
+                        "Not named",
+                    )
+                }));
+            }
         }
     }
 
@@ -694,12 +723,18 @@ impl AppWindow {
             false,
             glib::closure_local!(@watch self as window => move |_: ColorFormatRow, name: String| {
                 log::debug!("Changed name entry: {name}");
+                //do not search for unnamed colors
+                if name != pgettext(
+                    "Information that no name for the color could be found",
+                    "Not named",
+                ) {
                 match color_names::color(&name.trim().to_lowercase(),
                         window.imp().settings.boolean("name-source-basic"),
                         window.imp().settings.boolean("name-source-extended"),
                         window.imp().settings.boolean("name-source-xkcd")) {
                     Some(color) => window.set_color(color),
                     None => log::debug!("Failed to find color for name: {name}"),
+                }
                 }
             }),
         );

@@ -114,6 +114,7 @@ mod imp {
             obj.set_direction(gtk::TextDirection::Ltr);
             obj.setup_signals();
             obj.setup_properties();
+            obj.hide();
         }
     }
 
@@ -166,7 +167,7 @@ impl ColorFormatRow {
             .entry
             .connect_changed(glib::clone!(@weak self as format_row => move |entry| {
                 let text = entry.buffer().text();
-                if !text.is_empty() {
+                if format_row.is_visible() && !text.is_empty() {
                     format_row.emit_by_name("text-edited", &[&text.to_value()])
                 }
             }));
