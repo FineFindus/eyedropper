@@ -80,8 +80,8 @@ msgstr "Puedes ver colores en Hex, RGB, HSV, HSL, CMYK, XYZ y CIE-Lab Format"
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
 #: src/widgets/about_window.rs:90
 msgid "Customize which formats appear as well as their order"
-msgstr ""
-"Personaliza qué formatos aparecen, así como su orden"
+msgstr "Personaliza qué formatos aparecen, así como su orden"
+
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
 #: src/widgets/about_window.rs:91
@@ -425,9 +425,8 @@ msgid ""
 msgstr ""
 "<p>Esta versión amplía las funciones disponibles actualmente.</p><p> Características:"
 "</p>\n"
-"<ul><li> El nombre del color, especificado por las palabras clave de color w3c y la encuesta de color xkcd "
-", puede mostrarse ahora</li><li>Cambie el color introduciendo un color "
-", palabra clave</li><li>Un nuevo cuadro de diálogo de la paleta que muestra diferentes paletas de colores</"
+"<ul><li> El nombre del color, especificado por las palabras clave de color w3c y la encuesta de color xkcd"
+",puede mostrarse ahora</li><li>Cambie el color introduciendo un color, palabra clave</li><li>Un nuevo cuadro de diálogo de la paleta que muestra diferentes paletas de colores</"
 "li><li>Elija qué observador estándar CIE se utiliza, así como su "
 " iluminador</li><li> Mostrar el formato de color CIELCh</li><li>Utilizando la nueva "
 " AdwAboutWindow</li><li> Nuevas traducciones añadidas</li><li>Se han solucionado problemas menores</li></ul>"
