@@ -5,7 +5,7 @@
 
 # Eyedropper
 
-An easy-to-use color picker and formatter.
+A powerful color picker and formatter.
 
 ![Dark UI](data/resources/screenshots/main_window_ui_dark.png)
 
@@ -18,6 +18,8 @@ An easy-to-use color picker and formatter.
 
 ![Customize the shown formats (Light UI)](data/resources/screenshots/customized_formats_light.png)
 
+![Generate Color Palettes](data/resources/screenshots/palette_dialog_dark.png)
+
 ![Preferences](data/resources/screenshots/preference_window_dark.png)
 
 </details>
@@ -25,9 +27,9 @@ An easy-to-use color picker and formatter.
 ## Features
 
 - Pick a Color
-- Edit a color using hex values
-- Parse RGBA/ARGB Colors
-- View colors in RGB, HSV, HSL, CMYK, XYZ and CIE-Lab formats
+- Enter a color in Hex-Format
+- Parse RGBA/ARGB Hex-Colors
+- View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format
 - Customize which formats appear as well as their order
 - Generate a palette of different shades
 
@@ -36,13 +38,17 @@ An easy-to-use color picker and formatter.
 - Generate a palette of similar colors
 - Add more color formats
 
+### When should I use this? And when not?
+
+This application is geared towards advanced users (developers, designers, etc…), who not only need to pick a color but also modify or view it in different formats. For simply picking a color on Gnome, the [color-picker extension](https://github.com/tuberry/color-picker) is far better suited.
+
 ## Installation
 
 ### Official
+<a href='https://flathub.org/apps/details/com.github.finefindus.eyedropper'><img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-i-en.png'/></a>
 
-Install from [Flathub](https://flathub.org/apps/details/com.github.finefindus.eyedropper) or download the latest release from the [release tab](https://github.com/FineFindus/eyedropper/releases).
 
-### Inofficial
+### Unofficial
 
 > :warning: **These installation methods are not recommended**: Installing them may result in bugs or unexpected behavior.
 
@@ -88,7 +94,7 @@ Alternatively, it is possible to build the project manually using `flatpak-build
 First install the required sdks:
 
 ```sh
-flatpak install org.gnome.Sdk//41 org.freedesktop.Sdk.Extension.rust-stable//21.08 org.gnome.Platform//41
+flatpak install org.gnome.Sdk//43 org.freedesktop.Sdk.Extension.rust-stable//22.08 org.gnome.Platform//43
 ```
 
 Then build it using:
@@ -103,6 +109,14 @@ To run it:
 flatpak-builder --run flatpak_app build-aux/com.github.finefindus.eyedropper.Devel.json eyedropper
 ```
 
+#### Build without flatpak
+
+```sh
+meson --prefix=/usr build
+ninja -C build
+sudo ninja -C build install
+```
+
 ## Credits
 
 A huge thanks to these projects who served either as an inspiration or as code examples on how to use gtk-rs.
@@ -110,3 +124,4 @@ A huge thanks to these projects who served either as an inspiration or as code e
 - [GTK Rust Template](https://gitlab.gnome.org/World/Rust/gtk-rust-template)
 - [Contrast](https://gitlab.gnome.org/World/design/contrast)
 - [Microsoft Color Picker Utility](https://docs.microsoft.com/en-us/windows/powertoys/color-picker) - Inspirations on the design
+- All the other FOSS-GTK apps

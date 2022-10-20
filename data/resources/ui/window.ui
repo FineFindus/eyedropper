@@ -69,38 +69,65 @@
                         <property name="tightening-threshold">35</property>
                         <property name="maximum-size">50</property>
                         <property name="child">
-                          <object class="GtkColorButton" id="color_button">
+                          <object class="GtkButton">
                             <property name="margin-top">12</property>
                             <property name="margin-start">12</property>
                             <property name="margin-end">12</property>
                             <property name="vexpand">True</property>
                             <property name="width-request">267</property>
+                            <child>
+                              <object class="GtkColorButton" id="color_button">
+                                <property name="can_focus">False</property>
+                              </object>
+                            </child>
+                            <signal name="clicked" handler="on_palettes_button_clicked" swapped="true" />
+                            <style>
+                              <class name="no-padding" />
+                            </style>
                           </object>
                         </property>
                       </object>
                     </child>
                     <child>
-                      <object class="HexEntry" id="hex_entry" />
+                      <object class="ColorFormatRow" id="name_row">
+                        <property name="visible">False</property>
+                        <property name="editable">True</property>
+                      </object>
                     </child>
                     <child>
-                      <object class="ColorModelEntry" id="rgb_entry" />
+                      <object class="ColorFormatRow" id="hex_row">
+                        <property name="editable">True</property>
+                      </object>
                     </child>
                     <child>
-                      <object class="ColorModelEntry" id="hsl_entry" />
+                      <object class="ColorFormatRow" id="rgb_row" />
                     </child>
                     <child>
-                      <object class="ColorModelEntry" id="hsv_entry" />
+                      <object class="ColorFormatRow" id="hsl_row" />
                     </child>
                     <child>
-                      <object class="ColorModelEntry" id="cmyk_entry" />
+                      <object class="ColorFormatRow" id="hsv_row" />
                     </child>
                     <child>
-                      <object class="ColorModelEntry" id="xyz_entry">
+                      <object class="ColorFormatRow" id="cmyk_row" />
+                    </child>
+                    <child>
+                      <object class="ColorFormatRow" id="xyz_row">
                         <property name="visible">False</property>
                       </object>
                     </child>
                     <child>
-                      <object class="ColorModelEntry" id="cie_lab_entry">
+                      <object class="ColorFormatRow" id="cie_lab_row">
+                        <property name="visible">False</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ColorFormatRow" id="hwb_row">
+                        <property name="visible">False</property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="ColorFormatRow" id="hcl_row">
                         <property name="visible">False</property>
                       </object>
                     </child>

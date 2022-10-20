@@ -7,9 +7,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: com.github.finefindus.eyedropper\n"
-"Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper/issues\n"
-"POT-Creation-Date: 2022-09-22 18:09+0200\n"
-"PO-Revision-Date: 2022-09-24 02:05+0300\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gtk/-/issues/\n"
+"POT-Creation-Date: 2022-10-15 15:10+0200\n"
+"PO-Revision-Date: 2022-10-15 22:20+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: \n"
 "Language: tr\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:35 src/main.rs:24
+#: data/resources/ui/window.ui:35 src/main.rs:25 src/widgets/about_window.rs:44
 msgid "Eyedropper"
 msgstr "Damlalık"
 
@@ -30,137 +30,87 @@ msgid "Color Picker"
 msgstr "Renk Seçici"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
-msgid "An easy-to-use color picker"
-msgstr "Kullanımı kolay renk seçici"
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
+#: src/widgets/about_window.rs:74
+msgid "A powerful color picker and formatter"
+msgstr "Kullanımı kolay renk seçici ve biçimlendirici"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
 msgid "Gnome;GTK;Color;Color Picker;Picker;Palette;"
 msgstr "Gnome;GTK;Renk;Renk Seçici;Seçici;Palet;"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
-msgid "An easy-to-use color picker and editor"
-msgstr "Kullanımı kolay renk seçici ve düzenleyici"
-
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
+#: src/widgets/about_window.rs:77
 msgid ""
 "Pick any color from your screen and view it in different formats. Change the "
 "picked color or go back to a previously picked color from the history list. "
-"Generate a list of different shades fromt he picked color."
+"Generate a list of different shades from the picked color."
 msgstr ""
 "Ekranınızdan istediğiniz rengi seçin ve farklı biçimlerde görüntüleyin. "
 "Seçilen rengi değiştirin veya geçmiş listesinden önceden seçilmiş bir renge "
 "dönün. Seçtiği renkten farklı tonların listesini oluşturun."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
-msgid "Available Formats:"
-msgstr "Kullanılabilir Biçimler:"
+#: src/widgets/about_window.rs:82
+msgid "Features"
+msgstr "Özellikler"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:16
-msgid "Hex"
-msgstr "Onaltılık"
+#: src/widgets/about_window.rs:86
+msgid "Pick a Color"
+msgstr "Bir Renk Seç"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
-#: src/widgets/preferences.rs:311
-msgid "RGB"
-msgstr "RGB"
+#: src/widgets/about_window.rs:87
+msgid "Enter a color in Hex-Format"
+msgstr "Onaltılık Biçimde bir renk girin"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:18
-#: src/widgets/preferences.rs:319
-msgid "HSL"
-msgstr "HSL"
+#: src/widgets/about_window.rs:88
+msgid "Parse RGBA/ARGB Hex-Colors"
+msgstr "RGBA/ARGB Onaltılık Renkleri ayrıştır"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
-#: src/widgets/preferences.rs:328
-msgid "HSV"
-msgstr "HSV"
+#: src/widgets/about_window.rs:89
+msgid "View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format"
+msgstr ""
+"Renkleri Onaltılık, RGB, HSV, HSL, CMYK, XYZ ve CIE-Lab biçimlerinde "
+"görüntüle"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
-#: src/widgets/preferences.rs:337
-msgid "CMYK"
-msgstr "CMYK"
+#: src/widgets/about_window.rs:90
+msgid "Customize which formats appear as well as their order"
+msgstr "Hangi biçimlerin görüneceğini ve sıralarını özelleştir"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
-#: src/widgets/preferences.rs:346
-msgid "XYZ"
-msgstr "XYZ"
+#: src/widgets/about_window.rs:91
+msgid "Generate a palette of different shades"
+msgstr "Farklı tonlardan oluşan bir palet oluştur"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
-#: src/widgets/preferences.rs:355
-msgid "CIELAB"
-msgstr "CIELAB"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:28
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:27
 msgid "Main window dark"
 msgstr "Ana pencere koyu"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:32
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:31
 msgid "Main window light"
 msgstr "Ana pencere aydınlık"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:36
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:35
 msgid "Customized color formatting in dark mode"
 msgstr "Koyu kipte özelleştirilmiş renk biçimlendirme"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:40
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:39
 msgid "Customized color formatting"
 msgstr "Özelleştirilmiş renk biçimlendirme"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:86
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:43
+msgid "Generated color palettes"
+msgstr "Üretilen renk paletleri"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:95
 msgid "FineFindus"
 msgstr "FineFindus"
-
-#: data/resources/ui/color-model-entry.ui:22
-msgctxt "Tooltip of the copy button for format rows"
-msgid "Copy Format"
-msgstr "Biçimi Kopyala"
-
-#: data/resources/ui/hex-entry.ui:22
-msgctxt "Tooltip of the copy button for the hex format"
-msgid "Copy Format"
-msgstr "Biçimi Kopyala"
-
-#: data/resources/ui/preferences.ui:10
-msgid "General"
-msgstr "Genel"
-
-#: data/resources/ui/preferences.ui:13
-msgid "Formatting"
-msgstr "Biçimlendirme"
-
-#: data/resources/ui/preferences.ui:16
-msgid "Alpha-Value-Position"
-msgstr "Alfa-Değer-Konum"
-
-#: data/resources/ui/preferences.ui:17
-msgid "Where the Alphavalue is positioned in the Hexstring"
-msgstr "Alfa değerinin onaltılık dizgede konumlandırılacağı yer"
-
-#: data/resources/ui/preferences.ui:21
-msgid "None"
-msgstr "Hiçbiri"
-
-#: data/resources/ui/preferences.ui:22
-msgid "End"
-msgstr "Son"
-
-#: data/resources/ui/preferences.ui:23
-msgid "Start"
-msgstr "Başlangıç"
-
-#: data/resources/ui/preferences.ui:33
-msgid "Color Formats"
-msgstr "Renk Biçimleri"
-
-#: data/resources/ui/preferences.ui:34
-msgid "Customize the visible formats and in which order they are displayed."
-msgstr ""
-"Görünür biçimleri ve bunların hangi sırada görüntüleneceğini özelleştir."
-
-#: data/resources/ui/preferences.ui:38
-msgctxt "Tooltip of the button to reset the format order"
-msgid "Reset Order"
-msgstr "Düzeni Sıfırla"
 
 #: data/resources/ui/shortcuts.ui:11
 msgctxt "shortcut window"
@@ -218,28 +168,414 @@ msgctxt "Tooltip of the colorpicker button"
 msgid "Pick a Color"
 msgstr "Renk Seç"
 
+#: data/resources/ui/hex-entry.ui:22
+msgctxt "Tooltip of the copy button for the hex format"
+msgid "Copy Format"
+msgstr "Biçimi Kopyala"
+
+#: data/resources/ui/preferences.ui:10
+msgid "General"
+msgstr "Genel"
+
+#: data/resources/ui/preferences.ui:13
+msgid "Formatting"
+msgstr "Biçimlendirme"
+
+#: data/resources/ui/preferences.ui:16
+msgid "Alpha-Value-Position"
+msgstr "Alfa-Değer-Konum"
+
+#: data/resources/ui/preferences.ui:17
+msgid "Where the Alphavalue is positioned in the Hexstring"
+msgstr "Alfa değerinin onaltılık dizgede konumlandırılacağı yer"
+
+#: data/resources/ui/preferences.ui:21
+msgctxt "Alpha is not shown"
+msgid "None"
+msgstr "Hiçbiri"
+
+#: data/resources/ui/preferences.ui:22
+msgctxt "Alpha is shown at the end of the string"
+msgid "End"
+msgstr "Son"
+
+#: data/resources/ui/preferences.ui:23
+msgctxt "Alpha is shown at the start of the string"
+msgid "Start"
+msgstr "Başlangıç"
+
+#: data/resources/ui/preferences.ui:31
+msgid "CIE standard observer"
+msgstr "CIE standart gözlemcisi"
+
+#: data/resources/ui/preferences.ui:32
+msgid "Field of view used by the CIE standard observer"
+msgstr "CIE standart gözlemcisi tarafından kullanılan görüş alanı"
+
+#: data/resources/ui/preferences.ui:36
+msgctxt "CIE 2° standard observer"
+msgid "2°"
+msgstr "2°"
+
+#: data/resources/ui/preferences.ui:37
+msgctxt "CIE 10° standard observer"
+msgid "10°"
+msgstr "10°"
+
+#: data/resources/ui/preferences.ui:45
+msgid "CIE illuminants"
+msgstr "CIE aydınlatıcılar"
+
+#: data/resources/ui/preferences.ui:46
+msgid "Under which conditions are the colors observed"
+msgstr "Renklerin hangi koşullar altında gözlendiği"
+
+#: data/resources/ui/preferences.ui:50
+msgctxt ""
+"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
+"Standard_illuminant"
+msgid "A (Incandescent/tungsten)"
+msgstr "A (Akkor/tungsten)"
+
+#: data/resources/ui/preferences.ui:51
+msgctxt ""
+"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
+"Standard_illuminant"
+msgid "B (Old direct sunlight at noon)"
+msgstr "B (Eski öğle saatlerinde doğrudan güneş ışığı)"
+
+#: data/resources/ui/preferences.ui:52
+msgctxt ""
+"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
+"Standard_illuminant"
+msgid "C (Old daylight)"
+msgstr "C (Eski gün ışığı)"
+
+#: data/resources/ui/preferences.ui:53
+msgctxt ""
+"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
+"Standard_illuminant"
+msgid "D50 (ICC profile PCS)"
+msgstr "D50 (ICC profil PCS)"
+
+#: data/resources/ui/preferences.ui:54
+msgctxt ""
+"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
+"Standard_illuminant"
+msgid "D55 (Mid-morning daylight)"
+msgstr "D55 (Sabah ortası gün ışığı)"
+
+#: data/resources/ui/preferences.ui:55
+msgctxt ""
+"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
+"Standard_illuminant"
+msgid "D65 (Daylight, sRGB, Adobe-RGB)"
+msgstr "D65 (Gün ışığı, sRGB, Adobe-RGB)"
+
+#: data/resources/ui/preferences.ui:56
+msgctxt ""
+"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
+"Standard_illuminant"
+msgid "D75 (North sky daylight)"
+msgstr "D75 (Kuzey gökyüzü gün ışığı)"
+
+#: data/resources/ui/preferences.ui:57
+msgctxt ""
+"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
+"Standard_illuminant"
+msgid "E (Equal energy)"
+msgstr "E (Eşit enerji)"
+
+#: data/resources/ui/preferences.ui:58
+msgctxt ""
+"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
+"Standard_illuminant"
+msgid "F1 (Daylight Fluorescent)"
+msgstr "F1 (Gün Işığı Floresan)"
+
+#: data/resources/ui/preferences.ui:59
+msgctxt ""
+"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
+"Standard_illuminant"
+msgid "F2 (Cool fluorescent)"
+msgstr "F2 (Soğuk floresan)"
+
+#: data/resources/ui/preferences.ui:60
+msgctxt ""
+"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
+"Standard_illuminant"
+msgid "F3 (White Fluorescent)"
+msgstr "F3 (Beyaz Floresan)"
+
+#: data/resources/ui/preferences.ui:61
+msgctxt ""
+"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
+"Standard_illuminant"
+msgid "F4 (Warm White Fluorescent)"
+msgstr "F4 (Sıcak Beyaz Floresan)"
+
+#: data/resources/ui/preferences.ui:62
+msgctxt ""
+"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
+"Standard_illuminant"
+msgid "F5 (Daylight Fluorescent)"
+msgstr "F5 (Gün Işığı Floresan)"
+
+# Lite kelimesi typo gibi duruyor. Light kabul edildi.
+#: data/resources/ui/preferences.ui:63
+msgctxt ""
+"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
+"Standard_illuminant"
+msgid "F6 (Lite White Fluorescent)"
+msgstr "F6 (Hafif Beyaz Floresan)"
+
+#: data/resources/ui/preferences.ui:64
+msgctxt ""
+"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
+"Standard_illuminant"
+msgid "F7 (Daylight fluorescent, D65 simulator)"
+msgstr "F7 (Gün ışığı floresan, D65 simülatörü)"
+
+#: data/resources/ui/preferences.ui:65
+msgctxt ""
+"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
+"Standard_illuminant"
+msgid "F8 (Sylvania F40, D50 simulator)"
+msgstr "F8 (Sylvania F40, D50 simülatörü)"
+
+#: data/resources/ui/preferences.ui:66
+msgctxt ""
+"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
+"Standard_illuminant"
+msgid "F9 (Cool White Fluorescent)"
+msgstr "F9 (Soğuk Beyaz Floresan)"
+
+#: data/resources/ui/preferences.ui:67
+msgctxt ""
+"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
+"Standard_illuminant"
+msgid "F10 (Ultralume 50, Philips TL85)"
+msgstr "F10 (Ultralume 50, Philips TL85)"
+
+#: data/resources/ui/preferences.ui:68
+msgctxt ""
+"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
+"Standard_illuminant"
+msgid "F11 (Ultralume 40, Philips TL84)"
+msgstr "F11 (Ultralume 40, Philips TL84)"
+
+#: data/resources/ui/preferences.ui:69
+msgctxt ""
+"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
+"Standard_illuminant"
+msgid "F12 (Ultralume 30, Philips TL83)"
+msgstr "F12 (Ultralume 30, Philips TL83)"
+
+#: data/resources/ui/preferences.ui:77
+msgid "Name Sets"
+msgstr "Ad Kümeleri"
+
+#: data/resources/ui/preferences.ui:78
+msgid "Which color name sets should be used for the names"
+msgstr "Adlar için hangi renk ad kümeleri kullanılmalıdır"
+
+#: data/resources/ui/preferences.ui:92
+msgid "Color Formats"
+msgstr "Renk Biçimleri"
+
+#: data/resources/ui/preferences.ui:93
+msgid "Customize the visible formats and in which order they are displayed."
+msgstr ""
+"Görünür biçimleri ve bunların hangi sırada görüntüleneceğini özelleştir."
+
+#: data/resources/ui/preferences.ui:97
+msgctxt "Tooltip of the button to reset the format order"
+msgid "Reset Order"
+msgstr "Düzeni Sıfırla"
+
+#: data/resources/ui/color-format-row.ui:22
+msgctxt "Tooltip of the copy button for format rows"
+msgid "Copy Format"
+msgstr "Biçimi Kopyala"
+
+#: data/resources/ui/palette-window.ui:5
+msgid "Palettes"
+msgstr "Paletler"
+
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
-#: src/application.rs:167
+#: src/widgets/about_window.rs:50
 msgid "translator-credits"
 msgstr "Sabri Ünal <libreajans@gmail.com>"
 
-#: src/widgets/preferences.rs:214
+#: src/widgets/about_window.rs:110
+msgctxt ""
+"The changelog of the current version. Should be similar to the CHANGELOG.md "
+"file at the project root. Please ensure that the tags have a matching "
+"closing tag. Since xgettext does not recognize rust multiline strings, this "
+"should be on a single line using line breaks (\\n) for new lines."
+msgid ""
+"<p>This release extends the current available features.</p><p> Features:</"
+"p>\n"
+"<ul><li> The name of the color, specified by w3c color keywords and the xkcd "
+"color survey, can now be shown</li><li>Switch the color by entering a color "
+"keyword</li><li> A new Palette dialog showing different color palettes</"
+"li><li>Choose which CIE standard observer is used, as well as it's "
+"illuminant</li><li> Show the CIELCh color format</li><li> Using the new "
+"AdwAboutWindow</li><li> Added new translations</li><li>Fixed minor issues</"
+"li></ul>"
+msgstr ""
+"<p>Bu sürüm, mevcut mevcut özellikleri genişletiyor.</p><p> Özellikler:</p>\n"
+"<ul><li>W3C renk sözcükleri ve xkcd renk anketi tarafından belirtilen rengin "
+"adı artık gösterilebilir</li><li>Bir renk sözcüğü girerek rengi "
+"değiştirebilirsiniz</li><li>Farklı renk paletlerini gösteren yeni Palet "
+"iletişim kutusu</li><li>Aydınlatıcının yanı sıra hangi CIE standart "
+"gözlemcisinin kullanılacağını seçin</li><li> CIELCH renk biçimini göster</"
+"li><li> Yeni AdwAboutWindow'u kullan </li><li> Yeni çeviriler eklendi</"
+"li><li>Küçük sorunlar düzeltildi</li></ul>"
+
+#: src/widgets/palette_dialog.rs:130
+msgctxt "Name for tints (lighter variants) of the color"
+msgid "Tints"
+msgstr "Açık renk tonları"
+
+# Shade gölge demek fakat ana rengin alt tonları için de kullanılıyor.
+#: src/widgets/palette_dialog.rs:134
+msgctxt "Name for shades (darker variants) of the color"
+msgid "Shades"
+msgstr "Renk tonları"
+
+#: src/widgets/palette_dialog.rs:140
+msgctxt "Name for the opposite/complementary color (e.g. blue ⇔ yellow)"
+msgid "Complementary"
+msgstr "Tamamlayıcı"
+
+#: src/widgets/palette_dialog.rs:147
+msgctxt ""
+"The name of the color palette. Consist of the two opposite colors (e.g. blue "
+"⇔ orange / green)"
+msgid "Split-Complementary"
+msgstr "Bölünmüş-Tamamlayıcı"
+
+#: src/widgets/palette_dialog.rs:154
+msgctxt ""
+"Name of the color palette, which would form a triangle above the color wheel"
+msgid "Triadic"
+msgstr "Üçlü"
+
+# Duruma göre çeviride karar kılınacak.
+#: src/widgets/palette_dialog.rs:159
+msgctxt "The name of the color palette."
+msgid "Tetradic"
+msgstr "Dörtlü/Tetradik"
+
+#: src/widgets/palette_dialog.rs:165
+msgctxt "Color palette consisting of six slight shifted colors"
+msgid "Analogous"
+msgstr "Benzer"
+
+#: src/widgets/preferences.rs:147
+msgctxt ""
+"Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
+"#html4"
+msgid "Basic"
+msgstr "Temel"
+
+#: src/widgets/preferences.rs:149
+msgid "Show color names from the w3c basic color keyword set"
+msgstr "W3C temel renk sözcük kümesinden renk adlarını göster"
+
+#: src/widgets/preferences.rs:155
+msgctxt ""
+"Name of the extended color keyword set from https://www.w3.org/TR/css-"
+"color-3/#svg-color"
+msgid "Extended"
+msgstr "Genişletilmiş"
+
+#: src/widgets/preferences.rs:157
+msgid "Show color names from the w3c extended color keyword  set"
+msgstr "W3C genişletilmiş renk sözcük kümesinden renk adlarını göster"
+
+#: src/widgets/preferences.rs:161
+msgctxt "Name of the color set from the xkcd color survey"
+msgid "xkcd"
+msgstr "xkcd"
+
+#: src/widgets/preferences.rs:162
+msgid "Show color names from the xkcd color survey"
+msgstr "xkcd renk anketinden renk adlarını göster"
+
+#: src/widgets/preferences.rs:301
 msgid "Move Up"
 msgstr "Yukarı Taşı"
 
-#: src/widgets/preferences.rs:216
+#: src/widgets/preferences.rs:303
 msgid "Move Down"
 msgstr "Aşağı Taşı"
 
-#: src/widgets/preferences.rs:305
+#: src/widgets/preferences.rs:423
 msgid "Hex-Code"
 msgstr "Onaltılık Kod"
 
-#: src/window.rs:460
+#: src/widgets/preferences.rs:429
+msgid "RGB"
+msgstr "RGB"
+
+#: src/widgets/preferences.rs:435
+msgid "HSL"
+msgstr "HSL"
+
+#: src/widgets/preferences.rs:443
+msgid "HSV"
+msgstr "HSV"
+
+#: src/widgets/preferences.rs:452
+msgid "CMYK"
+msgstr "CMYK"
+
+#: src/widgets/preferences.rs:461
+msgid "XYZ"
+msgstr "XYZ"
+
+#: src/widgets/preferences.rs:470
+msgid "CIELAB"
+msgstr "CIELAB"
+
+#: src/widgets/preferences.rs:482
+msgid "HWB"
+msgstr "HWB"
+
+#: src/widgets/preferences.rs:496
+msgid "CIELCh / HCL"
+msgstr "CIELCh / HCL"
+
+#: src/widgets/preferences.rs:503
+msgid "Name"
+msgstr "Ad"
+
+#: src/window.rs:348 src/window.rs:478 src/window.rs:498 src/window.rs:663
+#: src/window.rs:729
+msgctxt "Information that no name for the color could be found"
+msgid "Not named"
+msgstr "Adlandırılmamış"
+
+#: src/window.rs:563
+msgid "Failed to get palette color"
+msgstr "Palet rengi alınamadı"
+
+#: src/window.rs:583
 msgid "Failed to pick a color"
 msgstr "Renk alınamadı"
 
 #. Translators: Do not replace the {}. These are used as placeholders for the copied values
-#: src/window.rs:567 src/window.rs:574
+#: src/window.rs:684
 msgid "Copied: “{}”"
 msgstr "Kopyalandı: “{}”"
+
+#~ msgid "An easy-to-use color picker"
+#~ msgstr "Kullanımı kolay renk seçici"
+
+#~ msgid "Available Formats:"
+#~ msgstr "Kullanılabilir Biçimler:"
+
+#~ msgid "Hex"
+#~ msgstr "Onaltılık"

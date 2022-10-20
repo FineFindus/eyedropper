@@ -1,7 +1,5 @@
 use std::num::ParseIntError;
 
-use gtk::ColorChooser;
-
 /// Convert the first two chars of a string into a hex values.
 ///
 /// The convert chars will be removed after the conversion, modifying the original string.
@@ -21,33 +19,33 @@ pub fn hex_value(hex_string: &mut String) -> Result<u8, ParseIntError> {
 /// # Example
 /// ```
 /// let value = 0.345f32;
-/// assert_eq!(35, round_tenth(value));
+/// assert_eq!(35, round_percent(value));
 /// ```
 pub fn round_percent(v: f32) -> u8 {
     (v * 100f32).round() as u8
 }
 
-/// Adds the given palette to the ColorChooser.
+/// Returns a prettified string of the given value in range [0; 1].
 ///
-/// If the colors are None, the previous palettes will be cleared.
+/// This function exists to remove trailing zeros from percentages, for example
+/// 0% will be returned as `0` instead of `0.00`
 ///
-/// Temporarily added to fix <https://github.com/gtk-rs/gtk4-rs/issues/1114>
-pub fn add_palette(
-    widget: &impl glib::IsA<ColorChooser>,
-    orientation: gtk::Orientation,
-    colors_per_line: i32,
-    colors: Option<&[gtk::gdk::RGBA]>,
-) {
-    unsafe {
-        gtk::ffi::gtk_color_chooser_add_palette(
-            glib::translate::ToGlibPtr::to_glib_none(&widget.as_ref()).0,
-            glib::translate::IntoGlib::into_glib(orientation),
-            colors_per_line,
-            colors.unwrap_or_default().len() as libc::c_int,
-            match colors {
-                Some(val) => val.as_ptr() as *mut gtk::gdk::ffi::GdkRGBA,
-                None => std::ptr::null_mut(),
-            },
-        )
+///
+/// If the value is 1, it will be returned as a "1" string.
+/// If it is 0, it will be returned as 0, otherwise it will be returned
+/// as the value with two digits after the comma.
+///
+/// # Examples
+///  ```
+/// let value = 0f32;
+/// assert_eq!("0", &pretty_print_percent(value));
+/// ```
+pub fn pretty_print_percent(value: f32) -> String {
+    if value >= 1f32 {
+        String::from("1")
+    } else if value == 0f32 {
+        String::from("0")
+    } else {
+        format!("{:.2}", value)
     }
 }

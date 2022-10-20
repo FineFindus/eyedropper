@@ -595,5 +595,3 @@ msgstr "«{}» copiado."
 
 #~ msgid "Choose which formats will be visible"
 #~ msgstr "Elige qué formatos serán visibles"
-
-

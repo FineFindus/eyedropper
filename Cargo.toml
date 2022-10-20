@@ -1,16 +1,16 @@
 [package]
 name = "eyedropper"
-version = "0.3.1"
+version = "0.4.0"
 authors = ["FineFindus <finefindusgh@gmail.com>"]
 edition = "2021"
-description = "A simple to use color picker and editor."
+description = "A powerful color picker and formatter"
 readme = "README.md"
 license-file = "LICENSE"
 homepage = "https://github.com/finefindus/eyedropper"
 repository = "https://github.com/finefindus/eyedropper"
 
 
-#override package level optimazation, to always be maximum
+#override package level optimization, to always be maximum
 [profile.release.package."*"] 
 opt-level = 3
 
@@ -22,10 +22,7 @@ gettext-rs = { version = "0.7", features = ["gettext-system"] }
 once_cell = "1.13.1"
 gtk = {version = "0.4", package = "gtk4"}
 glib = "0.15.12"
-adw = {package = "libadwaita", version = "0.1.1"}
+adw = {package = "libadwaita", version = "0.2.0-alpha.3", features = ["v1_2"]}
 gtk-macros = "0.3"
 ashpd = "0.3.2"
 rand = "0.8.5"
-
-#used until https://github.com/gtk-rs/gtk4-rs/issues/1114 is fixed
-libc = "0.2.132"

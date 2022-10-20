@@ -1,4 +1,3 @@
-use gettextrs::gettext;
 use log::{debug, info};
 
 use glib::clone;
@@ -6,14 +5,15 @@ use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gdk, gio, glib};
 
+use crate::color::color::Color;
 use crate::config::{APP_ID, PKGDATADIR, PROFILE, VERSION};
-use crate::model::color::Color;
+use crate::widgets::about_window::EyedropperAbout;
 use crate::widgets::preferences::PreferencesWindow;
 use crate::window::AppWindow;
 
 mod imp {
 
-    use crate::model::color::Color;
+    use crate::color::color::Color;
 
     use super::*;
     use adw::subclass::prelude::AdwApplicationImpl;
@@ -73,7 +73,7 @@ mod imp {
 
 glib::wrapper! {
     pub struct App(ObjectSubclass<imp::App>)
-        @extends gio::Application, gtk::Application,
+        @extends gio::Application, gtk::Application, adw::Application,
         @implements gio::ActionMap, gio::ActionGroup;
 }
 
@@ -157,21 +157,7 @@ impl App {
     }
 
     fn show_about_dialog(&self) {
-        let dialog = gtk::AboutDialog::builder()
-            .logo_icon_name(APP_ID)
-            .license_type(gtk::License::Gpl30)
-            .website("https://github.com/finefindus/eyedropper/")
-            .version(VERSION)
-            .transient_for(&self.main_window())
-            // Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
-            .translator_credits(&gettext("translator-credits"))
-            .modal(true)
-            .copyright("© 2022 FineFindus")
-            .authors(vec!["FineFindus".into()])
-            .artists(vec!["FineFindus".into()])
-            .build();
-
-        dialog.present();
+        EyedropperAbout::show(self, &self.main_window());
     }
 
     fn show_preferences_dialog(&self) {

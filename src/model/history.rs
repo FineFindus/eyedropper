@@ -1,6 +1,6 @@
 use glib::{subclass::types::ObjectSubclassIsExt, Object};
 
-use super::color::Color;
+use crate::color::color::Color;
 
 mod imp {
     use std::cell::RefCell;

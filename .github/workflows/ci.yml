@@ -36,3 +36,53 @@ jobs:
           manifest-path: build-aux/com.github.finefindus.eyedropper.Devel.json
           run-tests: true
           cache-key: flatpak-builder-${{ github.sha }}
+
+  spell_check:
+    name: Spell Checker
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install Python Dependencies
+        run: pip install codespell
+      - name: Run spellchecker
+        run: codespell  -S po,_build,.git,.flatpak,_builddir,build,target -L crate,rouge,vermillion
+
+  # notify_translators:
+  #   name: Notify Translators
+  #   runs-on: ubuntu-latest
+  #   if: ${{ false }}  # disable for now
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Get changed files in the docs folder
+  #       id: changed-files-specific
+  #       uses: tj-actions/changed-files@v32
+  #       with:
+  #         files: |
+  #           po/Eyedropper.pot
+
+  #     - name: Extract email addresses
+  #       shell: bash
+  #       # extract translator email addresses
+  #       run: echo "EMAILS=$(head -n 12 po/*.po | grep -i -o '[A-Z0-9._%+-]\+@[A-Z0-9.-]\+\.[A-Z]\{2,4\}' | sort | uniq | tr "\n" ",")" >> $GITHUB_ENV
+
+  #     - name: Run step if any file(s) in the docs folder change
+  #       if: steps.changed-files-specific.outputs.any_changed == 'true'
+  #       uses: dawidd6/action-send-mail@v2
+  #       with:
+  #         server_address: smtp.gmail.com
+  #         server_port: 465
+  #         # user credentials
+  #         username: ${{ secrets.EMAIL_USERNAME }}
+  #         password: ${{ secrets.EMAIL_PASSWORD }}
+  #         # email subject
+  #         subject: Eyedropper has new translations available
+  #         # email body as text
+  #         body: Hi,\n the translation of Eyedropper have been updated. This is an automated email, send whenever the template file changes. If you do not wish to receive this email, please open an issue on the project github page.   
+  #         # comma-separated string, send email to
+  #         to: $ {{ env.EMAILS }}
+  #         # from email name
+  #         from: FineFindus
