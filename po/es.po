@@ -426,10 +426,10 @@ msgstr ""
 "<p>Esta versión amplía las funciones disponibles actualmente.</p><p> Características:"
 "</p>\n"
 "<ul><li> El nombre del color, especificado por las palabras clave de color w3c y la encuesta de color xkcd"
-",puede mostrarse ahora</li><li>Cambie el color introduciendo un color, palabra clave</li><li>Un nuevo cuadro de diálogo de la paleta que muestra diferentes paletas de colores</"
-"li><li>Elija qué observador estándar CIE se utiliza, así como su "
+", puede mostrarse ahora</li><li>Cambie el color introduciendo un color, palabra clave</li><li>Un nuevo cuadro de diálogo de la paleta que muestra diferentes paletas de colores</"
+"li><li>Elija qué observador estándar CIE se utiliza, así como su"
 " iluminador</li><li> Mostrar el formato de color CIELCh</li><li>Utilizando la nueva "
-" AdwAboutWindow</li><li> Nuevas traducciones añadidas</li><li>Se han solucionado problemas menores</li></ul>"
+"AdwAboutWindow</li><li> Nuevas traducciones añadidas</li><li>Se han solucionado problemas menores</li></ul>"
 
 #: src/widgets/palette_dialog.rs:130
 msgctxt "Name for tints (lighter variants) of the color"
