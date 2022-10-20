@@ -32,7 +32,7 @@ msgstr "Kolore-hautagailua"
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
 #: src/widgets/about_window.rs:74
-msgid "An easy-to-use color picker"
+msgid "A powerful color picker and formatter"
 msgstr "Koloreen hautatzaile eta formateatzaile indartsua"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
@@ -49,9 +49,8 @@ msgstr "Koloretako hautatzaile eta editore erabilerraza"
 msgid ""
 "Pick any color from your screen and view it in different formats. Change the "
 "picked color or go back to a previously picked color from the history list. "
-"Generate a list of different shades fromt he picked color."
-msgstr ""
-"Aukeratu zure pantailako edozein kolore eta bistaratu hainbat formatutan. "
+"Generate a list of different shades from the picked color."
+msgstr "Aukeratu zure pantailako edozein kolore eta bistaratu hainbat formatutan. "
 "Aukeratutako kolorea aldatzen da edo aurretik aukeratutako kolore batera "
 "itzultzen da historialaren zerrendatik. Hainbat tonuren zerrenda sortzen du, "
 "aukeratutako koloretik abiatuta."
@@ -88,8 +87,7 @@ msgstr "Formatu erabilgarriak:"
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
 #: src/widgets/about_window.rs:90
 msgid "Customize which formats appear as well as their order"
-msgstr ""
-"Pertsonalizatu zer formatu agertzen diren, bai eta haien ordena ere"
+msgstr "Pertsonalizatu zer formatu agertzen diren, bai eta haien ordena ere"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
 #: src/widgets/about_window.rs:91
@@ -239,7 +237,8 @@ msgid "Under which conditions are the colors observed"
 msgstr "Zein baldintzatan ikusten diren koloreak"
 
 #: data/resources/ui/preferences.ui:50
-msgctxt "CIE illuminant, more info at https://en.wikipedia.org/wiki/
+msgctxt ""
+"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
 "Standard_illuminant"
 msgid "A (Incandescent/tungsten)"
 msgstr "A (Goritasuna/tungstenoa)"
@@ -428,13 +427,12 @@ msgid ""
 "illuminant</li><li> Show the CIELCh color format</li><li> Using the new "
 "AdwAboutWindow</li><li> Added new translations</li><li>Fixed minor issues</"
 "li></ul>"
-msgstr ""
-"<p>Bertsio honek gaur egun erabilgarri dauden funtzioak zabaltzen ditu.</p><p> Ezaugarriak:"
+msgstr "<p>Bertsio honek gaur egun erabilgarri dauden funtzioak zabaltzen ditu.</p><p> Ezaugarriak:"
 "</p>\n"
 "<ul><li>Aldatu kolorea gako-hitzaren kolorea sartuz"
 ", erakutsi ahal dira orain</li><li>Aldatu kolorea gako-hitzaren kolorea sartuz</li><li>Paletaren elkarrizketa-koadro berri bat, kolore-paleta desberdinak erakusten dituena</"
-"li><li>Aukeratu zein CIE behatzaile estandar erabiltzen den, eta
-argiztatzailea</li><li>CIELCh kolore formatua erakusten du orain</li><li>AdwAboutWindow propietate berria erabiltzen da orain</li><li>Itzulpen erantsi berriak</li><li>Arazo txikiak konpondu dira</li></ul>"
+"li><li>Aukeratu zein CIE behatzaile estandar erabiltzen den, eta "
+"argiztatzailea</li><li>CIELCh kolore formatua erakusten du orain</li><li>AdwAboutWindow propietate berria erabiltzen da orain</li><li>Itzulpen erantsi berriak</li><li>Arazo txikiak konpondu dira</li></ul>"
 
 #: src/widgets/palette_dialog.rs:130
 msgctxt "Name for tints (lighter variants) of the color"
@@ -587,15 +585,10 @@ msgstr "“{}” kopiatuta."
 #~ "<ul><li> Added new translations</li><li>Fixed minor issues</li></ul>"
 #~ msgstr ""
 #~ "<p>Bertsio hau txikiagoa da, eta gaur egun dauden funtzioak hobetzen ditu."
-#~ </p>\n"
+#~ "</p>\n"
 #~ "<p> Ezaugarriak:</p>\n"
 #~ "<ul><li> Itzulpen berriak gehitu dira</li><li>Akats txikiak zuzendu dira</li></ul>"
 
-#~ msgid "Available Formats:"
-#~ msgstr "Formatu erabilgarriak:"
-
-#~ msgid "Hex"
-#~ msgstr "Hex"
 
 #~ msgid "Choose which formats will be visible"
 #~ msgstr "Aukeratu zein formatu izango diren ikusgai"

@@ -32,7 +32,7 @@ msgstr "Selector de color"
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
 #: src/widgets/about_window.rs:74
-msgid "An easy-to-use color picker"
+msgid "A powerful color picker and formatter"
 msgstr "Un potente selector y formateador de colores"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
@@ -45,7 +45,7 @@ msgstr "Gnome;GTK;Color;Selector de color;Selector;Paleta;"
 msgid ""
 "Pick any color from your screen and view it in different formats. Change the "
 "picked color or go back to a previously picked color from the history list. "
-"Generate a list of different shades fromt he picked color."
+"Generate a list of different shades from the picked color."
 msgstr ""
 "Elige cualquier color de tu pantalla y visualízalo en diferentes formatos. "
 "Cambia el color elegido o vuelve a un color previamente elegido de la lista "
@@ -500,7 +500,6 @@ msgstr "xkcd"
 msgid "Show color names from the xkcd color survey"
 msgstr "Mostrar nombres de colores de la encuesta de colores de xkcd"
 
-
 #: src/widgets/preferences.rs:301
 msgid "Move Up"
 msgstr "Subir de categoría"
@@ -583,7 +582,7 @@ msgstr "«{}» copiado."
 #~ "<ul><li> Added new translations</li><li>Fixed minor issues</li></ul>"
 #~ msgstr ""
 #~ "<p>Esta es una versión menor, que mejora las funciones disponibles actualmente."
-#~ </p>\n"
+#~ "</p>\n"
 #~ "<p> Características:</p>\n"
 #~ "<ul><li> Añadidas nuevas traducciones</li><li>Se han corregido errores menores</li></ul>"
 
