@@ -89,7 +89,7 @@ msgstr "Formatu erabilgarriak:"
 #: src/widgets/about_window.rs:90
 msgid "Customize which formats appear as well as their order"
 msgstr ""
-"Pertsonalizatu zer formatu agertzen diren, bai eta haien ordena ere."
+"Pertsonalizatu zer formatu agertzen diren, bai eta haien ordena ere"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
 #: src/widgets/about_window.rs:91
@@ -239,8 +239,7 @@ msgid "Under which conditions are the colors observed"
 msgstr "Zein baldintzatan ikusten diren koloreak"
 
 #: data/resources/ui/preferences.ui:50
-msgctxt ""
-"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
+msgctxt "CIE illuminant, more info at https://en.wikipedia.org/wiki/
 "Standard_illuminant"
 msgid "A (Incandescent/tungsten)"
 msgstr "A (Goritasuna/tungstenoa)"
