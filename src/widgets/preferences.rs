@@ -38,7 +38,7 @@ mod imp {
         #[template_child()]
         pub standard_observer_box: TemplateChild<adw::ComboRow>,
         #[template_child()]
-        pub cie_illuminants_box: TemplateChild<adw::ComboRow>,
+        pub cie_illuminants_box: TemplateChild<gtk::DropDown>,
         #[template_child()]
         pub format_list: TemplateChild<gtk::ListBox>,
         pub formats: RefCell<Option<gio::ListStore>>,

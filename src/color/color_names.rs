@@ -60,7 +60,7 @@ pub fn color(name: &str, basic: bool, extended: bool, xkcd: bool) -> Option<Colo
         xkcd_names()
             .iter()
             .find_map(|(key, &val)| if val == name { Some(key) } else { None })
-            .map(|color| *color)
+            .copied()
     } else {
         None
     }

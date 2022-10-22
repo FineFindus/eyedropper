@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+### Changed
+- Fixed a bug where the illuminants where not fully shown
+
 ## [0.4.0] - 2022-10-20
 
 ### Added
@@ -15,7 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - HSL does now support alpha values
 - HWB and CIELCh are now supported
 - CIE standard observer for CIELab and CIELCh
--  Change CIE illuminants
+- Change CIE illuminants
 - The following translations have been added
     - Spanish by [IngrownMink4](https://github.com/IngrownMink4)  
     - Basque by [IngrownMink4](https://github.com/IngrownMink4)  
