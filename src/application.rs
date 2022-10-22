@@ -103,6 +103,13 @@ impl App {
         }));
         self.add_action(&action_pick_color);
 
+        // Clear the history
+        let action_random_color = gio::SimpleAction::new("clear_history", None);
+        action_random_color.connect_activate(clone!(@weak self as app => move |_, _| {
+            app.main_window().clear_history();
+        }));
+        self.add_action(&action_random_color);
+
         // Randomize the current color
         let action_random_color = gio::SimpleAction::new("random_color", None);
         action_random_color.connect_activate(clone!(@weak self as app => move |_, _| {

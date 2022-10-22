@@ -3,6 +3,10 @@
   <menu id="primary_menu">
     <section>
       <item>
+        <attribute name="label" translatable="yes">_Clear History</attribute>
+        <attribute name="action">app.clear_history</attribute>
+      </item>
+      <item>
         <attribute name="label" translatable="yes">_Random Color</attribute>
         <attribute name="action">app.random_color</attribute>
       </item>

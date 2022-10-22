@@ -183,7 +183,7 @@ impl AppWindow {
     }
 
     /// Clear the history by removing all items from the list.
-    fn clear_history(&self) {
+    pub fn clear_history(&self) {
         //clear history
         let history = self.history();
         history.remove_all();
