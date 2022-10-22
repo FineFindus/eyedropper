@@ -83,7 +83,11 @@
       <summary>Show extended color names</summary>
       <description>Shows names from the w3c extended keyword set.</description>
     </key>
-
+    <key name="name-source-gnome-palette" type="b">
+      <default>true</default>
+      <summary>Show GNOME color palette names</summary>
+      <description>Shows names from the GNOME color palette.</description>
+    </key>
     <key name="name-source-xkcd" type="b">
       <default>false</default>
       <summary>Show xkcd color names</summary>

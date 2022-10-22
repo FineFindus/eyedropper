@@ -340,6 +340,7 @@ impl AppWindow {
             let name = color_names::name(color,
                 settings.boolean("name-source-basic"),
                 settings.boolean("name-source-extended"),
+                settings.boolean("name-source-gnome-palette"),
                 settings.boolean("name-source-xkcd"),
             );
             window.
@@ -470,6 +471,7 @@ impl AppWindow {
                 *imp.color.borrow(),
                 settings.boolean("name-source-basic"),
                 settings.boolean("name-source-extended"),
+                settings.boolean("name-source-gnome-palette"),
                 settings.boolean("name-source-xkcd"),
             );
             imp.name_row.set_text(name.unwrap_or_else(|| {
@@ -490,6 +492,7 @@ impl AppWindow {
             let name = color_names::name(color,
                 settings.boolean("name-source-basic"),
                 settings.boolean("name-source-extended"),
+                settings.boolean("name-source-gnome-palette"),
                 settings.boolean("name-source-xkcd"),
             );
             window.
@@ -655,6 +658,7 @@ impl AppWindow {
                     color,
                     settings.boolean("name-source-basic"),
                     settings.boolean("name-source-extended"),
+                    settings.boolean("name-source-gnome-palette"),
                     settings.boolean("name-source-xkcd"),
                 );
                 imp.name_row.set_text(name.unwrap_or_else(|| {
@@ -731,6 +735,7 @@ impl AppWindow {
                 match color_names::color(&name.trim().to_lowercase(),
                         window.imp().settings.boolean("name-source-basic"),
                         window.imp().settings.boolean("name-source-extended"),
+                        window.imp().settings.boolean("name-source-gnome-palette"),
                         window.imp().settings.boolean("name-source-xkcd")) {
                     Some(color) => window.set_color(color),
                     None => log::debug!("Failed to find color for name: {name}"),

@@ -158,6 +158,11 @@ impl PreferencesWindow {
             "name-source-extended",
         ));
         list.append(&self.name_set_row(
+            &pgettext("Name of the color set from the GNOME color palette (https://developer.gnome.org/hig/reference/palette.html)", "GNOME color palette"),
+            &gettext("Show color names from the GNOME color palette"),
+            "name-source-gnome-palette",
+        ));
+        list.append(&self.name_set_row(
             &pgettext("Name of the color set from the xkcd color survey", "xkcd"),
             &gettext("Show color names from the xkcd color survey"),
             "name-source-xkcd",

@@ -7,9 +7,15 @@ use super::color::AlphaPosition;
 /// Get the name of the color.
 ///
 /// The name will be name, if none of the datasets contain it.
-/// It will return the first found name, searching the w3c basic set, then the w3c extend set
+/// It will return the first found name, searching the w3c basic set, then the w3c extend set, the GNOME color palette,
 /// and lastly the xkcd set.
-pub fn name(color: Color, basic: bool, extended: bool, xkcd: bool) -> Option<String> {
+pub fn name(
+    color: Color,
+    basic: bool,
+    extended: bool,
+    gnome_palette: bool,
+    xkcd: bool,
+) -> Option<String> {
     //this is horrible syntax
     //it would be easier to do if basic && elt Some...,
     //but that's not implemented yet
@@ -17,13 +23,19 @@ pub fn name(color: Color, basic: bool, extended: bool, xkcd: bool) -> Option<Str
         if let Some(name) = w3c_basic_names().get(&color) {
             Some(name.to_string())
         } else {
-            name(color, false, extended, xkcd)
+            name(color, false, extended, gnome_palette, xkcd)
         }
     } else if extended {
         if let Some(name) = w3c_extended_names().get(&color) {
             Some(name.to_string())
         } else {
-            name(color, basic, false, xkcd)
+            name(color, basic, false, gnome_palette, xkcd)
+        }
+    } else if gnome_palette {
+        if let Some(name) = gnome_color_palette().get(&color) {
+            Some(name.to_string())
+        } else {
+            name(color, basic, extended, false, xkcd)
         }
     } else if xkcd {
         xkcd_names().get(&color).map(|name| name.to_string())
@@ -35,7 +47,13 @@ pub fn name(color: Color, basic: bool, extended: bool, xkcd: bool) -> Option<Str
 /// Returns the color to the corresponding name.
 /// It iteratively searches through the different sets, until it finds a color for the name.
 /// If no color is found, None is returned.
-pub fn color(name: &str, basic: bool, extended: bool, xkcd: bool) -> Option<Color> {
+pub fn color(
+    name: &str,
+    basic: bool,
+    extended: bool,
+    gnome_palette: bool,
+    xkcd: bool,
+) -> Option<Color> {
     if basic {
         if let Some(color) =
             w3c_basic_names()
@@ -44,7 +62,7 @@ pub fn color(name: &str, basic: bool, extended: bool, xkcd: bool) -> Option<Colo
         {
             Some(*color)
         } else {
-            color(name, false, extended, xkcd)
+            color(name, false, extended, gnome_palette, xkcd)
         }
     } else if extended {
         if let Some(color) =
@@ -54,7 +72,19 @@ pub fn color(name: &str, basic: bool, extended: bool, xkcd: bool) -> Option<Colo
         {
             Some(*color)
         } else {
-            color(name, basic, false, xkcd)
+            color(name, basic, false, gnome_palette, xkcd)
+        }
+    } else if gnome_palette {
+        if let Some(color) = gnome_color_palette().iter().find_map(|(key, &val)| {
+            if val.to_lowercase() == name {
+                Some(key)
+            } else {
+                None
+            }
+        }) {
+            Some(*color)
+        } else {
+            color(name, basic, extended, false, xkcd)
         }
     } else if xkcd {
         xkcd_names()
@@ -64,6 +94,60 @@ pub fn color(name: &str, basic: bool, extended: bool, xkcd: bool) -> Option<Colo
     } else {
         None
     }
+}
+
+/// Returns the [gnome palette color names](https://developer.gnome.org/hig/reference/palette.html).
+///
+/// The names are mapped to their corresponding color.
+/// To get the name of a color the [name] function is preferred.
+pub fn gnome_color_palette() -> HashMap<Color, &'static str> {
+    HashMap::from([
+        (Color::rgb(153, 193, 241), "Blue 1"),
+        (Color::rgb(98, 160, 234), "Blue 2"),
+        (Color::rgb(53, 132, 228), "Blue 3"),
+        (Color::rgb(28, 113, 216), "Blue 4"),
+        (Color::rgb(26, 95, 180), "Blue 5"),
+        (Color::rgb(143, 240, 164), "Green 1"),
+        (Color::rgb(87, 227, 137), "Green 2"),
+        (Color::rgb(51, 209, 122), "Green 3"),
+        (Color::rgb(46, 194, 126), "Green 4"),
+        (Color::rgb(38, 162, 105), "Green 5"),
+        (Color::rgb(249, 240, 107), "Yellow 1"),
+        (Color::rgb(248, 228, 92), "Yellow 2"),
+        (Color::rgb(246, 211, 45), "Yellow 3"),
+        (Color::rgb(245, 194, 17), "Yellow 4"),
+        (Color::rgb(229, 165, 10), "Yellow 5"),
+        (Color::rgb(255, 190, 111), "Orange 1"),
+        (Color::rgb(255, 163, 72), "Orange 2"),
+        (Color::rgb(255, 120, 0), "Orange 3"),
+        (Color::rgb(230, 97, 0), "Orange 4"),
+        (Color::rgb(198, 70, 0), "Orange 5"),
+        (Color::rgb(246, 97, 81), "Red 1"),
+        (Color::rgb(237, 51, 59), "Red 2"),
+        (Color::rgb(224, 27, 36), "Red 3"),
+        (Color::rgb(192, 28, 40), "Red 4"),
+        (Color::rgb(165, 29, 45), "Red 5"),
+        (Color::rgb(220, 138, 221), "Purple 1"),
+        (Color::rgb(192, 97, 203), "Purple 2"),
+        (Color::rgb(145, 65, 172), "Purple 3"),
+        (Color::rgb(129, 61, 156), "Purple 4"),
+        (Color::rgb(97, 53, 131), "Purple 5"),
+        (Color::rgb(205, 171, 143), "Brown 1"),
+        (Color::rgb(181, 131, 90), "Brown 2"),
+        (Color::rgb(152, 106, 68), "Brown 3"),
+        (Color::rgb(134, 94, 60), "Brown 4"),
+        (Color::rgb(99, 69, 44), "Brown 5"),
+        (Color::rgb(255, 255, 255), "Light 1"),
+        (Color::rgb(246, 245, 244), "Light 2"),
+        (Color::rgb(222, 221, 218), "Light 3"),
+        (Color::rgb(192, 191, 188), "Light 4"),
+        (Color::rgb(154, 153, 150), "Light 5"),
+        (Color::rgb(119, 118, 123), "Dark 1"),
+        (Color::rgb(94, 92, 100), "Dark 2"),
+        (Color::rgb(61, 56, 70), "Dark 3"),
+        (Color::rgb(36, 31, 49), "Dark 4"),
+        (Color::rgb(0, 0, 0), "Dark 5"),
+    ])
 }
 
 /// Returns the [w3c basic color keywords](https://www.w3.org/TR/css-color-3/#html4).
