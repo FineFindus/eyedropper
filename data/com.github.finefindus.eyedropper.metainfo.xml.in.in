@@ -48,40 +48,60 @@
   <content_rating type="oars-1.0" />
   <releases>
     <release version="0.4.0" date="2022-10-20">
-      See the CHANGELOG.md or in-app for the changes
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>Options to show names of color (from w3c basic, extended and xkcd)</li>
+          <li>Change the color by typing a name in the name field</li>
+          <li>Palettes are now shown in the palette dialog, accessible by clicking on the large color button</li>
+          <li>The App now uses the AdwAboutWindow</li>
+          <li>HSL does now support alpha values</li>
+          <li>HWB and CIELCh are now supported</li>
+          <li>CIE standard observer for CIELab and CIELCh</li>
+          <li>Change CIE illuminants</li>
+        </ul>
+      </description>
     </release>
     <release version="0.3.1" date="2022-09-23">
-      Fixed a few bugs and added Dutch translations. 
+      <description>
+      Fixed a few bugs and added Dutch translations.
+      </description>
     </release>
     <release version="0.3.0" date="2022-09-21">
-      <p>Added:</p>
-      <ul>
-        <li>Palettes, consisting of darker shades and lighter tints, are now generated from the currently picked color as well as the previous 3</li>
-        <li>Change the order of the color formats by dragging and dropping them in the settings</li>
-        <li>The app has been translated into French by rene-coty</li>
-        <li>A German translation has been added</li>
-        <li>Adjusted some strings to be easier to understand</li>
-      </ul>
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>Palettes, consisting of darker shades and lighter tints, are now generated from the currently picked color as well as the previous 3</li>
+          <li>Change the order of the color formats by dragging and dropping them in the settings</li>
+          <li>The app has been translated into French by rene-coty</li>
+          <li>A German translation has been added</li>
+          <li>Adjusted some strings to be easier to understand</li>
+        </ul>
+      </description>
     </release>
     <release version="0.2.0" date="2022-09-08">
-      <p>Added:</p>
-      <ul>
-        <li>Issue and feature-request templates</li>
-        <li>Change the color using hex values in the hex field</li>
-        <li>Previous colors are now visible in the history list</li>
-        <li>Disable unwanted color models</li>
-        <li>Colors can now be shown as XYZ or CIELAB format</li>
-      </ul>
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>Issue and feature-request templates</li>
+          <li>Change the color using hex values in the hex field</li>
+          <li>Previous colors are now visible in the history list</li>
+          <li>Disable unwanted color models</li>
+          <li>Colors can now be shown as XYZ or CIELAB format</li>
+        </ul>
+      </description>
     </release>
     <release version="0.1.0" date="2022-08-28">
-      <p>Added:</p>
-      <ul>
-        <li>Basic UI</li>
-        <li>Pick a color using the color picker button</li>
-        <li>Copy the color in different color models</li>
-        <li>Change the position of the alpha values in hex values</li>
-        <li>Added License</li>
-      </ul>
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>Basic UI</li>
+          <li>Pick a color using the color picker button</li>
+          <li>Copy the color in different color models</li>
+          <li>Change the position of the alpha values in hex values</li>
+          <li>Added License</li>
+        </ul>
+      </description>
     </release>
   </releases>
   <kudos>
