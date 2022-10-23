@@ -62,6 +62,13 @@ Download the latest artifact from the [CI](https://github.com/FineFindus/eyedrop
 yay -S eyedropper
 ```
 
+#### [AUR Git](https://aur.archlinux.org/packages/eyedropper-git)
+
+```sh
+yay -S eyedropper-git
+```
+
+
 ## Contributing
 
 Any contributions you make are greatly appreciated. For major changes, please open an issue first to discuss what you would like to change.
