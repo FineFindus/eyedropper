@@ -40,6 +40,7 @@ mod imp {
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
+            klass.bind_template_instance_callbacks();
         }
 
         fn instance_init(obj: &subclass::InitializingObject<Self>) {
@@ -107,6 +108,7 @@ glib::wrapper! {
         @extends gtk::Widget, gtk::Window, adw::Window;
 }
 
+#[gtk::template_callbacks]
 impl PaletteDialog {
     pub fn new(color: Color) -> Self {
         let dialog = glib::Object::new::<PaletteDialog>(&[("color", &gtk::gdk::RGBA::from(color))])
@@ -243,5 +245,57 @@ impl PaletteDialog {
         }));
 
         row
+    }
+
+    /// Save all palettes to a palette file.
+    /// Called when the icon button in the headerbar is clicked.
+    #[template_callback]
+    fn on_save_clicked(&self) {
+        gtk_macros::spawn!(glib::clone!(@weak self as window => async move {
+            let color = window.color();
+            //capacity for all palettes
+            let mut colors = Vec::with_capacity(28);
+
+            colors.append(&mut color.tints(0.15, 5));
+            colors.append(&mut color.shades(0.15, 5));
+            colors.append(&mut vec![color, color.complementary_color()]);
+            colors.append(&mut color.split_complementary_color());
+            colors.append(&mut color.triadic_colors());
+            colors.append(&mut color.tetradic_colors());
+            colors.append(&mut color.analogous_colors(6));
+
+            window.save_to_file(&pgettext("Name of the save palette file, do not add a file extension, .gpl will be added automatically", "palettes"), colors).await;
+        }));
+    }
+
+    /// Saves a list of colors as a GIMP palette files (.gpl).
+    ///
+    /// The colors will be saved without alpha values under the name `Untitled`.
+    /// This opens up a user prompt to ask where to save the file and then write said file, if the user cancels, the file will not be saved.
+    pub async fn save_to_file(&self, name: &str, colors: Vec<Color>) {
+        let file_chooser = gtk::FileChooserNative::builder()
+            .transient_for(self)
+            .action(gtk::FileChooserAction::Save)
+            .modal(true)
+            .create_folders(true)
+            .build();
+
+        file_chooser.set_current_name(&format!("{}.gpl", name));
+        let palette = Color::gpl_file(name, colors);
+
+        file_chooser.connect_response(
+            glib::clone!(@weak self as window, @strong palette => move |file_chooser, response| {
+                if response == gtk::ResponseType::Accept {
+                    if let Some(path) = file_chooser.file().and_then(|file| file.path()) {
+                        log::debug!("Selected path: {}", path.display());
+                        std::fs::write(path, &palette).expect("Failed to write GIMP palette file");
+                    }
+                } else {
+                    log::error!("Failed to save file, response: {}", response);
+                }
+            }),
+        );
+
+        file_chooser.show();
     }
 }

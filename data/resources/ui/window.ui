@@ -43,7 +43,7 @@
               <object class="GtkButton" id="color_picker_button">
                 <property name="tooltip-text" translatable="yes" context="Tooltip of the colorpicker button">Pick a Color</property>
                 <property name="icon-name">color-select-symbolic</property>
-                <signal name="clicked" handler="on_color_picker_button_clicked" swapped="true" />
+                <signal name="clicked" handler="pick_color" swapped="true" />
               </object>
             </child>
             <child type="end">
@@ -84,7 +84,7 @@
                                 <property name="can_focus">False</property>
                               </object>
                             </child>
-                            <signal name="clicked" handler="on_palettes_button_clicked" swapped="true" />
+                            <signal name="clicked" handler="open_palette_dialog" swapped="true" />
                             <style>
                               <class name="no-padding" />
                             </style>

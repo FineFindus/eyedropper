@@ -89,19 +89,6 @@ mod imp {
         }
     }
 
-    #[gtk::template_callbacks]
-    impl AppWindow {
-        #[template_callback]
-        fn on_color_picker_button_clicked(&self) {
-            self.instance().pick_color();
-        }
-
-        #[template_callback]
-        fn on_palettes_button_clicked(&self) {
-            self.instance().open_palette_dialog();
-        }
-    }
-
     #[glib::object_subclass]
     impl ObjectSubclass for AppWindow {
         const NAME: &'static str = "AppWindow";
@@ -110,7 +97,7 @@ mod imp {
 
         fn class_init(klass: &mut Self::Class) {
             Self::bind_template(klass);
-            Self::bind_template_callbacks(klass);
+            klass.bind_template_instance_callbacks();
         }
 
         // You must call `Widget`'s `init_template()` within `instance_init()`.
@@ -162,6 +149,7 @@ glib::wrapper! {
         @implements gio::ActionMap, gio::ActionGroup, gtk::Root;
 }
 
+#[gtk::template_callbacks]
 impl AppWindow {
     pub fn new(app: &App) -> Self {
         let window: Self =
@@ -170,6 +158,11 @@ impl AppWindow {
         window.set_color(Color::rgba(46, 52, 64, 255));
         window.clear_history();
         window
+    }
+
+    /// Shows a basic toast with the given text.
+    fn show_toast(&self, text: &str) {
+        self.imp().toast_overlay.add_toast(&adw::Toast::new(text));
     }
 
     /// Returns the history list store object.
@@ -301,7 +294,7 @@ impl AppWindow {
             Some("alpha-position"),
             glib::clone!(@weak self as window => move |settings, _| {
                 log::debug!("Updating AlphaPosition");
-                let color = *window.imp().color.borrow();
+                let color = window.color();
                 let alpha_position = AlphaPosition::from(settings.int("alpha-position") as u32);
                 //update hex to show alpha
                 window.imp().hex_row.set_text(color.to_hex_string(alpha_position));
@@ -314,7 +307,7 @@ impl AppWindow {
 
         let update_observer_rows = glib::clone!(@weak self as window => move |settings: &gio::Settings, _: &str| {
             log::debug!("Updating observer colors");
-            let color = *window.imp().color.borrow();
+            let color = window.color();
             let observer = Observer::from(settings.int("cie-illuminants") as u32);
             let ten_degrees = settings.int("cie-standard-observer") == 1;
 
@@ -336,7 +329,7 @@ impl AppWindow {
         //update name when it changes
         let update_color_names = glib::clone!(@weak self as window => move |settings: &gio::Settings, _: &str| {
             log::debug!("Updating color names");
-            let color = *window.imp().color.borrow();
+            let color = window.color();
             let name = color_names::name(color,
                 settings.boolean("name-source-basic"),
                 settings.boolean("name-source-extended"),
@@ -468,7 +461,7 @@ impl AppWindow {
         if show_name_model {
             //update field to show name
             let name = color_names::name(
-                *imp.color.borrow(),
+                self.color(),
                 settings.boolean("name-source-basic"),
                 settings.boolean("name-source-extended"),
                 settings.boolean("name-source-gnome-palette"),
@@ -488,7 +481,7 @@ impl AppWindow {
             let show_name_model = settings.boolean("show-color-name");
             window.imp().name_row.set_visible(show_name_model);
             //name is not always update, so update it when it's shown
-            let color = *window.imp().color.borrow();
+            let color = window.color();
             let name = color_names::name(color,
                 settings.boolean("name-source-basic"),
                 settings.boolean("name-source-extended"),
@@ -545,8 +538,12 @@ impl AppWindow {
         }
     }
 
+    /// Opens a dialog with different palettes.
+    ///
+    /// When a palette is clicked it will be added to the history list.
+    #[template_callback]
     fn open_palette_dialog(&self) {
-        let palette_dialog = PaletteDialog::new(*self.imp().color.borrow());
+        let palette_dialog = PaletteDialog::new(self.color());
         palette_dialog.set_transient_for(Some(self));
         palette_dialog.show();
 
@@ -570,9 +567,15 @@ impl AppWindow {
         );
     }
 
+    /// The currently picked color.
+    fn color(&self) -> Color {
+        *self.imp().color.borrow()
+    }
+
     /// Pick a color from the desktop using [ashpd].
     ///
     /// It will show a toast when failing to pick a color, for example when the user cancels the action.
+    #[template_callback]
     pub fn pick_color(&self) {
         log::debug!("Picking a color using the color picker");
         gtk_macros::spawn!(glib::clone!(@weak self as window => async move {
@@ -593,9 +596,9 @@ impl AppWindow {
     /// The old color will be added to the history list.
     pub fn set_color(&self, color: Color) {
         //only update when necessary, to avoid infinite loop
-        if *self.imp().color.borrow() != color {
+        if self.color() != color {
             //append previous color to history
-            let history_item = HistoryObject::new(*self.imp().color.borrow());
+            let history_item = HistoryObject::new(self.color());
             self.history().insert(0, &history_item);
 
             log::info!(
@@ -675,13 +678,6 @@ impl AppWindow {
         //load imp
         let imp = self.imp();
 
-        //connect color button to selected color
-        imp.color_button.connect_color_set(
-            glib::clone!(@weak self as window => move |color_button| {
-                window.set_color(color_button.rgba().into());
-            }),
-        );
-
         //show a toast when copying values
         let show_toast_closure = glib::closure_local!(@watch self as window => move |_: ColorFormatRow, text: String| {
             //Translators: Do not replace the {}. These are used as placeholders for the copied values
@@ -743,10 +739,5 @@ impl AppWindow {
                 }
             }),
         );
-    }
-
-    /// Shows a basic toast with the given text.
-    fn show_toast(&self, text: &str) {
-        self.imp().toast_overlay.add_toast(&adw::Toast::new(text));
     }
 }
