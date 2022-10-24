@@ -1,6 +1,5 @@
 use log::{debug, info};
 
-use glib::clone;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gdk, gio, glib};
@@ -36,9 +35,11 @@ mod imp {
     impl ObjectImpl for App {}
 
     impl ApplicationImpl for App {
-        fn activate(&self, app: &Self::Type) {
+        fn activate(&self) {
             debug!("GtkApplication<App>::activate");
-            self.parent_activate(app);
+            self.parent_activate();
+
+            let app = self.obj();
 
             if let Some(window) = self.window.get() {
                 let window = window.upgrade().unwrap();
@@ -46,7 +47,7 @@ mod imp {
                 return;
             }
 
-            let window = AppWindow::new(app);
+            let window = AppWindow::new(&app);
             self.window
                 .set(window.downgrade())
                 .expect("Window already set.");
@@ -54,12 +55,13 @@ mod imp {
             app.main_window().present();
         }
 
-        fn startup(&self, app: &Self::Type) {
+        fn startup(&self) {
             debug!("GtkApplication<App>::startup");
-            self.parent_startup(app);
+            self.parent_startup();
 
             // Set icons for shell
             gtk::Window::set_default_icon_name(APP_ID);
+            let app = self.obj();
 
             app.setup_css();
             app.setup_gactions();
@@ -80,15 +82,14 @@ glib::wrapper! {
 impl App {
     #[allow(clippy::new_without_default)]
     pub fn new() -> Self {
-        glib::Object::new(&[
-            ("application-id", &Some(APP_ID)),
-            ("flags", &gio::ApplicationFlags::empty()),
-            (
+        glib::Object::builder::<Self>()
+            .property("application-id", &Some(APP_ID))
+            .property("flags", &gio::ApplicationFlags::empty())
+            .property(
                 "resource-base-path",
                 &Some("/com/github/finefindus/eyedropper/"),
-            ),
-        ])
-        .expect("Application initialization failed...")
+            )
+            .build()
     }
 
     fn main_window(&self) -> AppWindow {
@@ -97,49 +98,60 @@ impl App {
 
     fn setup_gactions(&self) {
         // Pick a color using the picker button
-        let action_pick_color = gio::SimpleAction::new("pick_color", None);
-        action_pick_color.connect_activate(clone!(@weak self as app => move |_, _| {
-            app.main_window().pick_color();
-        }));
-        self.add_action(&action_pick_color);
+        let action_pick_color = gio::ActionEntry::builder("pick_color")
+            .activate(move |obj: &Self, _, _| {
+                obj.main_window().pick_color();
+            })
+            .build();
 
         // Clear the history
-        let action_random_color = gio::SimpleAction::new("clear_history", None);
-        action_random_color.connect_activate(clone!(@weak self as app => move |_, _| {
-            app.main_window().clear_history();
-        }));
-        self.add_action(&action_random_color);
+        let action_clear_history = gio::ActionEntry::builder("clear_history")
+            .activate(|app: &Self, _, _| {
+                app.main_window().clear_history();
+            })
+            .build();
 
         // Randomize the current color
-        let action_random_color = gio::SimpleAction::new("random_color", None);
-        action_random_color.connect_activate(clone!(@weak self as app => move |_, _| {
-            // Set the color to a random color
-            app.main_window().set_color(Color::random());
-        }));
-        self.add_action(&action_random_color);
+        let action_random_color = gio::ActionEntry::builder("random_color")
+            .activate(|app: &Self, _, _| {
+                // Set the color to a random color
+                app.main_window().set_color(Color::random());
+            })
+            .build();
 
         // Preferences
-        let action_preferences = gio::SimpleAction::new("preferences", None);
-        action_preferences.connect_activate(clone!(@weak self as app => move |_, _| {
-            app.show_preferences_dialog();
-        }));
-        self.add_action(&action_preferences);
+        let action_preferences = gio::ActionEntry::builder("preferences")
+            .activate(|app: &Self, _, _| {
+                app.show_preferences_dialog();
+            })
+            .build();
 
         // Quit
-        let action_quit = gio::SimpleAction::new("quit", None);
-        action_quit.connect_activate(clone!(@weak self as app => move |_, _| {
-            // This is needed to trigger the delete event and saving the window state
-            app.main_window().close();
-            app.quit();
-        }));
-        self.add_action(&action_quit);
+        let action_quit = gio::ActionEntry::builder("quit")
+            .activate(|app: &Self, _, _| {
+                // This is needed to trigger the delete event and saving the window state
+                app.main_window().close();
+                app.quit();
+            })
+            .build();
 
         // About
-        let action_about = gio::SimpleAction::new("about", None);
-        action_about.connect_activate(clone!(@weak self as app => move |_, _| {
-            app.show_about_dialog();
-        }));
-        self.add_action(&action_about);
+        let action_about = gio::ActionEntry::builder("about")
+            .activate(|app: &Self, _, _| {
+                app.show_about_dialog();
+            })
+            .build();
+
+        // It is safe to `unwrap` as we don't pass any parameter type that requires validation
+        self.add_action_entries([
+            action_pick_color,
+            action_clear_history,
+            action_random_color,
+            action_preferences,
+            action_quit,
+            action_about,
+        ])
+        .unwrap();
     }
 
     // Sets up keyboard shortcuts

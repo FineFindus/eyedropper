@@ -51,33 +51,23 @@ mod imp {
     impl ObjectImpl for PaletteDialog {
         fn signals() -> &'static [Signal] {
             static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
-                vec![Signal::builder(
-                    "palette-clicked",
+                vec![Signal::builder("palette-clicked")
                     //since we need to send multiple vars (vec of colors), but
                     //afaik there is no way to achieve that.
                     //So instead we send a string of hex color and split it back to color
-                    &[String::static_type().into()],
-                    <()>::static_type().into(),
-                )
-                .build()]
+                    .param_types([String::static_type()])
+                    .build()]
             });
             SIGNALS.as_ref()
         }
 
         fn properties() -> &'static [ParamSpec] {
-            static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
-                vec![ParamSpecBoxed::builder("color", gtk::gdk::RGBA::static_type()).build()]
-            });
+            static PROPERTIES: Lazy<Vec<ParamSpec>> =
+                Lazy::new(|| vec![ParamSpecBoxed::builder::<gtk::gdk::RGBA>("color").build()]);
             PROPERTIES.as_ref()
         }
 
-        fn set_property(
-            &self,
-            _obj: &Self::Type,
-            _id: usize,
-            value: &glib::Value,
-            pspec: &ParamSpec,
-        ) {
+        fn set_property(&self, _id: usize, value: &glib::Value, pspec: &ParamSpec) {
             match pspec.name() {
                 "color" => {
                     let input_value = value.get::<gtk::gdk::RGBA>().unwrap();
@@ -87,16 +77,15 @@ mod imp {
             }
         }
 
-        fn property(&self, _obj: &Self::Type, _id: usize, pspec: &ParamSpec) -> glib::Value {
+        fn property(&self, _id: usize, pspec: &ParamSpec) -> glib::Value {
             match pspec.name() {
                 "color" => self.color.borrow().to_value(),
                 _ => unimplemented!(),
             }
         }
 
-        fn constructed(&self, obj: &Self::Type) {
-            self.parent_constructed(obj);
-            obj.set_modal(true);
+        fn constructed(&self) {
+            self.parent_constructed();
         }
     }
     impl WindowImpl for PaletteDialog {}
@@ -111,8 +100,9 @@ glib::wrapper! {
 #[gtk::template_callbacks]
 impl PaletteDialog {
     pub fn new(color: Color) -> Self {
-        let dialog = glib::Object::new::<PaletteDialog>(&[("color", &gtk::gdk::RGBA::from(color))])
-            .expect("Failed to create PaletteDialog");
+        let dialog = glib::Object::builder::<PaletteDialog>()
+            .property("color", &gtk::gdk::RGBA::from(color))
+            .build();
         dialog.setup_palettes_list();
         dialog
     }

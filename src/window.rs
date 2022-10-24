@@ -107,8 +107,10 @@ mod imp {
     }
 
     impl ObjectImpl for AppWindow {
-        fn constructed(&self, obj: &Self::Type) {
-            self.parent_constructed(obj);
+        fn constructed(&self) {
+            self.parent_constructed();
+
+            let obj = self.obj();
 
             // Devel Profile
             if PROFILE == "Devel" {
@@ -128,14 +130,14 @@ mod imp {
     impl WidgetImpl for AppWindow {}
     impl WindowImpl for AppWindow {
         // Save window state on delete event
-        fn close_request(&self, window: &Self::Type) -> gtk::Inhibit {
+        fn close_request(&self) -> gtk::Inhibit {
             //save current window size
-            if let Err(err) = window.save_window_size() {
+            if let Err(err) = self.obj().save_window_size() {
                 log::warn!("Failed to save window state, {}", &err);
             }
 
             // Pass close request on to the parent
-            self.parent_close_request(window)
+            self.parent_close_request()
         }
     }
 
@@ -152,8 +154,7 @@ glib::wrapper! {
 #[gtk::template_callbacks]
 impl AppWindow {
     pub fn new(app: &App) -> Self {
-        let window: Self =
-            glib::Object::new(&[("application", app)]).expect("Failed to create AppWindow");
+        let window: Self = glib::Object::builder().property("application", app).build();
         //preset a color, so all scales have a set position
         window.set_color(Color::rgba(46, 52, 64, 255));
         window.clear_history();

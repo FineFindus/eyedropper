@@ -52,18 +52,12 @@ mod imp {
         fn signals() -> &'static [Signal] {
             static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
                 vec![
-                    Signal::builder(
-                        "copied-text",
-                        &[String::static_type().into()],
-                        <()>::static_type().into(),
-                    )
-                    .build(),
-                    Signal::builder(
-                        "text-edited",
-                        &[String::static_type().into()],
-                        <()>::static_type().into(),
-                    )
-                    .build(),
+                    Signal::builder("copied-text")
+                        .param_types([String::static_type()])
+                        .build(),
+                    Signal::builder("text-edited")
+                        .param_types([String::static_type()])
+                        .build(),
                 ]
             });
             SIGNALS.as_ref()
@@ -81,13 +75,7 @@ mod imp {
             PROPERTIES.as_ref()
         }
 
-        fn set_property(
-            &self,
-            _obj: &Self::Type,
-            _id: usize,
-            value: &glib::Value,
-            pspec: &ParamSpec,
-        ) {
+        fn set_property(&self, _id: usize, value: &glib::Value, pspec: &ParamSpec) {
             match pspec.name() {
                 "text" => {
                     let input_value = value.get::<String>().unwrap();
@@ -101,7 +89,7 @@ mod imp {
             }
         }
 
-        fn property(&self, _obj: &Self::Type, _id: usize, pspec: &ParamSpec) -> glib::Value {
+        fn property(&self, _id: usize, pspec: &ParamSpec) -> glib::Value {
             match pspec.name() {
                 "text" => self.color.borrow().to_value(),
                 "editable" => self.editable.borrow().to_value(),
@@ -109,8 +97,9 @@ mod imp {
             }
         }
 
-        fn constructed(&self, obj: &Self::Type) {
-            self.parent_constructed(obj);
+        fn constructed(&self) {
+            self.parent_constructed();
+            let obj = self.obj();
             obj.set_direction(gtk::TextDirection::Ltr);
             obj.setup_signals();
             obj.setup_properties();
@@ -132,7 +121,7 @@ glib::wrapper! {
 impl ColorFormatRow {
     #[allow(clippy::new_without_default)]
     pub fn new() -> Self {
-        glib::Object::new::<Self>(&[]).expect("Failed to create a ColorFormatRow")
+        glib::Object::new::<Self>(&[])
     }
 
     /// Get the currently shown text.

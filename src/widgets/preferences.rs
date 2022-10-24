@@ -75,8 +75,9 @@ mod imp {
 
     // Trait shared by all GObjects
     impl ObjectImpl for PreferencesWindow {
-        fn constructed(&self, obj: &Self::Type) {
-            self.parent_constructed(obj);
+        fn constructed(&self) {
+            self.parent_constructed();
+            let obj = self.instance();
             obj.setup_format_list();
             obj.setup_settings();
             obj.add_options();
@@ -98,7 +99,7 @@ glib::wrapper! {
 impl PreferencesWindow {
     #[allow(clippy::new_without_default)]
     pub fn new() -> Self {
-        glib::Object::new::<Self>(&[]).expect("Failed to create a PreferencesWindow")
+        glib::Object::new::<Self>(&[])
     }
 
     fn setup_settings(&self) {
@@ -563,13 +564,7 @@ mod color_format {
                 PROPERTIES.as_ref()
             }
 
-            fn set_property(
-                &self,
-                _obj: &Self::Type,
-                _id: usize,
-                value: &Value,
-                pspec: &ParamSpec,
-            ) {
+            fn set_property(&self, _id: usize, value: &Value, pspec: &ParamSpec) {
                 match pspec.name() {
                     "identifier" => {
                         let input_value = value.get::<String>().unwrap();
@@ -591,7 +586,7 @@ mod color_format {
                 }
             }
 
-            fn property(&self, _obj: &Self::Type, _id: usize, pspec: &ParamSpec) -> Value {
+            fn property(&self, _id: usize, pspec: &ParamSpec) -> Value {
                 match pspec.name() {
                     "identifier" => self.identifier.borrow().to_value(),
                     "label" => self.label.borrow().to_value(),
@@ -609,13 +604,12 @@ mod color_format {
 
     impl ColorFormatObject {
         pub fn new(identifier: String, label: String, format: String, settings_name: &str) -> Self {
-            Object::new(&[
-                ("identifier", &identifier),
-                ("label", &label),
-                ("example", &format),
-                ("settings-name", &settings_name),
-            ])
-            .expect("Failed to create `ColorFormatObject`.")
+            Object::builder()
+                .property("identifier", &identifier)
+                .property("label", &label)
+                .property("example", &format)
+                .property("settings-name", &settings_name)
+                .build()
         }
 
         pub fn identifier(&self) -> String {
