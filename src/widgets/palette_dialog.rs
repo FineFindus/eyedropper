@@ -29,7 +29,7 @@ mod imp {
     impl ObjectSubclass for PaletteDialog {
         const NAME: &'static str = "PaletteDialog";
         type Type = super::PaletteDialog;
-        type ParentType = gtk::Dialog;
+        type ParentType = adw::Window;
 
         fn new() -> Self {
             Self {
@@ -98,13 +98,13 @@ mod imp {
             obj.set_modal(true);
         }
     }
-    impl DialogImpl for PaletteDialog {}
     impl WindowImpl for PaletteDialog {}
     impl WidgetImpl for PaletteDialog {}
+    impl AdwWindowImpl for PaletteDialog {}
 }
 glib::wrapper! {
     pub struct PaletteDialog(ObjectSubclass<imp::PaletteDialog>)
-        @extends gtk::Widget, gtk::Window, gtk::Dialog;
+        @extends gtk::Widget, gtk::Window, adw::Window;
 }
 
 impl PaletteDialog {
@@ -238,8 +238,7 @@ impl PaletteDialog {
 
         row.connect_activated(glib::clone!(@weak self as dialog => move |_| {
             //close window and add palette
-            // dialog.close();
-            dialog.emit_close();
+            dialog.close();
             dialog.emit_by_name("palette-clicked", &[&color_string])
         }));
 
