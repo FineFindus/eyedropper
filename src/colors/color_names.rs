@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use crate::color::color::Color;
+use crate::colors::color::Color;
 
 use super::color::AlphaPosition;
 

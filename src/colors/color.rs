@@ -585,7 +585,7 @@ impl Color {
     /// Format the colors as a GIMP palette file.
     ///
     /// The name will be the name of the palette, each color will be
-    /// name untitled.
+    /// named untitled.
     pub fn gpl_file(name: &str, colors: Vec<Self>) -> String {
         let mut content = format!(
             "GIMP Palette\n\

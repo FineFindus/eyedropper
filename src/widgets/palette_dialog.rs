@@ -2,7 +2,7 @@ use adw::{prelude::*, subclass::prelude::*};
 use gettextrs::pgettext;
 use gtk::{glib, CompositeTemplate};
 
-use crate::color::color::{AlphaPosition, Color};
+use crate::colors::color::{AlphaPosition, Color};
 
 mod imp {
 
@@ -281,7 +281,7 @@ impl PaletteDialog {
                         std::fs::write(path, &palette).expect("Failed to write GIMP palette file");
                     }
                 } else {
-                    log::error!("Failed to save file, response: {}", response);
+                    log::error!("Failed to save file: {}", response);
                 }
             }),
         );

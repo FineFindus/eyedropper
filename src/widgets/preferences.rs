@@ -11,8 +11,8 @@ use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::Switch;
 
-use crate::color::color::Color;
-use crate::color::observer::Observer;
+use crate::colors::color::Color;
+use crate::colors::observer::Observer;
 use crate::utils;
 
 use self::color_format::ColorFormatObject;
@@ -427,19 +427,19 @@ impl PreferencesWindow {
                 "hex" => ColorFormatObject::new(
                     item,
                     gettext("Hex-Code"),
-                    color.to_hex_string(crate::color::color::AlphaPosition::None),
+                    color.to_hex_string(crate::colors::color::AlphaPosition::None),
                     "show-hex-model",
                 ),
                 "rgb" => ColorFormatObject::new(
                     item,
                     gettext("RGB"),
-                    color.to_rgb_string(crate::color::color::AlphaPosition::None),
+                    color.to_rgb_string(crate::colors::color::AlphaPosition::None),
                     "show-rgb-model",
                 ),
                 "hsl" => ColorFormatObject::new(
                     item,
                     gettext("HSL"),
-                    color.to_hsl_string(crate::color::color::AlphaPosition::None),
+                    color.to_hsl_string(crate::colors::color::AlphaPosition::None),
                     "show-hsl-model",
                 ),
                 "hsv" => {

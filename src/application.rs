@@ -4,7 +4,7 @@ use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gdk, gio, glib};
 
-use crate::color::color::Color;
+use crate::colors::color::Color;
 use crate::config::{APP_ID, PKGDATADIR, PROFILE, VERSION};
 use crate::widgets::about_window::EyedropperAbout;
 use crate::widgets::preferences::PreferencesWindow;
@@ -12,7 +12,7 @@ use crate::window::AppWindow;
 
 mod imp {
 
-    use crate::color::color::Color;
+    use crate::colors::color::Color;
 
     use super::*;
     use adw::subclass::prelude::AdwApplicationImpl;

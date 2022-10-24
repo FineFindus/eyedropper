@@ -4,9 +4,9 @@ use gtk::subclass::prelude::*;
 use gtk::{gio, glib};
 
 use crate::application::App;
-use crate::color::color::{AlphaPosition, Color};
-use crate::color::color_names;
-use crate::color::observer::Observer;
+use crate::colors::color::{AlphaPosition, Color};
+use crate::colors::color_names;
+use crate::colors::observer::Observer;
 use crate::config::{APP_ID, PROFILE};
 use crate::model::history::HistoryObject;
 use crate::utils;
@@ -604,7 +604,7 @@ impl AppWindow {
 
             log::info!(
                 "Changing Hex Color: {:?}",
-                color.to_hex_string(crate::color::color::AlphaPosition::End)
+                color.to_hex_string(crate::colors::color::AlphaPosition::End)
             );
             let imp = self.imp();
             let settings = &imp.settings;
