@@ -4,9 +4,10 @@ use gtk::subclass::prelude::*;
 use gtk::{gio, glib};
 
 use crate::application::App;
-use crate::colors::color::{AlphaPosition, Color};
+use crate::colors::color::Color;
 use crate::colors::color_names;
-use crate::colors::observer::Observer;
+use crate::colors::illuminant::Illuminant;
+use crate::colors::position::AlphaPosition;
 use crate::config::{APP_ID, PROFILE};
 use crate::model::history::HistoryObject;
 use crate::utils;
@@ -307,17 +308,17 @@ impl AppWindow {
         );
 
         let update_observer_rows = glib::clone!(@weak self as window => move |settings: &gio::Settings, _: &str| {
-            log::debug!("Updating observer colors");
+            log::debug!("Updating observer and illuminant colors");
             let color = window.color();
-            let observer = Observer::from(settings.int("cie-illuminants") as u32);
-            let ten_degrees = settings.int("cie-standard-observer") == 1;
+            let illuminant = Illuminant::from(settings.int("cie-illuminants") as u32);
+            let observer = settings.int("cie-standard-observer") == 1;
 
-            let cie_lab = color.to_cie_lab(observer, ten_degrees);
+            let cie_lab = color.to_cie_lab(illuminant, observer);
             window.imp().cie_lab_row.set_text(format!(
                 "CIELAB({:.2}, {:.2}, {:.2})",
                 cie_lab.0, cie_lab.1, cie_lab.2
             ));
-            let lch = color.to_hcl(observer, ten_degrees);
+            let lch = color.to_hcl(illuminant, observer);
             window.imp().hcl_row
             .set_text(format!("lch({:.2}, {:.2}, {:.2})", lch.2, lch.1, lch.0));
 
@@ -604,7 +605,7 @@ impl AppWindow {
 
             log::info!(
                 "Changing Hex Color: {:?}",
-                color.to_hex_string(crate::colors::color::AlphaPosition::End)
+                color.to_hex_string(AlphaPosition::End)
             );
             let imp = self.imp();
             let settings = &imp.settings;
@@ -614,9 +615,10 @@ impl AppWindow {
 
             let alpha_position = AlphaPosition::from(settings.int("alpha-position") as u32);
 
-            let observer = Observer::from(settings.int("cie-illuminants") as u32);
+            let illuminant = Illuminant::from(settings.int("cie-illuminants") as u32);
 
-            let ten_degrees = settings.int("cie-standard-observer") == 1;
+            //observer is saved as an int (for technical reasons), so convert it back to an bool
+            let observer = settings.int("cie-standard-observer") == 1;
 
             imp.hex_row.set_text(color.to_hex_string(alpha_position));
 
@@ -638,7 +640,7 @@ impl AppWindow {
             imp.xyz_row
                 .set_text(format!("XYZ({:.3}, {:.3}, {:.3})", xyz.0, xyz.1, xyz.2));
 
-            let cie_lab = color.to_cie_lab(observer, ten_degrees);
+            let cie_lab = color.to_cie_lab(illuminant, observer);
             imp.cie_lab_row.set_text(format!(
                 "CIELAB({:.2}, {:.2}, {:.2})",
                 cie_lab.0, cie_lab.1, cie_lab.2
@@ -652,7 +654,7 @@ impl AppWindow {
                 utils::round_percent(hwb.2)
             ));
 
-            let lch = color.to_hcl(observer, ten_degrees);
+            let lch = color.to_hcl(illuminant, observer);
             imp.hcl_row
                 .set_text(format!("lch({:.2}, {:.2}, {:.2})", lch.2, lch.1, lch.0));
 

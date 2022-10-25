@@ -12,7 +12,8 @@ use gtk::subclass::prelude::*;
 use gtk::Switch;
 
 use crate::colors::color::Color;
-use crate::colors::observer::Observer;
+use crate::colors::illuminant::Illuminant;
+use crate::colors::position::AlphaPosition;
 use crate::utils;
 
 use self::color_format::ColorFormatObject;
@@ -427,19 +428,19 @@ impl PreferencesWindow {
                 "hex" => ColorFormatObject::new(
                     item,
                     gettext("Hex-Code"),
-                    color.to_hex_string(crate::colors::color::AlphaPosition::None),
+                    color.to_hex_string(AlphaPosition::None),
                     "show-hex-model",
                 ),
                 "rgb" => ColorFormatObject::new(
                     item,
                     gettext("RGB"),
-                    color.to_rgb_string(crate::colors::color::AlphaPosition::None),
+                    color.to_rgb_string(AlphaPosition::None),
                     "show-rgb-model",
                 ),
                 "hsl" => ColorFormatObject::new(
                     item,
                     gettext("HSL"),
-                    color.to_hsl_string(crate::colors::color::AlphaPosition::None),
+                    color.to_hsl_string(AlphaPosition::None),
                     "show-hsl-model",
                 ),
                 "hsv" => {
@@ -470,7 +471,7 @@ impl PreferencesWindow {
                     )
                 }
                 "cielab" => {
-                    let cie_lab = color.to_cie_lab(Observer::D65, true);
+                    let cie_lab = color.to_cie_lab(Illuminant::D65, true);
                     ColorFormatObject::new(
                         item,
                         gettext("CIELAB"),
@@ -496,7 +497,7 @@ impl PreferencesWindow {
                     )
                 }
                 "hcl" => {
-                    let hcl = color.to_hcl(Observer::D65, true);
+                    let hcl = color.to_hcl(Illuminant::D65, true);
                     ColorFormatObject::new(
                         item,
                         gettext("CIELCh / HCL"),

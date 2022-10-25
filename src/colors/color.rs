@@ -2,34 +2,7 @@ use core::fmt;
 
 use crate::utils;
 
-use super::observer::Observer;
-
-/// Position of the alpha value for hex strings.
-///
-/// In most cases (for example hex strings in the browser) the alpha value is
-/// the last two characters of the hex string. But in some cases it is the first two characters.
-/// For example Android Color Values use this format.
-///
-/// Defaults to no alpha value
-#[derive(Debug, Default, Copy, Clone, PartialEq, Eq)]
-pub enum AlphaPosition {
-    #[default]
-    End,
-    Start,
-    None,
-}
-
-//Convert from U32. Needed for converting from the settings AdwComboRow, which use indexes for values.
-impl From<u32> for AlphaPosition {
-    fn from(value: u32) -> Self {
-        match value {
-            0 => Self::None,
-            1 => Self::End,
-            2 => Self::Start,
-            _ => Self::default(),
-        }
-    }
-}
+use super::{illuminant::Illuminant, position::AlphaPosition};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct Color {
@@ -305,16 +278,16 @@ impl Color {
 
     /// Return the colors as CIELAB vales.
     ///
-    /// If use_ten_degrees is true, the function will use 10° observer values instead of the 2° ones.
+    /// If ten_deg_observer is true, the function will use 10° observer values instead of the 2° ones.
     ///
     /// The color will be first converted to XYZ values and then to CIELAB values.
     /// Formula from <http://www.easyrgb.com/en/math.php>
-    pub fn to_cie_lab(self, observer: Observer, use_ten_degrees: bool) -> (f32, f32, f32) {
+    pub fn to_cie_lab(self, illuminant: Illuminant, ten_deg_observer: bool) -> (f32, f32, f32) {
         //reference xyz for D65 (sRGB) from http://www.easyrgb.com/en/math.php
-        let (reference_x, reference_y, reference_z) = if use_ten_degrees {
-            observer.ten_degrees()
+        let (reference_x, reference_y, reference_z) = if ten_deg_observer {
+            illuminant.ten_degrees()
         } else {
-            observer.two_degrees()
+            illuminant.two_degrees()
         };
 
         let xyz = self.to_xyz();
@@ -351,10 +324,10 @@ impl Color {
     /// Convert the color to hcl/ CIELCh
     ///
     /// This steps involves converting the color to CIElab first.
-    /// If use_ten_degrees is true, the function will use 10° observer values instead of the 2° ones.
-    pub fn to_hcl(self, observer: Observer, use_ten_degree: bool) -> (f32, f32, f32) {
+    /// If ten_deg_observer is true, the function will use 10° observer values instead of the 2° ones.
+    pub fn to_hcl(self, illuminant: Illuminant, ten_deg_observer: bool) -> (f32, f32, f32) {
         //convert color to lab first
-        let (luminance, a, b) = self.to_cie_lab(observer, use_ten_degree);
+        let (luminance, a, b) = self.to_cie_lab(illuminant, ten_deg_observer);
 
         let hue = b.atan2(a).to_degrees();
         let chroma = (a.powi(2) + b.powi(2)).sqrt();
@@ -660,7 +633,7 @@ impl From<Color> for gtk::gdk::RGBA {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord)]
 pub enum ColorError {
     HexConversion(String),
 }
@@ -676,5 +649,72 @@ impl fmt::Display for ColorError {
         match self {
             ColorError::HexConversion(err) => write!(f, "{}", err),
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_calculate_hue() {
+        let color = Color::rgb(46, 52, 64);
+        assert_eq!(220, color.calculate_hue())
+    }
+
+    #[test]
+    fn test_to_hsv() {
+        let color = Color::rgb(46, 52, 64);
+        assert_eq!((220, 28, 25), color.to_hsv())
+    }
+
+    #[test]
+    fn test_to_hwb() {
+        let color = Color::rgb(46, 52, 64);
+        assert_eq!((220, 0.18039216, 0.7490196), color.to_hwb())
+    }
+
+    #[test]
+    fn test_to_hsl() {
+        let color = Color::rgb(46, 52, 64);
+        assert_eq!((220, 0.16363637, 0.21568629), color.to_hsl())
+    }
+
+    #[test]
+    fn test_to_cmyk() {
+        let color = Color::rgb(46, 52, 64);
+        assert_eq!((28, 19, 0, 75), color.to_cmyk())
+    }
+
+    #[test]
+    fn test_to_xyz() {
+        let color = Color::rgb(46, 52, 64);
+        assert_eq!((3.2801187, 3.4069908, 5.335223), color.to_xyz())
+    }
+
+    #[test]
+    fn test_to_cie_lab() {
+        let color = Color::rgb(46, 52, 64);
+        assert_eq!(
+            (21.605232, 0.6957203, -8.349299),
+            color.to_cie_lab(Illuminant::D65, false)
+        )
+    }
+
+    #[test]
+    fn test_to_hcl() {
+        let color = Color::rgb(46, 52, 64);
+        assert_eq!(
+            (274.76328, 8.378235, 21.605232),
+            color.to_hcl(Illuminant::D65, false)
+        )
+    }
+
+    #[test]
+    fn test_from_hex() {
+        assert_eq!(
+            Ok(Color::rgb(46, 52, 64)),
+            Color::from_hex("#2E3440", AlphaPosition::None)
+        )
     }
 }

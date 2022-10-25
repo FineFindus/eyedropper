@@ -95,8 +95,8 @@
     </key>
     <key name="cie-illuminants" type="i">
       <default>5</default>
-      <summary>Color Observer</summary>
-      <description>Which XYZ Tristimulus will be used as the observer.</description>
+      <summary>Color Illuminant</summary>
+      <description>Which XYZ Tristimulus will be used as the illuminant.</description>
     </key>
     <key name="cie-standard-observer" type="i">
       <default>0</default>

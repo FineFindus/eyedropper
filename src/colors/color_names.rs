@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use crate::colors::color::Color;
 
-use super::color::AlphaPosition;
+use super::position::AlphaPosition;
 
 /// Get the name of the color.
 ///
