@@ -27,23 +27,27 @@
                             </object>
                         </child>
                         <child>
-                            <object class="AdwComboRow" id="standard_observer_box">
-                                <property name="title" translatable="yes">CIE standard observer</property>
-                                <property name="subtitle" translatable="yes">Field of view used by the CIE standard observer</property>
-                                <property name="model">
-                                    <object class="GtkStringList">
-                                        <items>
-                                            <item context="CIE 2° standard observer" translatable="yes">2°</item>
-                                            <item context="CIE 10° standard observer" translatable="yes">10°</item>
-                                        </items>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Name Sets</property>
+                                <property name="subtitle" translatable="yes">Which color name sets should be used for the names</property>
+                                <property name="activatable">True</property>
+                                <signal name="activated" handler="on_name_row_activated" swapped="true" />
+                                <child type="suffix">
+                                    <object class="GtkImage">
+                                        <property name="icon-name">go-next-symbolic</property>
                                     </object>
-                                </property>
+                                </child>
                             </object>
                         </child>
+                    </object>
+                </child>
+                <child>
+                    <object class="AdwPreferencesGroup">
+                        <property name="title" translatable="yes">CIE Color Space</property>
                         <child>
                             <object class="AdwActionRow">
-                                <property name="title" translatable="yes">CIE illuminants</property>
-                                <property name="subtitle" translatable="yes">Under which conditions are the colors observed</property>
+                                <property name="title" translatable="yes">CIE Illuminants</property>
+                                <property name="subtitle" translatable="yes">Lighting conditions for the CIE color space</property>
                                 <property name="activatable-widget">cie_illuminants_box</property>
                                 <child type="suffix">
                                     <object class="GtkDropDown" id="cie_illuminants_box">
@@ -82,16 +86,17 @@
                             </object>
                         </child>
                         <child>
-                            <object class="AdwActionRow">
-                                <property name="title" translatable="yes">Name Sets</property>
-                                <property name="subtitle" translatable="yes">Which color name sets should be used for the names</property>
-                                <property name="activatable">True</property>
-                                <signal name="activated" handler="on_name_row_activated" swapped="true" />
-                                <child type="suffix">
-                                    <object class="GtkImage">
-                                        <property name="icon-name">go-next-symbolic</property>
+                            <object class="AdwComboRow" id="standard_observer_box">
+                                <property name="title" translatable="yes">CIE Standard Observer</property>
+                                <property name="subtitle" translatable="yes">The CIE standard observer's field of view</property>
+                                <property name="model">
+                                    <object class="GtkStringList">
+                                        <items>
+                                            <item context="CIE 2° standard observer" translatable="yes">2°</item>
+                                            <item context="CIE 10° standard observer" translatable="yes">10°</item>
+                                        </items>
                                     </object>
-                                </child>
+                                </property>
                             </object>
                         </child>
                     </object>
