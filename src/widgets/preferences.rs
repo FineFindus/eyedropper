@@ -508,9 +508,21 @@ impl PreferencesWindow {
                 "name" => ColorFormatObject::new(
                     item,
                     gettext("Name"),
-                    String::from("red"),
+                    pgettext(
+                        "Information that no name for the color could be found",
+                        "Not named",
+                    ),
                     "show-color-name",
                 ),
+                "lms" => {
+                    let lms = color.to_lms();
+                    ColorFormatObject::new(
+                        item,
+                        gettext("LMS"),
+                        format!("L: {:.2}, M: {:.2}, S: {:.2}", lms.0, lms.1, lms.2),
+                        "show-lms-format",
+                    )
+                }
                 _ => {
                     log::error!("Failed to find format: {item}");
                     continue;

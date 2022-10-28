@@ -135,6 +135,11 @@
                         <property name="visible">False</property>
                       </object>
                     </child>
+                    <child>
+                      <object class="ColorFormatRow" id="lms_row">
+                        <property name="visible">False</property>
+                      </object>
+                    </child>
                   </object>
                 </child>
                 <child>

@@ -58,6 +58,8 @@ mod imp {
         #[template_child]
         pub name_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
         #[template_child]
+        pub lms_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
+        #[template_child]
         pub history_list: TemplateChild<gtk::ListBox>,
         pub history: RefCell<Option<gio::ListStore>>,
         pub settings: gio::Settings,
@@ -82,6 +84,7 @@ mod imp {
                 hwb_row: TemplateChild::default(),
                 hcl_row: TemplateChild::default(),
                 name_row: TemplateChild::default(),
+                lms_row: TemplateChild::default(),
                 history_list: TemplateChild::default(),
                 history: Default::default(),
                 settings: gio::Settings::new(APP_ID),
@@ -497,6 +500,18 @@ impl AppWindow {
             )));
             }),
         );
+
+        //first setup when loading
+        let show_lms_format = settings.boolean("show-lms-format");
+        imp.lms_row.set_visible(show_lms_format);
+        //refresh when settings change
+        settings.connect_changed(
+            Some("show-lms-format"),
+            glib::clone!(@weak self as window => move |settings, _| {
+            let show_lms_format = settings.boolean("show-lms-format");
+            window.imp().lms_row.set_visible(show_lms_format);
+            }),
+        );
     }
 
     /// Insert the formats in the order in which they are saved in the settings.
@@ -530,6 +545,7 @@ impl AppWindow {
                 "hwb" => &imp.hwb_row,
                 "hcl" => &imp.hcl_row,
                 "name" => &imp.name_row,
+                "lms" => &imp.lms_row,
                 _ => {
                     log::error!("Failed to find format: {}", item);
                     continue;
@@ -674,6 +690,10 @@ impl AppWindow {
                     )
                 }));
             }
+
+            let lms = color.to_lms();
+            imp.lms_row
+                .set_text(format!("L: {:.2}, M: {:.2}, S: {:.2}", lms.0, lms.1, lms.2));
         }
     }
 
@@ -706,6 +726,8 @@ impl AppWindow {
         imp.hcl_row
             .connect_closure("copied-text", false, show_toast_closure.clone());
         imp.name_row
+            .connect_closure("copied-text", false, show_toast_closure.clone());
+        imp.lms_row
             .connect_closure("copied-text", false, show_toast_closure);
 
         imp.hex_row.connect_closure(

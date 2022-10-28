@@ -339,6 +339,23 @@ impl Color {
         )
     }
 
+    /// Convert the color to the LMS color space.
+    ///
+    /// LMS (long, medium short) is a a color space, that
+    /// represents the cones in the human eyes.
+    ///
+    /// To convert ot this color space, the color is first converted
+    /// to the XYZ color space and then using the [CIECAT02](https://en.wikipedia.org/wiki/CIECAM02#CAT02) matrix.
+    pub fn to_lms(&self) -> (f32, f32, f32) {
+        let (x, y, z) = self.to_xyz();
+
+        let long = x * 0.7328 + y * 0.4296 + z * -0.1624;
+        let medium = x * -0.7036 + y * 1.6975 + z * 0.0061;
+        let short = x * 0.0030 + y * 0.0136 + z * 0.9834;
+
+        (long, medium, short)
+    }
+
     /// Create a color from a hex string.
     ///
     /// The hex color optionally start with '#'.
