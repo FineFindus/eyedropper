@@ -344,8 +344,8 @@ impl Color {
     /// LMS (long, medium short) is a a color space, that
     /// represents the cones in the human eyes.
     ///
-    /// To convert ot this color space, the color is first converted
-    /// to the XYZ color space and then using the [CIECAT02](https://en.wikipedia.org/wiki/CIECAM02#CAT02) matrix.
+    /// To convert to LMS color space, the color is first converted
+    /// to XYZ color space and then using the [CIECAT02](https://en.wikipedia.org/wiki/CIECAM02#CAT02) matrix.
     pub fn to_lms(&self) -> (f32, f32, f32) {
         let (x, y, z) = self.to_xyz();
 
