@@ -39,6 +39,41 @@
                                 </child>
                             </object>
                         </child>
+                        <child>
+                            <object class="AdwActionRow">
+                                <property name="title" translatable="yes">Default Precison</property>
+                                <property name="subtitle" translatable="yes">Use the recommended precision</property>
+                                <property name="activatable">True</property>
+                                <property name="activatable-widget">default_precision_switch</property>
+                                <child type="suffix">
+                                    <object class="GtkSwitch" id="default_precision_switch">
+                                        <property name="valign">center</property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="AdwActionRow">
+                                <property name="sensitive" bind-source="default_precision_switch" bind-property="state" bind-flags="default|sync-create|invert-boolean" />
+                                <property name="title" translatable="yes">Precison</property>
+                                <child type="suffix">
+                                    <object class="GtkSpinButton" id="precision_spin_button">
+                                        <property name="adjustment">
+                                            <object class="GtkAdjustment">
+                                                <property name="lower">1</property>
+                                                <property name="upper">99</property>
+                                                <property name="step_increment">1</property>
+                                                <property name="value">2</property>
+                                            </object>
+                                        </property>
+                                        <property name="tooltip-text" translatable="yes">Precision</property>
+                                        <property name="climb_rate">1</property>
+                                        <property name="numeric">True</property>
+                                        <property name="valign">center</property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
                     </object>
                 </child>
                 <child>
@@ -55,26 +90,26 @@
                                         <property name="model">
                                             <object class="GtkStringList">
                                                 <items>
-                                                    <item context="CIE illuminant, more info at https://en.wikipedia.org/wiki/Standard_illuminant" translatable="yes">A (Incandescent/tungsten)</item>
-                                                    <item context="CIE illuminant, more info at https://en.wikipedia.org/wiki/Standard_illuminant" translatable="yes">B (Old direct sunlight at noon)</item>
-                                                    <item context="CIE illuminant, more info at https://en.wikipedia.org/wiki/Standard_illuminant" translatable="yes">C (Old daylight)</item>
-                                                    <item context="CIE illuminant, more info at https://en.wikipedia.org/wiki/Standard_illuminant" translatable="yes">D50 (ICC profile PCS)</item>
-                                                    <item context="CIE illuminant, more info at https://en.wikipedia.org/wiki/Standard_illuminant" translatable="yes">D55 (Mid-morning daylight)</item>
-                                                    <item context="CIE illuminant, more info at https://en.wikipedia.org/wiki/Standard_illuminant" translatable="yes">D65 (Daylight, sRGB, Adobe-RGB)</item>
-                                                    <item context="CIE illuminant, more info at https://en.wikipedia.org/wiki/Standard_illuminant" translatable="yes">D75 (North sky daylight)</item>
-                                                    <item context="CIE illuminant, more info at https://en.wikipedia.org/wiki/Standard_illuminant" translatable="yes">E (Equal energy)</item>
-                                                    <item context="CIE illuminant, more info at https://en.wikipedia.org/wiki/Standard_illuminant" translatable="yes">F1 (Daylight Fluorescent)</item>
-                                                    <item context="CIE illuminant, more info at https://en.wikipedia.org/wiki/Standard_illuminant" translatable="yes">F2 (Cool fluorescent)</item>
-                                                    <item context="CIE illuminant, more info at https://en.wikipedia.org/wiki/Standard_illuminant" translatable="yes">F3 (White Fluorescent)</item>
-                                                    <item context="CIE illuminant, more info at https://en.wikipedia.org/wiki/Standard_illuminant" translatable="yes">F4 (Warm White Fluorescent)</item>
-                                                    <item context="CIE illuminant, more info at https://en.wikipedia.org/wiki/Standard_illuminant" translatable="yes">F5 (Daylight Fluorescent)</item>
-                                                    <item context="CIE illuminant, more info at https://en.wikipedia.org/wiki/Standard_illuminant" translatable="yes">F6 (Lite White Fluorescent)</item>
-                                                    <item context="CIE illuminant, more info at https://en.wikipedia.org/wiki/Standard_illuminant" translatable="yes">F7 (Daylight fluorescent, D65 simulator)</item>
-                                                    <item context="CIE illuminant, more info at https://en.wikipedia.org/wiki/Standard_illuminant" translatable="yes">F8 (Sylvania F40, D50 simulator)</item>
-                                                    <item context="CIE illuminant, more info at https://en.wikipedia.org/wiki/Standard_illuminant" translatable="yes">F9 (Cool White Fluorescent)</item>
-                                                    <item context="CIE illuminant, more info at https://en.wikipedia.org/wiki/Standard_illuminant" translatable="yes">F10 (Ultralume 50, Philips TL85)</item>
-                                                    <item context="CIE illuminant, more info at https://en.wikipedia.org/wiki/Standard_illuminant" translatable="yes">F11 (Ultralume 40, Philips TL84)</item>
-                                                    <item context="CIE illuminant, more info at https://en.wikipedia.org/wiki/Standard_illuminant" translatable="yes">F12 (Ultralume 30, Philips TL83)</item>
+                                                    <item context="CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant" translatable="yes">A (Incandescent/tungsten)</item>
+                                                    <item context="CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant" translatable="yes">B (Old direct sunlight at noon)</item>
+                                                    <item context="CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant" translatable="yes">C (Old daylight)</item>
+                                                    <item context="CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant" translatable="yes">D50 (ICC profile PCS)</item>
+                                                    <item context="CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant" translatable="yes">D55 (Mid-morning daylight)</item>
+                                                    <item context="CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant" translatable="yes">D65 (Daylight, sRGB, Adobe-RGB)</item>
+                                                    <item context="CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant" translatable="yes">D75 (North sky daylight)</item>
+                                                    <item context="CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant" translatable="yes">E (Equal energy)</item>
+                                                    <item context="CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant" translatable="yes">F1 (Daylight Fluorescent)</item>
+                                                    <item context="CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant" translatable="yes">F2 (Cool fluorescent)</item>
+                                                    <item context="CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant" translatable="yes">F3 (White Fluorescent)</item>
+                                                    <item context="CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant" translatable="yes">F4 (Warm White Fluorescent)</item>
+                                                    <item context="CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant" translatable="yes">F5 (Daylight Fluorescent)</item>
+                                                    <item context="CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant" translatable="yes">F6 (Lite White Fluorescent)</item>
+                                                    <item context="CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant" translatable="yes">F7 (Daylight fluorescent, D65 simulator)</item>
+                                                    <item context="CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant" translatable="yes">F8 (Sylvania F40, D50 simulator)</item>
+                                                    <item context="CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant" translatable="yes">F9 (Cool White Fluorescent)</item>
+                                                    <item context="CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant" translatable="yes">F10 (Ultralume 50, Philips TL85)</item>
+                                                    <item context="CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant" translatable="yes">F11 (Ultralume 40, Philips TL84)</item>
+                                                    <item context="CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant" translatable="yes">F12 (Ultralume 30, Philips TL83)</item>
                                                 </items>
                                             </object>
                                         </property>
@@ -105,10 +140,10 @@
                     <object class="AdwPreferencesGroup">
                         <property name="title" translatable="yes">Color Formats</property>
                         <property name="description" translatable="yes">Customize the visible formats and in which order they are displayed.</property>
-                        <child type="header-suffix">
+                        <child type=" header-suffix">
                             <object class="GtkButton">
                                 <property name="icon-name">edit-clear-symbolic</property>
-                                <property name="tooltip-text" translatable="yes" context="Tooltip of the button to reset the format order">Reset Order</property>
+                                <property name="tooltip-text" translatable="yes" context=" Tooltip of the button to reset the format order">Reset Order</property>
                                 <signal name="clicked" handler="on_reset_pressed" swapped="true" />
                                 <style>
                                     <class name="flat" />

@@ -125,7 +125,7 @@ mod imp {
             // Load latest window state
             obj.load_window_size();
             obj.setup_history();
-            obj.load_settings();
+            obj.load_visibility_settings();
             obj.setup_callbacks();
             obj.set_order();
         }
@@ -281,7 +281,8 @@ impl AppWindow {
         }
     }
 
-    fn load_settings(&self) {
+    ///
+    fn load_visibility_settings(&self) {
         let imp = self.imp();
         let settings = &imp.settings;
 
@@ -316,14 +317,21 @@ impl AppWindow {
             let illuminant = Illuminant::from(settings.int("cie-illuminants") as u32);
             let observer = settings.int("cie-standard-observer") == 1;
 
+            //change how many digits are displayed
+            let precision = if settings.boolean("use-default-precision") {
+                2
+            } else {
+                settings.uint("precision") as usize
+            };
+
             let cie_lab = color.to_cie_lab(illuminant, observer);
             window.imp().cie_lab_row.set_text(format!(
-                "CIELAB({:.2}, {:.2}, {:.2})",
+                "CIELAB({:.precision$}, {:.precision$}, {:.precision$})",
                 cie_lab.0, cie_lab.1, cie_lab.2
             ));
             let lch = color.to_hcl(illuminant, observer);
             window.imp().hcl_row
-            .set_text(format!("lch({:.2}, {:.2}, {:.2})", lch.2, lch.1, lch.0));
+            .set_text(format!("lch({:.precision$}, {:.precision$}, {:.precision$})", lch.2, lch.1, lch.0));
 
         });
 
@@ -610,91 +618,111 @@ impl AppWindow {
         }));
     }
 
-    ///Update the current color to the given color.
+    /// Update the current color to the given color.
     /// The old color will be added to the history list.
     pub fn set_color(&self, color: Color) {
-        //only update when necessary, to avoid infinite loop
         if self.color() != color {
             //append previous color to history
             let history_item = HistoryObject::new(self.color());
             self.history().insert(0, &history_item);
-
-            log::info!(
-                "Changing Hex Color: {:?}",
-                color.to_hex_string(AlphaPosition::End)
-            );
-            let imp = self.imp();
-            let settings = &imp.settings;
-            imp.color.replace(color);
-
-            imp.color_button.set_rgba(&color.into());
-
-            let alpha_position = AlphaPosition::from(settings.int("alpha-position") as u32);
-
-            let illuminant = Illuminant::from(settings.int("cie-illuminants") as u32);
-
-            //observer is saved as an int (for technical reasons), so convert it back to an bool
-            let observer = settings.int("cie-standard-observer") == 1;
-
-            imp.hex_row.set_text(color.to_hex_string(alpha_position));
-
-            imp.rgb_row.set_text(color.to_rgb_string(alpha_position));
-
-            imp.hsl_row.set_text(color.to_hsl_string(alpha_position));
-
-            let hsv = color.to_hsv();
-            imp.hsv_row
-                .set_text(format!("hsv({}, {}%, {}%)", hsv.0, hsv.1, hsv.2));
-
-            let cmyk = color.to_cmyk();
-            imp.cmyk_row.set_text(format!(
-                "cmyk({}%, {}%, {}%, {}%)",
-                cmyk.0, cmyk.1, cmyk.2, cmyk.3
-            ));
-
-            let xyz = color.to_xyz();
-            imp.xyz_row
-                .set_text(format!("XYZ({:.3}, {:.3}, {:.3})", xyz.0, xyz.1, xyz.2));
-
-            let cie_lab = color.to_cie_lab(illuminant, observer);
-            imp.cie_lab_row.set_text(format!(
-                "CIELAB({:.2}, {:.2}, {:.2})",
-                cie_lab.0, cie_lab.1, cie_lab.2
-            ));
-
-            let hwb = color.to_hwb();
-            imp.hwb_row.set_text(format!(
-                "hwb({}, {}%, {}%)",
-                hwb.0,
-                utils::round_percent(hwb.1),
-                utils::round_percent(hwb.2)
-            ));
-
-            let lch = color.to_hcl(illuminant, observer);
-            imp.hcl_row
-                .set_text(format!("lch({:.2}, {:.2}, {:.2})", lch.2, lch.1, lch.0));
-
-            //only update when necessary, to avoid searches, that might be a bit more costly
-            if imp.name_row.is_visible() {
-                let name = color_names::name(
-                    color,
-                    settings.boolean("name-source-basic"),
-                    settings.boolean("name-source-extended"),
-                    settings.boolean("name-source-gnome-palette"),
-                    settings.boolean("name-source-xkcd"),
-                );
-                imp.name_row.set_text(name.unwrap_or_else(|| {
-                    pgettext(
-                        "Information that no name for the color could be found",
-                        "Not named",
-                    )
-                }));
-            }
-
-            let lms = color.to_lms();
-            imp.lms_row
-                .set_text(format!("L: {:.2}, M: {:.2}, S: {:.2}", lms.0, lms.1, lms.2));
         }
+
+        log::info!(
+            "Changing Hex Color: {:?}",
+            color.to_hex_string(AlphaPosition::End)
+        );
+        let imp = self.imp();
+        let settings = &imp.settings;
+        imp.color.replace(color);
+
+        imp.color_button.set_rgba(&color.into());
+
+        let alpha_position = AlphaPosition::from(settings.int("alpha-position") as u32);
+
+        let illuminant = Illuminant::from(settings.int("cie-illuminants") as u32);
+
+        //observer is saved as an int (for technical reasons), so convert it back to an bool
+        let observer = settings.int("cie-standard-observer") == 1;
+
+        //change how many digits are displayed
+        let precision = if settings.boolean("use-default-precision") {
+            2
+        } else {
+            settings.uint("precision") as usize
+        };
+
+        imp.hex_row.set_text(color.to_hex_string(alpha_position));
+
+        imp.rgb_row.set_text(color.to_rgb_string(alpha_position));
+
+        imp.hsl_row.set_text(color.to_hsl_string(alpha_position));
+
+        let hsv = color.to_hsv();
+        imp.hsv_row
+            .set_text(format!("hsv({}, {}%, {}%)", hsv.0, hsv.1, hsv.2));
+
+        let cmyk = color.to_cmyk();
+        imp.cmyk_row.set_text(format!(
+            "cmyk({}%, {}%, {}%, {}%)",
+            cmyk.0, cmyk.1, cmyk.2, cmyk.3
+        ));
+
+        let xyz = color.to_xyz();
+        imp.xyz_row.set_text(format!(
+            "XYZ({:.precision$}, {:.precision$}, {:.precision$})",
+            xyz.0,
+            xyz.1,
+            xyz.2,
+            //this is the only format that has 3 digit precision by default, override the default precision
+            precision = if settings.boolean("use-default-precision") {
+                3
+            } else {
+                precision as usize
+            }
+        ));
+
+        let cie_lab = color.to_cie_lab(illuminant, observer);
+        imp.cie_lab_row.set_text(format!(
+            "CIELAB({:.precision$}, {:.precision$}, {:.precision$})",
+            cie_lab.0, cie_lab.1, cie_lab.2
+        ));
+
+        let hwb = color.to_hwb();
+        imp.hwb_row.set_text(format!(
+            "hwb({}, {}%, {}%)",
+            hwb.0,
+            utils::round_percent(hwb.1),
+            utils::round_percent(hwb.2)
+        ));
+
+        let lch = color.to_hcl(illuminant, observer);
+        imp.hcl_row.set_text(format!(
+            "lch({:.precision$}, {:.precision$}, {:.precision$})",
+            lch.2, lch.1, lch.0
+        ));
+
+        //only update when necessary, to avoid searches, that might be a bit more costly
+        if imp.name_row.is_visible() {
+            let name = color_names::name(
+                color,
+                settings.boolean("name-source-basic"),
+                settings.boolean("name-source-extended"),
+                settings.boolean("name-source-gnome-palette"),
+                settings.boolean("name-source-xkcd"),
+            );
+            imp.name_row.set_text(name.unwrap_or_else(|| {
+                pgettext(
+                    "Information that no name for the color could be found",
+                    "Not named",
+                )
+            }));
+        }
+
+        let lms = color.to_lms();
+        imp.lms_row.set_text(format!(
+            "L: {:.precision$}, M: {:.precision$}, S: {:.precision$}",
+            lms.0, lms.1, lms.2
+        ));
     }
 
     fn setup_callbacks(&self) {
@@ -736,8 +764,12 @@ impl AppWindow {
             glib::closure_local!(@watch self as window => move |_: ColorFormatRow, color: String| {
                 log::debug!("Changed hex entry: {color}");
                 let hex_alpha_position = AlphaPosition::from(window.imp().settings.int("alpha-position") as u32);
+
+                //to avoid a endless set-color loop, only set the color if it is different
+                let current_color = window.color();
+
                 match Color::from_hex(&color, hex_alpha_position) {
-                    Ok(color) => window.set_color(color),
+                    Ok(color) => if color != current_color{ window.set_color(color) },
                     Err(_) => log::debug!("Failed to parse color: {color}"),
                 }
             }),
@@ -753,12 +785,16 @@ impl AppWindow {
                     "Information that no name for the color could be found",
                     "Not named",
                 ) {
+
+                //to avoid a endless set-color loop, only set the color if it is different
+                let current_color = window.color();
+
                 match color_names::color(&name.trim().to_lowercase(),
                         window.imp().settings.boolean("name-source-basic"),
                         window.imp().settings.boolean("name-source-extended"),
                         window.imp().settings.boolean("name-source-gnome-palette"),
                         window.imp().settings.boolean("name-source-xkcd")) {
-                    Some(color) => window.set_color(color),
+                    Some(color) => if color != current_color { window.set_color(color) },
                     None => log::debug!("Failed to find color for name: {name}"),
                 }
                 }

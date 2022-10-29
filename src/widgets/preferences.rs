@@ -39,6 +39,10 @@ mod imp {
         #[template_child()]
         pub standard_observer_box: TemplateChild<adw::ComboRow>,
         #[template_child()]
+        pub precision_spin_button: TemplateChild<gtk::SpinButton>,
+        #[template_child()]
+        pub default_precision_switch: TemplateChild<gtk::Switch>,
+        #[template_child()]
         pub cie_illuminants_box: TemplateChild<gtk::DropDown>,
         #[template_child()]
         pub format_list: TemplateChild<gtk::ListBox>,
@@ -59,6 +63,8 @@ mod imp {
                 alpha_pos_box: TemplateChild::default(),
                 standard_observer_box: TemplateChild::default(),
                 cie_illuminants_box: TemplateChild::default(),
+                default_precision_switch: TemplateChild::default(),
+                precision_spin_button: TemplateChild::default(),
                 format_list: TemplateChild::default(),
                 formats: Default::default(),
             }
@@ -120,6 +126,18 @@ impl PreferencesWindow {
                 &*imp.standard_observer_box,
                 "selected",
             )
+            .build();
+
+        imp.settings
+            .bind(
+                "use-default-precision",
+                &*imp.default_precision_switch,
+                "state",
+            )
+            .build();
+
+        imp.settings
+            .bind("precision", &*imp.precision_spin_button, "value")
             .build();
     }
 
