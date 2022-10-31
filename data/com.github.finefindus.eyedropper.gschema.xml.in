@@ -113,7 +113,7 @@
       <summary>Precision</summary>
       <description>Use default precision for the formats.</description>
     </key>
-    <key name="precision" type="u">
+    <key name="precision-digits" type="u">
       <default>2</default>
       <summary>Precision</summary>
       <description>Precision used in the formats.</description>

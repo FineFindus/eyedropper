@@ -125,9 +125,10 @@ mod imp {
             // Load latest window state
             obj.load_window_size();
             obj.setup_history();
-            obj.load_visibility_settings();
             obj.setup_callbacks();
             obj.set_order();
+            obj.load_visibility_settings();
+            obj.initial_color_setup();
         }
     }
 
@@ -158,11 +159,13 @@ glib::wrapper! {
 #[gtk::template_callbacks]
 impl AppWindow {
     pub fn new(app: &App) -> Self {
-        let window: Self = glib::Object::builder().property("application", app).build();
-        //preset a color, so all scales have a set position
-        window.set_color(Color::rgba(46, 52, 64, 255));
-        window.clear_history();
-        window
+        glib::Object::builder().property("application", app).build()
+    }
+
+    /// Set the initial color.
+    pub fn initial_color_setup(&self) {
+        self.set_color(Color::rgba(46, 52, 64, 255));
+        self.clear_history();
     }
 
     /// Shows a basic toast with the given text.
@@ -281,7 +284,7 @@ impl AppWindow {
         }
     }
 
-    ///
+    /// Update color when their visibility changes.
     fn load_visibility_settings(&self) {
         let imp = self.imp();
         let settings = &imp.settings;
@@ -295,49 +298,37 @@ impl AppWindow {
             }),
         );
 
-        //update hex row with new alpha position
-        settings.connect_changed(
-            Some("alpha-position"),
-            glib::clone!(@weak self as window => move |settings, _| {
-                log::debug!("Updating AlphaPosition");
-                let color = window.color();
-                let alpha_position = AlphaPosition::from(settings.int("alpha-position") as u32);
-                //update hex to show alpha
-                window.imp().hex_row.set_text(color.to_hex_string(alpha_position));
-                //update rgb to switch between rgb and rgba
-                window.imp().rgb_row.set_text(color.to_rgb_string(alpha_position));
-                //update hsl to switch between hsl and hsla
-                window.imp().hsl_row.set_text(color.to_hsl_string(alpha_position));
-            }),
-        );
-
-        let update_observer_rows = glib::clone!(@weak self as window => move |settings: &gio::Settings, _: &str| {
-            log::debug!("Updating observer and illuminant colors");
+        // update the color by setting it again
+        let update_color = glib::clone!(@weak self as window => move |_: &gio::Settings, _:&str| {
             let color = window.color();
-            let illuminant = Illuminant::from(settings.int("cie-illuminants") as u32);
-            let observer = settings.int("cie-standard-observer") == 1;
-
-            //change how many digits are displayed
-            let precision = if settings.boolean("use-default-precision") {
-                2
-            } else {
-                settings.uint("precision") as usize
-            };
-
-            let cie_lab = color.to_cie_lab(illuminant, observer);
-            window.imp().cie_lab_row.set_text(format!(
-                "CIELAB({:.precision$}, {:.precision$}, {:.precision$})",
-                cie_lab.0, cie_lab.1, cie_lab.2
-            ));
-            let lch = color.to_hcl(illuminant, observer);
-            window.imp().hcl_row
-            .set_text(format!("lch({:.precision$}, {:.precision$}, {:.precision$})", lch.2, lch.1, lch.0));
-
+            window.set_color(color)
         });
 
+        //update hex row with new alpha position
+        settings.connect_changed(Some("alpha-position"), update_color.clone());
+
         //update colors that use observer values in their calculation
-        settings.connect_changed(Some("cie-illuminants"), update_observer_rows.clone());
-        settings.connect_changed(Some("cie-standard-observer"), update_observer_rows);
+        settings.connect_changed(Some("cie-illuminants"), update_color.clone());
+        settings.connect_changed(Some("cie-standard-observer"), update_color.clone());
+
+        // update color name
+        settings.connect_changed(Some("show-color-name"), update_color.clone());
+
+        //update precision
+        settings.connect_changed(Some("use-default-precision"), update_color.clone());
+        settings.connect_changed(Some("precision-digits"), update_color);
+
+        imp.hex_row.set_settings_name("show-hex-model");
+        imp.rgb_row.set_settings_name("show-rgb-model");
+        imp.hsl_row.set_settings_name("show-hsl-model");
+        imp.hsv_row.set_settings_name("show-hsv-model");
+        imp.cmyk_row.set_settings_name("show-cmyk-model");
+        imp.xyz_row.set_settings_name("show-xyz-model");
+        imp.cie_lab_row.set_settings_name("show-cie-lab-model");
+        imp.hwb_row.set_settings_name("show-hwb-model");
+        imp.hcl_row.set_settings_name("show-hcl-model");
+        imp.lms_row.set_settings_name("show-lms-format");
+        imp.name_row.set_settings_name("show-color-name");
 
         //update name when it changes
         let update_color_names = glib::clone!(@weak self as window => move |settings: &gio::Settings, _: &str| {
@@ -358,119 +349,9 @@ impl AppWindow {
 
         settings.connect_changed(Some("name-source-basic"), update_color_names.clone());
         settings.connect_changed(Some("name-source-extended"), update_color_names.clone());
-        settings.connect_changed(Some("name-source-xkcd"), update_color_names);
+        settings.connect_changed(Some("name-source-xkcd"), update_color_names.clone());
 
-        //first setup when loading
-        let show_hex_model = settings.boolean("show-hex-model");
-        imp.hex_row.set_visible(show_hex_model);
-        //refresh when settings change
-        settings.connect_changed(
-            Some("show-hex-model"),
-            glib::clone!(@weak self as window => move |settings, _| {
-            let show_hex_model = settings.boolean("show-hex-model");
-            window.imp().hex_row.set_visible(show_hex_model);
-            }),
-        );
-
-        //first setup when loading
-        let show_rgb_model = settings.boolean("show-rgb-model");
-        imp.rgb_row.set_visible(show_rgb_model);
-        //refresh when settings change
-        settings.connect_changed(
-            Some("show-rgb-model"),
-            glib::clone!(@weak self as window => move |settings, _| {
-            let show_rgb_model = settings.boolean("show-rgb-model");
-            window.imp().rgb_row.set_visible(show_rgb_model);
-            }),
-        );
-
-        //first setup when loading
-        let show_hsl_model = settings.boolean("show-hsl-model");
-        imp.hsl_row.set_visible(show_hsl_model);
-        //refresh when settings change
-        settings.connect_changed(
-            Some("show-hsl-model"),
-            glib::clone!(@weak self as window => move |settings, _| {
-            let show_hsl_model = settings.boolean("show-hsl-model");
-            window.imp().hsl_row.set_visible(show_hsl_model);
-            }),
-        );
-
-        //first setup when loading
-        let show_hsv_model = settings.boolean("show-hsv-model");
-        imp.hsv_row.set_visible(show_hsv_model);
-        //refresh when settings change
-        settings.connect_changed(
-            Some("show-hsv-model"),
-            glib::clone!(@weak self as window => move |settings, _| {
-            let show_hsv_model = settings.boolean("show-hsv-model");
-            window.imp().hsv_row.set_visible(show_hsv_model);
-            }),
-        );
-
-        //first setup when loading
-        let show_cmyk_model = settings.boolean("show-cmyk-model");
-        imp.cmyk_row.set_visible(show_cmyk_model);
-        //refresh when settings change
-        settings.connect_changed(
-            Some("show-cmyk-model"),
-            glib::clone!(@weak self as window => move |settings, _| {
-            let show_cmyk_model = settings.boolean("show-cmyk-model");
-            window.imp().cmyk_row.set_visible(show_cmyk_model);
-            }),
-        );
-
-        //first setup when loading
-        let show_xyz_model = settings.boolean("show-xyz-model");
-        imp.xyz_row.set_visible(show_xyz_model);
-        //refresh when settings change
-        settings.connect_changed(
-            Some("show-xyz-model"),
-            glib::clone!(@weak self as window => move |settings, _| {
-            let show_xyz_model = settings.boolean("show-xyz-model");
-            window.imp().xyz_row.set_visible(show_xyz_model);
-            }),
-        );
-
-        //first setup when loading
-        let show_cie_lab_model = settings.boolean("show-cie-lab-model");
-        imp.cie_lab_row.set_visible(show_cie_lab_model);
-        //refresh when settings change
-        settings.connect_changed(
-            Some("show-cie-lab-model"),
-            glib::clone!(@weak self as window => move |settings, _| {
-            let show_cie_lab_model = settings.boolean("show-cie-lab-model");
-            window.imp().cie_lab_row.set_visible(show_cie_lab_model);
-            }),
-        );
-
-        //first setup when loading
-        let show_hwb_model = settings.boolean("show-hwb-model");
-        imp.hwb_row.set_visible(show_hwb_model);
-        //refresh when settings change
-        settings.connect_changed(
-            Some("show-hwb-model"),
-            glib::clone!(@weak self as window => move |settings, _| {
-            let show_hwb_model = settings.boolean("show-hwb-model");
-            window.imp().hwb_row.set_visible(show_hwb_model);
-            }),
-        );
-
-        //first setup when loading
-        let show_hcl_model = settings.boolean("show-hcl-model");
-        imp.hcl_row.set_visible(show_hcl_model);
-        //refresh when settings change
-        settings.connect_changed(
-            Some("show-hcl-model"),
-            glib::clone!(@weak self as window => move |settings, _| {
-            let show_hcl_model = settings.boolean("show-hcl-model");
-            window.imp().hcl_row.set_visible(show_hcl_model);
-            }),
-        );
-
-        //first setup when loading
         let show_name_model = settings.boolean("show-color-name");
-        imp.name_row.set_visible(show_name_model);
         if show_name_model {
             //update field to show name
             let name = color_names::name(
@@ -487,39 +368,6 @@ impl AppWindow {
                 )
             }));
         }
-        //refresh when settings change
-        settings.connect_changed(
-            Some("show-color-name"),
-            glib::clone!(@weak self as window => move |settings, _| {
-            let show_name_model = settings.boolean("show-color-name");
-            window.imp().name_row.set_visible(show_name_model);
-            //name is not always update, so update it when it's shown
-            let color = window.color();
-            let name = color_names::name(color,
-                settings.boolean("name-source-basic"),
-                settings.boolean("name-source-extended"),
-                settings.boolean("name-source-gnome-palette"),
-                settings.boolean("name-source-xkcd"),
-            );
-            window.
-            imp().name_row.set_text(name.unwrap_or_else(|| pgettext(
-                "Information that no name for the color could be found",
-                "Not named",
-            )));
-            }),
-        );
-
-        //first setup when loading
-        let show_lms_format = settings.boolean("show-lms-format");
-        imp.lms_row.set_visible(show_lms_format);
-        //refresh when settings change
-        settings.connect_changed(
-            Some("show-lms-format"),
-            glib::clone!(@weak self as window => move |settings, _| {
-            let show_lms_format = settings.boolean("show-lms-format");
-            window.imp().lms_row.set_visible(show_lms_format);
-            }),
-        );
     }
 
     /// Insert the formats in the order in which they are saved in the settings.
@@ -648,7 +496,7 @@ impl AppWindow {
         let precision = if settings.boolean("use-default-precision") {
             2
         } else {
-            settings.uint("precision") as usize
+            settings.uint("precision-digits") as usize
         };
 
         imp.hex_row.set_text(color.to_hex_string(alpha_position));

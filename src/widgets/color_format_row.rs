@@ -8,6 +8,8 @@ use gtk::{
 mod imp {
     use std::cell::RefCell;
 
+    use crate::config;
+
     use super::*;
 
     use glib::{subclass::Signal, ParamSpecBoolean, ParamSpecString};
@@ -18,6 +20,7 @@ mod imp {
     #[derive(gtk::CompositeTemplate)]
     #[template(resource = "/com/github/finefindus/eyedropper/ui/color-format-row.ui")]
     pub struct ColorFormatRow {
+        pub settings: gtk::gio::Settings,
         #[template_child]
         pub entry: TemplateChild<gtk::Entry>,
         pub color: RefCell<String>,
@@ -32,6 +35,7 @@ mod imp {
 
         fn new() -> Self {
             Self {
+                settings: gtk::gio::Settings::new(config::APP_ID),
                 entry: TemplateChild::default(),
                 color: RefCell::new(String::new()),
                 editable: RefCell::new(false),
@@ -160,6 +164,16 @@ impl ColorFormatRow {
                     format_row.emit_by_name("text-edited", &[&text.to_value()])
                 }
             }));
+    }
+
+    /// Set the settings name.
+    /// This creates a binding between the widget visibility and the setting.
+    pub fn set_settings_name(&self, settings_name: &str) {
+        //it seems like it is not possible to bind to the name of a property in a widget so this does the same thing but less pretty
+        self.imp()
+            .settings
+            .bind(settings_name, self, "visible")
+            .build();
     }
 
     /// Callback when the copy button is pressed.

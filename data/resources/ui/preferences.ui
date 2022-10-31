@@ -54,7 +54,7 @@
                         </child>
                         <child>
                             <object class="AdwActionRow">
-                                <property name="sensitive" bind-source="default_precision_switch" bind-property="state" bind-flags="default|sync-create|invert-boolean" />
+                                <property name="sensitive" bind-source="default_precision_switch" bind-property="state" bind-flags="sync-create|invert-boolean" />
                                 <property name="title" translatable="yes">Precison</property>
                                 <child type="suffix">
                                     <object class="GtkSpinButton" id="precision_spin_button">

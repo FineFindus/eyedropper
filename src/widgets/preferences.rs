@@ -137,7 +137,7 @@ impl PreferencesWindow {
             .build();
 
         imp.settings
-            .bind("precision", &*imp.precision_spin_button, "value")
+            .bind("precision-digits", &*imp.precision_spin_button, "value")
             .build();
     }
 
