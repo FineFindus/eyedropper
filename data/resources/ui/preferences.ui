@@ -41,7 +41,7 @@
                         </child>
                         <child>
                             <object class="AdwActionRow">
-                                <property name="title" translatable="yes">Default Precison</property>
+                                <property name="title" translatable="yes">Default Precision</property>
                                 <property name="subtitle" translatable="yes">Use the recommended precision</property>
                                 <property name="activatable">True</property>
                                 <property name="activatable-widget">default_precision_switch</property>
@@ -55,7 +55,7 @@
                         <child>
                             <object class="AdwActionRow">
                                 <property name="sensitive" bind-source="default_precision_switch" bind-property="state" bind-flags="sync-create|invert-boolean" />
-                                <property name="title" translatable="yes">Precison</property>
+                                <property name="title" translatable="yes">Precision</property>
                                 <child type="suffix">
                                     <object class="GtkSpinButton" id="precision_spin_button">
                                         <property name="adjustment">
@@ -140,7 +140,7 @@
                     <object class="AdwPreferencesGroup">
                         <property name="title" translatable="yes">Color Formats</property>
                         <property name="description" translatable="yes">Customize the visible formats and in which order they are displayed.</property>
-                        <child type=" header-suffix">
+                        <child type="header-suffix">
                             <object class="GtkButton">
                                 <property name="icon-name">edit-clear-symbolic</property>
                                 <property name="tooltip-text" translatable="yes" context=" Tooltip of the button to reset the format order">Reset Order</property>
