@@ -346,7 +346,7 @@ impl Color {
     ///
     /// To convert to LMS color space, the color is first converted
     /// to XYZ color space and then using the [CIECAT02](https://en.wikipedia.org/wiki/CIECAM02#CAT02) matrix.
-    pub fn to_lms(&self) -> (f32, f32, f32) {
+    pub fn to_lms(self) -> (f32, f32, f32) {
         let (x, y, z) = self.to_xyz();
 
         let long = x * 0.7328 + y * 0.4296 + z * -0.1624;

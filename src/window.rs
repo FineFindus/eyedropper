@@ -30,6 +30,8 @@ mod imp {
         #[template_child]
         pub headerbar: TemplateChild<adw::HeaderBar>,
         #[template_child]
+        pub stack: TemplateChild<gtk::Stack>,
+        #[template_child]
         pub toast_overlay: TemplateChild<adw::ToastOverlay>,
         #[template_child]
         pub format_box: TemplateChild<gtk::Box>,
@@ -63,13 +65,14 @@ mod imp {
         pub history_list: TemplateChild<gtk::ListBox>,
         pub history: RefCell<Option<gio::ListStore>>,
         pub settings: gio::Settings,
-        pub color: RefCell<Color>,
+        pub color: RefCell<Option<Color>>,
     }
 
     impl Default for AppWindow {
         fn default() -> Self {
             Self {
                 headerbar: TemplateChild::default(),
+                stack: TemplateChild::default(),
                 color_button: TemplateChild::default(),
                 color_picker_button: TemplateChild::default(),
                 toast_overlay: TemplateChild::default(),
@@ -88,7 +91,7 @@ mod imp {
                 history_list: TemplateChild::default(),
                 history: Default::default(),
                 settings: gio::Settings::new(APP_ID),
-                color: RefCell::new(Color::rgba(0, 0, 0, 0)),
+                color: RefCell::new(None),
             }
         }
     }
@@ -128,7 +131,7 @@ mod imp {
             obj.setup_callbacks();
             obj.set_order();
             obj.load_visibility_settings();
-            obj.initial_color_setup();
+            obj.set_stack();
         }
     }
 
@@ -162,15 +165,26 @@ impl AppWindow {
         glib::Object::builder().property("application", app).build()
     }
 
-    /// Set the initial color.
-    pub fn initial_color_setup(&self) {
-        self.set_color(Color::rgba(46, 52, 64, 255));
-        self.clear_history();
-    }
-
     /// Shows a basic toast with the given text.
     fn show_toast(&self, text: &str) {
         self.imp().toast_overlay.add_toast(&adw::Toast::new(text));
+    }
+
+    /// The currently picked color.
+    ///
+    /// Returns `None` if no color has been picked yet.
+    fn color(&self) -> Option<Color> {
+        *self.imp().color.borrow()
+    }
+
+    /// Set the stack to either show the main page or the placeholder,
+    /// depending on if a color is chosen.
+    fn set_stack(&self) {
+        if self.color().is_some() {
+            self.imp().stack.set_visible_child_name("main");
+        } else {
+            self.imp().stack.set_visible_child_name("placeholder");
+        }
     }
 
     /// Returns the history list store object.
@@ -300,8 +314,9 @@ impl AppWindow {
 
         // update the color by setting it again
         let update_color = glib::clone!(@weak self as window => move |_: &gio::Settings, _:&str| {
-            let color = window.color();
-            window.set_color(color)
+            if let Some(color) = window.color() {
+            window.set_color(color);
+            }
         });
 
         //update hex row with new alpha position
@@ -333,18 +348,19 @@ impl AppWindow {
         //update name when it changes
         let update_color_names = glib::clone!(@weak self as window => move |settings: &gio::Settings, _: &str| {
             log::debug!("Updating color names");
-            let color = window.color();
-            let name = color_names::name(color,
-                settings.boolean("name-source-basic"),
-                settings.boolean("name-source-extended"),
-                settings.boolean("name-source-gnome-palette"),
-                settings.boolean("name-source-xkcd"),
-            );
-            window.
-            imp().name_row.set_text(name.unwrap_or_else(|| pgettext(
-                "Information that no name for the color could be found",
-                "Not named",
-            )));
+            if let Some(color) = window.color() {
+                let name = color_names::name(color,
+                    settings.boolean("name-source-basic"),
+                    settings.boolean("name-source-extended"),
+                    settings.boolean("name-source-gnome-palette"),
+                    settings.boolean("name-source-xkcd"),
+                );
+                window.
+                imp().name_row.set_text(name.unwrap_or_else(|| pgettext(
+                    "Information that no name for the color could be found",
+                    "Not named",
+                )));
+            }
         });
 
         settings.connect_changed(Some("name-source-basic"), update_color_names.clone());
@@ -353,20 +369,22 @@ impl AppWindow {
 
         let show_name_model = settings.boolean("show-color-name");
         if show_name_model {
-            //update field to show name
-            let name = color_names::name(
-                self.color(),
-                settings.boolean("name-source-basic"),
-                settings.boolean("name-source-extended"),
-                settings.boolean("name-source-gnome-palette"),
-                settings.boolean("name-source-xkcd"),
-            );
-            imp.name_row.set_text(name.unwrap_or_else(|| {
-                pgettext(
-                    "Information that no name for the color could be found",
-                    "Not named",
-                )
-            }));
+            if let Some(color) = self.color() {
+                //update field to show name
+                let name = color_names::name(
+                    color,
+                    settings.boolean("name-source-basic"),
+                    settings.boolean("name-source-extended"),
+                    settings.boolean("name-source-gnome-palette"),
+                    settings.boolean("name-source-xkcd"),
+                );
+                imp.name_row.set_text(name.unwrap_or_else(|| {
+                    pgettext(
+                        "Information that no name for the color could be found",
+                        "Not named",
+                    )
+                }));
+            }
         }
     }
 
@@ -417,7 +435,8 @@ impl AppWindow {
     /// When a palette is clicked it will be added to the history list.
     #[template_callback]
     fn open_palette_dialog(&self) {
-        let palette_dialog = PaletteDialog::new(self.color());
+        //safe to unwrap, if the user opens this dialog, the color button must be clicked
+        let palette_dialog = PaletteDialog::new(self.color().unwrap());
         palette_dialog.set_transient_for(Some(self));
         palette_dialog.show();
 
@@ -441,11 +460,6 @@ impl AppWindow {
         );
     }
 
-    /// The currently picked color.
-    fn color(&self) -> Color {
-        *self.imp().color.borrow()
-    }
-
     /// Pick a color from the desktop using [ashpd].
     ///
     /// It will show a toast when failing to pick a color, for example when the user cancels the action.
@@ -457,7 +471,10 @@ impl AppWindow {
         let connection = ashpd::zbus::Connection::session().await.expect("Failed to open connection to zbus");
         let proxy = ashpd::desktop::screenshot::ScreenshotProxy::new(&connection).await.expect("Failed to open screenshot proxy");
         match proxy.pick_color(&ashpd::WindowIdentifier::default()).await {
-            Ok(color) => window.set_color(Color::from(color)),
+            Ok(color) => {
+                window.set_color(Color::from(color));
+                window.set_stack();
+            },
             Err(err) => {
                 log::error!("{}", err);
                 window.show_toast(&gettext("Failed to pick a color"));
@@ -469,9 +486,9 @@ impl AppWindow {
     /// Update the current color to the given color.
     /// The old color will be added to the history list.
     pub fn set_color(&self, color: Color) {
-        if self.color() != color {
-            //append previous color to history
-            let history_item = HistoryObject::new(self.color());
+        //append previous color to history
+        if self.color() != Some(color) && self.color().is_some() {
+            let history_item = HistoryObject::new(self.color().unwrap());
             self.history().insert(0, &history_item);
         }
 
@@ -481,7 +498,7 @@ impl AppWindow {
         );
         let imp = self.imp();
         let settings = &imp.settings;
-        imp.color.replace(color);
+        imp.color.replace(Some(color));
 
         imp.color_button.set_rgba(&color.into());
 
@@ -614,12 +631,13 @@ impl AppWindow {
                 let hex_alpha_position = AlphaPosition::from(window.imp().settings.int("alpha-position") as u32);
 
                 //to avoid a endless set-color loop, only set the color if it is different
-                let current_color = window.color();
+                if let Some(current_color) = window.color(){
 
                 match Color::from_hex(&color, hex_alpha_position) {
                     Ok(color) => if color != current_color{ window.set_color(color) },
                     Err(_) => log::debug!("Failed to parse color: {color}"),
                 }
+            }
             }),
         );
 
@@ -635,7 +653,7 @@ impl AppWindow {
                 ) {
 
                 //to avoid a endless set-color loop, only set the color if it is different
-                let current_color = window.color();
+                if let Some(current_color) = window.color(){
 
                 match color_names::color(&name.trim().to_lowercase(),
                         window.imp().settings.boolean("name-source-basic"),
@@ -646,6 +664,7 @@ impl AppWindow {
                     None => log::debug!("Failed to find color for name: {name}"),
                 }
                 }
+            }
             }),
         );
     }
