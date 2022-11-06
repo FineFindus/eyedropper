@@ -71,6 +71,8 @@ yay -S eyedropper-git
 
 ## Contributing
 
+Contributors are expected to follow the [GNOME Code of Conduct](https://wiki.gnome.org/Foundation/CodeOfConduct).
+
 Any contributions you make are greatly appreciated. For major changes, please open an issue first to discuss what you would like to change.
 
 To contribute:
