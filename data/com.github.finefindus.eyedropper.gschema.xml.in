@@ -6,7 +6,7 @@
       <summary>Window width</summary>
     </key>
     <key name="window-height" type="i">
-      <default>350</default>
+      <default>425</default>
       <summary>Window height</summary>
     </key>
     <key name="is-maximized" type="b">
