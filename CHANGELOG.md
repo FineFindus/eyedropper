@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - A `.doap` file to describe the project 
 - LMS color space can now be shown
 - Show a placeholder page when no color is picked
+- Convert to Hunter-Lab color space
 
 ### Changed
 - Fixed a bug where the illuminants where not fully shown

@@ -62,6 +62,8 @@ mod imp {
         #[template_child]
         pub lms_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
         #[template_child]
+        pub hunter_lab_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
+        #[template_child]
         pub history_list: TemplateChild<gtk::ListBox>,
         pub history: RefCell<Option<gio::ListStore>>,
         pub settings: gio::Settings,
@@ -84,6 +86,7 @@ mod imp {
                 cmyk_row: TemplateChild::default(),
                 xyz_row: TemplateChild::default(),
                 cie_lab_row: TemplateChild::default(),
+                hunter_lab_row: TemplateChild::default(),
                 hwb_row: TemplateChild::default(),
                 hcl_row: TemplateChild::default(),
                 name_row: TemplateChild::default(),
@@ -343,6 +346,7 @@ impl AppWindow {
         imp.hwb_row.set_settings_name("show-hwb-model");
         imp.hcl_row.set_settings_name("show-hcl-model");
         imp.lms_row.set_settings_name("show-lms-format");
+        imp.lms_row.set_settings_name("show-hunter-lab-format");
         imp.name_row.set_settings_name("show-color-name");
 
         //update name when it changes
@@ -420,6 +424,7 @@ impl AppWindow {
                 "hcl" => &imp.hcl_row,
                 "name" => &imp.name_row,
                 "lms" => &imp.lms_row,
+                "hunterlab" => &imp.hunter_lab_row,
                 _ => {
                     log::error!("Failed to find format: {}", item);
                     continue;
@@ -588,6 +593,12 @@ impl AppWindow {
             "L: {:.precision$}, M: {:.precision$}, S: {:.precision$}",
             lms.0, lms.1, lms.2
         ));
+
+        let hunter_lab = color.to_hunter_lab(illuminant, observer);
+        imp.lms_row.set_text(format!(
+            "L: {:.precision$}, a: {:.precision$}, b: {:.precision$}",
+            hunter_lab.0, hunter_lab.1, hunter_lab.2
+        ));
     }
 
     fn setup_callbacks(&self) {
@@ -621,6 +632,8 @@ impl AppWindow {
         imp.name_row
             .connect_closure("copied-text", false, show_toast_closure.clone());
         imp.lms_row
+            .connect_closure("copied-text", false, show_toast_closure.clone());
+        imp.hunter_lab_row
             .connect_closure("copied-text", false, show_toast_closure);
 
         imp.hex_row.connect_closure(

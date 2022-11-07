@@ -14,7 +14,7 @@
       <summary>Window maximized state</summary>
     </key>
     <key name="format-order" type="as">
-      <default>[ 'name', 'hex', 'rgb', 'hsl', 'hsv', 'cmyk', 'xyz', 'cielab', 'hwb', 'hcl', 'lms' ]</default>
+      <default>[ 'name', 'hex', 'rgb', 'hsl', 'hsv', 'cmyk', 'xyz', 'cielab', 'hwb', 'hcl', 'lms', 'hunterlab' ]</default>
       <summary>Order of the formats</summary>
       <description>In which order the formats should be displayed. Only possible values should the format names.</description>
     </key>
@@ -77,6 +77,11 @@
       <default>false</default>
       <summary>Show LMS format</summary>
       <description>Enables the LMS format.</description>
+    </key>
+    <key name="show-hunter-lab-format" type="b">
+      <default>false</default>
+      <summary>Show Hunter Lab</summary>
+      <description>enables the Hunter-Lab format in the UI.</description>
     </key>
     <key name="name-source-basic" type="b">
       <default>true</default>

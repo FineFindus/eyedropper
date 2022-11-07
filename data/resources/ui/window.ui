@@ -187,6 +187,11 @@
                                 <property name="visible">False</property>
                               </object>
                             </child>
+                            <child>
+                              <object class="ColorFormatRow" id="hunter_lab_row">
+                                <property name="visible">False</property>
+                              </object>
+                            </child>
                           </object>
                         </child>
                         <child>

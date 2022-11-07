@@ -541,6 +541,18 @@ impl PreferencesWindow {
                         "show-lms-format",
                     )
                 }
+                "hunterlab" => {
+                    let hunter_lab = color.to_hunter_lab(Illuminant::D65, true);
+                    ColorFormatObject::new(
+                        item,
+                        gettext("Hunter Lab"),
+                        format!(
+                            "L: {:.2}, a: {:.2}, b: {:.2}",
+                            hunter_lab.0, hunter_lab.1, hunter_lab.2
+                        ),
+                        "show-hunter-lab-format",
+                    )
+                }
                 _ => {
                     log::error!("Failed to find format: {item}");
                     continue;
