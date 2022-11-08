@@ -333,22 +333,16 @@ impl Color {
             illuminant.two_degrees()
         };
 
-        log::debug!("Ref XYZ: {}, {}, {}", reference_x, reference_y, reference_z);
+        let (x, y, z) = self.to_xyz();
 
-        // let (x, y, z) = self.to_xyz();
-        let (x, y, z) = (3.2801, 3.4070, 5.3352);
-        log::debug!("XYZ: {}, {}, {}", x, y, z);
-
-        // let ka = (175.0 / 198.04) * (reference_x + reference_y);
-        let ka = 172.30;
-        // let kb = (70.0 / 218.11) * (reference_y + reference_z);
-        let kb = 67.20;
+        let ka = (175.0 / 198.04) * (reference_x + reference_y);
+        let kb = (70.0 / 218.11) * (reference_y + reference_z);
 
         let l = 100.0 * f32::sqrt(y / reference_y);
         let a = ka * (((x / reference_x) - (y / reference_y)) / f32::sqrt(y / reference_y));
         let b = kb * (((y / reference_y) - (z / reference_z)) / f32::sqrt(y / reference_y));
 
-        return (l, a, b);
+        (l, a, b)
     }
 
     /// Convert the color to hcl/ CIELCh
@@ -360,7 +354,7 @@ impl Color {
         let (luminance, a, b) = self.to_cie_lab(illuminant, ten_deg_observer);
 
         let hue = b.atan2(a).to_degrees();
-        let chroma = (a.powi(2) + b.powi(2)).sqrt();
+        let chroma = f32::sqrt(a.powi(2) + b.powi(2));
 
         (
             if hue >= 0.0 { hue } else { hue + 360.0 },
