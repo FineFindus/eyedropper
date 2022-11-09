@@ -270,6 +270,12 @@ impl AppWindow {
         );
         color_button.add_css_class(&class_name);
 
+        color_button.set_tooltip_text(Some(&color.to_hex_string(if color.alpha != 255 {
+            AlphaPosition::End
+        } else {
+            AlphaPosition::None
+        })));
+
         //switch to color when clicked
         color_button.connect_clicked(
             glib::clone!(@weak self as window, @weak history_object => move |_, | {
