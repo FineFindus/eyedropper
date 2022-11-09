@@ -243,17 +243,32 @@ impl AppWindow {
 
     /// Create a new history item
     fn create_history_item(&self, history_object: &HistoryObject) -> gtk::Button {
-        //create a button so that keyboard focus and selecting works.
-        //there seem to be a bug, which makes the focus on the button invisible, no idea on how to fix it though
-        let color_button = gtk::Button::builder()
-            .child(
-                &gtk::ColorButton::builder()
-                    .rgba(&history_object.color().into())
-                    .can_focus(false)
-                    .build(),
+        let color_button = gtk::Button::builder().margin_end(2).margin_start(2).build();
+
+        // color button with the history color
+        let color = history_object.color();
+
+        let class_name = format!(
+            "history-button-{}",
+            color.to_hex_string(AlphaPosition::None).replace('#', "")
+        );
+
+        let css_provider = gtk::CssProvider::new();
+
+        if let Some(display) = gtk::gdk::Display::default() {
+            gtk::StyleContext::add_provider_for_display(&display, &css_provider, 400);
+        }
+
+        css_provider.load_from_data(
+            format!(
+                ".{} {{background-color: {};border-radius: 6px;}}",
+                class_name,
+                // ignore alpha values, they are not displayed properly
+                color.to_hex_string(AlphaPosition::None)
             )
-            .css_name("history-item")
-            .build();
+            .as_bytes(),
+        );
+        color_button.add_css_class(&class_name);
 
         //switch to color when clicked
         color_button.connect_clicked(
