@@ -12,8 +12,6 @@ use crate::window::AppWindow;
 
 mod imp {
 
-    use crate::colors::color::Color;
-
     use super::*;
     use adw::subclass::prelude::AdwApplicationImpl;
     use glib::WeakRef;
@@ -21,7 +19,6 @@ mod imp {
 
     #[derive(Debug, Default)]
     pub struct App {
-        pub color: Color,
         pub window: OnceCell<WeakRef<AppWindow>>,
     }
 

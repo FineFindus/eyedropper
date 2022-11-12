@@ -110,7 +110,6 @@ mod imp {
             klass.bind_template_instance_callbacks();
         }
 
-        // You must call `Widget`'s `init_template()` within `instance_init()`.
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
             obj.init_template();
         }
@@ -124,7 +123,6 @@ mod imp {
 
             // Devel Profile
             if PROFILE == "Devel" {
-                log::debug!("Running in DEVEL mode");
                 obj.add_css_class("devel");
             }
 

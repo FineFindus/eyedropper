@@ -16,7 +16,6 @@ mod imp {
     use gtk::glib::ParamSpec;
     use once_cell::sync::Lazy;
 
-    // Object holding the state
     #[derive(gtk::CompositeTemplate)]
     #[template(resource = "/com/github/finefindus/eyedropper/ui/color-format-row.ui")]
     pub struct ColorFormatRow {
@@ -138,6 +137,11 @@ impl ColorFormatRow {
         self.set_property("text", &text);
     }
 
+    /// Bind the properties to the target values.
+    ///
+    /// Binds the `text` properties to the text of the entry, and
+    /// the `editable` property to different properties
+    /// of the entry to make it (un)-editable
     fn setup_properties(&self) {
         //bind texts
         self.bind_property("text", &*self.imp().entry, "text")
@@ -155,6 +159,8 @@ impl ColorFormatRow {
             .build();
     }
 
+    /// Registers a signal for when the text entry is changed to emit
+    /// a signal containing the edited text.
     fn setup_signals(&self) {
         self.imp()
             .entry
@@ -167,6 +173,7 @@ impl ColorFormatRow {
     }
 
     /// Set the settings name.
+    ///
     /// This creates a binding between the widget visibility and the setting.
     pub fn set_settings_name(&self, settings_name: &str) {
         //it seems like it is not possible to bind to the name of a property in a widget so this does the same thing but less pretty
@@ -176,17 +183,14 @@ impl ColorFormatRow {
             .build();
     }
 
-    /// Callback when the copy button is pressed.
+    /// Copy the text to the users clipboard and a signal.
+    ///
+    /// This is bound as the callback when the copy-icon-button is pressed.
     #[template_callback]
     fn on_copy_pressed(&self, _: &gtk::Button) {
-        self.copy_text();
-    }
-
-    /// Copy the current text to the users clipboard
-    fn copy_text(&self) {
-        let clipboard = self.clipboard();
         let text = self.imp().entry.text().to_string();
         log::debug!("Copied text: {text}");
+        let clipboard = self.clipboard();
         clipboard.set_text(&text);
         self.emit_by_name("copied-text", &[&text.to_value()])
     }
