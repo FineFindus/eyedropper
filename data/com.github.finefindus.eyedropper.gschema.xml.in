@@ -15,98 +15,98 @@
     </key>
     <key name="format-order" type="as">
       <default>[ 'name', 'hex', 'rgb', 'hsl', 'hsv', 'cmyk', 'xyz', 'cielab', 'hwb', 'hcl', 'lms', 'hunterlab' ]</default>
-      <summary>Order of the formats</summary>
-      <description>In which order the formats should be displayed. Only possible values should the format names.</description>
+      <summary>Format Order</summary>
+      <description>Order, in which the available formats are displayed.</description>
     </key>
     <key name="alpha-position" type="i">
       <default>0</default>
       <summary>Alpha Value Position</summary>
-      <description>Where the alpha value is positioned in the hex string.</description>
+      <description>At which position the alpha values are shown, e.g. not shown, the end or at the start. Thsi preference is used in multiple formats, like hex, rgb and hsl.</description>
     </key>
     <key name="show-hex-model" type="b">
       <default>true</default>
-      <summary>Show Hex Model</summary>
-      <description>Whether the application should show the hex code.</description>
+      <summary>Show hex format</summary>
+      <description>Changes the visibility of the hex format.</description>
     </key>
     <key name="show-rgb-model" type="b">
       <default>true</default>
-      <summary>Show RGB Model</summary>
-      <description>Whether the application should show the RGB code.</description>
+      <summary>Show RGB format</summary>
+      <description>Changes the visibility of the RGB format.</description>
     </key>
     <key name="show-hsl-model" type="b">
       <default>true</default>
-      <summary>Show HSL Model</summary>
-      <description>Whether the application should show the HSl code.</description>
+      <summary>Show HSL format</summary>
+      <description>Changes the visibility of the HSL format.</description>
     </key>
     <key name="show-hsv-model" type="b">
       <default>true</default>
-      <summary>Show HSV Model</summary>
-      <description>Whether the application should show the HSV code.</description>
+      <summary>Show HSV format</summary>
+      <description>Changes the visibility of the HSV format.</description>
     </key>
     <key name="show-cmyk-model" type="b">
       <default>true</default>
-      <summary>Show CMYK Model</summary>
-      <description>Whether the application should show the CMYK code.</description>
+      <summary>Show CMYK format</summary>
+      <description>Changes the visibility of the CMYK format.</description>
     </key>
     <key name="show-xyz-model" type="b">
       <default>false</default>
-      <summary>Show XYZ Model</summary>
-      <description>Whether the application should show the XYZ code.</description>
+      <summary>Show XYZ format</summary>
+      <description>Changes the visibility of the XYZ format.</description>
     </key>
     <key name="show-cie-lab-model" type="b">
       <default>false</default>
-      <summary>Show CIELAB Model</summary>
-      <description>Whether the application should show the CIELAB code.</description>
+      <summary>Show CIELAB format</summary>
+      <description>Changes the visibility of the CIELAB format.</description>
     </key>
     <key name="show-hwb-model" type="b">
       <default>false</default>
-      <summary>Show HWB Model</summary>
-      <description>Whether the application should show the HWB code.</description>
+      <summary>Show HWB format</summary>
+      <description>Changes the visibility of the HWB format.</description>
     </key>
     <key name="show-hcl-model" type="b">
       <default>false</default>
-      <summary>Show HCL Model</summary>
-      <description>Whether the application should show the HCL code.</description>
+      <summary>Show HCL format</summary>
+      <description>Changes the visibility of the HCL format.</description>
     </key>
     <key name="show-color-name" type="b">
       <default>false</default>
-      <summary>Show Name</summary>
-      <description>If the name of the color should be shown.</description>
+      <summary>Show color name</summary>
+      <description>Changes the visibility of the color name.</description>
     </key>
     <key name="show-lms-format" type="b">
       <default>false</default>
       <summary>Show LMS format</summary>
-      <description>Enables the LMS format.</description>
+      <description>Changes the visibility of the LMS format.</description>
     </key>
     <key name="show-hunter-lab-format" type="b">
       <default>false</default>
       <summary>Show Hunter Lab</summary>
-      <description>enables the Hunter-Lab format in the UI.</description>
+      <description>Changes the visibility of the Hunter Lab format.</description>
     </key>
     <key name="name-source-basic" type="b">
       <default>true</default>
       <summary>Show basic color names</summary>
-      <description>Shows names from the w3c basic keyword set.</description>
+      <description>Show color names from the w3c basic keyword set.</description>
     </key>
     <key name="name-source-extended" type="b">
       <default>true</default>
       <summary>Show extended color names</summary>
-      <description>Shows names from the w3c extended keyword set.</description>
-    </key>
-    <key name="name-source-gnome-palette" type="b">
-      <default>true</default>
-      <summary>Show GNOME color palette names</summary>
-      <description>Shows names from the GNOME color palette.</description>
+      <description>Show color names from the w3c extended keyword set.</description>
     </key>
     <key name="name-source-xkcd" type="b">
       <default>false</default>
       <summary>Show xkcd color names</summary>
-      <description>Shows names from the xkcd color name survey.</description>
+      <description>Show color names from the xkcd color survey.</description>
+    </key>
+    <key name="name-source-gnome-palette" type="b">
+      <default>true</default>
+      <summary>Show GNOME palette color names</summary>
+      <description>Show color names from the GNOME color palette.</description>
     </key>
     <key name="cie-illuminants" type="i">
       <default>5</default>
       <summary>Color Illuminant</summary>
-      <description>Which XYZ Tristimulus will be used as the illuminant.</description>
+      <description>Used XYZ Tristimulus values as the CIE illuminant</description>
     </key>
     <key name="cie-standard-observer" type="i">
       <default>0</default>
@@ -116,12 +116,12 @@
     <key name="use-default-precision" type="b">
       <default>true</default>
       <summary>Precision</summary>
-      <description>Use default precision for the formats.</description>
+      <description>Use the default recommended precision</description>
     </key>
     <key name="precision-digits" type="u">
       <default>2</default>
       <summary>Precision</summary>
-      <description>Precision used in the formats.</description>
+      <description>Number of digits displayed after the numeric point</description>
     </key>
   </schema>
 </schemalist>
