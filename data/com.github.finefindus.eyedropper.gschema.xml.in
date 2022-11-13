@@ -21,7 +21,7 @@
     <key name="alpha-position" type="i">
       <default>0</default>
       <summary>Alpha Position</summary>
-      <description>At which position the alpha values are shown, e.g. not shown, the end or at the start. Thsi preference is used in multiple formats, like hex, rgb and hsl.</description>
+      <description>At which position the alpha values are shown, e.g. not shown, the end or at the start. This preference is used in multiple formats, like hex, rgb and hsl.</description>
     </key>
     <key name="show-hex-format" type="b">
       <default>true</default>
