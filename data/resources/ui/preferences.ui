@@ -18,7 +18,7 @@
                                 <property name="model">
                                     <object class="GtkStringList">
                                         <items>
-                                            <item context="Alpha is not shown" translatable="yes">None</item>
+                                            <item context="Alpha is not shown" translatable="yes">Not shown</item>
                                             <item context="Alpha is shown at the end of the string" translatable="yes">End</item>
                                             <item context="Alpha is shown at the start of the string" translatable="yes">Start</item>
                                         </items>
