@@ -447,19 +447,19 @@ impl PreferencesWindow {
                     item,
                     gettext("Hex-Code"),
                     color.to_hex_string(AlphaPosition::None),
-                    "show-hex-model",
+                    "show-hex-format",
                 ),
                 "rgb" => ColorFormatObject::new(
                     item,
                     gettext("RGB"),
                     color.to_rgb_string(AlphaPosition::None),
-                    "show-rgb-model",
+                    "show-rgb-format",
                 ),
                 "hsl" => ColorFormatObject::new(
                     item,
                     gettext("HSL"),
                     color.to_hsl_string(AlphaPosition::None),
-                    "show-hsl-model",
+                    "show-hsl-format",
                 ),
                 "hsv" => {
                     let hsv = color.to_hsv();
@@ -467,7 +467,7 @@ impl PreferencesWindow {
                         item,
                         gettext("HSV"),
                         format!("hsv({}, {}%, {}%)", hsv.0, hsv.1, hsv.2),
-                        "show-hsv-model",
+                        "show-hsv-format",
                     )
                 }
                 "cmyk" => {
@@ -476,7 +476,7 @@ impl PreferencesWindow {
                         item,
                         gettext("CMYK"),
                         format!("cmyk({}%, {}%, {}%, {}%)", cmyk.0, cmyk.1, cmyk.2, cmyk.3),
-                        "show-cmyk-model",
+                        "show-cmyk-format",
                     )
                 }
                 "xyz" => {
@@ -485,7 +485,7 @@ impl PreferencesWindow {
                         item,
                         gettext("XYZ"),
                         format!("XYZ({:.3}, {:.3}, {:.3})", xyz.0, xyz.1, xyz.2),
-                        "show-xyz-model",
+                        "show-xyz-format",
                     )
                 }
                 "cielab" => {
@@ -497,7 +497,7 @@ impl PreferencesWindow {
                             "CIELAB({:.2}, {:.2}, {:.2})",
                             cie_lab.0, cie_lab.1, cie_lab.2
                         ),
-                        "show-cie-lab-model",
+                        "show-cie-lab-format",
                     )
                 }
                 "hwb" => {
@@ -511,7 +511,7 @@ impl PreferencesWindow {
                             utils::round_percent(hwb.1),
                             utils::round_percent(hwb.2)
                         ),
-                        "show-hwb-model",
+                        "show-hwb-format",
                     )
                 }
                 "hcl" => {
@@ -520,7 +520,7 @@ impl PreferencesWindow {
                         item,
                         gettext("CIELCh / HCL"),
                         format!("lch({:.2}, {:.2}, {:.2})", hcl.2, hcl.1, hcl.0),
-                        "show-hcl-model",
+                        "show-hcl-format",
                     )
                 }
                 "name" => ColorFormatObject::new(

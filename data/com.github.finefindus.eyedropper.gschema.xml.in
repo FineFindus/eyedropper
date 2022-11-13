@@ -20,50 +20,50 @@
     </key>
     <key name="alpha-position" type="i">
       <default>0</default>
-      <summary>Alpha Value Position</summary>
+      <summary>Alpha Position</summary>
       <description>At which position the alpha values are shown, e.g. not shown, the end or at the start. Thsi preference is used in multiple formats, like hex, rgb and hsl.</description>
     </key>
-    <key name="show-hex-model" type="b">
+    <key name="show-hex-format" type="b">
       <default>true</default>
       <summary>Show hex format</summary>
       <description>Changes the visibility of the hex format.</description>
     </key>
-    <key name="show-rgb-model" type="b">
+    <key name="show-rgb-format" type="b">
       <default>true</default>
       <summary>Show RGB format</summary>
       <description>Changes the visibility of the RGB format.</description>
     </key>
-    <key name="show-hsl-model" type="b">
+    <key name="show-hsl-format" type="b">
       <default>true</default>
       <summary>Show HSL format</summary>
       <description>Changes the visibility of the HSL format.</description>
     </key>
-    <key name="show-hsv-model" type="b">
+    <key name="show-hsv-format" type="b">
       <default>true</default>
       <summary>Show HSV format</summary>
       <description>Changes the visibility of the HSV format.</description>
     </key>
-    <key name="show-cmyk-model" type="b">
+    <key name="show-cmyk-format" type="b">
       <default>true</default>
       <summary>Show CMYK format</summary>
       <description>Changes the visibility of the CMYK format.</description>
     </key>
-    <key name="show-xyz-model" type="b">
+    <key name="show-xyz-format" type="b">
       <default>false</default>
       <summary>Show XYZ format</summary>
       <description>Changes the visibility of the XYZ format.</description>
     </key>
-    <key name="show-cie-lab-model" type="b">
+    <key name="show-cie-lab-format" type="b">
       <default>false</default>
       <summary>Show CIELAB format</summary>
       <description>Changes the visibility of the CIELAB format.</description>
     </key>
-    <key name="show-hwb-model" type="b">
+    <key name="show-hwb-format" type="b">
       <default>false</default>
       <summary>Show HWB format</summary>
       <description>Changes the visibility of the HWB format.</description>
     </key>
-    <key name="show-hcl-model" type="b">
+    <key name="show-hcl-format" type="b">
       <default>false</default>
       <summary>Show HCL format</summary>
       <description>Changes the visibility of the HCL format.</description>

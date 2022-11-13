@@ -355,15 +355,15 @@ impl AppWindow {
         settings.connect_changed(Some("use-default-precision"), update_color.clone());
         settings.connect_changed(Some("precision-digits"), update_color);
 
-        imp.hex_row.set_settings_name("show-hex-model");
-        imp.rgb_row.set_settings_name("show-rgb-model");
-        imp.hsl_row.set_settings_name("show-hsl-model");
-        imp.hsv_row.set_settings_name("show-hsv-model");
-        imp.cmyk_row.set_settings_name("show-cmyk-model");
-        imp.xyz_row.set_settings_name("show-xyz-model");
-        imp.cie_lab_row.set_settings_name("show-cie-lab-model");
-        imp.hwb_row.set_settings_name("show-hwb-model");
-        imp.hcl_row.set_settings_name("show-hcl-model");
+        imp.hex_row.set_settings_name("show-hex-format");
+        imp.rgb_row.set_settings_name("show-rgb-format");
+        imp.hsl_row.set_settings_name("show-hsl-format");
+        imp.hsv_row.set_settings_name("show-hsv-format");
+        imp.cmyk_row.set_settings_name("show-cmyk-format");
+        imp.xyz_row.set_settings_name("show-xyz-format");
+        imp.cie_lab_row.set_settings_name("show-cie-lab-format");
+        imp.hwb_row.set_settings_name("show-hwb-format");
+        imp.hcl_row.set_settings_name("show-hcl-format");
         imp.lms_row.set_settings_name("show-lms-format");
         imp.lms_row.set_settings_name("show-hunter-lab-format");
         imp.name_row.set_settings_name("show-color-name");
