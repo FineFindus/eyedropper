@@ -72,10 +72,10 @@ jobs:
           echo "data/com.github.finefindus.eyedropper.desktop.in.in" >> po/POTFILES.in
           echo "data/com.github.finefindus.eyedropper.metainfo.xml.in.in" >> po/POTFILES.in
           # add ui files
-          echo "\n# UI files" >> po/POTFILES.in
+          echo "# UI files" >> po/POTFILES.in
           find data -name "*.ui*" -print >> po/POTFILES.in
           # add rust files
-          echo "\n# RUST files" >> po/POTFILES.in
+          echo "# RUST files" >> po/POTFILES.in
           grep gettext src/**/*.rs | cut -d: -f1 | uniq >> po/POTFILES.in
 
       - name: Update Eyedropper.pot
