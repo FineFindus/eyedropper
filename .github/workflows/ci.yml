@@ -64,9 +64,9 @@ jobs:
       - name: Update Eyedropper.pot
         run: |
           GETTEXT_PACKAGE="Eyedropper" XGETTEXT_KEYWORDS="--msgid-bugs-address="https://github.com/FineFindus/eyedropper"" ./scripts/make-pot
-          echo "::set-output name=POT_LINES_CHANGED::$(git diff -U0 | grep '^[+|-][^+|-]' | grep -Ev '^[+-]"POT-Creation-Date' | wc -l)"
+          echo "POT_LINES_CHANGED=$(git diff -U0 | grep '^[+|-][^+|-]' | grep -Ev '^[+-]"POT-Creation-Date' | wc -l)" >> $GITHUB_ENV
       - name: Push changes  
-        if: ${{ steps.update_pot.outputs.POT_LINES_CHANGED > 0 }}
+        if: ${{ env.POT_LINES_CHANGED != 0}}
         uses: EndBug/add-and-commit@v9
         with:
           default_author: github_actions
