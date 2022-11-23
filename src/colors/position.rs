@@ -7,9 +7,9 @@
 /// Defaults to no alpha value
 #[derive(Debug, Default, Copy, Clone, PartialEq, Eq)]
 pub enum AlphaPosition {
-    #[default]
     End,
     Start,
+    #[default]
     None,
 }
 
