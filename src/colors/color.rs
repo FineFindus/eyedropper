@@ -95,12 +95,7 @@ impl Color {
 
         let saturation = if max == 0f32 { 0f32 } else { (max - min) / max };
 
-        log::debug!(
-            "HSV: {}°, {}%, {}% ",
-            hue,
-            saturation,
-            utils::round_percent(max)
-        );
+        log::debug!("HSV: {}°, {}%, {}% ", hue, saturation, max);
         (hue, saturation, max)
     }
 
