@@ -2,7 +2,7 @@ use adw::{prelude::*, subclass::prelude::*};
 use gettextrs::pgettext;
 use gtk::{glib, CompositeTemplate};
 
-use crate::colors::{color::Color, position::AlphaPosition};
+use crate::colors::{color::Color, formatter::ColorFormatter, position::AlphaPosition};
 
 mod imp {
 
@@ -186,10 +186,10 @@ impl PaletteDialog {
         );
 
         for color in colors.clone() {
-            let class_name = format!(
-                "colorbin-{}",
-                color.to_hex_string(AlphaPosition::None).replace('#', "")
-            );
+            let formatter = ColorFormatter::with_color(color);
+            let color_hex = formatter.hex_code();
+
+            let class_name = format!("colorbin-{}", color_hex.replace('#', ""));
             let color_box = adw::Bin::builder()
                 .width_request(32)
                 .height_request(32)
@@ -206,8 +206,7 @@ impl PaletteDialog {
             css_provider.load_from_data(
                 format!(
                     ".{} {{background-color: {};border-radius: 6px;}}",
-                    class_name,
-                    color.to_hex_string(AlphaPosition::None)
+                    class_name, color_hex
                 )
                 .as_bytes(),
             );
@@ -224,7 +223,10 @@ impl PaletteDialog {
         //Convert color to a string so the signal can emit it
         let color_string = colors
             .into_iter()
-            .map(|color| color.to_hex_string(AlphaPosition::None))
+            .map(|color| {
+                let formatter = ColorFormatter::with_alpha_position(color, AlphaPosition::None);
+                formatter.hex_code()
+            })
             .collect::<Vec<String>>()
             .join(" ");
 

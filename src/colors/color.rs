@@ -47,40 +47,6 @@ impl Color {
         )
     }
 
-    /// Returns the color as in hex form.
-    ///
-    /// The alpha position will indicate where the alpha value is stored.
-    pub fn to_hex_string(self, alpha_position: AlphaPosition) -> String {
-        match alpha_position {
-            AlphaPosition::Start => format!(
-                "#{:02x}{:02x}{:02x}{:02x}",
-                self.alpha, self.red, self.green, self.blue
-            ),
-            AlphaPosition::End => format!(
-                "#{:02x}{:02x}{:02x}{:02x}",
-                self.red, self.green, self.blue, self.alpha
-            ),
-            AlphaPosition::None => format!("#{:02x}{:02x}{:02x}", self.red, self.green, self.blue),
-        }
-        .to_ascii_uppercase()
-    }
-
-    /// Returns the color as a rgb/rgba string.
-    ///
-    /// If the alpha position is a the end, a rgba string is returned, otherwise
-    /// the normal rgb string.
-    pub fn to_rgb_string(self, alpha_position: AlphaPosition) -> String {
-        match alpha_position {
-            //show alpha at the end (rgba)
-            AlphaPosition::End => format!(
-                "rgba({}, {}, {}, {})",
-                self.red, self.green, self.blue, self.alpha
-            ),
-            // no alpha/ there is no argb
-            _ => format!("rgb({}, {}, {})", self.red, self.green, self.blue),
-        }
-    }
-
     /// Calculates the hue of the color.
     ///
     /// This is used when converting from RGB to HSL or HSV.
@@ -116,7 +82,7 @@ impl Color {
     /// Converts the color to HSV values.
     ///
     /// Formula from <https://en.wikipedia.org/wiki/HSL_and_HSV>
-    pub fn to_hsv(self) -> (u16, u8, u8) {
+    pub fn to_hsv(self) -> (u16, f32, f32) {
         let red = self.red as f32 / 255f32;
         let green = self.green as f32 / 255f32;
         let blue = self.blue as f32 / 255f32;
@@ -127,7 +93,7 @@ impl Color {
 
         let hue = self.calculate_hue();
 
-        let saturation = utils::round_percent(if max == 0f32 { 0f32 } else { (max - min) / max });
+        let saturation = if max == 0f32 { 0f32 } else { (max - min) / max };
 
         log::debug!(
             "HSV: {}°, {}%, {}% ",
@@ -135,7 +101,7 @@ impl Color {
             saturation,
             utils::round_percent(max)
         );
-        (hue, saturation, utils::round_percent(max))
+        (hue, saturation, max)
     }
 
     /// Returns the [HWB](https://en.wikipedia.org/wiki/HWB_color_model) values of the color.
@@ -156,7 +122,7 @@ impl Color {
     /// Converts the color to HSL values.
     ///
     /// Formula from <https://en.wikipedia.org/wiki/HSL_and_HSV>
-    fn to_hsl(self) -> (u16, f32, f32) {
+    pub fn to_hsl(self) -> (u16, f32, f32) {
         let red = self.red as f32 / 255f32;
         let green = self.green as f32 / 255f32;
         let blue = self.blue as f32 / 255f32;
@@ -179,31 +145,10 @@ impl Color {
         (hue, saturation, lightness)
     }
 
-    pub fn to_hsl_string(self, alpha_position: AlphaPosition) -> String {
-        let (hue, saturation, lightness) = self.to_hsl();
-        //format saturation and lightness to be full percentages
-        let saturation = utils::round_percent(saturation);
-        let lightness = utils::round_percent(lightness);
-        match alpha_position {
-            AlphaPosition::End => format!(
-                "hsla({}, {}%, {}%, {})",
-                hue,
-                saturation,
-                lightness,
-                //convert from [0-255] to [0-1]
-                utils::pretty_print_percent(
-                    utils::round_percent(self.alpha as f32 / 255f32) as f32 / 100f32
-                )
-            ),
-            //normal format for non-alpha/ alpha at start
-            _ => format!("hsl({}, {}%, {}%)", hue, saturation, lightness),
-        }
-    }
-
     /// Returns the CMYK values of the color
     ///
     /// Based on <https://www.easyrgb.com/en/math.php>
-    pub fn to_cmyk(self) -> (u8, u8, u8, u8) {
+    pub fn to_cmyk(self) -> (f32, f32, f32, f32) {
         let mut c = 1f32 - (self.red as f32 / 255f32);
         let mut m = 1f32 - (self.green as f32 / 255f32);
         let mut y = 1f32 - (self.blue as f32 / 255f32);
@@ -230,12 +175,7 @@ impl Color {
             y = (y - k) / (1f32 - k);
         }
 
-        (
-            utils::round_percent(c),
-            utils::round_percent(m),
-            utils::round_percent(y),
-            utils::round_percent(k),
-        )
+        (c, m, y, k)
     }
 
     /// Return the color as its XYZ equivalent.
@@ -706,7 +646,7 @@ mod tests {
     #[test]
     fn test_to_hsv() {
         let color = Color::rgb(46, 52, 64);
-        assert_eq!((220, 28, 25), color.to_hsv())
+        assert_eq!((220, 28.0, 25.0), color.to_hsv())
     }
 
     #[test]
@@ -724,7 +664,7 @@ mod tests {
     #[test]
     fn test_to_cmyk() {
         let color = Color::rgb(46, 52, 64);
-        assert_eq!((28, 19, 0, 75), color.to_cmyk())
+        assert_eq!((28.0, 19.0, 0.0, 75.0), color.to_cmyk())
     }
 
     #[test]

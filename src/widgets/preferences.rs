@@ -11,12 +11,9 @@ use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::Switch;
 
-use crate::colors::color::Color;
-use crate::colors::illuminant::Illuminant;
-use crate::colors::position::AlphaPosition;
-use crate::utils;
-
 use self::color_format::ColorFormatObject;
+use crate::colors::color::Color;
+use crate::colors::formatter::ColorFormatter;
 
 mod imp {
 
@@ -405,7 +402,10 @@ impl PreferencesWindow {
     }
 
     fn add_options(&self) {
+        //color used as examples
         let color = Color::rgb(46, 52, 64);
+        //create a formatter to display the color
+        let formatter = ColorFormatter::with_color(color);
 
         let mut order = self.imp().settings.get::<Vec<String>>("format-order");
         log::debug!("Order: {:?}", order);
@@ -446,83 +446,42 @@ impl PreferencesWindow {
                 "hex" => ColorFormatObject::new(
                     item,
                     gettext("Hex-Code"),
-                    color.to_hex_string(AlphaPosition::None),
+                    formatter.hex_code(),
                     "show-hex-format",
                 ),
-                "rgb" => ColorFormatObject::new(
-                    item,
-                    gettext("RGB"),
-                    color.to_rgb_string(AlphaPosition::None),
-                    "show-rgb-format",
-                ),
-                "hsl" => ColorFormatObject::new(
-                    item,
-                    gettext("HSL"),
-                    color.to_hsl_string(AlphaPosition::None),
-                    "show-hsl-format",
-                ),
+                "rgb" => {
+                    ColorFormatObject::new(item, gettext("RGB"), formatter.rgb(), "show-rgb-format")
+                }
+                "hsl" => {
+                    ColorFormatObject::new(item, gettext("HSL"), formatter.hsl(), "show-hsl-format")
+                }
                 "hsv" => {
-                    let hsv = color.to_hsv();
-                    ColorFormatObject::new(
-                        item,
-                        gettext("HSV"),
-                        format!("hsv({}, {}%, {}%)", hsv.0, hsv.1, hsv.2),
-                        "show-hsv-format",
-                    )
+                    ColorFormatObject::new(item, gettext("HSV"), formatter.hsv(), "show-hsv-format")
                 }
-                "cmyk" => {
-                    let cmyk = color.to_cmyk();
-                    ColorFormatObject::new(
-                        item,
-                        gettext("CMYK"),
-                        format!("cmyk({}%, {}%, {}%, {}%)", cmyk.0, cmyk.1, cmyk.2, cmyk.3),
-                        "show-cmyk-format",
-                    )
-                }
+                "cmyk" => ColorFormatObject::new(
+                    item,
+                    gettext("CMYK"),
+                    formatter.cmyk(),
+                    "show-cmyk-format",
+                ),
                 "xyz" => {
-                    let xyz = color.to_xyz();
-                    ColorFormatObject::new(
-                        item,
-                        gettext("XYZ"),
-                        format!("XYZ({:.3}, {:.3}, {:.3})", xyz.0, xyz.1, xyz.2),
-                        "show-xyz-format",
-                    )
+                    ColorFormatObject::new(item, gettext("XYZ"), formatter.xyz(), "show-xyz-format")
                 }
-                "cielab" => {
-                    let cie_lab = color.to_cie_lab(Illuminant::D65, true);
-                    ColorFormatObject::new(
-                        item,
-                        gettext("CIELAB"),
-                        format!(
-                            "CIELAB({:.2}, {:.2}, {:.2})",
-                            cie_lab.0, cie_lab.1, cie_lab.2
-                        ),
-                        "show-cie-lab-format",
-                    )
-                }
+                "cielab" => ColorFormatObject::new(
+                    item,
+                    gettext("CIELAB"),
+                    formatter.cie_lab(),
+                    "show-cie-lab-format",
+                ),
                 "hwb" => {
-                    let hwb = color.to_hwb();
-                    ColorFormatObject::new(
-                        item,
-                        gettext("HWB"),
-                        format!(
-                            "hwb({}, {}%, {}%)",
-                            hwb.0,
-                            utils::round_percent(hwb.1),
-                            utils::round_percent(hwb.2)
-                        ),
-                        "show-hwb-format",
-                    )
+                    ColorFormatObject::new(item, gettext("HWB"), formatter.hwb(), "show-hwb-format")
                 }
-                "hcl" => {
-                    let hcl = color.to_hcl(Illuminant::D65, true);
-                    ColorFormatObject::new(
-                        item,
-                        gettext("CIELCh / HCL"),
-                        format!("lch({:.2}, {:.2}, {:.2})", hcl.2, hcl.1, hcl.0),
-                        "show-hcl-format",
-                    )
-                }
+                "hcl" => ColorFormatObject::new(
+                    item,
+                    gettext("CIELCh / HCL"),
+                    formatter.hcl(),
+                    "show-hcl-format",
+                ),
                 "name" => ColorFormatObject::new(
                     item,
                     gettext("Name"),
@@ -533,26 +492,14 @@ impl PreferencesWindow {
                     "show-color-name",
                 ),
                 "lms" => {
-                    let lms = color.to_lms();
-                    ColorFormatObject::new(
-                        item,
-                        gettext("LMS"),
-                        format!("L: {:.2}, M: {:.2}, S: {:.2}", lms.0, lms.1, lms.2),
-                        "show-lms-format",
-                    )
+                    ColorFormatObject::new(item, gettext("LMS"), formatter.lms(), "show-lms-format")
                 }
-                "hunterlab" => {
-                    let hunter_lab = color.to_hunter_lab(Illuminant::D65, true);
-                    ColorFormatObject::new(
-                        item,
-                        gettext("Hunter Lab"),
-                        format!(
-                            "L: {:.2}, a: {:.2}, b: {:.2}",
-                            hunter_lab.0, hunter_lab.1, hunter_lab.2
-                        ),
-                        "show-hunter-lab-format",
-                    )
-                }
+                "hunterlab" => ColorFormatObject::new(
+                    item,
+                    gettext("Hunter Lab"),
+                    formatter.hunter_lab(),
+                    "show-hunter-lab-format",
+                ),
                 _ => {
                     log::error!("Failed to find format: {item}");
                     continue;

@@ -6,11 +6,11 @@ use gtk::{gio, glib};
 use crate::application::App;
 use crate::colors::color::Color;
 use crate::colors::color_names;
+use crate::colors::formatter::ColorFormatter;
 use crate::colors::illuminant::Illuminant;
 use crate::colors::position::AlphaPosition;
 use crate::config::{APP_ID, PROFILE};
 use crate::model::history::HistoryObject;
-use crate::utils;
 use crate::widgets::color_format_row::ColorFormatRow;
 use crate::widgets::palette_dialog::PaletteDialog;
 
@@ -245,11 +245,10 @@ impl AppWindow {
 
         // color button with the history color
         let color = history_object.color();
+        let mut formatter = ColorFormatter::with_color(color);
+        let color_hex = formatter.hex_code();
 
-        let class_name = format!(
-            "history-button-{}",
-            color.to_hex_string(AlphaPosition::None).replace('#', "")
-        );
+        let class_name = format!("history-button-{}", color_hex.replace('#', ""));
 
         let css_provider = gtk::CssProvider::new();
 
@@ -262,17 +261,19 @@ impl AppWindow {
                 ".{} {{background-color: {};border-radius: 6px;}}",
                 class_name,
                 // ignore alpha values, they are not displayed properly
-                color.to_hex_string(AlphaPosition::None)
+                color_hex
             )
             .as_bytes(),
         );
         color_button.add_css_class(&class_name);
 
-        color_button.set_tooltip_text(Some(&color.to_hex_string(if color.alpha != 255 {
-            AlphaPosition::End
+        let tooltip = if color.alpha != 255 {
+            formatter.alpha_position = AlphaPosition::End;
+            formatter.hex_code()
         } else {
-            AlphaPosition::None
-        })));
+            color_hex
+        };
+        color_button.set_tooltip_text(Some(&tooltip));
 
         //switch to color when clicked
         color_button.connect_clicked(
@@ -516,10 +517,6 @@ impl AppWindow {
             self.history().insert(0, &history_item);
         }
 
-        log::info!(
-            "Changing Hex Color: {:?}",
-            color.to_hex_string(AlphaPosition::End)
-        );
         let imp = self.imp();
         let settings = &imp.settings;
         imp.color.replace(Some(color));
@@ -533,62 +530,36 @@ impl AppWindow {
         //observer is saved as an int (for technical reasons), so convert it back to an bool
         let observer = settings.int("cie-standard-observer") == 1;
 
-        //change how many digits are displayed
-        let precision = if settings.boolean("use-default-precision") {
-            2
-        } else {
-            settings.uint("precision-digits") as usize
-        };
+        log::info!("Precsion: {}", settings.uint("precision-digits") as usize);
 
-        imp.hex_row.set_text(color.to_hex_string(alpha_position));
+        let formatter = ColorFormatter::new(
+            observer,
+            illuminant,
+            alpha_position,
+            settings.boolean("use-default-precision"),
+            settings.uint("precision-digits") as usize,
+            color,
+        );
 
-        imp.rgb_row.set_text(color.to_rgb_string(alpha_position));
+        log::info!("Changing color: {}", formatter.hex_code());
 
-        imp.hsl_row.set_text(color.to_hsl_string(alpha_position));
+        imp.hex_row.set_text(formatter.hex_code());
 
-        let hsv = color.to_hsv();
-        imp.hsv_row
-            .set_text(format!("hsv({}, {}%, {}%)", hsv.0, hsv.1, hsv.2));
+        imp.rgb_row.set_text(formatter.rgb());
 
-        let cmyk = color.to_cmyk();
-        imp.cmyk_row.set_text(format!(
-            "cmyk({}%, {}%, {}%, {}%)",
-            cmyk.0, cmyk.1, cmyk.2, cmyk.3
-        ));
+        imp.hsl_row.set_text(formatter.hsl());
 
-        let xyz = color.to_xyz();
-        imp.xyz_row.set_text(format!(
-            "XYZ({:.precision$}, {:.precision$}, {:.precision$})",
-            xyz.0,
-            xyz.1,
-            xyz.2,
-            //this is the only format that has 3 digit precision by default, override the default precision
-            precision = if settings.boolean("use-default-precision") {
-                3
-            } else {
-                precision as usize
-            }
-        ));
+        imp.hsv_row.set_text(formatter.hsv());
 
-        let cie_lab = color.to_cie_lab(illuminant, observer);
-        imp.cie_lab_row.set_text(format!(
-            "CIELAB({:.precision$}, {:.precision$}, {:.precision$})",
-            cie_lab.0, cie_lab.1, cie_lab.2
-        ));
+        imp.cmyk_row.set_text(formatter.cmyk());
 
-        let hwb = color.to_hwb();
-        imp.hwb_row.set_text(format!(
-            "hwb({}, {}%, {}%)",
-            hwb.0,
-            utils::round_percent(hwb.1),
-            utils::round_percent(hwb.2)
-        ));
+        imp.xyz_row.set_text(formatter.xyz());
 
-        let lch = color.to_hcl(illuminant, observer);
-        imp.hcl_row.set_text(format!(
-            "lch({:.precision$}, {:.precision$}, {:.precision$})",
-            lch.2, lch.1, lch.0
-        ));
+        imp.cie_lab_row.set_text(formatter.cie_lab());
+
+        imp.hwb_row.set_text(formatter.hwb());
+
+        imp.hcl_row.set_text(formatter.hcl());
 
         //only update when necessary, to avoid searches, that might be a bit more costly
         if imp.name_row.is_visible() {
@@ -607,17 +578,9 @@ impl AppWindow {
             }));
         }
 
-        let lms = color.to_lms();
-        imp.lms_row.set_text(format!(
-            "L: {:.precision$}, M: {:.precision$}, S: {:.precision$}",
-            lms.0, lms.1, lms.2
-        ));
+        imp.lms_row.set_text(formatter.lms());
 
-        let hunter_lab = color.to_hunter_lab(illuminant, observer);
-        imp.lms_row.set_text(format!(
-            "L: {:.precision$}, a: {:.precision$}, b: {:.precision$}",
-            hunter_lab.0, hunter_lab.1, hunter_lab.2
-        ));
+        imp.hunter_lab_row.set_text(formatter.hunter_lab());
     }
 
     fn setup_callbacks(&self) {
