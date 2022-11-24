@@ -153,7 +153,6 @@ impl App {
 
     // Sets up keyboard shortcuts
     fn setup_accels(&self) {
-        //quit app
         self.set_accels_for_action("app.pick_color", &["<Control>p"]);
         self.set_accels_for_action("app.random_color", &["<Control>r"]);
         self.set_accels_for_action("app.preferences", &["<Control>comma"]);
@@ -178,7 +177,6 @@ impl App {
 
     fn show_preferences_dialog(&self) {
         let preferences = PreferencesWindow::new();
-
         preferences.set_transient_for(Some(&self.main_window()));
         preferences.show();
     }

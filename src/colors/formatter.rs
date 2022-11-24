@@ -24,6 +24,8 @@ impl Default for ColorFormatter {
 }
 
 impl ColorFormatter {
+    /// Create a new formatter,
+    /// which can be used to format colors as human readable strings.
     pub fn new(
         ten_deg_observer: bool,
         illuminant: Illuminant,

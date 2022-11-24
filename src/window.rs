@@ -523,19 +523,11 @@ impl AppWindow {
 
         imp.color_button.set_rgba(&color.into());
 
-        let alpha_position = AlphaPosition::from(settings.int("alpha-position") as u32);
-
-        let illuminant = Illuminant::from(settings.int("cie-illuminants") as u32);
-
-        //observer is saved as an int (for technical reasons), so convert it back to an bool
-        let observer = settings.int("cie-standard-observer") == 1;
-
-        log::info!("Precsion: {}", settings.uint("precision-digits") as usize);
-
         let formatter = ColorFormatter::new(
-            observer,
-            illuminant,
-            alpha_position,
+            //observer is saved as an int (for technical reasons), so convert it back to an bool
+            settings.int("cie-standard-observer") == 1,
+            Illuminant::from(settings.int("cie-illuminants") as u32),
+            AlphaPosition::from(settings.int("alpha-position") as u32),
             settings.boolean("use-default-precision"),
             settings.uint("precision-digits") as usize,
             color,
