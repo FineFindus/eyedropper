@@ -496,10 +496,7 @@ impl AppWindow {
         let connection = ashpd::zbus::Connection::session().await.expect("Failed to open connection to zbus");
         let proxy = ashpd::desktop::screenshot::ScreenshotProxy::new(&connection).await.expect("Failed to open screenshot proxy");
         match proxy.pick_color(&ashpd::WindowIdentifier::default()).await {
-            Ok(color) => {
-                window.set_color(Color::from(color));
-                window.set_stack();
-            },
+            Ok(color) => window.set_color(Color::from(color)),
             Err(err) => {
                 log::error!("{}", err);
                 window.show_toast(&gettext("Failed to pick a color"));
@@ -520,6 +517,9 @@ impl AppWindow {
         let imp = self.imp();
         let settings = &imp.settings;
         imp.color.replace(Some(color));
+
+        //stop showing placeholder, when a color is set
+        self.set_stack();
 
         imp.color_button.set_rgba(&color.into());
 
