@@ -97,6 +97,7 @@
                         </child>
                         <child type="end">
                           <object class="GtkMenuButton" id="appmenu_button">
+                            <property name="primary">true</property>
                             <property name="icon-name">open-menu-symbolic</property>
                             <property name="menu-model">primary_menu</property>
                           </object>
