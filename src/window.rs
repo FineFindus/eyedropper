@@ -506,7 +506,7 @@ impl AppWindow {
     }
 
     /// Update the current color to the given color.
-    /// The old color will be added to the history list.
+    /// The previous color will be added to the history list.
     pub fn set_color(&self, color: Color) {
         //append previous color to history
         if self.color() != Some(color) && self.color().is_some() {

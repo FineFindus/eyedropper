@@ -151,7 +151,7 @@
                             </object>
                         </child>
                         <child>
-                            <object class="GtkListBox" id="format_list">
+                            <object class="GtkListBox" id="order_list">
                                 <property name="selection-mode">none</property>
                                 <style>
                                     <class name="boxed-list" />

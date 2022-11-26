@@ -42,8 +42,8 @@ mod imp {
         #[template_child()]
         pub cie_illuminants_box: TemplateChild<gtk::DropDown>,
         #[template_child()]
-        pub format_list: TemplateChild<gtk::ListBox>,
-        pub formats: RefCell<Option<gio::ListStore>>,
+        pub order_list: TemplateChild<gtk::ListBox>,
+        pub format_order: RefCell<Option<gio::ListStore>>,
     }
 
     // The central trait for subclassing a GObject
@@ -62,8 +62,8 @@ mod imp {
                 cie_illuminants_box: TemplateChild::default(),
                 default_precision_switch: TemplateChild::default(),
                 precision_spin_button: TemplateChild::default(),
-                format_list: TemplateChild::default(),
-                formats: Default::default(),
+                order_list: TemplateChild::default(),
+                format_order: Default::default(),
             }
         }
 
@@ -82,7 +82,7 @@ mod imp {
         fn constructed(&self) {
             self.parent_constructed();
             let obj = self.instance();
-            obj.setup_format_list();
+            obj.setup_order_list();
             obj.setup_settings();
             obj.add_options();
         }
@@ -215,7 +215,7 @@ impl PreferencesWindow {
     fn formats(&self) -> gio::ListStore {
         // Get state
         self.imp()
-            .formats
+            .format_order
             .borrow()
             .clone()
             .expect("Could not get current formats.")
@@ -232,21 +232,21 @@ impl PreferencesWindow {
 
     /// Assure that formats is only visible
     /// if the number of items is greater than 0
-    fn set_format_list_visible(&self, formats: &gio::ListStore) {
-        self.imp().format_list.set_visible(formats.n_items() > 0);
+    fn set_order_list_visible(&self, formats: &gio::ListStore) {
+        self.imp().order_list.set_visible(formats.n_items() > 0);
     }
 
     ///Setup the format list
-    fn setup_format_list(&self) {
+    fn setup_order_list(&self) {
         // Create new model
         let model = ListStore::new(ColorFormatObject::static_type());
 
         // Get state and set model
-        self.imp().formats.replace(Some(model));
+        self.imp().format_order.replace(Some(model));
 
         // Wrap model with selection and pass it to the list view
         let selection_model = gtk::NoSelection::new(Some(&self.formats()));
-        self.imp().format_list.bind_model(
+        self.imp().order_list.bind_model(
             Some(&selection_model),
             glib::clone!(@weak self as widget => @default-panic, move |obj| {
                 let formats_object = obj.downcast_ref().expect("The object is not of type `ColorFormatObject`.");
@@ -256,10 +256,10 @@ impl PreferencesWindow {
         );
 
         // Assure that the formats list is only visible when it is supposed to
-        self.set_format_list_visible(&self.formats());
+        self.set_order_list_visible(&self.formats());
         self.formats().connect_items_changed(
             glib::clone!(@weak self as window => move |items, _, _, _| {
-                window.set_format_list_visible(items);
+                window.set_order_list_visible(items);
             }),
         );
     }
