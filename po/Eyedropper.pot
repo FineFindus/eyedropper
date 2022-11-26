@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2022-11-24 15:25+0000\n"
+"POT-Creation-Date: 2022-11-26 15:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -397,6 +397,11 @@ msgstr ""
 #: data/resources/ui/window.ui:93
 msgctxt "Tooltip of the colorpicker button"
 msgid "Pick a Color"
+msgstr ""
+
+#: data/resources/ui/window.ui:125
+msgctxt "Tooltip of the palette button"
+msgid "Open Palette Window"
 msgstr ""
 
 #: data/resources/ui/color-format-row.ui:22
