@@ -236,7 +236,7 @@
                         <child>
                             <object class="CustomFormatRow">
                                 <property name="title" translatable="yes">Hunter Lab Format</property>
-                                <property name="default-format">L: {l}, a. {a}, b: {b}</property>
+                                <property name="default-format">L: {l}, a: {a}, b: {b}</property>
                                 <property name="settings-key">custom-format-hunter-lab</property>
                             </object>
                         </child>
