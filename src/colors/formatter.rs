@@ -32,7 +32,9 @@ impl Default for ColorFormatter {
 macro_rules! custom_format {
     ($custom_format:expr, $($element:expr),+) => {
         if let Some(mut format) = $custom_format {
-            $(format = format.replacen("{}", &$element.to_string(), 1);)+
+            $(
+                let pattern = format!("{{{}}}", $element.0);
+                format = format.replacen(&pattern, &$element.1.to_string(), 1);)+
             return format;
         }
     };
@@ -161,9 +163,9 @@ impl ColorFormatter {
     pub fn rgb(&self) -> String {
         custom_format!(
             self.custom_format("custom-format-rgb"),
-            self.color.red,
-            self.color.green,
-            self.color.blue
+            ("r", self.color.red),
+            ("g", self.color.green),
+            ("b", self.color.blue)
         );
         match self.alpha_position {
             //show alpha at the end (rgba)
@@ -187,9 +189,9 @@ impl ColorFormatter {
         let lightness = self.round_percentage(lightness);
         custom_format!(
             self.custom_format("custom-format-hsl"),
-            hue,
-            saturation,
-            lightness
+            ("h", hue),
+            ("s", saturation),
+            ("l", lightness)
         );
 
         match self.alpha_position {
@@ -210,19 +212,19 @@ impl ColorFormatter {
 
     /// Format the color as HSV.
     pub fn hsv(&self) -> String {
-        let hsv = self.color.to_hsv();
+        let (h, s, v) = self.color.to_hsv();
         custom_format!(
             self.custom_format("custom-format-hsv"),
-            hsv.0,
-            self.round_percentage(hsv.1),
-            self.round_percentage(hsv.2)
+            ("h", h),
+            ("s", self.round_percentage(s)),
+            ("v", self.round_percentage(v))
         );
 
         format!(
             "hsv({}, {}%, {}%)",
-            hsv.0,
-            self.round_percentage(hsv.1),
-            self.round_percentage(hsv.2)
+            h,
+            self.round_percentage(s),
+            self.round_percentage(v)
         )
     }
 
@@ -231,10 +233,10 @@ impl ColorFormatter {
         let cmyk = self.color.to_cmyk();
         custom_format!(
             self.custom_format("custom-format-cmyk"),
-            self.round_percentage(cmyk.0),
-            self.round_percentage(cmyk.1),
-            self.round_percentage(cmyk.2),
-            self.round_percentage(cmyk.3)
+            ("c", self.round_percentage(cmyk.0)),
+            ("m", self.round_percentage(cmyk.1)),
+            ("y", self.round_percentage(cmyk.2)),
+            ("k", self.round_percentage(cmyk.3))
         );
 
         format!(
@@ -249,7 +251,12 @@ impl ColorFormatter {
     /// Format the color as XYZ
     pub fn xyz(&self) -> String {
         let (x, y, z) = self.color.to_xyz();
-        custom_format!(self.custom_format("custom-format-xyz"), x, y, z);
+        custom_format!(
+            self.custom_format("custom-format-xyz"),
+            ("x", x),
+            ("y", y),
+            ("z", z)
+        );
         format!(
             "XYZ({:.precision$}, {:.precision$}, {:.precision$})",
             x,
@@ -269,7 +276,12 @@ impl ColorFormatter {
         let (l, a, b) = self
             .color
             .to_cie_lab(self.illuminant, self.ten_deg_observer);
-        custom_format!(self.custom_format("custom-format-cie-lab"), l, a, b);
+        custom_format!(
+            self.custom_format("custom-format-cie-lab"),
+            ("l", l),
+            ("a", a),
+            ("b", b)
+        );
         format!(
             "CIELAB({:.precision$}, {:.precision$}, {:.precision$})",
             l,
@@ -284,9 +296,9 @@ impl ColorFormatter {
         let (h, w, b) = self.color.to_hwb();
         custom_format!(
             self.custom_format("custom-format-hwb"),
-            h,
-            self.round_percentage(w),
-            self.round_percentage(b)
+            ("h", h),
+            ("w", self.round_percentage(w)),
+            ("b", self.round_percentage(b))
         );
         format!(
             "hwb({}, {}%, {}%)",
@@ -299,7 +311,12 @@ impl ColorFormatter {
     /// Format the color as CIELCh / HCL.
     pub fn hcl(&self) -> String {
         let (h, c, l) = self.color.to_hcl(self.illuminant, self.ten_deg_observer);
-        custom_format!(self.custom_format("custom-format-hcl"), h, c, l);
+        custom_format!(
+            self.custom_format("custom-format-hcl"),
+            ("h", h),
+            ("c", c),
+            ("l", l)
+        );
         format!(
             "lch({:.precision$}, {:.precision$}, {:.precision$})",
             h,
@@ -312,7 +329,12 @@ impl ColorFormatter {
     /// Format the color as LMS.
     pub fn lms(&self) -> String {
         let (l, m, s) = self.color.to_lms();
-        custom_format!(self.custom_format("custom-format-lms"), l, m, s);
+        custom_format!(
+            self.custom_format("custom-format-lms"),
+            ("l", l),
+            ("m", m),
+            ("s", s)
+        );
         format!(
             "L: {:.precision$}, M: {:.precision$}, S: {:.precision$}",
             l,
@@ -326,7 +348,12 @@ impl ColorFormatter {
         let (l, a, b) = self
             .color
             .to_hunter_lab(self.illuminant, self.ten_deg_observer);
-        custom_format!(self.custom_format("custom-format-hunter-lab"), l, a, b);
+        custom_format!(
+            self.custom_format("custom-format-hunter-lab"),
+            ("l", l),
+            ("a", a),
+            ("b", b)
+        );
         format!(
             "L: {:.precision$}, a: {:.precision$}, b: {:.precision$}",
             l,
