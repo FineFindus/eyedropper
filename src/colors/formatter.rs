@@ -1,7 +1,12 @@
+use gtk::prelude::SettingsExt;
+
+use crate::config;
+
 use super::{color::Color, illuminant::Illuminant, position::AlphaPosition};
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone)]
 pub struct ColorFormatter {
+    settings: gtk::gio::Settings,
     pub color: Color,
     pub default_precision: bool,
     pub precision: usize,
@@ -19,8 +24,18 @@ impl Default for ColorFormatter {
             alpha_position: Default::default(),
             illuminant: Default::default(),
             ten_deg_observer: Default::default(),
+            settings: gtk::gio::Settings::new(config::APP_ID),
         }
     }
+}
+
+macro_rules! custom_format {
+    ($custom_format:expr, $($element:expr),+) => {
+        if let Some(mut format) = $custom_format {
+            $(format = format.replacen("{}", &$element.to_string(), 1);)+
+            return format;
+        }
+    };
 }
 
 impl ColorFormatter {
@@ -41,6 +56,7 @@ impl ColorFormatter {
             default_precision,
             precision,
             color,
+            ..Default::default()
         }
     }
 
@@ -60,6 +76,17 @@ impl ColorFormatter {
             color,
             alpha_position,
             ..Default::default()
+        }
+    }
+
+    /// Returns the user preference string.
+    /// If the use has not specified one, `None` is returned.
+    fn custom_format(&self, key: &str) -> Option<String> {
+        let value = self.settings.string(key).to_string();
+        if value.trim().is_empty() {
+            None
+        } else {
+            Some(value)
         }
     }
 
@@ -132,6 +159,12 @@ impl ColorFormatter {
     /// Depending on the chosen alpha position,
     /// either rgb or rgba is returned.
     pub fn rgb(&self) -> String {
+        custom_format!(
+            self.custom_format("custom-format-rgb"),
+            self.color.red,
+            self.color.green,
+            self.color.blue
+        );
         match self.alpha_position {
             //show alpha at the end (rgba)
             AlphaPosition::End => format!(
@@ -152,6 +185,13 @@ impl ColorFormatter {
         //format saturation and lightness to be full percentages
         let saturation = self.round_percentage(saturation);
         let lightness = self.round_percentage(lightness);
+        custom_format!(
+            self.custom_format("custom-format-hsl"),
+            hue,
+            saturation,
+            lightness
+        );
+
         match self.alpha_position {
             AlphaPosition::End => format!(
                 "hsla({}, {}%, {}%, {})",
@@ -171,6 +211,13 @@ impl ColorFormatter {
     /// Format the color as HSV.
     pub fn hsv(&self) -> String {
         let hsv = self.color.to_hsv();
+        custom_format!(
+            self.custom_format("custom-format-hsv"),
+            hsv.0,
+            self.round_percentage(hsv.1),
+            self.round_percentage(hsv.2)
+        );
+
         format!(
             "hsv({}, {}%, {}%)",
             hsv.0,
@@ -182,6 +229,14 @@ impl ColorFormatter {
     /// Format the color as CMYK.
     pub fn cmyk(&self) -> String {
         let cmyk = self.color.to_cmyk();
+        custom_format!(
+            self.custom_format("custom-format-cmyk"),
+            self.round_percentage(cmyk.0),
+            self.round_percentage(cmyk.1),
+            self.round_percentage(cmyk.2),
+            self.round_percentage(cmyk.3)
+        );
+
         format!(
             "cmyk({}%, {}%, {}%, {}%)",
             self.round_percentage(cmyk.0),
@@ -193,12 +248,13 @@ impl ColorFormatter {
 
     /// Format the color as XYZ
     pub fn xyz(&self) -> String {
-        let xyz = self.color.to_xyz();
+        let (x, y, z) = self.color.to_xyz();
+        custom_format!(self.custom_format("custom-format-xyz"), x, y, z);
         format!(
             "XYZ({:.precision$}, {:.precision$}, {:.precision$})",
-            xyz.0,
-            xyz.1,
-            xyz.2,
+            x,
+            y,
+            z,
             //this is the only format that has 3 digit precision by default, override the default precision
             precision = if self.default_precision {
                 3
@@ -210,62 +266,72 @@ impl ColorFormatter {
 
     /// Format the color as CIE-Lab.
     pub fn cie_lab(&self) -> String {
-        let cie_lab = self
+        let (l, a, b) = self
             .color
             .to_cie_lab(self.illuminant, self.ten_deg_observer);
+        custom_format!(self.custom_format("custom-format-cie-lab"), l, a, b);
         format!(
             "CIELAB({:.precision$}, {:.precision$}, {:.precision$})",
-            cie_lab.0,
-            cie_lab.1,
-            cie_lab.2,
+            l,
+            a,
+            b,
             precision = self.precision()
         )
     }
 
     /// Format the color as HWB.
     pub fn hwb(&self) -> String {
-        let hwb = self.color.to_hwb();
+        let (h, w, b) = self.color.to_hwb();
+        custom_format!(
+            self.custom_format("custom-format-hwb"),
+            h,
+            self.round_percentage(w),
+            self.round_percentage(b)
+        );
         format!(
             "hwb({}, {}%, {}%)",
-            hwb.0,
-            self.round_percentage(hwb.1),
-            self.round_percentage(hwb.2)
+            h,
+            self.round_percentage(w),
+            self.round_percentage(b)
         )
     }
 
     /// Format the color as CIELCh / HCL.
     pub fn hcl(&self) -> String {
-        let hcl = self.color.to_hcl(self.illuminant, self.ten_deg_observer);
+        let (h, c, l) = self.color.to_hcl(self.illuminant, self.ten_deg_observer);
+        custom_format!(self.custom_format("custom-format-hcl"), h, c, l);
         format!(
             "lch({:.precision$}, {:.precision$}, {:.precision$})",
-            hcl.0,
-            hcl.1,
-            hcl.2,
+            h,
+            c,
+            l,
             precision = self.precision()
         )
     }
 
     /// Format the color as LMS.
     pub fn lms(&self) -> String {
-        let lms = self.color.to_lms();
+        let (l, m, s) = self.color.to_lms();
+        custom_format!(self.custom_format("custom-format-lms"), l, m, s);
         format!(
             "L: {:.precision$}, M: {:.precision$}, S: {:.precision$}",
-            lms.0,
-            lms.1,
-            lms.2,
+            l,
+            m,
+            s,
             precision = self.precision()
         )
     }
     /// Format the color as hunter-lab.
     pub fn hunter_lab(&self) -> String {
-        let hunter_lab = self
+        let (l, a, b) = self
             .color
             .to_hunter_lab(self.illuminant, self.ten_deg_observer);
+        custom_format!(self.custom_format("custom-format-hunter-lab"), l, a, b);
         format!(
             "L: {:.precision$}, a: {:.precision$}, b: {:.precision$}",
-            hunter_lab.0,
-            hunter_lab.1,
-            hunter_lab.2,
+            l,
+            a,
+            b,
             precision = self.precision()
         )
     }

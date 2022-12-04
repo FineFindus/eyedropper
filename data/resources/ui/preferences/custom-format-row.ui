@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+    <template class="CustomFormatRow" parent="AdwEntryRow">
+        <property name="show-apply-button">True</property>
+        <signal name="apply" handler="on_apply" swapped="yes" />
+        <child type="suffix">
+            <object class="GtkButton">
+                <property name="icon-name">edit-clear-symbolic</property>
+                <property name="valign">center</property>
+                <property name="tooltip-text" translatable="yes" context="Tooltip of the reset button for custom format">Reset Format</property>
+                <signal name="clicked" handler="on_reset_pressed" swapped="true" />
+                <style>
+                    <class name="flat" />
+                </style>
+            </object>
+        </child>
+    </template>
+</interface>

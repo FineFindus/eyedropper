@@ -354,7 +354,19 @@ impl AppWindow {
 
         //update precision
         settings.connect_changed(Some("use-default-precision"), update_color.clone());
-        settings.connect_changed(Some("precision-digits"), update_color);
+        settings.connect_changed(Some("precision-digits"), update_color.clone());
+
+        // update for custom formats
+        settings.connect_changed(Some("custom-format-rgb"), update_color.clone());
+        settings.connect_changed(Some("custom-format-hsl"), update_color.clone());
+        settings.connect_changed(Some("custom-format-hsv"), update_color.clone());
+        settings.connect_changed(Some("custom-format-cmyk"), update_color.clone());
+        settings.connect_changed(Some("custom-format-xyz"), update_color.clone());
+        settings.connect_changed(Some("custom-format-cie-lab"), update_color.clone());
+        settings.connect_changed(Some("custom-format-hwb"), update_color.clone());
+        settings.connect_changed(Some("custom-format-hcl"), update_color.clone());
+        settings.connect_changed(Some("custom-format-lms"), update_color.clone());
+        settings.connect_changed(Some("custom-format-hunter-lab"), update_color);
 
         imp.hex_row.set_settings_name("show-hex-format");
         imp.rgb_row.set_settings_name("show-rgb-format");

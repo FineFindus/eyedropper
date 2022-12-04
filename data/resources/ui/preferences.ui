@@ -162,5 +162,87 @@
                 </child>
             </object>
         </child>
+        <child>
+            <object class="AdwPreferencesPage">
+                <property name="icon-name">editor-symbolic</property>
+                <property name="title" translatable="yes">Formats</property>
+                <child>
+                    <object class="AdwPreferencesGroup">
+                        <property name="title" translatable="yes">Formats</property>
+                        <property name="description" translatable="yes">Edit how the color formats are displayed. The {} will be replaced in the same order as the normally. </property>
+                        <child>
+                            <object class="CustomFormatRow" id="_custom_format">
+                                <property name="title" translatable="yes">RGB Format</property>
+                                <property name="default-format">rgb({}, {}, {})</property>
+                                <property name="settings-key">custom-format-rgb</property>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="CustomFormatRow">
+                                <property name="title" translatable="yes">HSL Format</property>
+                                <property name="default-format">hsl({}, {}%, {}%)</property>
+                                <property name="settings-key">custom-format-hsl</property>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="CustomFormatRow">
+                                <property name="title" translatable="yes">HSV Format</property>
+                                <property name="default-format">hsv({}, {}%, {}%)</property>
+                                <property name="settings-key">custom-format-hsv</property>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="CustomFormatRow">
+                                <property name="title" translatable="yes">CMYK Format</property>
+                                <property name="default-format">cmyk({}%, {}%, {}%, {}%)</property>
+                                <property name="settings-key">custom-format-cmyk</property>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="CustomFormatRow">
+                                <property name="title" translatable="yes">XYZ Format</property>
+                                <property name="default-format">XYZ({}, {}, {})</property>
+                                <property name="settings-key">custom-format-xyz</property>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="CustomFormatRow">
+                                <property name="title" translatable="yes">CIELAB Format</property>
+                                <property name="default-format">CIELAB({}, {}, {})</property>
+                                <property name="settings-key">custom-format-cie-lab</property>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="CustomFormatRow">
+                                <property name="title" translatable="yes">HWB Format</property>
+                                <property name="default-format">hwb({}, {}%, {}%)</property>
+                                <property name="settings-key">custom-format-hwb</property>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="CustomFormatRow">
+                                <property name="title" translatable="yes">CIELCh/HCL Format</property>
+                                <property name="default-format">lch({}, {}, {})</property>
+                                <property name="settings-key">custom-format-hcl</property>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="CustomFormatRow">
+                                <property name="title" translatable="yes">LMS Format</property>
+                                <property name="default-format">L: {}, M: {}, S: {}</property>
+                                <property name="settings-key">custom-format-lms</property>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="CustomFormatRow">
+                                <property name="title" translatable="yes">Hunter Lab Format</property>
+                                <property name="default-format">L: {}, a. {}, b: {}</property>
+                                <property name="settings-key">custom-format-hunter-lab</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+            </object>
+        </child>
     </template>
 </interface>

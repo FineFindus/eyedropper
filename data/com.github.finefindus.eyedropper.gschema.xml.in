@@ -123,5 +123,56 @@
       <summary>Precision</summary>
       <description>Number of digits displayed after the numeric point</description>
     </key>
+    <key name="custom-format-rgb" type="s">
+      <default>''</default>
+      <summary>Custom RGB format</summary>
+      <description>A user set format for RGB. If it's empty, the default format will be used.</description>
+    </key>
+    <key name="custom-format-hsl" type="s">
+      <default>''</default>
+      <summary>Custom HSl format</summary>
+      <description>A user set format for HSL. If it's empty, the default format will be used.</description>
+    </key>
+    <key name="custom-format-hsv" type="s">
+      <default>''</default>
+      <summary>Custom HSV format</summary>
+      <description>A user set format for HSV. If it's empty, the default format will be used.</description>
+    </key>
+    <key name="custom-format-cmyk" type="s">
+      <default>''</default>
+      <summary>Custom CMYK format</summary>
+      <description>A user set format for CMYK. If it's empty, the default format will be used.</description>
+    </key>
+    <key name="custom-format-xyz" type="s">
+      <default>''</default>
+      <summary>Custom XYZ format</summary>
+      <description>A user set format for XYZ. If it's empty, the default format will be used.</description>
+    </key>
+    <key name="custom-format-cie-lab" type="s">
+      <default>''</default>
+      <summary>Custom CIELab format</summary>
+      <description>A user set format for CIELab. If it's empty, the default format will be used.</description>
+    </key>
+    <key name="custom-format-hwb" type="s">
+      <default>''</default>
+      <summary>Custom HWB format</summary>
+      <description>A user set format for HWB. If it's empty, the default format will be used.</description>
+    </key>
+    <key name="custom-format-hcl" type="s">
+      <default>''</default>
+      <summary>Custom HCL format</summary>
+      <description>A user set format for HCL. If it's empty, the default format will be used.</description>
+    </key>
+    <key name="custom-format-lms" type="s">
+      <default>''</default>
+      <summary>Custom LMS format</summary>
+      <description>A user set format for LMS. If it's empty, the default format will be used.</description>
+    </key>
+    <key name="custom-format-hunter-lab" type="s">
+      <default>''</default>
+      <summary>Custom Hunter-Lab format</summary>
+      <description>A user set format for Hunter-Lab. If it's empty, the default format will be used.</description>
+    </key>
+
   </schema>
 </schemalist>

@@ -7,7 +7,7 @@ use gtk::{gdk, gio, glib};
 use crate::colors::color::Color;
 use crate::config::{APP_ID, PKGDATADIR, PROFILE, VERSION};
 use crate::widgets::about_window::EyedropperAbout;
-use crate::widgets::preferences::PreferencesWindow;
+use crate::widgets::preferences_window::PreferencesWindow;
 use crate::window::AppWindow;
 
 mod imp {
