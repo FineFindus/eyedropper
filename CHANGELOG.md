@@ -10,9 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Export the generated palettes from the palette dialog as a GIMP palette file
 - A `.doap` file to describe the project 
-- LMS color space can now be shown
 - Show a placeholder page when no color is picked
+- LMS color space can now be shown
 - Convert to Hunter-Lab color space
+- Customize color formats
 
 ### Changed
 - Fixed a bug where the illuminants where not fully shown
