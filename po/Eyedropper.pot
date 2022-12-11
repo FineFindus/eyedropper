@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2022-12-06 19:50+0000\n"
+"POT-Creation-Date: 2022-12-11 18:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:88 src/widgets/about_window.rs:44
+#: data/resources/ui/window.ui:88 src/main.rs:25 src/widgets/about_window.rs:44
 msgid "Eyedropper"
 msgstr ""
 
@@ -464,24 +464,23 @@ msgctxt "Tooltip of the copy button for format rows"
 msgid "Copy Format"
 msgstr ""
 
-#. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
-#: src/widgets/about_window.rs:50
-msgid "translator-credits"
+#: src/window.rs:397 src/window.rs:420 src/window.rs:580 src/window.rs:651
+#: src/widgets/preferences_window.rs:494
+msgctxt "Information that no name for the color could be found"
+msgid "Not named"
 msgstr ""
 
-#: src/widgets/about_window.rs:110
-msgctxt ""
-"The changelog of the current version. Should be similar to the CHANGELOG.md "
-"file at the project root. Please ensure that the tags have a matching "
-"closing tag. Since xgettext does not recognize rust multiline strings, this "
-"should be on a single line using line breaks (\\n) for new lines."
-msgid ""
-"<p>A new release with exciting new features.</p><p>New Features:</p>\n"
-"<ul><li>Customize formats in the settings</li><li>Export the colorscheme as "
-"a GIMP palette using the new export option</li><li>A placeholder is shown "
-"when no color is picked</li><li> Hunter-Lab and LMS color spaces have been "
-"added</li><li>The GNOME color palette has been added</li><li>Fixed minor "
-"issues</li></ul>"
+#: src/window.rs:493
+msgid "Failed to get palette color"
+msgstr ""
+
+#: src/window.rs:514
+msgid "Failed to pick a color"
+msgstr ""
+
+#. Translators: Do not replace the {}. These are used as placeholders for the copied values
+#: src/window.rs:597
+msgid "Copied: “{}”"
 msgstr ""
 
 #: src/widgets/palette_dialog.rs:122
@@ -619,15 +618,30 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: src/widgets/preferences_window.rs:494
-msgctxt "Information that no name for the color could be found"
-msgid "Not named"
-msgstr ""
-
 #: src/widgets/preferences_window.rs:499
 msgid "LMS"
 msgstr ""
 
 #: src/widgets/preferences_window.rs:503
 msgid "Hunter Lab"
+msgstr ""
+
+#. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
+#: src/widgets/about_window.rs:50
+msgid "translator-credits"
+msgstr ""
+
+#: src/widgets/about_window.rs:110
+msgctxt ""
+"The changelog of the current version. Should be similar to the CHANGELOG.md "
+"file at the project root. Please ensure that the tags have a matching "
+"closing tag. Since xgettext does not recognize rust multiline strings, this "
+"should be on a single line using line breaks (\\n) for new lines."
+msgid ""
+"<p>A new release with exciting new features.</p><p>New Features:</p>\n"
+"<ul><li>Customize formats in the settings</li><li>Export the colorscheme as "
+"a GIMP palette using the new export option</li><li>A placeholder is shown "
+"when no color is picked</li><li> Hunter-Lab and LMS color spaces have been "
+"added</li><li>The GNOME color palette has been added</li><li>Fixed minor "
+"issues</li></ul>"
 msgstr ""
