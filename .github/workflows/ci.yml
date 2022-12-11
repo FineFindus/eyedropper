@@ -77,7 +77,7 @@ jobs:
           find data -name "*.ui*" -print >> po/POTFILES.in
           # add rust files
           echo "# RUST files" >> po/POTFILES.in
-          grep gettext src/**/*.rs | cut -d: -f1 | uniq >> po/POTFILES.in
+          grep gettext src/ -r | grep .rs  | cut -d: -f1 | uniq >> po/POTFILES.in
 
       - name: Update Eyedropper.pot
         run: |
