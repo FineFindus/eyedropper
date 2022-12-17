@@ -164,7 +164,7 @@
         </child>
         <child>
             <object class="AdwPreferencesPage">
-                <property name="icon-name">editor-symbolic</property>
+                <property name="icon-name">document-edit-symbolic</property>
                 <property name="title" translatable="yes">Formats</property>
                 <child>
                     <object class="AdwPreferencesGroup">
