@@ -428,7 +428,7 @@ msgid ""
 "Edit how the color formats are displayed. The “{}” will be replaced in with "
 "the values of the formats."
 msgstr ""
-"Modifier la manière dont les formats de couleur sont affichés. Le « {} » "
+"Modifier la manière dont les formats de couleur sont affichés. Le « {} » "
 "sera remplacé par les valeurs des formats."
 
 #: data/resources/ui/preferences.ui:175
@@ -605,7 +605,7 @@ msgid ""
 "issues</li></ul>"
 msgstr ""
 "<p>Une nouvelle version avec de nouvelles fonctionnalités intéressantes.</"
-"p><p>Nouvelles fonctionnalités :</p>\n"
+"p><p>Nouvelles fonctionnalités:</p>\n"
 "<ul><li>Personnalisez les formats dans les paramètres</li><li>Exportez le "
 "schéma de couleurs comme une palette GIMP en utilisant la nouvelle option "
 "d’exportation.</li><li>Un marqueur est affiché lorsqu’aucune couleur n’est "
@@ -669,7 +669,7 @@ msgstr "Échec de la sélection de la couleur"
 #. Translators: Do not replace the {}. These are used as placeholders for the copied values
 #: src/window.rs:597
 msgid "Copied: “{}”"
-msgstr "Copié : « {} »"
+msgstr "Copié: « {} »"
 
 #~ msgctxt "Alpha is not shown"
 #~ msgid "None"
