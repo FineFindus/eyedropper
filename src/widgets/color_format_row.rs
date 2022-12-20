@@ -8,16 +8,18 @@ use gtk::{
 mod imp {
     use std::cell::RefCell;
 
+    use crate::config;
+
     use super::*;
 
     use glib::{subclass::Signal, ParamSpecBoolean, ParamSpecString};
     use gtk::glib::ParamSpec;
     use once_cell::sync::Lazy;
 
-    // Object holding the state
     #[derive(gtk::CompositeTemplate)]
     #[template(resource = "/com/github/finefindus/eyedropper/ui/color-format-row.ui")]
     pub struct ColorFormatRow {
+        pub settings: gtk::gio::Settings,
         #[template_child]
         pub entry: TemplateChild<gtk::Entry>,
         pub color: RefCell<String>,
@@ -32,6 +34,7 @@ mod imp {
 
         fn new() -> Self {
             Self {
+                settings: gtk::gio::Settings::new(config::APP_ID),
                 entry: TemplateChild::default(),
                 color: RefCell::new(String::new()),
                 editable: RefCell::new(false),
@@ -52,18 +55,12 @@ mod imp {
         fn signals() -> &'static [Signal] {
             static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
                 vec![
-                    Signal::builder(
-                        "copied-text",
-                        &[String::static_type().into()],
-                        <()>::static_type().into(),
-                    )
-                    .build(),
-                    Signal::builder(
-                        "text-edited",
-                        &[String::static_type().into()],
-                        <()>::static_type().into(),
-                    )
-                    .build(),
+                    Signal::builder("copied-text")
+                        .param_types([String::static_type()])
+                        .build(),
+                    Signal::builder("text-edited")
+                        .param_types([String::static_type()])
+                        .build(),
                 ]
             });
             SIGNALS.as_ref()
@@ -81,13 +78,7 @@ mod imp {
             PROPERTIES.as_ref()
         }
 
-        fn set_property(
-            &self,
-            _obj: &Self::Type,
-            _id: usize,
-            value: &glib::Value,
-            pspec: &ParamSpec,
-        ) {
+        fn set_property(&self, _id: usize, value: &glib::Value, pspec: &ParamSpec) {
             match pspec.name() {
                 "text" => {
                     let input_value = value.get::<String>().unwrap();
@@ -101,7 +92,7 @@ mod imp {
             }
         }
 
-        fn property(&self, _obj: &Self::Type, _id: usize, pspec: &ParamSpec) -> glib::Value {
+        fn property(&self, _id: usize, pspec: &ParamSpec) -> glib::Value {
             match pspec.name() {
                 "text" => self.color.borrow().to_value(),
                 "editable" => self.editable.borrow().to_value(),
@@ -109,11 +100,13 @@ mod imp {
             }
         }
 
-        fn constructed(&self, obj: &Self::Type) {
-            self.parent_constructed(obj);
+        fn constructed(&self) {
+            self.parent_constructed();
+            let obj = self.obj();
             obj.set_direction(gtk::TextDirection::Ltr);
             obj.setup_signals();
             obj.setup_properties();
+            obj.hide();
         }
     }
 
@@ -131,7 +124,7 @@ glib::wrapper! {
 impl ColorFormatRow {
     #[allow(clippy::new_without_default)]
     pub fn new() -> Self {
-        glib::Object::new::<Self>(&[]).expect("Failed to create a ColorFormatRow")
+        glib::Object::new::<Self>(&[])
     }
 
     /// Get the currently shown text.
@@ -144,6 +137,11 @@ impl ColorFormatRow {
         self.set_property("text", &text);
     }
 
+    /// Bind the properties to the target values.
+    ///
+    /// Binds the `text` properties to the text of the entry, and
+    /// the `editable` property to different properties
+    /// of the entry to make it (un)-editable
     fn setup_properties(&self) {
         //bind texts
         self.bind_property("text", &*self.imp().entry, "text")
@@ -161,28 +159,38 @@ impl ColorFormatRow {
             .build();
     }
 
+    /// Registers a signal for when the text entry is changed to emit
+    /// a signal containing the edited text.
     fn setup_signals(&self) {
         self.imp()
             .entry
             .connect_changed(glib::clone!(@weak self as format_row => move |entry| {
                 let text = entry.buffer().text();
-                if !text.is_empty() {
+                if format_row.is_visible() && !text.is_empty() {
                     format_row.emit_by_name("text-edited", &[&text.to_value()])
                 }
             }));
     }
 
-    /// Callback when the copy button is pressed.
-    #[template_callback]
-    fn on_copy_pressed(&self, _: &gtk::Button) {
-        self.copy_text();
+    /// Set the settings name.
+    ///
+    /// This creates a binding between the widget visibility and the setting.
+    pub fn set_settings_name(&self, settings_name: &str) {
+        //it seems like it is not possible to bind to the name of a property in a widget so this does the same thing but less pretty
+        self.imp()
+            .settings
+            .bind(settings_name, self, "visible")
+            .build();
     }
 
-    /// Copy the current text to the users clipboard
-    fn copy_text(&self) {
-        let clipboard = self.clipboard();
+    /// Copy the text to the users clipboard and a signal.
+    ///
+    /// This is bound as the callback when the copy-icon-button is pressed.
+    #[template_callback]
+    fn on_copy_pressed(&self, _: &gtk::Button) {
         let text = self.imp().entry.text().to_string();
         log::debug!("Copied text: {text}");
+        let clipboard = self.clipboard();
         clipboard.set_text(&text);
         self.emit_by_name("copied-text", &[&text.to_value()])
     }

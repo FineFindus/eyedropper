@@ -1,7 +1,7 @@
 mod application;
 #[rustfmt::skip]
 mod config;
-mod color;
+mod colors;
 mod model;
 mod utils;
 mod widgets;

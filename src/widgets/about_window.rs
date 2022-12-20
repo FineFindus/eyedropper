@@ -32,7 +32,7 @@ impl EyedropperAbout {
 
         //translatable changelog
         let changelog = Self::changelog();
-        let changelog_version = "0.3.2";
+        let changelog_version = config::VERSION;
 
         let debug_info = Self::debug_info();
 
@@ -107,7 +107,7 @@ impl EyedropperAbout {
 
         changelog.push_str(&pgettext(
             "The changelog of the current version. Should be similar to the CHANGELOG.md file at the project root. Please ensure that the tags have a matching closing tag. Since xgettext does not recognize rust multiline strings, this should be on a single line using line breaks (\\n) for new lines.",
-            "<p>This release extends the current available features.</p><p> Features:</p>\n<ul><li> The name of the color, specified by w3c color keywords and the xkcd color survey, can now be shown</li><li>Switch the color by entering a color keyword</li><li> A new Palette dialog showing different color palettes</li><li>Choose which CIE standard observer is used, as well as it's illuminant</li><li> Show the CIELCh color format</li><li> Using the new AdwAboutWindow</li><li> Added new translations</li><li>Fixed minor issues</li></ul>",
+            "<p>A new release with exciting new features.</p><p>New Features:</p>\n<ul><li>Customize formats in the settings</li><li>Export the colorscheme as a GIMP palette using the new export option</li><li>A placeholder is shown when no color is picked</li><li> Hunter-Lab and LMS color spaces have been added</li><li>The GNOME color palette has been added</li><li>Fixed minor issues</li></ul>",
         ));
 
         changelog

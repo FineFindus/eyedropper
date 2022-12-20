@@ -8,6 +8,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 
 ### Added
+- Export the generated palettes from the palette dialog as a GIMP palette file
+- A `.doap` file to describe the project 
+- Show a placeholder page when no color is picked
+- LMS color space can now be shown
+- Convert to Hunter-Lab color space
+- Customize color formats
+
+### Changed
+- Fixed a bug where the illuminants where not fully shown
+- The names of the GNOME color palette are now available
+
+## [0.4.0] - 2022-10-20
+
+### Added
 - Options to show names of color (from w3c basic, extended and xkcd)
 - Change the color by typing a name in the name field
 - Palettes are now shown in the palette dialog, accessible by clicking on the large color button
@@ -15,7 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - HSL does now support alpha values
 - HWB and CIELCh are now supported
 - CIE standard observer for CIELab and CIELCh
--  Change CIE illuminants
+- Change CIE illuminants
 - The following translations have been added
     - Spanish by [IngrownMink4](https://github.com/IngrownMink4)  
     - Basque by [IngrownMink4](https://github.com/IngrownMink4)  

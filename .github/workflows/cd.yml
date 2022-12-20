@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-22.04	#this is not the same as ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v3
       
       - name: Install rust stable toolchain
         uses: actions-rs/toolchain@v1
@@ -25,7 +25,7 @@ jobs:
           override: true
 
       - name: Cache dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             ~/.cargo/bin/
@@ -42,7 +42,7 @@ jobs:
           version: 1.0
 
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 

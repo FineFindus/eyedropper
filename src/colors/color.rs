@@ -2,34 +2,7 @@ use core::fmt;
 
 use crate::utils;
 
-use super::observer::Observer;
-
-/// Position of the alpha value for hex strings.
-///
-/// In most cases (for example hex strings in the browser) the alpha value is
-/// the last two characters of the hex string. But in some cases it is the first two characters.
-/// For example Android Color Values use this format.
-///
-/// Defaults to no alpha value
-#[derive(Debug, Default, Copy, Clone, PartialEq, Eq)]
-pub enum AlphaPosition {
-    #[default]
-    End,
-    Start,
-    None,
-}
-
-//Convert from U32. Needed for converting from the settings AdwComboRow, which use indexes for values.
-impl From<u32> for AlphaPosition {
-    fn from(value: u32) -> Self {
-        match value {
-            0 => Self::None,
-            1 => Self::End,
-            2 => Self::Start,
-            _ => Self::default(),
-        }
-    }
-}
+use super::{illuminant::Illuminant, position::AlphaPosition};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct Color {
@@ -74,40 +47,6 @@ impl Color {
         )
     }
 
-    /// Returns the color as in hex form.
-    ///
-    /// The alpha position will indicate where the alpha value is stored.
-    pub fn to_hex_string(self, alpha_position: AlphaPosition) -> String {
-        match alpha_position {
-            AlphaPosition::Start => format!(
-                "#{:02x}{:02x}{:02x}{:02x}",
-                self.alpha, self.red, self.green, self.blue
-            ),
-            AlphaPosition::End => format!(
-                "#{:02x}{:02x}{:02x}{:02x}",
-                self.red, self.green, self.blue, self.alpha
-            ),
-            AlphaPosition::None => format!("#{:02x}{:02x}{:02x}", self.red, self.green, self.blue),
-        }
-        .to_ascii_uppercase()
-    }
-
-    /// Returns the color as a rgb/rgba string.
-    ///
-    /// If the alpha position is a the end, a rgba string is returned, otherwise
-    /// the normal rgb string.
-    pub fn to_rgb_string(self, alpha_position: AlphaPosition) -> String {
-        match alpha_position {
-            //show alpha at the end (rgba)
-            AlphaPosition::End => format!(
-                "rgba({}, {}, {}, {})",
-                self.red, self.green, self.blue, self.alpha
-            ),
-            // no alpha/ there is no argb
-            _ => format!("rgb({}, {}, {})", self.red, self.green, self.blue),
-        }
-    }
-
     /// Calculates the hue of the color.
     ///
     /// This is used when converting from RGB to HSL or HSV.
@@ -143,7 +82,7 @@ impl Color {
     /// Converts the color to HSV values.
     ///
     /// Formula from <https://en.wikipedia.org/wiki/HSL_and_HSV>
-    pub fn to_hsv(self) -> (u16, u8, u8) {
+    pub fn to_hsv(self) -> (u16, f32, f32) {
         let red = self.red as f32 / 255f32;
         let green = self.green as f32 / 255f32;
         let blue = self.blue as f32 / 255f32;
@@ -154,15 +93,10 @@ impl Color {
 
         let hue = self.calculate_hue();
 
-        let saturation = utils::round_percent(if max == 0f32 { 0f32 } else { (max - min) / max });
+        let saturation = if max == 0f32 { 0f32 } else { (max - min) / max };
 
-        log::debug!(
-            "HSV: {}°, {}%, {}% ",
-            hue,
-            saturation,
-            utils::round_percent(max)
-        );
-        (hue, saturation, utils::round_percent(max))
+        log::debug!("HSV: {}°, {}%, {}% ", hue, saturation, max);
+        (hue, saturation, max)
     }
 
     /// Returns the [HWB](https://en.wikipedia.org/wiki/HWB_color_model) values of the color.
@@ -183,7 +117,7 @@ impl Color {
     /// Converts the color to HSL values.
     ///
     /// Formula from <https://en.wikipedia.org/wiki/HSL_and_HSV>
-    fn to_hsl(self) -> (u16, f32, f32) {
+    pub fn to_hsl(self) -> (u16, f32, f32) {
         let red = self.red as f32 / 255f32;
         let green = self.green as f32 / 255f32;
         let blue = self.blue as f32 / 255f32;
@@ -206,31 +140,10 @@ impl Color {
         (hue, saturation, lightness)
     }
 
-    pub fn to_hsl_string(self, alpha_position: AlphaPosition) -> String {
-        let (hue, saturation, lightness) = self.to_hsl();
-        //format saturation and lightness to be full percentages
-        let saturation = utils::round_percent(saturation);
-        let lightness = utils::round_percent(lightness);
-        match alpha_position {
-            AlphaPosition::End => format!(
-                "hsla({}, {}%, {}%, {})",
-                hue,
-                saturation,
-                lightness,
-                //convert from [0-255] to [0-1]
-                utils::pretty_print_percent(
-                    utils::round_percent(self.alpha as f32 / 255f32) as f32 / 100f32
-                )
-            ),
-            //normal format for non-alpha/ alpha at start
-            _ => format!("hsl({}, {}%, {}%)", hue, saturation, lightness),
-        }
-    }
-
     /// Returns the CMYK values of the color
     ///
     /// Based on <https://www.easyrgb.com/en/math.php>
-    pub fn to_cmyk(self) -> (u8, u8, u8, u8) {
+    pub fn to_cmyk(self) -> (f32, f32, f32, f32) {
         let mut c = 1f32 - (self.red as f32 / 255f32);
         let mut m = 1f32 - (self.green as f32 / 255f32);
         let mut y = 1f32 - (self.blue as f32 / 255f32);
@@ -257,12 +170,7 @@ impl Color {
             y = (y - k) / (1f32 - k);
         }
 
-        (
-            utils::round_percent(c),
-            utils::round_percent(m),
-            utils::round_percent(y),
-            utils::round_percent(k),
-        )
+        (c, m, y, k)
     }
 
     /// Return the color as its XYZ equivalent.
@@ -305,16 +213,16 @@ impl Color {
 
     /// Return the colors as CIELAB vales.
     ///
-    /// If use_ten_degrees is true, the function will use 10° observer values instead of the 2° ones.
+    /// If ten_deg_observer is true, the function will use 10° observer values instead of the 2° ones.
     ///
     /// The color will be first converted to XYZ values and then to CIELAB values.
     /// Formula from <http://www.easyrgb.com/en/math.php>
-    pub fn to_cie_lab(self, observer: Observer, use_ten_degrees: bool) -> (f32, f32, f32) {
+    pub fn to_cie_lab(self, illuminant: Illuminant, ten_deg_observer: bool) -> (f32, f32, f32) {
         //reference xyz for D65 (sRGB) from http://www.easyrgb.com/en/math.php
-        let (reference_x, reference_y, reference_z) = if use_ten_degrees {
-            observer.ten_degrees()
+        let (reference_x, reference_y, reference_z) = if ten_deg_observer {
+            illuminant.ten_degrees()
         } else {
-            observer.two_degrees()
+            illuminant.two_degrees()
         };
 
         let xyz = self.to_xyz();
@@ -348,22 +256,63 @@ impl Color {
         (cie_l, cie_a, cie_b)
     }
 
+    /// Hunter Lab
+    ///
+    /// Convert the color to Hunter Lab. The formula is from
+    /// <https://www.easyrgb.com/en/math.php>.
+    pub fn to_hunter_lab(self, illuminant: Illuminant, ten_deg_observer: bool) -> (f32, f32, f32) {
+        //reference xyz for D65 (sRGB) from http://www.easyrgb.com/en/math.php
+        let (reference_x, reference_y, reference_z) = if ten_deg_observer {
+            illuminant.ten_degrees()
+        } else {
+            illuminant.two_degrees()
+        };
+
+        let (x, y, z) = self.to_xyz();
+
+        let ka = (175.0 / 198.04) * (reference_x + reference_y);
+        let kb = (70.0 / 218.11) * (reference_y + reference_z);
+
+        let l = 100.0 * f32::sqrt(y / reference_y);
+        let a = ka * (((x / reference_x) - (y / reference_y)) / f32::sqrt(y / reference_y));
+        let b = kb * (((y / reference_y) - (z / reference_z)) / f32::sqrt(y / reference_y));
+
+        (l, a, b)
+    }
+
     /// Convert the color to hcl/ CIELCh
     ///
     /// This steps involves converting the color to CIElab first.
-    /// If use_ten_degrees is true, the function will use 10° observer values instead of the 2° ones.
-    pub fn to_hcl(self, observer: Observer, use_ten_degree: bool) -> (f32, f32, f32) {
+    /// If ten_deg_observer is true, the function will use 10° observer values instead of the 2° ones.
+    pub fn to_hcl(self, illuminant: Illuminant, ten_deg_observer: bool) -> (f32, f32, f32) {
         //convert color to lab first
-        let (luminance, a, b) = self.to_cie_lab(observer, use_ten_degree);
+        let (luminance, a, b) = self.to_cie_lab(illuminant, ten_deg_observer);
 
         let hue = b.atan2(a).to_degrees();
-        let chroma = (a.powi(2) + b.powi(2)).sqrt();
+        let chroma = f32::sqrt(a.powi(2) + b.powi(2));
 
         (
             if hue >= 0.0 { hue } else { hue + 360.0 },
             chroma,
             luminance,
         )
+    }
+
+    /// Convert the color to the LMS color space.
+    ///
+    /// LMS (long, medium short) is a a color space, that
+    /// represents the cones in the human eyes.
+    ///
+    /// To convert to LMS color space, the color is first converted
+    /// to XYZ color space and then using the [CIECAT02](https://en.wikipedia.org/wiki/CIECAM02#CAT02) matrix.
+    pub fn to_lms(self) -> (f32, f32, f32) {
+        let (x, y, z) = self.to_xyz();
+
+        let long = x * 0.7328 + y * 0.4296 + z * -0.1624;
+        let medium = x * -0.7036 + y * 1.6975 + z * 0.0061;
+        let short = x * 0.0030 + y * 0.0136 + z * 0.9834;
+
+        (long, medium, short)
     }
 
     /// Create a color from a hex string.
@@ -581,6 +530,29 @@ impl Color {
 
         colors
     }
+
+    /// Format the colors as a GIMP palette file.
+    ///
+    /// The name will be the name of the palette, each color will be
+    /// named untitled.
+    pub fn gpl_file(name: &str, colors: Vec<Self>) -> String {
+        let mut content = format!(
+            "GIMP Palette\n\
+            Name: {name}\n\
+            Columns: 0\n\
+            # Palette file generated by Eyedropper\n",
+        );
+
+        for color in colors {
+            content.push_str(&format!(
+                //don't add a name
+                "{:>3} {:>3} {:>3}	Untitled\n",
+                color.red, color.green, color.blue,
+            ));
+        }
+
+        content
+    }
 }
 
 impl Default for Color {
@@ -637,7 +609,7 @@ impl From<Color> for gtk::gdk::RGBA {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord)]
 pub enum ColorError {
     HexConversion(String),
 }
@@ -653,5 +625,72 @@ impl fmt::Display for ColorError {
         match self {
             ColorError::HexConversion(err) => write!(f, "{}", err),
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_calculate_hue() {
+        let color = Color::rgb(46, 52, 64);
+        assert_eq!(220, color.calculate_hue())
+    }
+
+    #[test]
+    fn test_to_hsv() {
+        let color = Color::rgb(46, 52, 64);
+        assert_eq!((220, 28.0, 25.0), color.to_hsv())
+    }
+
+    #[test]
+    fn test_to_hwb() {
+        let color = Color::rgb(46, 52, 64);
+        assert_eq!((220, 0.18039216, 0.7490196), color.to_hwb())
+    }
+
+    #[test]
+    fn test_to_hsl() {
+        let color = Color::rgb(46, 52, 64);
+        assert_eq!((220, 0.16363637, 0.21568629), color.to_hsl())
+    }
+
+    #[test]
+    fn test_to_cmyk() {
+        let color = Color::rgb(46, 52, 64);
+        assert_eq!((28.0, 19.0, 0.0, 75.0), color.to_cmyk())
+    }
+
+    #[test]
+    fn test_to_xyz() {
+        let color = Color::rgb(46, 52, 64);
+        assert_eq!((3.2801187, 3.4069908, 5.335223), color.to_xyz())
+    }
+
+    #[test]
+    fn test_to_cie_lab() {
+        let color = Color::rgb(46, 52, 64);
+        assert_eq!(
+            (21.605232, 0.6957203, -8.349299),
+            color.to_cie_lab(Illuminant::D65, false)
+        )
+    }
+
+    #[test]
+    fn test_to_hcl() {
+        let color = Color::rgb(46, 52, 64);
+        assert_eq!(
+            (274.76328, 8.378235, 21.605232),
+            color.to_hcl(Illuminant::D65, false)
+        )
+    }
+
+    #[test]
+    fn test_from_hex() {
+        assert_eq!(
+            Ok(Color::rgb(46, 52, 64)),
+            Color::from_hex("#2E3440", AlphaPosition::None)
+        )
     }
 }

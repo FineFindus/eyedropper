@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
-"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gtk/-/issues/\n"
-"POT-Creation-Date: 2022-10-15 15:10+0200\n"
-"PO-Revision-Date: 2022-10-15 15:31+0200\n"
+"Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
+"POT-Creation-Date: 2022-12-11 18:47+0000\n"
+"PO-Revision-Date: 2022-12-11 20:10+0100\n"
 "Last-Translator: FineFindus <FineFindusGH@gmail.com>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:35 src/main.rs:25 src/widgets/about_window.rs:44
+#: data/resources/ui/window.ui:88 src/main.rs:25 src/widgets/about_window.rs:44
 msgid "Eyedropper"
 msgstr "Eyedropper"
 
@@ -107,9 +107,276 @@ msgstr "Benutzerdefiniertes Farbformate"
 msgid "Generated color palettes"
 msgstr "Generierte Farbpaletten"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:95
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:115
 msgid "FineFindus"
 msgstr "FineFindus"
+
+#: data/resources/ui/preferences.ui:10
+msgid "General"
+msgstr "Allgemein"
+
+#: data/resources/ui/preferences.ui:13
+msgid "Formatting"
+msgstr "Formatierung"
+
+#: data/resources/ui/preferences.ui:16
+msgid "Alpha-Value-Position"
+msgstr "Alphawertposition"
+
+#: data/resources/ui/preferences.ui:17
+msgid "Where the Alphavalue is positioned in the Hexstring"
+msgstr "An welcher Stelle der Alphawert angezeigt wird"
+
+#: data/resources/ui/preferences.ui:21
+msgctxt "Alpha is not shown"
+msgid "Not shown"
+msgstr "Nicht angezeigt"
+
+#: data/resources/ui/preferences.ui:22
+msgctxt "Alpha is shown at the end of the string"
+msgid "End"
+msgstr "Ende"
+
+#: data/resources/ui/preferences.ui:23
+msgctxt "Alpha is shown at the start of the string"
+msgid "Start"
+msgstr "Start"
+
+#: data/resources/ui/preferences.ui:31
+msgid "Name Sets"
+msgstr "Namesquellen"
+
+#: data/resources/ui/preferences.ui:32
+msgid "Which color name sets should be used for the names"
+msgstr "Welche Quellen für die Namen benutzt werden"
+
+#: data/resources/ui/preferences.ui:44
+msgid "Default Precision"
+msgstr "Empfohlene Präzision"
+
+#: data/resources/ui/preferences.ui:45
+msgid "Use the recommended precision"
+msgstr "Verwendet die empfohlene Präzision"
+
+#: data/resources/ui/preferences.ui:58 data/resources/ui/preferences.ui:69
+msgid "Precision"
+msgstr "Präzision"
+
+#: data/resources/ui/preferences.ui:81
+msgid "CIE Color Space"
+msgstr "CIE-Normfarbsystem"
+
+#: data/resources/ui/preferences.ui:84
+msgid "CIE Illuminants"
+msgstr "Normlicht"
+
+#: data/resources/ui/preferences.ui:85
+msgid "Lighting conditions for the CIE color space"
+msgstr "Lichtbedingungen des CIE-Normfarbsystem"
+
+#: data/resources/ui/preferences.ui:93
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "A (Incandescent/tungsten)"
+msgstr "A (Glühlampe)"
+
+#: data/resources/ui/preferences.ui:94
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "B (Old direct sunlight at noon)"
+msgstr "B (ähnlich Sonnenlicht)"
+
+#: data/resources/ui/preferences.ui:95
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "C (Old daylight)"
+msgstr "C (Tageslicht, heute D65)"
+
+#: data/resources/ui/preferences.ui:96
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "D50 (ICC profile PCS)"
+msgstr "D50 (Weißpunkt für Wide-Gamut-RGB und Color-Match-RGB)"
+
+#: data/resources/ui/preferences.ui:97
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "D55 (Mid-morning daylight)"
+msgstr "D55 (Direktes Sonnenlicht)"
+
+#: data/resources/ui/preferences.ui:98
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "D65 (Daylight, sRGB, Adobe-RGB)"
+msgstr "D65 (natürliches Tageslicht, sRGB, Adobe-RGB)"
+
+#: data/resources/ui/preferences.ui:99
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "D75 (North sky daylight)"
+msgstr "D75 (Farbtemperatur von 7510 K)"
+
+#: data/resources/ui/preferences.ui:100
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "E (Equal energy)"
+msgstr "E (energetischer Äquivalenzpunkt)"
+
+#: data/resources/ui/preferences.ui:101
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "F1 (Daylight Fluorescent)"
+msgstr "F1 (Fluoreszierendes Tageslicht)"
+
+#: data/resources/ui/preferences.ui:102
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "F2 (Cool fluorescent)"
+msgstr "F2 (Kalt Fluoreszierend)"
+
+#: data/resources/ui/preferences.ui:103
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "F3 (White Fluorescent)"
+msgstr "F3 (Weiß Fluoreszierend)"
+
+#: data/resources/ui/preferences.ui:104
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "F4 (Warm White Fluorescent)"
+msgstr "F4 (Warm Weiß Fluorescent)"
+
+#: data/resources/ui/preferences.ui:105
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "F5 (Daylight Fluorescent)"
+msgstr "F5 (Tageslicht Fluoreszierend)"
+
+#: data/resources/ui/preferences.ui:106
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "F6 (Lite White Fluorescent)"
+msgstr "F6 (Leicht Weiß Fluorescent)"
+
+#: data/resources/ui/preferences.ui:107
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "F7 (Daylight fluorescent, D65 simulator)"
+msgstr "F7 (Tageslicht Fluoreszierend, D65 simulator)"
+
+#: data/resources/ui/preferences.ui:108
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "F8 (Sylvania F40, D50 simulator)"
+msgstr "F8 (Sylvania F40, D50 simulator)"
+
+#: data/resources/ui/preferences.ui:109
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "F9 (Cool White Fluorescent)"
+msgstr "F9 (Kalt Weiß )"
+
+#: data/resources/ui/preferences.ui:110
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "F10 (Ultralume 50, Philips TL85)"
+msgstr "F10 (Ultralume 50, Philips TL85)"
+
+#: data/resources/ui/preferences.ui:111
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "F11 (Ultralume 40, Philips TL84)"
+msgstr "F11 (Ultralume 40, Philips TL84)"
+
+#: data/resources/ui/preferences.ui:112
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "F12 (Ultralume 30, Philips TL83)"
+msgstr "F12 (Ultralume 30, Philips TL83)"
+
+#: data/resources/ui/preferences.ui:125
+msgid "CIE Standard Observer"
+msgstr "CIE-Normalbeobachter"
+
+#: data/resources/ui/preferences.ui:126
+msgid "The CIE standard observer's field of view"
+msgstr "Sichtfeld des CIE-Normalbeobachters"
+
+#: data/resources/ui/preferences.ui:130
+msgctxt "CIE 2° standard observer"
+msgid "2°"
+msgstr "2°"
+
+#: data/resources/ui/preferences.ui:131
+msgctxt "CIE 10° standard observer"
+msgid "10°"
+msgstr "10°"
+
+#: data/resources/ui/preferences.ui:141
+msgid "Color Formats"
+msgstr "Farbformate"
+
+#: data/resources/ui/preferences.ui:142
+msgid "Customize the visible formats and in which order they are displayed."
+msgstr ""
+"Passe an ob und in welcher Reihenfolge die Farbformate angezeigt werden."
+
+#: data/resources/ui/preferences.ui:146
+msgctxt " Tooltip of the button to reset the format order"
+msgid "Reset Order"
+msgstr "Reihenfolge zurücksetzen"
+
+#: data/resources/ui/preferences.ui:168 data/resources/ui/preferences.ui:171
+msgid "Formats"
+msgstr "Formatierungen"
+
+#: data/resources/ui/preferences.ui:172
+msgid ""
+"Edit how the color formats are displayed. The “{}” will be replaced in with "
+"the values of the formats."
+msgstr ""
+"Verändere wie die Farben dargestellt werden. Die „{}” werden durch die "
+"Farbwerte ersetzt werden."
+
+#: data/resources/ui/preferences.ui:175
+msgid "RGB Format"
+msgstr "RGB Format"
+
+#: data/resources/ui/preferences.ui:182
+msgid "HSL Format"
+msgstr "HSL Format"
+
+#: data/resources/ui/preferences.ui:189
+msgid "HSV Format"
+msgstr "HSV Format"
+
+#: data/resources/ui/preferences.ui:196
+msgid "CMYK Format"
+msgstr "CMYK Format"
+
+#: data/resources/ui/preferences.ui:203
+msgid "XYZ Format"
+msgstr "XYZ Format"
+
+#: data/resources/ui/preferences.ui:210
+msgid "CIELAB Format"
+msgstr "CIELAB Format"
+
+#: data/resources/ui/preferences.ui:217
+msgid "HWB Format"
+msgstr "HWB Format"
+
+#: data/resources/ui/preferences.ui:224
+msgid "CIELCh/HCL Format"
+msgstr "CIELCh/HCL Format"
+
+#: data/resources/ui/preferences.ui:231
+msgid "LMS Format"
+msgstr "LMS Format"
+
+#: data/resources/ui/preferences.ui:238
+msgid "Hunter Lab Format"
+msgstr "Hunter Lab Format"
 
 #: data/resources/ui/shortcuts.ui:11
 msgctxt "shortcut window"
@@ -146,259 +413,227 @@ msgctxt "shortcut window"
 msgid "Randomize the Color"
 msgstr "Zufällige Farbe"
 
+#: data/resources/ui/palette-window.ui:5
+msgid "Palettes"
+msgstr "Farbpaletten"
+
+#: data/resources/ui/palette-window.ui:16
+msgid "Save Palettes"
+msgstr "Palette speichern"
+
+#: data/resources/ui/preferences/custom-format-row.ui:10
+msgctxt "Tooltip of the reset button for custom format"
+msgid "Reset Format"
+msgstr "Format zurücksetzen"
+
 #: data/resources/ui/window.ui:6
+msgid "_Clear History"
+msgstr "_Verlauf löschen"
+
+#: data/resources/ui/window.ui:10
 msgid "_Random Color"
 msgstr "_Zufällige Farbe"
 
-#: data/resources/ui/window.ui:12
+#: data/resources/ui/window.ui:16
 msgid "_Preferences"
 msgstr "_Einstellungen"
 
-#: data/resources/ui/window.ui:16
+#: data/resources/ui/window.ui:20
 msgid "_Keyboard Shortcuts"
 msgstr "_Tastenkombinationen"
 
-#: data/resources/ui/window.ui:20
+#: data/resources/ui/window.ui:24
 msgid "_About Eyedropper"
 msgstr "_Info zu Eyedropper"
 
-#: data/resources/ui/window.ui:40
+#: data/resources/ui/window.ui:54
+msgid "No Color"
+msgstr "Keine Farbe"
+
+#: data/resources/ui/window.ui:55
+msgid "Select a color from the screen to get started."
+msgstr "Wähle eine Farbe aus um zu starten."
+
+#: data/resources/ui/window.ui:58
+msgid "_Pick a Color"
+msgstr "_Farbe auswählen"
+
+#: data/resources/ui/window.ui:93
 msgctxt "Tooltip of the colorpicker button"
 msgid "Pick a Color"
-msgstr "Neue Farbe auswählen"
+msgstr "Farbe auswählen"
 
-#: data/resources/ui/hex-entry.ui:22
-msgctxt "Tooltip of the copy button for the hex format"
-msgid "Copy Format"
-msgstr "Format kopieren"
-
-#: data/resources/ui/preferences.ui:10
-msgid "General"
-msgstr "Allgemein"
-
-#: data/resources/ui/preferences.ui:13
-msgid "Formatting"
-msgstr "Formatierung"
-
-#: data/resources/ui/preferences.ui:16
-msgid "Alpha-Value-Position"
-msgstr "Alphawertposition"
-
-#: data/resources/ui/preferences.ui:17
-msgid "Where the Alphavalue is positioned in the Hexstring"
-msgstr "An welcher Stelle der Alphawert angezeigt wird"
-
-#: data/resources/ui/preferences.ui:21
-msgctxt "Alpha is not shown"
-msgid "None"
-msgstr "Nicht anzeigen"
-
-#: data/resources/ui/preferences.ui:22
-msgctxt "Alpha is shown at the end of the string"
-msgid "End"
-msgstr "Ende"
-
-#: data/resources/ui/preferences.ui:23
-msgctxt "Alpha is shown at the start of the string"
-msgid "Start"
-msgstr "Start"
-
-#: data/resources/ui/preferences.ui:31
-msgid "CIE standard observer"
-msgstr "CIE-Normalbeobachter"
-
-#: data/resources/ui/preferences.ui:32
-msgid "Field of view used by the CIE standard observer"
-msgstr "Sichtfeld des CIE-Normalbeobachters"
-
-#: data/resources/ui/preferences.ui:36
-msgctxt "CIE 2° standard observer"
-msgid "2°"
-msgstr "2°"
-
-#: data/resources/ui/preferences.ui:37
-msgctxt "CIE 10° standard observer"
-msgid "10°"
-msgstr "10°"
-
-#: data/resources/ui/preferences.ui:45
-msgid "CIE illuminants"
-msgstr "Normlicht"
-
-#: data/resources/ui/preferences.ui:46
-msgid "Under which conditions are the colors observed"
-msgstr "Unter welche Bedingungen die Farben betrachtet werden"
-
-#: data/resources/ui/preferences.ui:50
-msgctxt ""
-"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
-"Standard_illuminant"
-msgid "A (Incandescent/tungsten)"
-msgstr "A (konventionelle Glühlampe)"
-
-#: data/resources/ui/preferences.ui:51
-msgctxt ""
-"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
-"Standard_illuminant"
-msgid "B (Old direct sunlight at noon)"
-msgstr "B (veraltetes Tageslicht)"
-
-#: data/resources/ui/preferences.ui:52
-msgctxt ""
-"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
-"Standard_illuminant"
-msgid "C (Old daylight)"
-msgstr "C (mittleres Tageslicht, heute D65)"
-
-#: data/resources/ui/preferences.ui:53
-msgctxt ""
-"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
-"Standard_illuminant"
-msgid "D50 (ICC profile PCS)"
-msgstr "D50 (Weißpunkt für Wide-Gamut-RGB und Color-Match-RGB)"
-
-#: data/resources/ui/preferences.ui:54
-msgctxt ""
-"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
-"Standard_illuminant"
-msgid "D55 (Mid-morning daylight)"
-msgstr "D55 (Direktes Sonnenlicht)"
-
-#: data/resources/ui/preferences.ui:55
-msgctxt ""
-"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
-"Standard_illuminant"
-msgid "D65 (Daylight, sRGB, Adobe-RGB)"
-msgstr "D65 (mittleres Tageslicht, sRGB, Adobe-RGB)"
-
-#: data/resources/ui/preferences.ui:56
-msgctxt ""
-"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
-"Standard_illuminant"
-msgid "D75 (North sky daylight)"
-msgstr "D75 (Farbtemperatur von 7510 K)"
-
-#: data/resources/ui/preferences.ui:57
-msgctxt ""
-"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
-"Standard_illuminant"
-msgid "E (Equal energy)"
-msgstr "E (Energiegleicher Punkt)"
-
-#: data/resources/ui/preferences.ui:58
-msgctxt ""
-"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
-"Standard_illuminant"
-msgid "F1 (Daylight Fluorescent)"
-msgstr "F1 (Fluoreszierendes Tageslicht)"
-
-#: data/resources/ui/preferences.ui:59
-msgctxt ""
-"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
-"Standard_illuminant"
-msgid "F2 (Cool fluorescent)"
-msgstr "F2 (Kalt Fluoreszierend)"
-
-#: data/resources/ui/preferences.ui:60
-msgctxt ""
-"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
-"Standard_illuminant"
-msgid "F3 (White Fluorescent)"
-msgstr "F3 (Weiß Fluoreszierend)"
-
-#: data/resources/ui/preferences.ui:61
-msgctxt ""
-"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
-"Standard_illuminant"
-msgid "F4 (Warm White Fluorescent)"
-msgstr "F4 (Warm Weiß Fluorescent)"
-
-#: data/resources/ui/preferences.ui:62
-msgctxt ""
-"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
-"Standard_illuminant"
-msgid "F5 (Daylight Fluorescent)"
-msgstr "F5 (Tageslicht Fluoreszierend)"
-
-#: data/resources/ui/preferences.ui:63
-msgctxt ""
-"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
-"Standard_illuminant"
-msgid "F6 (Lite White Fluorescent)"
-msgstr "F6 (Leicht Weiß Fluorescent)"
-
-#: data/resources/ui/preferences.ui:64
-msgctxt ""
-"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
-"Standard_illuminant"
-msgid "F7 (Daylight fluorescent, D65 simulator)"
-msgstr "F7 (Tageslicht Fluoreszierend, D65 simulator)"
-
-#: data/resources/ui/preferences.ui:65
-msgctxt ""
-"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
-"Standard_illuminant"
-msgid "F8 (Sylvania F40, D50 simulator)"
-msgstr "F8 (Sylvania F40, D50 simulator)"
-
-#: data/resources/ui/preferences.ui:66
-msgctxt ""
-"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
-"Standard_illuminant"
-msgid "F9 (Cool White Fluorescent)"
-msgstr "F9 (Kalt Weiß )"
-
-#: data/resources/ui/preferences.ui:67
-msgctxt ""
-"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
-"Standard_illuminant"
-msgid "F10 (Ultralume 50, Philips TL85)"
-msgstr "F10 (Ultralume 50, Philips TL85)"
-
-#: data/resources/ui/preferences.ui:68
-msgctxt ""
-"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
-"Standard_illuminant"
-msgid "F11 (Ultralume 40, Philips TL84)"
-msgstr "F11 (Ultralume 40, Philips TL84)"
-
-#: data/resources/ui/preferences.ui:69
-msgctxt ""
-"CIE illuminant, more info at https://en.wikipedia.org/wiki/"
-"Standard_illuminant"
-msgid "F12 (Ultralume 30, Philips TL83)"
-msgstr "F12 (Ultralume 30, Philips TL83)"
-
-#: data/resources/ui/preferences.ui:77
-msgid "Name Sets"
-msgstr "Namesquellen"
-
-#: data/resources/ui/preferences.ui:78
-msgid "Which color name sets should be used for the names"
-msgstr "Welche Quellen für die Namen benutzt werden"
-
-#: data/resources/ui/preferences.ui:92
-msgid "Color Formats"
-msgstr "Farbformate"
-
-#: data/resources/ui/preferences.ui:93
-msgid "Customize the visible formats and in which order they are displayed."
-msgstr ""
-"Passe an ob und in welcher Reihenfolge die Farbformate angezeigt werden."
-
-#: data/resources/ui/preferences.ui:97
-msgctxt "Tooltip of the button to reset the format order"
-msgid "Reset Order"
-msgstr "Reihenfolge zurücksetzen"
+#: data/resources/ui/window.ui:125
+msgctxt "Tooltip of the palette button"
+msgid "Open Palette Window"
+msgstr "Farbpalettenfenster öffnen"
 
 #: data/resources/ui/color-format-row.ui:22
 msgctxt "Tooltip of the copy button for format rows"
 msgid "Copy Format"
 msgstr "Format kopieren"
 
-#: data/resources/ui/palette-window.ui:5
-msgid "Palettes"
+#: src/window.rs:397 src/window.rs:420 src/window.rs:580 src/window.rs:651
+#: src/widgets/preferences_window.rs:494
+msgctxt "Information that no name for the color could be found"
+msgid "Not named"
+msgstr "Unbenannt"
+
+#: src/window.rs:493
+msgid "Failed to get palette color"
+msgstr "Palettenfarbauswahl fehlgeschlagen"
+
+#: src/window.rs:514
+msgid "Failed to pick a color"
+msgstr "Farbauswahl fehlgeschlagen"
+
+#. Translators: Do not replace the {}. These are used as placeholders for the copied values
+#: src/window.rs:597
+msgid "Copied: “{}”"
+msgstr "„{}” kopiert"
+
+#: src/widgets/palette_dialog.rs:122
+msgctxt "Name for tints (lighter variants) of the color"
+msgid "Tints"
+msgstr "Tönung"
+
+#: src/widgets/palette_dialog.rs:126
+msgctxt "Name for shades (darker variants) of the color"
+msgid "Shades"
+msgstr "Schattierungen"
+
+#: src/widgets/palette_dialog.rs:132
+msgctxt "Name for the opposite/complementary color (e.g. blue ⇔ yellow)"
+msgid "Complementary"
+msgstr "Komplementär"
+
+#: src/widgets/palette_dialog.rs:139
+msgctxt ""
+"The name of the color palette. Consist of the two opposite colors (e.g. blue "
+"⇔ orange / green)"
+msgid "Split-Complementary"
+msgstr "Zweifach-Komplementär"
+
+#: src/widgets/palette_dialog.rs:146
+msgctxt ""
+"Name of the color palette, which would form a triangle above the color wheel"
+msgid "Triadic"
+msgstr "Triade"
+
+#: src/widgets/palette_dialog.rs:151
+msgctxt "The name of the color palette."
+msgid "Tetradic"
+msgstr "Tetradisch"
+
+#: src/widgets/palette_dialog.rs:157
+msgctxt "Color palette consisting of six slight shifted colors"
+msgid "Analogous"
+msgstr "Ähnlich"
+
+#: src/widgets/palette_dialog.rs:259
+msgctxt ""
+"Name of the save palette file, do not add a file extension, .gpl will be "
+"added automatically"
+msgid "palettes"
 msgstr "Farbpaletten"
+
+#: src/widgets/preferences_window.rs:168
+msgctxt ""
+"Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
+"#html4"
+msgid "Basic"
+msgstr "Einfach"
+
+#: src/widgets/preferences_window.rs:170
+msgid "Show color names from the w3c basic color keyword set"
+msgstr "Zeige die Farbnamen des W3C Basic Farbsets"
+
+#: src/widgets/preferences_window.rs:176
+msgctxt ""
+"Name of the extended color keyword set from https://www.w3.org/TR/css-"
+"color-3/#svg-color"
+msgid "Extended"
+msgstr "Erweitert"
+
+#: src/widgets/preferences_window.rs:178
+msgid "Show color names from the w3c extended color keyword  set"
+msgstr "Zeige die Farbnamen des W3C Erweiterten Farbsets"
+
+#: src/widgets/preferences_window.rs:182
+msgctxt ""
+"Name of the color set from the GNOME color palette (https://developer.gnome."
+"org/hig/reference/palette.html)"
+msgid "GNOME color palette"
+msgstr "GNOME Farbpalette"
+
+#: src/widgets/preferences_window.rs:183
+msgid "Show color names from the GNOME color palette"
+msgstr "Zeigt die Farbnamen der GNOME Farbpalette an"
+
+#: src/widgets/preferences_window.rs:187
+msgctxt "Name of the color set from the xkcd color survey"
+msgid "xkcd"
+msgstr "xkcd"
+
+#: src/widgets/preferences_window.rs:188
+msgid "Show color names from the xkcd color survey"
+msgstr "Zeige die Farbnamen aus der xkcd-Farbumfrage"
+
+#: src/widgets/preferences_window.rs:327
+msgid "Move Up"
+msgstr "Nach oben verschieben"
+
+#: src/widgets/preferences_window.rs:329
+msgid "Move Down"
+msgstr "Nach unten verschieben"
+
+#: src/widgets/preferences_window.rs:452
+msgid "Hex-Code"
+msgstr "Hexadezimal-Code"
+
+#: src/widgets/preferences_window.rs:457
+msgid "RGB"
+msgstr "RGB"
+
+#: src/widgets/preferences_window.rs:460
+msgid "HSL"
+msgstr "HSL"
+
+#: src/widgets/preferences_window.rs:463
+msgid "HSV"
+msgstr "HSV"
+
+#: src/widgets/preferences_window.rs:467
+msgid "CMYK"
+msgstr "CMYK"
+
+#: src/widgets/preferences_window.rs:472
+msgid "XYZ"
+msgstr "XYZ"
+
+#: src/widgets/preferences_window.rs:476
+msgid "CIELAB"
+msgstr "CIELAB"
+
+#: src/widgets/preferences_window.rs:481
+msgid "HWB"
+msgstr "HWB"
+
+#: src/widgets/preferences_window.rs:485
+msgid "CIELCh / HCL"
+msgstr "CIELCh / HCL"
+
+#: src/widgets/preferences_window.rs:491
+msgid "Name"
+msgstr "Name"
+
+#: src/widgets/preferences_window.rs:499
+msgid "LMS"
+msgstr "LMS"
+
+#: src/widgets/preferences_window.rs:503
+msgid "Hunter Lab"
+msgstr "Hunter Lab"
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/widgets/about_window.rs:50
@@ -412,160 +647,53 @@ msgctxt ""
 "closing tag. Since xgettext does not recognize rust multiline strings, this "
 "should be on a single line using line breaks (\\n) for new lines."
 msgid ""
-"<p>This release extends the current available features.</p><p> Features:</"
-"p>\n"
-"<ul><li> The name of the color, specified by w3c color keywords and the xkcd "
-"color survey, can now be shown</li><li>Switch the color by entering a color "
-"keyword</li><li> A new Palette dialog showing different color palettes</"
-"li><li>Choose which CIE standard observer is used, as well as it's "
-"illuminant</li><li> Show the CIELCh color format</li><li> Using the new "
-"AdwAboutWindow</li><li> Added new translations</li><li>Fixed minor issues</"
-"li></ul>"
+"<p>A new release with exciting new features.</p><p>New Features:</p>\n"
+"<ul><li>Customize formats in the settings</li><li>Export the colorscheme as "
+"a GIMP palette using the new export option</li><li>A placeholder is shown "
+"when no color is picked</li><li> Hunter-Lab and LMS color spaces have been "
+"added</li><li>The GNOME color palette has been added</li><li>Fixed minor "
+"issues</li></ul>"
 msgstr ""
-"<p>Diese Version erweitert dies bisher vorhandenen Features.</p><p> Features:"
-"</p>\n"
-"<ul><li> Der Farbname, aus der  w3c color keywords Liste und der xkcd color "
-"survey,kann nun angezeigt werden</li><li>Ändere die Farbe durch eintragen "
-"des Namens</li><li>Ein neuer Farbpaletten-Dialog zeigt die Farbpaletten an</"
-"li><li>Wähle welcher CIE-Normalbeobachter, bzw welches Normlicht genutzt "
-"werden</li><li> Zeige das CIELCh-Farbformat</li><li>Der neute Infodialog "
-"wird genutzt</li><li> Neue Übersetzungen</li><li>Kleinere Fehler wurden "
-"behoben</li></ul>"
+"<p>Eine neue Version mit spannenden neuen Features.</p><p>Neue Features:</"
+"p>\n"
+"<ul><li>Benutzerdefinierte Farbformate</li><li>Exportiere Farbpaletten als "
+"GIMP-Paletten mit der neuen Export-Option</li><li>Es wird nun ein "
+"Platzhalter angezeigt, wenn keine Farbe ausgewählt ist</li><li> Hunter Lab "
+"und LMS Farbräume sind nun verfügbar</li><li>Die GNOME Farbpalette wurde "
+"hinzugefügt</li><li>Kleinere Bugs behoben</li></ul>"
 
-#: src/widgets/palette_dialog.rs:130
-msgctxt "Name for tints (lighter variants) of the color"
-msgid "Tints"
-msgstr "Tönung"
+#~ msgctxt "Alpha is not shown"
+#~ msgid "None"
+#~ msgstr "Nicht anzeigen"
 
-#: src/widgets/palette_dialog.rs:134
-msgctxt "Name for shades (darker variants) of the color"
-msgid "Shades"
-msgstr "Schattierungen"
+#~ msgid "Field of view used by the CIE standard observer"
+#~ msgstr "Sichtfeld des CIE-Normalbeobachters"
 
-#: src/widgets/palette_dialog.rs:140
-msgctxt "Name for the opposite/complementary color (e.g. blue ⇔ yellow)"
-msgid "Complementary"
-msgstr "Komplementär"
-
-#: src/widgets/palette_dialog.rs:147
-msgctxt ""
-"The name of the color palette. Consist of the two opposite colors (e.g. blue "
-"⇔ orange / green)"
-msgid "Split-Complementary"
-msgstr "Zweifach-Komplementär"
-
-#: src/widgets/palette_dialog.rs:154
-msgctxt ""
-"Name of the color palette, which would form a triangle above the color wheel"
-msgid "Triadic"
-msgstr "Triade"
-
-#: src/widgets/palette_dialog.rs:159
-msgctxt "The name of the color palette."
-msgid "Tetradic"
-msgstr "Quadrat"
-
-#: src/widgets/palette_dialog.rs:165
-msgctxt "Color palette consisting of six slight shifted colors"
-msgid "Analogous"
-msgstr "Ähnlich"
-
-#: src/widgets/preferences.rs:147
-msgctxt ""
-"Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
-"#html4"
-msgid "Basic"
-msgstr "Einfach"
-
-#: src/widgets/preferences.rs:149
-msgid "Show color names from the w3c basic color keyword set"
-msgstr "Zeige die Farbnamen des W3C Basic Farbsets"
-
-#: src/widgets/preferences.rs:155
-msgctxt ""
-"Name of the extended color keyword set from https://www.w3.org/TR/css-"
-"color-3/#svg-color"
-msgid "Extended"
-msgstr "Erweitert"
-
-#: src/widgets/preferences.rs:157
-msgid "Show color names from the w3c extended color keyword  set"
-msgstr "Zeige die Farbnamen des W3C Erweiterten Farbsets"
-
-#: src/widgets/preferences.rs:161
-msgctxt "Name of the color set from the xkcd color survey"
-msgid "xkcd"
-msgstr "xkcd"
-
-#: src/widgets/preferences.rs:162
-msgid "Show color names from the xkcd color survey"
-msgstr "Zeige die Farbnamen aus der xkcd-Farbumfrage"
-
-#: src/widgets/preferences.rs:301
-msgid "Move Up"
-msgstr "Nach oben verschieben"
-
-#: src/widgets/preferences.rs:303
-msgid "Move Down"
-msgstr "Nach unten verschieben"
-
-#: src/widgets/preferences.rs:423
-msgid "Hex-Code"
-msgstr "Hexadezimal-Code"
-
-#: src/widgets/preferences.rs:429
-msgid "RGB"
-msgstr "RGB"
-
-#: src/widgets/preferences.rs:435
-msgid "HSL"
-msgstr "HSL"
-
-#: src/widgets/preferences.rs:443
-msgid "HSV"
-msgstr "HSV"
-
-#: src/widgets/preferences.rs:452
-msgid "CMYK"
-msgstr "CMYK"
-
-#: src/widgets/preferences.rs:461
-msgid "XYZ"
-msgstr "XYZ"
-
-#: src/widgets/preferences.rs:470
-msgid "CIELAB"
-msgstr "CIELAB"
-
-#: src/widgets/preferences.rs:482
-msgid "HWB"
-msgstr "HWB"
-
-#: src/widgets/preferences.rs:496
-msgid "CIELCh / HCL"
-msgstr "CIELCh / HCL"
-
-#: src/widgets/preferences.rs:503
-msgid "Name"
-msgstr "Name"
-
-#: src/window.rs:349 src/window.rs:635
-msgctxt "Information that no name for the color could be found"
-msgid "Not named"
-msgstr "Unbenannt"
-
-#: src/window.rs:537
-msgid "Failed to get palette color"
-msgstr "Palettenfarbauswahl fehlgeschlagen"
-
-#: src/window.rs:557
-msgid "Failed to pick a color"
-msgstr "Farbauswahl fehlgeschlagen"
-
-#. Translators: Do not replace the {}. These are used as placeholders for the copied values
-#: src/window.rs:655
-msgid "Copied: “{}”"
-msgstr "„{}” kopiert"
+#~ msgctxt ""
+#~ "The changelog of the current version. Should be similar to the CHANGELOG."
+#~ "md file at the project root. Please ensure that the tags have a matching "
+#~ "closing tag. Since xgettext does not recognize rust multiline strings, "
+#~ "this should be on a single line using line breaks (\\n) for new lines."
+#~ msgid ""
+#~ "<p>This release extends the current available features.</p><p> Features:</"
+#~ "p>\n"
+#~ "<ul><li> The name of the color, specified by w3c color keywords and the "
+#~ "xkcd color survey, can now be shown</li><li>Switch the color by entering "
+#~ "a color keyword</li><li> A new Palette dialog showing different color "
+#~ "palettes</li><li>Choose which CIE standard observer is used, as well as "
+#~ "it's illuminant</li><li> Show the CIELCh color format</li><li> Using the "
+#~ "new AdwAboutWindow</li><li> Added new translations</li><li>Fixed minor "
+#~ "issues</li></ul>"
+#~ msgstr ""
+#~ "<p>Diese Version erweitert dies bisher vorhandenen Features.</p><p> "
+#~ "Features:</p>\n"
+#~ "<ul><li> Der Farbname, aus der  w3c color keywords Liste und der xkcd "
+#~ "color survey,kann nun angezeigt werden</li><li>Ändere die Farbe durch "
+#~ "eintragen des Namens</li><li>Ein neuer Farbpaletten-Dialog zeigt die "
+#~ "Farbpaletten an</li><li>Wähle welcher CIE-Normalbeobachter, bzw welches "
+#~ "Normlicht genutzt werden</li><li> Zeige das CIELCh-Farbformat</li><li>Der "
+#~ "neute Infodialog wird genutzt</li><li> Neue Übersetzungen</"
+#~ "li><li>Kleinere Fehler wurden behoben</li></ul>"
 
 #~ msgid "An easy-to-use color picker"
 #~ msgstr "Ein benutzerfreundlicher Farbwähler"
@@ -593,4 +721,4 @@ msgstr "„{}” kopiert"
 #~ msgstr "Hex"
 
 #~ msgid "Choose which formats will be visible"
-#~ msgstr "Wähle welche Farbformate angezeigt werden"
+#~ msgstr "Wähle welche Farbformaite angezeigt werden"

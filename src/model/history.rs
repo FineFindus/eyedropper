@@ -1,6 +1,6 @@
 use glib::{subclass::types::ObjectSubclassIsExt, Object};
 
-use crate::color::color::Color;
+use crate::colors::color::Color;
 
 mod imp {
     use std::cell::RefCell;
@@ -47,7 +47,7 @@ mod imp {
             PROPERTIES.as_ref()
         }
 
-        fn set_property(&self, _obj: &Self::Type, _id: usize, value: &Value, pspec: &ParamSpec) {
+        fn set_property(&self, _id: usize, value: &Value, pspec: &ParamSpec) {
             match pspec.name() {
                 "color" => {
                     let input_value = value.get::<gdk::RGBA>().unwrap();
@@ -57,7 +57,7 @@ mod imp {
             }
         }
 
-        fn property(&self, _obj: &Self::Type, _id: usize, pspec: &ParamSpec) -> Value {
+        fn property(&self, _id: usize, pspec: &ParamSpec) -> Value {
             match pspec.name() {
                 "color" => self.color.borrow().to_value(),
                 _ => unimplemented!(),
@@ -73,7 +73,7 @@ glib::wrapper! {
 impl HistoryObject {
     pub fn new(color: Color) -> Self {
         let color: gtk::gdk::RGBA = color.into();
-        Object::new(&[("color", &color)]).expect("Failed to create `HistoryObject`.")
+        Object::builder().property("color", &color).build()
     }
 
     pub fn color(&self) -> Color {
