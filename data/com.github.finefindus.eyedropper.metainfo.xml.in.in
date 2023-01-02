@@ -8,7 +8,7 @@
   <summary>A powerful color picker and formatter</summary>
   <description>
     <p>
-      Pick any color from your screen and view it in different formats. Change the picked color or go back to
+      Pick any color from your screen and view it in different formats. Change the picked color or go back to 
       a previously picked color from the history list. Generate a list of different shades from the picked color.
     </p>
     <p>Features</p>
@@ -47,6 +47,24 @@
   <url type="bugtracker">https://github.com/FineFindus/eyedropper/issues</url>
   <content_rating type="oars-1.0" />
   <releases>
+    <release version="0.5.0" date="2023-01-03">
+      <description>
+        <p>Added:</p>
+        <ul>
+          <li>Export the generated palettes from the palette dialog as a GIMP palette file</li>
+          <li>A .doap file to describe the project </li>
+          <li>Show a placeholder page when no color is picked</li>
+          <li>LMS color space can now be shown</li>
+          <li>Convert to Hunter-Lab color space</li>
+          <li>Customize color formats</li>
+        </ul>
+        <p>Changed:</p>
+        <ul>
+          <li>Fixed a bug where the illuminants were not fully shown</li>
+          <li>The names of the GNOME color palette are now available</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.4.0" date="2022-10-20">
       <description>
         <p>Added:</p>
@@ -64,7 +82,7 @@
     </release>
     <release version="0.3.1" date="2022-09-23">
       <description>
-      Fixed a few bugs and added Dutch translations.
+        Fixed a few bugs and added Dutch translations.
       </description>
     </release>
     <release version="0.3.0" date="2022-09-21">
@@ -107,7 +125,7 @@
   <kudos>
     <!--
        GNOME Software kudos:
-       https://gitlab.gnome.org/GNOME/gnome-software/-/blob/main/doc/kudos.md
+    https://gitlab.gnome.org/GNOME/gnome-software/-/blob/main/doc/kudos.md
      -->
     <kudo>ModernToolkit</kudo>
     <kudo>HiDpiIcon</kudo>
