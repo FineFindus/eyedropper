@@ -173,7 +173,7 @@
                         <child>
                             <object class="CustomFormatRow" id="_custom_format">
                                 <property name="title" translatable="yes">RGB Format</property>
-                                <property name="default-format">rgb({r}, {b}, {b})</property>
+                                <property name="default-format">rgb({r}, {g}, {b})</property>
                                 <property name="settings-key">custom-format-rgb</property>
                             </object>
                         </child>
