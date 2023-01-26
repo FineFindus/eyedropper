@@ -38,7 +38,7 @@ msgstr "Мощный инструмент для выбора цвета и ср
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
 msgid "Gnome;GTK;Color;Color Picker;Picker;Palette;"
-msgstr ""
+msgstr "Gnome;GTK;Цвет;Выбор цвета;Пипетка;Палитра;"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
 #: src/widgets/about_window.rs:77
@@ -385,11 +385,11 @@ msgstr "F12 (Ультралюм 30, Philips TL83)"
 
 #: data/resources/ui/preferences.ui:125
 msgid "CIE Standard Observer"
-msgstr ""
+msgstr "Стандарт измерения МКО"
 
 #: data/resources/ui/preferences.ui:126
 msgid "The CIE standard observer's field of view"
-msgstr ""
+msgstr "Поле зрения стандарта измерения МКО"
 
 #: data/resources/ui/preferences.ui:130
 msgctxt "CIE 2° standard observer"
