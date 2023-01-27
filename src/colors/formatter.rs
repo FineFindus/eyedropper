@@ -202,7 +202,7 @@ impl ColorFormatter {
                 lightness,
                 //convert from [0-255] to [0-1]
                 self.pretty_print_percent(
-                    self.round_percentage(self.color.alpha as f32 / 255f32) as f32 / 100f32
+                    self.round_percentage(self.color.alpha as f32 / 255f32) / 100f32
                 )
             ),
             //normal format for non-alpha/ alpha at start
