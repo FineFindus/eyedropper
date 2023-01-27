@@ -378,7 +378,8 @@ impl AppWindow {
         imp.hwb_row.set_settings_name("show-hwb-format");
         imp.hcl_row.set_settings_name("show-hcl-format");
         imp.lms_row.set_settings_name("show-lms-format");
-        imp.lms_row.set_settings_name("show-hunter-lab-format");
+        imp.hunter_lab_row
+            .set_settings_name("show-hunter-lab-format");
         imp.name_row.set_settings_name("show-color-name");
 
         //update name when it changes
