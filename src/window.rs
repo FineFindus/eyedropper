@@ -524,6 +524,17 @@ impl AppWindow {
         //append previous color to history
         if self.color() != Some(color) && self.color().is_some() {
             let history_item = HistoryObject::new(self.color().unwrap());
+
+            if let Some(previous_index) = self.history().snapshot().into_iter().position(|item| {
+                item.downcast_ref::<HistoryObject>().unwrap().color() == history_item.color()
+            }) {
+                log::trace!(
+                    "Found {} in history at index {}",
+                    self.color().unwrap(),
+                    previous_index
+                );
+                self.history().remove(previous_index as u32);
+            }
             self.history().insert(0, &history_item);
         }
 
