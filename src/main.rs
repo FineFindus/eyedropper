@@ -28,5 +28,7 @@ fn main() {
     gio::resources_register(&res);
 
     let app = App::new();
-    app.run();
+    let return_code = app.run();
+
+    std::process::exit(return_code);
 }

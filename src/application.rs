@@ -181,11 +181,11 @@ impl App {
         preferences.show();
     }
 
-    pub fn run(&self) {
+    pub fn run(&self) -> i32 {
         info!("Eyedropper ({})", APP_ID);
         info!("Version: {} ({})", VERSION, PROFILE);
         info!("Datadir: {}", PKGDATADIR);
 
-        ApplicationExtManual::run(self);
+        ApplicationExtManual::run(self)
     }
 }
