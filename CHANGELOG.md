@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.1] - 2023-01-29
+
+### Added 
+- Russian translation by @vorons
+- Use higher optimization options when compiling a release 
+- Return the exit code when quitting
+
+### Changed
+- History no longer contains duplicated colors
+
+### Fixed
+- Wrong default `rgb` format
+- LMS and Hunter Lab sharing their preference setting
+
 ## [0.5.0] - 2023-01-03
 
 ### Added

@@ -1,6 +1,6 @@
 [package]
 name = "eyedropper"
-version = "0.5.0"
+version = "0.5.1"
 authors = ["FineFindus <finefindusgh@gmail.com>"]
 edition = "2021"
 description = "A powerful color picker and formatter"
