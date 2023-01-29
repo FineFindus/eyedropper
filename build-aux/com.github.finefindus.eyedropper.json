@@ -22,8 +22,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "path": "/home/jtb/Documents/dev/Projects/gtk/eyedropper/_builddir/meson-dist/eyedropper-0.5.0.tar.xz",
-                    "sha256": "fcff7dad12ff346d10a6d23dc2b01f3590f120a912680af072e02651877dd0f6"
+                    "url": "https://github.com/FineFindus/eyedropper/releases/download/v0.5.1/eyedropper-0.5.1.tar.xz",
+                    "sha256": "7b96c0b191b9a4fb9c34ae318b0da564eae13ca3c8a214e69bfebae8678fe31f"
                 }
             ]
         }
