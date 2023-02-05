@@ -8,22 +8,22 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-01-02 21:58+0000\n"
-"PO-Revision-Date: 2023-01-26 02:13+0300\n"
+"PO-Revision-Date: 2023-02-05 19:23+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.2.2\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
 #: data/resources/ui/window.ui:88 src/main.rs:25 src/widgets/about_window.rs:44
 msgid "Eyedropper"
-msgstr ""
+msgstr "Eyedropper"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:4
 msgid "Color Picker"
@@ -47,9 +47,9 @@ msgid ""
 "picked color or go back to a previously picked color from the history list. "
 "Generate a list of different shades from the picked color."
 msgstr ""
-"Выберите любой цвет на экране и просмотрите его в разных форматах. Измените "
+"Выбирайте любой цвет с экрана и просмотрите его в разных форматах. Изменяйте "
 "выбранный цвет или вернитесь к ранее выбранному цвету из списка истории. "
-"Создайте список различных оттенков выбранного цвета."
+"Создавайте список различных оттенков из выбранного цвета."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
 #: src/widgets/about_window.rs:82
@@ -69,12 +69,13 @@ msgstr "Введите цвет в шестнадцатеричном форма
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:18
 #: src/widgets/about_window.rs:88
 msgid "Parse RGBA/ARGB Hex-Colors"
-msgstr "Разбор шестнадцатеричных цветов RGBA/ARGB"
+msgstr "Разберите шестнадцатеричные цвета RGBA/ARGB"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
 #: src/widgets/about_window.rs:89
 msgid "View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format"
-msgstr "Просмотр цветов в форматах Hex, RGB, HSV, HSL, CMYK, XYZ и CIE-Lab"
+msgstr ""
+"Просматривайте цвета в форматах Hex, RGB, HSV, HSL, CMYK, XYZ и CIE-Lab"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
 #: src/widgets/about_window.rs:90
@@ -84,7 +85,7 @@ msgstr "Настройте отображаемые форматы и их по�
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
 #: src/widgets/about_window.rs:91
 msgid "Generate a palette of different shades"
-msgstr "Сгенерируйте палитру различных оттенков"
+msgstr "Генерируйте палитру различных оттенков"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:27
 msgid "Main window dark"
@@ -113,17 +114,17 @@ msgstr "FineFindus"
 #: data/resources/ui/shortcuts.ui:11
 msgctxt "shortcut window"
 msgid "General"
-msgstr "Общие"
+msgstr "Основное"
 
 #: data/resources/ui/shortcuts.ui:14
 msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr "Показать настройки"
+msgstr "Показать параметры"
 
 #: data/resources/ui/shortcuts.ui:20
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr "Показать горячие клавиши"
+msgstr "Показать комбинации клавиш"
 
 #: data/resources/ui/shortcuts.ui:26
 msgctxt "shortcut window"
@@ -163,15 +164,15 @@ msgstr "_Случайный цвет"
 
 #: data/resources/ui/window.ui:16
 msgid "_Preferences"
-msgstr "_Настройки"
+msgstr "_Параметры"
 
 #: data/resources/ui/window.ui:20
 msgid "_Keyboard Shortcuts"
-msgstr "_Горячие клавиши"
+msgstr "_Комбинации клавиш"
 
 #: data/resources/ui/window.ui:24
 msgid "_About Eyedropper"
-msgstr "_О программе Eyedropper"
+msgstr "_О Eyedropper"
 
 #: data/resources/ui/window.ui:54
 msgid "No Color"
@@ -179,7 +180,7 @@ msgstr "Нет цвета"
 
 #: data/resources/ui/window.ui:55
 msgid "Select a color from the screen to get started."
-msgstr "Выберите цвет на экране, чтобы начать."
+msgstr "Выберите цвет с экрана чтобы начать."
 
 #: data/resources/ui/window.ui:58
 msgid "_Pick a Color"
@@ -202,7 +203,7 @@ msgstr "Копировать формат"
 
 #: data/resources/ui/preferences.ui:10
 msgid "General"
-msgstr "Общие"
+msgstr "Основное"
 
 #: data/resources/ui/preferences.ui:13
 msgid "Formatting"
@@ -219,17 +220,17 @@ msgstr "Позиция альфа-значения в шестнадцатери
 #: data/resources/ui/preferences.ui:21
 msgctxt "Alpha is not shown"
 msgid "Not shown"
-msgstr "Не показаны"
+msgstr "Не показано"
 
 #: data/resources/ui/preferences.ui:22
 msgctxt "Alpha is shown at the end of the string"
 msgid "End"
-msgstr "Конец"
+msgstr "В Конце"
 
 #: data/resources/ui/preferences.ui:23
 msgctxt "Alpha is shown at the start of the string"
 msgid "Start"
-msgstr "Начало"
+msgstr "В Начале"
 
 #: data/resources/ui/preferences.ui:31
 msgid "Name Sets"
@@ -385,21 +386,21 @@ msgstr "F12 (Ультралюм 30, Philips TL83)"
 
 #: data/resources/ui/preferences.ui:125
 msgid "CIE Standard Observer"
-msgstr "Стандарт измерения МКО"
+msgstr "Стандарт измерения CIE"
 
 #: data/resources/ui/preferences.ui:126
 msgid "The CIE standard observer's field of view"
-msgstr "Поле зрения стандарта измерения МКО"
+msgstr "Поле зрения стандарта измерения CIE"
 
 #: data/resources/ui/preferences.ui:130
 msgctxt "CIE 2° standard observer"
 msgid "2°"
-msgstr ""
+msgstr "2°"
 
 #: data/resources/ui/preferences.ui:131
 msgctxt "CIE 10° standard observer"
 msgid "10°"
-msgstr ""
+msgstr "10°"
 
 #: data/resources/ui/preferences.ui:141
 msgid "Color Formats"
@@ -508,7 +509,7 @@ msgstr "Показать названия цветов из цветовой п�
 #: src/widgets/preferences_window.rs:187
 msgctxt "Name of the color set from the xkcd color survey"
 msgid "xkcd"
-msgstr ""
+msgstr "xkcd"
 
 #: src/widgets/preferences_window.rs:188
 msgid "Show color names from the xkcd color survey"
@@ -516,11 +517,11 @@ msgstr "Показать названия цветов из цветового �
 
 #: src/widgets/preferences_window.rs:327
 msgid "Move Up"
-msgstr "Вверх"
+msgstr "Переместить вверх"
 
 #: src/widgets/preferences_window.rs:329
 msgid "Move Down"
-msgstr "Вниз"
+msgstr "Переместить вниз"
 
 #: src/widgets/preferences_window.rs:452
 msgid "Hex-Code"
@@ -528,35 +529,35 @@ msgstr "Шестнадцатеричный код"
 
 #: src/widgets/preferences_window.rs:457
 msgid "RGB"
-msgstr ""
+msgstr "RGB"
 
 #: src/widgets/preferences_window.rs:460
 msgid "HSL"
-msgstr ""
+msgstr "HSL"
 
 #: src/widgets/preferences_window.rs:463
 msgid "HSV"
-msgstr ""
+msgstr "HSV"
 
 #: src/widgets/preferences_window.rs:467
 msgid "CMYK"
-msgstr ""
+msgstr "CMYK"
 
 #: src/widgets/preferences_window.rs:472
 msgid "XYZ"
-msgstr ""
+msgstr "XYZ"
 
 #: src/widgets/preferences_window.rs:476
 msgid "CIELAB"
-msgstr ""
+msgstr "CIELAB"
 
 #: src/widgets/preferences_window.rs:481
 msgid "HWB"
-msgstr ""
+msgstr "HWB"
 
 #: src/widgets/preferences_window.rs:485
 msgid "CIELCh / HCL"
-msgstr ""
+msgstr "CIELCh / HCL"
 
 #: src/widgets/preferences_window.rs:491
 msgid "Name"
@@ -570,16 +571,18 @@ msgstr "Без названия"
 
 #: src/widgets/preferences_window.rs:499
 msgid "LMS"
-msgstr ""
+msgstr "LMS"
 
 #: src/widgets/preferences_window.rs:503
 msgid "Hunter Lab"
-msgstr ""
+msgstr "Hunter Lab"
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/widgets/about_window.rs:50
 msgid "translator-credits"
-msgstr "Сергей Ворон <voron.s.a@gmail.com>"
+msgstr ""
+"Сергей Ворон <voron.s.a@gmail.com>\n"
+"Давид Лапшин <ddaudix@gmail.com>"
 
 #: src/widgets/about_window.rs:110
 msgctxt ""
@@ -606,7 +609,7 @@ msgstr ""
 #: src/widgets/palette_dialog.rs:122
 msgctxt "Name for tints (lighter variants) of the color"
 msgid "Tints"
-msgstr "Тон"
+msgstr "Тона"
 
 #: src/widgets/palette_dialog.rs:126
 msgctxt "Name for shades (darker variants) of the color"
