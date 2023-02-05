@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-01-02 21:58+0000\n"
-"PO-Revision-Date: 2023-02-05 19:22+0300\n"
+"PO-Revision-Date: 2023-02-05 19:23+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -567,7 +567,7 @@ msgstr "Название"
 #: src/window.rs:580 src/window.rs:651
 msgctxt "Information that no name for the color could be found"
 msgid "Not named"
-msgstr "Без имени"
+msgstr "Без названия"
 
 #: src/widgets/preferences_window.rs:499
 msgid "LMS"
