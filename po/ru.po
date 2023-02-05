@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-01-02 21:58+0000\n"
-"PO-Revision-Date: 2023-02-05 19:17+0300\n"
+"PO-Revision-Date: 2023-02-05 19:22+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -33,12 +33,12 @@ msgstr "Выбор цвета"
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
 #: src/widgets/about_window.rs:74
 msgid "A powerful color picker and formatter"
-msgstr "Мощный инструмент выбора цвета и форматер"
+msgstr "Мощный инструмент для выбора цвета и средство форматирования"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
 msgid "Gnome;GTK;Color;Color Picker;Picker;Palette;"
-msgstr "Gnome;GTK;Color;Пипетка;;Palette;"
+msgstr "Gnome;GTK;Цвет;Выбор цвета;Пипетка;Палитра;"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
 #: src/widgets/about_window.rs:77
@@ -194,7 +194,7 @@ msgstr "Выбрать цвет"
 #: data/resources/ui/window.ui:125
 msgctxt "Tooltip of the palette button"
 msgid "Open Palette Window"
-msgstr "Открыть окно палитр"
+msgstr "Открыть окно палитры"
 
 #: data/resources/ui/color-format-row.ui:22
 msgctxt "Tooltip of the copy button for format rows"
