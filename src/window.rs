@@ -68,6 +68,7 @@ mod imp {
         pub history: RefCell<Option<gio::ListStore>>,
         pub settings: gio::Settings,
         pub color: RefCell<Option<Color>>,
+        pub portal_error: RefCell<Option<ashpd::Error>>,
     }
 
     impl Default for AppWindow {
@@ -95,6 +96,7 @@ mod imp {
                 history: Default::default(),
                 settings: gio::Settings::new(APP_ID),
                 color: RefCell::new(None),
+                portal_error: RefCell::new(None),
             }
         }
     }
@@ -509,10 +511,14 @@ impl AppWindow {
         let connection = ashpd::zbus::Connection::session().await.expect("Failed to open connection to zbus");
         let proxy = ashpd::desktop::screenshot::ScreenshotProxy::new(&connection).await.expect("Failed to open screenshot proxy");
         match proxy.pick_color(&ashpd::WindowIdentifier::default()).await {
-            Ok(color) => window.set_color(Color::from(color)),
+            Ok(color) => {
+                window.imp().portal_error.replace(None);
+                window.set_color(Color::from(color));
+            },
             Err(err) => {
                 log::error!("{}", err);
                 window.show_toast(&gettext("Failed to pick a color"));
+                window.imp().portal_error.replace(Some(err));
             },
         };
         }));

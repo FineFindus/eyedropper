@@ -172,7 +172,11 @@ impl App {
     }
 
     fn show_about_dialog(&self) {
-        EyedropperAbout::show(self, &self.main_window());
+        EyedropperAbout::show(
+            self,
+            &self.main_window(),
+            self.main_window().imp().portal_error.take(),
+        );
     }
 
     fn show_preferences_dialog(&self) {

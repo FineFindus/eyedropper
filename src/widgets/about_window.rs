@@ -26,6 +26,7 @@ impl EyedropperAbout {
     pub fn show<A: IsA<Application> + AdwApplicationExt, W: IsA<Window> + GtkWindowExt>(
         app: &A,
         window: &W,
+        portal_error: Option<ashpd::Error>,
     ) {
         //translatable strings which will be retrieved via gettext
         let details = Self::details();
@@ -34,7 +35,7 @@ impl EyedropperAbout {
         let changelog = Self::changelog();
         let changelog_version = config::VERSION;
 
-        let debug_info = Self::debug_info();
+        let debug_info = Self::debug_info(portal_error);
 
         let about_window = AboutWindow::builder()
             .application(app)
@@ -114,7 +115,7 @@ impl EyedropperAbout {
     }
 
     ///Returns useful information for debugging the application.
-    fn debug_info() -> String {
+    fn debug_info(portal_error: Option<ashpd::Error>) -> String {
         let mut information = String::new();
 
         //information about the app
@@ -174,6 +175,10 @@ impl EyedropperAbout {
             adw::minor_version(),
             adw::micro_version()
         ));
+        information.push('\n');
+
+        //add potential portal error
+        information.push_str(&format!("Portal error: {:?}", portal_error));
         information.push('\n');
 
         information
