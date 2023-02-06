@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-01-29 11:30+0000\n"
+"POT-Creation-Date: 2023-02-06 19:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:88 src/widgets/about_window.rs:44 src/main.rs:25
+#: data/resources/ui/window.ui:88 src/widgets/about_window.rs:45 src/main.rs:25
 msgid "Eyedropper"
 msgstr ""
 
@@ -29,7 +29,7 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
-#: src/widgets/about_window.rs:74
+#: src/widgets/about_window.rs:75
 msgid "A powerful color picker and formatter"
 msgstr ""
 
@@ -39,7 +39,7 @@ msgid "Gnome;GTK;Color;Color Picker;Picker;Palette;"
 msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
-#: src/widgets/about_window.rs:77
+#: src/widgets/about_window.rs:78
 msgid ""
 "Pick any color from your screen and view it in different formats. Change the "
 "picked color or go back to a previously picked color from the history list. "
@@ -47,37 +47,37 @@ msgid ""
 msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
-#: src/widgets/about_window.rs:82
+#: src/widgets/about_window.rs:83
 msgid "Features"
 msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:16
-#: src/widgets/about_window.rs:86
+#: src/widgets/about_window.rs:87
 msgid "Pick a Color"
 msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
-#: src/widgets/about_window.rs:87
+#: src/widgets/about_window.rs:88
 msgid "Enter a color in Hex-Format"
 msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:18
-#: src/widgets/about_window.rs:88
+#: src/widgets/about_window.rs:89
 msgid "Parse RGBA/ARGB Hex-Colors"
 msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
-#: src/widgets/about_window.rs:89
+#: src/widgets/about_window.rs:90
 msgid "View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format"
 msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
-#: src/widgets/about_window.rs:90
+#: src/widgets/about_window.rs:91
 msgid "Customize which formats appear as well as their order"
 msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
-#: src/widgets/about_window.rs:91
+#: src/widgets/about_window.rs:92
 msgid "Generate a palette of different shades"
 msgstr ""
 
@@ -464,31 +464,31 @@ msgctxt "Tooltip of the copy button for format rows"
 msgid "Copy Format"
 msgstr ""
 
-#: src/window.rs:398 src/window.rs:421 src/window.rs:592 src/window.rs:663
+#: src/window.rs:400 src/window.rs:423 src/window.rs:598 src/window.rs:669
 #: src/widgets/preferences_window.rs:494
 msgctxt "Information that no name for the color could be found"
 msgid "Not named"
 msgstr ""
 
-#: src/window.rs:494
+#: src/window.rs:496
 msgid "Failed to get palette color"
 msgstr ""
 
-#: src/window.rs:515
+#: src/window.rs:520
 msgid "Failed to pick a color"
 msgstr ""
 
 #. Translators: Do not replace the {}. These are used as placeholders for the copied values
-#: src/window.rs:609
+#: src/window.rs:615
 msgid "Copied: “{}”"
 msgstr ""
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
-#: src/widgets/about_window.rs:50
+#: src/widgets/about_window.rs:51
 msgid "translator-credits"
 msgstr ""
 
-#: src/widgets/about_window.rs:110
+#: src/widgets/about_window.rs:111
 msgctxt ""
 "The changelog of the current version. Should be similar to the CHANGELOG.md "
 "file at the project root. Please ensure that the tags have a matching "
