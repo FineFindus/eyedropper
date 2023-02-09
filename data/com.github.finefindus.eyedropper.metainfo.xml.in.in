@@ -48,7 +48,7 @@
   <url type="help">https://github.com/FineFindus/eyedropper/issues</url>
   <url type="vcs-browser">https://github.com/FineFindus/eyedropper</url>
   <url type="contribute">https://github.com/FineFindus/eyedropper/issues</url>
-  <content_rating type="oars-1.0" />
+  <content_rating type="oars-1.1" />
   <releases>
   <release version="0.5.1" date="2023-01-29">
       <description>
