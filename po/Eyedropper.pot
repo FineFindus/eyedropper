@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-02-09 20:32+0000\n"
+"POT-Creation-Date: 2023-02-09 20:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -101,7 +101,7 @@ msgstr ""
 msgid "Generated color palettes"
 msgstr ""
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:155
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:156
 msgid "FineFindus"
 msgstr ""
 
