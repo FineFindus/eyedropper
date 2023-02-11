@@ -388,8 +388,7 @@ impl ColorFormatter {
 
     /// Format the colors as a PAINT.net file.
     ///
-    /// The name will be the name of the palette, each color will be
-    /// named untitled.
+    /// The name will be the name of the palette.
     pub fn paint_dot_net_file(name: &str, colors: Vec<Color>) -> String {
         let mut content = format!(
             ";paint.net Palette File\n\
@@ -404,6 +403,30 @@ impl ColorFormatter {
             let formatter = Self::with_alpha_position(color, AlphaPosition::Start);
             content.push_str(&formatter.hex_code());
             content.push('\n');
+        }
+
+        content
+    }
+
+    /// Format the colors as a .pal file, used by e.g. Corel Painter.
+    ///
+    /// The name will be the name of the palette, each color will be
+    /// named untitled.
+    ///
+    /// While some apps accept PAL formats with RGBA, most common is a version without alpha.
+    /// The saved file will not contain alpha values, there not generated in the pallettes,
+    /// so there would be no value in writing them out
+    pub fn pal_file(colors: Vec<Color>) -> String {
+        //save magic bytes, version number and number of colors
+        let mut content = format!(
+            "JASC-PAL\n\
+            0100\n\
+            {}\n",
+            colors.len()
+        );
+
+        for color in colors {
+            content.push_str(&format!("{} {} {}\n", color.red, color.green, color.blue));
         }
 
         content

@@ -283,6 +283,7 @@ impl PaletteDialog {
                         let palette = match path.extension().and_then(|extension| extension.to_str()) {
                             Some("gpl") => ColorFormatter::gpl_file(file_name, colors.clone()),
                             Some("txt") => ColorFormatter::paint_dot_net_file(file_name, colors.clone()),
+                            Some("pal") => ColorFormatter::pal_file(colors.clone()),
                             _ => todo!(),
                         };
                         std::fs::write(path, &palette).expect("Failed to write palette file");
