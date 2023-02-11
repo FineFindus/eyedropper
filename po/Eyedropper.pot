@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-02-09 20:58+0000\n"
+"POT-Creation-Date: 2023-02-11 11:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:88 src/widgets/about_window.rs:45 src/main.rs:25
+#: data/resources/ui/window.ui:88 src/widgets/about_window.rs:45 src/main.rs:26
 msgid "Eyedropper"
 msgstr ""
 
@@ -464,22 +464,22 @@ msgctxt "Tooltip of the copy button for format rows"
 msgid "Copy Format"
 msgstr ""
 
-#: src/window.rs:400 src/window.rs:423 src/window.rs:598 src/window.rs:669
-#: src/widgets/preferences_window.rs:494
+#: src/window.rs:397 src/window.rs:420 src/window.rs:595 src/window.rs:666
+#: src/widgets/preferences_window.rs:495
 msgctxt "Information that no name for the color could be found"
 msgid "Not named"
 msgstr ""
 
-#: src/window.rs:496
+#: src/window.rs:493
 msgid "Failed to get palette color"
 msgstr ""
 
-#: src/window.rs:520
+#: src/window.rs:517
 msgid "Failed to pick a color"
 msgstr ""
 
 #. Translators: Do not replace the {}. These are used as placeholders for the copied values
-#: src/window.rs:615
+#: src/window.rs:612
 msgid "Copied: “{}”"
 msgstr ""
 
@@ -541,107 +541,107 @@ msgctxt "Color palette consisting of six slight shifted colors"
 msgid "Analogous"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:259
+#: src/widgets/palette_dialog.rs:256
 msgctxt ""
 "Name of the save palette file, do not add a file extension, .gpl will be "
 "added automatically"
 msgid "palettes"
 msgstr ""
 
-#: src/widgets/preferences_window.rs:168
+#: src/widgets/preferences_window.rs:169
 msgctxt ""
 "Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
 "#html4"
 msgid "Basic"
 msgstr ""
 
-#: src/widgets/preferences_window.rs:170
+#: src/widgets/preferences_window.rs:171
 msgid "Show color names from the w3c basic color keyword set"
 msgstr ""
 
-#: src/widgets/preferences_window.rs:176
+#: src/widgets/preferences_window.rs:177
 msgctxt ""
 "Name of the extended color keyword set from https://www.w3.org/TR/css-"
 "color-3/#svg-color"
 msgid "Extended"
 msgstr ""
 
-#: src/widgets/preferences_window.rs:178
+#: src/widgets/preferences_window.rs:179
 msgid "Show color names from the w3c extended color keyword  set"
 msgstr ""
 
-#: src/widgets/preferences_window.rs:182
+#: src/widgets/preferences_window.rs:183
 msgctxt ""
 "Name of the color set from the GNOME color palette (https://developer.gnome."
 "org/hig/reference/palette.html)"
 msgid "GNOME color palette"
 msgstr ""
 
-#: src/widgets/preferences_window.rs:183
+#: src/widgets/preferences_window.rs:184
 msgid "Show color names from the GNOME color palette"
 msgstr ""
 
-#: src/widgets/preferences_window.rs:187
+#: src/widgets/preferences_window.rs:188
 msgctxt "Name of the color set from the xkcd color survey"
 msgid "xkcd"
 msgstr ""
 
-#: src/widgets/preferences_window.rs:188
+#: src/widgets/preferences_window.rs:189
 msgid "Show color names from the xkcd color survey"
 msgstr ""
 
-#: src/widgets/preferences_window.rs:327
+#: src/widgets/preferences_window.rs:328
 msgid "Move Up"
 msgstr ""
 
-#: src/widgets/preferences_window.rs:329
+#: src/widgets/preferences_window.rs:330
 msgid "Move Down"
 msgstr ""
 
-#: src/widgets/preferences_window.rs:452
+#: src/widgets/preferences_window.rs:453
 msgid "Hex-Code"
 msgstr ""
 
-#: src/widgets/preferences_window.rs:457
+#: src/widgets/preferences_window.rs:458
 msgid "RGB"
 msgstr ""
 
-#: src/widgets/preferences_window.rs:460
+#: src/widgets/preferences_window.rs:461
 msgid "HSL"
 msgstr ""
 
-#: src/widgets/preferences_window.rs:463
+#: src/widgets/preferences_window.rs:464
 msgid "HSV"
 msgstr ""
 
-#: src/widgets/preferences_window.rs:467
+#: src/widgets/preferences_window.rs:468
 msgid "CMYK"
 msgstr ""
 
-#: src/widgets/preferences_window.rs:472
+#: src/widgets/preferences_window.rs:473
 msgid "XYZ"
 msgstr ""
 
-#: src/widgets/preferences_window.rs:476
+#: src/widgets/preferences_window.rs:477
 msgid "CIELAB"
 msgstr ""
 
-#: src/widgets/preferences_window.rs:481
+#: src/widgets/preferences_window.rs:482
 msgid "HWB"
 msgstr ""
 
-#: src/widgets/preferences_window.rs:485
+#: src/widgets/preferences_window.rs:486
 msgid "CIELCh / HCL"
 msgstr ""
 
-#: src/widgets/preferences_window.rs:491
+#: src/widgets/preferences_window.rs:492
 msgid "Name"
 msgstr ""
 
-#: src/widgets/preferences_window.rs:499
+#: src/widgets/preferences_window.rs:500
 msgid "LMS"
 msgstr ""
 
-#: src/widgets/preferences_window.rs:503
+#: src/widgets/preferences_window.rs:504
 msgid "Hunter Lab"
 msgstr ""
