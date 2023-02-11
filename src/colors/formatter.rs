@@ -417,7 +417,7 @@ impl ColorFormatter {
     /// The saved file will not contain alpha values, there not generated in the pallettes,
     /// so there would be no value in writing them out
     pub fn pal_file(colors: Vec<Color>) -> String {
-        //save magic bytes, version number and number of colors
+        //save magic letters, version number and number of colors
         let mut content = format!(
             "JASC-PAL\n\
             0100\n\
@@ -429,6 +429,22 @@ impl ColorFormatter {
             content.push_str(&format!("{} {} {}\n", color.red, color.green, color.blue));
         }
 
+        content
+    }
+
+    /// Format the colors as a .hex file
+    ///
+    /// This format contains only the raw hex strings, without alpha values and no leading # symbols.
+    pub fn hex_file(colors: Vec<Color>) -> String {
+        let mut content = String::with_capacity(8 * colors.len());
+
+        for color in colors.clone() {
+            let formatter = Self::with_alpha_position(color, AlphaPosition::None);
+            let mut hex_string = formatter.hex_code();
+            hex_string.remove(0);
+            content.push_str(&hex_string);
+            content.push('\n');
+        }
         content
     }
 }

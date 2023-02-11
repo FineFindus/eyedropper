@@ -284,7 +284,10 @@ impl PaletteDialog {
                             Some("gpl") => ColorFormatter::gpl_file(file_name, colors.clone()),
                             Some("txt") => ColorFormatter::paint_dot_net_file(file_name, colors.clone()),
                             Some("pal") => ColorFormatter::pal_file(colors.clone()),
-                            _ => todo!(),
+                            _ => {
+                                //default to exporting the hex colors
+                                ColorFormatter::hex_file(colors.clone())
+                            },
                         };
                         std::fs::write(path, &palette).expect("Failed to write palette file");
                     }
