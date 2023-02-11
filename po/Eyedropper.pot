@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-02-11 11:44+0000\n"
+"POT-Creation-Date: 2023-02-11 21:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -539,13 +539,6 @@ msgstr ""
 #: src/widgets/palette_dialog.rs:157
 msgctxt "Color palette consisting of six slight shifted colors"
 msgid "Analogous"
-msgstr ""
-
-#: src/widgets/palette_dialog.rs:256
-msgctxt ""
-"Name of the save palette file, do not add a file extension, .gpl will be "
-"added automatically"
-msgid "palettes"
 msgstr ""
 
 #: src/widgets/preferences_window.rs:169
