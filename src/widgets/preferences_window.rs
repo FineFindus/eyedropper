@@ -283,8 +283,8 @@ impl PreferencesWindow {
             .build();
 
         let row = adw::ActionRow::builder()
-            .title(&item.label())
-            .subtitle(&item.example())
+            .title(item.label())
+            .subtitle(item.example())
             .activatable_widget(&switch)
             .build();
 
@@ -389,7 +389,7 @@ impl PreferencesWindow {
                             }
 
                             //update settings with new order
-                            match widget.imp().settings.set("format-order", &widget.format_order_list()) {
+                            match widget.imp().settings.set("format-order", widget.format_order_list()) {
                                 Ok(_) => {},
                                 Err(err) => log::error!("Failed to save format-order: {}", err)
                             }

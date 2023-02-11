@@ -289,7 +289,7 @@ impl PaletteDialog {
                                 ColorFormatter::hex_file(colors.clone())
                             },
                         };
-                        std::fs::write(path, &palette).expect("Failed to write palette file");
+                        std::fs::write(path, palette).expect("Failed to write palette file");
                     }
                 } else {
                     log::error!("Failed to save file: {}", response);

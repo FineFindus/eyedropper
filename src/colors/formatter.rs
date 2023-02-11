@@ -438,7 +438,7 @@ impl ColorFormatter {
     pub fn hex_file(colors: Vec<Color>) -> String {
         let mut content = String::with_capacity(8 * colors.len());
 
-        for color in colors.clone() {
+        for color in colors {
             let formatter = Self::with_alpha_position(color, AlphaPosition::None);
             let mut hex_string = formatter.hex_code();
             hex_string.remove(0);
