@@ -12,7 +12,7 @@ mod imp {
 
     use super::*;
 
-    use glib::subclass::Signal;
+    use glib::{subclass::Signal, ParamSpec, Value};
     use once_cell::sync::Lazy;
 
     #[derive(gtk::CompositeTemplate, glib::Properties)]
@@ -68,6 +68,16 @@ mod imp {
             SIGNALS.as_ref()
         }
 
+        fn properties() -> &'static [ParamSpec] {
+            Self::derived_properties()
+        }
+        fn set_property(&self, _id: usize, _value: &Value, _pspec: &ParamSpec) {
+            Self::derived_set_property(self, _id, _value, _pspec)
+        }
+        fn property(&self, _id: usize, _pspec: &ParamSpec) -> Value {
+            Self::derived_property(self, _id, _pspec)
+        }
+
         fn constructed(&self) {
             self.parent_constructed();
             let obj = self.obj();
@@ -97,12 +107,12 @@ impl ColorFormatRow {
 
     /// Get the currently shown text.
     pub fn text(&self) -> String {
-        self.property("text")
+        self.property("color")
     }
 
     /// Set the currently shown text
     pub fn set_text(&self, text: String) {
-        self.set_property("text", &text);
+        self.set_property("color", &text);
     }
 
     /// Bind the properties to the target values.
@@ -112,7 +122,7 @@ impl ColorFormatRow {
     /// of the entry to make it (un)-editable
     fn setup_properties(&self) {
         //bind texts
-        self.bind_property("text", &*self.imp().entry, "text")
+        self.bind_property("color", &*self.imp().entry, "text")
             .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)
             .build();
         //bind editable
