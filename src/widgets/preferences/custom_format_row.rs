@@ -125,7 +125,7 @@ glib::wrapper! {
 impl CustomFormatRow {
     #[allow(clippy::new_without_default)]
     pub fn new() -> Self {
-        glib::Object::new::<Self>(&[])
+        glib::Object::new::<Self>()
     }
 
     /// Get the name of the format settings.

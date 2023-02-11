@@ -203,13 +203,10 @@ impl PaletteDialog {
                 gtk::StyleContext::add_provider_for_display(&display, &css_provider, 400);
             }
 
-            css_provider.load_from_data(
-                format!(
-                    ".{} {{background-color: {};border-radius: 6px;}}",
-                    class_name, color_hex
-                )
-                .as_bytes(),
-            );
+            css_provider.load_from_data(&format!(
+                ".{} {{background-color: {};border-radius: 6px;}}",
+                class_name, color_hex
+            ));
             color_box.add_css_class(&class_name);
             palette_box.append(&color_box);
         }

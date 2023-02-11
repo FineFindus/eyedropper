@@ -1,3 +1,4 @@
+use glib::ExitCode;
 use log::{debug, info};
 
 use gtk::prelude::*;
@@ -147,8 +148,7 @@ impl App {
             action_preferences,
             action_quit,
             action_about,
-        ])
-        .unwrap();
+        ]);
     }
 
     // Sets up keyboard shortcuts
@@ -185,7 +185,7 @@ impl App {
         preferences.show();
     }
 
-    pub fn run(&self) -> i32 {
+    pub fn run(&self) -> ExitCode {
         info!("Eyedropper ({})", APP_ID);
         info!("Version: {} ({})", VERSION, PROFILE);
         info!("Datadir: {}", PKGDATADIR);

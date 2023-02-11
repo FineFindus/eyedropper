@@ -124,7 +124,7 @@ glib::wrapper! {
 impl ColorFormatRow {
     #[allow(clippy::new_without_default)]
     pub fn new() -> Self {
-        glib::Object::new::<Self>(&[])
+        glib::Object::new::<Self>()
     }
 
     /// Get the currently shown text.

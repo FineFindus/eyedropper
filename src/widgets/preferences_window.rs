@@ -107,7 +107,7 @@ glib::wrapper! {
 impl PreferencesWindow {
     #[allow(clippy::new_without_default)]
     pub fn new() -> Self {
-        glib::Object::new::<Self>(&[])
+        glib::Object::new::<Self>()
     }
 
     fn setup_settings(&self) {
@@ -249,7 +249,7 @@ impl PreferencesWindow {
         self.imp().format_order.replace(Some(model));
 
         // Wrap model with selection and pass it to the list view
-        let selection_model = gtk::NoSelection::new(Some(&self.formats()));
+        let selection_model = gtk::NoSelection::new(Some(self.formats()));
         self.imp().order_list.bind_model(
             Some(&selection_model),
             glib::clone!(@weak self as widget => @default-panic, move |obj| {
@@ -356,7 +356,7 @@ impl PreferencesWindow {
                 Some(gdk::ContentProvider::for_value(&item.to_value()))
             }),
         );
-        row.add_controller(&drag);
+        row.add_controller(drag);
 
         let drop_target = gtk::DropTarget::builder()
             .name("preferences-drag-format")
@@ -401,7 +401,7 @@ impl PreferencesWindow {
             }
             true
         }));
-        row.add_controller(&drop_target);
+        row.add_controller(drop_target);
         row
     }
 

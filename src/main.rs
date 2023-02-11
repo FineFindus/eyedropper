@@ -8,12 +8,13 @@ mod widgets;
 mod window;
 
 use gettextrs::{gettext, LocaleCategory};
+use glib::ExitCode;
 use gtk::{gio, glib};
 
 use self::application::App;
 use self::config::{GETTEXT_PACKAGE, LOCALEDIR, RESOURCES_FILE};
 
-fn main() {
+fn main() -> ExitCode {
     // Initialize logger
     pretty_env_logger::init();
 
@@ -28,7 +29,5 @@ fn main() {
     gio::resources_register(&res);
 
     let app = App::new();
-    let return_code = app.run();
-
-    std::process::exit(return_code);
+    app.run()
 }

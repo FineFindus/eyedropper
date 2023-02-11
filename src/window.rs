@@ -170,7 +170,7 @@ impl AppWindow {
 
     /// Shows a basic toast with the given text.
     fn show_toast(&self, text: &str) {
-        self.imp().toast_overlay.add_toast(&adw::Toast::new(text));
+        self.imp().toast_overlay.add_toast(adw::Toast::new(text));
     }
 
     /// The currently picked color.
@@ -216,7 +216,7 @@ impl AppWindow {
         self.imp().history.replace(Some(model));
 
         // Wrap model with selection and pass it to the list view
-        let selection_model = gtk::NoSelection::new(Some(&self.history()));
+        let selection_model = gtk::NoSelection::new(Some(self.history()));
         self.imp().history_list.bind_model(
             Some(&selection_model),
             glib::clone!(@weak self as window => @default-panic, move |obj| {
@@ -258,15 +258,12 @@ impl AppWindow {
             gtk::StyleContext::add_provider_for_display(&display, &css_provider, 400);
         }
 
-        css_provider.load_from_data(
-            format!(
-                ".{} {{background-color: {};border-radius: 6px;}}",
-                class_name,
-                // ignore alpha values, they are not displayed properly
-                color_hex
-            )
-            .as_bytes(),
-        );
+        css_provider.load_from_data(&format!(
+            ".{} {{background-color: {};border-radius: 6px;}}",
+            class_name,
+            // ignore alpha values, they are not displayed properly
+            color_hex
+        ));
         color_button.add_css_class(&class_name);
 
         let tooltip = if color.alpha != 255 {
