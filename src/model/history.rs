@@ -7,7 +7,7 @@ mod imp {
 
     use glib::{
         subclass::{prelude::ObjectImpl, types::ObjectSubclass},
-        ParamSpec, ParamSpecBoxed, StaticType, ToValue, Value,
+        ParamSpec, ParamSpecBoxed, ToValue, Value,
     };
     use gtk::gdk;
     use once_cell::sync::Lazy;
@@ -36,15 +36,8 @@ mod imp {
     // Trait shared by all GObjects
     impl ObjectImpl for HistoryObject {
         fn properties() -> &'static [ParamSpec] {
-            static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
-                vec![ParamSpecBoxed::new(
-                    "color",
-                    "Color",
-                    "Color",
-                    gdk::RGBA::static_type(),
-                    glib::ParamFlags::READWRITE,
-                )]
-            });
+            static PROPERTIES: Lazy<Vec<ParamSpec>> =
+                Lazy::new(|| vec![ParamSpecBoxed::builder::<gtk::gdk::RGBA>("color").build()]);
             PROPERTIES.as_ref()
         }
 

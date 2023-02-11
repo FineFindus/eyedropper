@@ -13,6 +13,7 @@ mod imp {
     // Object holding the state
     #[derive(Debug, Default)]
     pub struct ColorFormatObject {
+        //TODO: use glib::Properties derive macro, currently not possible
         pub identifier: RefCell<String>,
         pub label: RefCell<String>,
         pub example: RefCell<String>,
