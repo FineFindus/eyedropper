@@ -253,7 +253,7 @@ impl PaletteDialog {
             colors.append(&mut color.tetradic_colors());
             colors.append(&mut color.analogous_colors(6));
 
-            window.save_to_file(&pgettext("Name of the save palette file, do not add a file extension, .gpl will be added automatically", "palettes"), colors).await;
+            window.save_to_file(colors).await;
         }));
     }
 
@@ -261,7 +261,7 @@ impl PaletteDialog {
     ///
     /// The colors will be saved without alpha values under the name `Untitled`.
     /// This opens up a user prompt to ask where to save the file and then write said file, if the user cancels, the file will not be saved.
-    pub async fn save_to_file(&self, name: &str, colors: Vec<Color>) {
+    pub async fn save_to_file(&self, colors: Vec<Color>) {
         let file_chooser = gtk::FileChooserNative::builder()
             .transient_for(self)
             .action(gtk::FileChooserAction::Save)
@@ -269,15 +269,23 @@ impl PaletteDialog {
             .create_folders(true)
             .build();
 
-        file_chooser.set_current_name(&format!("{}.gpl", name));
-        let palette = ColorFormatter::gpl_file(name, colors);
+        file_chooser.set_current_name("eyedropper_palette");
 
         file_chooser.connect_response(
-            glib::clone!(@weak self as window, @strong palette => move |file_chooser, response| {
+            glib::clone!(@weak self as window => move |file_chooser, response| {
+
                 if response == gtk::ResponseType::Accept {
                     if let Some(path) = file_chooser.file().and_then(|file| file.path()) {
                         log::debug!("Selected path: {}", path.display());
-                        std::fs::write(path, &palette).expect("Failed to write GIMP palette file");
+
+                        let file_name = path.file_name().and_then(|name| name.to_str()).unwrap_or("Eyedropper Palette");
+
+                        let palette = match path.extension().and_then(|extension| extension.to_str()) {
+                            Some("gpl") => ColorFormatter::gpl_file(file_name, colors.clone()),
+                            Some("txt") => ColorFormatter::paint_dot_net_file(file_name, colors.clone()),
+                            _ => todo!(),
+                        };
+                        std::fs::write(path, &palette).expect("Failed to write palette file");
                     }
                 } else {
                     log::error!("Failed to save file: {}", response);
