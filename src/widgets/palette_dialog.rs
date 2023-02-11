@@ -270,7 +270,7 @@ impl PaletteDialog {
             .build();
 
         file_chooser.set_current_name(&format!("{}.gpl", name));
-        let palette = Color::gpl_file(name, colors);
+        let palette = ColorFormatter::gpl_file(name, colors);
 
         file_chooser.connect_response(
             glib::clone!(@weak self as window, @strong palette => move |file_chooser, response| {
