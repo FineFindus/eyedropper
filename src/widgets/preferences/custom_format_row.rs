@@ -1,6 +1,6 @@
+use gtk::glib;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
-use gtk::{glib, prelude::ToValue};
 
 mod imp {
     use std::cell::RefCell;
@@ -10,16 +10,19 @@ mod imp {
     use super::*;
 
     use adw::subclass::prelude::{EntryRowImpl, PreferencesRowImpl};
-    use glib::{subclass::Signal, ParamSpecBoolean, ParamSpecString};
-    use gtk::glib::ParamSpec;
+    use glib::{subclass::Signal, Properties};
     use once_cell::sync::Lazy;
 
-    #[derive(gtk::CompositeTemplate)]
+    #[derive(gtk::CompositeTemplate, Properties)]
     #[template(resource = "/com/github/finefindus/eyedropper/ui/preferences/custom-format-row.ui")]
+    #[properties(wrapper_type = super::CustomFormatRow)]
     pub struct CustomFormatRow {
         pub settings: gtk::gio::Settings,
+        #[property(get, set)]
         pub settings_key: RefCell<String>,
+        #[property(get, set)]
         pub default_format: RefCell<String>,
+        #[property(get, set, default = false)]
         pub editable: RefCell<bool>,
     }
 
@@ -63,46 +66,6 @@ mod imp {
             SIGNALS.as_ref()
         }
 
-        fn properties() -> &'static [ParamSpec] {
-            static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
-                vec![
-                    ParamSpecString::builder("settings-key").build(),
-                    ParamSpecString::builder("default-format").build(),
-                    ParamSpecBoolean::builder("editable")
-                        .default_value(false)
-                        .build(),
-                ]
-            });
-            PROPERTIES.as_ref()
-        }
-
-        fn set_property(&self, _id: usize, value: &glib::Value, pspec: &ParamSpec) {
-            match pspec.name() {
-                "settings-key" => {
-                    let input_value = value.get::<String>().unwrap();
-                    self.settings_key.replace(input_value);
-                }
-                "default-format" => {
-                    let input_value = value.get::<String>().unwrap();
-                    self.default_format.replace(input_value);
-                }
-                "editable" => {
-                    let input_value = value.get::<bool>().unwrap();
-                    self.editable.replace(input_value);
-                }
-                _ => unimplemented!(),
-            }
-        }
-
-        fn property(&self, _id: usize, pspec: &ParamSpec) -> glib::Value {
-            match pspec.name() {
-                "settings-key" => self.settings_key.borrow().to_value(),
-                "default-format" => self.default_format.borrow().to_value(),
-                "editable" => self.editable.borrow().to_value(),
-                _ => unimplemented!(),
-            }
-        }
-
         fn constructed(&self) {
             self.parent_constructed();
             let obj = self.obj();
@@ -126,17 +89,6 @@ impl CustomFormatRow {
     #[allow(clippy::new_without_default)]
     pub fn new() -> Self {
         glib::Object::new::<Self>()
-    }
-
-    /// Get the name of the format settings.
-    /// Might returns `None` if the widget was just initialized on the property was not
-    fn settings_key(&self) -> String {
-        self.property("settings-key")
-    }
-
-    /// Returns the `default-format`.
-    fn default_format(&self) -> String {
-        self.property::<String>("default-format")
     }
 
     /// Set the visible text.

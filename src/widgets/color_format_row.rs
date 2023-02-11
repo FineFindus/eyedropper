@@ -12,17 +12,19 @@ mod imp {
 
     use super::*;
 
-    use glib::{subclass::Signal, ParamSpecBoolean, ParamSpecString};
-    use gtk::glib::ParamSpec;
+    use glib::subclass::Signal;
     use once_cell::sync::Lazy;
 
-    #[derive(gtk::CompositeTemplate)]
+    #[derive(gtk::CompositeTemplate, glib::Properties)]
     #[template(resource = "/com/github/finefindus/eyedropper/ui/color-format-row.ui")]
+    #[properties(wrapper_type = super::ColorFormatRow)]
     pub struct ColorFormatRow {
         pub settings: gtk::gio::Settings,
         #[template_child]
         pub entry: TemplateChild<gtk::Entry>,
+        #[property(set, get)]
         pub color: RefCell<String>,
+        #[property(set, get, default = false)]
         pub editable: RefCell<bool>,
     }
 
@@ -64,40 +66,6 @@ mod imp {
                 ]
             });
             SIGNALS.as_ref()
-        }
-
-        fn properties() -> &'static [ParamSpec] {
-            static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
-                vec![
-                    ParamSpecString::builder("text").build(),
-                    ParamSpecBoolean::builder("editable")
-                        .default_value(false)
-                        .build(),
-                ]
-            });
-            PROPERTIES.as_ref()
-        }
-
-        fn set_property(&self, _id: usize, value: &glib::Value, pspec: &ParamSpec) {
-            match pspec.name() {
-                "text" => {
-                    let input_value = value.get::<String>().unwrap();
-                    self.color.replace(input_value);
-                }
-                "editable" => {
-                    let input_value = value.get::<bool>().unwrap();
-                    self.editable.replace(input_value);
-                }
-                _ => unimplemented!(),
-            }
-        }
-
-        fn property(&self, _id: usize, pspec: &ParamSpec) -> glib::Value {
-            match pspec.name() {
-                "text" => self.color.borrow().to_value(),
-                "editable" => self.editable.borrow().to_value(),
-                _ => unimplemented!(),
-            }
         }
 
         fn constructed(&self) {

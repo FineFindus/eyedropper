@@ -13,6 +13,7 @@ mod imp {
     use once_cell::sync::Lazy;
 
     // Object holding the state
+    #[derive(Debug)]
     pub struct HistoryObject {
         pub color: RefCell<gdk::RGBA>,
     }
