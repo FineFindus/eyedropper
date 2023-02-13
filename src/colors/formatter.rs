@@ -466,14 +466,6 @@ impl ColorFormatter {
         //number of following 'ASECHUNK's
         buf.put_u32(colors.len() as u32);
 
-        //TODO add support got blocks
-        //start a block
-        // buf.put_u16(0xc001);
-
-        //// Group/Color name
-        // buf.put_u16(name.as_bytes().len() as u16);
-        // buf.put(name.as_bytes());
-
         for color in colors {
             let hex = Self::with_alpha_position(color, AlphaPosition::None).hex_code();
 
@@ -502,9 +494,6 @@ impl ColorFormatter {
             //add type, (0 = Global, 1 = Spot, 2 = Normal)
             buf.put_u16(0);
         }
-
-        //end the block
-        // buf.put_u16(0xc002);
 
         unsafe { String::from_utf8_unchecked(buf.freeze().to_vec()) }
     }
