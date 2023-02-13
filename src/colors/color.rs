@@ -211,6 +211,26 @@ impl Color {
         (x, y, z)
     }
 
+    /// Return the color as Adobe RGB.
+    ///
+    /// Formula from <http://www.easyrgb.com/en/math.php>
+    pub fn _to_adobe_rgb(self) -> (f32, f32, f32) {
+        let xyz = self.to_xyz();
+        let x = xyz.0 / 100.0;
+        let y = xyz.1 / 100.0;
+        let z = xyz.2 / 100.0;
+
+        let mut r = x * 2.04137 + y * -0.56495 + z * -0.34469;
+        let mut g = x * -0.96927 + y * 1.87601 + z * 0.04156;
+        let mut b = x * 0.01345 + y * -0.11839 + z * 1.01541;
+
+        r = r.powf(1.0 / 2.19921875);
+        g = g.powf(1.0 / 2.19921875);
+        b = b.powf(1.0 / 2.19921875);
+
+        (r * 255f32, g * 255f32, b * 255f32)
+    }
+
     /// Return the colors as CIELAB vales.
     ///
     /// If ten_deg_observer is true, the function will use 10° observer values instead of the 2° ones.
