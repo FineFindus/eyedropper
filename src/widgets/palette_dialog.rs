@@ -284,6 +284,7 @@ impl PaletteDialog {
                             Some("gpl") => ColorFormatter::gpl_file(file_name, colors.clone()),
                             Some("txt") => ColorFormatter::paint_dot_net_file(file_name, colors.clone()),
                             Some("pal") => ColorFormatter::pal_file(colors.clone()),
+                            Some("ase") => ColorFormatter::ase_file(colors.clone()),
                             _ => {
                                 //default to exporting the hex colors
                                 ColorFormatter::hex_file(colors.clone())

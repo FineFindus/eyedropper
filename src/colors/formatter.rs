@@ -1,3 +1,4 @@
+use bytes::{BufMut, BytesMut};
 use gtk::prelude::SettingsExt;
 
 use crate::config;
@@ -446,5 +447,65 @@ impl ColorFormatter {
             content.push('\n');
         }
         content
+    }
+
+    /// Format the colors as a `.ase` file.
+    ///
+    /// `.ase` files are used by Adobe products and have no public spec, this implementation follows a
+    /// [blog post by car.camera](https://carl.camera/default.aspx?id=109) and
+    /// http://www.selapa.net/swatches/colors/fileformats.php#adobe_ase.
+    pub fn ase_file(colors: Vec<Color>) -> String {
+        let mut buf = BytesMut::with_capacity(12 + colors.len() * 42);
+
+        //magic header letters
+        buf.put(&b"ASEF"[..]);
+
+        //version number 0x00010000
+        buf.put_u32(0x00010000);
+
+        //number of following 'ASECHUNK's
+        buf.put_u32(colors.len() as u32);
+
+        //TODO add support got blocks
+        //start a block
+        // buf.put_u16(0xc001);
+
+        //// Group/Color name
+        // buf.put_u16(name.as_bytes().len() as u16);
+        // buf.put(name.as_bytes());
+
+        for color in colors {
+            let hex = Self::with_alpha_position(color, AlphaPosition::None).hex_code();
+
+            //start of color entry
+            buf.put_u16(0x0001);
+
+            //block length
+            //the length is calculated the following way:
+            // 2 [name length indicator] + hex.len() as u32 * 2 [name as u16 bytes] + 2 [terminator] +
+            // 4 [RGB indicator] + (3 * 4) [values] + 2 [type] = 26
+            buf.put_u32(36);
+
+            //name length, add one for null terminator
+            buf.put_u16(hex.len() as u16 + 1);
+            hex.encode_utf16().for_each(|byte| buf.put_u16(byte));
+            //add null terminator
+            buf.put_u16(0);
+
+            //add color
+            buf.put(&b"RGB"[..]);
+            buf.put_u8(0x20);
+            buf.put_f32(color.red as f32 / 255f32);
+            buf.put_f32(color.green as f32 / 255f32);
+            buf.put_f32(color.blue as f32 / 255f32);
+
+            //add type, (0 = Global, 1 = Spot, 2 = Normal)
+            buf.put_u16(0);
+        }
+
+        //end the block
+        // buf.put_u16(0xc002);
+
+        unsafe { String::from_utf8_unchecked(buf.freeze().to_vec()) }
     }
 }

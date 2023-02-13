@@ -32,3 +32,4 @@ gtk-macros = "0.3"
 ashpd = "0.3.2"
 #ashpd = { git = "https://github.com/bilelmoussaoui/ashpd.git"}
 rand = "0.8.5"
+bytes = "1.4.0"
