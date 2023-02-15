@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-02-15 21:07+0000\n"
+"POT-Creation-Date: 2023-02-15 21:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -82,7 +82,7 @@ msgid "Generate a palette of different shades"
 msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:27
-msgid "Main window which a blue color displayed in different formats"
+msgid "Main window with a color in different formats"
 msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:31
