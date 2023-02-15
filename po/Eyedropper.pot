@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-02-11 21:42+0000\n"
+"POT-Creation-Date: 2023-02-15 20:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -82,26 +82,22 @@ msgid "Generate a palette of different shades"
 msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:27
-msgid "Main window dark"
+msgid "Main window which a blue color displayed in different formats"
 msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:31
-msgid "Main window light"
+msgid "Main window with customized formats"
 msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:35
-msgid "Customized color formatting in dark mode"
+msgid "Dialog showing generated color palettes"
 msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:39
-msgid "Customized color formatting"
+msgid "Status page stating to pick a color to get started"
 msgstr ""
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:43
-msgid "Generated color palettes"
-msgstr ""
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:156
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:152
 msgid "FineFindus"
 msgstr ""
 
