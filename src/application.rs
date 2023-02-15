@@ -156,7 +156,7 @@ impl App {
         self.set_accels_for_action("app.pick_color", &["<Control>p"]);
         self.set_accels_for_action("app.random_color", &["<Control>r"]);
         self.set_accels_for_action("app.preferences", &["<Control>comma"]);
-        self.set_accels_for_action("app.quit", &["<Control>q"]);
+        self.set_accels_for_action("app.quit", &["<Control>w"]);
     }
 
     fn setup_css(&self) {
