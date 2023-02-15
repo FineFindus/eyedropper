@@ -23,24 +23,20 @@
   </description>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/FineFindus/eyedropper/master/data/resources/screenshots/main_window_ui_dark.png</image>
-      <caption>Main window dark</caption>
+      <image>https://raw.githubusercontent.com/FineFindus/eyedropper/master/data/resources/screenshots/main_default_light.png</image>
+      <caption>Main window which a blue color displayed in different formats</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/FineFindus/eyedropper/master/data/resources/screenshots/main_window_ui_light.png</image>
-      <caption>Main window light</caption>
+      <image>https://raw.githubusercontent.com/FineFindus/eyedropper/master/data/resources/screenshots/main_customize_light.png</image>
+      <caption>Main window with customized formats</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/FineFindus/eyedropper/master/data/resources/screenshots/customized_formats_dark.png</image>
-      <caption>Customized color formatting in dark mode</caption>
+      <image>https://raw.githubusercontent.com/FineFindus/eyedropper/master/data/resources/screenshots/palette_dialog_light.png</image>
+      <caption>Dialog showing generated color palettes</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/FineFindus/eyedropper/master/data/resources/screenshots/customized_formats_light.png</image>
-      <caption>Customized color formatting</caption>
-    </screenshot>
-    <screenshot>
-      <image>https://raw.githubusercontent.com/FineFindus/eyedropper/master/data/resources/screenshots/palette_dialog_dark.png</image>
-      <caption>Generated color palettes</caption>
+      <image>https://raw.githubusercontent.com/FineFindus/eyedropper/master/data/resources/screenshots/status_light.png</image>
+      <caption>Status page stating to pick a color to get started</caption>
     </screenshot>
   </screenshots>
   <url type="homepage">https://github.com/FineFindus/eyedropper</url>

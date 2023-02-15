@@ -7,22 +7,22 @@
 
 A powerful color picker and formatter.
 
-![Dark UI](data/resources/screenshots/main_window_ui_dark.png)
+![Main Page](data/resources/screenshots/main_default_light.png)
 
 <details>
   <summary>More screenshots</summary>
 
-![Light UI](data/resources/screenshots/main_window_ui_light.png)
+![Status page](data/resources/screenshots/status_light.png.png)
 
-![Customize the shown formats (Dark UI)](data/resources/screenshots/customized_formats_dark.png)
+![Customize the shown formats (Dark UI)](data/resources/screenshots/main_customize_dark.png)
 
-![Customize the shown formats (Light UI)](data/resources/screenshots/customized_formats_light.png)
+![Customize the shown formats (Light UI)](data/resources/screenshots/main_customize_light.png)
 
-![Generate Color Palettes](data/resources/screenshots/palette_dialog_dark.png)
+![Generate Color Palettes](data/resources/screenshots/palette_dialog_light.png)
 
-![Preferences](data/resources/screenshots/preference_window_dark.png)
 
 </details>
+
 
 ## Features
 
