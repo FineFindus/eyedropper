@@ -312,6 +312,8 @@ impl AppWindow {
         let width = imp.settings.int("window-width");
         let height = imp.settings.int("window-height");
         let is_maximized = imp.settings.boolean("is-maximized");
+        log::debug!("Window Size: {}x{}", width, height);
+        log::debug!("Maximized: {}", is_maximized);
 
         self.set_default_size(width, height);
 
