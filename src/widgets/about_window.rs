@@ -72,7 +72,7 @@ impl EyedropperAbout {
 
         //heading with summary
         details.push_str("<b>");
-        details.push_str(&gettext("A powerful color picker and formatter"));
+        details.push_str(&gettext("Pick and format colors"));
         details.push_str("</b>\n\n");
 
         details.push_str(&gettext("Pick any color from your screen and view it in different formats. Change the picked color or go back to a previously picked color from the history list. Generate a list of different shades from the picked color."));

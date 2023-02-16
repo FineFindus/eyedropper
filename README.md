@@ -5,7 +5,7 @@
 
 # Eyedropper
 
-A powerful color picker and formatter.
+Pick and format colors.
 
 ![Main Page](data/resources/screenshots/main_default_light.png)
 
