@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-02-16 20:52+0000\n"
+"POT-Creation-Date: 2023-02-17 15:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -407,6 +407,54 @@ msgctxt "Tooltip of the palette button"
 msgid "Open Palette Window"
 msgstr ""
 
+#: data/resources/ui/window.ui:148
+msgid "Copy Name"
+msgstr ""
+
+#: data/resources/ui/window.ui:154
+msgid "Copy Hex Code"
+msgstr ""
+
+#: data/resources/ui/window.ui:159
+msgid "Copy RGB"
+msgstr ""
+
+#: data/resources/ui/window.ui:164
+msgid "Copy HSL"
+msgstr ""
+
+#: data/resources/ui/window.ui:169
+msgid "Copy HSV"
+msgstr ""
+
+#: data/resources/ui/window.ui:174
+msgid "Copy CMYK"
+msgstr ""
+
+#: data/resources/ui/window.ui:179
+msgid "Copy XYZ"
+msgstr ""
+
+#: data/resources/ui/window.ui:185
+msgid "Copy CIELAB"
+msgstr ""
+
+#: data/resources/ui/window.ui:191
+msgid "Copy HWB"
+msgstr ""
+
+#: data/resources/ui/window.ui:197
+msgid "Copy CIELCh / HCL"
+msgstr ""
+
+#: data/resources/ui/window.ui:203
+msgid "Copy LMS"
+msgstr ""
+
+#: data/resources/ui/window.ui:209
+msgid "Copy Hunter Lab"
+msgstr ""
+
 #: data/resources/ui/shortcuts.ui:11
 msgctxt "shortcut window"
 msgid "General"
@@ -447,7 +495,7 @@ msgid "Palettes"
 msgstr ""
 
 #: data/resources/ui/palette-window.ui:16
-msgid "Save Palettes"
+msgid "Save Palettes…"
 msgstr ""
 
 #: data/resources/ui/preferences/custom-format-row.ui:10
