@@ -309,8 +309,22 @@ impl AppWindow {
     fn load_window_size(&self) {
         let imp = self.imp();
 
-        let width = imp.settings.int("window-width");
-        let height = imp.settings.int("window-height");
+        let default_width = imp
+            .settings
+            .default_value("window-width")
+            .expect("Failed to get width i32 ")
+            .get::<i32>()
+            .expect("Failed to get width i32 ");
+
+        let default_height = imp
+            .settings
+            .default_value("window-height")
+            .expect("Failed to get height i32 ")
+            .get::<i32>()
+            .expect("Failed to get height i32 ");
+
+        let width = imp.settings.int("window-width").max(default_width);
+        let height = imp.settings.int("window-height").max(default_height);
         let is_maximized = imp.settings.boolean("is-maximized");
         log::debug!("Window Size: {}x{}", width, height);
         log::debug!("Maximized: {}", is_maximized);
