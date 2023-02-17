@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-02-17 15:36+0000\n"
+"POT-Creation-Date: 2023-02-17 15:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -501,11 +501,6 @@ msgstr ""
 #: data/resources/ui/preferences/custom-format-row.ui:10
 msgctxt "Tooltip of the reset button for custom format"
 msgid "Reset Format"
-msgstr ""
-
-#: data/resources/ui/color-format-row.ui:22
-msgctxt "Tooltip of the copy button for format rows"
-msgid "Copy Format"
 msgstr ""
 
 #: src/window.rs:399 src/window.rs:422 src/window.rs:597 src/window.rs:668
