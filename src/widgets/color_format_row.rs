@@ -22,8 +22,12 @@ mod imp {
         pub settings: gtk::gio::Settings,
         #[template_child]
         pub entry: TemplateChild<gtk::Entry>,
+        #[template_child]
+        pub format_button: TemplateChild<gtk::Button>,
         #[property(set, get)]
         pub color: RefCell<String>,
+        #[property(set, get)]
+        pub tooltip: RefCell<String>,
         #[property(set, get, default = false)]
         pub editable: RefCell<bool>,
     }
@@ -38,6 +42,8 @@ mod imp {
             Self {
                 settings: gtk::gio::Settings::new(config::APP_ID),
                 entry: TemplateChild::default(),
+                format_button: TemplateChild::default(),
+                tooltip: RefCell::new(String::new()),
                 color: RefCell::new(String::new()),
                 editable: RefCell::new(false),
             }
@@ -121,6 +127,10 @@ impl ColorFormatRow {
     /// the `editable` property to different properties
     /// of the entry to make it (un)-editable
     fn setup_properties(&self) {
+        self.bind_property("tooltip", &*self.imp().format_button, "tooltip-text")
+            .flags(glib::BindingFlags::SYNC_CREATE)
+            .build();
+
         //bind texts
         self.bind_property("color", &*self.imp().entry, "text")
             .flags(glib::BindingFlags::SYNC_CREATE | glib::BindingFlags::BIDIRECTIONAL)

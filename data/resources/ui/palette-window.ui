@@ -13,8 +13,7 @@
                         </property>
                         <child>
                             <object class="GtkButton">
-                                <property name="tooltip-text" translatable="yes">Save Palettes</property>
-                                <property name="icon-name">document-save-as-symbolic</property>
+                                <property name="label" translatable="yes">Save Palettes…</property>
                                 <signal name="clicked" handler="on_save_clicked" swapped="true" />
                             </object>
                         </child>
