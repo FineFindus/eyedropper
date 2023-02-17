@@ -19,7 +19,6 @@
         <child>
             <object class="GtkButton" id="format_button">
                 <property name="icon-name">edit-copy-symbolic</property>
-                <property name="tooltip-text" translatable="yes" context="Tooltip of the copy button for format rows">Copy Format</property>
                 <signal name="clicked" handler="on_copy_pressed" swapped="true" />
             </object>
         </child>
