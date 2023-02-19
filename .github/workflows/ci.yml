@@ -54,6 +54,8 @@ jobs:
 
   update_translations:
     name: Update .pot template
+    #this cannot be run on pull requests as it cannot commit
+    if: ${{ github.event_name != 'pull_request' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
