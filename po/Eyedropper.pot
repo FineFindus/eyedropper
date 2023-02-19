@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-02-17 19:46+0000\n"
+"POT-Creation-Date: 2023-02-19 19:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:88 src/widgets/about_window.rs:45 src/main.rs:26
+#: data/resources/ui/window.ui:88 src/main.rs:26 src/widgets/about_window.rs:45
 msgid "Eyedropper"
 msgstr ""
 
@@ -99,6 +99,144 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:152
 msgid "FineFindus"
+msgstr ""
+
+#: data/resources/ui/preferences/custom-format-row.ui:10
+msgctxt "Tooltip of the reset button for custom format"
+msgid "Reset Format"
+msgstr ""
+
+#: data/resources/ui/palette-window.ui:5
+msgid "Palettes"
+msgstr ""
+
+#: data/resources/ui/palette-window.ui:16
+msgid "Save Palettes…"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:14
+msgctxt "shortcut window"
+msgid "Show Preferences"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:20
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:26
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:34
+msgctxt "shortcut window"
+msgid "Color"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:37
+msgctxt "shortcut window"
+msgid "Pick a new Color"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:43
+msgctxt "shortcut window"
+msgid "Randomize the Color"
+msgstr ""
+
+#: data/resources/ui/window.ui:6
+msgid "_Clear History"
+msgstr ""
+
+#: data/resources/ui/window.ui:10
+msgid "_Random Color"
+msgstr ""
+
+#: data/resources/ui/window.ui:16
+msgid "_Preferences"
+msgstr ""
+
+#: data/resources/ui/window.ui:20
+msgid "_Keyboard Shortcuts"
+msgstr ""
+
+#: data/resources/ui/window.ui:24
+msgid "_About Eyedropper"
+msgstr ""
+
+#: data/resources/ui/window.ui:54
+msgid "No Color"
+msgstr ""
+
+#: data/resources/ui/window.ui:55
+msgid "Select a color from the screen to get started."
+msgstr ""
+
+#: data/resources/ui/window.ui:58
+msgid "_Pick a Color"
+msgstr ""
+
+#: data/resources/ui/window.ui:93
+msgctxt "Tooltip of the colorpicker button"
+msgid "Pick a Color"
+msgstr ""
+
+#: data/resources/ui/window.ui:125
+msgctxt "Tooltip of the palette button"
+msgid "Open Palette Window"
+msgstr ""
+
+#: data/resources/ui/window.ui:148
+msgid "Copy Name"
+msgstr ""
+
+#: data/resources/ui/window.ui:154
+msgid "Copy Hex Code"
+msgstr ""
+
+#: data/resources/ui/window.ui:159
+msgid "Copy RGB"
+msgstr ""
+
+#: data/resources/ui/window.ui:164
+msgid "Copy HSL"
+msgstr ""
+
+#: data/resources/ui/window.ui:169
+msgid "Copy HSV"
+msgstr ""
+
+#: data/resources/ui/window.ui:174
+msgid "Copy CMYK"
+msgstr ""
+
+#: data/resources/ui/window.ui:179
+msgid "Copy XYZ"
+msgstr ""
+
+#: data/resources/ui/window.ui:185
+msgid "Copy CIELAB"
+msgstr ""
+
+#: data/resources/ui/window.ui:191
+msgid "Copy HWB"
+msgstr ""
+
+#: data/resources/ui/window.ui:197
+msgid "Copy CIELCh / HCL"
+msgstr ""
+
+#: data/resources/ui/window.ui:203
+msgid "Copy LMS"
+msgstr ""
+
+#: data/resources/ui/window.ui:209
+msgid "Copy Hunter Lab"
 msgstr ""
 
 #: data/resources/ui/preferences.ui:10
@@ -365,183 +503,6 @@ msgstr ""
 msgid "Hunter Lab Format"
 msgstr ""
 
-#: data/resources/ui/window.ui:6
-msgid "_Clear History"
-msgstr ""
-
-#: data/resources/ui/window.ui:10
-msgid "_Random Color"
-msgstr ""
-
-#: data/resources/ui/window.ui:16
-msgid "_Preferences"
-msgstr ""
-
-#: data/resources/ui/window.ui:20
-msgid "_Keyboard Shortcuts"
-msgstr ""
-
-#: data/resources/ui/window.ui:24
-msgid "_About Eyedropper"
-msgstr ""
-
-#: data/resources/ui/window.ui:54
-msgid "No Color"
-msgstr ""
-
-#: data/resources/ui/window.ui:55
-msgid "Select a color from the screen to get started."
-msgstr ""
-
-#: data/resources/ui/window.ui:58
-msgid "_Pick a Color"
-msgstr ""
-
-#: data/resources/ui/window.ui:93
-msgctxt "Tooltip of the colorpicker button"
-msgid "Pick a Color"
-msgstr ""
-
-#: data/resources/ui/window.ui:125
-msgctxt "Tooltip of the palette button"
-msgid "Open Palette Window"
-msgstr ""
-
-#: data/resources/ui/window.ui:148
-msgid "Copy Name"
-msgstr ""
-
-#: data/resources/ui/window.ui:154
-msgid "Copy Hex Code"
-msgstr ""
-
-#: data/resources/ui/window.ui:159
-msgid "Copy RGB"
-msgstr ""
-
-#: data/resources/ui/window.ui:164
-msgid "Copy HSL"
-msgstr ""
-
-#: data/resources/ui/window.ui:169
-msgid "Copy HSV"
-msgstr ""
-
-#: data/resources/ui/window.ui:174
-msgid "Copy CMYK"
-msgstr ""
-
-#: data/resources/ui/window.ui:179
-msgid "Copy XYZ"
-msgstr ""
-
-#: data/resources/ui/window.ui:185
-msgid "Copy CIELAB"
-msgstr ""
-
-#: data/resources/ui/window.ui:191
-msgid "Copy HWB"
-msgstr ""
-
-#: data/resources/ui/window.ui:197
-msgid "Copy CIELCh / HCL"
-msgstr ""
-
-#: data/resources/ui/window.ui:203
-msgid "Copy LMS"
-msgstr ""
-
-#: data/resources/ui/window.ui:209
-msgid "Copy Hunter Lab"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:11
-msgctxt "shortcut window"
-msgid "General"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:14
-msgctxt "shortcut window"
-msgid "Show Preferences"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:20
-msgctxt "shortcut window"
-msgid "Show Shortcuts"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:26
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:34
-msgctxt "shortcut window"
-msgid "Color"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:37
-msgctxt "shortcut window"
-msgid "Pick a new Color"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:43
-msgctxt "shortcut window"
-msgid "Randomize the Color"
-msgstr ""
-
-#: data/resources/ui/palette-window.ui:5
-msgid "Palettes"
-msgstr ""
-
-#: data/resources/ui/palette-window.ui:16
-msgid "Save Palettes…"
-msgstr ""
-
-#: data/resources/ui/preferences/custom-format-row.ui:10
-msgctxt "Tooltip of the reset button for custom format"
-msgid "Reset Format"
-msgstr ""
-
-#: src/window.rs:413 src/window.rs:436 src/window.rs:611 src/window.rs:682
-#: src/widgets/preferences_window.rs:495
-msgctxt "Information that no name for the color could be found"
-msgid "Not named"
-msgstr ""
-
-#: src/window.rs:509
-msgid "Failed to get palette color"
-msgstr ""
-
-#: src/window.rs:533
-msgid "Failed to pick a color"
-msgstr ""
-
-#. Translators: Do not replace the {}. These are used as placeholders for the copied values
-#: src/window.rs:628
-msgid "Copied: “{}”"
-msgstr ""
-
-#. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
-#: src/widgets/about_window.rs:51
-msgid "translator-credits"
-msgstr ""
-
-#: src/widgets/about_window.rs:111
-msgctxt ""
-"The changelog of the current version. Should be similar to the CHANGELOG.md "
-"file at the project root. Please ensure that the tags have a matching "
-"closing tag. Since xgettext does not recognize rust multiline strings, this "
-"should be on a single line using line breaks (\\n) for new lines."
-msgid ""
-"<p>A new release with exciting new features.</p><p>New Features:</p>\n"
-"<ul><li>Customize formats in the settings</li><li>Export the colorscheme as "
-"a GIMP palette using the new export option</li><li>A placeholder is shown "
-"when no color is picked</li><li> Hunter-Lab and LMS color spaces have been "
-"added</li><li>The GNOME color palette has been added</li><li>Fixed minor "
-"issues</li></ul>"
-msgstr ""
-
 #: src/widgets/palette_dialog.rs:122
 msgctxt "Name for tints (lighter variants) of the color"
 msgid "Tints"
@@ -670,10 +631,49 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
+#: src/widgets/preferences_window.rs:495 src/window.rs:413 src/window.rs:436
+#: src/window.rs:611 src/window.rs:682
+msgctxt "Information that no name for the color could be found"
+msgid "Not named"
+msgstr ""
+
 #: src/widgets/preferences_window.rs:500
 msgid "LMS"
 msgstr ""
 
 #: src/widgets/preferences_window.rs:504
 msgid "Hunter Lab"
+msgstr ""
+
+#. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
+#: src/widgets/about_window.rs:51
+msgid "translator-credits"
+msgstr ""
+
+#: src/widgets/about_window.rs:111
+msgctxt ""
+"The changelog of the current version. Should be similar to the CHANGELOG.md "
+"file at the project root. Please ensure that the tags have a matching "
+"closing tag. Since xgettext does not recognize rust multiline strings, this "
+"should be on a single line using line breaks (\\n) for new lines."
+msgid ""
+"<p>A new release with exciting new features.</p><p>New Features:</p>\n"
+"<ul><li>Customize formats in the settings</li><li>Export the colorscheme as "
+"a GIMP palette using the new export option</li><li>A placeholder is shown "
+"when no color is picked</li><li> Hunter-Lab and LMS color spaces have been "
+"added</li><li>The GNOME color palette has been added</li><li>Fixed minor "
+"issues</li></ul>"
+msgstr ""
+
+#: src/window.rs:509
+msgid "Failed to get palette color"
+msgstr ""
+
+#: src/window.rs:533
+msgid "Failed to pick a color"
+msgstr ""
+
+#. Translators: Do not replace the {}. These are used as placeholders for the copied values
+#: src/window.rs:628
+msgid "Copied: “{}”"
 msgstr ""
