@@ -4,15 +4,15 @@
 data/com.github.finefindus.eyedropper.desktop.in.in
 data/com.github.finefindus.eyedropper.metainfo.xml.in.in
 # UI files
-data/resources/ui/preferences.ui
-data/resources/ui/window.ui
-data/resources/ui/shortcuts.ui
-data/resources/ui/palette-window.ui
-data/resources/ui/preferences/custom-format-row.ui
 data/resources/ui/color-format-row.ui
+data/resources/ui/preferences/custom-format-row.ui
+data/resources/ui/palette-window.ui
+data/resources/ui/shortcuts.ui
+data/resources/ui/window.ui
+data/resources/ui/preferences.ui
 # RUST files
-src/window.rs
-src/widgets/about_window.rs
+src/main.rs
 src/widgets/palette_dialog.rs
 src/widgets/preferences_window.rs
-src/main.rs
+src/widgets/about_window.rs
+src/window.rs
