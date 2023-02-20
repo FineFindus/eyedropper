@@ -10,3 +10,4 @@ src/config.rs
 *.ui~
 .flatpak/
 vendor
+.flatpak-builder
