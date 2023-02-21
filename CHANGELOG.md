@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Show a toast with an Undo option when clearing the history
 - Use Ctrl-Q to close the window
-- Use a default minium window size, content should no longer unnecessarily cut off
+- Use a default minimum window size, content should no longer unnecessarily cut off
 - New icon by @bertob
 - Export palettes as Adobe Swatch Exchange (ASE), hex, PAL, Paint.NET  (txt) files
 - Minor changes to the store metadata
