@@ -5,6 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+# [Unreleased]
+
+### Added
+- Show a toast with an Undo option when clearing the history
+- Use Ctrl-Q to close the window
+- Use a default minium window size, content should no longer unnecessarily cut off
+- New icon by @bertob
+- Export palettes as Adobe Swatch Exchange (ASE), hex, PAL, Paint.NET (txt) files
+- Minor changes to the store metadata
+
+### Changed
+- Hunter-Lab now displays 0 instead of NaN
+- Improved tooltips for copying colors
+- Palette window now uses a button with a more explicit text instead of an icon
+- Reworded project description
+- Updated all screenshot
+
+### Fixed
+- Separator is now hidden when the history list is hidden
+- Improved editing experience when change the Hex color/name
+
 ## [0.5.1] - 2023-01-29
 
 ### Added 
