@@ -213,7 +213,11 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkSeparator"></object>
+                          <object class="GtkSeparator">
+                            <binding name="visible">
+                              <lookup name="visible" type="GtkListBox">history_list</lookup>
+                            </binding>
+                          </object>
                         </child>
                         <child>
                           <object class="GtkScrolledWindow">
