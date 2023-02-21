@@ -153,4 +153,8 @@
   <update_contact>finefindusgh@gmail.com</update_contact>
   <translation type="gettext">@gettext-package@</translation>
   <launchable type="desktop-id">@app-id@.desktop</launchable>
+
+  <custom>
+    <value key="GnomeSoftware::key-colors">[(51, 209, 122), (39, 100, 132)]</value>
+  </custom>
 </component>
