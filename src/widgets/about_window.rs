@@ -108,7 +108,7 @@ impl EyedropperAbout {
 
         changelog.push_str(&pgettext(
             "The changelog of the current version. Should be similar to the CHANGELOG.md file at the project root. Please ensure that the tags have a matching closing tag. Since xgettext does not recognize rust multiline strings, this should be on a single line using line breaks (\\n) for new lines.",
-            "<p>A new release with exciting new features.</p><p>New Features:</p>\n<ul><li>Customize formats in the settings</li><li>Export the colorscheme as a GIMP palette using the new export option</li><li>A placeholder is shown when no color is picked</li><li> Hunter-Lab and LMS color spaces have been added</li><li>The GNOME color palette has been added</li><li>Fixed minor issues</li></ul>",
+            "<p>A minor release with many small QoL improvements.</p><p>Added:</p>\n<ul><li>Show a toast with an Undo option when clearing the history</li><li>Use Ctrl-Q to close the window</li><li>Use a default minium window size, content should no longer unnecessarily cut off</li><li>New icon by @bertob</li><li>Export palettes as Adobe Swatch Exchange (ASE), hex, PAL, Paint.NET (txt) files</li><li>Minor changes to the store metadata</li></ul><p>Changed:</p>\n<ul><li>Hunter-Lab now displays 0 instead of NaN</li><li>Improved tooltips for copying colors</li><li>Palette window now uses a button with a more explicit text instead of an icon</li><li>Reworded project description</li><li>Updated all screenshots</li></ul><p>Fixed:</p>\n<ul><li>Separator is now hidden when the history list is hidden</li><li>Improved editing experience when change the Hex color/name</li></ul>",
         ));
 
         changelog

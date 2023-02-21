@@ -297,7 +297,11 @@ impl Color {
         let a = ka * (((x / reference_x) - (y / reference_y)) / f32::sqrt(y / reference_y));
         let b = kb * (((y / reference_y) - (z / reference_z)) / f32::sqrt(y / reference_y));
 
-        (l, a, b)
+        (
+            l,
+            if a.is_nan() { 0.0 } else { a },
+            if b.is_nan() { 0.0 } else { b },
+        )
     }
 
     /// Convert the color to hcl/ CIELCh
