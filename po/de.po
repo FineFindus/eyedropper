@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-02-21 19:58+0000\n"
-"PO-Revision-Date: 2023-02-21 21:08+0100\n"
+"PO-Revision-Date: 2023-02-21 21:41+0100\n"
 "Last-Translator: FineFindus <FineFindusGH@gmail.com>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -80,12 +80,12 @@ msgstr "Zeige Farben im Hex, RGB, HSV, HSL, CMYK, XYZ und CIE-Lab Format"
 #: src/widgets/about_window.rs:91
 msgid "Customize which formats appear as well as their order"
 msgstr ""
-"Passe an ob und in welcher Reihenfolge die Farbformate angezeigt werden"
+"Passe an, ob und in welcher Reihenfolge die Farbformate angezeigt werden"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
 #: src/widgets/about_window.rs:92
 msgid "Generate a palette of different shades"
-msgstr "Generiere verscheidene Schattierungen einer Farbe"
+msgstr "Generiere verschiedene Schattierungen einer Farbe"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:27
 msgid "Main window with a color in different formats"
@@ -101,7 +101,7 @@ msgstr "Dialog mit generierten Farbpaletten"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:39
 msgid "Status page stating to pick a color to get started"
-msgstr "Startseite mit einem Knopf um einen Farbe auszuwählen zum anfangen"
+msgstr "Startseite, mit einem Knopf um eine Farbe auszuwählen zum Anfangen"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:152
 msgid "FineFindus"
@@ -181,7 +181,7 @@ msgstr "Keine Farbe"
 
 #: data/resources/ui/window.ui:55
 msgid "Select a color from the screen to get started."
-msgstr "Wähle eine Farbe aus um zu starten."
+msgstr "Wähle eine Farbe aus, um zu starten."
 
 #: data/resources/ui/window.ui:58
 msgid "_Pick a Color"
@@ -234,20 +234,16 @@ msgid "Copy HWB"
 msgstr "HWB kopieren"
 
 #: data/resources/ui/window.ui:197
-#, fuzzy
-#| msgid "CIELCh / HCL"
 msgid "Copy CIELCh / HCL"
-msgstr "CIELCh / HCL"
+msgstr "CIELCh / HCL kopieren"
 
 #: data/resources/ui/window.ui:203
 msgid "Copy LMS"
-msgstr ""
+msgstr "LMS kopieren"
 
 #: data/resources/ui/window.ui:209
-#, fuzzy
-#| msgid "Hunter Lab"
 msgid "Copy Hunter Lab"
-msgstr "Hunter Lab"
+msgstr "Hunter Lab kopieren"
 
 #: data/resources/ui/preferences.ui:10
 msgid "General"
@@ -282,7 +278,7 @@ msgstr "Start"
 
 #: data/resources/ui/preferences.ui:31
 msgid "Name Sets"
-msgstr "Namesquellen"
+msgstr "Namensquellen"
 
 #: data/resources/ui/preferences.ui:32
 msgid "Which color name sets should be used for the names"
@@ -684,16 +680,29 @@ msgid ""
 "<ul><li>Separator is now hidden when the history list is hidden</"
 "li><li>Improved editing experience when change the Hex color/name</li></ul>"
 msgstr ""
+"<p>Eine kleinere Version mit vielen Qualitätsverbesserungen.</"
+"p><p>Hinzugefügt:</p>\n"
+"<ul><li>Zeige eine Option zum rückgängig machen nach dem Löschen des "
+"Verlaufs</li><li>Nutze Ctrl-Q, um das Fenster zu schließen</li><li>Minimum "
+"Fenstergröße, sodass der Inhalt hineinpasst</li><li>Neues Icon von @bertob</"
+"li><li>Exportiere Farbpaletten als Adobe Swatch Exchange (ASE), hex, PAL, "
+"Paint.NET (txt) Dateien</li><li>Kleinere Änderungen an der Store Metadata</"
+"li></ul><p>Geändert:</p>\n"
+"<ul><li>Hunter-Lab zeigt nun 0 statt NaN an</li><li>Verbesserte "
+"Hilfestellungen beim Kopieren von Farben</li><li>Palettenfenster nutzt nun "
+"einem Textknopf statt eines Icons</li><li>Umformulierte Projektbeschreibung</"
+"li><li>Screenshots wurden überarbeitet</li></ul><p>Verbessert:</p>\n"
+"<ul><li>Trennung von dem Verlauf wird nur angezeigt, wenn der Verlauf "
+"sichtbar ist</li><li>Verbesserte Erfahrung, wenn Hex/Namensfelder bearbeitet "
+"werden</li></ul>"
 
 #: src/window.rs:213
-#, fuzzy
-#| msgid "_Clear History"
 msgid "Cleared history"
-msgstr "_Verlauf löschen"
+msgstr "Verlauf gelöscht"
 
 #: src/window.rs:214
 msgid "Undo"
-msgstr ""
+msgstr "Rückgängig"
 
 #: src/window.rs:528
 msgid "Failed to get palette color"
