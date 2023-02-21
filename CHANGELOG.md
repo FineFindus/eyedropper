@@ -20,7 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improved tooltips for copying colors
 - Palette window now uses a button with a more explicit text instead of an icon
 - Reworded project description
-- Updated all screenshot
+- Updated all screenshots
 
 ### Fixed
 - Separator is now hidden when the history list is hidden
