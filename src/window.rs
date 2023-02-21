@@ -201,10 +201,29 @@ impl AppWindow {
     }
 
     /// Clear the history by removing all items from the list.
+    ///
+    /// After clearing it, a toast will be shown with the options to 'undo' the clearing.
     pub fn clear_history(&self) {
         //clear history
         let history = self.history();
+        let items = history.snapshot();
+
+        //show toast to undo
+        let toast = adw::Toast::builder()
+            .title(&gettext("Cleared history"))
+            .button_label(&gettext("Undo"))
+            .priority(adw::ToastPriority::High)
+            .build();
+
+        toast.connect_button_clicked(
+            glib::clone!(@weak self as window, @strong items => move |_toast| {
+                window.history().extend_from_slice(&items);
+                log::debug!("Undo clicked: {}", items.len());
+            }),
+        );
+
         history.remove_all();
+        self.imp().toast_overlay.add_toast(toast);
     }
 
     /// Setup the history by setting up a model
