@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-01-02 21:58+0000\n"
-"PO-Revision-Date: 2023-02-05 19:23+0300\n"
+"POT-Creation-Date: 2023-02-19 19:12+0000\n"
+"PO-Revision-Date: 2023-02-21 19:56+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:88 src/main.rs:25 src/widgets/about_window.rs:44
+#: data/resources/ui/window.ui:88 src/main.rs:26 src/widgets/about_window.rs:45
 msgid "Eyedropper"
 msgstr "Eyedropper"
 
@@ -31,9 +31,9 @@ msgstr "Выбор цвета"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
-#: src/widgets/about_window.rs:74
-msgid "A powerful color picker and formatter"
-msgstr "Мощный инструмент для выбора цвета и средство форматирования"
+#: src/widgets/about_window.rs:75
+msgid "Pick and format colors"
+msgstr "Выбирайте и форматируйте цвета"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
@@ -41,7 +41,7 @@ msgid "Gnome;GTK;Color;Color Picker;Picker;Palette;"
 msgstr "Gnome;GTK;Цвет;Выбор цвета;Пипетка;Палитра;"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
-#: src/widgets/about_window.rs:77
+#: src/widgets/about_window.rs:78
 msgid ""
 "Pick any color from your screen and view it in different formats. Change the "
 "picked color or go back to a previously picked color from the history list. "
@@ -52,64 +52,73 @@ msgstr ""
 "Создавайте список различных оттенков из выбранного цвета."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
-#: src/widgets/about_window.rs:82
+#: src/widgets/about_window.rs:83
 msgid "Features"
 msgstr "Функции"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:16
-#: src/widgets/about_window.rs:86
+#: src/widgets/about_window.rs:87
 msgid "Pick a Color"
 msgstr "Выберите цвет"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
-#: src/widgets/about_window.rs:87
+#: src/widgets/about_window.rs:88
 msgid "Enter a color in Hex-Format"
 msgstr "Введите цвет в шестнадцатеричном формате"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:18
-#: src/widgets/about_window.rs:88
+#: src/widgets/about_window.rs:89
 msgid "Parse RGBA/ARGB Hex-Colors"
 msgstr "Разберите шестнадцатеричные цвета RGBA/ARGB"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
-#: src/widgets/about_window.rs:89
+#: src/widgets/about_window.rs:90
 msgid "View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format"
 msgstr ""
 "Просматривайте цвета в форматах Hex, RGB, HSV, HSL, CMYK, XYZ и CIE-Lab"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
-#: src/widgets/about_window.rs:90
+#: src/widgets/about_window.rs:91
 msgid "Customize which formats appear as well as their order"
 msgstr "Настройте отображаемые форматы и их порядок"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
-#: src/widgets/about_window.rs:91
+#: src/widgets/about_window.rs:92
 msgid "Generate a palette of different shades"
 msgstr "Генерируйте палитру различных оттенков"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:27
-msgid "Main window dark"
-msgstr "Главное окно тёмное"
+msgid "Main window with a color in different formats"
+msgstr "Главное окно с цветом в разных форматах"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:31
-msgid "Main window light"
-msgstr "Главное окно светлое"
+msgid "Main window with customized formats"
+msgstr "Главное окно с настроенными форматами"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:35
-msgid "Customized color formatting in dark mode"
-msgstr "Пользовательское форматирование цвета в темном режиме"
+msgid "Dialog showing generated color palettes"
+msgstr "Диалог показывающий сгенерированную цветовую палитру"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:39
-msgid "Customized color formatting"
-msgstr "Пользовательское форматирование цвета"
+msgid "Status page stating to pick a color to get started"
+msgstr "Страница состояния с указанием выбрать цвет чтобы начать"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:43
-msgid "Generated color palettes"
-msgstr "Сгенерированные цветовые палитры"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:133
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:152
 msgid "FineFindus"
 msgstr "FineFindus"
+
+#: data/resources/ui/preferences/custom-format-row.ui:10
+msgctxt "Tooltip of the reset button for custom format"
+msgid "Reset Format"
+msgstr "Сбросить формат"
+
+#: data/resources/ui/palette-window.ui:5
+msgid "Palettes"
+msgstr "Палитры"
+
+#: data/resources/ui/palette-window.ui:16
+msgid "Save Palettes…"
+msgstr "Сохранить палитры…"
 
 #: data/resources/ui/shortcuts.ui:11
 msgctxt "shortcut window"
@@ -145,14 +154,6 @@ msgstr "Выбрать новый цвет"
 msgctxt "shortcut window"
 msgid "Randomize the Color"
 msgstr "Случайный цвет"
-
-#: data/resources/ui/palette-window.ui:5
-msgid "Palettes"
-msgstr "Палитры"
-
-#: data/resources/ui/palette-window.ui:16
-msgid "Save Palettes"
-msgstr "Сохранить палитры"
 
 #: data/resources/ui/window.ui:6
 msgid "_Clear History"
@@ -196,10 +197,53 @@ msgctxt "Tooltip of the palette button"
 msgid "Open Palette Window"
 msgstr "Открыть окно палитры"
 
-#: data/resources/ui/color-format-row.ui:22
-msgctxt "Tooltip of the copy button for format rows"
-msgid "Copy Format"
-msgstr "Копировать формат"
+#: data/resources/ui/window.ui:148
+msgid "Copy Name"
+msgstr "Копировать название"
+
+#: data/resources/ui/window.ui:154
+msgid "Copy Hex Code"
+msgstr "Копировать шестнадцатеричный код"
+
+#: data/resources/ui/window.ui:159
+msgid "Copy RGB"
+msgstr "Копировать RGB"
+
+#: data/resources/ui/window.ui:164
+msgid "Copy HSL"
+msgstr "Копировать HSL"
+
+#: data/resources/ui/window.ui:169
+msgid "Copy HSV"
+msgstr "Копировать HSV"
+
+#: data/resources/ui/window.ui:174
+msgid "Copy CMYK"
+msgstr "Копировать CMYK"
+
+#: data/resources/ui/window.ui:179
+msgid "Copy XYZ"
+msgstr "Копировать XYZ"
+
+#: data/resources/ui/window.ui:185
+msgid "Copy CIELAB"
+msgstr "Копировать CIELAB"
+
+#: data/resources/ui/window.ui:191
+msgid "Copy HWB"
+msgstr "Копировать HWB"
+
+#: data/resources/ui/window.ui:197
+msgid "Copy CIELCh / HCL"
+msgstr "Копировать CIELCh/HCL"
+
+#: data/resources/ui/window.ui:203
+msgid "Copy LMS"
+msgstr "Копировать LMS"
+
+#: data/resources/ui/window.ui:209
+msgid "Copy Hunter Lab"
+msgstr "Копировать Hunter Lab"
 
 #: data/resources/ui/preferences.ui:10
 msgid "General"
@@ -467,145 +511,6 @@ msgstr "Формат LMS"
 msgid "Hunter Lab Format"
 msgstr "Формат Hunter Lab"
 
-#: data/resources/ui/preferences/custom-format-row.ui:10
-msgctxt "Tooltip of the reset button for custom format"
-msgid "Reset Format"
-msgstr "Сбросить формат"
-
-#: src/widgets/preferences_window.rs:168
-msgctxt ""
-"Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
-"#html4"
-msgid "Basic"
-msgstr "Базовый"
-
-#: src/widgets/preferences_window.rs:170
-msgid "Show color names from the w3c basic color keyword set"
-msgstr "Показать названия цветов из базового набора ключевых слов w3c"
-
-#: src/widgets/preferences_window.rs:176
-msgctxt ""
-"Name of the extended color keyword set from https://www.w3.org/TR/css-"
-"color-3/#svg-color"
-msgid "Extended"
-msgstr "Расширенный"
-
-#: src/widgets/preferences_window.rs:178
-msgid "Show color names from the w3c extended color keyword  set"
-msgstr ""
-"Показать названия цветов из расширенного набора ключевых слов цвета w3c"
-
-#: src/widgets/preferences_window.rs:182
-msgctxt ""
-"Name of the color set from the GNOME color palette (https://developer.gnome."
-"org/hig/reference/palette.html)"
-msgid "GNOME color palette"
-msgstr "Цветовая палитра GNOME"
-
-#: src/widgets/preferences_window.rs:183
-msgid "Show color names from the GNOME color palette"
-msgstr "Показать названия цветов из цветовой палитры GNOME"
-
-#: src/widgets/preferences_window.rs:187
-msgctxt "Name of the color set from the xkcd color survey"
-msgid "xkcd"
-msgstr "xkcd"
-
-#: src/widgets/preferences_window.rs:188
-msgid "Show color names from the xkcd color survey"
-msgstr "Показать названия цветов из цветового опроса xkcd"
-
-#: src/widgets/preferences_window.rs:327
-msgid "Move Up"
-msgstr "Переместить вверх"
-
-#: src/widgets/preferences_window.rs:329
-msgid "Move Down"
-msgstr "Переместить вниз"
-
-#: src/widgets/preferences_window.rs:452
-msgid "Hex-Code"
-msgstr "Шестнадцатеричный код"
-
-#: src/widgets/preferences_window.rs:457
-msgid "RGB"
-msgstr "RGB"
-
-#: src/widgets/preferences_window.rs:460
-msgid "HSL"
-msgstr "HSL"
-
-#: src/widgets/preferences_window.rs:463
-msgid "HSV"
-msgstr "HSV"
-
-#: src/widgets/preferences_window.rs:467
-msgid "CMYK"
-msgstr "CMYK"
-
-#: src/widgets/preferences_window.rs:472
-msgid "XYZ"
-msgstr "XYZ"
-
-#: src/widgets/preferences_window.rs:476
-msgid "CIELAB"
-msgstr "CIELAB"
-
-#: src/widgets/preferences_window.rs:481
-msgid "HWB"
-msgstr "HWB"
-
-#: src/widgets/preferences_window.rs:485
-msgid "CIELCh / HCL"
-msgstr "CIELCh / HCL"
-
-#: src/widgets/preferences_window.rs:491
-msgid "Name"
-msgstr "Название"
-
-#: src/widgets/preferences_window.rs:494 src/window.rs:397 src/window.rs:420
-#: src/window.rs:580 src/window.rs:651
-msgctxt "Information that no name for the color could be found"
-msgid "Not named"
-msgstr "Без названия"
-
-#: src/widgets/preferences_window.rs:499
-msgid "LMS"
-msgstr "LMS"
-
-#: src/widgets/preferences_window.rs:503
-msgid "Hunter Lab"
-msgstr "Hunter Lab"
-
-#. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
-#: src/widgets/about_window.rs:50
-msgid "translator-credits"
-msgstr ""
-"Сергей Ворон <voron.s.a@gmail.com>\n"
-"Давид Лапшин <ddaudix@gmail.com>"
-
-#: src/widgets/about_window.rs:110
-msgctxt ""
-"The changelog of the current version. Should be similar to the CHANGELOG.md "
-"file at the project root. Please ensure that the tags have a matching "
-"closing tag. Since xgettext does not recognize rust multiline strings, this "
-"should be on a single line using line breaks (\\n) for new lines."
-msgid ""
-"<p>A new release with exciting new features.</p><p>New Features:</p>\n"
-"<ul><li>Customize formats in the settings</li><li>Export the colorscheme as "
-"a GIMP palette using the new export option</li><li>A placeholder is shown "
-"when no color is picked</li><li> Hunter-Lab and LMS color spaces have been "
-"added</li><li>The GNOME color palette has been added</li><li>Fixed minor "
-"issues</li></ul>"
-msgstr ""
-"<p>Новый релиз с новыми захватывающими возможностями.</p><p>Новые "
-"возможности:</p>\n"
-"<ul><li>Настройка цветовых форматов</li><li>Экспорт цветовой схемы в виде "
-"палитры GIMP, используя новый параметр экспорта.</li><li>Если цвет не "
-"выбран, отображается заполнитель.</li><li>Добавлены цветовые пространства "
-"Hunter-Lab и LMS.</li><li>Добавлена цветовая палитра GNOME</"
-"li><li>Исправлены незначительные проблемы</li></ul>"
-
 #: src/widgets/palette_dialog.rs:122
 msgctxt "Name for tints (lighter variants) of the color"
 msgid "Tints"
@@ -644,22 +549,174 @@ msgctxt "Color palette consisting of six slight shifted colors"
 msgid "Analogous"
 msgstr "Аналоговый"
 
-#: src/widgets/palette_dialog.rs:259
+#: src/widgets/preferences_window.rs:169
 msgctxt ""
-"Name of the save palette file, do not add a file extension, .gpl will be "
-"added automatically"
-msgid "palettes"
-msgstr "палитры"
+"Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
+"#html4"
+msgid "Basic"
+msgstr "Базовый"
 
-#: src/window.rs:493
+#: src/widgets/preferences_window.rs:171
+msgid "Show color names from the w3c basic color keyword set"
+msgstr "Показать названия цветов из базового набора ключевых слов w3c"
+
+#: src/widgets/preferences_window.rs:177
+msgctxt ""
+"Name of the extended color keyword set from https://www.w3.org/TR/css-"
+"color-3/#svg-color"
+msgid "Extended"
+msgstr "Расширенный"
+
+#: src/widgets/preferences_window.rs:179
+msgid "Show color names from the w3c extended color keyword  set"
+msgstr ""
+"Показать названия цветов из расширенного набора ключевых слов цвета w3c"
+
+#: src/widgets/preferences_window.rs:183
+msgctxt ""
+"Name of the color set from the GNOME color palette (https://developer.gnome."
+"org/hig/reference/palette.html)"
+msgid "GNOME color palette"
+msgstr "Цветовая палитра GNOME"
+
+#: src/widgets/preferences_window.rs:184
+msgid "Show color names from the GNOME color palette"
+msgstr "Показать названия цветов из цветовой палитры GNOME"
+
+#: src/widgets/preferences_window.rs:188
+msgctxt "Name of the color set from the xkcd color survey"
+msgid "xkcd"
+msgstr "xkcd"
+
+#: src/widgets/preferences_window.rs:189
+msgid "Show color names from the xkcd color survey"
+msgstr "Показать названия цветов из цветового опроса xkcd"
+
+#: src/widgets/preferences_window.rs:328
+msgid "Move Up"
+msgstr "Переместить вверх"
+
+#: src/widgets/preferences_window.rs:330
+msgid "Move Down"
+msgstr "Переместить вниз"
+
+#: src/widgets/preferences_window.rs:453
+msgid "Hex-Code"
+msgstr "Шестнадцатеричный код"
+
+#: src/widgets/preferences_window.rs:458
+msgid "RGB"
+msgstr "RGB"
+
+#: src/widgets/preferences_window.rs:461
+msgid "HSL"
+msgstr "HSL"
+
+#: src/widgets/preferences_window.rs:464
+msgid "HSV"
+msgstr "HSV"
+
+#: src/widgets/preferences_window.rs:468
+msgid "CMYK"
+msgstr "CMYK"
+
+#: src/widgets/preferences_window.rs:473
+msgid "XYZ"
+msgstr "XYZ"
+
+#: src/widgets/preferences_window.rs:477
+msgid "CIELAB"
+msgstr "CIELAB"
+
+#: src/widgets/preferences_window.rs:482
+msgid "HWB"
+msgstr "HWB"
+
+#: src/widgets/preferences_window.rs:486
+msgid "CIELCh / HCL"
+msgstr "CIELCh / HCL"
+
+#: src/widgets/preferences_window.rs:492
+msgid "Name"
+msgstr "Название"
+
+#: src/widgets/preferences_window.rs:495 src/window.rs:413 src/window.rs:436
+#: src/window.rs:611 src/window.rs:682
+msgctxt "Information that no name for the color could be found"
+msgid "Not named"
+msgstr "Без названия"
+
+#: src/widgets/preferences_window.rs:500
+msgid "LMS"
+msgstr "LMS"
+
+#: src/widgets/preferences_window.rs:504
+msgid "Hunter Lab"
+msgstr "Hunter Lab"
+
+#. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
+#: src/widgets/about_window.rs:51
+msgid "translator-credits"
+msgstr ""
+"Сергей Ворон <voron.s.a@gmail.com>\n"
+"Давид Лапшин <ddaudix@gmail.com>"
+
+#: src/widgets/about_window.rs:111
+msgctxt ""
+"The changelog of the current version. Should be similar to the CHANGELOG.md "
+"file at the project root. Please ensure that the tags have a matching "
+"closing tag. Since xgettext does not recognize rust multiline strings, this "
+"should be on a single line using line breaks (\\n) for new lines."
+msgid ""
+"<p>A new release with exciting new features.</p><p>New Features:</p>\n"
+"<ul><li>Customize formats in the settings</li><li>Export the colorscheme as "
+"a GIMP palette using the new export option</li><li>A placeholder is shown "
+"when no color is picked</li><li> Hunter-Lab and LMS color spaces have been "
+"added</li><li>The GNOME color palette has been added</li><li>Fixed minor "
+"issues</li></ul>"
+msgstr ""
+"<p>Новый релиз с новыми захватывающими возможностями.</p><p>Новые "
+"возможности:</p>\n"
+"<ul><li>Настройка цветовых форматов</li><li>Экспорт цветовой схемы в виде "
+"палитры GIMP, используя новый параметр экспорта.</li><li>Если цвет не "
+"выбран, отображается заполнитель.</li><li>Добавлены цветовые пространства "
+"Hunter-Lab и LMS.</li><li>Добавлена цветовая палитра GNOME</"
+"li><li>Исправлены незначительные проблемы</li></ul>"
+
+#: src/window.rs:509
 msgid "Failed to get palette color"
 msgstr "Не удалось получить цвет палитры"
 
-#: src/window.rs:514
+#: src/window.rs:533
 msgid "Failed to pick a color"
 msgstr "Не удалось выбрать цвет"
 
 #. Translators: Do not replace the {}. These are used as placeholders for the copied values
-#: src/window.rs:597
+#: src/window.rs:628
 msgid "Copied: “{}”"
 msgstr "Скопировано: “{}”"
+
+#~ msgid "A powerful color picker and formatter"
+#~ msgstr "Мощный инструмент для выбора цвета и средство форматирования"
+
+#~ msgid "Main window dark"
+#~ msgstr "Главное окно тёмное"
+
+#~ msgid "Main window light"
+#~ msgstr "Главное окно светлое"
+
+#~ msgid "Customized color formatting in dark mode"
+#~ msgstr "Пользовательское форматирование цвета в темном режиме"
+
+#~ msgid "Customized color formatting"
+#~ msgstr "Пользовательское форматирование цвета"
+
+#~ msgctxt "Tooltip of the copy button for format rows"
+#~ msgid "Copy Format"
+#~ msgstr "Копировать формат"
+
+#~ msgctxt ""
+#~ "Name of the save palette file, do not add a file extension, .gpl will be "
+#~ "added automatically"
+#~ msgid "palettes"
+#~ msgstr "палитры"
