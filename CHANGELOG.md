@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Use Ctrl-Q to close the window
 - Use a default minium window size, content should no longer unnecessarily cut off
 - New icon by @bertob
-- Export palettes as Adobe Swatch Exchange (ASE), hex, PAL, Paint.NET (txt) files
+- Export palettes as Adobe Swatch Exchange (ASE), hex, PAL, Paint.NET  (txt) files
 - Minor changes to the store metadata
 
 ### Changed
