@@ -120,7 +120,6 @@ impl CustomFormatRow {
     fn on_apply(&self) {
         log::debug!("Activate");
         let text = self.property::<String>("text");
-        log::debug!("Text: {}", text);
         if text.trim() != self.property::<String>("default-format") {
             //save format
             match self.imp().settings.set_string(&self.settings_key(), &text) {
@@ -146,7 +145,6 @@ impl CustomFormatRow {
             } else {
                 widget.set_text(custom_format);
             }
-            log::debug!("Text: {}", widget.property::<String>("text"))
         });
     }
 }
