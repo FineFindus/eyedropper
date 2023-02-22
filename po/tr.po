@@ -1,27 +1,27 @@
 # Turkish translation for com.github.finefindus.eyedropper.
-# Copyright (C) 2022 com.github.finefindus.eyedropper's COPYRIGHT HOLDER
+# Copyright (C) 2022-2023 com.github.finefindus.eyedropper's COPYRIGHT HOLDER
 # This file is distributed under the same license as the com.github.finefindus.eyedropper package.
 #
-# Sabri Ünal <libreajans@gmail.com>, 2022.
+# Sabri Ünal <libreajans@gmail.com>, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: com.github.finefindus.eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2022-12-11 18:47+0000\n"
-"PO-Revision-Date: 2022-12-17 04:44+0300\n"
+"POT-Creation-Date: 2023-02-21 20:22+0000\n"
+"PO-Revision-Date: 2023-02-22 03:42+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <gnometurk@gnome.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 3.1.1\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:88 src/main.rs:25 src/widgets/about_window.rs:44
+#: data/resources/ui/window.ui:88 src/main.rs:26 src/widgets/about_window.rs:45
 msgid "Eyedropper"
 msgstr "Damlalık"
 
@@ -31,9 +31,9 @@ msgstr "Renk Seçici"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
-#: src/widgets/about_window.rs:74
-msgid "A powerful color picker and formatter"
-msgstr "Kullanımı kolay renk seçici ve biçimlendirici"
+#: src/widgets/about_window.rs:75
+msgid "Pick and format colors"
+msgstr "Renkleri seç ve biçimlendir"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
@@ -41,7 +41,7 @@ msgid "Gnome;GTK;Color;Color Picker;Picker;Palette;"
 msgstr "Gnome;GTK;Renk;Renk Seçici;Seçici;Palet;"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
-#: src/widgets/about_window.rs:77
+#: src/widgets/about_window.rs:78
 msgid ""
 "Pick any color from your screen and view it in different formats. Change the "
 "picked color or go back to a previously picked color from the history list. "
@@ -52,65 +52,199 @@ msgstr ""
 "dönün. Seçtiği renkten farklı tonların listesini oluşturun."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
-#: src/widgets/about_window.rs:82
+#: src/widgets/about_window.rs:83
 msgid "Features"
 msgstr "Özellikler"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:16
-#: src/widgets/about_window.rs:86
+#: src/widgets/about_window.rs:87
 msgid "Pick a Color"
 msgstr "Bir Renk Seç"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
-#: src/widgets/about_window.rs:87
+#: src/widgets/about_window.rs:88
 msgid "Enter a color in Hex-Format"
 msgstr "Onaltılık Biçimde bir renk girin"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:18
-#: src/widgets/about_window.rs:88
+#: src/widgets/about_window.rs:89
 msgid "Parse RGBA/ARGB Hex-Colors"
 msgstr "RGBA/ARGB Onaltılık Renkleri ayrıştır"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
-#: src/widgets/about_window.rs:89
+#: src/widgets/about_window.rs:90
 msgid "View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format"
 msgstr ""
 "Renkleri Onaltılık, RGB, HSV, HSL, CMYK, XYZ ve CIE-Lab biçimlerinde "
 "görüntüle"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
-#: src/widgets/about_window.rs:90
+#: src/widgets/about_window.rs:91
 msgid "Customize which formats appear as well as their order"
 msgstr "Hangi biçimlerin görüneceğini ve sıralarını özelleştir"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
-#: src/widgets/about_window.rs:91
+#: src/widgets/about_window.rs:92
 msgid "Generate a palette of different shades"
 msgstr "Farklı tonlardan oluşan bir palet oluştur"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:27
-msgid "Main window dark"
-msgstr "Ana pencere koyu"
+msgid "Main window with a color in different formats"
+msgstr "Farklı biçimlerde renge sahip ana pencere"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:31
-msgid "Main window light"
-msgstr "Ana pencere aydınlık"
+msgid "Main window with customized formats"
+msgstr "Özelleştirilmiş biçimlere sahip ana pencere"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:35
-msgid "Customized color formatting in dark mode"
-msgstr "Koyu kipte özelleştirilmiş renk biçimlendirme"
+msgid "Dialog showing generated color palettes"
+msgstr "Üretilen renk paletlerini gösteren iletişim kutusu"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:39
-msgid "Customized color formatting"
-msgstr "Özelleştirilmiş renk biçimlendirme"
+msgid "Status page stating to pick a color to get started"
+msgstr "Başlamak için renk seçmenizi söyleyen durum sayfası"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:43
-msgid "Generated color palettes"
-msgstr "Üretilen renk paletleri"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:115
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:152
 msgid "FineFindus"
 msgstr "FineFindus"
+
+#: data/resources/ui/preferences/custom-format-row.ui:10
+msgctxt "Tooltip of the reset button for custom format"
+msgid "Reset Format"
+msgstr "Biçimi Sıfırla"
+
+#: data/resources/ui/palette-window.ui:5
+msgid "Palettes"
+msgstr "Paletler"
+
+#: data/resources/ui/palette-window.ui:16
+msgid "Save Palettes…"
+msgstr "Paletleri Kaydet…"
+
+#: data/resources/ui/shortcuts.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Genel"
+
+#: data/resources/ui/shortcuts.ui:14
+msgctxt "shortcut window"
+msgid "Show Preferences"
+msgstr "Tercihleri Göster"
+
+#: data/resources/ui/shortcuts.ui:20
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Kısayolları Göster"
+
+#: data/resources/ui/shortcuts.ui:26
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Çık"
+
+#: data/resources/ui/shortcuts.ui:34
+msgctxt "shortcut window"
+msgid "Color"
+msgstr "Renk"
+
+#: data/resources/ui/shortcuts.ui:37
+msgctxt "shortcut window"
+msgid "Pick a new Color"
+msgstr "Yeni renk seç"
+
+#: data/resources/ui/shortcuts.ui:43
+msgctxt "shortcut window"
+msgid "Randomize the Color"
+msgstr "Rastgele renk"
+
+#: data/resources/ui/window.ui:6
+msgid "_Clear History"
+msgstr "Geçmişi _Temizle"
+
+#: data/resources/ui/window.ui:10
+msgid "_Random Color"
+msgstr "_Rastgele Renk"
+
+#: data/resources/ui/window.ui:16
+msgid "_Preferences"
+msgstr "_Tercihler"
+
+#: data/resources/ui/window.ui:20
+msgid "_Keyboard Shortcuts"
+msgstr "_Klavye Kısayolları"
+
+#: data/resources/ui/window.ui:24
+msgid "_About Eyedropper"
+msgstr "Damlalık _Hakkında"
+
+#: data/resources/ui/window.ui:54
+msgid "No Color"
+msgstr "Renk Yok"
+
+#: data/resources/ui/window.ui:55
+msgid "Select a color from the screen to get started."
+msgstr "Başlamak için ekrandan bir renk seçin."
+
+#: data/resources/ui/window.ui:58
+msgid "_Pick a Color"
+msgstr "Bir Renk _Seç"
+
+#: data/resources/ui/window.ui:93
+msgctxt "Tooltip of the colorpicker button"
+msgid "Pick a Color"
+msgstr "Renk Seç"
+
+#: data/resources/ui/window.ui:125
+msgctxt "Tooltip of the palette button"
+msgid "Open Palette Window"
+msgstr "Palet Penceresini Aç"
+
+#: data/resources/ui/window.ui:148
+msgid "Copy Name"
+msgstr "Ad Kopyala"
+
+#: data/resources/ui/window.ui:154
+msgid "Copy Hex Code"
+msgstr "Onaltılık Kod Kopyala"
+
+#: data/resources/ui/window.ui:159
+msgid "Copy RGB"
+msgstr "RGB Kopyala"
+
+#: data/resources/ui/window.ui:164
+msgid "Copy HSL"
+msgstr "HSL Kopyala"
+
+#: data/resources/ui/window.ui:169
+msgid "Copy HSV"
+msgstr "HSV Kopyala"
+
+#: data/resources/ui/window.ui:174
+msgid "Copy CMYK"
+msgstr "CMYK Kopyala"
+
+#: data/resources/ui/window.ui:179
+msgid "Copy XYZ"
+msgstr "XYZ Kopyala"
+
+#: data/resources/ui/window.ui:185
+msgid "Copy CIELAB"
+msgstr "CIELAB Kopyala"
+
+#: data/resources/ui/window.ui:191
+msgid "Copy HWB"
+msgstr "HWB Kopyala"
+
+#: data/resources/ui/window.ui:197
+msgid "Copy CIELCh / HCL"
+msgstr "CIELCh / HCL Koplala"
+
+#: data/resources/ui/window.ui:203
+msgid "Copy LMS"
+msgstr "LMS Kopyala"
+
+#: data/resources/ui/window.ui:209
+msgid "Copy Hunter Lab"
+msgstr "Hunter Lab Kopyala"
 
 #: data/resources/ui/preferences.ui:10
 msgid "General"
@@ -341,175 +475,44 @@ msgstr ""
 "ile değiştirilecektir."
 
 #: data/resources/ui/preferences.ui:175
-#| msgctxt "Tooltip of the copy button for the hex format"
-#| msgid "Copy Format"
 msgid "RGB Format"
 msgstr "RGB Biçimi"
 
 #: data/resources/ui/preferences.ui:182
-#| msgctxt "Tooltip of the copy button for the hex format"
-#| msgid "Copy Format"
 msgid "HSL Format"
 msgstr "HSL Biçimi"
 
 #: data/resources/ui/preferences.ui:189
-#| msgctxt "Tooltip of the copy button for the hex format"
-#| msgid "Copy Format"
 msgid "HSV Format"
 msgstr "HSV Biçimi"
 
 #: data/resources/ui/preferences.ui:196
-#| msgctxt "Tooltip of the copy button for the hex format"
-#| msgid "Copy Format"
 msgid "CMYK Format"
 msgstr "CMYK Biçimi"
 
 #: data/resources/ui/preferences.ui:203
-#| msgctxt "Tooltip of the copy button for the hex format"
-#| msgid "Copy Format"
 msgid "XYZ Format"
 msgstr "XYZ Biçimi"
 
 #: data/resources/ui/preferences.ui:210
-#| msgctxt "Tooltip of the copy button for the hex format"
-#| msgid "Copy Format"
 msgid "CIELAB Format"
 msgstr "CIELAB Biçimi"
 
 #: data/resources/ui/preferences.ui:217
-#| msgctxt "Tooltip of the copy button for the hex format"
-#| msgid "Copy Format"
 msgid "HWB Format"
 msgstr "HWB Biçimi"
 
 #: data/resources/ui/preferences.ui:224
-#| msgid "CIELCh / HCL"
 msgid "CIELCh/HCL Format"
 msgstr "CIELCh/HCL Biçimi"
 
 #: data/resources/ui/preferences.ui:231
-#| msgctxt "Tooltip of the copy button for the hex format"
-#| msgid "Copy Format"
 msgid "LMS Format"
 msgstr "LMS Biçimi"
 
 #: data/resources/ui/preferences.ui:238
 msgid "Hunter Lab Format"
 msgstr "Hunter Lab Biçimi"
-
-#: data/resources/ui/shortcuts.ui:11
-msgctxt "shortcut window"
-msgid "General"
-msgstr "Genel"
-
-#: data/resources/ui/shortcuts.ui:14
-msgctxt "shortcut window"
-msgid "Show Preferences"
-msgstr "Tercihleri Göster"
-
-#: data/resources/ui/shortcuts.ui:20
-msgctxt "shortcut window"
-msgid "Show Shortcuts"
-msgstr "Kısayolları Göster"
-
-#: data/resources/ui/shortcuts.ui:26
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Çık"
-
-#: data/resources/ui/shortcuts.ui:34
-msgctxt "shortcut window"
-msgid "Color"
-msgstr "Renk"
-
-#: data/resources/ui/shortcuts.ui:37
-msgctxt "shortcut window"
-msgid "Pick a new Color"
-msgstr "Yeni renk seç"
-
-#: data/resources/ui/shortcuts.ui:43
-msgctxt "shortcut window"
-msgid "Randomize the Color"
-msgstr "Rastgele renk"
-
-#: data/resources/ui/palette-window.ui:5
-msgid "Palettes"
-msgstr "Paletler"
-
-#: data/resources/ui/palette-window.ui:16
-msgid "Save Palettes"
-msgstr "Paletleri Kaydet"
-
-#: data/resources/ui/preferences/custom-format-row.ui:10
-msgctxt "Tooltip of the reset button for custom format"
-msgid "Reset Format"
-msgstr "Biçimi Sıfırla"
-
-#: data/resources/ui/window.ui:6
-msgid "_Clear History"
-msgstr "Geçmişi _Temizle"
-
-#: data/resources/ui/window.ui:10
-msgid "_Random Color"
-msgstr "_Rastgele Renk"
-
-#: data/resources/ui/window.ui:16
-msgid "_Preferences"
-msgstr "_Tercihler"
-
-#: data/resources/ui/window.ui:20
-msgid "_Keyboard Shortcuts"
-msgstr "_Klavye Kısayolları"
-
-#: data/resources/ui/window.ui:24
-msgid "_About Eyedropper"
-msgstr "Damlalık _Hakkında"
-
-#: data/resources/ui/window.ui:54
-msgid "No Color"
-msgstr "Renk Yok"
-
-#: data/resources/ui/window.ui:55
-msgid "Select a color from the screen to get started."
-msgstr "Başlamak için ekrandan bir renk seçin."
-
-#: data/resources/ui/window.ui:58
-msgid "_Pick a Color"
-msgstr "Bir Renk _Seç"
-
-#: data/resources/ui/window.ui:93
-msgctxt "Tooltip of the colorpicker button"
-msgid "Pick a Color"
-msgstr "Renk Seç"
-
-#: data/resources/ui/window.ui:125
-msgctxt "Tooltip of the palette button"
-msgid "Open Palette Window"
-msgstr "Palet Penceresini Aç"
-
-#: data/resources/ui/color-format-row.ui:22
-msgctxt "Tooltip of the copy button for format rows"
-msgid "Copy Format"
-msgstr "Biçimi Kopyala"
-
-#: src/window.rs:397 src/window.rs:420 src/window.rs:580 src/window.rs:651
-#: src/widgets/preferences_window.rs:494
-msgctxt "Information that no name for the color could be found"
-msgid "Not named"
-msgstr "Adlandırılmamış"
-
-#: src/window.rs:493
-msgid "Failed to get palette color"
-msgstr "Palet rengi alınamadı"
-
-#: src/window.rs:514
-msgid "Failed to pick a color"
-msgstr "Renk alınamadı"
-
-#. Translators: Do not replace the {}. These are used as placeholders for the copied values
-#: src/window.rs:597
-msgid "Copied: “{}”"
-msgstr "Kopyalandı: “{}”"
 
 #: src/widgets/palette_dialog.rs:122
 msgctxt "Name for tints (lighter variants) of the color"
@@ -551,181 +554,181 @@ msgctxt "Color palette consisting of six slight shifted colors"
 msgid "Analogous"
 msgstr "Benzer"
 
-#: src/widgets/palette_dialog.rs:259
-msgctxt ""
-"Name of the save palette file, do not add a file extension, .gpl will be "
-"added automatically"
-msgid "palettes"
-msgstr "paletler"
-
-#: src/widgets/preferences_window.rs:168
+#: src/widgets/preferences_window.rs:169
 msgctxt ""
 "Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
 "#html4"
 msgid "Basic"
 msgstr "Temel"
 
-#: src/widgets/preferences_window.rs:170
+#: src/widgets/preferences_window.rs:171
 msgid "Show color names from the w3c basic color keyword set"
 msgstr "W3C temel renk sözcük kümesinden renk adlarını göster"
 
-#: src/widgets/preferences_window.rs:176
+#: src/widgets/preferences_window.rs:177
 msgctxt ""
 "Name of the extended color keyword set from https://www.w3.org/TR/css-"
 "color-3/#svg-color"
 msgid "Extended"
 msgstr "Genişletilmiş"
 
-#: src/widgets/preferences_window.rs:178
+#: src/widgets/preferences_window.rs:179
 msgid "Show color names from the w3c extended color keyword  set"
 msgstr "W3C genişletilmiş renk sözcük kümesinden renk adlarını göster"
 
-#: src/widgets/preferences_window.rs:182
-#| msgid "Generated color palettes"
+#: src/widgets/preferences_window.rs:183
 msgctxt ""
 "Name of the color set from the GNOME color palette (https://developer.gnome."
 "org/hig/reference/palette.html)"
 msgid "GNOME color palette"
 msgstr "GNOME renk paleti"
 
-#: src/widgets/preferences_window.rs:183
+#: src/widgets/preferences_window.rs:184
 msgid "Show color names from the GNOME color palette"
 msgstr "GNOME renk paletinden renk adlarını göster"
 
-#: src/widgets/preferences_window.rs:187
+#: src/widgets/preferences_window.rs:188
 msgctxt "Name of the color set from the xkcd color survey"
 msgid "xkcd"
 msgstr "xkcd"
 
-#: src/widgets/preferences_window.rs:188
+#: src/widgets/preferences_window.rs:189
 msgid "Show color names from the xkcd color survey"
 msgstr "xkcd renk anketinden renk adlarını göster"
 
-#: src/widgets/preferences_window.rs:327
+#: src/widgets/preferences_window.rs:328
 msgid "Move Up"
 msgstr "Yukarı Taşı"
 
-#: src/widgets/preferences_window.rs:329
+#: src/widgets/preferences_window.rs:330
 msgid "Move Down"
 msgstr "Aşağı Taşı"
 
-#: src/widgets/preferences_window.rs:452
+#: src/widgets/preferences_window.rs:453
 msgid "Hex-Code"
 msgstr "Onaltılık Kod"
 
-#: src/widgets/preferences_window.rs:457
+#: src/widgets/preferences_window.rs:458
 msgid "RGB"
 msgstr "RGB"
 
-#: src/widgets/preferences_window.rs:460
+#: src/widgets/preferences_window.rs:461
 msgid "HSL"
 msgstr "HSL"
 
-#: src/widgets/preferences_window.rs:463
+#: src/widgets/preferences_window.rs:464
 msgid "HSV"
 msgstr "HSV"
 
-#: src/widgets/preferences_window.rs:467
+#: src/widgets/preferences_window.rs:468
 msgid "CMYK"
 msgstr "CMYK"
 
-#: src/widgets/preferences_window.rs:472
+#: src/widgets/preferences_window.rs:473
 msgid "XYZ"
 msgstr "XYZ"
 
-#: src/widgets/preferences_window.rs:476
+#: src/widgets/preferences_window.rs:477
 msgid "CIELAB"
 msgstr "CIELAB"
 
-#: src/widgets/preferences_window.rs:481
+#: src/widgets/preferences_window.rs:482
 msgid "HWB"
 msgstr "HWB"
 
-#: src/widgets/preferences_window.rs:485
+#: src/widgets/preferences_window.rs:486
 msgid "CIELCh / HCL"
 msgstr "CIELCh / HCL"
 
-#: src/widgets/preferences_window.rs:491
+#: src/widgets/preferences_window.rs:492
 msgid "Name"
 msgstr "Ad"
 
-#: src/widgets/preferences_window.rs:499
+#: src/widgets/preferences_window.rs:495 src/window.rs:432 src/window.rs:455
+#: src/window.rs:630 src/window.rs:701
+msgctxt "Information that no name for the color could be found"
+msgid "Not named"
+msgstr "Adlandırılmamış"
+
+#: src/widgets/preferences_window.rs:500
 msgid "LMS"
 msgstr "LMS"
 
-#: src/widgets/preferences_window.rs:503
+#: src/widgets/preferences_window.rs:504
 msgid "Hunter Lab"
 msgstr "Hunter Lab"
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
-#: src/widgets/about_window.rs:50
+#: src/widgets/about_window.rs:51
 msgid "translator-credits"
 msgstr "Sabri Ünal <libreajans@gmail.com>"
 
-#: src/widgets/about_window.rs:110
+#: src/widgets/about_window.rs:111
 msgctxt ""
 "The changelog of the current version. Should be similar to the CHANGELOG.md "
 "file at the project root. Please ensure that the tags have a matching "
 "closing tag. Since xgettext does not recognize rust multiline strings, this "
 "should be on a single line using line breaks (\\n) for new lines."
 msgid ""
-"<p>A new release with exciting new features.</p><p>New Features:</p>\n"
-"<ul><li>Customize formats in the settings</li><li>Export the colorscheme as "
-"a GIMP palette using the new export option</li><li>A placeholder is shown "
-"when no color is picked</li><li> Hunter-Lab and LMS color spaces have been "
-"added</li><li>The GNOME color palette has been added</li><li>Fixed minor "
-"issues</li></ul>"
+"<p>A minor release with many small QoL improvements.</p><p>Added:</p>\n"
+"<ul><li>Show a toast with an Undo option when clearing the history</"
+"li><li>Use Ctrl-Q to close the window</li><li>Use a default minimum window "
+"size, content should no longer unnecessarily cut off</li><li>New icon by "
+"@bertob</li><li>Export palettes as Adobe Swatch Exchange (ASE), hex, PAL, "
+"Paint.NET (txt) files</li><li>Minor changes to the store metadata</li></"
+"ul><p>Changed:</p>\n"
+"<ul><li>Hunter-Lab now displays 0 instead of NaN</li><li>Improved tooltips "
+"for copying colors</li><li>Palette window now uses a button with a more "
+"explicit text instead of an icon</li><li>Reworded project description</"
+"li><li>Updated all screenshots</li></ul><p>Fixed:</p>\n"
+"<ul><li>Separator is now hidden when the history list is hidden</"
+"li><li>Improved editing experience when change the Hex color/name</li></ul>"
 msgstr ""
-"<p>Heyecan verici yeni özelliklere sahip yeni bir sürüm.</p>\n"
-"<p>Yeni Özellikler:</p>\n"
+"<p>Birçok küçük QoL geliştirmeleri yapılan küçük bir güncelleme.</p>\n"
+"<p>Eklendi:</p>\n"
 "<ul>\n"
-"<li>Ayarlarda biçimleri özelleştirme</li>\n"
-"<li>Yeni dışa aktarma seçeneğini kullanarak renk şemasını GIMP paleti olarak "
-"dışa aktarma</li>\n"
-"<li>Hiçbir renk seçilmediğinde yer tutucu gösterilmesi</li>\n"
-"<li> Hunter-Lab ve LMS renk uzayları eklendi</li>\n"
-"<li>GNOME renk paleti eklendi</li>\n"
-"<li>Küçük sorunlar düzeltildi</li>\n"
+"<li>Geçmişi temizlerken geri alma seçeneğiyle bildirim gösterme özelliği "
+"eklendi</li>\n"
+"<li>Pencereyi kapatmak için artık Ctrl+Q kullanılıyor</li>\n"
+"<li>Öntanımlı olarak bir asgari pencere boyutu kullanılıyor, içerik artık "
+"gereksiz yere kesilmeyecek</li>\n"
+"<li>@bertob tarafından yeni simge eklendi</li>\n"
+"<li>Paletleri Adobe Swatch Exchange (ASE), hex, PAL, Paint.NET (txt) "
+"dosyaları olarak dışa aktarma özelliği eklendi</li>\n"
+"<li>Mağaza üst verilerinde küçük değişiklikler yapıldı</li>\n"
+"</ul>\n"
+"<p>Değiştirildi:</p>\n"
+"<ul>\n"
+"<li>Hunter-Lab artık NaN yerine 0 gösteriyor</li>\n"
+"<li>Renkleri kopyalamak için geliştirilmiş açıklamalar eklendi</li>\n"
+"<li>Palet penceresi artık daha açıklayıcı metin içeren bir düğme kullanıyor</"
+"li>\n"
+"<li>Proje açıklaması yeniden düzenlendi</li>\n"
+"<li>Tüm ekran görüntüleri güncellendi</li>\n"
+"</ul>\n"
+"<p>Düzeltildi:</p>\n"
+"<ul>\n"
+"<li>Geçmiş listesi gizlendiğinde ayırıcı artık gizleniyor</li>\n"
+"<li>Hex renk/ad ismi değiştirilirken düzenleme deneyimi geliştirildi</li>\n"
 "</ul>"
 
-#~ msgctxt "Alpha is not shown"
-#~ msgid "None"
-#~ msgstr "Hiçbiri"
+#: src/window.rs:213
+msgid "Cleared history"
+msgstr "Geçmiş temizlendi"
 
-#~ msgid "Field of view used by the CIE standard observer"
-#~ msgstr "CIE standart gözlemcisi tarafından kullanılan görüş alanı"
+#: src/window.rs:214
+msgid "Undo"
+msgstr "Geri Al"
 
-#~ msgctxt ""
-#~ "The changelog of the current version. Should be similar to the CHANGELOG."
-#~ "md file at the project root. Please ensure that the tags have a matching "
-#~ "closing tag. Since xgettext does not recognize rust multiline strings, "
-#~ "this should be on a single line using line breaks (\\n) for new lines."
-#~ msgid ""
-#~ "<p>This release extends the current available features.</p><p> Features:</"
-#~ "p>\n"
-#~ "<ul><li> The name of the color, specified by w3c color keywords and the "
-#~ "xkcd color survey, can now be shown</li><li>Switch the color by entering "
-#~ "a color keyword</li><li> A new Palette dialog showing different color "
-#~ "palettes</li><li>Choose which CIE standard observer is used, as well as "
-#~ "it's illuminant</li><li> Show the CIELCh color format</li><li> Using the "
-#~ "new AdwAboutWindow</li><li> Added new translations</li><li>Fixed minor "
-#~ "issues</li></ul>"
-#~ msgstr ""
-#~ "<p>Bu sürüm, mevcut mevcut özellikleri genişletiyor.</p><p> Özellikler:</"
-#~ "p>\n"
-#~ "<ul><li>W3C renk sözcükleri ve xkcd renk anketi tarafından belirtilen "
-#~ "rengin adı artık gösterilebilir</li><li>Bir renk sözcüğü girerek rengi "
-#~ "değiştirebilirsiniz</li><li>Farklı renk paletlerini gösteren yeni Palet "
-#~ "iletişim kutusu</li><li>Aydınlatıcının yanı sıra hangi CIE standart "
-#~ "gözlemcisinin kullanılacağını seçin</li><li> CIELCH renk biçimini göster</"
-#~ "li><li> Yeni AdwAboutWindow'u kullan </li><li> Yeni çeviriler eklendi</"
-#~ "li><li>Küçük sorunlar düzeltildi</li></ul>"
+#: src/window.rs:528
+msgid "Failed to get palette color"
+msgstr "Palet rengi alınamadı"
 
-#~ msgid "An easy-to-use color picker"
-#~ msgstr "Kullanımı kolay renk seçici"
+#: src/window.rs:552
+msgid "Failed to pick a color"
+msgstr "Renk alınamadı"
 
-#~ msgid "Available Formats:"
-#~ msgstr "Kullanılabilir Biçimler:"
-
-#~ msgid "Hex"
-#~ msgstr "Onaltılık"
+#. Translators: Do not replace the {}. These are used as placeholders for the copied values
+#: src/window.rs:647
+msgid "Copied: “{}”"
+msgstr "Kopyalandı: “{}”"
