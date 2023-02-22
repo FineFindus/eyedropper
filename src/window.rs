@@ -224,6 +224,11 @@ impl AppWindow {
 
         history.remove_all();
         self.imp().toast_overlay.add_toast(toast);
+
+        if let Some(color) = self.color() {
+            let history_item = HistoryObject::new(color);
+            self.history().insert(0, &history_item);
+        }
     }
 
     /// Setup the history by setting up a model
@@ -257,7 +262,8 @@ impl AppWindow {
     /// Assure that history is only visible
     /// if the number of items is greater than 0
     fn set_history_list_visible(&self, history: &gio::ListStore) {
-        self.imp().history_list.set_visible(history.n_items() > 0);
+        let visible = history.n_items() > 1;
+        self.imp().history_list.set_visible(visible);
     }
 
     /// Create a new history item
@@ -557,24 +563,10 @@ impl AppWindow {
     }
 
     /// Update the current color to the given color.
-    /// The previous color will be added to the history list.
+    /// The new color will be added to the history list.
     pub fn set_color(&self, color: Color) {
-        //append previous color to history
-        if self.color() != Some(color) && self.color().is_some() {
-            let history_item = HistoryObject::new(self.color().unwrap());
-
-            if let Some(previous_index) = self.history().snapshot().into_iter().position(|item| {
-                item.downcast_ref::<HistoryObject>().unwrap().color() == history_item.color()
-            }) {
-                log::trace!(
-                    "Found {} in history at index {}",
-                    self.color().unwrap(),
-                    previous_index
-                );
-                self.history().remove(previous_index as u32);
-            }
-            self.history().insert(0, &history_item);
-        }
+        let history_item = HistoryObject::new(color);
+        self.history().insert(0, &history_item);
 
         let imp = self.imp();
         let settings = &imp.settings;
