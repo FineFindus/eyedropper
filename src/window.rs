@@ -555,8 +555,10 @@ impl AppWindow {
             },
             Err(err) => {
                 log::error!("{}", err);
-                window.show_toast(&gettext("Failed to pick a color"));
-                window.imp().portal_error.replace(Some(err));
+                if matches!(err, ashpd::Error::Response(ashpd::desktop::ResponseError::Other)) {
+                    window.show_toast(&gettext("Failed to pick a color"));
+                    window.imp().portal_error.replace(Some(err));
+                }
             },
         };
         }));
