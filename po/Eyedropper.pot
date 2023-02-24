@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-02-24 15:29+0000\n"
+"POT-Creation-Date: 2023-02-24 19:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -632,7 +632,7 @@ msgid "Name"
 msgstr ""
 
 #: src/widgets/preferences_window.rs:495 src/window.rs:438 src/window.rs:461
-#: src/window.rs:622 src/window.rs:693
+#: src/window.rs:624 src/window.rs:695
 msgctxt "Information that no name for the color could be found"
 msgid "Not named"
 msgstr ""
@@ -684,11 +684,11 @@ msgstr ""
 msgid "Failed to get palette color"
 msgstr ""
 
-#: src/window.rs:558
+#: src/window.rs:559
 msgid "Failed to pick a color"
 msgstr ""
 
 #. Translators: Do not replace the {}. These are used as placeholders for the copied values
-#: src/window.rs:639
+#: src/window.rs:641
 msgid "Copied: “{}”"
 msgstr ""
