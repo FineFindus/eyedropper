@@ -210,8 +210,8 @@ impl AppWindow {
 
         //show toast to undo
         let toast = adw::Toast::builder()
-            .title(&gettext("Cleared history"))
-            .button_label(&gettext("Undo"))
+            .title(gettext("Cleared history"))
+            .button_label(gettext("Undo"))
             .priority(adw::ToastPriority::High)
             .build();
 
