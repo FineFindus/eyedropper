@@ -3,7 +3,9 @@
     "runtime": "org.gnome.Platform",
     "runtime-version": "43",
     "sdk": "org.gnome.Sdk",
-    "sdk-extensions": ["org.freedesktop.Sdk.Extension.rust-stable"],
+    "sdk-extensions": [
+        "org.freedesktop.Sdk.Extension.rust-stable"
+    ],
     "command": "eyedropper",
     "finish-args": [
         "--socket=fallback-x11",
@@ -22,8 +24,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/FineFindus/eyedropper/releases/download/v0.5.1/eyedropper-0.5.1.tar.xz",
-                    "sha256": "7b96c0b191b9a4fb9c34ae318b0da564eae13ca3c8a214e69bfebae8678fe31f"
+                    "url": "https://github.com/FineFindus/eyedropper/releases/download/v0.6.0/eyedropper-0.6.0.tar.xz",
+                    "sha256": "9e92ca182c1cfd2433f2367bd1dd4c2c4db1f1032e5a6c1f66f8436db453f9be"
                 }
             ]
         }
