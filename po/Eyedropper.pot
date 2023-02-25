@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-02-24 19:42+0000\n"
+"POT-Creation-Date: 2023-02-25 12:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -181,61 +181,61 @@ msgstr ""
 msgid "_Pick a Color"
 msgstr ""
 
-#: data/resources/ui/window.ui:93
+#: data/resources/ui/window.ui:96
 msgctxt "Tooltip of the colorpicker button"
 msgid "Pick a Color"
 msgstr ""
 
-#: data/resources/ui/window.ui:125
+#: data/resources/ui/window.ui:128
 msgctxt "Tooltip of the palette button"
 msgid "Open Palette Window"
 msgstr ""
 
-#: data/resources/ui/window.ui:148
+#: data/resources/ui/window.ui:151
 msgid "Copy Name"
 msgstr ""
 
-#: data/resources/ui/window.ui:154
+#: data/resources/ui/window.ui:157
 msgid "Copy Hex Code"
 msgstr ""
 
-#: data/resources/ui/window.ui:159
+#: data/resources/ui/window.ui:162
 msgid "Copy RGB"
 msgstr ""
 
-#: data/resources/ui/window.ui:164
+#: data/resources/ui/window.ui:167
 msgid "Copy HSL"
 msgstr ""
 
-#: data/resources/ui/window.ui:169
+#: data/resources/ui/window.ui:172
 msgid "Copy HSV"
 msgstr ""
 
-#: data/resources/ui/window.ui:174
+#: data/resources/ui/window.ui:177
 msgid "Copy CMYK"
 msgstr ""
 
-#: data/resources/ui/window.ui:179
+#: data/resources/ui/window.ui:182
 msgid "Copy XYZ"
 msgstr ""
 
-#: data/resources/ui/window.ui:185
+#: data/resources/ui/window.ui:188
 msgid "Copy CIELAB"
 msgstr ""
 
-#: data/resources/ui/window.ui:191
+#: data/resources/ui/window.ui:194
 msgid "Copy HWB"
 msgstr ""
 
-#: data/resources/ui/window.ui:197
+#: data/resources/ui/window.ui:200
 msgid "Copy CIELCh / HCL"
 msgstr ""
 
-#: data/resources/ui/window.ui:203
+#: data/resources/ui/window.ui:206
 msgid "Copy LMS"
 msgstr ""
 
-#: data/resources/ui/window.ui:209
+#: data/resources/ui/window.ui:212
 msgid "Copy Hunter Lab"
 msgstr ""
 
@@ -632,7 +632,7 @@ msgid "Name"
 msgstr ""
 
 #: src/widgets/preferences_window.rs:495 src/window.rs:438 src/window.rs:461
-#: src/window.rs:624 src/window.rs:695
+#: src/window.rs:624 src/window.rs:698
 msgctxt "Information that no name for the color could be found"
 msgid "Not named"
 msgstr ""
