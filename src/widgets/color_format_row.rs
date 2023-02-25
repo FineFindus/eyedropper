@@ -1,3 +1,5 @@
+use std::time::Duration;
+
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{
@@ -119,6 +121,17 @@ impl ColorFormatRow {
     /// Set the currently shown text
     pub fn set_text(&self, text: String) {
         self.set_property("color", &text);
+    }
+
+    /// Indicate an error with the input occurred by applying the libadwaita error style class
+    /// for a short time (250ms), so the entry shows the error for a short moment.
+    pub fn show_error(&self) {
+        let main_context = glib::MainContext::default();
+        main_context.spawn_local(glib::clone!(@weak self as widget => async move {
+            widget.add_css_class("error");
+            glib::timeout_future_with_priority(glib::PRIORITY_DEFAULT, Duration::from_millis(500)).await;
+            widget.remove_css_class("error");
+        }));
     }
 
     /// Bind the properties to the target values.

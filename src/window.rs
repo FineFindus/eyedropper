@@ -669,7 +669,7 @@ impl AppWindow {
         imp.hex_row.connect_closure(
             "text-edited",
             false,
-            glib::closure_local!(@watch self as window => move |_: ColorFormatRow, color: String| {
+            glib::closure_local!(@watch self as window => move |format_row: ColorFormatRow, color: String| {
                 log::debug!("Changed hex entry: {color}");
                 let hex_alpha_position = AlphaPosition::from(window.imp().settings.int("alpha-position") as u32);
 
@@ -678,7 +678,10 @@ impl AppWindow {
 
                 match Color::from_hex(&color, hex_alpha_position) {
                     Ok(color) => if color != current_color{ window.set_color(color) },
-                    Err(_) => log::debug!("Failed to parse color: {color}"),
+                    Err(_) => {
+                        log::debug!("Failed to parse color: {color}");
+                        format_row.show_error();
+                    },
                 }
             }
             }),
@@ -687,7 +690,7 @@ impl AppWindow {
         imp.name_row.connect_closure(
             "text-edited",
             false,
-            glib::closure_local!(@watch self as window => move |_: ColorFormatRow, name: String| {
+            glib::closure_local!(@watch self as window => move |format_row: ColorFormatRow, name: String| {
                 log::debug!("Changed name entry: {name}");
                 //do not search for unnamed colors
                 if name != pgettext(
@@ -704,11 +707,13 @@ impl AppWindow {
                         window.imp().settings.boolean("name-source-gnome-palette"),
                         window.imp().settings.boolean("name-source-xkcd")) {
                     Some(color) => if color != current_color { window.set_color(color) },
-                    None => log::debug!("Failed to find color for name: {name}"),
-                }
+                    None => {
+                        log::debug!("Failed to find color for name: {name}");
+                        format_row.show_error();
+                    },
                 }
             }
-            }),
+        }}),
         );
     }
 }
