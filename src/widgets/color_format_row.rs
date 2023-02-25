@@ -129,7 +129,7 @@ impl ColorFormatRow {
         let main_context = glib::MainContext::default();
         main_context.spawn_local(glib::clone!(@weak self as widget => async move {
             widget.add_css_class("error");
-            glib::timeout_future_with_priority(glib::PRIORITY_DEFAULT, Duration::from_millis(500)).await;
+            glib::timeout_future_with_priority(glib::PRIORITY_DEFAULT, Duration::from_millis(350)).await;
             widget.remove_css_class("error");
         }));
     }
