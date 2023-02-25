@@ -134,6 +134,19 @@ impl ColorFormatRow {
         }));
     }
 
+    /// Indicate success with the input.
+    ///
+    /// To visualize the success, the `success` libadwaita style class
+    /// is applied for a short time (250ms).
+    pub fn show_success(&self) {
+        let main_context = glib::MainContext::default();
+        main_context.spawn_local(glib::clone!(@weak self as widget => async move {
+            widget.add_css_class("success");
+            glib::timeout_future_with_priority(glib::PRIORITY_DEFAULT, Duration::from_millis(350)).await;
+            widget.remove_css_class("success");
+        }));
+    }
+
     /// Bind the properties to the target values.
     ///
     /// Binds the `text` properties to the text of the entry, and

@@ -677,7 +677,10 @@ impl AppWindow {
                 if let Some(current_color) = window.color(){
 
                 match Color::from_hex(&color, hex_alpha_position) {
-                    Ok(color) => if color != current_color{ window.set_color(color) },
+                    Ok(color) => if color != current_color {
+                        window.set_color(color);
+                        format_row.show_success();
+                    },
                     Err(_) => {
                         log::debug!("Failed to parse color: {color}");
                         format_row.show_error();
@@ -706,7 +709,10 @@ impl AppWindow {
                         window.imp().settings.boolean("name-source-extended"),
                         window.imp().settings.boolean("name-source-gnome-palette"),
                         window.imp().settings.boolean("name-source-xkcd")) {
-                    Some(color) => if color != current_color { window.set_color(color) },
+                    Some(color) => if color != current_color {
+                        window.set_color(color);
+                        format_row.show_success();
+                     },
                     None => {
                         log::debug!("Failed to find color for name: {name}");
                         format_row.show_error();
