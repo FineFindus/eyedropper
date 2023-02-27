@@ -13,7 +13,7 @@ Pick and format colors.
 <details>
   <summary>More screenshots</summary>
 
-![Status page](data/resources/screenshots/status_light.png.png)
+![Status page](data/resources/screenshots/status_light.png)
 
 ![Customize the shown formats (Dark UI)](data/resources/screenshots/main_customize_dark.png)
 
