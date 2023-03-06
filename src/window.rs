@@ -546,16 +546,23 @@ impl AppWindow {
         log::debug!("Picking a color using the color picker");
         gtk_macros::spawn!(glib::clone!(@weak self as window => async move {
 
-        let connection = ashpd::zbus::Connection::session().await.expect("Failed to open connection to zbus");
-        let proxy = ashpd::desktop::screenshot::ScreenshotProxy::new(&connection).await.expect("Failed to open screenshot proxy");
-        match proxy.pick_color(&ashpd::WindowIdentifier::default()).await {
+        let root = window.root().unwrap();
+        let identifier = ashpd::WindowIdentifier::from_native(&root).await;
+        let request = ashpd::desktop::screenshot::Color::builder()
+            .identifier(identifier)
+            .build()
+            .await
+            .expect("Failed to build color request")
+            .response();
+
+        match request {
             Ok(color) => {
                 window.imp().portal_error.replace(None);
                 window.set_color(Color::from(color));
             },
             Err(err) => {
                 log::error!("{}", err);
-                if matches!(err, ashpd::Error::Response(ashpd::desktop::ResponseError::Other)) {
+                if !matches!(err, ashpd::Error::Response(ashpd::desktop::ResponseError::Cancelled)) {
                     window.show_toast(&gettext("Failed to pick a color"));
                     window.imp().portal_error.replace(Some(err));
                 }
