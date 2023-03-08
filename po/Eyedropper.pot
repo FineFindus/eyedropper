@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-03-06 14:45+0000\n"
+"POT-Creation-Date: 2023-03-08 19:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:88 src/main.rs:26 src/widgets/about_window.rs:45
+#: data/resources/ui/window.ui:88 src/widgets/about_window.rs:45 src/main.rs:26
 msgid "Eyedropper"
 msgstr ""
 
@@ -101,19 +101,6 @@ msgstr ""
 msgid "FineFindus"
 msgstr ""
 
-#: data/resources/ui/preferences/custom-format-row.ui:10
-msgctxt "Tooltip of the reset button for custom format"
-msgid "Reset Format"
-msgstr ""
-
-#: data/resources/ui/palette-window.ui:5
-msgid "Palettes"
-msgstr ""
-
-#: data/resources/ui/palette-window.ui:16
-msgid "Save Palettes…"
-msgstr ""
-
 #: data/resources/ui/shortcuts.ui:11
 msgctxt "shortcut window"
 msgid "General"
@@ -147,6 +134,11 @@ msgstr ""
 #: data/resources/ui/shortcuts.ui:43
 msgctxt "shortcut window"
 msgid "Randomize the Color"
+msgstr ""
+
+#: data/resources/ui/preferences/custom-format-row.ui:10
+msgctxt "Tooltip of the reset button for custom format"
+msgid "Reset Format"
 msgstr ""
 
 #: data/resources/ui/window.ui:6
@@ -503,6 +495,14 @@ msgstr ""
 msgid "Hunter Lab Format"
 msgstr ""
 
+#: data/resources/ui/palette-window.ui:5
+msgid "Palettes"
+msgstr ""
+
+#: data/resources/ui/palette-window.ui:16
+msgid "Save Palettes…"
+msgstr ""
+
 #: src/widgets/palette_dialog.rs:122
 msgctxt "Name for tints (lighter variants) of the color"
 msgid "Tints"
@@ -539,6 +539,33 @@ msgstr ""
 #: src/widgets/palette_dialog.rs:157
 msgctxt "Color palette consisting of six slight shifted colors"
 msgid "Analogous"
+msgstr ""
+
+#. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
+#: src/widgets/about_window.rs:51
+msgid "translator-credits"
+msgstr ""
+
+#: src/widgets/about_window.rs:111
+msgctxt ""
+"The changelog of the current version. Should be similar to the CHANGELOG.md "
+"file at the project root. Please ensure that the tags have a matching "
+"closing tag. Since xgettext does not recognize rust multiline strings, this "
+"should be on a single line using line breaks (\\n) for new lines."
+msgid ""
+"<p>A minor release with many small QoL improvements.</p><p>Added:</p>\n"
+"<ul><li>Show a toast with an Undo option when clearing the history</"
+"li><li>Use Ctrl-Q to close the window</li><li>Use a default minimum window "
+"size, content should no longer unnecessarily cut off</li><li>New icon by "
+"@bertob</li><li>Export palettes as Adobe Swatch Exchange (ASE), hex, PAL, "
+"Paint.NET (txt) files</li><li>Minor changes to the store metadata</li></"
+"ul><p>Changed:</p>\n"
+"<ul><li>Hunter-Lab now displays 0 instead of NaN</li><li>Improved tooltips "
+"for copying colors</li><li>Palette window now uses a button with a more "
+"explicit text instead of an icon</li><li>Reworded project description</"
+"li><li>Updated all screenshots</li></ul><p>Fixed:</p>\n"
+"<ul><li>Separator is now hidden when the history list is hidden</"
+"li><li>Improved editing experience when change the Hex color/name</li></ul>"
 msgstr ""
 
 #: src/widgets/preferences_window.rs:169
@@ -643,33 +670,6 @@ msgstr ""
 
 #: src/widgets/preferences_window.rs:504
 msgid "Hunter Lab"
-msgstr ""
-
-#. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
-#: src/widgets/about_window.rs:51
-msgid "translator-credits"
-msgstr ""
-
-#: src/widgets/about_window.rs:111
-msgctxt ""
-"The changelog of the current version. Should be similar to the CHANGELOG.md "
-"file at the project root. Please ensure that the tags have a matching "
-"closing tag. Since xgettext does not recognize rust multiline strings, this "
-"should be on a single line using line breaks (\\n) for new lines."
-msgid ""
-"<p>A minor release with many small QoL improvements.</p><p>Added:</p>\n"
-"<ul><li>Show a toast with an Undo option when clearing the history</"
-"li><li>Use Ctrl-Q to close the window</li><li>Use a default minimum window "
-"size, content should no longer unnecessarily cut off</li><li>New icon by "
-"@bertob</li><li>Export palettes as Adobe Swatch Exchange (ASE), hex, PAL, "
-"Paint.NET (txt) files</li><li>Minor changes to the store metadata</li></"
-"ul><p>Changed:</p>\n"
-"<ul><li>Hunter-Lab now displays 0 instead of NaN</li><li>Improved tooltips "
-"for copying colors</li><li>Palette window now uses a button with a more "
-"explicit text instead of an icon</li><li>Reworded project description</"
-"li><li>Updated all screenshots</li></ul><p>Fixed:</p>\n"
-"<ul><li>Separator is now hidden when the history list is hidden</"
-"li><li>Improved editing experience when change the Hex color/name</li></ul>"
 msgstr ""
 
 #: src/window.rs:213
