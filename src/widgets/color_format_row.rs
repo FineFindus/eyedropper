@@ -206,11 +206,11 @@ impl ColorFormatRow {
     fn setup_signals(&self) {
         self.imp()
             .entry
-            .connect_activate(glib::clone!(@weak self as format_row => move |entry| {
+            .connect_activate(glib::clone!(@weak self as widget => move |entry| {
                 let text = entry.buffer().text();
-                if format_row.is_visible() && !text.is_empty() {
-                    format_row.switch_button(false);
-                    format_row.emit_by_name("text-edited", &[&text.to_value()])
+                if widget.is_visible() && !text.is_empty() {
+                    widget.switch_button(false);
+                    widget.emit_by_name("text-edited", &[&text.to_value()])
                 }
             }));
     }
