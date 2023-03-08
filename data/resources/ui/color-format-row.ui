@@ -19,7 +19,7 @@
         <child>
             <object class="GtkButton" id="format_button">
                 <property name="icon-name">edit-copy-symbolic</property>
-                <signal name="clicked" handler="on_copy_pressed" swapped="true" />
+                <signal name="clicked" handler="on_button_pressed" swapped="true" />
             </object>
         </child>
     </template>
