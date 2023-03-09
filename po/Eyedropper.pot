@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-03-08 19:47+0000\n"
+"POT-Creation-Date: 2023-03-09 21:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -503,40 +503,40 @@ msgstr ""
 msgid "Save Palettes…"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:122
+#: src/widgets/palette_dialog.rs:128
 msgctxt "Name for tints (lighter variants) of the color"
 msgid "Tints"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:126
+#: src/widgets/palette_dialog.rs:132
 msgctxt "Name for shades (darker variants) of the color"
 msgid "Shades"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:132
+#: src/widgets/palette_dialog.rs:138
 msgctxt "Name for the opposite/complementary color (e.g. blue ⇔ yellow)"
 msgid "Complementary"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:139
+#: src/widgets/palette_dialog.rs:145
 msgctxt ""
 "The name of the color palette. Consist of the two opposite colors (e.g. blue "
 "⇔ orange / green)"
 msgid "Split-Complementary"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:146
+#: src/widgets/palette_dialog.rs:152
 msgctxt ""
 "Name of the color palette, which would form a triangle above the color wheel"
 msgid "Triadic"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:151
+#: src/widgets/palette_dialog.rs:157
 msgctxt "The name of the color palette."
 msgid "Tetradic"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:157
+#: src/widgets/palette_dialog.rs:163
 msgctxt "Color palette consisting of six slight shifted colors"
 msgid "Analogous"
 msgstr ""
