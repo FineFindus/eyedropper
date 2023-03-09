@@ -23,6 +23,11 @@
       <summary>Alpha Position</summary>
       <description>At which position the alpha values are shown, e.g. not shown, the end or at the start. This preference is used in multiple formats, like hex, rgb and hsl.</description>
     </key>
+    <key name="shades-tints-quantity" type="u">
+      <default>5</default>
+      <summary>Shades/Tints Quantinty</summary>
+      <description>How many shades/tints are generated and displayed in the palette dialog. It's not recommend to change this setting beyond reseanable defaults, as it will not work correctly.</description>
+    </key>
     <key name="show-hex-format" type="b">
       <default>true</default>
       <summary>Show hex format</summary>

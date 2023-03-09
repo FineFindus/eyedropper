@@ -15,6 +15,8 @@ mod imp {
     use gtk::glib::ParamSpecBoxed;
     use once_cell::sync::Lazy;
 
+    use crate::config;
+
     use super::*;
 
     #[derive(Debug, CompositeTemplate)]
@@ -23,6 +25,7 @@ mod imp {
         pub color: RefCell<gtk::gdk::RGBA>,
         #[template_child]
         pub palettes_list: TemplateChild<gtk::ListBox>,
+        pub settings: gtk::gio::Settings,
     }
 
     #[glib::object_subclass]
@@ -35,6 +38,7 @@ mod imp {
             Self {
                 color: RefCell::new(gtk::gdk::RGBA::BLACK),
                 palettes_list: TemplateChild::default(),
+                settings: gtk::gio::Settings::new(config::APP_ID),
             }
         }
 
@@ -117,14 +121,16 @@ impl PaletteDialog {
         let imp = self.imp();
         let palettes = &imp.palettes_list;
 
+        let quantity = self.imp().settings.uint("shades-tints-quantity").max(1) as usize;
+
         let color: Color = self.color();
         palettes.append(&self.create_palette_row(
             &pgettext("Name for tints (lighter variants) of the color", "Tints"),
-            color.tints(0.15, 5),
+            color.tints(0.15, quantity),
         ));
         palettes.append(&self.create_palette_row(
             &pgettext("Name for shades (darker variants) of the color", "Shades"),
-            color.shades(0.15, 5),
+            color.shades(0.15, quantity),
         ));
         palettes.append(&self.create_palette_row(
             &pgettext(
@@ -245,8 +251,10 @@ impl PaletteDialog {
             //capacity for all palettes
             let mut colors = Vec::with_capacity(28);
 
-            colors.append(&mut color.tints(0.15, 5));
-            colors.append(&mut color.shades(0.15, 5));
+            let quantity = window.imp().settings.uint("shades-tints-quantity").max(1) as usize;
+
+            colors.append(&mut color.tints(0.15, quantity));
+            colors.append(&mut color.shades(0.15, quantity));
             colors.append(&mut vec![color, color.complementary_color()]);
             colors.append(&mut color.split_complementary_color());
             colors.append(&mut color.triadic_colors());
