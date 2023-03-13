@@ -1,7 +1,5 @@
 use core::fmt;
 
-use crate::utils;
-
 use super::{illuminant::Illuminant, parser, position::AlphaPosition};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
