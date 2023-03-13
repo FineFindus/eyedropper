@@ -2,7 +2,7 @@ use core::fmt;
 
 use crate::utils;
 
-use super::{illuminant::Illuminant, position::AlphaPosition};
+use super::{illuminant::Illuminant, parser, position::AlphaPosition};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct Color {
@@ -349,40 +349,12 @@ impl Color {
     /// If the the has less than 8 chars, and thus cannot contain a alpha value it will be handled the same as being given
     /// `AlphaPosition::None`.
     pub fn from_hex(hex_color: &str, alpha_position: AlphaPosition) -> Result<Color, ColorError> {
-        let mut hex_color = hex_color.to_owned();
-        //remove #
-        if hex_color.starts_with('#') {
-            hex_color = hex_color.replace('#', "");
-        }
-
-        if alpha_position != AlphaPosition::None && hex_color.len() != 8 {
-            return Err(ColorError::HexConversion(String::from(
-                "Could not convert color, color is not a hex color",
-            )));
-        }
-
-        if hex_color.len() == 6 || hex_color.len() == 8 {
-            //read alpha values first
-            let alpha = if hex_color.len() == 8 {
-                //only check alpha values if string has 8 chars
-                match alpha_position {
-                    AlphaPosition::Start => utils::hex_value(&mut hex_color)?,
-                    AlphaPosition::End => u8::from_str_radix(hex_color.split_at(6).1, 16)?,
-                    _ => 255,
-                }
-            } else {
-                255
-            };
-            //get color from hex values
-            let red = utils::hex_value(&mut hex_color)?;
-            let green = utils::hex_value(&mut hex_color)?;
-            let blue = utils::hex_value(&mut hex_color)?;
-            let color = Color::rgba(red, green, blue, alpha);
-            Ok(color)
-        } else {
-            Err(ColorError::HexConversion(String::from(
-                "Could not convert color, color is not a hex color",
-            )))
+        match parser::hex_color(hex_color, alpha_position) {
+            Ok((_input, color)) => Ok(color),
+            Err(err) => {
+                log::error!("Failed to parse color: {}", err);
+                Err(ColorError::ParsingError(err.to_string()))
+            }
         }
     }
 
@@ -619,6 +591,13 @@ impl From<search_provider::ResultID> for Color {
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord)]
 pub enum ColorError {
     HexConversion(String),
+    ParsingError(String),
+}
+
+impl<I, O, E> From<nom::IResult<I, O, E>> for ColorError {
+    fn from(_error: Result<(I, O), nom::Err<E>>) -> Self {
+        Self::ParsingError(String::new())
+    }
 }
 
 impl From<std::num::ParseIntError> for ColorError {
@@ -630,7 +609,7 @@ impl From<std::num::ParseIntError> for ColorError {
 impl fmt::Display for ColorError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
-            ColorError::HexConversion(err) => write!(f, "{}", err),
+            ColorError::ParsingError(err) | ColorError::HexConversion(err) => write!(f, "{}", err),
         }
     }
 }
