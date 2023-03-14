@@ -1,7 +1,7 @@
 use nom::{
-    bytes::complete::{tag, take_while_m_n},
+    bytes::complete::{is_not, tag, take_while_m_n},
     combinator::{map_res, opt},
-    sequence::Tuple,
+    sequence::{delimited, Tuple},
     IResult,
 };
 
@@ -22,7 +22,7 @@ fn hex_primary(input: &str) -> IResult<&str, u8> {
 pub fn hex_color(input: &str, alpha_position: AlphaPosition) -> IResult<&str, Color> {
     let (input, _) = opt(tag("#"))(input)?;
 
-    if (alpha_position != AlphaPosition::None && input.trim().len() > 8) || input.trim().len() > 6 {
+    if (alpha_position == AlphaPosition::None && input.trim().len() > 6) || input.trim().len() > 8 {
         return Err(nom::Err::Error(nom::error::Error::new(
             "Length is greater than the allowed maximum",
             nom::error::ErrorKind::LengthValue,
