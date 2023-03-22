@@ -499,6 +499,12 @@ impl PreferencesWindow {
                 "lms" => {
                     ColorFormatObject::new(item, gettext("LMS"), formatter.lms(), "show-lms-format")
                 }
+                "glvec" => ColorFormatObject::new(
+                    item,
+                    gettext("glvec"),
+                    formatter.glvec(),
+                    "show-glvec-format",
+                ),
                 "hunterlab" => ColorFormatObject::new(
                     item,
                     gettext("Hunter Lab"),

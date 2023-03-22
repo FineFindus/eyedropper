@@ -62,6 +62,8 @@ mod imp {
         #[template_child]
         pub lms_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
         #[template_child]
+        pub glvec_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
+        #[template_child]
         pub hunter_lab_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
         #[template_child]
         pub history_list: TemplateChild<gtk::ListBox>,
@@ -92,6 +94,7 @@ mod imp {
                 hcl_row: TemplateChild::default(),
                 name_row: TemplateChild::default(),
                 lms_row: TemplateChild::default(),
+                glvec_row: TemplateChild::default(),
                 history_list: TemplateChild::default(),
                 history: Default::default(),
                 settings: gio::Settings::new(APP_ID),
@@ -406,6 +409,7 @@ impl AppWindow {
         settings.connect_changed(Some("custom-format-hwb"), update_color.clone());
         settings.connect_changed(Some("custom-format-hcl"), update_color.clone());
         settings.connect_changed(Some("custom-format-lms"), update_color.clone());
+        settings.connect_changed(Some("custom-format-glvec"), update_color.clone());
         settings.connect_changed(Some("custom-format-hunter-lab"), update_color);
 
         imp.hex_row.set_settings_name("show-hex-format");
@@ -418,6 +422,7 @@ impl AppWindow {
         imp.hwb_row.set_settings_name("show-hwb-format");
         imp.hcl_row.set_settings_name("show-hcl-format");
         imp.lms_row.set_settings_name("show-lms-format");
+        imp.glvec_row.set_settings_name("show-glvec-format");
         imp.hunter_lab_row
             .set_settings_name("show-hunter-lab-format");
         imp.name_row.set_settings_name("show-color-name");
@@ -497,6 +502,7 @@ impl AppWindow {
                 "hcl" => &imp.hcl_row,
                 "name" => &imp.name_row,
                 "lms" => &imp.lms_row,
+                "glvec" => &imp.glvec_row,
                 "hunterlab" => &imp.hunter_lab_row,
                 _ => {
                     log::error!("Failed to find format: {}", item);
@@ -635,6 +641,8 @@ impl AppWindow {
 
         imp.lms_row.set_text(formatter.lms());
 
+        imp.glvec_row.set_text(formatter.glvec());
+
         imp.hunter_lab_row.set_text(formatter.hunter_lab());
     }
 
@@ -669,6 +677,8 @@ impl AppWindow {
         imp.name_row
             .connect_closure("copied-text", false, show_toast_closure.clone());
         imp.lms_row
+            .connect_closure("copied-text", false, show_toast_closure.clone());
+        imp.glvec_row
             .connect_closure("copied-text", false, show_toast_closure.clone());
         imp.hunter_lab_row
             .connect_closure("copied-text", false, show_toast_closure);

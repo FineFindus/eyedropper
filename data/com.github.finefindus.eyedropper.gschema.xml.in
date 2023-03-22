@@ -14,7 +14,7 @@
       <summary>Window maximized state</summary>
     </key>
     <key name="format-order" type="as">
-      <default>[ 'name', 'hex', 'rgb', 'hsl', 'hsv', 'cmyk', 'xyz', 'cielab', 'hwb', 'hcl', 'lms', 'hunterlab' ]</default>
+      <default>[ 'name', 'hex', 'rgb', 'hsl', 'hsv', 'cmyk', 'xyz', 'cielab', 'hwb', 'hcl', 'lms', 'glvec', 'hunterlab' ]</default>
       <summary>Format Order</summary>
       <description>Order, in which the available formats are displayed.</description>
     </key>
@@ -82,6 +82,11 @@
       <default>false</default>
       <summary>Show LMS format</summary>
       <description>Changes the visibility of the LMS format.</description>
+    </key>
+    <key name="show-glvec-format" type="b">
+      <default>false</default>
+      <summary>Show glvec format</summary>
+      <description>Changes the visibility of the glvec format.</description>
     </key>
     <key name="show-hunter-lab-format" type="b">
       <default>false</default>
@@ -172,6 +177,11 @@
       <default>''</default>
       <summary>Custom LMS format</summary>
       <description>A user set format for LMS. If it's empty, the default format will be used.</description>
+    </key>
+    <key name="custom-format-glvec" type="s">
+      <default>''</default>
+      <summary>Custom glvec format</summary>
+      <description>A user set format for glvec. If it's empty, the default format will be used.</description>
     </key>
     <key name="custom-format-hunter-lab" type="s">
       <default>''</default>

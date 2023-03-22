@@ -235,6 +235,13 @@
                         </child>
                         <child>
                             <object class="CustomFormatRow">
+                                <property name="title" translatable="yes">Glvec Format</property>
+                                <property name="default-format">vec4({r}, {g}, {b}, {a})</property>
+                                <property name="settings-key">custom-format-glvec</property>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="CustomFormatRow">
                                 <property name="title" translatable="yes">Hunter Lab Format</property>
                                 <property name="default-format">L: {l}, a: {a}, b: {b}</property>
                                 <property name="settings-key">custom-format-hunter-lab</property>

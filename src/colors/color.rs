@@ -339,6 +339,15 @@ impl Color {
         (long, medium, short)
     }
 
+    pub fn to_glvec(self) -> (f32, f32, f32, f32) {
+        (
+            self.red as f32 / 255f32,
+            self.green as f32 / 255f32,
+            self.blue as f32 / 255f32,
+            self.alpha as f32 / 255f32,
+        )
+    }
+
     /// Create a color from a hex string.
     ///
     /// The hex color optionally start with '#'.
@@ -601,12 +610,8 @@ impl From<gtk::gdk::RGBA> for Color {
 
 impl From<Color> for gtk::gdk::RGBA {
     fn from(color: Color) -> Self {
-        gtk::gdk::RGBA::new(
-            color.red as f32 / 255f32,
-            color.green as f32 / 255f32,
-            color.blue as f32 / 255f32,
-            color.alpha as f32 / 255f32,
-        )
+        let (r, g, b, a) = color.to_glvec();
+        gtk::gdk::RGBA::new(r, g, b, a)
     }
 }
 
