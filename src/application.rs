@@ -4,8 +4,10 @@ use log::{debug, info};
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gdk, gio, glib};
+use search_provider::{ResultID, ResultMeta, SearchProviderImpl};
 
 use crate::colors::color::Color;
+use crate::colors::formatter::ColorFormatter;
 use crate::config::{APP_ID, PKGDATADIR, PROFILE, VERSION};
 use crate::widgets::about_window::EyedropperAbout;
 use crate::widgets::preferences_window::PreferencesWindow;
@@ -13,14 +15,20 @@ use crate::window::AppWindow;
 
 mod imp {
 
+    use std::cell::RefCell;
+
+    use crate::config;
+
     use super::*;
     use adw::subclass::prelude::AdwApplicationImpl;
     use glib::WeakRef;
     use once_cell::sync::OnceCell;
+    use search_provider::SearchProvider;
 
-    #[derive(Debug, Default)]
+    #[derive(Default)]
     pub struct App {
         pub window: OnceCell<WeakRef<AppWindow>>,
+        pub search_provider: RefCell<Option<SearchProvider<super::App>>>,
     }
 
     #[glib::object_subclass]
@@ -60,6 +68,26 @@ mod imp {
             // Set icons for shell
             gtk::Window::set_default_icon_name(APP_ID);
             let app = self.obj();
+
+            let ctx = glib::MainContext::default();
+
+            let search_provider_path = config::OBJECT_PATH;
+            let search_provider_name = format!("{}.SearchProvider", config::APP_ID);
+            log::debug!(
+                "Starting search provider as {} on {}",
+                search_provider_name,
+                search_provider_path
+            );
+
+            ctx.spawn_local(glib::clone!(@weak app => async move {
+                match SearchProvider::new(app.clone(), search_provider_name, search_provider_path).await {
+                    Ok(search_provider) => {
+                        app.imp().search_provider.replace(Some(search_provider));
+                    },
+                    Err(err) => log::debug!("Could not start search provider: {}", err),
+                };
+
+            }));
 
             app.setup_css();
             app.setup_gactions();
@@ -191,5 +219,31 @@ impl App {
         info!("Datadir: {}", PKGDATADIR);
 
         ApplicationExtManual::run(self)
+    }
+}
+
+impl SearchProviderImpl for App {
+    fn activate_result(&self, identifier: ResultID, _terms: &[String], timestamp: u32) {
+        let window = self.main_window();
+        window.set_color(Color::from(identifier));
+        window.present_with_time(timestamp);
+    }
+
+    fn initial_result_set(&self, terms: &[String]) -> Vec<ResultID> {
+        terms
+            .iter()
+            .filter_map(|term| {
+                Color::from_hex(term, crate::colors::position::AlphaPosition::None).ok()
+            })
+            .map(|color| ColorFormatter::with_color(color).hex_code())
+            .collect::<Vec<_>>()
+    }
+
+    fn result_metas(&self, identifiers: &[ResultID]) -> Vec<ResultMeta> {
+        log::debug!("ResultMeta for: {:?}", identifiers);
+        identifiers
+            .iter()
+            .map(|identifier| ResultMeta::builder(identifier.to_owned(), &identifier).build())
+            .collect::<Vec<_>>()
     }
 }

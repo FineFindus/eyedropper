@@ -172,6 +172,7 @@
        GNOME Software kudos:
     https://gitlab.gnome.org/GNOME/gnome-software/-/blob/main/doc/kudos.md
      -->
+    <kudo>SearchProvider</kudo>
     <kudo>ModernToolkit</kudo>
     <kudo>HiDpiIcon</kudo>
   </kudos>

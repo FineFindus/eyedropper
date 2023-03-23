@@ -610,6 +610,12 @@ impl From<Color> for gtk::gdk::RGBA {
     }
 }
 
+impl From<search_provider::ResultID> for Color {
+    fn from(value: search_provider::ResultID) -> Self {
+        Self::from_hex(&value, AlphaPosition::None).expect("Failed to get color from ResultID")
+    }
+}
+
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord)]
 pub enum ColorError {
     HexConversion(String),
