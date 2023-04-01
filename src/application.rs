@@ -264,6 +264,7 @@ impl App {
 
 impl SearchProviderImpl for App {
     fn activate_result(&self, identifier: ResultID, _terms: &[String], timestamp: u32) {
+        self.activate();
         let window = self.main_window();
         window.set_color(gdk::RGBA::parse(identifier).unwrap().into());
         window.present_with_time(timestamp);
