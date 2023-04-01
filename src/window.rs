@@ -284,7 +284,7 @@ impl AppWindow {
         }
 
         css_provider.load_from_data(&format!(
-            ".{} {{background-color: {};border-radius: 6px;}}",
+            ".{} {{box-shadow: -5px 5px 5px @shade_color; background-color: {}; border-radius: 6px;}}",
             class_name,
             // ignore alpha values, they are not displayed properly
             color_hex
