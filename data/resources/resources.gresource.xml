@@ -10,4 +10,7 @@
     <file compressed="true" preprocess="xml-stripblanks">ui/preferences/custom-format-row.ui</file>
     <file compressed="true">style.css</file>
   </gresource>
+  <gresource prefix="/com/github/finefindus/eyedropper/icons/scalable/actions">
+    <file compressed="true" alias="circle-symbolic.svg">icons/circle-filled-symbolic.svg</file>
+  </gresource>
 </gresources>

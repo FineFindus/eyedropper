@@ -395,6 +395,7 @@ version = "0.6.0"
 dependencies = [
  "ashpd",
  "bytes",
+ "gdk-pixbuf",
  "gettext-rs",
  "glib",
  "gtk-macros",
@@ -1385,6 +1386,7 @@ checksum = "7c7af8aac5ba55b526673f1b882708ce6f909e01983db9da9b91de3f65364fc9"
 dependencies = [
  "futures-channel",
  "futures-util",
+ "gdk-pixbuf",
  "serde",
  "zbus",
 ]

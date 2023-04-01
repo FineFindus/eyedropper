@@ -4,7 +4,7 @@ use log::{debug, info};
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gdk, gio, glib};
-use search_provider::{ResultID, ResultMeta, SearchProviderImpl};
+use search_provider::{IconData, ResultID, ResultMeta, SearchProviderImpl};
 
 use crate::colors::color::Color;
 use crate::colors::formatter::ColorFormatter;
@@ -220,6 +220,47 @@ impl App {
 
         ApplicationExtManual::run(self)
     }
+
+    /// Returns a [`gdk_pixbuf::Pixbuf`] of circular icon rendered in the given color.
+    ///
+    /// The color should be in a format, that can be parsed by [`gtk::gdk::RGBA`].
+    ///
+    /// # Panics
+    /// This function may panic, if some of the underlying code return [`None`].
+    fn icon(color: &str) -> Result<gdk_pixbuf::Pixbuf, glib::Error> {
+        const SIZE: i32 = 48;
+
+        let display = gdk::Display::default().unwrap();
+        let theme = gtk::IconTheme::for_display(&display);
+        let paintable = theme.lookup_icon(
+            "circle-symbolic",
+            &[],
+            SIZE,
+            1,
+            gtk::TextDirection::Ltr,
+            gtk::IconLookupFlags::FORCE_SYMBOLIC,
+        );
+
+        let snapshot = gtk::Snapshot::new();
+
+        let renderer = gtk::gsk::GLRenderer::new();
+        renderer.realize(gdk::Surface::NONE)?;
+        paintable.snapshot_symbolic(
+            &snapshot,
+            SIZE.into(),
+            SIZE.into(),
+            &[gtk::gdk::RGBA::parse(color).unwrap()],
+        );
+
+        let node = snapshot.to_node().unwrap();
+        let texture = renderer.render_texture(&node, None);
+        renderer.unrealize();
+
+        let bytes = texture.save_to_png_bytes();
+        let stream = gio::MemoryInputStream::from_bytes(&bytes);
+
+        gdk_pixbuf::Pixbuf::from_stream(&stream, gio::Cancellable::NONE)
+    }
 }
 
 impl SearchProviderImpl for App {
@@ -240,10 +281,15 @@ impl SearchProviderImpl for App {
     }
 
     fn result_metas(&self, identifiers: &[ResultID]) -> Vec<ResultMeta> {
-        log::debug!("ResultMeta for: {:?}", identifiers);
         identifiers
             .iter()
-            .map(|identifier| ResultMeta::builder(identifier.to_owned(), &identifier).build())
+            .map(|identifier| {
+                ResultMeta::builder(identifier.to_owned(), &identifier)
+                    .icon_data(IconData::from(
+                        &App::icon(identifier).expect("Failed to render search icon"),
+                    ))
+                    .build()
+            })
             .collect::<Vec<_>>()
     }
 }
