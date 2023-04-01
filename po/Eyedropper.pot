@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-03-09 21:33+0000\n"
+"POT-Creation-Date: 2023-04-01 14:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:88 src/widgets/about_window.rs:45 src/main.rs:26
+#: data/resources/ui/window.ui:88 src/main.rs:26 src/widgets/about_window.rs:45
 msgid "Eyedropper"
 msgstr ""
 
@@ -97,48 +97,8 @@ msgstr ""
 msgid "Status page stating to pick a color to get started"
 msgstr ""
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:178
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:179
 msgid "FineFindus"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:11
-msgctxt "shortcut window"
-msgid "General"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:14
-msgctxt "shortcut window"
-msgid "Show Preferences"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:20
-msgctxt "shortcut window"
-msgid "Show Shortcuts"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:26
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:34
-msgctxt "shortcut window"
-msgid "Color"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:37
-msgctxt "shortcut window"
-msgid "Pick a new Color"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:43
-msgctxt "shortcut window"
-msgid "Randomize the Color"
-msgstr ""
-
-#: data/resources/ui/preferences/custom-format-row.ui:10
-msgctxt "Tooltip of the reset button for custom format"
-msgid "Reset Format"
 msgstr ""
 
 #: data/resources/ui/window.ui:6
@@ -229,6 +189,46 @@ msgstr ""
 
 #: data/resources/ui/window.ui:212
 msgid "Copy Hunter Lab"
+msgstr ""
+
+#: data/resources/ui/preferences/custom-format-row.ui:10
+msgctxt "Tooltip of the reset button for custom format"
+msgid "Reset Format"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:14
+msgctxt "shortcut window"
+msgid "Show Preferences"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:20
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:26
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:34
+msgctxt "shortcut window"
+msgid "Color"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:37
+msgctxt "shortcut window"
+msgid "Pick a new Color"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:43
+msgctxt "shortcut window"
+msgid "Randomize the Color"
 msgstr ""
 
 #: data/resources/ui/preferences.ui:10
@@ -503,42 +503,31 @@ msgstr ""
 msgid "Save Palettes…"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:128
-msgctxt "Name for tints (lighter variants) of the color"
-msgid "Tints"
+#: src/window.rs:213
+msgid "Cleared history"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:132
-msgctxt "Name for shades (darker variants) of the color"
-msgid "Shades"
+#: src/window.rs:214
+msgid "Undo"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:138
-msgctxt "Name for the opposite/complementary color (e.g. blue ⇔ yellow)"
-msgid "Complementary"
+#: src/window.rs:438 src/window.rs:461 src/window.rs:631 src/window.rs:708
+#: src/widgets/preferences_window.rs:495
+msgctxt "Information that no name for the color could be found"
+msgid "Not named"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:145
-msgctxt ""
-"The name of the color palette. Consist of the two opposite colors (e.g. blue "
-"⇔ orange / green)"
-msgid "Split-Complementary"
+#: src/window.rs:534
+msgid "Failed to get palette color"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:152
-msgctxt ""
-"Name of the color palette, which would form a triangle above the color wheel"
-msgid "Triadic"
+#: src/window.rs:566
+msgid "Failed to pick a color"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:157
-msgctxt "The name of the color palette."
-msgid "Tetradic"
-msgstr ""
-
-#: src/widgets/palette_dialog.rs:163
-msgctxt "Color palette consisting of six slight shifted colors"
-msgid "Analogous"
+#. Translators: Do not replace the {}. These are used as placeholders for the copied values
+#: src/window.rs:648
+msgid "Copied: “{}”"
 msgstr ""
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
@@ -658,12 +647,6 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: src/widgets/preferences_window.rs:495 src/window.rs:438 src/window.rs:461
-#: src/window.rs:631 src/window.rs:708
-msgctxt "Information that no name for the color could be found"
-msgid "Not named"
-msgstr ""
-
 #: src/widgets/preferences_window.rs:500
 msgid "LMS"
 msgstr ""
@@ -672,23 +655,40 @@ msgstr ""
 msgid "Hunter Lab"
 msgstr ""
 
-#: src/window.rs:213
-msgid "Cleared history"
+#: src/widgets/palette_dialog.rs:128
+msgctxt "Name for tints (lighter variants) of the color"
+msgid "Tints"
 msgstr ""
 
-#: src/window.rs:214
-msgid "Undo"
+#: src/widgets/palette_dialog.rs:132
+msgctxt "Name for shades (darker variants) of the color"
+msgid "Shades"
 msgstr ""
 
-#: src/window.rs:534
-msgid "Failed to get palette color"
+#: src/widgets/palette_dialog.rs:138
+msgctxt "Name for the opposite/complementary color (e.g. blue ⇔ yellow)"
+msgid "Complementary"
 msgstr ""
 
-#: src/window.rs:566
-msgid "Failed to pick a color"
+#: src/widgets/palette_dialog.rs:145
+msgctxt ""
+"The name of the color palette. Consist of the two opposite colors (e.g. blue "
+"⇔ orange / green)"
+msgid "Split-Complementary"
 msgstr ""
 
-#. Translators: Do not replace the {}. These are used as placeholders for the copied values
-#: src/window.rs:648
-msgid "Copied: “{}”"
+#: src/widgets/palette_dialog.rs:152
+msgctxt ""
+"Name of the color palette, which would form a triangle above the color wheel"
+msgid "Triadic"
+msgstr ""
+
+#: src/widgets/palette_dialog.rs:157
+msgctxt "The name of the color palette."
+msgid "Tetradic"
+msgstr ""
+
+#: src/widgets/palette_dialog.rs:163
+msgctxt "Color palette consisting of six slight shifted colors"
+msgid "Analogous"
 msgstr ""
