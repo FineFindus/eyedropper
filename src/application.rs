@@ -282,7 +282,7 @@ impl SearchProviderImpl for App {
         identifiers
             .iter()
             .map(|identifier| {
-                ResultMeta::builder(identifier.to_owned(), &identifier)
+                ResultMeta::builder(identifier.to_owned(), identifier)
                     .icon_data(IconData::from(
                         &App::icon(identifier).expect("Failed to render search icon"),
                     ))

@@ -238,7 +238,6 @@ impl ColorFormatRow {
             log::debug!("Applied entry content: {}", text);
             self.switch_button(false);
             self.imp().entry.emit_activate();
-            return;
         } else {
             log::debug!("Copied text: {text}");
             let clipboard = self.clipboard();

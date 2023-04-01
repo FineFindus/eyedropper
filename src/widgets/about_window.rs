@@ -208,7 +208,6 @@ impl EyedropperAbout {
             let info_file = std::fs::read_to_string("/.flatpak-info").unwrap_or_default();
             info_file
                 .split('\n')
-                .into_iter()
                 .filter_map(|line| line.split_once('='))
                 .for_each(|(name, value)| match name {
                     "name" => info.push_str(&format!(" - Name: {}\n", value)),
