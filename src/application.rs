@@ -7,7 +7,6 @@ use gtk::{gdk, gio, glib};
 use search_provider::{IconData, ResultID, ResultMeta, SearchProviderImpl};
 
 use crate::colors::color::Color;
-use crate::colors::formatter::ColorFormatter;
 use crate::config::{APP_ID, PKGDATADIR, PROFILE, VERSION};
 use crate::widgets::about_window::EyedropperAbout;
 use crate::widgets::preferences_window::PreferencesWindow;
@@ -273,10 +272,8 @@ impl SearchProviderImpl for App {
     fn initial_result_set(&self, terms: &[String]) -> Vec<ResultID> {
         terms
             .iter()
-            .filter_map(|term| {
-                Color::from_hex(term, crate::colors::position::AlphaPosition::None).ok()
-            })
-            .map(|color| ColorFormatter::with_color(color).hex_code())
+            .filter_map(|term| gdk::RGBA::parse(term).ok())
+            .map(|color| color.to_string())
             .collect::<Vec<_>>()
     }
 
