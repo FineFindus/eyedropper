@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-04-01 14:14+0000\n"
+"POT-Creation-Date: 2023-04-02 13:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -495,11 +495,36 @@ msgstr ""
 msgid "Hunter Lab Format"
 msgstr ""
 
-#: data/resources/ui/palette-window.ui:5
-msgid "Palettes"
+#: data/resources/ui/palette-window.ui:6
+msgctxt "Adobes palette format"
+msgid "Adobe Swatch Exachange (ASE)"
+msgstr ""
+
+#: data/resources/ui/palette-window.ui:11
+msgctxt "Gimp/Inkscape palette format"
+msgid "Gimpl Palette (GPL)"
 msgstr ""
 
 #: data/resources/ui/palette-window.ui:16
+msgctxt "Paint.net palette format, should most like not be translated"
+msgid "Paint.NET (TXT)"
+msgstr ""
+
+#: data/resources/ui/palette-window.ui:21
+msgctxt "Palette format file name"
+msgid "Hex"
+msgstr ""
+
+#: data/resources/ui/palette-window.ui:26
+msgctxt "Palette format file name"
+msgid "PAL"
+msgstr ""
+
+#: data/resources/ui/palette-window.ui:34
+msgid "Palettes"
+msgstr ""
+
+#: data/resources/ui/palette-window.ui:45
 msgid "Save Palettes…"
 msgstr ""
 
@@ -655,40 +680,40 @@ msgstr ""
 msgid "Hunter Lab"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:128
+#: src/widgets/palette_dialog.rs:133
 msgctxt "Name for tints (lighter variants) of the color"
 msgid "Tints"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:132
+#: src/widgets/palette_dialog.rs:137
 msgctxt "Name for shades (darker variants) of the color"
 msgid "Shades"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:138
+#: src/widgets/palette_dialog.rs:143
 msgctxt "Name for the opposite/complementary color (e.g. blue ⇔ yellow)"
 msgid "Complementary"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:145
+#: src/widgets/palette_dialog.rs:150
 msgctxt ""
 "The name of the color palette. Consist of the two opposite colors (e.g. blue "
 "⇔ orange / green)"
 msgid "Split-Complementary"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:152
+#: src/widgets/palette_dialog.rs:157
 msgctxt ""
 "Name of the color palette, which would form a triangle above the color wheel"
 msgid "Triadic"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:157
+#: src/widgets/palette_dialog.rs:162
 msgctxt "The name of the color palette."
 msgid "Tetradic"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:163
+#: src/widgets/palette_dialog.rs:168
 msgctxt "Color palette consisting of six slight shifted colors"
 msgid "Analogous"
 msgstr ""
