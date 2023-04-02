@@ -45,6 +45,11 @@ mod imp {
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
             klass.bind_template_instance_callbacks();
+
+            klass.install_action("export", Some("s"), |widget, _, variant| {
+                let value = variant.unwrap().get::<String>();
+                widget.save_to_file(value);
+            });
         }
 
         fn instance_init(obj: &subclass::InitializingObject<Self>) {
@@ -246,30 +251,26 @@ impl PaletteDialog {
     /// Called when the icon button in the headerbar is clicked.
     #[template_callback]
     fn on_save_clicked(&self) {
-        gtk_macros::spawn!(glib::clone!(@weak self as window => async move {
-            let color = window.color();
-            //capacity for all palettes
-            let mut colors = Vec::with_capacity(28);
-
-            let quantity = window.imp().settings.uint("shades-tints-quantity").max(1) as usize;
-
-            colors.append(&mut color.tints(0.15, quantity));
-            colors.append(&mut color.shades(0.15, quantity));
-            colors.append(&mut vec![color, color.complementary_color()]);
-            colors.append(&mut color.split_complementary_color());
-            colors.append(&mut color.triadic_colors());
-            colors.append(&mut color.tetradic_colors());
-            colors.append(&mut color.analogous_colors(6));
-
-            window.save_to_file(colors).await;
-        }));
+        self.save_to_file(None);
     }
 
-    /// Saves a list of colors as a GIMP palette files (.gpl).
-    ///
-    /// The colors will be saved without alpha values under the name `Untitled`.
-    /// This opens up a user prompt to ask where to save the file and then write said file, if the user cancels, the file will not be saved.
-    pub async fn save_to_file(&self, colors: Vec<Color>) {
+    /// Opens a dialog to save a palette file. The file format is determined from the file extension.
+    /// An extension can be suggested to the user via the `suggested_extension` parameter.
+    pub fn save_to_file(&self, suggested_extension: Option<String>) {
+        let color = self.color();
+        //capacity for all palettes
+        let mut colors = Vec::with_capacity(28);
+
+        let quantity = self.imp().settings.uint("shades-tints-quantity").max(1) as usize;
+
+        colors.append(&mut color.tints(0.15, quantity));
+        colors.append(&mut color.shades(0.15, quantity));
+        colors.append(&mut vec![color, color.complementary_color()]);
+        colors.append(&mut color.split_complementary_color());
+        colors.append(&mut color.triadic_colors());
+        colors.append(&mut color.tetradic_colors());
+        colors.append(&mut color.analogous_colors(6));
+
         let file_chooser = gtk::FileChooserNative::builder()
             .transient_for(self)
             .action(gtk::FileChooserAction::Save)
@@ -277,7 +278,12 @@ impl PaletteDialog {
             .create_folders(true)
             .build();
 
-        file_chooser.set_current_name("eyedropper_palette");
+        let mut file_name = String::from("eyedropper_palette");
+        if let Some(extension) = suggested_extension {
+            file_name.push('.');
+            file_name.push_str(&extension);
+        }
+        file_chooser.set_current_name(&file_name);
 
         file_chooser.connect_response(
             glib::clone!(@weak self as window => move |file_chooser, response| {

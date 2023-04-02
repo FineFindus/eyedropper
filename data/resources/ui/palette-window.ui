@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
+    <menu id="export_menu">
+        <section>
+            <item>
+                <attribute name="label" translatable="yes" context="Adobes palette format">Adobe Swatch Exachange (ASE)</attribute>
+                <attribute name="action">export</attribute>
+                <attribute name="target">ase</attribute>
+            </item>
+            <item>
+                <attribute name="label" translatable="yes" context="Gimp/Inkscape palette format">Gimpl Palette (GPL)</attribute>
+                <attribute name="action">export</attribute>
+                <attribute name="target">gpl</attribute>
+            </item>
+            <item>
+                <attribute name="label" translatable="yes" context="Paint.net palette format, should most like not be translated">Paint.NET (TXT)</attribute>
+                <attribute name="action">export</attribute>
+                <attribute name="target">txt</attribute>
+            </item>
+            <item>
+                <attribute name="label" translatable="yes" context="Palette format file name">Hex</attribute>
+                <attribute name="action">export</attribute>
+                <attribute name="target">hex</attribute>
+            </item>
+            <item>
+                <attribute name="label" translatable="yes" context="Palette format file name">PAL</attribute>
+                <attribute name="action">export</attribute>
+                <attribute name="target">pal</attribute>
+            </item>
+        </section>
+    </menu>
     <template class="PaletteDialog" parent="AdwWindow">
         <property name="modal">True</property>
         <property name="title" translatable="yes">Palettes</property>
@@ -12,8 +41,9 @@
                             <object class="AdwWindowTitle" id="window_title" />
                         </property>
                         <child>
-                            <object class="GtkButton">
+                            <object class="AdwSplitButton">
                                 <property name="label" translatable="yes">Save Palettes…</property>
+                                <property name="menu-model">export_menu</property>
                                 <signal name="clicked" handler="on_save_clicked" swapped="true" />
                             </object>
                         </child>
