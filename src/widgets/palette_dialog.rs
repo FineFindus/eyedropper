@@ -1,5 +1,3 @@
-use std::ffi::OsStr;
-
 use adw::{prelude::*, subclass::prelude::*};
 use gettextrs::pgettext;
 use gtk::{glib, CompositeTemplate};
@@ -232,6 +230,7 @@ impl PaletteDialog {
             let css_provider = gtk::CssProvider::new();
 
             if let Some(display) = gtk::gdk::Display::default() {
+                #[allow(deprecated)] //https://github.com/gtk-rs/gtk4-rs/issues/1317
                 gtk::StyleContext::add_provider_for_display(&display, &css_provider, 400);
             }
 
@@ -301,13 +300,13 @@ impl PaletteDialog {
 
                         let file_name = path.file_name().and_then(|name| name.to_str()).unwrap_or("Eyedropper Palette");
                         let palette = match path.extension().and_then(|extension| extension.to_str()) {
-                            Some("gpl") => ColorFormatter::gpl_file(file_name, colors.clone()),
-                            Some("txt") => ColorFormatter::paint_dot_net_file(file_name, colors.clone()),
-                            Some("pal") => ColorFormatter::pal_file(colors.clone()),
-                            Some("ase") => ColorFormatter::ase_file(colors.clone()),
+                            Some("gpl") => ColorFormatter::gpl_file(file_name, colors),
+                            Some("txt") => ColorFormatter::paint_dot_net_file(file_name, colors),
+                            Some("pal") => ColorFormatter::pal_file(colors),
+                            Some("ase") => ColorFormatter::ase_file(colors),
                             _ => {
                                 //default to exporting the hex colors
-                                ColorFormatter::hex_file(colors.clone())
+                                ColorFormatter::hex_file(colors)
                             },
                         };
                         std::fs::write(path, palette).expect("Failed to write palette file");

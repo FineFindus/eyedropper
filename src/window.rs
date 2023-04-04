@@ -280,6 +280,7 @@ impl AppWindow {
         let css_provider = gtk::CssProvider::new();
 
         if let Some(display) = gtk::gdk::Display::default() {
+            #[allow(deprecated)] //https://github.com/gtk-rs/gtk4-rs/issues/1317
             gtk::StyleContext::add_provider_for_display(&display, &css_provider, 400);
         }
 
