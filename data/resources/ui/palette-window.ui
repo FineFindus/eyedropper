@@ -3,7 +3,7 @@
     <menu id="export_menu">
         <section>
             <item>
-                <attribute name="label" translatable="yes" context="Adobes palette format">Adobe Swatch Exachange</attribute>
+                <attribute name="label" translatable="yes" context="Adobes palette format">Adobe Swatch Exchange</attribute>
                 <attribute name="action">export</attribute>
                 <attribute name="target">ase</attribute>
             </item>
