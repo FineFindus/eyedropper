@@ -190,12 +190,12 @@ impl PreferencesWindow {
             "name-source-xkcd",
         ));
 
-        let dialog = gtk::Dialog::builder()
+        let dialog = gtk::Window::builder()
             .transient_for(self)
             .modal(true)
             .child(&list)
             .build();
-        dialog.show();
+        dialog.set_visible(true);
     }
 
     /// Build an ActionRow for the name setting.

@@ -92,7 +92,7 @@ mod imp {
             obj.set_direction(gtk::TextDirection::Ltr);
             obj.setup_signals();
             obj.setup_properties();
-            obj.hide();
+            obj.set_visible(false);
         }
     }
 

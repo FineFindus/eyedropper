@@ -36,7 +36,7 @@ mod imp {
         #[template_child]
         pub format_box: TemplateChild<gtk::Box>,
         #[template_child]
-        pub color_button: TemplateChild<gtk::ColorButton>,
+        pub color_button: TemplateChild<gtk::ColorDialogButton>,
         #[template_child]
         pub color_picker_button: TemplateChild<gtk::Button>,
         #[template_child]
@@ -516,7 +516,7 @@ impl AppWindow {
         //safe to unwrap, if the user opens this dialog, the color button must be clicked
         let palette_dialog = PaletteDialog::new(self.color().unwrap());
         palette_dialog.set_transient_for(Some(self));
-        palette_dialog.show();
+        palette_dialog.set_visible(true);
 
         //when a palette is chosen, add all colors of the palette in reverse order to the history
         palette_dialog.connect_closure(
@@ -548,9 +548,9 @@ impl AppWindow {
 
         let root = window.root().unwrap();
         let identifier = ashpd::WindowIdentifier::from_native(&root).await;
-        let request = ashpd::desktop::screenshot::Color::builder()
+        let request = ashpd::desktop::screenshot::Color::request()
             .identifier(identifier)
-            .build()
+            .send()
             .await
             .expect("Failed to build color request")
             .response();

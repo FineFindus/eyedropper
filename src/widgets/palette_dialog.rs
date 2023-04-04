@@ -1,3 +1,5 @@
+use std::ffi::OsStr;
+
 use adw::{prelude::*, subclass::prelude::*};
 use gettextrs::pgettext;
 use gtk::{glib, CompositeTemplate};
@@ -119,6 +121,25 @@ impl PaletteDialog {
     /// Returns the given color as a [Color] struct instead of [gtk::gdk::RGBA]
     fn color(&self) -> Color {
         Color::from(self.property::<gtk::gdk::RGBA>("color"))
+    }
+
+    /// Show palettes in the dialog.
+    fn palettes(&self) -> Vec<Color> {
+        let color = self.color();
+        //capacity for all palettes
+        let mut colors = Vec::with_capacity(28);
+
+        let quantity = self.imp().settings.uint("shades-tints-quantity").max(1) as usize;
+
+        colors.append(&mut color.tints(0.15, quantity));
+        colors.append(&mut color.shades(0.15, quantity));
+        colors.append(&mut vec![color, color.complementary_color()]);
+        colors.append(&mut color.split_complementary_color());
+        colors.append(&mut color.triadic_colors());
+        colors.append(&mut color.tetradic_colors());
+        colors.append(&mut color.analogous_colors(6));
+
+        colors
     }
 
     ///Setup the list by adding a the generate color palettes
@@ -257,43 +278,28 @@ impl PaletteDialog {
     /// Opens a dialog to save a palette file. The file format is determined from the file extension.
     /// An extension can be suggested to the user via the `suggested_extension` parameter.
     pub fn save_to_file(&self, suggested_extension: Option<String>) {
-        let color = self.color();
-        //capacity for all palettes
-        let mut colors = Vec::with_capacity(28);
-
-        let quantity = self.imp().settings.uint("shades-tints-quantity").max(1) as usize;
-
-        colors.append(&mut color.tints(0.15, quantity));
-        colors.append(&mut color.shades(0.15, quantity));
-        colors.append(&mut vec![color, color.complementary_color()]);
-        colors.append(&mut color.split_complementary_color());
-        colors.append(&mut color.triadic_colors());
-        colors.append(&mut color.tetradic_colors());
-        colors.append(&mut color.analogous_colors(6));
-
-        let file_chooser = gtk::FileChooserNative::builder()
-            .transient_for(self)
-            .action(gtk::FileChooserAction::Save)
-            .modal(true)
-            .create_folders(true)
-            .build();
+        let colors = self.palettes();
 
         let mut file_name = String::from("eyedropper_palette");
         if let Some(extension) = suggested_extension {
             file_name.push('.');
             file_name.push_str(&extension);
         }
-        file_chooser.set_current_name(&file_name);
 
-        file_chooser.connect_response(
-            glib::clone!(@weak self as window => move |file_chooser, response| {
+        let file_chooser = gtk::FileDialog::builder()
+            .initial_name(file_name)
+            .modal(true)
+            .build();
 
-                if response == gtk::ResponseType::Accept {
-                    if let Some(path) = file_chooser.file().and_then(|file| file.path()) {
+        file_chooser.save(
+            Some(self),
+            gtk::gio::Cancellable::NONE,
+            glib::clone!(@weak self as window => move |res| {
+                match res.ok().and_then(|file| file.path()) {
+                    Some(path) => {
                         log::debug!("Selected path: {}", path.display());
 
                         let file_name = path.file_name().and_then(|name| name.to_str()).unwrap_or("Eyedropper Palette");
-
                         let palette = match path.extension().and_then(|extension| extension.to_str()) {
                             Some("gpl") => ColorFormatter::gpl_file(file_name, colors.clone()),
                             Some("txt") => ColorFormatter::paint_dot_net_file(file_name, colors.clone()),
@@ -305,13 +311,10 @@ impl PaletteDialog {
                             },
                         };
                         std::fs::write(path, palette).expect("Failed to write palette file");
-                    }
-                } else {
-                    log::error!("Failed to save file: {}", response);
+                    },
+                    None => log::error!("Failed to save file, path is None"),
                 }
             }),
         );
-
-        file_chooser.show();
     }
 }

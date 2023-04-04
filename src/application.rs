@@ -187,15 +187,15 @@ impl App {
     }
 
     fn setup_css(&self) {
-        let provider = gtk::CssProvider::new();
-        provider.load_from_resource("/com/github/finefindus/eyedropper/style.css");
-        if let Some(display) = gdk::Display::default() {
-            gtk::StyleContext::add_provider_for_display(
-                &display,
-                &provider,
-                gtk::STYLE_PROVIDER_PRIORITY_APPLICATION,
-            );
-        }
+        // let provider = gtk::CssProvider::new();
+        // provider.load_from_resource("/com/github/finefindus/eyedropper/style.css");
+        // if let Some(display) = gdk::Display::default() {
+        //     gtk::StyleContext::add_provider_for_display(
+        //         &display,
+        //         &provider,
+        //         gtk::STYLE_PROVIDER_PRIORITY_APPLICATION,
+        //     );
+        // }
     }
 
     fn show_about_dialog(&self) {
@@ -209,7 +209,7 @@ impl App {
     fn show_preferences_dialog(&self) {
         let preferences = PreferencesWindow::new();
         preferences.set_transient_for(Some(&self.main_window()));
-        preferences.show();
+        preferences.set_visible(true);
     }
 
     pub fn run(&self) -> ExitCode {
@@ -226,7 +226,7 @@ impl App {
     ///
     /// # Panics
     /// This function may panic, if some of the underlying code return [`None`].
-    fn icon(color: &str) -> Result<gdk_pixbuf::Pixbuf, glib::Error> {
+    fn icon(color: &str) -> Result<gtk::gdk_pixbuf::Pixbuf, glib::Error> {
         const SIZE: i32 = 48;
 
         let display = gdk::Display::default().unwrap();
@@ -258,7 +258,7 @@ impl App {
         let bytes = texture.save_to_png_bytes();
         let stream = gio::MemoryInputStream::from_bytes(&bytes);
 
-        gdk_pixbuf::Pixbuf::from_stream(&stream, gio::Cancellable::NONE)
+        gtk::gdk_pixbuf::Pixbuf::from_stream(&stream, gio::Cancellable::NONE)
     }
 }
 

@@ -60,7 +60,7 @@ impl EyedropperAbout {
             .debug_info(debug_info)
             .debug_info_filename("eyedropper_debug_info")
             .build();
-        about_window.show();
+        about_window.set_visible(true);
     }
 
     /// Build the details page text out of single components,
