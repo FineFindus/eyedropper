@@ -312,7 +312,7 @@ impl PaletteDialog {
                         };
                         std::fs::write(path, palette).expect("Failed to write palette file");
                     },
-                    None => log::error!("Failed to save file, path is None"),
+                    None => log::error!("Failed to save file"),
                 }
             }),
         );
