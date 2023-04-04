@@ -3,17 +3,22 @@
     <menu id="export_menu">
         <section>
             <item>
-                <attribute name="label" translatable="yes" context="Adobes palette format">Adobe Swatch Exachange (ASE)</attribute>
+                <attribute name="label" translatable="yes" context="Adobes palette format">Adobe Swatch Exachange</attribute>
                 <attribute name="action">export</attribute>
                 <attribute name="target">ase</attribute>
             </item>
             <item>
-                <attribute name="label" translatable="yes" context="Gimp/Inkscape palette format">Gimpl Palette (GPL)</attribute>
+                <attribute name="label" translatable="yes" context="LibreOffice/OpenOffice palette file">LibreOffice Palette</attribute>
+                <attribute name="action">export</attribute>
+                <attribute name="target">soc</attribute>
+            </item>
+            <item>
+                <attribute name="label" translatable="yes" context="Gimp/Inkscape palette format">Gimp Palette</attribute>
                 <attribute name="action">export</attribute>
                 <attribute name="target">gpl</attribute>
             </item>
             <item>
-                <attribute name="label" translatable="yes" context="Paint.net palette format, should most like not be translated">Paint.NET (TXT)</attribute>
+                <attribute name="label" translatable="yes" context="Paint.net palette format, should most like not be translated">Paint.NET</attribute>
                 <attribute name="action">export</attribute>
                 <attribute name="target">txt</attribute>
             </item>

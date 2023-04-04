@@ -304,6 +304,7 @@ impl PaletteDialog {
                             Some("txt") => ColorFormatter::paint_dot_net_file(file_name, colors),
                             Some("pal") => ColorFormatter::pal_file(colors),
                             Some("ase") => ColorFormatter::ase_file(colors),
+                            Some("soc") => ColorFormatter::soc_file(colors),
                             _ => {
                                 //default to exporting the hex colors
                                 ColorFormatter::hex_file(colors)

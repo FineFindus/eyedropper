@@ -449,6 +449,29 @@ impl ColorFormatter {
         content
     }
 
+    /// Format the palette file for export usage in LibreOffice.
+    ///
+    /// Colors will be named as the hex color, as each color needs a different name.
+    /// Created according to the documentation at <https://wiki.documentfoundation.org/Videos/Create_color_palette>
+    pub fn soc_file(colors: Vec<Color>) -> String {
+        let mut content = String::new();
+        content.push_str(r#"<?xml version="1.0" encoding="UTF-8"?>"#);
+        content.push('\n');
+        content.push_str(r#"<ooo:color-table xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0" xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ooo="http://openoffice.org/2004/office">"#);
+        content.push('\n');
+
+        for color in colors {
+            let formatter = Self::with_alpha_position(color, AlphaPosition::None);
+            content.push_str(&format!(
+                "<draw:color draw:name=\"{}\" draw:color=\"{}\"/>\n",
+                formatter.hex_code(),
+                formatter.hex_code()
+            ));
+        }
+        content.push_str("</ooo:color-table>");
+        content
+    }
+
     /// Format the colors as a `.ase` file.
     ///
     /// `.ase` files are used by Adobe products and have no public spec, this implementation follows a
