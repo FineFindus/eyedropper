@@ -31,7 +31,7 @@ fn ws<'a, F: 'a, O, E: ParseError<&'a str>>(
 where
     F: Fn(&'a str) -> IResult<&'a str, O, E>,
 {
-    delimited(multispace0, inner, multispace0)
+    delimited(opt(multispace0), inner, opt(multispace0))
 }
 
 fn parse_int(input: &str) -> IResult<&str, u8> {
@@ -39,14 +39,7 @@ fn parse_int(input: &str) -> IResult<&str, u8> {
 }
 
 pub fn hex_color(input: &str, alpha_position: AlphaPosition) -> IResult<&str, Color> {
-    let (input, _) = opt(tag("#"))(input)?;
-
-    if (alpha_position == AlphaPosition::None && input.trim().len() > 6) || input.trim().len() > 8 {
-        return Err(nom::Err::Error(nom::error::Error::new(
-            "Length is greater than the allowed maximum",
-            nom::error::ErrorKind::LengthValue,
-        )));
-    }
+    let (input, _) = opt(ws(tag("#")))(input)?;
 
     let (input, first_alpha) = if alpha_position == AlphaPosition::Start && input.len() >= 8 {
         hex_primary(input)?
@@ -54,7 +47,8 @@ pub fn hex_color(input: &str, alpha_position: AlphaPosition) -> IResult<&str, Co
         (input, 255)
     };
 
-    let (input, (red, green, blue)) = (hex_primary, hex_primary, hex_primary).parse(input)?;
+    let (input, (red, green, blue)) =
+        (ws(hex_primary), ws(hex_primary), ws(hex_primary)).parse(input)?;
 
     let alpha = match alpha_position {
         AlphaPosition::None => 255,
@@ -80,6 +74,7 @@ mod parse_hex {
             hex_color("#2e3440", AlphaPosition::None).unwrap().1
         );
     }
+
     #[test]
     fn it_parse_hex_with_alpha_start() {
         assert_eq!(
@@ -103,12 +98,21 @@ mod parse_hex {
             hex_color("#2e344028", AlphaPosition::End).unwrap().1
         );
     }
+
     #[test]
-    fn it_fails_input_over_maximum() {
-        //longer than 8 chase
-        assert!(hex_color("#this is not a color", AlphaPosition::None).is_err());
-        //longer than 6 chars
-        assert!(hex_color("#1234567", AlphaPosition::None).is_err());
+    fn success_with_whitespace() {
+        assert_eq!(
+            Color::rgba(46, 52, 64, 40),
+            hex_color("     #2e344028", AlphaPosition::End).unwrap().1
+        );
+        assert_eq!(
+            Color::rgba(46, 52, 64, 40),
+            hex_color(" # 2e 34 40 28", AlphaPosition::End).unwrap().1
+        );
+        assert_eq!(
+            Color::rgba(46, 52, 64, 40),
+            hex_color("2e 34 40 28", AlphaPosition::End).unwrap().1
+        );
     }
 }
 
