@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-04-04 19:33+0000\n"
+"POT-Creation-Date: 2023-04-08 08:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:88 src/main.rs:26 src/widgets/about_window.rs:45
+#: data/resources/ui/window.ui:88 src/widgets/about_window.rs:45 src/main.rs:26
 msgid "Eyedropper"
 msgstr ""
 
@@ -99,136 +99,6 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:179
 msgid "FineFindus"
-msgstr ""
-
-#: data/resources/ui/window.ui:6
-msgid "_Clear History"
-msgstr ""
-
-#: data/resources/ui/window.ui:10
-msgid "_Random Color"
-msgstr ""
-
-#: data/resources/ui/window.ui:16
-msgid "_Preferences"
-msgstr ""
-
-#: data/resources/ui/window.ui:20
-msgid "_Keyboard Shortcuts"
-msgstr ""
-
-#: data/resources/ui/window.ui:24
-msgid "_About Eyedropper"
-msgstr ""
-
-#: data/resources/ui/window.ui:54
-msgid "No Color"
-msgstr ""
-
-#: data/resources/ui/window.ui:55
-msgid "Select a color from the screen to get started."
-msgstr ""
-
-#: data/resources/ui/window.ui:58
-msgid "_Pick a Color"
-msgstr ""
-
-#: data/resources/ui/window.ui:96
-msgctxt "Tooltip of the colorpicker button"
-msgid "Pick a Color"
-msgstr ""
-
-#: data/resources/ui/window.ui:128
-msgctxt "Tooltip of the palette button"
-msgid "Open Palette Window"
-msgstr ""
-
-#: data/resources/ui/window.ui:151
-msgid "Copy Name"
-msgstr ""
-
-#: data/resources/ui/window.ui:157
-msgid "Copy Hex Code"
-msgstr ""
-
-#: data/resources/ui/window.ui:162
-msgid "Copy RGB"
-msgstr ""
-
-#: data/resources/ui/window.ui:167
-msgid "Copy HSL"
-msgstr ""
-
-#: data/resources/ui/window.ui:172
-msgid "Copy HSV"
-msgstr ""
-
-#: data/resources/ui/window.ui:177
-msgid "Copy CMYK"
-msgstr ""
-
-#: data/resources/ui/window.ui:182
-msgid "Copy XYZ"
-msgstr ""
-
-#: data/resources/ui/window.ui:188
-msgid "Copy CIELAB"
-msgstr ""
-
-#: data/resources/ui/window.ui:194
-msgid "Copy HWB"
-msgstr ""
-
-#: data/resources/ui/window.ui:200
-msgid "Copy CIELCh / HCL"
-msgstr ""
-
-#: data/resources/ui/window.ui:206
-msgid "Copy LMS"
-msgstr ""
-
-#: data/resources/ui/window.ui:212
-msgid "Copy Hunter Lab"
-msgstr ""
-
-#: data/resources/ui/preferences/custom-format-row.ui:10
-msgctxt "Tooltip of the reset button for custom format"
-msgid "Reset Format"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:11
-msgctxt "shortcut window"
-msgid "General"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:14
-msgctxt "shortcut window"
-msgid "Show Preferences"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:20
-msgctxt "shortcut window"
-msgid "Show Shortcuts"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:26
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:34
-msgctxt "shortcut window"
-msgid "Color"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:37
-msgctxt "shortcut window"
-msgid "Pick a new Color"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:43
-msgctxt "shortcut window"
-msgid "Randomize the Color"
 msgstr ""
 
 #: data/resources/ui/preferences.ui:10
@@ -495,6 +365,96 @@ msgstr ""
 msgid "Hunter Lab Format"
 msgstr ""
 
+#: data/resources/ui/window.ui:6
+msgid "_Clear History"
+msgstr ""
+
+#: data/resources/ui/window.ui:10
+msgid "_Random Color"
+msgstr ""
+
+#: data/resources/ui/window.ui:16
+msgid "_Preferences"
+msgstr ""
+
+#: data/resources/ui/window.ui:20
+msgid "_Keyboard Shortcuts"
+msgstr ""
+
+#: data/resources/ui/window.ui:24
+msgid "_About Eyedropper"
+msgstr ""
+
+#: data/resources/ui/window.ui:54
+msgid "No Color"
+msgstr ""
+
+#: data/resources/ui/window.ui:55
+msgid "Select a color from the screen to get started."
+msgstr ""
+
+#: data/resources/ui/window.ui:58
+msgid "_Pick a Color"
+msgstr ""
+
+#: data/resources/ui/window.ui:96
+msgctxt "Tooltip of the colorpicker button"
+msgid "Pick a Color"
+msgstr ""
+
+#: data/resources/ui/window.ui:128
+msgctxt "Tooltip of the palette button"
+msgid "Open Palette Window"
+msgstr ""
+
+#: data/resources/ui/window.ui:151
+msgid "Copy Name"
+msgstr ""
+
+#: data/resources/ui/window.ui:157
+msgid "Copy Hex Code"
+msgstr ""
+
+#: data/resources/ui/window.ui:162
+msgid "Copy RGB"
+msgstr ""
+
+#: data/resources/ui/window.ui:167
+msgid "Copy HSL"
+msgstr ""
+
+#: data/resources/ui/window.ui:172
+msgid "Copy HSV"
+msgstr ""
+
+#: data/resources/ui/window.ui:177
+msgid "Copy CMYK"
+msgstr ""
+
+#: data/resources/ui/window.ui:182
+msgid "Copy XYZ"
+msgstr ""
+
+#: data/resources/ui/window.ui:188
+msgid "Copy CIELAB"
+msgstr ""
+
+#: data/resources/ui/window.ui:194
+msgid "Copy HWB"
+msgstr ""
+
+#: data/resources/ui/window.ui:200
+msgid "Copy CIELCh / HCL"
+msgstr ""
+
+#: data/resources/ui/window.ui:206
+msgid "Copy LMS"
+msgstr ""
+
+#: data/resources/ui/window.ui:212
+msgid "Copy Hunter Lab"
+msgstr ""
+
 #: data/resources/ui/palette-window.ui:6
 msgctxt "Adobes palette format"
 msgid "Adobe Swatch Exchange"
@@ -533,31 +493,44 @@ msgstr ""
 msgid "Save Palettes…"
 msgstr ""
 
-#: src/window.rs:213
-msgid "Cleared history"
+#: data/resources/ui/shortcuts.ui:11
+msgctxt "shortcut window"
+msgid "General"
 msgstr ""
 
-#: src/window.rs:214
-msgid "Undo"
+#: data/resources/ui/shortcuts.ui:14
+msgctxt "shortcut window"
+msgid "Show Preferences"
 msgstr ""
 
-#: src/window.rs:439 src/window.rs:462 src/window.rs:632 src/window.rs:709
-#: src/widgets/preferences_window.rs:495
-msgctxt "Information that no name for the color could be found"
-msgid "Not named"
+#: data/resources/ui/shortcuts.ui:20
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
 msgstr ""
 
-#: src/window.rs:535
-msgid "Failed to get palette color"
+#: data/resources/ui/shortcuts.ui:26
+msgctxt "shortcut window"
+msgid "Quit"
 msgstr ""
 
-#: src/window.rs:567
-msgid "Failed to pick a color"
+#: data/resources/ui/shortcuts.ui:34
+msgctxt "shortcut window"
+msgid "Color"
 msgstr ""
 
-#. Translators: Do not replace the {}. These are used as placeholders for the copied values
-#: src/window.rs:649
-msgid "Copied: “{}”"
+#: data/resources/ui/shortcuts.ui:37
+msgctxt "shortcut window"
+msgid "Pick a new Color"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:43
+msgctxt "shortcut window"
+msgid "Randomize the Color"
+msgstr ""
+
+#: data/resources/ui/preferences/custom-format-row.ui:10
+msgctxt "Tooltip of the reset button for custom format"
+msgid "Reset Format"
 msgstr ""
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
@@ -585,6 +558,44 @@ msgid ""
 "li><li>Updated all screenshots</li></ul><p>Fixed:</p>\n"
 "<ul><li>Separator is now hidden when the history list is hidden</"
 "li><li>Improved editing experience when change the Hex color/name</li></ul>"
+msgstr ""
+
+#: src/widgets/palette_dialog.rs:152
+msgctxt "Name for tints (lighter variants) of the color"
+msgid "Tints"
+msgstr ""
+
+#: src/widgets/palette_dialog.rs:156
+msgctxt "Name for shades (darker variants) of the color"
+msgid "Shades"
+msgstr ""
+
+#: src/widgets/palette_dialog.rs:162
+msgctxt "Name for the opposite/complementary color (e.g. blue ⇔ yellow)"
+msgid "Complementary"
+msgstr ""
+
+#: src/widgets/palette_dialog.rs:169
+msgctxt ""
+"The name of the color palette. Consist of the two opposite colors (e.g. blue "
+"⇔ orange / green)"
+msgid "Split-Complementary"
+msgstr ""
+
+#: src/widgets/palette_dialog.rs:176
+msgctxt ""
+"Name of the color palette, which would form a triangle above the color wheel"
+msgid "Triadic"
+msgstr ""
+
+#: src/widgets/palette_dialog.rs:181
+msgctxt "The name of the color palette."
+msgid "Tetradic"
+msgstr ""
+
+#: src/widgets/palette_dialog.rs:187
+msgctxt "Color palette consisting of six slight shifted colors"
+msgid "Analogous"
 msgstr ""
 
 #: src/widgets/preferences_window.rs:169
@@ -677,6 +688,12 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
+#: src/widgets/preferences_window.rs:495 src/window.rs:439 src/window.rs:462
+#: src/window.rs:632 src/window.rs:709
+msgctxt "Information that no name for the color could be found"
+msgid "Not named"
+msgstr ""
+
 #: src/widgets/preferences_window.rs:500
 msgid "LMS"
 msgstr ""
@@ -685,40 +702,23 @@ msgstr ""
 msgid "Hunter Lab"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:152
-msgctxt "Name for tints (lighter variants) of the color"
-msgid "Tints"
+#: src/window.rs:213
+msgid "Cleared history"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:156
-msgctxt "Name for shades (darker variants) of the color"
-msgid "Shades"
+#: src/window.rs:214
+msgid "Undo"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:162
-msgctxt "Name for the opposite/complementary color (e.g. blue ⇔ yellow)"
-msgid "Complementary"
+#: src/window.rs:535
+msgid "Failed to get palette color"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:169
-msgctxt ""
-"The name of the color palette. Consist of the two opposite colors (e.g. blue "
-"⇔ orange / green)"
-msgid "Split-Complementary"
+#: src/window.rs:567
+msgid "Failed to pick a color"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:176
-msgctxt ""
-"Name of the color palette, which would form a triangle above the color wheel"
-msgid "Triadic"
-msgstr ""
-
-#: src/widgets/palette_dialog.rs:181
-msgctxt "The name of the color palette."
-msgid "Tetradic"
-msgstr ""
-
-#: src/widgets/palette_dialog.rs:187
-msgctxt "Color palette consisting of six slight shifted colors"
-msgid "Analogous"
+#. Translators: Do not replace the {}. These are used as placeholders for the copied values
+#: src/window.rs:649
+msgid "Copied: “{}”"
 msgstr ""
