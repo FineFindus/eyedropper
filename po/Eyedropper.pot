@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-04-08 08:54+0000\n"
+"POT-Creation-Date: 2023-04-08 11:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:88 src/widgets/about_window.rs:45 src/main.rs:26
+#: data/resources/ui/window.ui:88 src/main.rs:26 src/widgets/about_window.rs:45
 msgid "Eyedropper"
 msgstr ""
 
@@ -99,6 +99,44 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:179
 msgid "FineFindus"
+msgstr ""
+
+#: data/resources/ui/palette-window.ui:6
+msgctxt "Adobes palette format"
+msgid "Adobe Swatch Exchange"
+msgstr ""
+
+#: data/resources/ui/palette-window.ui:11
+msgctxt "LibreOffice/OpenOffice palette file"
+msgid "LibreOffice Palette"
+msgstr ""
+
+#: data/resources/ui/palette-window.ui:16
+msgctxt "Gimp/Inkscape palette format"
+msgid "Gimp Palette"
+msgstr ""
+
+#: data/resources/ui/palette-window.ui:21
+msgctxt "Paint.net palette format, should most like not be translated"
+msgid "Paint.NET"
+msgstr ""
+
+#: data/resources/ui/palette-window.ui:26
+msgctxt "Palette format file name"
+msgid "Hex"
+msgstr ""
+
+#: data/resources/ui/palette-window.ui:31
+msgctxt "Palette format file name"
+msgid "PAL"
+msgstr ""
+
+#: data/resources/ui/palette-window.ui:39
+msgid "Palettes"
+msgstr ""
+
+#: data/resources/ui/palette-window.ui:50
+msgid "Save Palettes…"
 msgstr ""
 
 #: data/resources/ui/preferences.ui:10
@@ -365,6 +403,46 @@ msgstr ""
 msgid "Hunter Lab Format"
 msgstr ""
 
+#: data/resources/ui/preferences/custom-format-row.ui:10
+msgctxt "Tooltip of the reset button for custom format"
+msgid "Reset Format"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:14
+msgctxt "shortcut window"
+msgid "Show Preferences"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:20
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:26
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:34
+msgctxt "shortcut window"
+msgid "Color"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:37
+msgctxt "shortcut window"
+msgid "Pick a new Color"
+msgstr ""
+
+#: data/resources/ui/shortcuts.ui:43
+msgctxt "shortcut window"
+msgid "Randomize the Color"
+msgstr ""
+
 #: data/resources/ui/window.ui:6
 msgid "_Clear History"
 msgstr ""
@@ -453,84 +531,6 @@ msgstr ""
 
 #: data/resources/ui/window.ui:212
 msgid "Copy Hunter Lab"
-msgstr ""
-
-#: data/resources/ui/palette-window.ui:6
-msgctxt "Adobes palette format"
-msgid "Adobe Swatch Exchange"
-msgstr ""
-
-#: data/resources/ui/palette-window.ui:11
-msgctxt "LibreOffice/OpenOffice palette file"
-msgid "LibreOffice Palette"
-msgstr ""
-
-#: data/resources/ui/palette-window.ui:16
-msgctxt "Gimp/Inkscape palette format"
-msgid "Gimp Palette"
-msgstr ""
-
-#: data/resources/ui/palette-window.ui:21
-msgctxt "Paint.net palette format, should most like not be translated"
-msgid "Paint.NET"
-msgstr ""
-
-#: data/resources/ui/palette-window.ui:26
-msgctxt "Palette format file name"
-msgid "Hex"
-msgstr ""
-
-#: data/resources/ui/palette-window.ui:31
-msgctxt "Palette format file name"
-msgid "PAL"
-msgstr ""
-
-#: data/resources/ui/palette-window.ui:39
-msgid "Palettes"
-msgstr ""
-
-#: data/resources/ui/palette-window.ui:50
-msgid "Save Palettes…"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:11
-msgctxt "shortcut window"
-msgid "General"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:14
-msgctxt "shortcut window"
-msgid "Show Preferences"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:20
-msgctxt "shortcut window"
-msgid "Show Shortcuts"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:26
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:34
-msgctxt "shortcut window"
-msgid "Color"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:37
-msgctxt "shortcut window"
-msgid "Pick a new Color"
-msgstr ""
-
-#: data/resources/ui/shortcuts.ui:43
-msgctxt "shortcut window"
-msgid "Randomize the Color"
-msgstr ""
-
-#: data/resources/ui/preferences/custom-format-row.ui:10
-msgctxt "Tooltip of the reset button for custom format"
-msgid "Reset Format"
 msgstr ""
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
