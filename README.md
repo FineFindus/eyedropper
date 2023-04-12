@@ -19,7 +19,7 @@ Pick and format colors.
 
 ![Customize the shown formats (Light UI)](data/resources/screenshots/main_customize_light.png)
 
-![Generate Color Palettes](data/resources/screenshots/palette_dialog_light.png)
+![Generate Color Palettes](data/resources/screenshots/palette_dialog_new_export_light.png)
 
 
 </details>
