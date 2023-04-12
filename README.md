@@ -29,15 +29,25 @@ Pick and format colors.
 
 - Pick a Color
 - Enter a color in Hex-Format
-- Parse RGBA/ARGB Hex-Colors
-- View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format
+- Parse RGB/RGBA/ARGB Hex-Colors
+- View colors in formats
 - Customize which formats appear as well as their order
 - Generate a palette of different shades
 
-### Future Features & Roadmap
+### Available formats
 
-- Generate a palette of similar colors
-- Add more color formats
+- Name (includes W3C color sets, GNOME Palette and xkcd color survey)
+- Hex
+- RGB
+- HSL
+- HSV
+- CMYK
+- XYZ
+- CIELAB
+- HWB
+- CIELCh/HCL
+- LMS
+- Hunter Lab
 
 ### When should I use this? And when not?
 
