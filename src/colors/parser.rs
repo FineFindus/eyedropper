@@ -39,6 +39,10 @@ fn percentage(input: &str) -> IResult<&str, f32> {
     Ok((input, (value as f32 / 100f32).clamp(0.0, 1.0)))
 }
 
+fn separator(input: &str) -> IResult<&str, &str> {
+    alt((tag(","), tag("|"), tag("/")))(input)
+}
+
 /// Removes whitespace around the given parser, returning the result of the parser.
 ///
 /// Under the hood it uses [`nom::character::complete::multispace0`] to remove the whitespace.
@@ -157,7 +161,7 @@ pub fn rgb(input: &str) -> IResult<&str, Color> {
     let (input, mut color_values) = many_m_n(
         minimum_length,
         4,
-        terminated(whitespace(color_value), opt(whitespace(tag(",")))),
+        terminated(whitespace(color_value), opt(whitespace(separator))),
     )(input)?;
 
     let (input, _output) = opt(whitespace(tag(")")))(input)?;
