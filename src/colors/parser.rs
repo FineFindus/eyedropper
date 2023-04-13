@@ -154,7 +154,7 @@ pub fn rgb(input: &str) -> IResult<&str, Color> {
 
     let minimum_length = if alpha == AlphaPosition::None { 3 } else { 4 };
 
-    let (input, color_values) = many_m_n(
+    let (input, mut color_values) = many_m_n(
         minimum_length,
         4,
         terminated(whitespace(color_value), opt(whitespace(tag(",")))),
@@ -162,21 +162,15 @@ pub fn rgb(input: &str) -> IResult<&str, Color> {
 
     let (input, _output) = opt(whitespace(tag(")")))(input)?;
 
+    //should always be safe to convert, as the length is always at least `minimum_length`, so at least 3
     let color = match alpha {
-        AlphaPosition::None => Color::rgb(color_values[0], color_values[1], color_values[2]),
-        AlphaPosition::End => Color::rgba(
-            color_values[0],
-            color_values[1],
-            color_values[2],
-            color_values[3],
-        ),
-        AlphaPosition::Start => Color::rgba(
-            color_values[1],
-            color_values[2],
-            color_values[3],
-            color_values[0],
-        ),
-    };
+        AlphaPosition::None | AlphaPosition::End => Color::try_from(color_values),
+        AlphaPosition::Start => {
+            color_values.swap(0, 3);
+            Color::try_from(color_values)
+        }
+    }
+    .expect("Failed to convert rgb color values to color");
 
     Ok((input, color))
 }
