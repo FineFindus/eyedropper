@@ -547,6 +547,22 @@ impl fmt::Display for Color {
     }
 }
 
+impl TryFrom<Vec<u8>> for Color {
+    type Error = &'static str;
+
+    /// Converts a `Vec<u8>` to a `Color`.
+    ///
+    /// Converts the vec to a RGBA (length is greater than 3), or a RGB color.
+    /// Returns an error if the length is lower than 3.
+    fn try_from(value: Vec<u8>) -> Result<Self, Self::Error> {
+        match value.len() {
+            n if n >= 4 => Ok(Color::rgba(value[0], value[1], value[2], value[3])),
+            3 => Ok(Color::rgb(value[0], value[1], value[2])),
+            _ => Err("Vec length must be at least 3"),
+        }
+    }
+}
+
 impl From<ashpd::desktop::screenshot::Color> for Color {
     fn from(color: ashpd::desktop::screenshot::Color) -> Self {
         Color::rgba(
