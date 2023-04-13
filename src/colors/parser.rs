@@ -166,7 +166,8 @@ pub fn rgb(input: &str) -> IResult<&str, Color> {
     let color = match alpha {
         AlphaPosition::None | AlphaPosition::End => Color::try_from(color_values),
         AlphaPosition::Start => {
-            color_values.swap(0, 3);
+            let alpha = color_values.remove(0);
+            color_values.push(alpha);
             Color::try_from(color_values)
         }
     }
