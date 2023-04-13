@@ -1,31 +1,49 @@
 use nom::{
-    bytes::complete::{is_not, tag, take_while_m_n},
-    character::{complete::multispace0, is_digit, is_hex_digit},
-    combinator::{map_res, opt},
+    branch::alt,
+    bytes::complete::{tag, take_while_m_n},
+    character::{
+        complete::{digit1, multispace0},
+        is_hex_digit,
+    },
+    combinator::{map, map_res, opt, value},
     error::ParseError,
-    multi::separated_list0,
-    sequence::{delimited, Tuple},
+    multi::many_m_n,
+    sequence::{delimited, terminated, Tuple},
     IResult,
 };
 
 use super::{color::Color, position::AlphaPosition};
 
-fn from_hex(input: &str) -> Result<u8, std::num::ParseIntError> {
-    u8::from_str_radix(input, 16)
-}
-
-fn from_int(input: &str) -> Result<u8, std::num::ParseIntError> {
-    input.parse::<u8>()
-}
-
 fn hex_primary(input: &str) -> IResult<&str, u8> {
     map_res(
         take_while_m_n(2, 2, |char| is_hex_digit(char as u8)),
-        from_hex,
+        |str| u8::from_str_radix(str, 16),
     )(input)
 }
 
-fn ws<'a, F: 'a, O, E: ParseError<&'a str>>(
+/// Parses values used to specify colors.
+///
+/// Values can be formatted as a integer value in the range 0 - 255,
+/// or as a percent value. Both are returned as a u8.
+fn color_value(input: &str) -> IResult<&str, u8> {
+    alt((
+        map(percentage, |percent| (percent * 255f32) as u8),
+        nom::character::complete::u8,
+    ))(input)
+}
+
+///Parses a percentage `30%` and returns it as a f32 between 0 and 1.
+fn percentage(input: &str) -> IResult<&str, f32> {
+    let (input, digits) = terminated(digit1, tag("%"))(input)?;
+    let (_input, value) = nom::character::complete::u8(digits)?;
+    Ok((input, (value as f32 / 100f32).clamp(0.0, 1.0)))
+}
+
+/// Removes whitespace around the given parser, returning the result of the parser.
+///
+/// Under the hood it uses [`nom::character::complete::multispace0`] to remove the whitespace.
+/// This includes spaces, tabs, carriage returns and line feeds.
+fn whitespace<'a, F: 'a, O, E: ParseError<&'a str>>(
     inner: F,
 ) -> impl FnMut(&'a str) -> IResult<&'a str, O, E>
 where
@@ -34,12 +52,8 @@ where
     delimited(opt(multispace0), inner, opt(multispace0))
 }
 
-fn parse_int(input: &str) -> IResult<&str, u8> {
-    map_res(take_while_m_n(1, 3, |char| is_digit(char as u8)), from_int)(input)
-}
-
 pub fn hex_color(input: &str, alpha_position: AlphaPosition) -> IResult<&str, Color> {
-    let (input, _) = opt(ws(tag("#")))(input)?;
+    let (input, _) = opt(whitespace(tag("#")))(input)?;
 
     let (input, first_alpha) = if alpha_position == AlphaPosition::Start && input.len() >= 8 {
         hex_primary(input)?
@@ -47,8 +61,12 @@ pub fn hex_color(input: &str, alpha_position: AlphaPosition) -> IResult<&str, Co
         (input, 255)
     };
 
-    let (input, (red, green, blue)) =
-        (ws(hex_primary), ws(hex_primary), ws(hex_primary)).parse(input)?;
+    let (input, (red, green, blue)) = (
+        whitespace(hex_primary),
+        whitespace(hex_primary),
+        whitespace(hex_primary),
+    )
+        .parse(input)?;
 
     let alpha = match alpha_position {
         AlphaPosition::None => 255,
@@ -116,10 +134,79 @@ mod parse_hex {
     }
 }
 
+/// Parses a rgb representation of a color.
+///
+/// This parser accepts CSS like syntax, `rgb`, `rgba`, as well as `argb`.
+/// The correct alpha value will be chosen, according to the prepended syntax.
+/// Incase the alpha is not explicitly set, full opacity is assumed.
+///
+///  The values can be set as
+/// - a number in the range of 0 - 255
+/// - a float with an optional decimal point or percentage sign
+///
+/// Mixed value types are allowed.
 pub fn rgb(input: &str) -> IResult<&str, Color> {
-    let (_input, values) = delimited(ws(tag("rgb(")), is_not(")"), tag(")"))(input)?;
+    let (input, alpha) = alt((
+        value(AlphaPosition::None, whitespace(tag("rgb("))),
+        value(AlphaPosition::End, whitespace(tag("rgba("))),
+        value(AlphaPosition::Start, whitespace(tag("argb("))),
+    ))(input)?;
 
-    let (input, color) = separated_list0(ws(tag(",")), parse_int)(values)?;
-    log::debug!("Color: {:?}", color);
-    Ok((input, Color::random()))
+    let minimum_length = if alpha == AlphaPosition::None { 3 } else { 4 };
+
+    let (input, color_values) = many_m_n(
+        minimum_length,
+        4,
+        terminated(whitespace(color_value), opt(whitespace(tag(",")))),
+    )(input)?;
+
+    let (input, _output) = opt(whitespace(tag(")")))(input)?;
+
+    let color = match alpha {
+        AlphaPosition::None => Color::rgb(color_values[0], color_values[1], color_values[2]),
+        AlphaPosition::End => Color::rgba(
+            color_values[0],
+            color_values[1],
+            color_values[2],
+            color_values[3],
+        ),
+        AlphaPosition::Start => Color::rgba(
+            color_values[1],
+            color_values[2],
+            color_values[3],
+            color_values[0],
+        ),
+    };
+
+    Ok((input, color))
+}
+
+#[cfg(test)]
+mod parse_rgb {
+    use super::*;
+
+    #[test]
+    fn it_parses_basic() {
+        assert_eq!(Ok(("", Color::rgb(46, 52, 64))), rgb("rgb(46, 52, 64)"));
+        assert_eq!(
+            Ok(("", Color::rgba(46, 52, 64, 100))),
+            rgb("rgba(46, 52, 64, 100)")
+        );
+        assert_eq!(
+            Ok(("", Color::rgba(46, 52, 64, 100))),
+            rgb("argb(100, 46, 52, 64)")
+        );
+    }
+    #[test]
+    fn it_parses_percent() {
+        assert_eq!(Ok(("", Color::rgb(46, 51, 64))), rgb("rgb(46, 20%, 64)"));
+        assert_eq!(
+            Ok(("", Color::rgba(45, 51, 63, 255))),
+            rgb("rgba(18%, 20%, 25%, 100%)")
+        );
+        assert_eq!(
+            Ok(("", Color::rgba(46, 52, 64, 100))),
+            rgb("argb(100, 46, 52, 64)")
+        );
+    }
 }
