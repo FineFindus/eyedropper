@@ -356,6 +356,16 @@ impl Color {
         }
     }
 
+    pub fn from_rgb(rgb: &str) -> Result<Color, ColorError> {
+        match parser::rgb(rgb) {
+            Ok((_input, color)) => Ok(color),
+            Err(err) => {
+                log::error!("Failed to parse color: {}", err);
+                Err(ColorError::ParsingError(err.to_string()))
+            }
+        }
+    }
+
     ///Converts the given HSL color to RGB.
     ///
     /// Hue should be 0-360 and s,l 0-1.

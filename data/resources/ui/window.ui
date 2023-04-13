@@ -160,6 +160,7 @@
                             </child>
                             <child>
                               <object class="ColorFormatRow" id="rgb_row">
+                                <property name="editable">True</property>
                                 <property name="tooltip" translatable="yes">Copy RGB</property>
                               </object>
                             </child>
