@@ -2,13 +2,13 @@ use nom::{
     branch::alt,
     bytes::complete::{tag, take_while_m_n},
     character::{
-        complete::{digit1, multispace0},
+        complete::{digit0, digit1, multispace0},
         is_hex_digit,
     },
-    combinator::{map, map_res, opt, value},
+    combinator::{map, map_res, opt, recognize, value},
     error::ParseError,
     multi::many_m_n,
-    sequence::{delimited, terminated, Tuple},
+    sequence::{delimited, separated_pair, terminated, Tuple},
     IResult,
 };
 
@@ -34,8 +34,22 @@ fn color_value(input: &str) -> IResult<&str, u8> {
 
 ///Parses a percentage `30%` and returns it as a f32 between 0 and 1.
 fn percentage(input: &str) -> IResult<&str, f32> {
+    alt((full_percentage, decimal_percentage))(input)
+}
+
+/// Parses percentage displayed as a decimal `0.5`.
+/// The leading digits before the decimal dot are optional.
+fn decimal_percentage(input: &str) -> IResult<&str, f32> {
+    let (input, digits) = recognize(separated_pair(digit0, tag("."), digit1))(input)?;
+    let (_, value) = nom::number::complete::float(digits)?;
+    Ok((input, value.clamp(0.0, 1.0)))
+}
+
+/// Parses a percentage displayed as a number following a `%`.
+/// The result will be clamped between 0 and 1.
+fn full_percentage(input: &str) -> IResult<&str, f32> {
     let (input, digits) = terminated(digit1, tag("%"))(input)?;
-    let (_input, value) = nom::character::complete::u8(digits)?;
+    let (_input, value) = nom::number::complete::float(digits)?;
     Ok((input, (value as f32 / 100f32).clamp(0.0, 1.0)))
 }
 
@@ -193,7 +207,7 @@ mod parse_rgb {
         );
         assert_eq!(
             Ok(("", Color::rgba(46, 52, 64, 100))),
-            rgb("argb(100, 46, 52, 64)")
+            rgb("argb(100  46 | 52 / 64)")
         );
     }
     #[test]
@@ -204,8 +218,8 @@ mod parse_rgb {
             rgb("rgba(18%, 20%, 25%, 100%)")
         );
         assert_eq!(
-            Ok(("", Color::rgba(46, 52, 64, 100))),
-            rgb("argb(100, 46, 52, 64)")
+            Ok(("", Color::rgb(127, 127, 127))),
+            rgb("rgb(0.5, 0.5, 0.5)")
         );
     }
 }
