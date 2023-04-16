@@ -21,17 +21,6 @@ fn hex_primary(input: &str) -> IResult<&str, u8> {
     )(input)
 }
 
-/// Parses values used to specify colors.
-///
-/// Values can be formatted as a integer value in the range 0 - 255,
-/// or as a percent value. Both are returned as a u8.
-fn color_value(input: &str) -> IResult<&str, u8> {
-    alt((
-        map(percentage, |percent| (percent * 255f32) as u8),
-        nom::character::complete::u8,
-    ))(input)
-}
-
 ///Parses a percentage `30%` and returns it as a f32 between 0 and 1.
 fn percentage(input: &str) -> IResult<&str, f32> {
     alt((full_percentage, decimal_percentage))(input)
@@ -50,9 +39,12 @@ fn decimal_percentage(input: &str) -> IResult<&str, f32> {
 fn full_percentage(input: &str) -> IResult<&str, f32> {
     let (input, digits) = terminated(digit1, tag("%"))(input)?;
     let (_input, value) = nom::number::complete::float(digits)?;
-    Ok((input, (value as f32 / 100f32).clamp(0.0, 1.0)))
+    Ok((input, (value / 100f32).clamp(0.0, 1.0)))
 }
 
+/// Parses different separators used to separate values.
+///
+/// Can include `,`, `|` and `/`.
 fn separator(input: &str) -> IResult<&str, &str> {
     alt((tag(","), tag("|"), tag("/")))(input)
 }
@@ -175,7 +167,13 @@ pub fn rgb(input: &str) -> IResult<&str, Color> {
     let (input, mut color_values) = many_m_n(
         minimum_length,
         4,
-        terminated(whitespace(color_value), opt(whitespace(separator))),
+        terminated(
+            alt((
+                map(percentage, |percent| (percent * 255f32) as u8),
+                nom::character::complete::u8,
+            )),
+            opt(whitespace(separator)),
+        ),
     )(input)?;
 
     let (input, _output) = opt(whitespace(tag(")")))(input)?;
