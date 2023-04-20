@@ -6,7 +6,8 @@ use gtk::subclass::prelude::*;
 use gtk::{gdk, gio, glib};
 use search_provider::{IconData, ResultID, ResultMeta, SearchProviderImpl};
 
-use crate::colors::color::Color;
+use crate::colors;
+use crate::colors::color::{self, Color};
 use crate::config::{APP_ID, PKGDATADIR, PROFILE, VERSION};
 use crate::widgets::about_window::EyedropperAbout;
 use crate::widgets::preferences_window::PreferencesWindow;

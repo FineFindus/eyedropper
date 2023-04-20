@@ -366,10 +366,27 @@ impl Color {
         }
     }
 
-    ///Converts the given HSL color to RGB.
+    pub fn from_hsl_string(hsl: &str) -> Result<Color, ColorError> {
+        match parser::hsl(hsl) {
+            Ok((_input, color)) => Ok(color),
+            Err(err) => {
+                log::error!("Failed to parse color: {}", err);
+                Err(ColorError::ParsingError(err.to_string()))
+            }
+        }
+    }
+
+    /// Converts the given HSL color to RGB.
     ///
     /// Hue should be 0-360 and s,l 0-1.
     pub fn from_hsl(hue: u16, saturation: f32, lightness: f32) -> Self {
+        Self::from_hsla(hue, saturation, lightness, 255)
+    }
+
+    /// Converts the given HSL color to RGB, with an additional alpha value.
+    ///
+    /// Hue should be 0-360 and s,l 0-1.
+    pub fn from_hsla(hue: u16, saturation: f32, lightness: f32, alpha: u8) -> Self {
         let red;
         let green;
         let blue;
@@ -417,10 +434,12 @@ impl Color {
             green = hue2rgb(p, q, hue);
             blue = hue2rgb(p, q, hue - (1f32 / 3f32));
         }
-        Self::rgb(
+
+        Self::rgba(
             (red * 255f32).floor() as u8,
             (green * 255f32).floor() as u8,
             (blue * 255f32).floor() as u8,
+            alpha,
         )
     }
 
