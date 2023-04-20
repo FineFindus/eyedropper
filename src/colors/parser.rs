@@ -21,11 +21,6 @@ fn hex_primary(input: &str) -> IResult<&str, u8> {
     )(input)
 }
 
-///Parses a percentage `30%` and returns it as a f32 between 0 and 1.
-fn percentage(input: &str) -> IResult<&str, f32> {
-    alt((full_percentage, decimal_percentage))(input)
-}
-
 /// Parses percentage displayed as a decimal `0.5`.
 /// The leading digits before the decimal dot are optional.
 fn decimal_percentage(input: &str) -> IResult<&str, f32> {
@@ -36,7 +31,7 @@ fn decimal_percentage(input: &str) -> IResult<&str, f32> {
 
 /// Parses a percentage displayed as a number following a `%`.
 /// The result will be clamped between 0 and 1.
-fn full_percentage(input: &str) -> IResult<&str, f32> {
+fn percentage(input: &str) -> IResult<&str, f32> {
     let (input, digits) = terminated(digit1, tag("%"))(input)?;
     let (_input, value) = nom::number::complete::float(digits)?;
     Ok((input, (value / 100f32).clamp(0.0, 1.0)))
@@ -169,7 +164,9 @@ pub fn rgb(input: &str) -> IResult<&str, Color> {
         4,
         terminated(
             alt((
-                map(percentage, |percent| (percent * 255f32) as u8),
+                map(alt((percentage, decimal_percentage)), |percent| {
+                    (percent * 255f32) as u8
+                }),
                 nom::character::complete::u8,
             )),
             opt(whitespace(separator)),
@@ -219,5 +216,65 @@ mod parse_rgb {
             Ok(("", Color::rgb(127, 127, 127))),
             rgb("rgb(0.5, 0.5, 0.5)")
         );
+    }
+}
+
+/// Parses a hsl representation of a color.
+///
+///
+/// Mixed value types are allowed.
+pub fn hsl(input: &str) -> IResult<&str, Color> {
+    let (input, _) = alt((whitespace(tag("hsl(")), whitespace(tag("hsla("))))(input)?;
+
+    let (input, hue) = terminated(whitespace(hue), opt(whitespace(separator)))(input)?;
+
+    log::debug!("Hue: {hue}");
+
+    let (input, color_values) =
+        many_m_n(2, 2, terminated(percentage, opt(whitespace(separator))))(input)?;
+
+    log::debug!("Input: {:?}", input);
+    let (input, alpha) = opt(map(alt((percentage, decimal_percentage)), |percent| {
+        (percent * 255f32) as u8
+    }))(input)?;
+    log::debug!("Alpha: {:?}", alpha);
+
+    let (input, _output) = opt(whitespace(tag(")")))(input)?;
+
+    let color = Color::from_hsla(hue, color_values[0], color_values[1], alpha.unwrap_or(255));
+
+    Ok((input, color))
+}
+
+fn hue(input: &str) -> IResult<&str, u16> {
+    alt((
+        map(
+            terminated(nom::number::complete::float, tag("turn")),
+            |deg| (deg * 360.0) as u16,
+        ),
+        terminated(nom::character::complete::u16, opt(tag("deg"))),
+    ))(input)
+}
+
+#[cfg(test)]
+mod parse_hsl {
+    use super::*;
+
+    #[test]
+    fn it_parses_basic() {
+        assert_eq!(Ok(("", Color::rgb(47, 53, 65))), hsl("hsl(220, 16%, 22%)"));
+        assert_eq!(
+            Ok(("", Color::rgba(47, 53, 65, 99))),
+            hsl("hsl(220, 16%, 22%, 39%)")
+        );
+        assert_eq!(
+            Ok(("", Color::rgba(47, 53, 65, 127))),
+            hsl("hsla(220, 16%, 22%, 0.5)")
+        );
+    }
+
+    #[test]
+    fn it_works_with_deg() {
+        assert_eq!(Ok(("", Color::rgb(47, 53, 65))), hsl("hsl(220, 16%, 22%)"));
     }
 }
