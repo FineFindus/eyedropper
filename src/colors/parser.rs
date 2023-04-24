@@ -44,6 +44,19 @@ fn separator(input: &str) -> IResult<&str, &str> {
     alt((tag(","), tag("|"), tag("/")))(input)
 }
 
+fn hue(input: &str) -> IResult<&str, u16> {
+    alt((
+        map(
+            terminated(nom::number::complete::float, tag("turn")),
+            |deg| (deg * 360.0) as u16,
+        ),
+        terminated(
+            nom::character::complete::u16,
+            opt(alt((tag("deg"), tag("°")))),
+        ),
+    ))(input)
+}
+
 /// Removes whitespace around the given parser, returning the result of the parser.
 ///
 /// Under the hood it uses [`nom::character::complete::multispace0`] to remove the whitespace.
@@ -228,32 +241,18 @@ pub fn hsl(input: &str) -> IResult<&str, Color> {
 
     let (input, hue) = terminated(whitespace(hue), opt(whitespace(separator)))(input)?;
 
-    log::debug!("Hue: {hue}");
-
     let (input, color_values) =
         many_m_n(2, 2, terminated(percentage, opt(whitespace(separator))))(input)?;
 
-    log::debug!("Input: {:?}", input);
     let (input, alpha) = opt(map(alt((percentage, decimal_percentage)), |percent| {
         (percent * 255f32) as u8
     }))(input)?;
-    log::debug!("Alpha: {:?}", alpha);
 
     let (input, _output) = opt(whitespace(tag(")")))(input)?;
 
     let color = Color::from_hsla(hue, color_values[0], color_values[1], alpha.unwrap_or(255));
 
     Ok((input, color))
-}
-
-fn hue(input: &str) -> IResult<&str, u16> {
-    alt((
-        map(
-            terminated(nom::number::complete::float, tag("turn")),
-            |deg| (deg * 360.0) as u16,
-        ),
-        terminated(nom::character::complete::u16, opt(tag("deg"))),
-    ))(input)
 }
 
 #[cfg(test)]
@@ -276,5 +275,46 @@ mod parse_hsl {
     #[test]
     fn it_works_with_deg() {
         assert_eq!(Ok(("", Color::rgb(47, 53, 65))), hsl("hsl(220, 16%, 22%)"));
+    }
+}
+
+/// Parses a hsv representation of a color.
+///
+///
+/// Mixed value types are allowed.
+pub fn hsv(input: &str) -> IResult<&str, Color> {
+    let (input, _) = alt((whitespace(tag("hsv(")), whitespace(tag("hsva("))))(input)?;
+
+    let (input, hue) = terminated(whitespace(hue), opt(whitespace(separator)))(input)?;
+
+    let (input, color_values) =
+        many_m_n(2, 2, terminated(percentage, opt(whitespace(separator))))(input)?;
+
+    let (input, alpha) = opt(map(alt((percentage, decimal_percentage)), |percent| {
+        (percent * 255f32) as u8
+    }))(input)?;
+
+    let (input, _output) = opt(whitespace(tag(")")))(input)?;
+
+    let color = Color::from_hsva(hue, color_values[0], color_values[1], alpha.unwrap_or(255));
+
+    Ok((input, color))
+}
+
+#[cfg(test)]
+mod parse_hsv {
+    use super::*;
+
+    #[test]
+    fn it_parses() {
+        assert_eq!(Ok(("", Color::rgb(46, 52, 64))), hsv("hsv(220, 28%, 25%)"));
+        assert_eq!(
+            Ok(("", Color::rgba(46, 52, 64, 127))),
+            hsv("hsv(220, 28%, 25%, 50%)")
+        );
+        assert_eq!(
+            Ok(("", Color::rgba(46, 52, 64, 127))),
+            hsv("hsva(220, 28%, 25%, 0.5)")
+        );
     }
 }
