@@ -318,3 +318,34 @@ mod parse_hsv {
         );
     }
 }
+
+/// Parses a cymk representation of a color.
+pub fn cmyk(input: &str) -> IResult<&str, Color> {
+    let (input, color_values) = delimited(
+        whitespace(tag("cmyk(")),
+        many_m_n(4, 4, terminated(percentage, opt(whitespace(separator)))),
+        opt(whitespace(tag(")"))),
+    )(input)?;
+
+    let color = Color::from_cmyk(
+        color_values[0],
+        color_values[1],
+        color_values[2],
+        color_values[3],
+    );
+
+    Ok((input, color))
+}
+
+#[cfg(test)]
+mod parse_cmyk {
+    use super::*;
+
+    #[test]
+    fn it_parses() {
+        assert_eq!(
+            Ok(("", Color::rgb(46, 52, 64))),
+            cmyk("cmyk(28%, 19%, 0%, 75%)")
+        );
+    }
+}
