@@ -349,3 +349,33 @@ mod parse_cmyk {
         );
     }
 }
+
+/// Parses a cmyk representation of a color.
+pub fn xyz(input: &str) -> IResult<&str, Color> {
+    let (input, color_values) = delimited(
+        whitespace(tag("XYZ(")),
+        many_m_n(
+            3,
+            3,
+            terminated(nom::number::complete::float, opt(whitespace(separator))),
+        ),
+        opt(whitespace(tag(")"))),
+    )(input)?;
+
+    let color = Color::from_xyz(color_values[0], color_values[1], color_values[2]);
+
+    Ok((input, color))
+}
+
+#[cfg(test)]
+mod parse_xyz {
+    use super::*;
+
+    #[test]
+    fn it_parses() {
+        assert_eq!(
+            Ok(("", Color::rgb(46, 52, 64))),
+            xyz("XYZ(3.280, 3.407, 5.335)")
+        );
+    }
+}

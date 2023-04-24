@@ -184,6 +184,7 @@
                             </child>
                             <child>
                               <object class="ColorFormatRow" id="xyz_row">
+                                <property name="editable">True</property>
                                 <property name="tooltip" translatable="yes">Copy XYZ</property>
                                 <property name="visible">False</property>
                               </object>
