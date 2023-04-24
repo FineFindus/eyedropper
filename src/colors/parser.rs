@@ -156,7 +156,7 @@ mod parse_hex {
 ///
 /// This parser accepts CSS like syntax, `rgb`, `rgba`, as well as `argb`.
 /// The correct alpha value will be chosen, according to the prepended syntax.
-/// Incase the alpha is not explicitly set, full opacity is assumed.
+/// In case the alpha is not explicitly set, full opacity is assumed.
 ///
 ///  The values can be set as
 /// - a number in the range of 0 - 255
