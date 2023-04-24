@@ -178,6 +178,7 @@
                             </child>
                             <child>
                               <object class="ColorFormatRow" id="cmyk_row">
+                                <property name="editable">True</property>
                                 <property name="tooltip" translatable="yes">Copy CMYK</property>
                               </object>
                             </child>

@@ -386,6 +386,16 @@ impl Color {
         }
     }
 
+    pub fn from_cmyk_string(hsl: &str) -> Result<Color, ColorError> {
+        match parser::cmyk(hsl) {
+            Ok((_input, color)) => Ok(color),
+            Err(err) => {
+                log::error!("Failed to parse color: {}", err);
+                Err(ColorError::ParsingError(err.to_string()))
+            }
+        }
+    }
+
     /// Converts the given HSL color to RGB.
     ///
     /// Hue should be 0-360 and s,l 0-1.
@@ -491,6 +501,15 @@ impl Color {
             (green * 255f32).round() as u8,
             (blue * 255f32).round() as u8,
             alpha,
+        )
+    }
+
+    /// Converts the given CMYK color to RGB.
+    pub fn from_cmyk(cyan: f32, magenta: f32, yellow: f32, k: f32) -> Self {
+        Self::rgb(
+            (255f32 * (1f32 - cyan) * (1f32 - k)).round() as u8,
+            (255f32 * (1f32 - magenta) * (1f32 - k)).round() as u8,
+            (255f32 * (1f32 - yellow) * (1f32 - k)).round() as u8,
         )
     }
 
