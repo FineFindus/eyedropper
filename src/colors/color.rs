@@ -346,8 +346,8 @@ impl Color {
     /// The alpha_position indicates where the alpha values is stored. View [AlphaPosition] for more information.
     /// If the the has less than 8 chars, and thus cannot contain a alpha value it will be handled the same as being given
     /// `AlphaPosition::None`.
-    pub fn from_hex(hex_color: &str, alpha_position: AlphaPosition) -> Result<Color, ColorError> {
-        match parser::hex_color(hex_color, alpha_position) {
+    pub fn from_hex(input: &str, alpha_position: AlphaPosition) -> Result<Color, ColorError> {
+        match parser::hex_color(input, alpha_position) {
             Ok((_input, color)) => Ok(color),
             Err(err) => {
                 log::error!("Failed to parse color: {}", err);
@@ -356,8 +356,8 @@ impl Color {
         }
     }
 
-    pub fn from_rgb(rgb: &str) -> Result<Color, ColorError> {
-        match parser::rgb(rgb) {
+    pub fn from_rgb(input: &str) -> Result<Color, ColorError> {
+        match parser::rgb(input) {
             Ok((_input, color)) => Ok(color),
             Err(err) => {
                 log::error!("Failed to parse color: {}", err);
@@ -366,8 +366,8 @@ impl Color {
         }
     }
 
-    pub fn from_hsl_string(hsl: &str) -> Result<Color, ColorError> {
-        match parser::hsl(hsl) {
+    pub fn from_hsl_string(input: &str) -> Result<Color, ColorError> {
+        match parser::hsl(input) {
             Ok((_input, color)) => Ok(color),
             Err(err) => {
                 log::error!("Failed to parse color: {}", err);
@@ -376,8 +376,8 @@ impl Color {
         }
     }
 
-    pub fn from_hsv_string(hsl: &str) -> Result<Color, ColorError> {
-        match parser::hsv(hsl) {
+    pub fn from_hsv_string(input: &str) -> Result<Color, ColorError> {
+        match parser::hsv(input) {
             Ok((_input, color)) => Ok(color),
             Err(err) => {
                 log::error!("Failed to parse color: {}", err);
@@ -386,8 +386,18 @@ impl Color {
         }
     }
 
-    pub fn from_cmyk_string(hsl: &str) -> Result<Color, ColorError> {
-        match parser::cmyk(hsl) {
+    pub fn from_cmyk_string(input: &str) -> Result<Color, ColorError> {
+        match parser::cmyk(input) {
+            Ok((_input, color)) => Ok(color),
+            Err(err) => {
+                log::error!("Failed to parse color: {}", err);
+                Err(ColorError::ParsingError(err.to_string()))
+            }
+        }
+    }
+
+    pub fn from_xyz_string(input: &str) -> Result<Color, ColorError> {
+        match parser::xyz(input) {
             Ok((_input, color)) => Ok(color),
             Err(err) => {
                 log::error!("Failed to parse color: {}", err);
@@ -510,6 +520,40 @@ impl Color {
             (255f32 * (1f32 - cyan) * (1f32 - k)).round() as u8,
             (255f32 * (1f32 - magenta) * (1f32 - k)).round() as u8,
             (255f32 * (1f32 - yellow) * (1f32 - k)).round() as u8,
+        )
+    }
+
+    /// Converts the given XYZ color to RGB.
+    pub fn from_xyz(x: f32, y: f32, z: f32) -> Self {
+        let x = x / 100f32;
+        let y = y / 100f32;
+        let z = z / 100f32;
+
+        let mut red = x * 3.2406 + y * -1.5372 + z * -0.4986;
+        let mut green = x * -0.9689 + y * 1.8758 + z * 0.0415;
+        let mut blue = x * 0.0557 + y * -0.2040 + z * 1.0570;
+
+        if red > 0.0031308 {
+            red = 1.055 * (red.powf(1.0 / 2.4)) - 0.055;
+        } else {
+            red = 12.92 * red;
+        }
+
+        if green > 0.0031308 {
+            green = 1.055 * (green.powf(1.0 / 2.4)) - 0.055;
+        } else {
+            green = 12.92 * green;
+        }
+        if blue > 0.0031308 {
+            blue = 1.055 * (blue.powf(1.0 / 2.4)) - 0.055;
+        } else {
+            blue = 12.92 * blue;
+        }
+
+        Self::rgb(
+            (red * 255f32).round() as u8,
+            (green * 255f32).round() as u8,
+            (blue * 255f32).round() as u8,
         )
     }
 
