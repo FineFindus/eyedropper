@@ -319,7 +319,7 @@ mod parse_hsv {
     }
 }
 
-/// Parses a cymk representation of a color.
+/// Parses a cmyk representation of a color.
 pub fn cmyk(input: &str) -> IResult<&str, Color> {
     let (input, color_values) = delimited(
         whitespace(tag("cmyk(")),
