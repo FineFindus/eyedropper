@@ -376,6 +376,16 @@ impl Color {
         }
     }
 
+    pub fn from_hsv_string(hsl: &str) -> Result<Color, ColorError> {
+        match parser::hsv(hsl) {
+            Ok((_input, color)) => Ok(color),
+            Err(err) => {
+                log::error!("Failed to parse color: {}", err);
+                Err(ColorError::ParsingError(err.to_string()))
+            }
+        }
+    }
+
     /// Converts the given HSL color to RGB.
     ///
     /// Hue should be 0-360 and s,l 0-1.
@@ -439,6 +449,47 @@ impl Color {
             (red * 255f32).floor() as u8,
             (green * 255f32).floor() as u8,
             (blue * 255f32).floor() as u8,
+            alpha,
+        )
+    }
+
+    /// Converts the given HSV color to RGB, with an additional alpha value.
+    ///
+    /// Hue should be 0-360 and s,l 0-1.
+    pub fn from_hsva(hue: u16, saturation: f32, value: f32, alpha: u8) -> Self {
+        if saturation == 0.0 {
+            return Self::rgba(
+                (value * 255.0) as u8,
+                (value * 255.0) as u8,
+                (value * 255.0) as u8,
+                alpha,
+            );
+        }
+
+        //Hue must be < 1
+        let mut hue = (hue as f32) / 360.0 * 6.0;
+
+        if hue == 6.0 {
+            hue = 0f32;
+        }
+
+        let a = value * (1f32 - saturation);
+        let b = value * (1f32 - saturation * (hue - hue.floor()));
+        let c = value * (1f32 - saturation * (1f32 - (hue - hue.floor())));
+
+        let (red, green, blue) = match hue.floor() as u8 {
+            0 => (value, c, a),
+            1 => (b, value, a),
+            2 => (a, value, c),
+            3 => (a, b, value),
+            4 => (c, a, value),
+            _ => (value, a, b),
+        };
+
+        Self::rgba(
+            (red * 255f32).round() as u8,
+            (green * 255f32).round() as u8,
+            (blue * 255f32).round() as u8,
             alpha,
         )
     }

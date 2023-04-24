@@ -166,11 +166,13 @@
                             </child>
                             <child>
                               <object class="ColorFormatRow" id="hsl_row">
+                                <property name="editable">True</property>
                                 <property name="tooltip" translatable="yes">Copy HSL</property>
                               </object>
                             </child>
                             <child>
                               <object class="ColorFormatRow" id="hsv_row">
+                                <property name="editable">True</property>
                                 <property name="tooltip" translatable="yes">Copy HSV</property>
                               </object>
                             </child>
