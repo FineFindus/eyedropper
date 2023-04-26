@@ -191,6 +191,7 @@
                             </child>
                             <child>
                               <object class="ColorFormatRow" id="cie_lab_row">
+                                <property name="editable">True</property>
                                 <property name="tooltip" translatable="yes">Copy CIELAB</property>
                                 <property name="visible">False</property>
                               </object>

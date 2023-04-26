@@ -405,6 +405,19 @@ impl Color {
             }
         }
     }
+    pub fn from_cie_lab_string(
+        input: &str,
+        illuminant: Illuminant,
+        ten_deg_observer: bool,
+    ) -> Result<Color, ColorError> {
+        match parser::cielab(input, illuminant, ten_deg_observer) {
+            Ok((_input, color)) => Ok(color),
+            Err(err) => {
+                log::error!("Failed to parse color: {}", err);
+                Err(ColorError::ParsingError(err.to_string()))
+            }
+        }
+    }
 
     /// Converts the given HSL color to RGB.
     ///
@@ -555,6 +568,51 @@ impl Color {
             (green * 255f32).round() as u8,
             (blue * 255f32).round() as u8,
         )
+    }
+
+    /// Converts from CIE Lab to RGB.
+    pub fn from_cie_lab(
+        l: f32,
+        a: f32,
+        b: f32,
+        illuminant: Illuminant,
+        ten_deg_observer: bool,
+    ) -> Self {
+        //no direct formula exists
+        //convert to xyz first, then to rgb
+        let mut y = (l + 16.0) / 116.0;
+        let mut x = a / 500.0 + y;
+        let mut z = y - b / 200.0;
+
+        if y.powi(3) > 0.008856 {
+            y = y.powi(3);
+        } else {
+            y = (y - 16.0 / 116.0) / 7.787;
+        }
+
+        if x.powi(3) > 0.008856 {
+            x = x.powi(3);
+        } else {
+            x = (x - 16.0 / 116.0) / 7.787;
+        }
+
+        if z.powi(3) > 0.008856 {
+            z = z.powi(3)
+        } else {
+            z = (z - 16.0 / 116.0) / 7.787;
+        }
+
+        let (ref_x, ref_y, ref_z) = if ten_deg_observer {
+            illuminant.ten_degrees()
+        } else {
+            illuminant.two_degrees()
+        };
+
+        x = x * ref_x;
+        y = y * ref_y;
+        z = z * ref_z;
+
+        Self::from_xyz(x, y, z)
     }
 
     /// Return n tints (adding pure white) of the color by the tint factor.

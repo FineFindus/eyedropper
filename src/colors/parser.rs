@@ -1,6 +1,6 @@
 use nom::{
     branch::alt,
-    bytes::complete::{tag, take_while_m_n},
+    bytes::complete::{tag, tag_no_case, take_while_m_n},
     character::{
         complete::{digit0, digit1, multispace0},
         is_hex_digit,
@@ -8,11 +8,11 @@ use nom::{
     combinator::{map, map_res, opt, recognize, value},
     error::ParseError,
     multi::many_m_n,
-    sequence::{delimited, separated_pair, terminated, Tuple},
+    sequence::{delimited, preceded, separated_pair, terminated, Tuple},
     IResult,
 };
 
-use super::{color::Color, position::AlphaPosition};
+use super::{color::Color, illuminant::Illuminant, position::AlphaPosition};
 
 fn hex_primary(input: &str) -> IResult<&str, u8> {
     map_res(
@@ -350,10 +350,10 @@ mod parse_cmyk {
     }
 }
 
-/// Parses a cmyk representation of a color.
+/// Parses a xyz representation of a color.
 pub fn xyz(input: &str) -> IResult<&str, Color> {
     let (input, color_values) = delimited(
-        whitespace(tag("XYZ(")),
+        whitespace(tag_no_case("XYZ(")),
         many_m_n(
             3,
             3,
@@ -376,6 +376,42 @@ mod parse_xyz {
         assert_eq!(
             Ok(("", Color::rgb(46, 52, 64))),
             xyz("XYZ(3.280, 3.407, 5.335)")
+        );
+    }
+}
+
+/// Parses a cielab representation of a color.
+pub fn cielab(input: &str, illuminant: Illuminant, ten_deg_observer: bool) -> IResult<&str, Color> {
+    let (input, color_values) = delimited(
+        whitespace(tag_no_case("cielab(")),
+        many_m_n(
+            3,
+            3,
+            terminated(nom::number::complete::float, opt(whitespace(separator))),
+        ),
+        opt(whitespace(tag(")"))),
+    )(input)?;
+
+    let color = Color::from_cie_lab(
+        color_values[0],
+        color_values[1],
+        color_values[2],
+        illuminant,
+        ten_deg_observer,
+    );
+
+    Ok((input, color))
+}
+
+#[cfg(test)]
+mod parse_cie_lab {
+    use super::*;
+
+    #[test]
+    fn it_parses() {
+        assert_eq!(
+            Ok(("", Color::rgb(46, 52, 64))),
+            cielab("CIELAB(21.61, 0.70, -8.35)", Illuminant::default(), false)
         );
     }
 }
