@@ -284,7 +284,7 @@ impl ColorFormatter {
             ("b", b)
         );
         format!(
-            "CIELAB({:.precision$}, {:.precision$}, {:.precision$})",
+            "lab({:.precision$}, {:.precision$}, {:.precision$})",
             l,
             a,
             b,
