@@ -537,7 +537,7 @@ impl Color {
     }
 
     /// Converts the given XYZ color to RGB.
-    pub fn from_xyz(x: f32, y: f32, z: f32) -> Self {
+    pub fn from_xyz(x: f32, y: f32, z: f32, alpha: u8) -> Self {
         let x = x / 100f32;
         let y = y / 100f32;
         let z = z / 100f32;
@@ -563,10 +563,11 @@ impl Color {
             blue = 12.92 * blue;
         }
 
-        Self::rgb(
+        Self::rgba(
             (red * 255f32).round() as u8,
             (green * 255f32).round() as u8,
             (blue * 255f32).round() as u8,
+            alpha,
         )
     }
 
@@ -575,6 +576,7 @@ impl Color {
         l: f32,
         a: f32,
         b: f32,
+        alpha: u8,
         illuminant: Illuminant,
         ten_deg_observer: bool,
     ) -> Self {
@@ -584,23 +586,17 @@ impl Color {
         let mut x = a / 500.0 + y;
         let mut z = y - b / 200.0;
 
-        if y.powi(3) > 0.008856 {
-            y = y.powi(3);
-        } else {
-            y = (y - 16.0 / 116.0) / 7.787;
-        }
+        let remap = |value: &mut f32| {
+            if value.powi(3) > 0.008856 {
+                *value = value.powi(3)
+            } else {
+                *value = (*value - 1.0 / 116.0) / 7.787
+            }
+        };
 
-        if x.powi(3) > 0.008856 {
-            x = x.powi(3);
-        } else {
-            x = (x - 16.0 / 116.0) / 7.787;
-        }
-
-        if z.powi(3) > 0.008856 {
-            z = z.powi(3)
-        } else {
-            z = (z - 16.0 / 116.0) / 7.787;
-        }
+        remap(&mut y);
+        remap(&mut x);
+        remap(&mut z);
 
         let (ref_x, ref_y, ref_z) = if ten_deg_observer {
             illuminant.ten_degrees()
@@ -608,11 +604,15 @@ impl Color {
             illuminant.two_degrees()
         };
 
+        log::debug!("XYZ: {}, {}, {}", ref_x, ref_y, ref_z);
+
         x = x * ref_x;
         y = y * ref_y;
         z = z * ref_z;
 
-        Self::from_xyz(x, y, z)
+        log::debug!("XYZ: {}, {}, {}", x, y, z);
+
+        Self::from_xyz(x, y, z, alpha)
     }
 
     /// Return n tints (adding pure white) of the color by the tint factor.

@@ -8,7 +8,7 @@ use nom::{
     combinator::{map, map_res, opt, recognize, value},
     error::ParseError,
     multi::many_m_n,
-    sequence::{delimited, preceded, separated_pair, terminated, Tuple},
+    sequence::{delimited, pair, separated_pair, terminated, Tuple},
     IResult,
 };
 
@@ -23,7 +23,7 @@ fn hex_primary(input: &str) -> IResult<&str, u8> {
 
 /// Parses percentage displayed as a decimal `0.5`.
 /// The leading digits before the decimal dot are optional.
-fn decimal_percentage(input: &str) -> IResult<&str, f32> {
+fn relative_percentage(input: &str) -> IResult<&str, f32> {
     let (input, digits) = recognize(separated_pair(digit0, tag("."), digit1))(input)?;
     let (_, value) = nom::number::complete::float(digits)?;
     Ok((input, value.clamp(0.0, 1.0)))
@@ -35,6 +35,20 @@ fn percentage(input: &str) -> IResult<&str, f32> {
     let (input, digits) = terminated(digit1, tag("%"))(input)?;
     let (_input, value) = nom::number::complete::float(digits)?;
     Ok((input, (value / 100f32).clamp(0.0, 1.0)))
+}
+
+fn parse_percentage(input: &str) -> IResult<&str, f32> {
+    let (input, digits) = map_res(
+        terminated(
+            separated_pair(pair(opt(tag("-")), digit1), opt(tag(".")), digit0),
+            tag("%"),
+        ),
+        |((sign, int), frac)| {
+            let float_str = format!("{}{}.{}", sign.unwrap_or(""), int, frac);
+            float_str.parse::<f32>()
+        },
+    )(input)?;
+    Ok((input, (digits / 100f32)))
 }
 
 /// Parses different separators used to separate values.
@@ -177,7 +191,7 @@ pub fn rgb(input: &str) -> IResult<&str, Color> {
         4,
         terminated(
             alt((
-                map(alt((percentage, decimal_percentage)), |percent| {
+                map(alt((percentage, relative_percentage)), |percent| {
                     (percent * 255f32) as u8
                 }),
                 nom::character::complete::u8,
@@ -244,7 +258,7 @@ pub fn hsl(input: &str) -> IResult<&str, Color> {
     let (input, color_values) =
         many_m_n(2, 2, terminated(percentage, opt(whitespace(separator))))(input)?;
 
-    let (input, alpha) = opt(map(alt((percentage, decimal_percentage)), |percent| {
+    let (input, alpha) = opt(map(alt((percentage, relative_percentage)), |percent| {
         (percent * 255f32) as u8
     }))(input)?;
 
@@ -290,7 +304,7 @@ pub fn hsv(input: &str) -> IResult<&str, Color> {
     let (input, color_values) =
         many_m_n(2, 2, terminated(percentage, opt(whitespace(separator))))(input)?;
 
-    let (input, alpha) = opt(map(alt((percentage, decimal_percentage)), |percent| {
+    let (input, alpha) = opt(map(alt((percentage, relative_percentage)), |percent| {
         (percent * 255f32) as u8
     }))(input)?;
 
@@ -362,7 +376,7 @@ pub fn xyz(input: &str) -> IResult<&str, Color> {
         opt(whitespace(tag(")"))),
     )(input)?;
 
-    let color = Color::from_xyz(color_values[0], color_values[1], color_values[2]);
+    let color = Color::from_xyz(color_values[0], color_values[1], color_values[2], 255);
 
     Ok((input, color))
 }
@@ -382,20 +396,52 @@ mod parse_xyz {
 
 /// Parses a cielab representation of a color.
 pub fn cielab(input: &str, illuminant: Illuminant, ten_deg_observer: bool) -> IResult<&str, Color> {
-    let (input, color_values) = delimited(
+    let (input, _) = alt((
+        whitespace(tag_no_case("lab(")),
         whitespace(tag_no_case("cielab(")),
-        many_m_n(
-            3,
-            3,
-            terminated(nom::number::complete::float, opt(whitespace(separator))),
-        ),
-        opt(whitespace(tag(")"))),
+    ))(input)?;
+
+    //can either be an percentage or a number between 0 and 100
+    let (input, cie_l) = terminated(
+        alt((
+            map(whitespace(parse_percentage), |percentage| {
+                percentage * 100.0
+            }),
+            whitespace(nom::number::complete::float),
+        )),
+        opt(whitespace(separator)),
     )(input)?;
 
+    log::debug!("Cie L*: {}", cie_l);
+
+    //both CIE a and CIE b can either be an percentage between -100% and 100% or a number between -125 and 125
+    let (input, cie_a_b) = many_m_n(
+        2,
+        2,
+        terminated(
+            alt((
+                map(
+                    alt((whitespace(parse_percentage), whitespace(percentage))),
+                    |percentage| percentage * 125.0,
+                ),
+                whitespace(nom::number::complete::float),
+            )),
+            opt(whitespace(separator)),
+        ),
+    )(input)?;
+    log::debug!("Cie a*/b*: {:?}", cie_a_b);
+
+    let (input, alpha) = opt(map(alt((percentage, relative_percentage)), |percentage| {
+        (percentage * 255.0) as u8
+    }))(input)?;
+
+    let (input, _) = opt(whitespace(tag(")")))(input)?;
+
     let color = Color::from_cie_lab(
-        color_values[0],
-        color_values[1],
-        color_values[2],
+        cie_l.clamp(0.0, 100.0),
+        cie_a_b[0].clamp(-125.0, 125.0),
+        cie_a_b[1].clamp(-125.0, 125.0),
+        alpha.unwrap_or(255),
         illuminant,
         ten_deg_observer,
     );
@@ -411,7 +457,11 @@ mod parse_cie_lab {
     fn it_parses() {
         assert_eq!(
             Ok(("", Color::rgb(46, 52, 64))),
-            cielab("CIELAB(21.61, 0.70, -8.35)", Illuminant::default(), false)
+            cielab(" lab(21.61%, 0.56%,  -6.68%)", Illuminant::default(), false)
+        );
+        assert_eq!(
+            Ok(("", Color::rgb(46, 52, 64))),
+            cielab("lab(21.61, 0.70, -8.35)", Illuminant::default(), false)
         );
     }
 }
