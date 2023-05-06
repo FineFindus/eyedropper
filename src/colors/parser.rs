@@ -9,7 +9,7 @@ use nom::{
     error::ParseError,
     multi::many_m_n,
     sequence::{delimited, pair, separated_pair, terminated, Tuple},
-    IResult,
+    AsChar, IResult, InputTakeAtPosition, Parser,
 };
 
 use super::{color::Color, illuminant::Illuminant, position::AlphaPosition};
@@ -75,11 +75,11 @@ fn hue(input: &str) -> IResult<&str, u16> {
 ///
 /// Under the hood it uses [`nom::character::complete::multispace0`] to remove the whitespace.
 /// This includes spaces, tabs, carriage returns and line feeds.
-fn whitespace<'a, F: 'a, O, E: ParseError<&'a str>>(
-    inner: F,
-) -> impl FnMut(&'a str) -> IResult<&'a str, O, E>
+pub fn whitespace<I, O, E: ParseError<I>, F>(inner: F) -> impl FnMut(I) -> IResult<I, O, E>
 where
-    F: Fn(&'a str) -> IResult<&'a str, O, E>,
+    F: Parser<I, O, E>,
+    I: InputTakeAtPosition + Clone,
+    <I as InputTakeAtPosition>::Item: AsChar + Clone,
 {
     delimited(opt(multispace0), inner, opt(multispace0))
 }
@@ -178,11 +178,11 @@ mod parse_hex {
 ///
 /// Mixed value types are allowed.
 pub fn rgb(input: &str) -> IResult<&str, Color> {
-    let (input, alpha) = alt((
-        value(AlphaPosition::None, whitespace(tag("rgb("))),
-        value(AlphaPosition::End, whitespace(tag("rgba("))),
-        value(AlphaPosition::Start, whitespace(tag("argb("))),
-    ))(input)?;
+    let (input, alpha) = whitespace(alt((
+        value(AlphaPosition::None, tag("rgb(")),
+        value(AlphaPosition::End, tag("rgba(")),
+        value(AlphaPosition::Start, tag("argb(")),
+    )))(input)?;
 
     let minimum_length = if alpha == AlphaPosition::None { 3 } else { 4 };
 
@@ -190,12 +190,12 @@ pub fn rgb(input: &str) -> IResult<&str, Color> {
         minimum_length,
         4,
         terminated(
-            alt((
+            whitespace(alt((
                 map(alt((percentage, relative_percentage)), |percent| {
                     (percent * 255f32) as u8
                 }),
                 nom::character::complete::u8,
-            )),
+            ))),
             opt(whitespace(separator)),
         ),
     )(input)?;
@@ -232,6 +232,7 @@ mod parse_rgb {
             rgb("argb(100  46 | 52 / 64)")
         );
     }
+
     #[test]
     fn it_parses_percent() {
         assert_eq!(Ok(("", Color::rgb(46, 51, 64))), rgb("rgb(46, 20%, 64)"));
@@ -251,16 +252,20 @@ mod parse_rgb {
 ///
 /// Mixed value types are allowed.
 pub fn hsl(input: &str) -> IResult<&str, Color> {
-    let (input, _) = alt((whitespace(tag("hsl(")), whitespace(tag("hsla("))))(input)?;
+    let (input, _) = whitespace(alt((tag("hsl("), tag("hsla("))))(input)?;
 
     let (input, hue) = terminated(whitespace(hue), opt(whitespace(separator)))(input)?;
 
-    let (input, color_values) =
-        many_m_n(2, 2, terminated(percentage, opt(whitespace(separator))))(input)?;
+    let (input, color_values) = many_m_n(
+        2,
+        2,
+        terminated(whitespace(percentage), opt(whitespace(separator))),
+    )(input)?;
 
-    let (input, alpha) = opt(map(alt((percentage, relative_percentage)), |percent| {
-        (percent * 255f32) as u8
-    }))(input)?;
+    let (input, alpha) = opt(map(
+        whitespace(alt((percentage, relative_percentage))),
+        |percent| (percent * 255f32) as u8,
+    ))(input)?;
 
     let (input, _output) = opt(whitespace(tag(")")))(input)?;
 
@@ -297,16 +302,20 @@ mod parse_hsl {
 ///
 /// Mixed value types are allowed.
 pub fn hsv(input: &str) -> IResult<&str, Color> {
-    let (input, _) = alt((whitespace(tag("hsv(")), whitespace(tag("hsva("))))(input)?;
+    let (input, _) = whitespace(alt((tag("hsv("), tag("hsva("))))(input)?;
 
     let (input, hue) = terminated(whitespace(hue), opt(whitespace(separator)))(input)?;
 
-    let (input, color_values) =
-        many_m_n(2, 2, terminated(percentage, opt(whitespace(separator))))(input)?;
+    let (input, color_values) = many_m_n(
+        2,
+        2,
+        terminated(whitespace(percentage), opt(whitespace(separator))),
+    )(input)?;
 
-    let (input, alpha) = opt(map(alt((percentage, relative_percentage)), |percent| {
-        (percent * 255f32) as u8
-    }))(input)?;
+    let (input, alpha) = opt(map(
+        whitespace(alt((percentage, relative_percentage))),
+        |percent| (percent * 255f32) as u8,
+    ))(input)?;
 
     let (input, _output) = opt(whitespace(tag(")")))(input)?;
 
@@ -337,7 +346,11 @@ mod parse_hsv {
 pub fn cmyk(input: &str) -> IResult<&str, Color> {
     let (input, color_values) = delimited(
         whitespace(tag("cmyk(")),
-        many_m_n(4, 4, terminated(percentage, opt(whitespace(separator)))),
+        many_m_n(
+            4,
+            4,
+            terminated(whitespace(percentage), opt(whitespace(separator))),
+        ),
         opt(whitespace(tag(")"))),
     )(input)?;
 
@@ -371,7 +384,10 @@ pub fn xyz(input: &str) -> IResult<&str, Color> {
         many_m_n(
             3,
             3,
-            terminated(nom::number::complete::float, opt(whitespace(separator))),
+            terminated(
+                whitespace(nom::number::complete::float),
+                opt(whitespace(separator)),
+            ),
         ),
         opt(whitespace(tag(")"))),
     )(input)?;
@@ -396,19 +412,16 @@ mod parse_xyz {
 
 /// Parses a cielab representation of a color.
 pub fn cielab(input: &str, illuminant: Illuminant, ten_deg_observer: bool) -> IResult<&str, Color> {
-    let (input, _) = alt((
-        whitespace(tag_no_case("lab(")),
-        whitespace(tag_no_case("cielab(")),
-    ))(input)?;
+    let (input, _) = whitespace(alt((tag_no_case("lab("), tag_no_case("cielab("))))(input)?;
 
     //can either be an percentage or a number between 0 and 100
     let (input, cie_l) = terminated(
-        alt((
+        whitespace(alt((
             map(whitespace(parse_percentage), |percentage| {
                 percentage * 100.0
             }),
-            whitespace(nom::number::complete::float),
-        )),
+            nom::number::complete::float,
+        ))),
         opt(whitespace(separator)),
     )(input)?;
 
@@ -419,21 +432,21 @@ pub fn cielab(input: &str, illuminant: Illuminant, ten_deg_observer: bool) -> IR
         2,
         2,
         terminated(
-            alt((
-                map(
-                    alt((whitespace(parse_percentage), whitespace(percentage))),
-                    |percentage| percentage * 125.0,
-                ),
-                whitespace(nom::number::complete::float),
-            )),
+            whitespace(alt((
+                map(alt((parse_percentage, percentage)), |percentage| {
+                    percentage * 125.0
+                }),
+                nom::number::complete::float,
+            ))),
             opt(whitespace(separator)),
         ),
     )(input)?;
     log::debug!("Cie a*/b*: {:?}", cie_a_b);
 
-    let (input, alpha) = opt(map(alt((percentage, relative_percentage)), |percentage| {
-        (percentage * 255.0) as u8
-    }))(input)?;
+    let (input, alpha) = opt(whitespace(map(
+        alt((percentage, relative_percentage)),
+        |percentage| (percentage * 255.0) as u8,
+    )))(input)?;
 
     let (input, _) = opt(whitespace(tag(")")))(input)?;
 
