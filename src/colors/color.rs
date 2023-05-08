@@ -93,7 +93,6 @@ impl Color {
 
         let saturation = if max == 0f32 { 0f32 } else { (max - min) / max };
 
-        log::debug!("HSV: {}°, {}%, {}% ", hue, saturation, max);
         (hue, saturation, max)
     }
 
@@ -134,7 +133,6 @@ impl Color {
 
         let lightness = (max + min) / 2f32;
 
-        log::debug!("HSL: {}°, {}%, {}% ", hue, saturation, lightness);
         (hue, saturation, lightness)
     }
 
@@ -636,13 +634,9 @@ impl Color {
             illuminant.two_degrees()
         };
 
-        log::debug!("XYZ: {}, {}, {}", ref_x, ref_y, ref_z);
-
         x *= ref_x;
         y *= ref_y;
         z *= ref_z;
-
-        log::debug!("XYZ: {}, {}, {}", x, y, z);
 
         Self::from_xyz(x, y, z, alpha)
     }
