@@ -478,3 +478,41 @@ mod parse_cie_lab {
         );
     }
 }
+
+/// Parses a hwb representation of a color.
+pub fn hwb(input: &str) -> IResult<&str, Color> {
+    let (input, _) = tag("hwb(")(input)?;
+
+    let (input, hue) = terminated(whitespace(hue), opt(whitespace(separator)))(input)?;
+
+    let (input, color_values) = many_m_n(
+        2,
+        2,
+        terminated(whitespace(percentage), opt(whitespace(separator))),
+    )(input)?;
+
+    let (input, alpha) = opt(map(
+        whitespace(alt((percentage, relative_percentage))),
+        |percent| (percent * 255f32) as u8,
+    ))(input)?;
+
+    let (input, _output) = opt(whitespace(tag(")")))(input)?;
+
+    let color = Color::from_hwba(hue, color_values[0], color_values[1], alpha.unwrap_or(255));
+
+    Ok((input, color))
+}
+
+#[cfg(test)]
+mod parse_hwb {
+    use super::*;
+
+    #[test]
+    fn it_parses() {
+        assert_eq!(Ok(("", Color::rgb(46, 52, 64))), hwb("hwb(220, 18%, 75%)"));
+        assert_eq!(
+            Ok(("", Color::rgba(46, 52, 64, 127))),
+            hwb("hwb(220, 18%, 75%, 0.5)")
+        );
+    }
+}
