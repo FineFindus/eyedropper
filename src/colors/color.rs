@@ -583,22 +583,17 @@ impl Color {
         let mut green = x * -0.9689 + y * 1.8758 + z * 0.0415;
         let mut blue = x * 0.0557 + y * -0.2040 + z * 1.0570;
 
-        if red > 0.0031308 {
-            red = 1.055 * (red.powf(1.0 / 2.4)) - 0.055;
-        } else {
-            red = 12.92 * red;
-        }
+        let remap = |value: &mut f32| {
+            if *value > 0.0031308 {
+                *value = 1.055 * (value.powf(1.0 / 2.4)) - 0.055;
+            } else {
+                *value *= 12.92;
+            }
+        };
 
-        if green > 0.0031308 {
-            green = 1.055 * (green.powf(1.0 / 2.4)) - 0.055;
-        } else {
-            green = 12.92 * green;
-        }
-        if blue > 0.0031308 {
-            blue = 1.055 * (blue.powf(1.0 / 2.4)) - 0.055;
-        } else {
-            blue = 12.92 * blue;
-        }
+        remap(&mut red);
+        remap(&mut green);
+        remap(&mut blue);
 
         Self::rgba(
             (red * 255f32).round() as u8,
@@ -643,9 +638,9 @@ impl Color {
 
         log::debug!("XYZ: {}, {}, {}", ref_x, ref_y, ref_z);
 
-        x = x * ref_x;
-        y = y * ref_y;
-        z = z * ref_z;
+        x *= ref_x;
+        y *= ref_y;
+        z *= ref_z;
 
         log::debug!("XYZ: {}, {}, {}", x, y, z);
 
