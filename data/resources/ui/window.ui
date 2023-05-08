@@ -198,6 +198,7 @@
                             </child>
                             <child>
                               <object class="ColorFormatRow" id="hwb_row">
+                                <property name="editable">True</property>
                                 <property name="tooltip" translatable="yes">Copy HWB</property>
                                 <property name="visible">False</property>
                               </object>
