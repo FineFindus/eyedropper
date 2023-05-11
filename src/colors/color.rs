@@ -541,17 +541,17 @@ impl Color {
     /// Hue should be 0-360 and w,b 0-1.
     pub fn from_hwba(hue: u16, white: f32, black: f32, alpha: u8) -> Self {
         if white + black >= 1.0 {
-            let gray = ((white / (white + black)) * 255f32) as u8;
+            let gray = ((white / (white + black)) * 255f32).round() as u8;
             return Self::rgba(gray, gray, gray, alpha);
         }
 
         let mut color = Self::from_hsl(hue, 1.0, 0.5);
 
         let modify_value = |value: u8| -> u8 {
-            let mut tmp = value as f32;
+            let mut tmp = (value as f32) / 255.0;
             tmp *= 1.0 - white - black;
             tmp += white;
-            tmp as u8
+            (tmp * 255.0).round() as u8
         };
 
         color.red = modify_value(color.red);
