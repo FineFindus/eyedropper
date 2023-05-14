@@ -205,6 +205,7 @@
                             </child>
                             <child>
                               <object class="ColorFormatRow" id="hcl_row">
+                                <property name="editable">True</property>
                                 <property name="tooltip" translatable="yes">Copy CIELCh / HCL</property>
                                 <property name="visible">False</property>
                               </object>
