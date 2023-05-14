@@ -888,5 +888,27 @@ impl AppWindow {
                 }
             }),
         );
+
+        imp.hcl_row.connect_closure(
+            "text-edited",
+            false,
+            glib::closure_local!(@watch self as window => move |format_row: ColorFormatRow, color: String| {
+                log::debug!("Changed HCL entry: {color}");
+
+                if let Some(current_color) = window.color(){
+                    match Color::from_hcl_string(&color) {
+                        Ok(color) if color != current_color => {
+                            window.set_color(color);
+                            format_row.show_success();
+                        },
+                        Err(_) => {
+                            log::debug!("Failed to parse color: {color}");
+                            format_row.show_error();
+                        },
+                        _ => {}
+                    }
+                }
+            }),
+        );
     }
 }
