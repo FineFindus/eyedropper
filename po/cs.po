@@ -1,0 +1,748 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Eyedropper package.
+# Písek Pískovec <pisekpiskovec@gmail.com>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Eyedropper\n"
+"Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
+"POT-Creation-Date: 2023-05-17 17:20+0200\n"
+"PO-Revision-Date: 2023-05-17 20:44+0200\n"
+"Last-Translator: Písek Pískovec <pisekpiskovec@gmail.com>\n"
+"Language-Team: \n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n>=2 && n<=4 ? 1 : 2);\n"
+"X-Generator: Poedit 3.2.2\n"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:3
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
+#: data/resources/ui/window.ui:88 src/main.rs:26 src/widgets/about_window.rs:45
+msgid "Eyedropper"
+msgstr "Eyedropper"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:4
+msgid "Color Picker"
+msgstr "Vybírač barev"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:5
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
+#: src/widgets/about_window.rs:75
+msgid "Pick and format colors"
+msgstr "Vyberte a formátujte barvy"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/com.github.finefindus.eyedropper.desktop.in.in:11
+msgid "Gnome;GTK;Color;Color Picker;Picker;Palette;"
+msgstr "Gnome;GTK;Barva;Výběr Barev;Vybírač barev;Výběr;Vybírač;Paleta;"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
+#: src/widgets/about_window.rs:78
+msgid ""
+"Pick any color from your screen and view it in different formats. Change the "
+"picked color or go back to a previously picked color from the history list. "
+"Generate a list of different shades from the picked color."
+msgstr ""
+"Vyberte jakoukoliv barvu z vaší obrazovky a zobrazte ji v různých formátech. "
+"Změňte vybranou barvu nebo jděte na dříve vybranou barvu v seznamu historie. "
+"Generujte seznam odstínů z vybrané barvy."
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
+#: src/widgets/about_window.rs:83
+msgid "Features"
+msgstr "Funkce"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:16
+#: src/widgets/about_window.rs:87
+msgid "Pick a Color"
+msgstr "Vyberte Barvu"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
+#: src/widgets/about_window.rs:88
+msgid "Enter a color in Hex-Format"
+msgstr "Vložte barvu v Hex-Formátu"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:18
+#: src/widgets/about_window.rs:89
+msgid "Parse RGBA/ARGB Hex-Colors"
+msgstr "Rozbor RGBA/ARGB Hex-Barev"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
+#: src/widgets/about_window.rs:90
+msgid "View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format"
+msgstr "Zobrazte barvy ve formátech Hex, RGB. HSV, HSL, CMYL, XYZ a CIE-Lab"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
+#: src/widgets/about_window.rs:91
+msgid "Customize which formats appear as well as their order"
+msgstr "Přizpůsobte které formáty se zobrazí a v jakém pořadí"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
+#: src/widgets/about_window.rs:92
+msgid "Generate a palette of different shades"
+msgstr "Generujte paletu různých odstínů"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:27
+msgid "Main window with a color in different formats"
+msgstr "Hlavní okno s barvou v různých formátech"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:31
+msgid "Main window with customized formats"
+msgstr "Hlavní okno s přizpůsobenými formáty"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:35
+msgid "Dialog showing generated color palettes"
+msgstr "Dialogové okno zobrazující vygenerovanou barevnou paletu"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:39
+msgid "Status page stating to pick a color to get started"
+msgstr "Stránka stavu uvádějící pro začátek vyberte barvu"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:179
+msgid "FineFindus"
+msgstr "FineFindus"
+
+#: data/resources/ui/palette-window.ui:6
+msgctxt "Adobes palette format"
+msgid "Adobe Swatch Exchange"
+msgstr "Adobe Swatch Exchange"
+
+#: data/resources/ui/palette-window.ui:11
+msgctxt "LibreOffice/OpenOffice palette file"
+msgid "LibreOffice Palette"
+msgstr "Palteta LibreOffice"
+
+#: data/resources/ui/palette-window.ui:16
+msgctxt "Gimp/Inkscape palette format"
+msgid "Gimp Palette"
+msgstr "Paleta Gimpu"
+
+#: data/resources/ui/palette-window.ui:21
+msgctxt "Paint.net palette format, should most like not be translated"
+msgid "Paint.NET"
+msgstr "Paint.NET"
+
+#: data/resources/ui/palette-window.ui:26
+msgctxt "Palette format file name"
+msgid "Hex"
+msgstr "Hex"
+
+#: data/resources/ui/palette-window.ui:31
+msgctxt "Palette format file name"
+msgid "PAL"
+msgstr "PAL"
+
+#: data/resources/ui/palette-window.ui:39
+msgid "Palettes"
+msgstr "Palety"
+
+#: data/resources/ui/palette-window.ui:50
+msgid "Save Palettes…"
+msgstr "Uložit Palety…"
+
+#: data/resources/ui/preferences.ui:10
+msgid "General"
+msgstr "Obecné"
+
+#: data/resources/ui/preferences.ui:13
+msgid "Formatting"
+msgstr "Formátování"
+
+#: data/resources/ui/preferences.ui:16
+msgid "Alpha-Value-Position"
+msgstr "Alfa-Hodnota-Pozice"
+
+#: data/resources/ui/preferences.ui:17
+msgid "Where the Alphavalue is positioned in the Hexstring"
+msgstr "Kde je Alfavalue umístěna v Hexstringu"
+
+#: data/resources/ui/preferences.ui:21
+msgctxt "Alpha is not shown"
+msgid "Not shown"
+msgstr "Není zobrazena"
+
+#: data/resources/ui/preferences.ui:22
+msgctxt "Alpha is shown at the end of the string"
+msgid "End"
+msgstr "Konec"
+
+#: data/resources/ui/preferences.ui:23
+msgctxt "Alpha is shown at the start of the string"
+msgid "Start"
+msgstr "Začátek"
+
+#: data/resources/ui/preferences.ui:31
+msgid "Name Sets"
+msgstr "Sady názvů"
+
+#: data/resources/ui/preferences.ui:32
+msgid "Which color name sets should be used for the names"
+msgstr "Jaká brevná sada názvů má být použita pro názvy"
+
+#: data/resources/ui/preferences.ui:44
+msgid "Default Precision"
+msgstr "Výchozí Přesnost"
+
+#: data/resources/ui/preferences.ui:45
+msgid "Use the recommended precision"
+msgstr "Použít doporučenou přesnost"
+
+#: data/resources/ui/preferences.ui:58 data/resources/ui/preferences.ui:69
+msgid "Precision"
+msgstr "Přesnost"
+
+#: data/resources/ui/preferences.ui:81
+msgid "CIE Color Space"
+msgstr "CIE Barevný Prostor"
+
+#: data/resources/ui/preferences.ui:84
+msgid "CIE Illuminants"
+msgstr "CIE Osvětlovače"
+
+#: data/resources/ui/preferences.ui:85
+msgid "Lighting conditions for the CIE color space"
+msgstr "Světelné podmínky pro barevný prostor CIE"
+
+#: data/resources/ui/preferences.ui:93
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "A (Incandescent/tungsten)"
+msgstr "A (Žárovka/Wolfram)"
+
+#: data/resources/ui/preferences.ui:94
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "B (Old direct sunlight at noon)"
+msgstr "B (Staré přímé sluneční světlo v poledne)"
+
+#: data/resources/ui/preferences.ui:95
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "C (Old daylight)"
+msgstr "C (Staré denní světlo)"
+
+#: data/resources/ui/preferences.ui:96
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "D50 (ICC profile PCS)"
+msgstr "D50 (ICC profil PCS)"
+
+#: data/resources/ui/preferences.ui:97
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "D55 (Mid-morning daylight)"
+msgstr "D55 (Dopolední světlo)"
+
+#: data/resources/ui/preferences.ui:98
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "D65 (Daylight, sRGB, Adobe-RGB)"
+msgstr "D65 (Denní světlo, sRGB, Adobe-RGB)"
+
+#: data/resources/ui/preferences.ui:99
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "D75 (North sky daylight)"
+msgstr "D75 (Denní svétlo severního nebe)"
+
+#: data/resources/ui/preferences.ui:100
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "E (Equal energy)"
+msgstr "E (Rovnoměrná energie)"
+
+#: data/resources/ui/preferences.ui:101
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "F1 (Daylight Fluorescent)"
+msgstr "F1 (Fluorescence Denního světla)"
+
+#: data/resources/ui/preferences.ui:102
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "F2 (Cool fluorescent)"
+msgstr "F2 (Studená Fluorescence)"
+
+#: data/resources/ui/preferences.ui:103
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "F3 (White Fluorescent)"
+msgstr "F3 (Bílá Fluorescence)"
+
+#: data/resources/ui/preferences.ui:104
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "F4 (Warm White Fluorescent)"
+msgstr "F4 (Fluorescence Teplé Bílé)"
+
+#: data/resources/ui/preferences.ui:105
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "F5 (Daylight Fluorescent)"
+msgstr "F5 (Fluorescence Denního světla)"
+
+#: data/resources/ui/preferences.ui:106
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "F6 (Lite White Fluorescent)"
+msgstr "F6 (Fluorescence Lite Bílé)"
+
+#: data/resources/ui/preferences.ui:107
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "F7 (Daylight fluorescent, D65 simulator)"
+msgstr "F7 (Fluorescence Denního světla, D65 simulátor)"
+
+#: data/resources/ui/preferences.ui:108
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "F8 (Sylvania F40, D50 simulator)"
+msgstr "F8 (Sylvania F40, D50 simulator)"
+
+#: data/resources/ui/preferences.ui:109
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "F9 (Cool White Fluorescent)"
+msgstr "F9 (Fluorescence Studené Bílé)"
+
+#: data/resources/ui/preferences.ui:110
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "F10 (Ultralume 50, Philips TL85)"
+msgstr "F10 (Ultralume 50, Philips TL85)"
+
+#: data/resources/ui/preferences.ui:111
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "F11 (Ultralume 40, Philips TL84)"
+msgstr "F11 (Ultralume 40, Philips TL84)"
+
+#: data/resources/ui/preferences.ui:112
+msgctxt ""
+"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
+msgid "F12 (Ultralume 30, Philips TL83)"
+msgstr "F12 (Ultralume 30, Philips TL83)"
+
+#: data/resources/ui/preferences.ui:125
+msgid "CIE Standard Observer"
+msgstr "CIE Standartní Observer"
+
+#: data/resources/ui/preferences.ui:126
+msgid "The CIE standard observer's field of view"
+msgstr "Zorné pole CIE standartního observeru"
+
+#: data/resources/ui/preferences.ui:130
+msgctxt "CIE 2° standard observer"
+msgid "2°"
+msgstr "2°"
+
+#: data/resources/ui/preferences.ui:131
+msgctxt "CIE 10° standard observer"
+msgid "10°"
+msgstr "10°"
+
+#: data/resources/ui/preferences.ui:141
+msgid "Color Formats"
+msgstr "Barevné Formáty"
+
+#: data/resources/ui/preferences.ui:142
+msgid "Customize the visible formats and in which order they are displayed."
+msgstr "Přizpůsobte viditelné formáty a v jakém pořadí se zobrazí."
+
+#: data/resources/ui/preferences.ui:146
+msgctxt " Tooltip of the button to reset the format order"
+msgid "Reset Order"
+msgstr "Resetovat Pořadí"
+
+#: data/resources/ui/preferences.ui:168 data/resources/ui/preferences.ui:171
+msgid "Formats"
+msgstr "Formáty"
+
+#: data/resources/ui/preferences.ui:172
+#, fuzzy
+msgid ""
+"Edit how the color formats are displayed. The “{}” will be replaced in with "
+"the values of the formats."
+msgstr ""
+"Upravte jak barevné formáty jsou zobrazeny. “{}” bude nahrazeno hodnotami "
+"formátů."
+
+#: data/resources/ui/preferences.ui:175
+msgid "RGB Format"
+msgstr "RGB Formát"
+
+#: data/resources/ui/preferences.ui:182
+msgid "HSL Format"
+msgstr "HSL Formát"
+
+#: data/resources/ui/preferences.ui:189
+msgid "HSV Format"
+msgstr "HSV Formát"
+
+#: data/resources/ui/preferences.ui:196
+msgid "CMYK Format"
+msgstr "CMYK Formát"
+
+#: data/resources/ui/preferences.ui:203
+msgid "XYZ Format"
+msgstr "XYZ Formát"
+
+#: data/resources/ui/preferences.ui:210
+msgid "CIELAB Format"
+msgstr "CIELAB Formát"
+
+#: data/resources/ui/preferences.ui:217
+msgid "HWB Format"
+msgstr "HWB Formát"
+
+#: data/resources/ui/preferences.ui:224
+msgid "CIELCh/HCL Format"
+msgstr "CIELCh/HCL Formát"
+
+#: data/resources/ui/preferences.ui:231
+msgid "LMS Format"
+msgstr "LMS Formát"
+
+#: data/resources/ui/preferences.ui:238
+msgid "Hunter Lab Format"
+msgstr "Hunter Lab Formát"
+
+#: data/resources/ui/preferences/custom-format-row.ui:10
+msgctxt "Tooltip of the reset button for custom format"
+msgid "Reset Format"
+msgstr "Resetovat Formát"
+
+#: data/resources/ui/shortcuts.ui:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Obecné"
+
+#: data/resources/ui/shortcuts.ui:14
+msgctxt "shortcut window"
+msgid "Show Preferences"
+msgstr "Zobrazit Předvolby"
+
+#: data/resources/ui/shortcuts.ui:20
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Zobrazit klávesové zkratky"
+
+#: data/resources/ui/shortcuts.ui:26
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Ukončit"
+
+#: data/resources/ui/shortcuts.ui:34
+msgctxt "shortcut window"
+msgid "Color"
+msgstr "Barva"
+
+#: data/resources/ui/shortcuts.ui:37
+msgctxt "shortcut window"
+msgid "Pick a new Color"
+msgstr "Vybrat novou Barvu"
+
+#: data/resources/ui/shortcuts.ui:43
+msgctxt "shortcut window"
+msgid "Randomize the Color"
+msgstr "Randomizovat Barvu"
+
+#: data/resources/ui/window.ui:6
+msgid "_Clear History"
+msgstr "_Vyčistit Historii"
+
+#: data/resources/ui/window.ui:10
+msgid "_Random Color"
+msgstr "_Náhodná Barva"
+
+#: data/resources/ui/window.ui:16
+msgid "_Preferences"
+msgstr "_Předvolby"
+
+#: data/resources/ui/window.ui:20
+msgid "_Keyboard Shortcuts"
+msgstr "_Klávesové Zkratky"
+
+#: data/resources/ui/window.ui:24
+msgid "_About Eyedropper"
+msgstr "O _aplikaci Eyedropper"
+
+#: data/resources/ui/window.ui:54
+msgid "No Color"
+msgstr "Žádná Barva"
+
+#: data/resources/ui/window.ui:55
+msgid "Select a color from the screen to get started."
+msgstr "Pro začátek vyberte barvu z obrazovky."
+
+#: data/resources/ui/window.ui:58
+msgid "_Pick a Color"
+msgstr "_Vyberte Barvu"
+
+#: data/resources/ui/window.ui:96
+msgctxt "Tooltip of the colorpicker button"
+msgid "Pick a Color"
+msgstr "Vyberte Barvu"
+
+#: data/resources/ui/window.ui:103
+msgid "Main Menu"
+msgstr "Hlavní Nabídka"
+
+#: data/resources/ui/window.ui:129
+msgctxt "Tooltip of the palette button"
+msgid "Open Palette Window"
+msgstr "Otevřít Okno Palety"
+
+#: data/resources/ui/window.ui:152
+msgid "Copy Name"
+msgstr "Kopírovat Název"
+
+#: data/resources/ui/window.ui:158
+msgid "Copy Hex Code"
+msgstr "Kopírovat Hex Kód"
+
+#: data/resources/ui/window.ui:163
+msgid "Copy RGB"
+msgstr "Kopírovat RGB"
+
+#: data/resources/ui/window.ui:168
+msgid "Copy HSL"
+msgstr "Kopírovat HSL"
+
+#: data/resources/ui/window.ui:173
+msgid "Copy HSV"
+msgstr "Kopírovat HSV"
+
+#: data/resources/ui/window.ui:178
+msgid "Copy CMYK"
+msgstr "Kopírovat CMYK"
+
+#: data/resources/ui/window.ui:183
+msgid "Copy XYZ"
+msgstr "Kopírovat XYZ"
+
+#: data/resources/ui/window.ui:189
+msgid "Copy CIELAB"
+msgstr "Kopírovat CIELAB"
+
+#: data/resources/ui/window.ui:195
+msgid "Copy HWB"
+msgstr "Kopírovat HWB"
+
+#: data/resources/ui/window.ui:201
+msgid "Copy CIELCh / HCL"
+msgstr "Kopírovat CIELCh / HCL"
+
+#: data/resources/ui/window.ui:207
+msgid "Copy LMS"
+msgstr "Kopírovat LMS"
+
+#: data/resources/ui/window.ui:213
+msgid "Copy Hunter Lab"
+msgstr "Kopírovat Hunter Lab"
+
+#. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
+#: src/widgets/about_window.rs:51
+msgid "translator-credits"
+msgstr "Písek Pískovec <pisekpiskovec@gmail.com>"
+
+#: src/widgets/about_window.rs:111
+msgctxt ""
+"The changelog of the current version. Should be similar to the CHANGELOG.md "
+"file at the project root. Please ensure that the tags have a matching "
+"closing tag. Since xgettext does not recognize rust multiline strings, this "
+"should be on a single line using line breaks (\\n) for new lines."
+msgid ""
+"<p>A minor release with many small QoL improvements.</p><p>Added:</p>\n"
+"<ul><li>Show a toast with an Undo option when clearing the history</"
+"li><li>Use Ctrl-Q to close the window</li><li>Use a default minimum window "
+"size, content should no longer unnecessarily cut off</li><li>New icon by "
+"@bertob</li><li>Export palettes as Adobe Swatch Exchange (ASE), hex, PAL, "
+"Paint.NET (txt) files</li><li>Minor changes to the store metadata</li></"
+"ul><p>Changed:</p>\n"
+"<ul><li>Hunter-Lab now displays 0 instead of NaN</li><li>Improved tooltips "
+"for copying colors</li><li>Palette window now uses a button with a more "
+"explicit text instead of an icon</li><li>Reworded project description</"
+"li><li>Updated all screenshots</li></ul><p>Fixed:</p>\n"
+"<ul><li>Separator is now hidden when the history list is hidden</"
+"li><li>Improved editing experience when change the Hex color/name</li></ul>"
+msgstr ""
+"<p>Malé vydání s mnoho malými QoL vylepšeními.</p><p>Přidáno:</p>\n"
+"<ul><li>Zobrazuje se toust s akcí Zpět po vyčištění historie</"
+"li><li>Zkratkou Ctrl-Q zavřete okno</li><li>Přidána výchozí minimální "
+"velikost okna, obsah by už neměl být odříznut</li><li>Nová ikona od @bertob</"
+"li><li>Exportujte palety jako Adobe Swatch Exchange (ASE), hex, PAL, Paint."
+"NET (txt) soubory</li><li>Menší změny v úložišť metadat</li></ul><p>Změněno:"
+"</p>\n"
+"<ul><li>Hunter-Lab nyní ukazuje 0 namísto NaN</li><li>Vylepšeny tooltipy pro "
+"kopírování barev</li><li>Okno palety nyní používá tlačítko s více explicitím "
+"texte namísto ikony</li><li>Přeformulován popisek projektu</"
+"li><li>Aktualizovány všechny snímky obrazovky</li></ul><p>Opraveno:</p>\n"
+"<ul><li>Oddělovač je nyní schován pokud seznam historie je schován</"
+"li><li>Vylepšena zkušenost editování při změně Hex barvy/názvu</li></ul>"
+
+#: src/widgets/palette_dialog.rs:152
+msgctxt "Name for tints (lighter variants) of the color"
+msgid "Tints"
+msgstr "Tónování"
+
+#: src/widgets/palette_dialog.rs:156
+msgctxt "Name for shades (darker variants) of the color"
+msgid "Shades"
+msgstr "Odstíny"
+
+#: src/widgets/palette_dialog.rs:162
+msgctxt "Name for the opposite/complementary color (e.g. blue ⇔ yellow)"
+msgid "Complementary"
+msgstr "Komplementární"
+
+#: src/widgets/palette_dialog.rs:169
+msgctxt ""
+"The name of the color palette. Consist of the two opposite colors (e.g. blue "
+"⇔ orange / green)"
+msgid "Split-Complementary"
+msgstr "Dělené Doplňkové"
+
+#: src/widgets/palette_dialog.rs:176
+msgctxt ""
+"Name of the color palette, which would form a triangle above the color wheel"
+msgid "Triadic"
+msgstr "Triadické"
+
+#: src/widgets/palette_dialog.rs:181
+msgctxt "The name of the color palette."
+msgid "Tetradic"
+msgstr "Tetradické"
+
+#: src/widgets/palette_dialog.rs:187
+msgctxt "Color palette consisting of six slight shifted colors"
+msgid "Analogous"
+msgstr "Analogické"
+
+#: src/widgets/preferences_window.rs:169
+msgctxt ""
+"Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
+"#html4"
+msgid "Basic"
+msgstr "Základní"
+
+#: src/widgets/preferences_window.rs:171
+msgid "Show color names from the w3c basic color keyword set"
+msgstr "Zobrazit názvy barev ze základní w3c sady klíčových slov barev"
+
+#: src/widgets/preferences_window.rs:177
+msgctxt ""
+"Name of the extended color keyword set from https://www.w3.org/TR/css-"
+"color-3/#svg-color"
+msgid "Extended"
+msgstr "Rozšířené"
+
+#: src/widgets/preferences_window.rs:179
+msgid "Show color names from the w3c extended color keyword  set"
+msgstr "Zobrazit názvy barev z rozšířené w3c sady klíčových slov barev"
+
+#: src/widgets/preferences_window.rs:183
+msgctxt ""
+"Name of the color set from the GNOME color palette (https://developer.gnome."
+"org/hig/reference/palette.html)"
+msgid "GNOME color palette"
+msgstr "barevná paleta GNOME"
+
+#: src/widgets/preferences_window.rs:184
+msgid "Show color names from the GNOME color palette"
+msgstr "Zobrazit názvy barev z barevné palety GNOME"
+
+#: src/widgets/preferences_window.rs:188
+msgctxt "Name of the color set from the xkcd color survey"
+msgid "xkcd"
+msgstr "xkcd"
+
+#: src/widgets/preferences_window.rs:189
+msgid "Show color names from the xkcd color survey"
+msgstr "Zobrazit názvy barev z xkcd barevného průzkumu"
+
+#: src/widgets/preferences_window.rs:328
+msgid "Move Up"
+msgstr "Posunout Nahoru"
+
+#: src/widgets/preferences_window.rs:330
+msgid "Move Down"
+msgstr "Posunout Dolu"
+
+#: src/widgets/preferences_window.rs:453
+msgid "Hex-Code"
+msgstr "Hex-Kód"
+
+#: src/widgets/preferences_window.rs:458
+msgid "RGB"
+msgstr "RGB"
+
+#: src/widgets/preferences_window.rs:461
+msgid "HSL"
+msgstr "HSL"
+
+#: src/widgets/preferences_window.rs:464
+msgid "HSV"
+msgstr "HSV"
+
+#: src/widgets/preferences_window.rs:468
+msgid "CMYK"
+msgstr "CMYK"
+
+#: src/widgets/preferences_window.rs:473
+msgid "XYZ"
+msgstr "XYZ"
+
+#: src/widgets/preferences_window.rs:477
+msgid "CIELAB"
+msgstr "CIELAB"
+
+#: src/widgets/preferences_window.rs:482
+msgid "HWB"
+msgstr "HWB"
+
+#: src/widgets/preferences_window.rs:486
+msgid "CIELCh / HCL"
+msgstr "CIELCh / HCL"
+
+#: src/widgets/preferences_window.rs:492
+msgid "Name"
+msgstr "Název"
+
+#: src/widgets/preferences_window.rs:495 src/window.rs:439 src/window.rs:462
+#: src/window.rs:632 src/window.rs:709
+msgctxt "Information that no name for the color could be found"
+msgid "Not named"
+msgstr "Nepojmenováno"
+
+#: src/widgets/preferences_window.rs:500
+msgid "LMS"
+msgstr "LMS"
+
+#: src/widgets/preferences_window.rs:504
+msgid "Hunter Lab"
+msgstr "Hunter Lab"
+
+#: src/window.rs:213
+msgid "Cleared history"
+msgstr "Historie vyčištěna"
+
+#: src/window.rs:214
+msgid "Undo"
+msgstr "Zpět"
+
+#: src/window.rs:535
+msgid "Failed to get palette color"
+msgstr "Získání barevné palety selhalo"
+
+#: src/window.rs:567
+msgid "Failed to pick a color"
+msgstr "Vybrání barvy selhalo"
+
+#. Translators: Do not replace the {}. These are used as placeholders for the copied values
+#: src/window.rs:649
+msgid "Copied: “{}”"
+msgstr "Kopírováno: \"{}\""
