@@ -17,6 +17,7 @@
     <maintainer>
         <foaf:Person>
             <foaf:name>FineFindus</foaf:name>
+            <gnome:userid>jbenzler</gnome:userid>
             <foaf:mbox rdf:resource="mailto:finefindus@proton.me" />
             <foaf:account>
                 <foaf:OnlineAccount>
