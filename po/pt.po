@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the Eyedropper package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # Mateus Santos <swyknox@gmail.com>, 2023.
+# swyknox <swyknox@gmail.com>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-04-13 12:19+0000\n"
-"PO-Revision-Date: 2023-05-17 02:34-0300\n"
-"Last-Translator: Mateus Santos <swyknox@gmail.com>\n"
-"Language-Team: Brazilian Portuguese <swyknox@gmail.com>\n"
+"PO-Revision-Date: 2023-05-17 03:28-0300\n"
+"Last-Translator: swyknox <swyknox@gmail.com>\n"
+"Language-Team: Brazilian Portuguese <>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
