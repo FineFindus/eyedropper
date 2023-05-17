@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-04-13 12:19+0000\n"
-"PO-Revision-Date: 2023-05-17 03:28-0300\n"
+"PO-Revision-Date: 2023-05-17 20:09-0300\n"
 "Last-Translator: swyknox <swyknox@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <>\n"
 "Language: pt_BR\n"
@@ -213,109 +213,109 @@ msgstr "Condições de iluminação para o espaço de cor CIE"
 msgctxt ""
 "CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
 msgid "A (Incandescent/tungsten)"
-msgstr ""
+msgstr "A (Incandescente/tungstênio)"
 
 #: data/resources/ui/preferences.ui:94
 msgctxt ""
 "CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
 msgid "B (Old direct sunlight at noon)"
-msgstr ""
+msgstr "B (Luz solar direta antiga ao meio-dia)"
 
 #: data/resources/ui/preferences.ui:95
 msgctxt ""
 "CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
 msgid "C (Old daylight)"
-msgstr ""
+msgstr "C (Luz do dia antiga)"
 
 #: data/resources/ui/preferences.ui:96
 msgctxt ""
 "CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
 msgid "D50 (ICC profile PCS)"
-msgstr ""
+msgstr "D50 (Perfil ICC PCS)"
 
 #: data/resources/ui/preferences.ui:97
 msgctxt ""
 "CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
 msgid "D55 (Mid-morning daylight)"
-msgstr ""
+msgstr "D55 (Luz do dia no meio da manhã)"
 
 #: data/resources/ui/preferences.ui:98
 msgctxt ""
 "CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
 msgid "D65 (Daylight, sRGB, Adobe-RGB)"
-msgstr ""
+msgstr "D65 (Luz do dia, sRGB, Adobe-RGB)"
 
 #: data/resources/ui/preferences.ui:99
 msgctxt ""
 "CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
 msgid "D75 (North sky daylight)"
-msgstr ""
+msgstr "D75 (Luz do dia do céu norte)"
 
 #: data/resources/ui/preferences.ui:100
 msgctxt ""
 "CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
 msgid "E (Equal energy)"
-msgstr ""
+msgstr "E (Energia igual)"
 
 #: data/resources/ui/preferences.ui:101
 msgctxt ""
 "CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
 msgid "F1 (Daylight Fluorescent)"
-msgstr ""
+msgstr "F1 (Luz do dia fluorescente)"
 
 #: data/resources/ui/preferences.ui:102
 msgctxt ""
 "CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
 msgid "F2 (Cool fluorescent)"
-msgstr ""
+msgstr "F2 (Fluorescente legal)"
 
 #: data/resources/ui/preferences.ui:103
 msgctxt ""
 "CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
 msgid "F3 (White Fluorescent)"
-msgstr ""
+msgstr "F3 (Branco fluorescente)"
 
 #: data/resources/ui/preferences.ui:104
 msgctxt ""
 "CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
 msgid "F4 (Warm White Fluorescent)"
-msgstr ""
+msgstr "F4 (Branco quente fluorescente)"
 
 #: data/resources/ui/preferences.ui:105
 msgctxt ""
 "CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
 msgid "F5 (Daylight Fluorescent)"
-msgstr ""
+msgstr "F5 (Luz do dia fluorescente)"
 
 #: data/resources/ui/preferences.ui:106
 msgctxt ""
 "CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
 msgid "F6 (Lite White Fluorescent)"
-msgstr ""
+msgstr "F6 (Branco suave fluorescente)"
 
 #: data/resources/ui/preferences.ui:107
 msgctxt ""
 "CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
 msgid "F7 (Daylight fluorescent, D65 simulator)"
-msgstr ""
+msgstr "F7 (Luz do dia fluorescente, Simular D65)"
 
 #: data/resources/ui/preferences.ui:108
 msgctxt ""
 "CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
 msgid "F8 (Sylvania F40, D50 simulator)"
-msgstr ""
+msgstr "F8 (Sylvania F40, Simular D50)"
 
 #: data/resources/ui/preferences.ui:109
 msgctxt ""
 "CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
 msgid "F9 (Cool White Fluorescent)"
-msgstr ""
+msgstr "F9 (Branco fluorescente legal)"
 
 #: data/resources/ui/preferences.ui:110
 msgctxt ""
 "CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
 msgid "F10 (Ultralume 50, Philips TL85)"
-msgstr ""
+msgstr "F10 (Ultralume 50, Philips TL85)"
 
 #: data/resources/ui/preferences.ui:111
 msgctxt ""
@@ -549,7 +549,7 @@ msgstr "Copiar código Hunter Lab"
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/widgets/about_window.rs:51
 msgid "translator-credits"
-msgstr "swyknox"
+msgstr "swyknox <swyknox@gmail.com>"
 
 #: src/widgets/about_window.rs:111
 msgctxt ""
