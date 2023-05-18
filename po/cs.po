@@ -745,4 +745,4 @@ msgstr "Vybrání barvy selhalo"
 #. Translators: Do not replace the {}. These are used as placeholders for the copied values
 #: src/window.rs:649
 msgid "Copied: “{}”"
-msgstr "Kopírováno: \"{}\""
+msgstr "Kopírováno: “{}”"
