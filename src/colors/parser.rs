@@ -580,6 +580,42 @@ mod parse_lch {
     }
 }
 
+/// Parses a LMS representation of a color.
+pub fn lms(input: &str) -> IResult<&str, Color> {
+    let (input, long) = delimited(
+        whitespace(tag("L:")),
+        whitespace(nom::number::complete::float),
+        opt(whitespace(separator)),
+    )(input)?;
+    let (input, medium) = delimited(
+        whitespace(tag("M:")),
+        whitespace(nom::number::complete::float),
+        opt(whitespace(separator)),
+    )(input)?;
+    let (input, short) = delimited(
+        whitespace(tag("S:")),
+        whitespace(nom::number::complete::float),
+        opt(whitespace(separator)),
+    )(input)?;
+
+    let color = Color::from_lms(long, medium, short, 255);
+
+    Ok((input, color))
+}
+
+#[cfg(test)]
+mod parse_lms {
+    use super::*;
+
+    #[test]
+    fn it_parses() {
+        assert_eq!(
+            Ok(("", Color::rgb(46, 52, 64))),
+            lms("L: 3.20580, M: 3.52562, S: 5.33522")
+        );
+    }
+}
+
 /// Parses a hunter lab representation of a color.
 pub fn hunter_lab(
     input: &str,

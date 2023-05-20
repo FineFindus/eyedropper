@@ -212,6 +212,7 @@
                             </child>
                             <child>
                               <object class="ColorFormatRow" id="lms_row">
+                                <property name="editable">True</property>
                                 <property name="tooltip" translatable="yes">Copy LMS</property>
                                 <property name="visible">False</property>
                               </object>

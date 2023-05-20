@@ -439,6 +439,17 @@ impl Color {
             }
         }
     }
+
+    pub fn from_lms_string(input: &str) -> Result<Color, ColorError> {
+        match parser::lms(input) {
+            Ok((_input, color)) => Ok(color),
+            Err(err) => {
+                log::error!("Failed to parse color: {}", err);
+                Err(ColorError::ParsingError(err.to_string()))
+            }
+        }
+    }
+
     pub fn from_hunter_lab_string(
         input: &str,
         illuminant: Illuminant,
@@ -670,6 +681,14 @@ impl Color {
         let cie_a = c * (h * PI / 180.0).cos();
         let cie_b = c * (h * PI / 180.0).sin();
         Self::from_cie_lab(l, cie_a, cie_b, alpha, Illuminant::default(), false)
+    }
+
+    pub fn from_lms(long: f32, medium: f32, short: f32, alpha: u8) -> Self {
+        let x = long * 1.9102 + medium * -1.1121 + short * 0.2019;
+        let y = long * 0.3710 + medium * 0.6291 + short * 0.0;
+        let z = long * 0.0 + medium * 0.0 + short * 1.0;
+
+        Self::from_xyz(x, y, z, alpha)
     }
 
     pub fn from_hunter_lab(
