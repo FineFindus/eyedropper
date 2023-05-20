@@ -30,7 +30,7 @@ mod imp {
         pub color: RefCell<String>,
         #[property(set, get)]
         pub tooltip: RefCell<String>,
-        #[property(set, get, default = false)]
+        #[property(set, get, default = true)]
         pub editable: RefCell<bool>,
     }
 
@@ -47,7 +47,7 @@ mod imp {
                 format_button: TemplateChild::default(),
                 tooltip: RefCell::new(String::new()),
                 color: RefCell::new(String::new()),
-                editable: RefCell::new(false),
+                editable: RefCell::new(true),
             }
         }
 

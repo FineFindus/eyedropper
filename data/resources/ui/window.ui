@@ -147,79 +147,67 @@
                             </child>
                             <child>
                               <object class="ColorFormatRow" id="name_row">
-                                <property name="visible">False</property>
-                                <property name="editable">True</property>
                                 <property name="tooltip" translatable="yes">Copy Name</property>
+                                <property name="visible">False</property>
                               </object>
                             </child>
                             <child>
                               <object class="ColorFormatRow" id="hex_row">
-                                <property name="editable">True</property>
                                 <property name="tooltip" translatable="yes">Copy Hex Code</property>
                               </object>
                             </child>
                             <child>
                               <object class="ColorFormatRow" id="rgb_row">
-                                <property name="editable">True</property>
                                 <property name="tooltip" translatable="yes">Copy RGB</property>
                               </object>
                             </child>
                             <child>
                               <object class="ColorFormatRow" id="hsl_row">
-                                <property name="editable">True</property>
                                 <property name="tooltip" translatable="yes">Copy HSL</property>
                               </object>
                             </child>
                             <child>
                               <object class="ColorFormatRow" id="hsv_row">
-                                <property name="editable">True</property>
                                 <property name="tooltip" translatable="yes">Copy HSV</property>
                               </object>
                             </child>
                             <child>
                               <object class="ColorFormatRow" id="cmyk_row">
-                                <property name="editable">True</property>
                                 <property name="tooltip" translatable="yes">Copy CMYK</property>
                               </object>
                             </child>
                             <child>
                               <object class="ColorFormatRow" id="xyz_row">
-                                <property name="editable">True</property>
                                 <property name="tooltip" translatable="yes">Copy XYZ</property>
                                 <property name="visible">False</property>
                               </object>
                             </child>
                             <child>
                               <object class="ColorFormatRow" id="cie_lab_row">
-                                <property name="editable">True</property>
                                 <property name="tooltip" translatable="yes">Copy CIELAB</property>
                                 <property name="visible">False</property>
                               </object>
                             </child>
                             <child>
                               <object class="ColorFormatRow" id="hwb_row">
-                                <property name="editable">True</property>
                                 <property name="tooltip" translatable="yes">Copy HWB</property>
                                 <property name="visible">False</property>
                               </object>
                             </child>
                             <child>
                               <object class="ColorFormatRow" id="hcl_row">
-                                <property name="editable">True</property>
                                 <property name="tooltip" translatable="yes">Copy CIELCh / HCL</property>
                                 <property name="visible">False</property>
                               </object>
                             </child>
                             <child>
                               <object class="ColorFormatRow" id="lms_row">
-                                <property name="editable">True</property>
                                 <property name="tooltip" translatable="yes">Copy LMS</property>
                                 <property name="visible">False</property>
                               </object>
                             </child>
                             <child>
                               <object class="ColorFormatRow" id="hunter_lab_row">
-                                <property name="editable">True</property>
                                 <property name="tooltip" translatable="yes">Copy Hunter Lab</property>
                                 <property name="visible">False</property>
                               </object>
