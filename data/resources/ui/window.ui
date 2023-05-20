@@ -218,6 +218,7 @@
                             </child>
                             <child>
                               <object class="ColorFormatRow" id="hunter_lab_row">
+                                <property name="editable">True</property>
                                 <property name="tooltip" translatable="yes">Copy Hunter Lab</property>
                                 <property name="visible">False</property>
                               </object>
