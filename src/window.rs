@@ -910,5 +910,29 @@ impl AppWindow {
                 }
             }),
         );
+
+        imp.hunter_lab_row.connect_closure(
+            "text-edited",
+            false,
+            glib::closure_local!(@watch self as window => move |format_row: ColorFormatRow, color: String| {
+                log::debug!("Changed Hunter Lab entry: {color}");
+
+                if let Some(current_color) = window.color(){
+                    match Color::from_hunter_lab_string(&color,
+                        Illuminant::from(window.imp().settings.int("cie-illuminants") as u32),
+                        window.imp().settings.int("cie-standard-observer") == 1) {
+                        Ok(color) if color != current_color => {
+                            window.set_color(color);
+                            format_row.show_success();
+                        },
+                        Err(_) => {
+                            log::debug!("Failed to parse color: {color}");
+                            format_row.show_error();
+                        },
+                        _ => {}
+                    }
+                }
+            }),
+        );
     }
 }

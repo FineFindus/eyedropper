@@ -438,6 +438,19 @@ impl Color {
             }
         }
     }
+    pub fn from_hunter_lab_string(
+        input: &str,
+        illuminant: Illuminant,
+        ten_deg_observer: bool,
+    ) -> Result<Color, ColorError> {
+        match parser::hunter_lab(input, illuminant, ten_deg_observer) {
+            Ok((_input, color)) => Ok(color),
+            Err(err) => {
+                log::error!("Failed to parse color: {}", err);
+                Err(ColorError::ParsingError(err.to_string()))
+            }
+        }
+    }
 
     /// Converts the given HSL color to RGB.
     ///
@@ -656,6 +669,29 @@ impl Color {
         let cie_a = c * (h * PI / 180.0).cos();
         let cie_b = c * (h * PI / 180.0).sin();
         Self::from_cie_lab(l, cie_a, cie_b, alpha, Illuminant::default(), false)
+    }
+
+    pub fn from_hunter_lab(
+        l: f32,
+        a: f32,
+        b: f32,
+        illuminant: Illuminant,
+        ten_deg_observer: bool,
+    ) -> Self {
+        let (ref_x, ref_y, ref_z) = if ten_deg_observer {
+            illuminant.ten_degrees()
+        } else {
+            illuminant.two_degrees()
+        };
+
+        let ka = (175.0 / 198.04) * (ref_y + ref_x);
+        let kb = (70.0 / 218.11) * (ref_y + ref_z);
+
+        let y = ((l / ref_y).powi(2)) * 100.0;
+        let x = (a / ka * (y / ref_y).sqrt() + (y / ref_y)) * ref_x;
+        let z = -(b / kb * (y / ref_y).sqrt() - (y / ref_y)) * ref_z;
+
+        Self::from_xyz(x, y, z, 255)
     }
 
     /// Return n tints (adding pure white) of the color by the tint factor.

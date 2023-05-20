@@ -579,3 +579,47 @@ mod parse_lch {
         );
     }
 }
+
+/// Parses a hunter lab representation of a color.
+pub fn hunter_lab(
+    input: &str,
+    illuminant: Illuminant,
+    ten_deg_observer: bool,
+) -> IResult<&str, Color> {
+    let (input, long) = delimited(
+        whitespace(tag("L:")),
+        whitespace(nom::number::complete::float),
+        opt(whitespace(separator)),
+    )(input)?;
+    let (input, medium) = delimited(
+        whitespace(tag("a:")),
+        whitespace(nom::number::complete::float),
+        opt(whitespace(separator)),
+    )(input)?;
+    let (input, short) = delimited(
+        whitespace(tag("b:")),
+        whitespace(nom::number::complete::float),
+        opt(whitespace(separator)),
+    )(input)?;
+
+    let color = Color::from_hunter_lab(long, medium, short, illuminant, ten_deg_observer);
+
+    Ok((input, color))
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn parse_hunter_lab() {
+        assert_eq!(
+            Ok(("", Color::rgb(46, 52, 64))),
+            hunter_lab(
+                "L: 18.45804, a: 0.41141, b: -5.42239",
+                Illuminant::default(),
+                false
+            )
+        );
+    }
+}
