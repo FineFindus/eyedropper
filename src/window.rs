@@ -109,7 +109,13 @@ mod imp {
 
         fn class_init(klass: &mut Self::Class) {
             Self::bind_template(klass);
-            klass.bind_template_instance_callbacks();
+            Self::Type::bind_template_callbacks(klass);
+
+            klass.install_action("win.show-toast", Some("(si)"), move |win, _, var| {
+                if let Some((ref toast, i)) = var.and_then(|v| v.get::<(String, i32)>()) {
+                    win.show_toast(toast, adw::ToastPriority::__Unknown(i));
+                }
+            });
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -169,8 +175,12 @@ impl AppWindow {
     }
 
     /// Shows a basic toast with the given text.
-    fn show_toast(&self, text: &str) {
-        self.imp().toast_overlay.add_toast(adw::Toast::new(text));
+    fn show_toast(&self, text: impl AsRef<str>, priority: adw::ToastPriority) {
+        let toast = adw::Toast::new(text.as_ref());
+        toast.set_priority(priority);
+        self.imp()
+            .toast_overlay
+            .add_toast(adw::Toast::new(text.as_ref()));
     }
 
     /// The currently picked color.
@@ -532,7 +542,7 @@ impl AppWindow {
                     Ok(color) => window.set_color(color),
                     Err(_) => {
                         log::error!("Failed to parse color {}", slice);
-                        window.show_toast(&gettext("Failed to get palette color"))
+                        window.show_toast(&gettext("Failed to get palette color"), adw::ToastPriority::Normal)
                 },
             });
             }),
@@ -564,7 +574,7 @@ impl AppWindow {
             Err(err) => {
                 log::error!("{}", err);
                 if !matches!(err, ashpd::Error::Response(ashpd::desktop::ResponseError::Cancelled)) {
-                    window.show_toast(&gettext("Failed to pick a color"));
+                    window.show_toast(&gettext("Failed to pick a color"), adw::ToastPriority::Normal);
                     window.imp().portal_error.replace(Some(err));
                 }
             },
@@ -644,37 +654,6 @@ impl AppWindow {
     fn setup_callbacks(&self) {
         //load imp
         let imp = self.imp();
-
-        //show a toast when copying values
-        let show_toast_closure = glib::closure_local!(@watch self as window => move |_: ColorFormatRow, text: String| {
-            //Translators: Do not replace the {}. These are used as placeholders for the copied values
-            window.show_toast(&gettext("Copied: “{}”").replace("{}", &text));
-        });
-
-        imp.hex_row
-            .connect_closure("copied-text", false, show_toast_closure.clone());
-        imp.rgb_row
-            .connect_closure("copied-text", false, show_toast_closure.clone());
-        imp.hsl_row
-            .connect_closure("copied-text", false, show_toast_closure.clone());
-        imp.hsv_row
-            .connect_closure("copied-text", false, show_toast_closure.clone());
-        imp.cmyk_row
-            .connect_closure("copied-text", false, show_toast_closure.clone());
-        imp.xyz_row
-            .connect_closure("copied-text", false, show_toast_closure.clone());
-        imp.cie_lab_row
-            .connect_closure("copied-text", false, show_toast_closure.clone());
-        imp.hwb_row
-            .connect_closure("copied-text", false, show_toast_closure.clone());
-        imp.hcl_row
-            .connect_closure("copied-text", false, show_toast_closure.clone());
-        imp.name_row
-            .connect_closure("copied-text", false, show_toast_closure.clone());
-        imp.lms_row
-            .connect_closure("copied-text", false, show_toast_closure.clone());
-        imp.hunter_lab_row
-            .connect_closure("copied-text", false, show_toast_closure);
 
         imp.hex_row.connect_closure(
             "text-edited",

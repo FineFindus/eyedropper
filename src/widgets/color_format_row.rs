@@ -1,5 +1,7 @@
 use std::time::Duration;
 
+use gettextrs::gettext;
+use glib::translate::IntoGlib;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{
@@ -230,7 +232,7 @@ impl ColorFormatRow {
     ///
     /// Depending on, if the entry has been edited, the button will either
     /// - apply the edited entry by emitting a activate signal
-    /// - or copy the text to the users clipboard and emit the `copied-text` signal
+    /// - or copy the text to the users clipboard and show a toast with the copied text.
     #[template_callback]
     fn on_button_pressed(&self, _button: &gtk::Button) {
         let text = self.imp().entry.buffer().text();
@@ -242,7 +244,17 @@ impl ColorFormatRow {
             log::debug!("Copied text: {text}");
             let clipboard = self.clipboard();
             clipboard.set_text(&text);
-            self.emit_by_name("copied-text", &[&text.to_value()])
+            self.activate_action(
+                "win.show-toast",
+                Some(
+                    &(
+                        gettext("Copied “{}”").replace("{}", &text),
+                        adw::ToastPriority::High.into_glib(),
+                    )
+                        .to_variant(),
+                ),
+            )
+            .expect("Failed to show toast");
         }
     }
 }
