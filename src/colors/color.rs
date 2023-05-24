@@ -490,7 +490,7 @@ impl Color {
             green = 1f32;
             blue = 1f32;
         } else {
-            fn hue2rgb(p: f32, q: f32, t: f32) -> f32 {
+            let hue2rgb = |p, q, t| {
                 let mut t = t;
                 if t < 0f32 {
                     t += 1f32;
@@ -508,7 +508,7 @@ impl Color {
                     return p + (q - p) * (2f32 / 3f32 - t) * 6f32;
                 }
                 p
-            }
+            };
 
             let q = if lightness < 0.5 {
                 lightness * (1f32 + saturation)
@@ -583,7 +583,7 @@ impl Color {
 
         let mut color = Self::from_hsl(hue, 1.0, 0.5);
 
-        let modify_value = |value: u8| -> u8 {
+        let modify_value = |value| {
             let mut tmp = (value as f32) / 255.0;
             tmp *= 1.0 - white - black;
             tmp += white;
