@@ -186,18 +186,6 @@ impl App {
         self.set_accels_for_action("app.quit", &["<Control>w", "<Control>q"]);
     }
 
-    fn setup_css(&self) {
-        // let provider = gtk::CssProvider::new();
-        // provider.load_from_resource("/com/github/finefindus/eyedropper/style.css");
-        // if let Some(display) = gdk::Display::default() {
-        //     gtk::StyleContext::add_provider_for_display(
-        //         &display,
-        //         &provider,
-        //         gtk::STYLE_PROVIDER_PRIORITY_APPLICATION,
-        //     );
-        // }
-    }
-
     fn show_about_dialog(&self) {
         EyedropperAbout::show(
             self,
