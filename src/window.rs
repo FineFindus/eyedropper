@@ -575,8 +575,10 @@ impl AppWindow {
     /// Update the current color to the given color.
     /// The new color will be added to the history list.
     pub fn set_color(&self, color: Color) {
-        let history_item = HistoryObject::new(color);
-        self.history().insert(0, &history_item);
+        if self.color() != Some(color) {
+            let history_item = HistoryObject::new(color);
+            self.history().insert(0, &history_item);
+        }
 
         let imp = self.imp();
         let settings = &imp.settings;
