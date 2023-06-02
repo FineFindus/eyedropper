@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-06-02 19:51+0000\n"
+"POT-Creation-Date: 2023-06-02 20:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:88 src/main.rs:26 src/widgets/about_window.rs:45
+#: data/resources/ui/window.ui:88 src/main.rs:25 src/widgets/about_window.rs:45
 msgid "Eyedropper"
 msgstr ""
 
@@ -360,7 +360,7 @@ msgstr ""
 #: data/resources/ui/preferences.ui:172
 msgid ""
 "Edit how the color formats are displayed. The “{}” will be replaced in with "
-"the values of the formats."
+"the values of the formats. Custom formats cannot be used as input."
 msgstr ""
 
 #: data/resources/ui/preferences.ui:175
@@ -489,51 +489,51 @@ msgctxt "Tooltip of the palette button"
 msgid "Open Palette Window"
 msgstr ""
 
-#: data/resources/ui/window.ui:152
+#: data/resources/ui/window.ui:150
 msgid "Copy Name"
 msgstr ""
 
-#: data/resources/ui/window.ui:158
+#: data/resources/ui/window.ui:156
 msgid "Copy Hex Code"
 msgstr ""
 
-#: data/resources/ui/window.ui:163
+#: data/resources/ui/window.ui:161
 msgid "Copy RGB"
 msgstr ""
 
-#: data/resources/ui/window.ui:168
+#: data/resources/ui/window.ui:166
 msgid "Copy HSL"
 msgstr ""
 
-#: data/resources/ui/window.ui:173
+#: data/resources/ui/window.ui:171
 msgid "Copy HSV"
 msgstr ""
 
-#: data/resources/ui/window.ui:178
+#: data/resources/ui/window.ui:176
 msgid "Copy CMYK"
 msgstr ""
 
-#: data/resources/ui/window.ui:183
+#: data/resources/ui/window.ui:181
 msgid "Copy XYZ"
 msgstr ""
 
-#: data/resources/ui/window.ui:189
+#: data/resources/ui/window.ui:187
 msgid "Copy CIELAB"
 msgstr ""
 
-#: data/resources/ui/window.ui:195
+#: data/resources/ui/window.ui:193
 msgid "Copy HWB"
 msgstr ""
 
-#: data/resources/ui/window.ui:201
+#: data/resources/ui/window.ui:199
 msgid "Copy CIELCh / HCL"
 msgstr ""
 
-#: data/resources/ui/window.ui:207
+#: data/resources/ui/window.ui:205
 msgid "Copy LMS"
 msgstr ""
 
-#: data/resources/ui/window.ui:213
+#: data/resources/ui/window.ui:211
 msgid "Copy Hunter Lab"
 msgstr ""
 
@@ -562,6 +562,10 @@ msgid ""
 "li><li>Updated all screenshots</li></ul><p>Fixed:</p>\n"
 "<ul><li>Separator is now hidden when the history list is hidden</"
 "li><li>Improved editing experience when change the Hex color/name</li></ul>"
+msgstr ""
+
+#: src/widgets/color_format_row.rs:251
+msgid "Copied “{}”"
 msgstr ""
 
 #: src/widgets/palette_dialog.rs:152
@@ -692,8 +696,8 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: src/widgets/preferences_window.rs:495 src/window.rs:439 src/window.rs:462
-#: src/window.rs:634 src/window.rs:711
+#: src/widgets/preferences_window.rs:495 src/window.rs:449 src/window.rs:472
+#: src/window.rs:644 src/window.rs:825
 msgctxt "Information that no name for the color could be found"
 msgid "Not named"
 msgstr ""
@@ -706,23 +710,18 @@ msgstr ""
 msgid "Hunter Lab"
 msgstr ""
 
-#: src/window.rs:213
+#: src/window.rs:223
 msgid "Cleared history"
 msgstr ""
 
-#: src/window.rs:214
+#: src/window.rs:224
 msgid "Undo"
 msgstr ""
 
-#: src/window.rs:535
+#: src/window.rs:545
 msgid "Failed to get palette color"
 msgstr ""
 
-#: src/window.rs:567
+#: src/window.rs:577
 msgid "Failed to pick a color"
-msgstr ""
-
-#. Translators: Do not replace the {}. These are used as placeholders for the copied values
-#: src/window.rs:651
-msgid "Copied: “{}”"
 msgstr ""
