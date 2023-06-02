@@ -14,15 +14,30 @@ use nom::{
 
 use super::{color::Color, illuminant::Illuminant, position::AlphaPosition};
 
-fn hex_primary(input: &str) -> IResult<&str, u8> {
+/// Parses a hexadecimal value from a string input and returns the parsed value.
+///
+/// # Examples
+/// ```rust
+/// # use crate::colors::parser::hex;
+/// let result = hex("FF");
+/// assert_eq!(result, Ok(("", 255)));
+/// ```
+fn hex(input: &str) -> IResult<&str, u8> {
     map_res(
         take_while_m_n(2, 2, |char| is_hex_digit(char as u8)),
         |str| u8::from_str_radix(str, 16),
     )(input)
 }
-
-/// Parses percentage displayed as a decimal `0.5`.
+/// Parses a relative percentage displayed as a decimal, such as `0.5`.
 /// The leading digits before the decimal dot are optional.
+/// The result is clamped between 0.0 and 1.0.
+///
+/// # Examples
+///
+/// ```rust
+/// let result = relative_percentage("0.5");
+/// assert_eq!(result, Ok(("", 0.5)));
+/// ```
 fn relative_percentage(input: &str) -> IResult<&str, f32> {
     let (input, digits) = recognize(separated_pair(digit0, tag("."), digit1))(input)?;
     let (_, value) = nom::number::complete::float(digits)?;
@@ -31,12 +46,30 @@ fn relative_percentage(input: &str) -> IResult<&str, f32> {
 
 /// Parses a percentage displayed as a number following a `%`.
 /// The result will be clamped between 0 and 1.
+///
+/// # Examples
+/// ```rust
+/// let result = percentage("50%");
+/// assert_eq!(result, Ok(("", 0.5)));
+/// ```
 fn percentage(input: &str) -> IResult<&str, f32> {
     let (input, digits) = terminated(digit1, tag("%"))(input)?;
     let (_input, value) = nom::number::complete::float(digits)?;
     Ok((input, (value / 100f32).clamp(0.0, 1.0)))
 }
 
+/// Parses a percentage value, such as `-51.6%`.
+///
+/// The input string should represent a number followed by a `%` symbol.
+/// The function handles both positive and negative percentages, as well as fractional parts.
+///  The parsed result will be returned as a floating-point number between 0 and 1. It is not clamped, so it is possible
+/// that it may be larger.
+///
+/// # Example
+///``` rust
+/// let result = parse_percentage("-51.6%");
+/// assert_eq!(result, Ok(("", -0.516)));
+///```
 fn parse_percentage(input: &str) -> IResult<&str, f32> {
     let (input, digits) = map_res(
         terminated(
@@ -50,14 +83,37 @@ fn parse_percentage(input: &str) -> IResult<&str, f32> {
     )(input)?;
     Ok((input, (digits / 100f32)))
 }
-
 /// Parses different separators used to separate values.
 ///
-/// Can include `,`, `|` and `/`.
+/// This function attempts to parse several possible
+/// separator values, including `,`, `|`, and `/`.
+///
+/// # Example
+///```rust
+/// let result = separator(",");
+/// assert_eq!(result, Ok(("", ",")));
+/// let result = separator("|");
+/// assert_eq!(result, Ok(("", "|")));
+/// let result = separator("/");
+/// assert_eq!(result, Ok(("", "/")));
+///```
 fn separator(input: &str) -> IResult<&str, &str> {
     alt((tag(","), tag("|"), tag("/")))(input)
 }
 
+/// Parses a CSS-like hue value from a string and returns it as a floating-point number.
+///
+/// The input string can represent a hue value in either turns or degrees. If the value is specified in turns, it will be multiplied by 360.0 to convert it to degrees. The parsed hue value will be returned as a floating-point number.
+///
+/// # Examples
+///```rust
+/// let result = hue("0.5turn");
+/// assert_eq!(result, Ok(("", 180.0)));
+/// let result = hue("270deg");
+/// assert_eq!(result, Ok(("", 270.0)));
+/// let result = hue("90°");
+/// assert_eq!(result, Ok(("", 90.0)));
+///```
 fn hue(input: &str) -> IResult<&str, f32> {
     alt((
         map(
@@ -73,8 +129,21 @@ fn hue(input: &str) -> IResult<&str, f32> {
 
 /// Removes whitespace around the given parser, returning the result of the parser.
 ///
-/// Under the hood it uses [`nom::character::complete::multispace0`] to remove the whitespace.
-/// This includes spaces, tabs, carriage returns and line feeds.
+/// Under the hood, it uses [`nom::character::complete::multispace0`] to remove the whitespace.
+/// This includes spaces, tabs, carriage returns, and line feeds.
+///
+/// # Arguments
+///
+/// * `inner` - The parser to be wrapped and have whitespace removed around it.
+///
+/// # Examples
+///
+/// ```
+///let inner_parser = tag('a');
+///let mut parser = whitespace(inner_parser);
+///
+/// assert_eq!(parser("   a   "), Ok(("", "a")));
+/// ```
 pub fn whitespace<I, O, E: ParseError<I>, F>(inner: F) -> impl FnMut(I) -> IResult<I, O, E>
 where
     F: Parser<I, O, E>,
@@ -88,22 +157,18 @@ pub fn hex_color(input: &str, alpha_position: AlphaPosition) -> IResult<&str, Co
     let (input, _) = opt(whitespace(tag("#")))(input)?;
 
     let (input, first_alpha) = if alpha_position == AlphaPosition::Start && input.len() >= 8 {
-        hex_primary(input)?
+        hex(input)?
     } else {
         (input, 255)
     };
 
-    let (input, (red, green, blue)) = (
-        whitespace(hex_primary),
-        whitespace(hex_primary),
-        whitespace(hex_primary),
-    )
-        .parse(input)?;
+    let (input, (red, green, blue)) =
+        (whitespace(hex), whitespace(hex), whitespace(hex)).parse(input)?;
 
     let alpha = match alpha_position {
         AlphaPosition::None => 255,
         AlphaPosition::Start => first_alpha,
-        AlphaPosition::End => opt(hex_primary)(input)?.1.unwrap_or(255),
+        AlphaPosition::End => opt(hex)(input)?.1.unwrap_or(255),
     };
 
     Ok((input, Color::rgba(red, green, blue, alpha)))
