@@ -542,7 +542,7 @@ impl AppWindow {
                     Ok(color) => window.set_color(color),
                     Err(_) => {
                         log::error!("Failed to parse color {}", slice);
-                        window.show_toast(&gettext("Failed to get palette color"), adw::ToastPriority::Normal)
+                        window.show_toast(gettext("Failed to get palette color"), adw::ToastPriority::Normal)
                 },
             });
             }),
@@ -574,7 +574,7 @@ impl AppWindow {
             Err(err) => {
                 log::error!("{}", err);
                 if !matches!(err, ashpd::Error::Response(ashpd::desktop::ResponseError::Cancelled)) {
-                    window.show_toast(&gettext("Failed to pick a color"), adw::ToastPriority::Normal);
+                    window.show_toast(gettext("Failed to pick a color"), adw::ToastPriority::Normal);
                     window.imp().portal_error.replace(Some(err));
                 }
             },

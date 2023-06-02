@@ -110,7 +110,7 @@ glib::wrapper! {
 impl PaletteDialog {
     pub fn new(color: Color) -> Self {
         let dialog = glib::Object::builder::<PaletteDialog>()
-            .property("color", &gtk::gdk::RGBA::from(color))
+            .property("color", gtk::gdk::RGBA::from(color))
             .build();
         dialog.setup_palettes_list();
         dialog

@@ -85,7 +85,7 @@ impl ColorFormatObject {
             .property("identifier", &identifier)
             .property("label", &label)
             .property("example", &format)
-            .property("settings-name", &settings_name)
+            .property("settings-name", settings_name)
             .build()
     }
 
