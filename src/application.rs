@@ -88,7 +88,6 @@ mod imp {
 
             }));
 
-            app.setup_css();
             app.setup_gactions();
             app.setup_accels();
         }
@@ -108,11 +107,11 @@ impl App {
     #[allow(clippy::new_without_default)]
     pub fn new() -> Self {
         glib::Object::builder::<Self>()
-            .property("application-id", &Some(APP_ID))
-            .property("flags", &gio::ApplicationFlags::empty())
+            .property("application-id", Some(APP_ID))
+            .property("flags", gio::ApplicationFlags::empty())
             .property(
                 "resource-base-path",
-                &Some("/com/github/finefindus/eyedropper/"),
+                Some("/com/github/finefindus/eyedropper/"),
             )
             .build()
     }
