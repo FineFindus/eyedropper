@@ -122,7 +122,7 @@ impl ColorFormatRow {
 
     /// Set the currently shown text
     pub fn set_text(&self, text: String) {
-        self.set_property("color", &text);
+        self.set_property("color", text);
     }
 
     /// Switches the button next to the entry.

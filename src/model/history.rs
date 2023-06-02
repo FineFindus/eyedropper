@@ -67,7 +67,7 @@ glib::wrapper! {
 impl HistoryObject {
     pub fn new(color: Color) -> Self {
         let color: gtk::gdk::RGBA = color.into();
-        Object::builder().property("color", &color).build()
+        Object::builder().property("color", color).build()
     }
 
     pub fn color(&self) -> Color {
