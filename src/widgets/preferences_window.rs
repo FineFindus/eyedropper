@@ -279,7 +279,7 @@ impl PreferencesWindow {
 
         self.imp()
             .settings
-            .bind(&item.settings_name(), &switch, "state")
+            .bind(&item.settings_name(), &switch, "active")
             .build();
 
         let row = adw::ActionRow::builder()
