@@ -215,13 +215,6 @@
                           </object>
                         </child>
                         <child>
-                          <object class="GtkSeparator">
-                            <binding name="visible">
-                              <lookup name="visible" type="GtkListBox">history_list</lookup>
-                            </binding>
-                          </object>
-                        </child>
-                        <child>
                           <object class="GtkScrolledWindow">
                             <property name="hscrollbar-policy">never</property>
                             <property name="min-content-height">200</property>
