@@ -194,7 +194,7 @@ impl PreferencesWindow {
             .can_focus(false)
             .build();
 
-        self.imp().settings.bind(source, &switch, "state").build();
+        self.imp().settings.bind(source, &switch, "active").build();
 
         let row = adw::ActionRow::builder()
             .title(title)
