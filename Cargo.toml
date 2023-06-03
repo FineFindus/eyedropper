@@ -22,16 +22,15 @@ strip = true
 
 [dependencies]
 log = "0.4"
-pretty_env_logger = "0.4"
+pretty_env_logger = "0.5"
 gettext-rs = { version = "0.7", features = ["gettext-system"] }
 once_cell = "1.17"
 gtk = {version = "0.6", package = "gtk4", features = ["gnome_44"]}
 glib = "0.17"
-adw = {package = "libadwaita", version = "0.3", features = ["v1_3"]}
+adw = {package = "libadwaita", version = "0.4", features = ["v1_4"]}
 gtk-macros = "0.3"
 ashpd = {version = "0.4", features = ["gtk4"]}
-#ashpd = { git = "https://github.com/bilelmoussaoui/ashpd.git"}
-rand = "0.8.5"
-bytes = "1.4.0"
-search-provider = {version = "0.5.2", features = ["gdk-pixbuf"]}
-nom = "7.1.3"
+rand = "0.8"
+bytes = "1.4"
+search-provider = {version = "0.5", features = ["gdk-pixbuf"]}
+nom = "7.1"
