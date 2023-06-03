@@ -118,11 +118,6 @@
       <summary>CIE standard observer</summary>
       <description>If 2° or 10° values are used for the CIE standard observer. Can only be 0 (2°) or 1 (10°).</description>
     </key>
-    <key name="use-default-precision" type="b">
-      <default>true</default>
-      <summary>Precision</summary>
-      <description>Use the default recommended precision</description>
-    </key>
     <key name="precision-digits" type="u">
       <default>2</default>
       <summary>Precision</summary>

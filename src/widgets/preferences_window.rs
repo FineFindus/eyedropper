@@ -39,8 +39,6 @@ mod imp {
         #[template_child()]
         pub precision_spin_button: TemplateChild<gtk::SpinButton>,
         #[template_child()]
-        pub default_precision_switch: TemplateChild<gtk::Switch>,
-        #[template_child()]
         pub cie_illuminants_box: TemplateChild<gtk::DropDown>,
         // this exist only to load the CustomFormatRow, otherwise it would crash
         #[template_child()]
@@ -64,7 +62,6 @@ mod imp {
                 alpha_pos_box: TemplateChild::default(),
                 standard_observer_box: TemplateChild::default(),
                 cie_illuminants_box: TemplateChild::default(),
-                default_precision_switch: TemplateChild::default(),
                 precision_spin_button: TemplateChild::default(),
                 _custom_format: TemplateChild::default(),
                 order_list: TemplateChild::default(),
@@ -127,14 +124,6 @@ impl PreferencesWindow {
                 "cie-standard-observer",
                 &*imp.standard_observer_box,
                 "selected",
-            )
-            .build();
-
-        imp.settings
-            .bind(
-                "use-default-precision",
-                &*imp.default_precision_switch,
-                "state",
             )
             .build();
 

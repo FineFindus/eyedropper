@@ -404,7 +404,6 @@ impl AppWindow {
         settings.connect_changed(Some("show-color-name"), update_color.clone());
 
         //update precision
-        settings.connect_changed(Some("use-default-precision"), update_color.clone());
         settings.connect_changed(Some("precision-digits"), update_color.clone());
 
         // update for custom formats
@@ -604,7 +603,6 @@ impl AppWindow {
             settings.int("cie-standard-observer") == 1,
             Illuminant::from(settings.int("cie-illuminants") as u32),
             AlphaPosition::from(settings.int("alpha-position") as u32),
-            settings.boolean("use-default-precision"),
             settings.uint("precision-digits") as usize,
             color,
         );

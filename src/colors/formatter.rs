@@ -9,7 +9,6 @@ use super::{color::Color, illuminant::Illuminant, position::AlphaPosition};
 pub struct ColorFormatter {
     settings: gtk::gio::Settings,
     pub color: Color,
-    pub default_precision: bool,
     pub precision: usize,
     pub alpha_position: AlphaPosition,
     pub illuminant: Illuminant,
@@ -20,7 +19,6 @@ impl Default for ColorFormatter {
     fn default() -> Self {
         Self {
             color: Default::default(),
-            default_precision: true,
             precision: 2,
             alpha_position: Default::default(),
             illuminant: Default::default(),
@@ -48,7 +46,6 @@ impl ColorFormatter {
         ten_deg_observer: bool,
         illuminant: Illuminant,
         alpha_position: AlphaPosition,
-        default_precision: bool,
         precision: usize,
         color: Color,
     ) -> Self {
@@ -56,7 +53,6 @@ impl ColorFormatter {
             ten_deg_observer,
             illuminant,
             alpha_position,
-            default_precision,
             precision,
             color,
             ..Default::default()
@@ -103,11 +99,7 @@ impl ColorFormatter {
     /// If the default_precision is set to true, 2 is returned.
     /// Otherwise the precision.
     fn precision(&self) -> usize {
-        if self.default_precision {
-            2
-        } else {
-            self.precision
-        }
+        self.precision
     }
 
     /// Returns a prettified string of the given value in range [0; 1].
@@ -263,12 +255,7 @@ impl ColorFormatter {
             x,
             y,
             z,
-            //this is the only format that has 3 digit precision by default, override the default precision
-            precision = if self.default_precision {
-                3
-            } else {
-                self.precision()
-            }
+            precision = self.precision()
         )
     }
 

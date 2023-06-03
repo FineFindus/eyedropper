@@ -41,20 +41,6 @@
                         </child>
                         <child>
                             <object class="AdwActionRow">
-                                <property name="title" translatable="yes">Default Precision</property>
-                                <property name="subtitle" translatable="yes">Use the recommended precision</property>
-                                <property name="activatable">True</property>
-                                <property name="activatable-widget">default_precision_switch</property>
-                                <child type="suffix">
-                                    <object class="GtkSwitch" id="default_precision_switch">
-                                        <property name="valign">center</property>
-                                    </object>
-                                </child>
-                            </object>
-                        </child>
-                        <child>
-                            <object class="AdwActionRow">
-                                <property name="sensitive" bind-source="default_precision_switch" bind-property="state" bind-flags="sync-create|invert-boolean" />
                                 <property name="title" translatable="yes">Precision</property>
                                 <child type="suffix">
                                     <object class="GtkSpinButton" id="precision_spin_button">
