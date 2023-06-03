@@ -208,7 +208,7 @@
                         <child>
                             <object class="CustomFormatRow">
                                 <property name="title" translatable="yes">CIELCh/HCL Format</property>
-                                <property name="default-format">lch({h}, {c}, {l})</property>
+                                <property name="default-format">lch({l}, {c}, {h})</property>
                                 <property name="settings-key">custom-format-hcl</property>
                             </object>
                         </child>

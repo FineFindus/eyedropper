@@ -307,9 +307,9 @@ impl ColorFormatter {
         );
         format!(
             "lch({:.precision$}, {:.precision$}, {:.precision$})",
-            h,
-            c,
             l,
+            c,
+            h,
             precision = self.precision()
         )
     }
