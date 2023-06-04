@@ -13,6 +13,11 @@
       <default>false</default>
       <summary>Window maximized state</summary>
     </key>
+    <key name="visible-formats" type="as">
+      <default>[ 'name', 'hex', 'rgb', 'hsl', 'hsv', 'cmyk' ]</default>
+      <summary>Visible formats</summary>
+      <description>Visible formats in the main screen</description>
+    </key>
     <key name="format-order" type="as">
       <default>[ 'name', 'hex', 'rgb', 'hsl', 'hsv', 'cmyk', 'xyz', 'cielab', 'hwb', 'hcl', 'lms', 'hunterlab' ]</default>
       <summary>Format Order</summary>
@@ -173,6 +178,5 @@
       <summary>Custom Hunter-Lab format</summary>
       <description>A user set format for Hunter-Lab. If it's empty, the default format will be used.</description>
     </key>
-
   </schema>
 </schemalist>

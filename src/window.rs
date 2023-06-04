@@ -138,7 +138,7 @@ mod imp {
             obj.load_window_size();
             obj.setup_history();
             obj.setup_callbacks();
-            obj.set_order();
+            obj.order_formats();
             obj.load_visibility_settings();
             obj.set_stack();
         }
@@ -382,14 +382,14 @@ impl AppWindow {
             Some("format-order"),
             glib::clone!(@weak self as window => move |_, _| {
                 log::debug!("Updating format order");
-                window.set_order();
+                window.order_formats();
             }),
         );
 
         // update the color by setting it again
         let update_color = glib::clone!(@weak self as window => move |_: &gio::Settings, _:&str| {
             if let Some(color) = window.color() {
-            window.set_color(color);
+                window.set_color(color);
             }
         });
 
@@ -417,6 +417,13 @@ impl AppWindow {
         settings.connect_changed(Some("custom-format-hcl"), update_color.clone());
         settings.connect_changed(Some("custom-format-lms"), update_color.clone());
         settings.connect_changed(Some("custom-format-hunter-lab"), update_color);
+
+        settings.connect_changed(
+            Some("visible-formats"),
+            glib::clone!(@weak self as window => move |_settings: &gio::Settings, _: &str| {
+                window.order_formats();
+            }),
+        );
 
         imp.hex_row.set_settings_name("show-hex-format");
         imp.rgb_row.set_settings_name("show-rgb-format");
@@ -476,12 +483,10 @@ impl AppWindow {
     }
 
     /// Insert the formats in the order in which they are saved in the settings.
-    fn set_order(&self) {
+    fn order_formats(&self) {
         let imp = self.imp();
         let format_box = &imp.format_box;
-        //clear box
 
-        //remove all children that are color model entries
         format_box
             .observe_children()
             .snapshot()
@@ -489,32 +494,45 @@ impl AppWindow {
             .filter_map(Cast::downcast_ref::<ColorFormatRow>)
             .for_each(|row| format_box.remove(row));
 
-        //parse current order
         let order = imp.settings.get::<Vec<String>>("format-order");
         log::debug!("Format-Order: {:?}", order);
 
-        //insert items in order
-        for item in order {
-            let child = match item.to_lowercase().as_str() {
-                "hex" => &imp.hex_row,
-                "rgb" => &imp.rgb_row,
-                "hsl" => &imp.hsl_row,
-                "hsv" => &imp.hsv_row,
-                "cmyk" => &imp.cmyk_row,
-                "xyz" => &imp.xyz_row,
-                "cielab" => &imp.cie_lab_row,
-                "hwb" => &imp.hwb_row,
-                "hcl" => &imp.hcl_row,
-                "name" => &imp.name_row,
-                "lms" => &imp.lms_row,
-                "hunterlab" => &imp.hunter_lab_row,
-                _ => {
-                    log::error!("Failed to find format: {}", item);
-                    continue;
-                }
-            };
+        order
+            .iter()
+            .filter_map(|item| self.map_format(item))
+            .for_each(|child| format_box.append(&child.get()));
+    }
 
-            format_box.append(&child.get());
+    /// Returns a reference to the `input` named `ColorFormatRow`, or `None` if it could not be found.
+    ///
+    /// The checking is done case insensitive.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// if let Some(row) = self.map_format("rgb") {
+    ///     row.set_text("RGB");
+    /// }
+    /// ```
+    fn map_format(&self, item: &str) -> Option<&TemplateChild<ColorFormatRow>> {
+        let imp = self.imp();
+        match item.to_lowercase().as_str() {
+            "hex" => Some(&imp.hex_row),
+            "rgb" => Some(&imp.rgb_row),
+            "hsl" => Some(&imp.hsl_row),
+            "hsv" => Some(&imp.hsv_row),
+            "cmyk" => Some(&imp.cmyk_row),
+            "xyz" => Some(&imp.xyz_row),
+            "cielab" => Some(&imp.cie_lab_row),
+            "hwb" => Some(&imp.hwb_row),
+            "hcl" => Some(&imp.hcl_row),
+            "name" => Some(&imp.name_row),
+            "lms" => Some(&imp.lms_row),
+            "hunterlab" => Some(&imp.hunter_lab_row),
+            _ => {
+                log::error!("Failed to find format: {}", item);
+                None
+            }
         }
     }
 
