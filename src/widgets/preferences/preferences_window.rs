@@ -14,7 +14,8 @@ use gtk::Switch;
 use crate::colors::color::Color;
 use crate::colors::formatter::ColorFormatter;
 
-use super::preferences::color_format::ColorFormatObject;
+use super::color_format::ColorFormatObject;
+use super::name_set_dialog::NameSourcesDialog;
 
 mod imp {
 
@@ -27,9 +28,8 @@ mod imp {
 
     use super::*;
 
-    // Object holding the state
     #[derive(Debug, gtk::CompositeTemplate)]
-    #[template(resource = "/com/github/finefindus/eyedropper/ui/preferences.ui")]
+    #[template(resource = "/com/github/finefindus/eyedropper/ui/preferences/preferences.ui")]
     pub struct PreferencesWindow {
         pub settings: gtk::gio::Settings,
         #[template_child()]
@@ -48,10 +48,8 @@ mod imp {
         pub format_order: RefCell<Option<gio::ListStore>>,
     }
 
-    // The central trait for subclassing a GObject
     #[glib::object_subclass]
     impl ObjectSubclass for PreferencesWindow {
-        // `NAME` needs to match `class` attribute of template
         const NAME: &'static str = "PreferencesWindow";
         type Type = super::PreferencesWindow;
         type ParentType = adw::PreferencesWindow;
@@ -79,7 +77,6 @@ mod imp {
         }
     }
 
-    // Trait shared by all GObjects
     impl ObjectImpl for PreferencesWindow {
         fn constructed(&self) {
             self.parent_constructed();
@@ -144,65 +141,9 @@ impl PreferencesWindow {
     /// Shows a dialog letting the use choose which name sets should be used.
     #[template_callback]
     fn on_name_row_activated(&self, _row: &adw::ActionRow) {
-        let list = gtk::ListBox::builder()
-            .margin_top(12)
-            .margin_start(12)
-            .margin_end(12)
-            .margin_bottom(12)
-            .css_classes(vec!["boxed-list".to_string()])
-            .build();
-
-        list.append(&self.name_set_row(
-            &pgettext(
-                "Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/#html4",
-                "Basic",
-            ),
-            &gettext("Show color names from the w3c basic color keyword set"),
-            "name-source-basic",
-        ));
-        list.append(&self.name_set_row(
-            &pgettext(
-                "Name of the extended color keyword set from https://www.w3.org/TR/css-color-3/#svg-color",
-                "Extended",
-            ),
-            &gettext("Show color names from the w3c extended color keyword  set"),
-            "name-source-extended",
-        ));
-        list.append(&self.name_set_row(
-            &pgettext("Name of the color set from the GNOME color palette (https://developer.gnome.org/hig/reference/palette.html)", "GNOME color palette"),
-            &gettext("Show color names from the GNOME color palette"),
-            "name-source-gnome-palette",
-        ));
-        list.append(&self.name_set_row(
-            &pgettext("Name of the color set from the xkcd color survey", "xkcd"),
-            &gettext("Show color names from the xkcd color survey"),
-            "name-source-xkcd",
-        ));
-
-        let dialog = gtk::Window::builder()
-            .transient_for(self)
-            .modal(true)
-            .child(&list)
-            .build();
+        let dialog = NameSourcesDialog::new();
+        dialog.set_transient_for(Some(self));
         dialog.set_visible(true);
-    }
-
-    /// Build an ActionRow for the name setting.
-    fn name_set_row(&self, title: &str, subtitle: &str, source: &str) -> adw::ActionRow {
-        let switch = gtk::Switch::builder()
-            .valign(gtk::Align::Center)
-            .can_focus(false)
-            .build();
-
-        self.imp().settings.bind(source, &switch, "active").build();
-
-        let row = adw::ActionRow::builder()
-            .title(title)
-            .subtitle(subtitle)
-            .activatable_widget(&switch)
-            .build();
-        row.add_suffix(&switch);
-        row
     }
 
     /// Returns the formats list store object.

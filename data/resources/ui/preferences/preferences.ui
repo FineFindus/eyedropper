@@ -28,8 +28,8 @@
                         </child>
                         <child>
                             <object class="AdwActionRow">
-                                <property name="title" translatable="yes">Name Sets</property>
-                                <property name="subtitle" translatable="yes">Which color name sets should be used for the names</property>
+                                <property name="title" translatable="yes">Name Sources</property>
+                                <property name="subtitle" translatable="yes">Sources for displaying color names</property>
                                 <property name="activatable">True</property>
                                 <signal name="activated" handler="on_name_row_activated" swapped="true" />
                                 <child type="suffix">
