@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-06-04 20:26+0000\n"
+"POT-Creation-Date: 2023-06-08 16:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -601,7 +601,7 @@ msgid ""
 "li><li>Improved editing experience when change the Hex color/name</li></ul>"
 msgstr ""
 
-#: src/widgets/color_format_row.rs:251
+#: src/widgets/color_format_row.rs:240
 msgid "Copied “{}”"
 msgstr ""
 
@@ -643,35 +643,35 @@ msgctxt "Color palette consisting of six slight shifted colors"
 msgid "Analogous"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:258
+#: src/widgets/preferences/preferences_window.rs:290
 msgid "Move Up"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:260
+#: src/widgets/preferences/preferences_window.rs:292
 msgid "Move Down"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:383
+#: src/widgets/preferences/preferences_window.rs:401
 msgid "Hex-Code"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:388
+#: src/widgets/preferences/preferences_window.rs:402
 msgid "RGB"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:391
+#: src/widgets/preferences/preferences_window.rs:403
 msgid "HSL"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:394
+#: src/widgets/preferences/preferences_window.rs:404
 msgid "HSV"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:398
+#: src/widgets/preferences/preferences_window.rs:405
 msgid "CMYK"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:403
+#: src/widgets/preferences/preferences_window.rs:406
 msgid "XYZ"
 msgstr ""
 
@@ -679,29 +679,29 @@ msgstr ""
 msgid "CIELAB"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:412
+#: src/widgets/preferences/preferences_window.rs:408
 msgid "HWB"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:416
+#: src/widgets/preferences/preferences_window.rs:409
 msgid "CIELCh / HCL"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:422
+#: src/widgets/preferences/preferences_window.rs:412
 msgid "Name"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:425 src/window.rs:455
-#: src/window.rs:478 src/window.rs:660 src/window.rs:841
+#: src/widgets/preferences/preferences_window.rs:415 src/window.rs:438
+#: src/window.rs:463 src/window.rs:651 src/window.rs:832
 msgctxt "Information that no name for the color could be found"
 msgid "Not named"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:430
+#: src/widgets/preferences/preferences_window.rs:418
 msgid "LMS"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:434
+#: src/widgets/preferences/preferences_window.rs:420
 msgid "Hunter Lab"
 msgstr ""
 
@@ -713,10 +713,10 @@ msgstr ""
 msgid "Undo"
 msgstr ""
 
-#: src/window.rs:562
+#: src/window.rs:553
 msgid "Failed to get palette color"
 msgstr ""
 
-#: src/window.rs:594
+#: src/window.rs:585
 msgid "Failed to pick a color"
 msgstr ""
