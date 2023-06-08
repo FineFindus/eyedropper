@@ -83,7 +83,7 @@ mod imp {
             let obj = self.obj();
             obj.setup_order_list();
             obj.setup_settings();
-            obj.add_options();
+            obj.populate_formats();
         }
     }
 
@@ -135,7 +135,7 @@ impl PreferencesWindow {
         log::debug!("Resetting order");
         self.formats().remove_all();
         self.imp().settings.reset("format-order");
-        self.add_options();
+        self.populate_formats();
     }
 
     /// Shows a dialog letting the use choose which name sets should be used.
@@ -148,7 +148,6 @@ impl PreferencesWindow {
 
     /// Returns the formats list store object.
     fn formats(&self) -> gio::ListStore {
-        // Get state
         self.imp()
             .format_order
             .borrow()
@@ -156,13 +155,20 @@ impl PreferencesWindow {
             .expect("Could not get current formats.")
     }
 
-    fn format_order_list(&self) -> Vec<String> {
-        self.formats()
+    /// Saves the current format order to the settings.
+    fn save_format_order(&self) {
+        let formats = self
+            .formats()
             .snapshot()
             .iter()
             .filter_map(Cast::downcast_ref::<ColorFormatObject>)
-            .map(|format| format.identifier())
-            .collect()
+            .map(ColorFormatObject::identifier)
+            .collect::<Vec<String>>();
+
+        self.imp()
+            .settings
+            .set("format-order", &formats)
+            .expect("Failed to save format-order: {}");
     }
 
     /// Assure that formats is only visible
@@ -260,6 +266,7 @@ impl PreferencesWindow {
                     log::debug!("Moving {} up", item.label());
                     window.formats().remove(index);
                     window.formats().insert(index.saturating_sub(1), &item);
+                    window.save_format_order();
                 }
             }),
         );
@@ -273,6 +280,7 @@ impl PreferencesWindow {
                     window.formats().remove(index);
                     //index should not be larger than the largest index
                     window.formats().insert((index + 1).min(window.formats().n_items()), &item);
+                    window.save_format_order();
                 }
             }),
         );
@@ -295,9 +303,9 @@ impl PreferencesWindow {
         row.add_suffix(&menu_button);
 
         //drag handle
-        let handle = gtk::Image::from_icon_name("list-drag-handle-symbolic");
-        handle.add_css_class("drag-handle");
-        row.add_prefix(&handle);
+        let drag_handle = gtk::Image::from_icon_name("list-drag-handle-symbolic");
+        drag_handle.add_css_class("drag-handle");
+        row.add_prefix(&drag_handle);
 
         let drag = gtk::DragSource::builder()
             .name("preferences-drag-format")
@@ -326,7 +334,7 @@ impl PreferencesWindow {
             let value = value.get::<ColorFormatObject>().expect("Failed to get index value");
 
             if item == value {
-                return  false;
+                return false;
             }
 
             //remove dragged row
@@ -342,11 +350,7 @@ impl PreferencesWindow {
                                 widget.formats().insert(target_index, &value);
                             }
 
-                            //update settings with new order
-                            match widget.imp().settings.set("format-order", widget.format_order_list()) {
-                                Ok(_) => {},
-                                Err(err) => log::error!("Failed to save format-order: {}", err)
-                            }
+                            widget.save_format_order();
                         },
                         None => log::error!("Failed to find index for {:?}", item)
 
@@ -360,11 +364,11 @@ impl PreferencesWindow {
         row
     }
 
-    fn add_options(&self) {
+    fn populate_formats(&self) {
         //color used as examples
-        let color = Color::rgb(46, 52, 64);
+        let example_color = Color::rgb(46, 52, 64);
         //create a formatter to display the color
-        let formatter = ColorFormatter::with_color(color);
+        let formatter = ColorFormatter::with_color(example_color);
 
         let mut order = self.imp().settings.get::<Vec<String>>("format-order");
         log::debug!("Order: {:?}", order);
@@ -387,14 +391,7 @@ impl PreferencesWindow {
                 log::debug!("Saved order does not contain {} at index {}", item, index);
                 order.insert(index, item.to_owned());
                 //override previously saved order
-                match self
-                    .imp()
-                    .settings
-                    .set("format-order", &self.format_order_list())
-                {
-                    Ok(_) => {}
-                    Err(err) => log::error!("Failed to save format-order: {}", err),
-                }
+                self.save_format_order();
                 log::debug!("Order with new items: {:?}", order);
             }
         }
