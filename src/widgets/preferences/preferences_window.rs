@@ -209,7 +209,31 @@ impl PreferencesWindow {
 
         self.imp()
             .settings
-            .bind(&item.settings_name(), &switch, "active")
+            .bind("visible-formats", item, "visible")
+            .mapping(
+                glib::clone!(@weak item => @default-return None, move |value, _variant| {
+                    let visible = value.get::<Vec<String>>().unwrap_or(Vec::with_capacity(0));
+                    Some(visible.contains(&item.identifier()).to_value())
+                }),
+            )
+            .set_mapping(
+                glib::clone!(@weak self as window, @weak item => @default-return None, move |value, _variant| {
+                    let active = value.get::<bool>().expect("Failed to get bool from switch active property");
+                    let mut visible_formats= window.imp().settings.get::<Vec<String>>("visible-formats");
+
+                    if active {
+                        visible_formats.push(item.identifier());
+                    } else {
+                        visible_formats.retain(|format| format != &item.identifier());
+                    }
+
+                    Some(visible_formats.to_variant())
+                }),
+            )
+            .build();
+        item.bind_property("visible", &switch, "active")
+            .bidirectional()
+            .sync_create()
             .build();
 
         let row = adw::ActionRow::builder()
@@ -371,52 +395,21 @@ impl PreferencesWindow {
                     Ok(_) => {}
                     Err(err) => log::error!("Failed to save format-order: {}", err),
                 }
+                log::debug!("Order with new items: {:?}", order);
             }
         }
 
-        log::debug!("Order with new items: {:?}", order);
-
         for item in order {
             let format = match item.to_lowercase().as_str() {
-                "hex" => ColorFormatObject::new(
-                    item,
-                    gettext("Hex-Code"),
-                    formatter.hex_code(),
-                    "show-hex-format",
-                ),
-                "rgb" => {
-                    ColorFormatObject::new(item, gettext("RGB"), formatter.rgb(), "show-rgb-format")
-                }
-                "hsl" => {
-                    ColorFormatObject::new(item, gettext("HSL"), formatter.hsl(), "show-hsl-format")
-                }
-                "hsv" => {
-                    ColorFormatObject::new(item, gettext("HSV"), formatter.hsv(), "show-hsv-format")
-                }
-                "cmyk" => ColorFormatObject::new(
-                    item,
-                    gettext("CMYK"),
-                    formatter.cmyk(),
-                    "show-cmyk-format",
-                ),
-                "xyz" => {
-                    ColorFormatObject::new(item, gettext("XYZ"), formatter.xyz(), "show-xyz-format")
-                }
-                "cielab" => ColorFormatObject::new(
-                    item,
-                    gettext("CIELAB"),
-                    formatter.cie_lab(),
-                    "show-cie-lab-format",
-                ),
-                "hwb" => {
-                    ColorFormatObject::new(item, gettext("HWB"), formatter.hwb(), "show-hwb-format")
-                }
-                "hcl" => ColorFormatObject::new(
-                    item,
-                    gettext("CIELCh / HCL"),
-                    formatter.hcl(),
-                    "show-hcl-format",
-                ),
+                "hex" => ColorFormatObject::new(item, gettext("Hex-Code"), formatter.hex_code()),
+                "rgb" => ColorFormatObject::new(item, gettext("RGB"), formatter.rgb()),
+                "hsl" => ColorFormatObject::new(item, gettext("HSL"), formatter.hsl()),
+                "hsv" => ColorFormatObject::new(item, gettext("HSV"), formatter.hsv()),
+                "cmyk" => ColorFormatObject::new(item, gettext("CMYK"), formatter.cmyk()),
+                "xyz" => ColorFormatObject::new(item, gettext("XYZ"), formatter.xyz()),
+                "cielab" => ColorFormatObject::new(item, gettext("CIELAB"), formatter.cie_lab()),
+                "hwb" => ColorFormatObject::new(item, gettext("HWB"), formatter.hwb()),
+                "hcl" => ColorFormatObject::new(item, gettext("CIELCh / HCL"), formatter.hcl()),
                 "name" => ColorFormatObject::new(
                     item,
                     gettext("Name"),
@@ -424,17 +417,11 @@ impl PreferencesWindow {
                         "Information that no name for the color could be found",
                         "Not named",
                     ),
-                    "show-color-name",
                 ),
-                "lms" => {
-                    ColorFormatObject::new(item, gettext("LMS"), formatter.lms(), "show-lms-format")
+                "lms" => ColorFormatObject::new(item, gettext("LMS"), formatter.lms()),
+                "hunterlab" => {
+                    ColorFormatObject::new(item, gettext("Hunter Lab"), formatter.hunter_lab())
                 }
-                "hunterlab" => ColorFormatObject::new(
-                    item,
-                    gettext("Hunter Lab"),
-                    formatter.hunter_lab(),
-                    "show-hunter-lab-format",
-                ),
                 _ => {
                     log::error!("Failed to find format: {item}");
                     continue;

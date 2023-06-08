@@ -22,11 +22,10 @@ mod imp {
         pub label: RefCell<String>,
         #[property(get, set)]
         pub example: RefCell<String>,
-        #[property(name = "settings-name", get, set)]
-        pub settings_name: RefCell<String>,
+        #[property(get, set, default = false)]
+        pub visible: RefCell<bool>,
     }
 
-    // The central trait for subclassing a GObject
     #[glib::object_subclass]
     impl ObjectSubclass for ColorFormatObject {
         const NAME: &'static str = "ColorFormatObject";
@@ -53,12 +52,11 @@ glib::wrapper! {
 }
 
 impl ColorFormatObject {
-    pub fn new(identifier: String, label: String, format: String, settings_name: &str) -> Self {
+    pub fn new(identifier: String, label: String, format: String) -> Self {
         Object::builder()
             .property("identifier", &identifier)
             .property("label", &label)
             .property("example", &format)
-            .property("settings-name", settings_name)
             .build()
     }
 }

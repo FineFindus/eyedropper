@@ -495,12 +495,18 @@ impl AppWindow {
             .for_each(|row| format_box.remove(row));
 
         let order = imp.settings.get::<Vec<String>>("format-order");
-        log::debug!("Format-Order: {:?}", order);
+        let visible = imp.settings.get::<Vec<String>>("visible-formats");
+        log::debug!("Formats: {:?}", order);
+        log::debug!("Visible: {:?}", visible);
 
         order
             .iter()
+            .filter(|item| visible.contains(item))
             .filter_map(|item| self.map_format(item))
-            .for_each(|child| format_box.append(&child.get()));
+            .for_each(|child| {
+                format_box.append(&child.get());
+                child.set_visible(true);
+            });
     }
 
     /// Returns a reference to the `input` named `ColorFormatRow`, or `None` if it could not be found.
