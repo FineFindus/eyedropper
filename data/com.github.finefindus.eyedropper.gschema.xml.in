@@ -33,66 +33,6 @@
       <summary>Shades/Tints Quantinty</summary>
       <description>How many shades/tints are generated and displayed in the palette dialog. It's not recommend to change this setting beyond reseanable defaults, as it will not work correctly.</description>
     </key>
-    <key name="show-hex-format" type="b">
-      <default>true</default>
-      <summary>Show hex format</summary>
-      <description>Changes the visibility of the hex format.</description>
-    </key>
-    <key name="show-rgb-format" type="b">
-      <default>true</default>
-      <summary>Show RGB format</summary>
-      <description>Changes the visibility of the RGB format.</description>
-    </key>
-    <key name="show-hsl-format" type="b">
-      <default>true</default>
-      <summary>Show HSL format</summary>
-      <description>Changes the visibility of the HSL format.</description>
-    </key>
-    <key name="show-hsv-format" type="b">
-      <default>true</default>
-      <summary>Show HSV format</summary>
-      <description>Changes the visibility of the HSV format.</description>
-    </key>
-    <key name="show-cmyk-format" type="b">
-      <default>true</default>
-      <summary>Show CMYK format</summary>
-      <description>Changes the visibility of the CMYK format.</description>
-    </key>
-    <key name="show-xyz-format" type="b">
-      <default>false</default>
-      <summary>Show XYZ format</summary>
-      <description>Changes the visibility of the XYZ format.</description>
-    </key>
-    <key name="show-cie-lab-format" type="b">
-      <default>false</default>
-      <summary>Show CIELAB format</summary>
-      <description>Changes the visibility of the CIELAB format.</description>
-    </key>
-    <key name="show-hwb-format" type="b">
-      <default>false</default>
-      <summary>Show HWB format</summary>
-      <description>Changes the visibility of the HWB format.</description>
-    </key>
-    <key name="show-hcl-format" type="b">
-      <default>false</default>
-      <summary>Show HCL format</summary>
-      <description>Changes the visibility of the HCL format.</description>
-    </key>
-    <key name="show-color-name" type="b">
-      <default>false</default>
-      <summary>Show color name</summary>
-      <description>Changes the visibility of the color name.</description>
-    </key>
-    <key name="show-lms-format" type="b">
-      <default>false</default>
-      <summary>Show LMS format</summary>
-      <description>Changes the visibility of the LMS format.</description>
-    </key>
-    <key name="show-hunter-lab-format" type="b">
-      <default>false</default>
-      <summary>Show Hunter Lab</summary>
-      <description>Changes the visibility of the Hunter Lab format.</description>
-    </key>
     <key name="name-source-basic" type="b">
       <default>true</default>
       <summary>Show basic color names</summary>

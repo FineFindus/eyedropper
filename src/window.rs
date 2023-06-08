@@ -400,9 +400,6 @@ impl AppWindow {
         settings.connect_changed(Some("cie-illuminants"), update_color.clone());
         settings.connect_changed(Some("cie-standard-observer"), update_color.clone());
 
-        // update color name
-        settings.connect_changed(Some("show-color-name"), update_color.clone());
-
         //update precision
         settings.connect_changed(Some("precision-digits"), update_color.clone());
 
@@ -424,20 +421,6 @@ impl AppWindow {
                 window.order_formats();
             }),
         );
-
-        imp.hex_row.set_settings_name("show-hex-format");
-        imp.rgb_row.set_settings_name("show-rgb-format");
-        imp.hsl_row.set_settings_name("show-hsl-format");
-        imp.hsv_row.set_settings_name("show-hsv-format");
-        imp.cmyk_row.set_settings_name("show-cmyk-format");
-        imp.xyz_row.set_settings_name("show-xyz-format");
-        imp.cie_lab_row.set_settings_name("show-cie-lab-format");
-        imp.hwb_row.set_settings_name("show-hwb-format");
-        imp.hcl_row.set_settings_name("show-hcl-format");
-        imp.lms_row.set_settings_name("show-lms-format");
-        imp.hunter_lab_row
-            .set_settings_name("show-hunter-lab-format");
-        imp.name_row.set_settings_name("show-color-name");
 
         //update name when it changes
         let update_color_names = glib::clone!(@weak self as window => move |settings: &gio::Settings, _: &str| {
@@ -461,7 +444,9 @@ impl AppWindow {
         settings.connect_changed(Some("name-source-extended"), update_color_names.clone());
         settings.connect_changed(Some("name-source-xkcd"), update_color_names.clone());
 
-        let show_name_model = settings.boolean("show-color-name");
+        let show_name_model = settings
+            .get::<Vec<String>>("visible-formats")
+            .contains(&"name".to_owned());
         if show_name_model {
             if let Some(color) = self.color() {
                 //update field to show name

@@ -217,17 +217,6 @@ impl ColorFormatRow {
             }));
     }
 
-    /// Set the settings name.
-    ///
-    /// This creates a binding between the widget visibility and the setting.
-    pub fn set_settings_name(&self, settings_name: &str) {
-        //it seems like it is not possible to bind to the name of a property in a widget so this does the same thing but less pretty
-        self.imp()
-            .settings
-            .bind(settings_name, self, "visible")
-            .build();
-    }
-
     /// Callback when the button next to the entry is pressed.
     ///
     /// Depending on, if the entry has been edited, the button will either
