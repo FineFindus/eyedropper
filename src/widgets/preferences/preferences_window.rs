@@ -367,7 +367,7 @@ impl PreferencesWindow {
     fn populate_formats(&self) {
         //color used as examples
         let example_color = Color::rgb(46, 52, 64);
-        //create a formatter to display the color
+
         let formatter = ColorFormatter::with_color(example_color);
 
         let mut order = self.imp().settings.get::<Vec<String>>("format-order");

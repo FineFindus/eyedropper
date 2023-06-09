@@ -183,9 +183,7 @@ impl AppWindow {
             .add_toast(adw::Toast::new(text.as_ref()));
     }
 
-    /// The currently picked color.
-    ///
-    /// Returns `None` if no color has been picked yet.
+    /// The currently picked color, or `None` if the user hasn't picked one yet.
     fn color(&self) -> Option<Color> {
         *self.imp().color.borrow()
     }
@@ -348,16 +346,16 @@ impl AppWindow {
         let default_width = imp
             .settings
             .default_value("window-width")
-            .expect("Failed to get width i32 ")
+            .expect("Failed to get width widow-width")
             .get::<i32>()
-            .expect("Failed to get width i32 ");
+            .expect("Failed to get width i32");
 
         let default_height = imp
             .settings
             .default_value("window-height")
-            .expect("Failed to get height i32 ")
+            .expect("Failed to get height window-height")
             .get::<i32>()
-            .expect("Failed to get height i32 ");
+            .expect("Failed to get height i32");
 
         let width = imp.settings.int("window-width").max(default_width);
         let height = imp.settings.int("window-height").max(default_height);
@@ -432,8 +430,7 @@ impl AppWindow {
                     settings.boolean("name-source-gnome-palette"),
                     settings.boolean("name-source-xkcd"),
                 );
-                window.
-                imp().name_row.set_text(name.unwrap_or_else(|| pgettext(
+                window.imp().name_row.set_text(name.unwrap_or_else(|| pgettext(
                     "Information that no name for the color could be found",
                     "Not named",
                 )));
