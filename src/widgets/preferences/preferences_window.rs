@@ -330,33 +330,20 @@ impl PreferencesWindow {
         drop_target.set_types(&[ColorFormatObject::static_type()]);
 
         drop_target.connect_drop(glib::clone!(@weak self as widget, @weak item => @default-return false, move |_, value, _, _| {
-
             let value = value.get::<ColorFormatObject>().expect("Failed to get index value");
 
             if item == value {
                 return false;
             }
 
-            //remove dragged row
-            match widget.formats().find(&value) {
-                Some(source_index) => {
+            match (widget.formats().find(&value), widget.formats().find(&item)) {
+                (Some(source_index), Some(target_index)) => {
+                    log::debug!("Source: {} Target: {}", source_index, target_index);
                     widget.formats().remove(source_index);
-
-                    match widget.formats().find(&item) {
-                        Some(target_index) => {
-                            if target_index >= source_index {
-                                widget.formats().insert(target_index + 1, &value);
-                            } else {
-                                widget.formats().insert(target_index, &value);
-                            }
-
-                            widget.save_format_order();
-                        },
-                        None => log::error!("Failed to find index for {:?}", item)
-
-                    }
+                    widget.formats().insert(target_index, &value);
+                    widget.save_format_order();
                 },
-                None => log::error!("Failed to find index for {:?}", value),
+                (source, target) => log::error!("Failed to find indices for dragged row, source: {:?}, target: {:?}", source, target),
             }
             true
         }));
