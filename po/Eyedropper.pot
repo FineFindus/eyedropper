@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-06-08 16:29+0000\n"
+"POT-Creation-Date: 2023-06-11 19:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -605,40 +605,40 @@ msgstr ""
 msgid "Copied “{}”"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:152
+#: src/widgets/palette_dialog.rs:135
 msgctxt "Name for tints (lighter variants) of the color"
 msgid "Tints"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:156
+#: src/widgets/palette_dialog.rs:139
 msgctxt "Name for shades (darker variants) of the color"
 msgid "Shades"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:162
+#: src/widgets/palette_dialog.rs:145
 msgctxt "Name for the opposite/complementary color (e.g. blue ⇔ yellow)"
 msgid "Complementary"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:169
+#: src/widgets/palette_dialog.rs:152
 msgctxt ""
 "The name of the color palette. Consist of the two opposite colors (e.g. blue "
 "⇔ orange / green)"
 msgid "Split-Complementary"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:176
+#: src/widgets/palette_dialog.rs:159
 msgctxt ""
 "Name of the color palette, which would form a triangle above the color wheel"
 msgid "Triadic"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:181
+#: src/widgets/palette_dialog.rs:164
 msgctxt "The name of the color palette."
 msgid "Tetradic"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:187
+#: src/widgets/palette_dialog.rs:170
 msgctxt "Color palette consisting of six slight shifted colors"
 msgid "Analogous"
 msgstr ""
@@ -651,72 +651,72 @@ msgstr ""
 msgid "Move Down"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:401
+#: src/widgets/preferences/preferences_window.rs:388
 msgid "Hex-Code"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:402
+#: src/widgets/preferences/preferences_window.rs:389
 msgid "RGB"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:403
+#: src/widgets/preferences/preferences_window.rs:390
 msgid "HSL"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:404
+#: src/widgets/preferences/preferences_window.rs:391
 msgid "HSV"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:405
+#: src/widgets/preferences/preferences_window.rs:392
 msgid "CMYK"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:406
+#: src/widgets/preferences/preferences_window.rs:393
 msgid "XYZ"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:407
+#: src/widgets/preferences/preferences_window.rs:394
 msgid "CIELAB"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:408
+#: src/widgets/preferences/preferences_window.rs:395
 msgid "HWB"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:409
+#: src/widgets/preferences/preferences_window.rs:396
 msgid "CIELCh / HCL"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:412
+#: src/widgets/preferences/preferences_window.rs:399
 msgid "Name"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:415 src/window.rs:438
-#: src/window.rs:463 src/window.rs:651 src/window.rs:832
+#: src/widgets/preferences/preferences_window.rs:402 src/window.rs:435
+#: src/window.rs:460 src/window.rs:648 src/window.rs:829
 msgctxt "Information that no name for the color could be found"
 msgid "Not named"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:418
+#: src/widgets/preferences/preferences_window.rs:405
 msgid "LMS"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:420
+#: src/widgets/preferences/preferences_window.rs:407
 msgid "Hunter Lab"
 msgstr ""
 
-#: src/window.rs:223
+#: src/window.rs:221
 msgid "Cleared history"
 msgstr ""
 
-#: src/window.rs:224
+#: src/window.rs:222
 msgid "Undo"
 msgstr ""
 
-#: src/window.rs:553
+#: src/window.rs:550
 msgid "Failed to get palette color"
 msgstr ""
 
-#: src/window.rs:585
+#: src/window.rs:582
 msgid "Failed to pick a color"
 msgstr ""
