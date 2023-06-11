@@ -15,7 +15,7 @@ use crate::widgets::color_format_row::ColorFormatRow;
 use crate::widgets::palette_dialog::PaletteDialog;
 
 mod imp {
-    use std::cell::RefCell;
+    use std::cell::{Cell, RefCell};
 
     use crate::widgets;
 
@@ -67,7 +67,7 @@ mod imp {
         pub history_list: TemplateChild<gtk::ListBox>,
         pub history: RefCell<Option<gio::ListStore>>,
         pub settings: gio::Settings,
-        pub color: RefCell<Option<Color>>,
+        pub color: Cell<Option<Color>>,
         pub portal_error: RefCell<Option<ashpd::Error>>,
     }
 
@@ -95,7 +95,7 @@ mod imp {
                 history_list: TemplateChild::default(),
                 history: Default::default(),
                 settings: gio::Settings::new(APP_ID),
-                color: RefCell::new(None),
+                color: Cell::new(None),
                 portal_error: RefCell::new(None),
             }
         }
@@ -185,7 +185,7 @@ impl AppWindow {
 
     /// The currently picked color, or `None` if the user hasn't picked one yet.
     fn color(&self) -> Option<Color> {
-        *self.imp().color.borrow()
+        self.imp().color.get()
     }
 
     /// Set the stack to either show the main page or the placeholder,

@@ -10,7 +10,10 @@ use gtk::{
 };
 
 mod imp {
-    use std::cell::RefCell;
+    use std::{
+        cell::{Cell, RefCell},
+        rc::Rc,
+    };
 
     use crate::config;
 
@@ -33,7 +36,7 @@ mod imp {
         #[property(set, get)]
         pub tooltip: RefCell<String>,
         #[property(set, get, default = true)]
-        pub editable: RefCell<bool>,
+        pub editable: Cell<bool>,
     }
 
     #[glib::object_subclass]
@@ -49,7 +52,7 @@ mod imp {
                 format_button: TemplateChild::default(),
                 tooltip: RefCell::new(String::new()),
                 color: RefCell::new(String::new()),
-                editable: RefCell::new(true),
+                editable: Cell::new(true),
             }
         }
 

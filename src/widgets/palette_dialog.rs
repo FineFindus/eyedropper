@@ -6,7 +6,7 @@ use crate::colors::{color::Color, formatter::ColorFormatter, position::AlphaPosi
 
 mod imp {
 
-    use std::cell::RefCell;
+    use std::cell::Cell;
 
     use glib::{
         subclass::{self, Signal},
@@ -22,7 +22,7 @@ mod imp {
     #[derive(Debug, CompositeTemplate)]
     #[template(resource = "/com/github/finefindus/eyedropper/ui/palette-window.ui")]
     pub struct PaletteDialog {
-        pub color: RefCell<gtk::gdk::RGBA>,
+        pub color: Cell<gtk::gdk::RGBA>,
         #[template_child]
         pub palettes_list: TemplateChild<gtk::ListBox>,
         pub settings: gtk::gio::Settings,
@@ -36,7 +36,7 @@ mod imp {
 
         fn new() -> Self {
             Self {
-                color: RefCell::new(gtk::gdk::RGBA::BLACK),
+                color: Cell::new(gtk::gdk::RGBA::BLACK),
                 palettes_list: TemplateChild::default(),
                 settings: gtk::gio::Settings::new(config::APP_ID),
             }
@@ -88,7 +88,7 @@ mod imp {
 
         fn property(&self, _id: usize, pspec: &ParamSpec) -> glib::Value {
             match pspec.name() {
-                "color" => self.color.borrow().to_value(),
+                "color" => self.color.get().to_value(),
                 _ => unimplemented!(),
             }
         }

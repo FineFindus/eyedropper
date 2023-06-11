@@ -4,7 +4,7 @@ use glib::{Object, ObjectExt};
 
 mod imp {
 
-    use std::cell::RefCell;
+    use std::cell::{Cell, RefCell};
 
     use super::*;
 
@@ -23,7 +23,7 @@ mod imp {
         #[property(get, set)]
         pub example: RefCell<String>,
         #[property(get, set, default = false)]
-        pub visible: RefCell<bool>,
+        pub visible: Cell<bool>,
     }
 
     #[glib::object_subclass]
