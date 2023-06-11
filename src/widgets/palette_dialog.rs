@@ -10,18 +10,19 @@ mod imp {
 
     use glib::{
         subclass::{self, Signal},
-        ParamSpec,
+        ParamSpec, Properties, Value,
     };
-    use gtk::glib::ParamSpecBoxed;
     use once_cell::sync::Lazy;
 
     use crate::config;
 
     use super::*;
 
-    #[derive(Debug, CompositeTemplate)]
+    #[derive(Debug, CompositeTemplate, Properties)]
     #[template(resource = "/com/github/finefindus/eyedropper/ui/palette-window.ui")]
+    #[properties(wrapper_type = super::PaletteDialog)]
     pub struct PaletteDialog {
+        #[property(get, set)]
         pub color: Cell<gtk::gdk::RGBA>,
         #[template_child]
         pub palettes_list: TemplateChild<gtk::ListBox>,
@@ -71,26 +72,13 @@ mod imp {
         }
 
         fn properties() -> &'static [ParamSpec] {
-            static PROPERTIES: Lazy<Vec<ParamSpec>> =
-                Lazy::new(|| vec![ParamSpecBoxed::builder::<gtk::gdk::RGBA>("color").build()]);
-            PROPERTIES.as_ref()
+            Self::derived_properties()
         }
-
-        fn set_property(&self, _id: usize, value: &glib::Value, pspec: &ParamSpec) {
-            match pspec.name() {
-                "color" => {
-                    let input_value = value.get::<gtk::gdk::RGBA>().unwrap();
-                    self.color.replace(input_value);
-                }
-                _ => unimplemented!(),
-            }
+        fn set_property(&self, _id: usize, _value: &Value, _pspec: &ParamSpec) {
+            Self::derived_set_property(self, _id, _value, _pspec)
         }
-
-        fn property(&self, _id: usize, pspec: &ParamSpec) -> glib::Value {
-            match pspec.name() {
-                "color" => self.color.get().to_value(),
-                _ => unimplemented!(),
-            }
+        fn property(&self, _id: usize, _pspec: &ParamSpec) -> Value {
+            Self::derived_property(self, _id, _pspec)
         }
 
         fn constructed(&self) {
@@ -116,14 +104,9 @@ impl PaletteDialog {
         dialog
     }
 
-    /// Returns the given color as a [Color] struct instead of [gtk::gdk::RGBA]
-    fn color(&self) -> Color {
-        Color::from(self.property::<gtk::gdk::RGBA>("color"))
-    }
-
     /// Show palettes in the dialog.
     fn palettes(&self) -> Vec<Color> {
-        let color = self.color();
+        let color: Color = self.color().into();
         //capacity for all palettes
         let mut colors = Vec::with_capacity(28);
 
@@ -147,7 +130,7 @@ impl PaletteDialog {
 
         let quantity = self.imp().settings.uint("shades-tints-quantity").max(1) as usize;
 
-        let color: Color = self.color();
+        let color: Color = self.color().into();
         palettes.append(&self.create_palette_row(
             &pgettext("Name for tints (lighter variants) of the color", "Tints"),
             color.tints(0.15, quantity),
