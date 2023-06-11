@@ -279,7 +279,7 @@ impl AppWindow {
         let color_button = gtk::Button::builder().margin_end(2).margin_start(2).build();
 
         // color button with the history color
-        let color = history_object.color();
+        let color: Color = history_object.color().into();
         let mut formatter = ColorFormatter::with_color(color);
         let color_hex = formatter.hex_code();
 
@@ -311,7 +311,7 @@ impl AppWindow {
         //switch to color when clicked
         color_button.connect_clicked(
             glib::clone!(@weak self as window, @weak history_object => move |_, | {
-                window.set_color(history_object.color());
+                window.set_color(history_object.color().into());
                 //remove from history when clicking on it
                 match window.history().find(&history_object) {
                     Some(index) => window.history().remove(index),
