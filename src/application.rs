@@ -14,7 +14,7 @@ use crate::window::AppWindow;
 
 mod imp {
 
-    use std::cell::RefCell;
+    use std::cell::Cell;
 
     use crate::config;
 
@@ -27,7 +27,7 @@ mod imp {
     #[derive(Default)]
     pub struct App {
         pub window: OnceCell<WeakRef<AppWindow>>,
-        pub search_provider: RefCell<Option<SearchProvider<super::App>>>,
+        pub search_provider: Cell<Option<SearchProvider<super::App>>>,
     }
 
     #[glib::object_subclass]

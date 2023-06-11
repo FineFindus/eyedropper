@@ -10,10 +10,7 @@ use gtk::{
 };
 
 mod imp {
-    use std::{
-        cell::{Cell, RefCell},
-        rc::Rc,
-    };
+    use std::cell::{Cell, RefCell};
 
     use crate::config;
 
