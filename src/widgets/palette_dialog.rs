@@ -6,23 +6,27 @@ use crate::colors::{color::Color, formatter::ColorFormatter, position::AlphaPosi
 
 mod imp {
 
-    use std::cell::RefCell;
+    use std::cell::Cell;
 
     use glib::{
         subclass::{self, Signal},
-        ParamSpec,
+        ParamSpec, Properties, Value,
     };
-    use gtk::glib::ParamSpecBoxed;
     use once_cell::sync::Lazy;
+
+    use crate::config;
 
     use super::*;
 
-    #[derive(Debug, CompositeTemplate)]
+    #[derive(Debug, CompositeTemplate, Properties)]
     #[template(resource = "/com/github/finefindus/eyedropper/ui/palette-window.ui")]
+    #[properties(wrapper_type = super::PaletteDialog)]
     pub struct PaletteDialog {
-        pub color: RefCell<gtk::gdk::RGBA>,
+        #[property(get, set)]
+        pub color: Cell<gtk::gdk::RGBA>,
         #[template_child]
         pub palettes_list: TemplateChild<gtk::ListBox>,
+        pub settings: gtk::gio::Settings,
     }
 
     #[glib::object_subclass]
@@ -33,14 +37,20 @@ mod imp {
 
         fn new() -> Self {
             Self {
-                color: RefCell::new(gtk::gdk::RGBA::BLACK),
+                color: Cell::new(gtk::gdk::RGBA::BLACK),
                 palettes_list: TemplateChild::default(),
+                settings: gtk::gio::Settings::new(config::APP_ID),
             }
         }
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
             klass.bind_template_instance_callbacks();
+
+            klass.install_action("export", Some("s"), |widget, _, variant| {
+                let value = variant.unwrap().get::<String>();
+                widget.save_to_file(value);
+            });
         }
 
         fn instance_init(obj: &subclass::InitializingObject<Self>) {
@@ -62,26 +72,13 @@ mod imp {
         }
 
         fn properties() -> &'static [ParamSpec] {
-            static PROPERTIES: Lazy<Vec<ParamSpec>> =
-                Lazy::new(|| vec![ParamSpecBoxed::builder::<gtk::gdk::RGBA>("color").build()]);
-            PROPERTIES.as_ref()
+            Self::derived_properties()
         }
-
-        fn set_property(&self, _id: usize, value: &glib::Value, pspec: &ParamSpec) {
-            match pspec.name() {
-                "color" => {
-                    let input_value = value.get::<gtk::gdk::RGBA>().unwrap();
-                    self.color.replace(input_value);
-                }
-                _ => unimplemented!(),
-            }
+        fn set_property(&self, _id: usize, _value: &Value, _pspec: &ParamSpec) {
+            Self::derived_set_property(self, _id, _value, _pspec)
         }
-
-        fn property(&self, _id: usize, pspec: &ParamSpec) -> glib::Value {
-            match pspec.name() {
-                "color" => self.color.borrow().to_value(),
-                _ => unimplemented!(),
-            }
+        fn property(&self, _id: usize, _pspec: &ParamSpec) -> Value {
+            Self::derived_property(self, _id, _pspec)
         }
 
         fn constructed(&self) {
@@ -101,15 +98,29 @@ glib::wrapper! {
 impl PaletteDialog {
     pub fn new(color: Color) -> Self {
         let dialog = glib::Object::builder::<PaletteDialog>()
-            .property("color", &gtk::gdk::RGBA::from(color))
+            .property("color", gtk::gdk::RGBA::from(color))
             .build();
         dialog.setup_palettes_list();
         dialog
     }
 
-    /// Returns the given color as a [Color] struct instead of [gtk::gdk::RGBA]
-    fn color(&self) -> Color {
-        Color::from(self.property::<gtk::gdk::RGBA>("color"))
+    /// Show palettes in the dialog.
+    fn palettes(&self) -> Vec<Color> {
+        let color: Color = self.color().into();
+        //capacity for all palettes
+        let mut colors = Vec::with_capacity(28);
+
+        let quantity = self.imp().settings.uint("shades-tints-quantity").max(1) as usize;
+
+        colors.append(&mut color.tints(0.15, quantity));
+        colors.append(&mut color.shades(0.15, quantity));
+        colors.append(&mut vec![color, color.complementary_color()]);
+        colors.append(&mut color.split_complementary_color());
+        colors.append(&mut color.triadic_colors());
+        colors.append(&mut color.tetradic_colors());
+        colors.append(&mut color.analogous_colors(6));
+
+        colors
     }
 
     ///Setup the list by adding a the generate color palettes
@@ -117,14 +128,16 @@ impl PaletteDialog {
         let imp = self.imp();
         let palettes = &imp.palettes_list;
 
-        let color: Color = self.color();
+        let quantity = self.imp().settings.uint("shades-tints-quantity").max(1) as usize;
+
+        let color: Color = self.color().into();
         palettes.append(&self.create_palette_row(
             &pgettext("Name for tints (lighter variants) of the color", "Tints"),
-            color.tints(0.15, 5),
+            color.tints(0.15, quantity),
         ));
         palettes.append(&self.create_palette_row(
             &pgettext("Name for shades (darker variants) of the color", "Shades"),
-            color.shades(0.15, 5),
+            color.shades(0.15, quantity),
         ));
         palettes.append(&self.create_palette_row(
             &pgettext(
@@ -200,6 +213,7 @@ impl PaletteDialog {
             let css_provider = gtk::CssProvider::new();
 
             if let Some(display) = gtk::gdk::Display::default() {
+                #[allow(deprecated)] //https://github.com/gtk-rs/gtk4-rs/issues/1317
                 gtk::StyleContext::add_provider_for_display(&display, &css_provider, 400);
             }
 
@@ -240,64 +254,50 @@ impl PaletteDialog {
     /// Called when the icon button in the headerbar is clicked.
     #[template_callback]
     fn on_save_clicked(&self) {
-        gtk_macros::spawn!(glib::clone!(@weak self as window => async move {
-            let color = window.color();
-            //capacity for all palettes
-            let mut colors = Vec::with_capacity(28);
-
-            colors.append(&mut color.tints(0.15, 5));
-            colors.append(&mut color.shades(0.15, 5));
-            colors.append(&mut vec![color, color.complementary_color()]);
-            colors.append(&mut color.split_complementary_color());
-            colors.append(&mut color.triadic_colors());
-            colors.append(&mut color.tetradic_colors());
-            colors.append(&mut color.analogous_colors(6));
-
-            window.save_to_file(colors).await;
-        }));
+        self.save_to_file(None);
     }
 
-    /// Saves a list of colors as a GIMP palette files (.gpl).
-    ///
-    /// The colors will be saved without alpha values under the name `Untitled`.
-    /// This opens up a user prompt to ask where to save the file and then write said file, if the user cancels, the file will not be saved.
-    pub async fn save_to_file(&self, colors: Vec<Color>) {
-        let file_chooser = gtk::FileChooserNative::builder()
-            .transient_for(self)
-            .action(gtk::FileChooserAction::Save)
+    /// Opens a dialog to save a palette file. The file format is determined from the file extension.
+    /// An extension can be suggested to the user via the `suggested_extension` parameter.
+    pub fn save_to_file(&self, suggested_extension: Option<String>) {
+        let colors = self.palettes();
+
+        let mut file_name = String::from("eyedropper_palette");
+        if let Some(extension) = suggested_extension {
+            file_name.push('.');
+            file_name.push_str(&extension);
+        }
+
+        let file_chooser = gtk::FileDialog::builder()
+            .initial_name(file_name)
             .modal(true)
-            .create_folders(true)
             .build();
 
-        file_chooser.set_current_name("eyedropper_palette");
-
-        file_chooser.connect_response(
-            glib::clone!(@weak self as window => move |file_chooser, response| {
-
-                if response == gtk::ResponseType::Accept {
-                    if let Some(path) = file_chooser.file().and_then(|file| file.path()) {
+        file_chooser.save(
+            Some(self),
+            gtk::gio::Cancellable::NONE,
+            glib::clone!(@weak self as window => move |res| {
+                match res.ok().and_then(|file| file.path()) {
+                    Some(path) => {
                         log::debug!("Selected path: {}", path.display());
 
                         let file_name = path.file_name().and_then(|name| name.to_str()).unwrap_or("Eyedropper Palette");
-
                         let palette = match path.extension().and_then(|extension| extension.to_str()) {
-                            Some("gpl") => ColorFormatter::gpl_file(file_name, colors.clone()),
-                            Some("txt") => ColorFormatter::paint_dot_net_file(file_name, colors.clone()),
-                            Some("pal") => ColorFormatter::pal_file(colors.clone()),
-                            Some("ase") => ColorFormatter::ase_file(colors.clone()),
+                            Some("gpl") => ColorFormatter::gpl_file(file_name, colors),
+                            Some("txt") => ColorFormatter::paint_dot_net_file(file_name, colors),
+                            Some("pal") => ColorFormatter::pal_file(colors),
+                            Some("ase") => ColorFormatter::ase_file(colors),
+                            Some("soc") => ColorFormatter::soc_file(colors),
                             _ => {
                                 //default to exporting the hex colors
-                                ColorFormatter::hex_file(colors.clone())
+                                ColorFormatter::hex_file(colors)
                             },
                         };
                         std::fs::write(path, palette).expect("Failed to write palette file");
-                    }
-                } else {
-                    log::error!("Failed to save file: {}", response);
+                    },
+                    None => log::error!("Failed to save file"),
                 }
             }),
         );
-
-        file_chooser.show();
     }
 }

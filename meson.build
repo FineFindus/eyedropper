@@ -1,7 +1,7 @@
 project(
   'eyedropper',
   'rust',
-  version: '0.5.1',
+  version: '0.7.0-beta',
   meson_version: '>= 0.59',
   # license: 'MIT',
 )
@@ -42,10 +42,12 @@ if get_option('profile') == 'development'
     version_suffix = '-@0@'.format(vcs_tag)
   endif
   application_id = '@0@.@1@'.format(base_id, profile)
+  object_path = '/com/github/finefindus/eyedropper/Devel/SearchProvider'
 else
   profile = ''
   version_suffix = ''
   application_id = base_id
+  object_path = '/com/github/finefindus/eyedropper/SearchProvider'
 endif
 
 meson.add_dist_script(

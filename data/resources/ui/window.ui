@@ -88,6 +88,9 @@
                             <property name="title" translatable="yes">Eyedropper</property>
                           </object>
                         </property>
+                        <style>
+                          <class name="flat" />
+                        </style>
                         <child>
                           <object class="GtkButton" id="color_picker_button">
                             <property name="tooltip-text" translatable="yes" context="Tooltip of the colorpicker button">Pick a Color</property>
@@ -97,6 +100,7 @@
                         </child>
                         <child type="end">
                           <object class="GtkMenuButton" id="appmenu_button">
+                            <property name="tooltip-text" translatable="yes">Main Menu</property>
                             <property name="primary">true</property>
                             <property name="icon-name">open-menu-symbolic</property>
                             <property name="menu-model">primary_menu</property>
@@ -129,7 +133,7 @@
                                     <property name="vexpand">True</property>
                                     <property name="width-request">267</property>
                                     <child>
-                                      <object class="GtkColorButton" id="color_button">
+                                      <object class="GtkColorDialogButton" id="color_button">
                                         <property name="can_focus">False</property>
                                       </object>
                                     </child>
@@ -143,14 +147,12 @@
                             </child>
                             <child>
                               <object class="ColorFormatRow" id="name_row">
-                                <property name="visible">False</property>
-                                <property name="editable">True</property>
                                 <property name="tooltip" translatable="yes">Copy Name</property>
+                                <property name="visible">False</property>
                               </object>
                             </child>
                             <child>
                               <object class="ColorFormatRow" id="hex_row">
-                                <property name="editable">True</property>
                                 <property name="tooltip" translatable="yes">Copy Hex Code</property>
                               </object>
                             </child>
@@ -210,13 +212,6 @@
                                 <property name="visible">False</property>
                               </object>
                             </child>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkSeparator">
-                            <binding name="visible">
-                              <lookup name="visible" type="GtkListBox">history_list</lookup>
-                            </binding>
                           </object>
                         </child>
                         <child>

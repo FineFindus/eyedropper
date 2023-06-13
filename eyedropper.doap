@@ -17,8 +17,20 @@
     <maintainer>
         <foaf:Person>
             <foaf:name>FineFindus</foaf:name>
+            <gnome:userid>jbenzler</gnome:userid>
             <foaf:mbox rdf:resource="mailto:finefindus@proton.me" />
-            <gnome:userid>FineFindus</gnome:userid>
+            <foaf:account>
+                <foaf:OnlineAccount>
+                    <foaf:accountServiceHomepage rdf:resource="https://github.com/" />
+                    <foaf:accountName>FineFindus</foaf:accountName>
+                </foaf:OnlineAccount>
+            </foaf:account>
+            <foaf:account>
+                <foaf:OnlineAccount>
+                    <foaf:accountServiceHomepage rdf:resource="https://gitlab.gnome.org" />
+                    <foaf:accountName>FineFindus</foaf:accountName>
+                </foaf:OnlineAccount>
+            </foaf:account>
         </foaf:Person>
     </maintainer>
 </Project>

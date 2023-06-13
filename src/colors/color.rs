@@ -1,8 +1,7 @@
 use core::fmt;
+use std::f32::consts::PI;
 
-use crate::utils;
-
-use super::{illuminant::Illuminant, position::AlphaPosition};
+use super::{illuminant::Illuminant, parser, position::AlphaPosition};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct Color {
@@ -95,7 +94,6 @@ impl Color {
 
         let saturation = if max == 0f32 { 0f32 } else { (max - min) / max };
 
-        log::debug!("HSV: {}°, {}%, {}% ", hue, saturation, max);
         (hue, saturation, max)
     }
 
@@ -136,7 +134,6 @@ impl Color {
 
         let lightness = (max + min) / 2f32;
 
-        log::debug!("HSL: {}°, {}%, {}% ", hue, saturation, lightness);
         (hue, saturation, lightness)
     }
 
@@ -327,14 +324,15 @@ impl Color {
     /// LMS (long, medium short) is a a color space, that
     /// represents the cones in the human eyes.
     ///
-    /// To convert to LMS color space, the color is first converted
-    /// to XYZ color space and then using the [CIECAT02](https://en.wikipedia.org/wiki/CIECAM02#CAT02) matrix.
+    /// The conversion uses the formula form [Fundamentals of Imaging Colour Spaces](https://www.uni-weimar.de/fileadmin/user/fak/medien/professuren/Computer_Graphics/3-ima-color-spaces17.pdf)
+    /// The matrix is assumed to be under [Illuminant::E].
     pub fn to_lms(self) -> (f32, f32, f32) {
         let (x, y, z) = self.to_xyz();
 
-        let long = x * 0.7328 + y * 0.4296 + z * -0.1624;
-        let medium = x * -0.7036 + y * 1.6975 + z * 0.0061;
-        let short = x * 0.0030 + y * 0.0136 + z * 0.9834;
+        //TODO: use illuminant depended matrices, found here http://brucelindbloom.com/index.html?Eqn_ChromAdapt.html
+        let long = x * 0.3897 + y * 0.6890 + z * -0.0787;
+        let medium = x * -0.2298 + y * 1.1834 + z * 0.0464;
+        let short = x * 0.0 + y * 0.0 + z * 1.0;
 
         (long, medium, short)
     }
@@ -348,48 +346,135 @@ impl Color {
     /// The alpha_position indicates where the alpha values is stored. View [AlphaPosition] for more information.
     /// If the the has less than 8 chars, and thus cannot contain a alpha value it will be handled the same as being given
     /// `AlphaPosition::None`.
-    pub fn from_hex(hex_color: &str, alpha_position: AlphaPosition) -> Result<Color, ColorError> {
-        let mut hex_color = hex_color.to_owned();
-        //remove #
-        if hex_color.starts_with('#') {
-            hex_color = hex_color.replace('#', "");
-        }
-
-        if alpha_position != AlphaPosition::None && hex_color.len() != 8 {
-            return Err(ColorError::HexConversion(String::from(
-                "Could not convert color, color is not a hex color",
-            )));
-        }
-
-        if hex_color.len() == 6 || hex_color.len() == 8 {
-            //read alpha values first
-            let alpha = if hex_color.len() == 8 {
-                //only check alpha values if string has 8 chars
-                match alpha_position {
-                    AlphaPosition::Start => utils::hex_value(&mut hex_color)?,
-                    AlphaPosition::End => u8::from_str_radix(hex_color.split_at(6).1, 16)?,
-                    _ => 255,
-                }
-            } else {
-                255
-            };
-            //get color from hex values
-            let red = utils::hex_value(&mut hex_color)?;
-            let green = utils::hex_value(&mut hex_color)?;
-            let blue = utils::hex_value(&mut hex_color)?;
-            let color = Color::rgba(red, green, blue, alpha);
-            Ok(color)
-        } else {
-            Err(ColorError::HexConversion(String::from(
-                "Could not convert color, color is not a hex color",
-            )))
+    pub fn from_hex(input: &str, alpha_position: AlphaPosition) -> Result<Color, ColorError> {
+        match parser::hex_color(input, alpha_position) {
+            Ok((_input, color)) => Ok(color),
+            Err(err) => {
+                log::error!("Failed to parse color: {}", err);
+                Err(ColorError::ParsingError(err.to_string()))
+            }
         }
     }
 
-    ///Converts the given HSL color to RGB.
+    pub fn from_rgb(input: &str) -> Result<Color, ColorError> {
+        match parser::rgb(input) {
+            Ok((_input, color)) => Ok(color),
+            Err(err) => {
+                log::error!("Failed to parse color: {}", err);
+                Err(ColorError::ParsingError(err.to_string()))
+            }
+        }
+    }
+
+    pub fn from_hsl_string(input: &str) -> Result<Color, ColorError> {
+        match parser::hsl(input) {
+            Ok((_input, color)) => Ok(color),
+            Err(err) => {
+                log::error!("Failed to parse color: {}", err);
+                Err(ColorError::ParsingError(err.to_string()))
+            }
+        }
+    }
+
+    pub fn from_hsv_string(input: &str) -> Result<Color, ColorError> {
+        match parser::hsv(input) {
+            Ok((_input, color)) => Ok(color),
+            Err(err) => {
+                log::error!("Failed to parse color: {}", err);
+                Err(ColorError::ParsingError(err.to_string()))
+            }
+        }
+    }
+
+    pub fn from_cmyk_string(input: &str) -> Result<Color, ColorError> {
+        match parser::cmyk(input) {
+            Ok((_input, color)) => Ok(color),
+            Err(err) => {
+                log::error!("Failed to parse color: {}", err);
+                Err(ColorError::ParsingError(err.to_string()))
+            }
+        }
+    }
+
+    pub fn from_xyz_string(input: &str) -> Result<Color, ColorError> {
+        match parser::xyz(input) {
+            Ok((_input, color)) => Ok(color),
+            Err(err) => {
+                log::error!("Failed to parse color: {}", err);
+                Err(ColorError::ParsingError(err.to_string()))
+            }
+        }
+    }
+
+    pub fn from_cie_lab_string(
+        input: &str,
+        illuminant: Illuminant,
+        ten_deg_observer: bool,
+    ) -> Result<Color, ColorError> {
+        match parser::cielab(input, illuminant, ten_deg_observer) {
+            Ok((_input, color)) => Ok(color),
+            Err(err) => {
+                log::error!("Failed to parse color: {}", err);
+                Err(ColorError::ParsingError(err.to_string()))
+            }
+        }
+    }
+
+    pub fn from_hwb_string(input: &str) -> Result<Color, ColorError> {
+        match parser::hwb(input) {
+            Ok((_input, color)) => Ok(color),
+            Err(err) => {
+                log::error!("Failed to parse color: {}", err);
+                Err(ColorError::ParsingError(err.to_string()))
+            }
+        }
+    }
+
+    pub fn from_hcl_string(input: &str) -> Result<Color, ColorError> {
+        match parser::lch(input) {
+            Ok((_input, color)) => Ok(color),
+            Err(err) => {
+                log::error!("Failed to parse color: {}", err);
+                Err(ColorError::ParsingError(err.to_string()))
+            }
+        }
+    }
+
+    pub fn from_lms_string(input: &str) -> Result<Color, ColorError> {
+        match parser::lms(input) {
+            Ok((_input, color)) => Ok(color),
+            Err(err) => {
+                log::error!("Failed to parse color: {}", err);
+                Err(ColorError::ParsingError(err.to_string()))
+            }
+        }
+    }
+
+    pub fn from_hunter_lab_string(
+        input: &str,
+        illuminant: Illuminant,
+        ten_deg_observer: bool,
+    ) -> Result<Color, ColorError> {
+        match parser::hunter_lab(input, illuminant, ten_deg_observer) {
+            Ok((_input, color)) => Ok(color),
+            Err(err) => {
+                log::error!("Failed to parse color: {}", err);
+                Err(ColorError::ParsingError(err.to_string()))
+            }
+        }
+    }
+
+    /// Converts the given HSL color to RGB.
     ///
     /// Hue should be 0-360 and s,l 0-1.
     pub fn from_hsl(hue: u16, saturation: f32, lightness: f32) -> Self {
+        Self::from_hsla(hue, saturation, lightness, 255)
+    }
+
+    /// Converts the given HSL color to RGB, with an additional alpha value.
+    ///
+    /// Hue should be 0-360 and s,l 0-1.
+    pub fn from_hsla(hue: u16, saturation: f32, lightness: f32, alpha: u8) -> Self {
         let red;
         let green;
         let blue;
@@ -405,7 +490,7 @@ impl Color {
             green = 1f32;
             blue = 1f32;
         } else {
-            fn hue2rgb(p: f32, q: f32, t: f32) -> f32 {
+            let hue2rgb = |p, q, t| {
                 let mut t = t;
                 if t < 0f32 {
                     t += 1f32;
@@ -423,7 +508,7 @@ impl Color {
                     return p + (q - p) * (2f32 / 3f32 - t) * 6f32;
                 }
                 p
-            }
+            };
 
             let q = if lightness < 0.5 {
                 lightness * (1f32 + saturation)
@@ -437,11 +522,196 @@ impl Color {
             green = hue2rgb(p, q, hue);
             blue = hue2rgb(p, q, hue - (1f32 / 3f32));
         }
-        Self::rgb(
+
+        Self::rgba(
             (red * 255f32).floor() as u8,
             (green * 255f32).floor() as u8,
             (blue * 255f32).floor() as u8,
+            alpha,
         )
+    }
+
+    /// Converts the given HSV color to RGB, with an additional alpha value.
+    ///
+    /// Hue should be 0-360 and s,l 0-1.
+    pub fn from_hsva(hue: u16, saturation: f32, value: f32, alpha: u8) -> Self {
+        if saturation == 0.0 {
+            return Self::rgba(
+                (value * 255.0) as u8,
+                (value * 255.0) as u8,
+                (value * 255.0) as u8,
+                alpha,
+            );
+        }
+
+        //Hue must be < 1
+        let mut hue = (hue as f32) / 360.0 * 6.0;
+
+        if hue == 6.0 {
+            hue = 0f32;
+        }
+
+        let a = value * (1f32 - saturation);
+        let b = value * (1f32 - saturation * (hue - hue.floor()));
+        let c = value * (1f32 - saturation * (1f32 - (hue - hue.floor())));
+
+        let (red, green, blue) = match hue.floor() as u8 {
+            0 => (value, c, a),
+            1 => (b, value, a),
+            2 => (a, value, c),
+            3 => (a, b, value),
+            4 => (c, a, value),
+            _ => (value, a, b),
+        };
+
+        Self::rgba(
+            (red * 255f32).round() as u8,
+            (green * 255f32).round() as u8,
+            (blue * 255f32).round() as u8,
+            alpha,
+        )
+    }
+
+    /// Converts the given HWB color to RGB, with an additional alpha value.
+    ///
+    /// Hue should be 0-360 and w,b 0-1.
+    pub fn from_hwba(hue: u16, white: f32, black: f32, alpha: u8) -> Self {
+        if white + black >= 1.0 {
+            let gray = ((white / (white + black)) * 255f32).round() as u8;
+            return Self::rgba(gray, gray, gray, alpha);
+        }
+
+        let mut color = Self::from_hsl(hue, 1.0, 0.5);
+
+        let modify_value = |value| {
+            let mut tmp = (value as f32) / 255.0;
+            tmp *= 1.0 - white - black;
+            tmp += white;
+            (tmp * 255.0).round() as u8
+        };
+
+        color.red = modify_value(color.red);
+        color.green = modify_value(color.green);
+        color.blue = modify_value(color.blue);
+        color.alpha = alpha;
+
+        color
+    }
+
+    /// Converts the given CMYK color to RGB.
+    pub fn from_cmyk(cyan: f32, magenta: f32, yellow: f32, k: f32) -> Self {
+        Self::rgb(
+            (255f32 * (1f32 - cyan) * (1f32 - k)).round() as u8,
+            (255f32 * (1f32 - magenta) * (1f32 - k)).round() as u8,
+            (255f32 * (1f32 - yellow) * (1f32 - k)).round() as u8,
+        )
+    }
+
+    /// Converts the given XYZ color to RGB.
+    pub fn from_xyz(x: f32, y: f32, z: f32, alpha: u8) -> Self {
+        let x = x / 100f32;
+        let y = y / 100f32;
+        let z = z / 100f32;
+
+        let mut red = x * 3.2406 + y * -1.5372 + z * -0.4986;
+        let mut green = x * -0.9689 + y * 1.8758 + z * 0.0415;
+        let mut blue = x * 0.0557 + y * -0.2040 + z * 1.0570;
+
+        let remap = |value: &mut f32| {
+            if *value > 0.0031308 {
+                *value = 1.055 * (value.powf(1.0 / 2.4)) - 0.055;
+            } else {
+                *value *= 12.92;
+            }
+        };
+
+        remap(&mut red);
+        remap(&mut green);
+        remap(&mut blue);
+
+        Self::rgba(
+            (red * 255f32).round() as u8,
+            (green * 255f32).round() as u8,
+            (blue * 255f32).round() as u8,
+            alpha,
+        )
+    }
+
+    /// Converts from CIE Lab to RGB.
+    pub fn from_cie_lab(
+        l: f32,
+        a: f32,
+        b: f32,
+        alpha: u8,
+        illuminant: Illuminant,
+        ten_deg_observer: bool,
+    ) -> Self {
+        //no direct formula exists
+        //convert to xyz first, then to rgb
+        let mut y = (l + 16.0) / 116.0;
+        let mut x = a / 500.0 + y;
+        let mut z = y - b / 200.0;
+
+        let remap = |value: &mut f32| {
+            if value.powi(3) > 0.008856 {
+                *value = value.powi(3)
+            } else {
+                *value = (*value - 1.0 / 116.0) / 7.787
+            }
+        };
+
+        remap(&mut y);
+        remap(&mut x);
+        remap(&mut z);
+
+        let (ref_x, ref_y, ref_z) = if ten_deg_observer {
+            illuminant.ten_degrees()
+        } else {
+            illuminant.two_degrees()
+        };
+
+        x *= ref_x;
+        y *= ref_y;
+        z *= ref_z;
+
+        Self::from_xyz(x, y, z, alpha)
+    }
+
+    pub fn from_lch(l: f32, c: f32, h: f32, alpha: u8) -> Self {
+        let cie_a = c * (h * PI / 180.0).cos();
+        let cie_b = c * (h * PI / 180.0).sin();
+        Self::from_cie_lab(l, cie_a, cie_b, alpha, Illuminant::default(), false)
+    }
+
+    pub fn from_lms(long: f32, medium: f32, short: f32, alpha: u8) -> Self {
+        let x = long * 1.9102 + medium * -1.1121 + short * 0.2019;
+        let y = long * 0.3710 + medium * 0.6291 + short * 0.0;
+        let z = long * 0.0 + medium * 0.0 + short * 1.0;
+
+        Self::from_xyz(x, y, z, alpha)
+    }
+
+    pub fn from_hunter_lab(
+        l: f32,
+        a: f32,
+        b: f32,
+        illuminant: Illuminant,
+        ten_deg_observer: bool,
+    ) -> Self {
+        let (ref_x, ref_y, ref_z) = if ten_deg_observer {
+            illuminant.ten_degrees()
+        } else {
+            illuminant.two_degrees()
+        };
+
+        let ka = (175.0 / 198.04) * (ref_y + ref_x);
+        let kb = (70.0 / 218.11) * (ref_y + ref_z);
+
+        let y = ((l / ref_y).powi(2)) * 100.0;
+        let x = (a / ka * (y / ref_y).sqrt() + (y / ref_y)) * ref_x;
+        let z = -(b / kb * (y / ref_y).sqrt() - (y / ref_y)) * ref_z;
+
+        Self::from_xyz(x, y, z, 255)
     }
 
     /// Return n tints (adding pure white) of the color by the tint factor.
@@ -577,6 +847,22 @@ impl fmt::Display for Color {
     }
 }
 
+impl TryFrom<Vec<u8>> for Color {
+    type Error = &'static str;
+
+    /// Converts a `Vec<u8>` to a `Color`.
+    ///
+    /// Converts the vec to a RGBA (length is greater than 3), or a RGB color.
+    /// Returns an error if the length is lower than 3.
+    fn try_from(value: Vec<u8>) -> Result<Self, Self::Error> {
+        match value.len() {
+            n if n >= 4 => Ok(Color::rgba(value[0], value[1], value[2], value[3])),
+            3 => Ok(Color::rgb(value[0], value[1], value[2])),
+            _ => Err("Vec length must be at least 3"),
+        }
+    }
+}
+
 impl From<ashpd::desktop::screenshot::Color> for Color {
     fn from(color: ashpd::desktop::screenshot::Color) -> Self {
         Color::rgba(
@@ -610,9 +896,22 @@ impl From<Color> for gtk::gdk::RGBA {
     }
 }
 
+impl From<search_provider::ResultID> for Color {
+    fn from(value: search_provider::ResultID) -> Self {
+        Self::from_hex(&value, AlphaPosition::None).expect("Failed to get color from ResultID")
+    }
+}
+
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord)]
 pub enum ColorError {
     HexConversion(String),
+    ParsingError(String),
+}
+
+impl<I, O, E> From<nom::IResult<I, O, E>> for ColorError {
+    fn from(_error: Result<(I, O), nom::Err<E>>) -> Self {
+        Self::ParsingError(String::new())
+    }
 }
 
 impl From<std::num::ParseIntError> for ColorError {
@@ -624,7 +923,7 @@ impl From<std::num::ParseIntError> for ColorError {
 impl fmt::Display for ColorError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
-            ColorError::HexConversion(err) => write!(f, "{}", err),
+            ColorError::ParsingError(err) | ColorError::HexConversion(err) => write!(f, "{}", err),
         }
     }
 }

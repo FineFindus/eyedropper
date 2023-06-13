@@ -28,8 +28,8 @@
                         </child>
                         <child>
                             <object class="AdwActionRow">
-                                <property name="title" translatable="yes">Name Sets</property>
-                                <property name="subtitle" translatable="yes">Which color name sets should be used for the names</property>
+                                <property name="title" translatable="yes">Name Sources</property>
+                                <property name="subtitle" translatable="yes">Sources for displaying color names</property>
                                 <property name="activatable">True</property>
                                 <signal name="activated" handler="on_name_row_activated" swapped="true" />
                                 <child type="suffix">
@@ -41,27 +41,13 @@
                         </child>
                         <child>
                             <object class="AdwActionRow">
-                                <property name="title" translatable="yes">Default Precision</property>
-                                <property name="subtitle" translatable="yes">Use the recommended precision</property>
-                                <property name="activatable">True</property>
-                                <property name="activatable-widget">default_precision_switch</property>
-                                <child type="suffix">
-                                    <object class="GtkSwitch" id="default_precision_switch">
-                                        <property name="valign">center</property>
-                                    </object>
-                                </child>
-                            </object>
-                        </child>
-                        <child>
-                            <object class="AdwActionRow">
-                                <property name="sensitive" bind-source="default_precision_switch" bind-property="state" bind-flags="sync-create|invert-boolean" />
                                 <property name="title" translatable="yes">Precision</property>
                                 <child type="suffix">
                                     <object class="GtkSpinButton" id="precision_spin_button">
                                         <property name="adjustment">
                                             <object class="GtkAdjustment">
-                                                <property name="lower">1</property>
-                                                <property name="upper">99</property>
+                                                <property name="lower">0</property>
+                                                <property name="upper">15</property>
                                                 <property name="step_increment">1</property>
                                                 <property name="value">2</property>
                                             </object>
@@ -169,7 +155,7 @@
                 <child>
                     <object class="AdwPreferencesGroup">
                         <property name="title" translatable="yes">Formats</property>
-                        <property name="description" translatable="yes">Edit how the color formats are displayed. The “{}” will be replaced in with the values of the formats.</property>
+                        <property name="description" translatable="yes">Edit how the color formats are displayed. The “{}” will be replaced in with the values of the formats. Custom formats cannot be used as input.</property>
                         <child>
                             <object class="CustomFormatRow" id="_custom_format">
                                 <property name="title" translatable="yes">RGB Format</property>
@@ -222,7 +208,7 @@
                         <child>
                             <object class="CustomFormatRow">
                                 <property name="title" translatable="yes">CIELCh/HCL Format</property>
-                                <property name="default-format">lch({h}, {c}, {l})</property>
+                                <property name="default-format">lch({l}, {c}, {h})</property>
                                 <property name="settings-key">custom-format-hcl</property>
                             </object>
                         </child>

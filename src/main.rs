@@ -3,7 +3,6 @@ mod application;
 mod config;
 mod colors;
 mod model;
-mod utils;
 mod widgets;
 mod window;
 

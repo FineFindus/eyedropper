@@ -1,3 +1,4 @@
+[![Part of GNOME Circle](https://circle.gnome.org/assets/button/badge.svg)](https://apps.gnome.org/app/com.github.finefindus.eyedropper/)
 ![maintenance-status](https://img.shields.io/badge/maintenance-actively--developed-brightgreen.svg)
 [![CI](https://github.com/FineFindus/eyedropper/actions/workflows/ci.yml/badge.svg)](https://github.com/FineFindus/eyedropper/actions/workflows/ci.yml)
 
@@ -12,13 +13,13 @@ Pick and format colors.
 <details>
   <summary>More screenshots</summary>
 
-![Status page](data/resources/screenshots/status_light.png.png)
+![Status page](data/resources/screenshots/status_light.png)
 
 ![Customize the shown formats (Dark UI)](data/resources/screenshots/main_customize_dark.png)
 
 ![Customize the shown formats (Light UI)](data/resources/screenshots/main_customize_light.png)
 
-![Generate Color Palettes](data/resources/screenshots/palette_dialog_light.png)
+![Generate Color Palettes](data/resources/screenshots/palette_dialog_new_export_light.png)
 
 
 </details>
@@ -28,15 +29,25 @@ Pick and format colors.
 
 - Pick a Color
 - Enter a color in Hex-Format
-- Parse RGBA/ARGB Hex-Colors
-- View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format
+- Parse RGB/RGBA/ARGB Hex-Colors
+- View colors in formats
 - Customize which formats appear as well as their order
 - Generate a palette of different shades
 
-### Future Features & Roadmap
+### Available formats
 
-- Generate a palette of similar colors
-- Add more color formats
+- Name (includes W3C color sets, GNOME Palette and xkcd color survey)
+- Hex
+- RGB
+- HSL
+- HSV
+- CMYK
+- XYZ
+- CIELAB
+- HWB
+- CIELCh/HCL
+- LMS
+- Hunter Lab
 
 ### When should I use this? And when not?
 

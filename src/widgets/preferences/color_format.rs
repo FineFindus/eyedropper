@@ -1,76 +1,48 @@
+use glib::prelude::*;
+use glib::subclass::prelude::*;
 use glib::{Object, ObjectExt};
 
 mod imp {
 
-    use std::cell::RefCell;
+    use std::cell::{Cell, RefCell};
+
+    use super::*;
 
     use glib::{
         subclass::{prelude::ObjectImpl, types::ObjectSubclass},
-        ParamSpec, ParamSpecString, ToValue, Value,
+        ParamSpec, Properties, Value,
     };
-    use once_cell::sync::Lazy;
 
-    // Object holding the state
-    #[derive(Debug, Default)]
+    #[derive(Debug, Default, Properties)]
+    #[properties(wrapper_type = super::ColorFormatObject)]
     pub struct ColorFormatObject {
-        //TODO: use glib::Properties derive macro, currently not possible
+        #[property(get, set)]
         pub identifier: RefCell<String>,
+        #[property(get, set)]
         pub label: RefCell<String>,
+        #[property(get, set)]
         pub example: RefCell<String>,
-        pub settings_name: RefCell<String>,
+        #[property(get, set, default = false)]
+        pub visible: Cell<bool>,
     }
 
-    // The central trait for subclassing a GObject
     #[glib::object_subclass]
     impl ObjectSubclass for ColorFormatObject {
         const NAME: &'static str = "ColorFormatObject";
         type Type = super::ColorFormatObject;
     }
 
-    // Trait shared by all GObjects
     impl ObjectImpl for ColorFormatObject {
         fn properties() -> &'static [ParamSpec] {
-            static PROPERTIES: Lazy<Vec<ParamSpec>> = Lazy::new(|| {
-                vec![
-                    ParamSpecString::builder("identifier").build(),
-                    ParamSpecString::builder("label").build(),
-                    ParamSpecString::builder("example").build(),
-                    ParamSpecString::builder("settings-name").build(),
-                ]
-            });
-            PROPERTIES.as_ref()
+            Self::derived_properties()
         }
 
-        fn set_property(&self, _id: usize, value: &Value, pspec: &ParamSpec) {
-            match pspec.name() {
-                "identifier" => {
-                    let input_value = value.get::<String>().unwrap();
-                    self.identifier.replace(input_value);
-                }
-                "label" => {
-                    let input_value = value.get::<String>().unwrap();
-                    self.label.replace(input_value);
-                }
-                "example" => {
-                    let input_value = value.get::<String>().unwrap();
-                    self.example.replace(input_value);
-                }
-                "settings-name" => {
-                    let input_value = value.get::<String>().unwrap();
-                    self.settings_name.replace(input_value);
-                }
-                _ => unimplemented!(),
-            }
+        fn set_property(&self, id: usize, value: &Value, pspec: &ParamSpec) {
+            self.derived_set_property(id, value, pspec)
         }
 
-        fn property(&self, _id: usize, pspec: &ParamSpec) -> Value {
-            match pspec.name() {
-                "identifier" => self.identifier.borrow().to_value(),
-                "label" => self.label.borrow().to_value(),
-                "example" => self.example.borrow().to_value(),
-                "settings-name" => self.settings_name.borrow().to_value(),
-                _ => unimplemented!(),
-            }
+        fn property(&self, id: usize, pspec: &ParamSpec) -> Value {
+            self.derived_property(id, pspec)
         }
     }
 }
@@ -80,28 +52,11 @@ glib::wrapper! {
 }
 
 impl ColorFormatObject {
-    pub fn new(identifier: String, label: String, format: String, settings_name: &str) -> Self {
+    pub fn new(identifier: String, label: String, format: String) -> Self {
         Object::builder()
             .property("identifier", &identifier)
             .property("label", &label)
             .property("example", &format)
-            .property("settings-name", &settings_name)
             .build()
-    }
-
-    pub fn identifier(&self) -> String {
-        self.property("identifier")
-    }
-
-    pub fn label(&self) -> String {
-        self.property("label")
-    }
-
-    pub fn example(&self) -> String {
-        self.property("example")
-    }
-
-    pub fn settings_name(&self) -> String {
-        self.property("settings_name")
     }
 }

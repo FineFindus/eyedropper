@@ -60,7 +60,7 @@ impl EyedropperAbout {
             .debug_info(debug_info)
             .debug_info_filename("eyedropper_debug_info")
             .build();
-        about_window.show();
+        about_window.set_visible(true);
     }
 
     /// Build the details page text out of single components,
@@ -125,8 +125,6 @@ impl EyedropperAbout {
             "Backend: {}\n",
             Self::backend().unwrap_or_else(|| "Failed to get backend".to_owned())
         ));
-        information.push_str(&format!("Sandboxed: {}\n", ashpd::is_sandboxed()));
-        information.push('\n');
 
         //used OS infos
         information.push_str("OS:\n");
@@ -157,10 +155,6 @@ impl EyedropperAbout {
         ));
         information.push('\n');
 
-        //flatpak
-        information.push_str("Flatpak:\n");
-        information.push_str(&format!("{}\n", Self::flatpak_info()));
-
         //used libraries version
         information.push_str("Libraries:\n");
         information.push_str(&format!(
@@ -175,6 +169,9 @@ impl EyedropperAbout {
             adw::minor_version(),
             adw::micro_version()
         ));
+        information.push('\n');
+
+        information.push_str(&format!("Sandbox: {}\n", Self::sandbox_info()));
         information.push('\n');
 
         //add potential portal error
@@ -200,14 +197,17 @@ impl EyedropperAbout {
         )
     }
 
-    /// Returns info if the applications ia in
-    fn flatpak_info() -> String {
+    /// Returns info about the sandbox the app is using.
+    ///
+    /// If it is running inside the flatpak sandbox, info about it is returned, otherwise only
+    /// the information if the `GTK_USE_PORTAL` environment is set to `1`.  
+    fn sandbox_info() -> String {
         let mut info = String::new();
         if Path::new("/.flatpak-info").exists() {
+            info.push_str("Flatpak Info:\n");
             let info_file = std::fs::read_to_string("/.flatpak-info").unwrap_or_default();
             info_file
                 .split('\n')
-                .into_iter()
                 .filter_map(|line| line.split_once('='))
                 .for_each(|(name, value)| match name {
                     "name" => info.push_str(&format!(" - Name: {}\n", value)),
@@ -220,7 +220,10 @@ impl EyedropperAbout {
                     _ => {}
                 });
         } else {
-            info.push_str(" - Not used\n");
+            let gtk_portal_env = std::env::var("GTK_USE_PORTAL")
+                .map(|v| v == "1")
+                .unwrap_or(false);
+            info.push_str(&format!(" - GTK_USE_PORTAL: {}\n", gtk_portal_env));
         }
 
         info

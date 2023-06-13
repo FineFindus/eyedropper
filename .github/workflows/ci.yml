@@ -26,11 +26,11 @@ jobs:
     name: Flatpak
     runs-on: ubuntu-latest
     container:
-      image: bilelmoussaoui/flatpak-github-actions:gnome-42
+      image: bilelmoussaoui/flatpak-github-actions:gnome-nightly
       options: --privileged
     steps:
       - uses: actions/checkout@v3
-      - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v4
+      - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v6
         with:
           bundle: eyedropper.flatpak
           manifest-path: build-aux/com.github.finefindus.eyedropper.Devel.json
@@ -43,7 +43,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: '3.x'
       - name: Install Python Dependencies
@@ -58,7 +58,7 @@ jobs:
     if: ${{ github.event_name != 'pull_request' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install gettext
         run: |
           sudo apt update
@@ -76,10 +76,10 @@ jobs:
           echo "data/com.github.finefindus.eyedropper.metainfo.xml.in.in" >> po/POTFILES.in
           # add ui files
           echo "# UI files" >> po/POTFILES.in
-          find data -name "*.ui*" -print >> po/POTFILES.in
+          find data -name "*.ui*" -print | sort >> po/POTFILES.in
           # add rust files
           echo "# RUST files" >> po/POTFILES.in
-          grep gettext src/ -r | grep .rs  | cut -d: -f1 | uniq >> po/POTFILES.in
+          grep gettext src/ -r | grep .rs  | cut -d: -f1 | uniq | sort >> po/POTFILES.in
 
       - name: Update Eyedropper.pot
         run: |
@@ -98,7 +98,7 @@ jobs:
   #   runs-on: ubuntu-latest
   #   if: ${{ false }}  # disable for now
   #   steps:
-  #     - uses: actions/checkout@v2
+  #     - uses: actions/checkout@v3
   #     - name: Get changed files in the docs folder
   #       id: changed-files-specific
   #       uses: tj-actions/changed-files@v32

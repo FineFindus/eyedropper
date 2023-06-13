@@ -1,61 +1,50 @@
-use glib::{subclass::types::ObjectSubclassIsExt, Object};
+use glib::prelude::*;
+use glib::subclass::prelude::*;
+use glib::Object;
 
 use crate::colors::color::Color;
 
 mod imp {
-    use std::cell::RefCell;
+    use std::cell::Cell;
 
     use glib::{
         subclass::{prelude::ObjectImpl, types::ObjectSubclass},
-        ParamSpec, ParamSpecBoxed, ToValue, Value,
+        ParamSpec, Properties, Value,
     };
     use gtk::gdk;
-    use once_cell::sync::Lazy;
 
-    // Object holding the state
-    #[derive(Debug)]
+    use super::*;
+
+    #[derive(Debug, Properties)]
+    #[properties(wrapper_type = super::HistoryObject)]
     pub struct HistoryObject {
-        pub color: RefCell<gdk::RGBA>,
+        #[property(get, set)]
+        pub color: Cell<gdk::RGBA>,
     }
 
     impl Default for HistoryObject {
         fn default() -> Self {
             Self {
-                color: RefCell::new(gdk::RGBA::BLACK),
+                color: Cell::new(gdk::RGBA::BLACK),
             }
         }
     }
 
-    // The central trait for subclassing a GObject
     #[glib::object_subclass]
     impl ObjectSubclass for HistoryObject {
         const NAME: &'static str = "HistoryObject";
         type Type = super::HistoryObject;
     }
 
-    // Trait shared by all GObjects
     impl ObjectImpl for HistoryObject {
         fn properties() -> &'static [ParamSpec] {
-            static PROPERTIES: Lazy<Vec<ParamSpec>> =
-                Lazy::new(|| vec![ParamSpecBoxed::builder::<gtk::gdk::RGBA>("color").build()]);
-            PROPERTIES.as_ref()
+            Self::derived_properties()
         }
-
-        fn set_property(&self, _id: usize, value: &Value, pspec: &ParamSpec) {
-            match pspec.name() {
-                "color" => {
-                    let input_value = value.get::<gdk::RGBA>().unwrap();
-                    self.color.replace(input_value);
-                }
-                _ => unimplemented!(),
-            }
+        fn set_property(&self, _id: usize, _value: &Value, _pspec: &ParamSpec) {
+            Self::derived_set_property(self, _id, _value, _pspec)
         }
-
-        fn property(&self, _id: usize, pspec: &ParamSpec) -> Value {
-            match pspec.name() {
-                "color" => self.color.borrow().to_value(),
-                _ => unimplemented!(),
-            }
+        fn property(&self, _id: usize, _pspec: &ParamSpec) -> Value {
+            Self::derived_property(self, _id, _pspec)
         }
     }
 }
@@ -67,10 +56,6 @@ glib::wrapper! {
 impl HistoryObject {
     pub fn new(color: Color) -> Self {
         let color: gtk::gdk::RGBA = color.into();
-        Object::builder().property("color", &color).build()
-    }
-
-    pub fn color(&self) -> Color {
-        Color::from(*self.imp().color.borrow())
+        Object::builder().property("color", color).build()
     }
 }

@@ -4,23 +4,30 @@ use log::{debug, info};
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gdk, gio, glib};
+use search_provider::{IconData, ResultID, ResultMeta, SearchProviderImpl};
 
 use crate::colors::color::Color;
 use crate::config::{APP_ID, PKGDATADIR, PROFILE, VERSION};
 use crate::widgets::about_window::EyedropperAbout;
-use crate::widgets::preferences_window::PreferencesWindow;
+use crate::widgets::preferences::preferences_window::PreferencesWindow;
 use crate::window::AppWindow;
 
 mod imp {
+
+    use std::cell::Cell;
+
+    use crate::config;
 
     use super::*;
     use adw::subclass::prelude::AdwApplicationImpl;
     use glib::WeakRef;
     use once_cell::sync::OnceCell;
+    use search_provider::SearchProvider;
 
-    #[derive(Debug, Default)]
+    #[derive(Default)]
     pub struct App {
         pub window: OnceCell<WeakRef<AppWindow>>,
+        pub search_provider: Cell<Option<SearchProvider<super::App>>>,
     }
 
     #[glib::object_subclass]
@@ -61,7 +68,26 @@ mod imp {
             gtk::Window::set_default_icon_name(APP_ID);
             let app = self.obj();
 
-            app.setup_css();
+            let ctx = glib::MainContext::default();
+
+            let search_provider_path = config::OBJECT_PATH;
+            let search_provider_name = format!("{}.SearchProvider", config::APP_ID);
+            log::debug!(
+                "Starting search provider as {} on {}",
+                search_provider_name,
+                search_provider_path
+            );
+
+            ctx.spawn_local(glib::clone!(@weak app => async move {
+                match SearchProvider::new(app.clone(), search_provider_name, search_provider_path).await {
+                    Ok(search_provider) => {
+                        app.imp().search_provider.replace(Some(search_provider));
+                    },
+                    Err(err) => log::debug!("Could not start search provider: {}", err),
+                };
+
+            }));
+
             app.setup_gactions();
             app.setup_accels();
         }
@@ -81,11 +107,11 @@ impl App {
     #[allow(clippy::new_without_default)]
     pub fn new() -> Self {
         glib::Object::builder::<Self>()
-            .property("application-id", &Some(APP_ID))
-            .property("flags", &gio::ApplicationFlags::empty())
+            .property("application-id", Some(APP_ID))
+            .property("flags", gio::ApplicationFlags::empty())
             .property(
                 "resource-base-path",
-                &Some("/com/github/finefindus/eyedropper/"),
+                Some("/com/github/finefindus/eyedropper/"),
             )
             .build()
     }
@@ -159,18 +185,6 @@ impl App {
         self.set_accels_for_action("app.quit", &["<Control>w", "<Control>q"]);
     }
 
-    fn setup_css(&self) {
-        let provider = gtk::CssProvider::new();
-        provider.load_from_resource("/com/github/finefindus/eyedropper/style.css");
-        if let Some(display) = gdk::Display::default() {
-            gtk::StyleContext::add_provider_for_display(
-                &display,
-                &provider,
-                gtk::STYLE_PROVIDER_PRIORITY_APPLICATION,
-            );
-        }
-    }
-
     fn show_about_dialog(&self) {
         EyedropperAbout::show(
             self,
@@ -182,7 +196,7 @@ impl App {
     fn show_preferences_dialog(&self) {
         let preferences = PreferencesWindow::new();
         preferences.set_transient_for(Some(&self.main_window()));
-        preferences.show();
+        preferences.set_visible(true);
     }
 
     pub fn run(&self) -> ExitCode {
@@ -191,5 +205,76 @@ impl App {
         info!("Datadir: {}", PKGDATADIR);
 
         ApplicationExtManual::run(self)
+    }
+
+    /// Returns a [`gdk_pixbuf::Pixbuf`] of circular icon rendered in the given color.
+    ///
+    /// The color should be in a format, that can be parsed by [`gtk::gdk::RGBA`].
+    ///
+    /// # Panics
+    /// This function may panic, if some of the underlying code return [`None`].
+    fn icon(color: &str) -> Result<gtk::gdk_pixbuf::Pixbuf, glib::Error> {
+        const SIZE: i32 = 48;
+
+        let display = gdk::Display::default().unwrap();
+        let theme = gtk::IconTheme::for_display(&display);
+        let paintable = theme.lookup_icon(
+            "circle-symbolic",
+            &[],
+            SIZE,
+            1,
+            gtk::TextDirection::Ltr,
+            gtk::IconLookupFlags::FORCE_SYMBOLIC,
+        );
+
+        let snapshot = gtk::Snapshot::new();
+
+        let renderer = gtk::gsk::GLRenderer::new();
+        renderer.realize(gdk::Surface::NONE)?;
+        paintable.snapshot_symbolic(
+            &snapshot,
+            SIZE.into(),
+            SIZE.into(),
+            &[gtk::gdk::RGBA::parse(color).unwrap()],
+        );
+
+        let node = snapshot.to_node().unwrap();
+        let texture = renderer.render_texture(&node, None);
+        renderer.unrealize();
+
+        let bytes = texture.save_to_png_bytes();
+        let stream = gio::MemoryInputStream::from_bytes(&bytes);
+
+        gtk::gdk_pixbuf::Pixbuf::from_stream(&stream, gio::Cancellable::NONE)
+    }
+}
+
+impl SearchProviderImpl for App {
+    fn activate_result(&self, identifier: ResultID, _terms: &[String], timestamp: u32) {
+        self.activate();
+        let window = self.main_window();
+        window.set_color(gdk::RGBA::parse(identifier).unwrap().into());
+        window.present_with_time(timestamp);
+    }
+
+    fn initial_result_set(&self, terms: &[String]) -> Vec<ResultID> {
+        terms
+            .iter()
+            .filter_map(|term| gdk::RGBA::parse(term).ok())
+            .map(|color| color.to_string())
+            .collect::<Vec<_>>()
+    }
+
+    fn result_metas(&self, identifiers: &[ResultID]) -> Vec<ResultMeta> {
+        identifiers
+            .iter()
+            .map(|identifier| {
+                ResultMeta::builder(identifier.to_owned(), identifier)
+                    .icon_data(IconData::from(
+                        &App::icon(identifier).expect("Failed to render search icon"),
+                    ))
+                    .build()
+            })
+            .collect::<Vec<_>>()
     }
 }

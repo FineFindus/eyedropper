@@ -14,7 +14,8 @@ use gtk::Switch;
 use crate::colors::color::Color;
 use crate::colors::formatter::ColorFormatter;
 
-use super::preferences::color_format::ColorFormatObject;
+use super::color_format::ColorFormatObject;
+use super::name_set_dialog::NameSourcesDialog;
 
 mod imp {
 
@@ -27,9 +28,8 @@ mod imp {
 
     use super::*;
 
-    // Object holding the state
     #[derive(Debug, gtk::CompositeTemplate)]
-    #[template(resource = "/com/github/finefindus/eyedropper/ui/preferences.ui")]
+    #[template(resource = "/com/github/finefindus/eyedropper/ui/preferences/preferences.ui")]
     pub struct PreferencesWindow {
         pub settings: gtk::gio::Settings,
         #[template_child()]
@@ -38,8 +38,6 @@ mod imp {
         pub standard_observer_box: TemplateChild<adw::ComboRow>,
         #[template_child()]
         pub precision_spin_button: TemplateChild<gtk::SpinButton>,
-        #[template_child()]
-        pub default_precision_switch: TemplateChild<gtk::Switch>,
         #[template_child()]
         pub cie_illuminants_box: TemplateChild<gtk::DropDown>,
         // this exist only to load the CustomFormatRow, otherwise it would crash
@@ -50,10 +48,8 @@ mod imp {
         pub format_order: RefCell<Option<gio::ListStore>>,
     }
 
-    // The central trait for subclassing a GObject
     #[glib::object_subclass]
     impl ObjectSubclass for PreferencesWindow {
-        // `NAME` needs to match `class` attribute of template
         const NAME: &'static str = "PreferencesWindow";
         type Type = super::PreferencesWindow;
         type ParentType = adw::PreferencesWindow;
@@ -64,7 +60,6 @@ mod imp {
                 alpha_pos_box: TemplateChild::default(),
                 standard_observer_box: TemplateChild::default(),
                 cie_illuminants_box: TemplateChild::default(),
-                default_precision_switch: TemplateChild::default(),
                 precision_spin_button: TemplateChild::default(),
                 _custom_format: TemplateChild::default(),
                 order_list: TemplateChild::default(),
@@ -82,14 +77,13 @@ mod imp {
         }
     }
 
-    // Trait shared by all GObjects
     impl ObjectImpl for PreferencesWindow {
         fn constructed(&self) {
             self.parent_constructed();
             let obj = self.obj();
             obj.setup_order_list();
             obj.setup_settings();
-            obj.add_options();
+            obj.populate_formats();
         }
     }
 
@@ -131,14 +125,6 @@ impl PreferencesWindow {
             .build();
 
         imp.settings
-            .bind(
-                "use-default-precision",
-                &*imp.default_precision_switch,
-                "state",
-            )
-            .build();
-
-        imp.settings
             .bind("precision-digits", &*imp.precision_spin_button, "value")
             .build();
     }
@@ -149,76 +135,19 @@ impl PreferencesWindow {
         log::debug!("Resetting order");
         self.formats().remove_all();
         self.imp().settings.reset("format-order");
-        self.add_options();
+        self.populate_formats();
     }
 
     /// Shows a dialog letting the use choose which name sets should be used.
     #[template_callback]
     fn on_name_row_activated(&self, _row: &adw::ActionRow) {
-        let list = gtk::ListBox::builder()
-            .margin_top(12)
-            .margin_start(12)
-            .margin_end(12)
-            .margin_bottom(12)
-            .css_classes(vec!["boxed-list".to_string()])
-            .build();
-
-        list.append(&self.name_set_row(
-            &pgettext(
-                "Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/#html4",
-                "Basic",
-            ),
-            &gettext("Show color names from the w3c basic color keyword set"),
-            "name-source-basic",
-        ));
-        list.append(&self.name_set_row(
-            &pgettext(
-                "Name of the extended color keyword set from https://www.w3.org/TR/css-color-3/#svg-color",
-                "Extended",
-            ),
-            &gettext("Show color names from the w3c extended color keyword  set"),
-            "name-source-extended",
-        ));
-        list.append(&self.name_set_row(
-            &pgettext("Name of the color set from the GNOME color palette (https://developer.gnome.org/hig/reference/palette.html)", "GNOME color palette"),
-            &gettext("Show color names from the GNOME color palette"),
-            "name-source-gnome-palette",
-        ));
-        list.append(&self.name_set_row(
-            &pgettext("Name of the color set from the xkcd color survey", "xkcd"),
-            &gettext("Show color names from the xkcd color survey"),
-            "name-source-xkcd",
-        ));
-
-        let dialog = gtk::Dialog::builder()
-            .transient_for(self)
-            .modal(true)
-            .child(&list)
-            .build();
-        dialog.show();
-    }
-
-    /// Build an ActionRow for the name setting.
-    fn name_set_row(&self, title: &str, subtitle: &str, source: &str) -> adw::ActionRow {
-        let switch = gtk::Switch::builder()
-            .valign(gtk::Align::Center)
-            .can_focus(false)
-            .build();
-
-        self.imp().settings.bind(source, &switch, "state").build();
-
-        let row = adw::ActionRow::builder()
-            .title(title)
-            .subtitle(subtitle)
-            .activatable_widget(&switch)
-            .build();
-        row.add_suffix(&switch);
-        row
+        let dialog = NameSourcesDialog::new();
+        dialog.set_transient_for(Some(self));
+        dialog.set_visible(true);
     }
 
     /// Returns the formats list store object.
     fn formats(&self) -> gio::ListStore {
-        // Get state
         self.imp()
             .format_order
             .borrow()
@@ -226,13 +155,20 @@ impl PreferencesWindow {
             .expect("Could not get current formats.")
     }
 
-    fn format_order_list(&self) -> Vec<String> {
-        self.formats()
+    /// Saves the current format order to the settings.
+    fn save_format_order(&self) {
+        let formats = self
+            .formats()
             .snapshot()
             .iter()
             .filter_map(Cast::downcast_ref::<ColorFormatObject>)
-            .map(|format| format.identifier())
-            .collect()
+            .map(ColorFormatObject::identifier)
+            .collect::<Vec<String>>();
+
+        self.imp()
+            .settings
+            .set("format-order", &formats)
+            .expect("Failed to save format-order: {}");
     }
 
     /// Assure that formats is only visible
@@ -279,7 +215,31 @@ impl PreferencesWindow {
 
         self.imp()
             .settings
-            .bind(&item.settings_name(), &switch, "state")
+            .bind("visible-formats", item, "visible")
+            .mapping(
+                glib::clone!(@weak item => @default-return None, move |value, _variant| {
+                    let visible = value.get::<Vec<String>>().unwrap_or(Vec::with_capacity(0));
+                    Some(visible.contains(&item.identifier()).to_value())
+                }),
+            )
+            .set_mapping(
+                glib::clone!(@weak self as window, @weak item => @default-return None, move |value, _variant| {
+                    let active = value.get::<bool>().expect("Failed to get bool from switch active property");
+                    let mut visible_formats= window.imp().settings.get::<Vec<String>>("visible-formats");
+
+                    if active {
+                        visible_formats.push(item.identifier());
+                    } else {
+                        visible_formats.retain(|format| format != &item.identifier());
+                    }
+
+                    Some(visible_formats.to_variant())
+                }),
+            )
+            .build();
+        item.bind_property("visible", &switch, "active")
+            .bidirectional()
+            .sync_create()
             .build();
 
         let row = adw::ActionRow::builder()
@@ -306,6 +266,7 @@ impl PreferencesWindow {
                     log::debug!("Moving {} up", item.label());
                     window.formats().remove(index);
                     window.formats().insert(index.saturating_sub(1), &item);
+                    window.save_format_order();
                 }
             }),
         );
@@ -319,6 +280,7 @@ impl PreferencesWindow {
                     window.formats().remove(index);
                     //index should not be larger than the largest index
                     window.formats().insert((index + 1).min(window.formats().n_items()), &item);
+                    window.save_format_order();
                 }
             }),
         );
@@ -341,9 +303,9 @@ impl PreferencesWindow {
         row.add_suffix(&menu_button);
 
         //drag handle
-        let handle = gtk::Image::from_icon_name("list-drag-handle-symbolic");
-        handle.add_css_class("drag-handle");
-        row.add_prefix(&handle);
+        let drag_handle = gtk::Image::from_icon_name("list-drag-handle-symbolic");
+        drag_handle.add_css_class("drag-handle");
+        row.add_prefix(&drag_handle);
 
         let drag = gtk::DragSource::builder()
             .name("preferences-drag-format")
@@ -368,37 +330,20 @@ impl PreferencesWindow {
         drop_target.set_types(&[ColorFormatObject::static_type()]);
 
         drop_target.connect_drop(glib::clone!(@weak self as widget, @weak item => @default-return false, move |_, value, _, _| {
-
             let value = value.get::<ColorFormatObject>().expect("Failed to get index value");
 
             if item == value {
-                return  false;
+                return false;
             }
 
-            //remove dragged row
-            match widget.formats().find(&value) {
-                Some(source_index) => {
+            match (widget.formats().find(&value), widget.formats().find(&item)) {
+                (Some(source_index), Some(target_index)) => {
+                    log::debug!("Source: {} Target: {}", source_index, target_index);
                     widget.formats().remove(source_index);
-
-                    match widget.formats().find(&item) {
-                        Some(target_index) => {
-                            if target_index >= source_index {
-                                widget.formats().insert(target_index + 1, &value);
-                            } else {
-                                widget.formats().insert(target_index, &value);
-                            }
-
-                            //update settings with new order
-                            match widget.imp().settings.set("format-order", widget.format_order_list()) {
-                                Ok(_) => {},
-                                Err(err) => log::error!("Failed to save format-order: {}", err)
-                            }
-                        },
-                        None => log::error!("Failed to find index for {:?}", item)
-
-                    }
+                    widget.formats().insert(target_index, &value);
+                    widget.save_format_order();
                 },
-                None => log::error!("Failed to find index for {:?}", value),
+                (source, target) => log::error!("Failed to find indices for dragged row, source: {:?}, target: {:?}", source, target),
             }
             true
         }));
@@ -406,11 +351,11 @@ impl PreferencesWindow {
         row
     }
 
-    fn add_options(&self) {
+    fn populate_formats(&self) {
         //color used as examples
-        let color = Color::rgb(46, 52, 64);
-        //create a formatter to display the color
-        let formatter = ColorFormatter::with_color(color);
+        let example_color = Color::rgb(46, 52, 64);
+
+        let formatter = ColorFormatter::with_color(example_color);
 
         let mut order = self.imp().settings.get::<Vec<String>>("format-order");
         log::debug!("Order: {:?}", order);
@@ -433,60 +378,22 @@ impl PreferencesWindow {
                 log::debug!("Saved order does not contain {} at index {}", item, index);
                 order.insert(index, item.to_owned());
                 //override previously saved order
-                match self
-                    .imp()
-                    .settings
-                    .set("format-order", &self.format_order_list())
-                {
-                    Ok(_) => {}
-                    Err(err) => log::error!("Failed to save format-order: {}", err),
-                }
+                self.save_format_order();
+                log::debug!("Order with new items: {:?}", order);
             }
         }
 
-        log::debug!("Order with new items: {:?}", order);
-
         for item in order {
             let format = match item.to_lowercase().as_str() {
-                "hex" => ColorFormatObject::new(
-                    item,
-                    gettext("Hex-Code"),
-                    formatter.hex_code(),
-                    "show-hex-format",
-                ),
-                "rgb" => {
-                    ColorFormatObject::new(item, gettext("RGB"), formatter.rgb(), "show-rgb-format")
-                }
-                "hsl" => {
-                    ColorFormatObject::new(item, gettext("HSL"), formatter.hsl(), "show-hsl-format")
-                }
-                "hsv" => {
-                    ColorFormatObject::new(item, gettext("HSV"), formatter.hsv(), "show-hsv-format")
-                }
-                "cmyk" => ColorFormatObject::new(
-                    item,
-                    gettext("CMYK"),
-                    formatter.cmyk(),
-                    "show-cmyk-format",
-                ),
-                "xyz" => {
-                    ColorFormatObject::new(item, gettext("XYZ"), formatter.xyz(), "show-xyz-format")
-                }
-                "cielab" => ColorFormatObject::new(
-                    item,
-                    gettext("CIELAB"),
-                    formatter.cie_lab(),
-                    "show-cie-lab-format",
-                ),
-                "hwb" => {
-                    ColorFormatObject::new(item, gettext("HWB"), formatter.hwb(), "show-hwb-format")
-                }
-                "hcl" => ColorFormatObject::new(
-                    item,
-                    gettext("CIELCh / HCL"),
-                    formatter.hcl(),
-                    "show-hcl-format",
-                ),
+                "hex" => ColorFormatObject::new(item, gettext("Hex-Code"), formatter.hex_code()),
+                "rgb" => ColorFormatObject::new(item, gettext("RGB"), formatter.rgb()),
+                "hsl" => ColorFormatObject::new(item, gettext("HSL"), formatter.hsl()),
+                "hsv" => ColorFormatObject::new(item, gettext("HSV"), formatter.hsv()),
+                "cmyk" => ColorFormatObject::new(item, gettext("CMYK"), formatter.cmyk()),
+                "xyz" => ColorFormatObject::new(item, gettext("XYZ"), formatter.xyz()),
+                "cielab" => ColorFormatObject::new(item, gettext("CIELAB"), formatter.cie_lab()),
+                "hwb" => ColorFormatObject::new(item, gettext("HWB"), formatter.hwb()),
+                "hcl" => ColorFormatObject::new(item, gettext("CIELCh / HCL"), formatter.hcl()),
                 "name" => ColorFormatObject::new(
                     item,
                     gettext("Name"),
@@ -494,17 +401,11 @@ impl PreferencesWindow {
                         "Information that no name for the color could be found",
                         "Not named",
                     ),
-                    "show-color-name",
                 ),
-                "lms" => {
-                    ColorFormatObject::new(item, gettext("LMS"), formatter.lms(), "show-lms-format")
+                "lms" => ColorFormatObject::new(item, gettext("LMS"), formatter.lms()),
+                "hunterlab" => {
+                    ColorFormatObject::new(item, gettext("Hunter Lab"), formatter.hunter_lab())
                 }
-                "hunterlab" => ColorFormatObject::new(
-                    item,
-                    gettext("Hunter Lab"),
-                    formatter.hunter_lab(),
-                    "show-hunter-lab-format",
-                ),
                 _ => {
                     log::error!("Failed to find format: {item}");
                     continue;

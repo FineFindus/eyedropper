@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eyedropper\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-18 11:58+0100\n"
-"PO-Revision-Date: 2022-12-18 12:39+0100\n"
+"POT-Creation-Date: 2023-02-22 19:24+0100\n"
+"PO-Revision-Date: 2023-02-23 18:15+0100\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: none\n"
 "Language: nl\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:88 src/main.rs:25 src/widgets/about_window.rs:44
+#: data/resources/ui/window.ui:88 src/main.rs:26 src/widgets/about_window.rs:45
 msgid "Eyedropper"
 msgstr "Eyedropper"
 
@@ -30,9 +30,9 @@ msgstr "Kleurenkiezer"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
-#: src/widgets/about_window.rs:74
-msgid "A powerful color picker and formatter"
-msgstr "Een krachtige kleurenkiezer en -formateerder"
+#: src/widgets/about_window.rs:75
+msgid "Pick and format colors"
+msgstr "Kies en formatteer kleuren"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
@@ -42,7 +42,7 @@ msgstr ""
 "Selecteren;Palet;"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
-#: src/widgets/about_window.rs:77
+#: src/widgets/about_window.rs:78
 msgid ""
 "Pick any color from your screen and view it in different formats. Change the "
 "picked color or go back to a previously picked color from the history list. "
@@ -54,78 +54,144 @@ msgstr ""
 "gekozen kleur."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
-#: src/widgets/about_window.rs:82
+#: src/widgets/about_window.rs:83
 msgid "Features"
 msgstr "Functies"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:16
-#: src/widgets/about_window.rs:86
+#: src/widgets/about_window.rs:87
 msgid "Pick a Color"
 msgstr "Kies een kleur van het scherm"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
-#: src/widgets/about_window.rs:87
+#: src/widgets/about_window.rs:88
 msgid "Enter a color in Hex-Format"
 msgstr "Voer een kleur in als hex-formaat"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:18
-#: src/widgets/about_window.rs:88
+#: src/widgets/about_window.rs:89
 msgid "Parse RGBA/ARGB Hex-Colors"
 msgstr "Verwerk RGBA-/ARGB-hex-kleuren"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
-#: src/widgets/about_window.rs:89
+#: src/widgets/about_window.rs:90
 msgid "View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format"
 msgstr ""
 "Bekijk kleuren in de volgende formaten: Hex, RGB, HSV, HSL, CMYK, XYZ en CIE-"
 "Lab"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
-#: src/widgets/about_window.rs:90
+#: src/widgets/about_window.rs:91
 msgid "Customize which formats appear as well as their order"
 msgstr "Pas aan welke formaten verschijnen samen met hun volgorde"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
-#: src/widgets/about_window.rs:91
+#: src/widgets/about_window.rs:92
 msgid "Generate a palette of different shades"
 msgstr "Genereer een palet van verschillende tinten"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:27
-msgid "Main window dark"
-msgstr "Hoofdvenster (donker)"
+msgid "Main window with a color in different formats"
+msgstr "Hoofdvenster met een kleur in verschillende formaten"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:31
-msgid "Main window light"
-msgstr "Hoofdvenster (licht)"
+msgid "Main window with customized formats"
+msgstr "Hoofdvenster met aangepaste formaten"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:35
-msgid "Customized color formatting in dark mode"
-msgstr "Aangepast kleurformaat in donkere modus"
+msgid "Dialog showing generated color palettes"
+msgstr "Dialoog met gegenereerde kleurenpaletten"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:39
-msgid "Customized color formatting"
-msgstr "Aangepast kleurformaat"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:43
-msgid "Generated color palettes"
-msgstr "Gegenereerde kleurenpaletten"
+msgid "Status page stating to pick a color to get started"
+msgstr "Statuspagina met vermelding om een kleur te kiezen om te beginnen"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:52
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:72
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:84
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:96
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:71
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:89
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:109
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:121
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:133
 msgid "Added:"
 msgstr "Toegevoegd:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:54
+msgid "Russian translation"
+msgstr "Russische vertaling"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:55
+msgid "Better optimizied releases"
+msgstr "Beter geoptimaliseerde uitgaven"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:56
+msgid "Returns the exit code on quitting"
+msgstr "Geeft de statuscode terug bij sluiten"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:58
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:80
+msgid "Changed:"
+msgstr "Veranderd:"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:60
+msgid "History no longer contains duplicated items"
+msgstr "Geschiedenis bevat geen dubbele items meer"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:62
+msgid "Fixed:"
+msgstr "Foutoplossingen:"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:64
+msgid "Fixed a bug where the wrong rgb format was used"
+msgstr "Fout opgelost waar het verkeerde RGB-formaat werd gebruikt"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:65
+msgid "Fixed a bug where LMS and Hunter-Lab had the same setting"
+msgstr "Fout opgelost waar LMS en Hunter-Lab dezelfde instelling hadden"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:73
+msgid ""
+"Export the generated palettes from the palette dialog as a GIMP palette file"
+msgstr ""
+"De gegenereerde paletten uit het paletvenster worden geëxporteerd als een "
+"GIMP paletbestand"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:74
+msgid "A .doap file to describe the project"
+msgstr "Een .doap-bestand om het project te beschrijven"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:75
+msgid "Show a placeholder page when no color is picked"
+msgstr "Een placeholder-pagina wordt getoond wanneer geen kleur is gekozen"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:76
+msgid "LMS color space can now be shown"
+msgstr "LMS-kleurenruimte kan nu worden getoond"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:77
+msgid "Convert to Hunter-Lab color space"
+msgstr "Converteren naar Hunter-Lab-kleurenruimte"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:78
+msgid "Customize color formats"
+msgstr "Kleurformaten aanpassen"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:82
+msgid "Fixed a bug where the illuminants were not fully shown"
+msgstr "Fout opgelost waar de illuminanten niet volledig werden getoond"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:83
+msgid "The names of the GNOME color palette are now available"
+msgstr "De namen van het GNOME-kleurenpalet zijn nu beschikbaar"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:91
 msgid "Options to show names of color (from w3c basic, extended and xkcd)"
 msgstr "Opties om namen van kleuren te tonen (van w3c basic, extended en xkcd)"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:55
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:92
 msgid "Change the color by typing a name in the name field"
 msgstr "Wijzig de kleur door een naam te typen in het naamveld"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:56
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:93
 msgid ""
 "Palettes are now shown in the palette dialog, accessible by clicking on the "
 "large color button"
@@ -133,31 +199,31 @@ msgstr ""
 "Paletten worden nu getoond in het paletvenster, toegankelijk door te klikken "
 "op de grote kleurknop"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:57
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:94
 msgid "The App now uses the AdwAboutWindow"
 msgstr "De app maakt nu gebruik van AdwAboutWindow"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:58
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:95
 msgid "HSL does now support alpha values"
 msgstr "HSL ondersteunt nu alfawaarden"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:59
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:96
 msgid "HWB and CIELCh are now supported"
 msgstr "HWB en CIELCh worden nu ondersteund"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:60
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:97
 msgid "CIE standard observer for CIELab and CIELCh"
 msgstr "CIE-standaardwaarnemer voor CIELab en CIELCh"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:61
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:98
 msgid "Change CIE illuminants"
 msgstr "Pas CIE-lichtbronnen aan"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:66
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:103
 msgid "Fixed a few bugs and added Dutch translations."
 msgstr "Enkele bugs verholpen en Nederlandse vertaling toegevoegd."
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:74
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:111
 msgid ""
 "Palettes, consisting of darker shades and lighter tints, are now generated "
 "from the currently picked color as well as the previous 3"
@@ -165,7 +231,7 @@ msgstr ""
 "Paletten, bestaande uit donkere tinten en lichtere tinten, worden nu "
 "gegenereerd uit de huidig gekozen kleur en de vorige 3"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:75
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:112
 msgid ""
 "Change the order of the color formats by dragging and dropping them in the "
 "settings"
@@ -173,61 +239,74 @@ msgstr ""
 "Wijzig de volgorde van de kleurformaten door ze te verslepen in de "
 "instellingen"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:76
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:113
 msgid "The app has been translated into French by rene-coty"
 msgstr "De app is vertaald naar het Frans door rene-coty"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:77
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:114
 msgid "A German translation has been added"
 msgstr "Duitse vertaling toegevoegd"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:78
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:115
 msgid "Adjusted some strings to be easier to understand"
 msgstr "Enkele strings aangepast om ze begrijpelijker te maken"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:86
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:123
 msgid "Issue and feature-request templates"
 msgstr "Sjablonen voor problemen en functieverzoeken"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:87
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:124
 msgid "Change the color using hex values in the hex field"
 msgstr "Verander de kleur met behulp van hex-waarden in het hex-veld"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:88
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:125
 msgid "Previous colors are now visible in the history list"
 msgstr "Vorige kleuren zijn nu zichtbaar in de geschiedenislijst"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:89
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:126
 msgid "Disable unwanted color models"
 msgstr "Schakel ongewenste kleurmodellen uit"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:90
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:127
 msgid "Colors can now be shown as XYZ or CIELAB format"
 msgstr "Kleuren kunnen nu worden getoond als XYZ- of CIELAB-formaat"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:98
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:135
 msgid "Basic UI"
 msgstr "Basisinterface"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:99
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:136
 msgid "Pick a color using the color picker button"
 msgstr "Kies een kleur met behulp van de kleurkiezer"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:100
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:137
 msgid "Copy the color in different color models"
 msgstr "Kopieer de kleur in verschillende kleurmodellen"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:101
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:138
 msgid "Change the position of the alpha values in hex values"
 msgstr "Wijzig de positie van de alfawaarden in hex-waarden"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:102
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:139
 msgid "Added License"
 msgstr "Licentie toegevoegd"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:115
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:152
 msgid "FineFindus"
 msgstr "FineFindus"
+
+#: data/resources/ui/preferences/custom-format-row.ui:10
+msgctxt "Tooltip of the reset button for custom format"
+msgid "Reset Format"
+msgstr "Formaat resetten"
+
+#: data/resources/ui/palette-window.ui:5
+msgid "Palettes"
+msgstr "Paletten"
+
+#: data/resources/ui/palette-window.ui:16
+msgid "Save Palettes…"
+msgstr "Paletten opslaan…"
 
 #: data/resources/ui/shortcuts.ui:11
 msgctxt "shortcut window"
@@ -263,14 +342,6 @@ msgstr "Nieuwe kleur kiezen"
 msgctxt "shortcut window"
 msgid "Randomize the Color"
 msgstr "Willekeurige kleur kiezen"
-
-#: data/resources/ui/palette-window.ui:5
-msgid "Palettes"
-msgstr "Paletten"
-
-#: data/resources/ui/palette-window.ui:16
-msgid "Save Palettes"
-msgstr "Paletten opslaan"
 
 #: data/resources/ui/window.ui:6
 msgid "_Clear History"
@@ -314,10 +385,53 @@ msgctxt "Tooltip of the palette button"
 msgid "Open Palette Window"
 msgstr "Paletvenster openen"
 
-#: data/resources/ui/color-format-row.ui:22
-msgctxt "Tooltip of the copy button for format rows"
-msgid "Copy Format"
-msgstr "Formaat kopiëren"
+#: data/resources/ui/window.ui:148
+msgid "Copy Name"
+msgstr "Naam kopiëren"
+
+#: data/resources/ui/window.ui:154
+msgid "Copy Hex Code"
+msgstr "Hex-code  kopiëren"
+
+#: data/resources/ui/window.ui:159
+msgid "Copy RGB"
+msgstr "RGB kopiëren"
+
+#: data/resources/ui/window.ui:164
+msgid "Copy HSL"
+msgstr "HSL kopiëren"
+
+#: data/resources/ui/window.ui:169
+msgid "Copy HSV"
+msgstr "HSV/KVW kopiëren"
+
+#: data/resources/ui/window.ui:174
+msgid "Copy CMYK"
+msgstr "CMYK kopiëren"
+
+#: data/resources/ui/window.ui:179
+msgid "Copy XYZ"
+msgstr "XYZ kopiëren"
+
+#: data/resources/ui/window.ui:185
+msgid "Copy CIELAB"
+msgstr "CIELAB kopiëren"
+
+#: data/resources/ui/window.ui:191
+msgid "Copy HWB"
+msgstr "HWB kopiëren"
+
+#: data/resources/ui/window.ui:197
+msgid "Copy CIELCh / HCL"
+msgstr "CIELCh/HCL kopiëren"
+
+#: data/resources/ui/window.ui:203
+msgid "Copy LMS"
+msgstr "LMS kopiëren"
+
+#: data/resources/ui/window.ui:209
+msgid "Copy Hunter Lab"
+msgstr "Hunter-Lab kopiëren"
 
 #: data/resources/ui/preferences.ui:10
 msgid "General"
@@ -586,142 +700,6 @@ msgstr "LMS-formaat"
 msgid "Hunter Lab Format"
 msgstr "Hunter-Lab-formaat"
 
-#: data/resources/ui/preferences/custom-format-row.ui:10
-msgctxt "Tooltip of the reset button for custom format"
-msgid "Reset Format"
-msgstr "Formaat resetten"
-
-#: src/widgets/preferences_window.rs:168
-msgctxt ""
-"Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
-"#html4"
-msgid "Basic"
-msgstr "Basis"
-
-#: src/widgets/preferences_window.rs:170
-msgid "Show color names from the w3c basic color keyword set"
-msgstr "Geeft kleurnamen weer van de basis-W3C-kleurenset"
-
-#: src/widgets/preferences_window.rs:176
-msgctxt ""
-"Name of the extended color keyword set from https://www.w3.org/TR/css-"
-"color-3/#svg-color"
-msgid "Extended"
-msgstr "Uitgebreid"
-
-#: src/widgets/preferences_window.rs:178
-msgid "Show color names from the w3c extended color keyword  set"
-msgstr "Geeft kleurnamen weer van de uitgebruide W3C-kleurenset"
-
-#: src/widgets/preferences_window.rs:182
-msgctxt ""
-"Name of the color set from the GNOME color palette (https://developer.gnome."
-"org/hig/reference/palette.html)"
-msgid "GNOME color palette"
-msgstr "GNOME-kleurenpalet"
-
-#: src/widgets/preferences_window.rs:183
-msgid "Show color names from the GNOME color palette"
-msgstr "Geeft kleurnamen weer van het GNOME-kleurenpalet"
-
-#: src/widgets/preferences_window.rs:187
-msgctxt "Name of the color set from the xkcd color survey"
-msgid "xkcd"
-msgstr "xkcd"
-
-#: src/widgets/preferences_window.rs:188
-msgid "Show color names from the xkcd color survey"
-msgstr "Geeft kleurnamen weer van de xkcd-kleurenenquête"
-
-#: src/widgets/preferences_window.rs:327
-msgid "Move Up"
-msgstr "Naar boven verplaatsen"
-
-#: src/widgets/preferences_window.rs:329
-msgid "Move Down"
-msgstr "Naar beneden verplaatsen"
-
-#: src/widgets/preferences_window.rs:452
-msgid "Hex-Code"
-msgstr "Hex-code"
-
-#: src/widgets/preferences_window.rs:457
-msgid "RGB"
-msgstr "RGB"
-
-#: src/widgets/preferences_window.rs:460
-msgid "HSL"
-msgstr "HSL"
-
-#: src/widgets/preferences_window.rs:463
-msgid "HSV"
-msgstr "HSV/KVW"
-
-#: src/widgets/preferences_window.rs:467
-msgid "CMYK"
-msgstr "CMYK"
-
-#: src/widgets/preferences_window.rs:472
-msgid "XYZ"
-msgstr "XYZ"
-
-#: src/widgets/preferences_window.rs:476
-msgid "CIELAB"
-msgstr "CIELAB"
-
-#: src/widgets/preferences_window.rs:481
-msgid "HWB"
-msgstr "HWB"
-
-#: src/widgets/preferences_window.rs:485
-msgid "CIELCh / HCL"
-msgstr "CIELCh/HCL"
-
-#: src/widgets/preferences_window.rs:491
-msgid "Name"
-msgstr "Naam"
-
-#: src/widgets/preferences_window.rs:494 src/window.rs:397 src/window.rs:420
-#: src/window.rs:580 src/window.rs:651
-msgctxt "Information that no name for the color could be found"
-msgid "Not named"
-msgstr "Geen naam beschikbaar"
-
-#: src/widgets/preferences_window.rs:499
-msgid "LMS"
-msgstr "LMS"
-
-#: src/widgets/preferences_window.rs:503
-msgid "Hunter Lab"
-msgstr "Hunter-Lab"
-
-#. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
-#: src/widgets/about_window.rs:50
-msgid "translator-credits"
-msgstr "Philip Goto <philip.goto@gmail.com>"
-
-#: src/widgets/about_window.rs:110
-msgctxt ""
-"The changelog of the current version. Should be similar to the CHANGELOG.md "
-"file at the project root. Please ensure that the tags have a matching "
-"closing tag. Since xgettext does not recognize rust multiline strings, this "
-"should be on a single line using line breaks (\\n) for new lines."
-msgid ""
-"<p>A new release with exciting new features.</p><p>New Features:</p>\n"
-"<ul><li>Customize formats in the settings</li><li>Export the colorscheme as "
-"a GIMP palette using the new export option</li><li>A placeholder is shown "
-"when no color is picked</li><li> Hunter-Lab and LMS color spaces have been "
-"added</li><li>The GNOME color palette has been added</li><li>Fixed minor "
-"issues</li></ul>"
-msgstr ""
-"<p>Een nieuwe uitgave met spannende nieuwe functies.</p><p>Nieuwe functies:</"
-"p>\n"
-"<ul><li>Pas formaten aan onder instellingen</li><li>Exporteer het "
-"kleurenschema als GIMP-palet gebruikmakend van de nieuwe exporteeroptie</"
-"li><li>Een plaatshouder wordt getoond wanneer geen kleur is gekozen</"
-"li><li>De kleurenruimtes Hunter-Lab en LMS zijn toegevoegd</li><li>Het GNOME-"
-"kleurenpalet is toegevoegd</li><li>Kleine foutoplossingen toegepast</li></ul>"
-
 #: src/widgets/palette_dialog.rs:122
 msgctxt "Name for tints (lighter variants) of the color"
 msgid "Tints"
@@ -760,25 +738,218 @@ msgctxt "Color palette consisting of six slight shifted colors"
 msgid "Analogous"
 msgstr "Harmonisch"
 
-#: src/widgets/palette_dialog.rs:259
+#: src/widgets/preferences_window.rs:169
 msgctxt ""
-"Name of the save palette file, do not add a file extension, .gpl will be "
-"added automatically"
-msgid "palettes"
-msgstr "paletten"
+"Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
+"#html4"
+msgid "Basic"
+msgstr "Basis"
 
-#: src/window.rs:493
+#: src/widgets/preferences_window.rs:171
+msgid "Show color names from the w3c basic color keyword set"
+msgstr "Geeft kleurnamen weer van de basis-W3C-kleurenset"
+
+#: src/widgets/preferences_window.rs:177
+msgctxt ""
+"Name of the extended color keyword set from https://www.w3.org/TR/css-"
+"color-3/#svg-color"
+msgid "Extended"
+msgstr "Uitgebreid"
+
+#: src/widgets/preferences_window.rs:179
+msgid "Show color names from the w3c extended color keyword  set"
+msgstr "Geeft kleurnamen weer van de uitgebruide W3C-kleurenset"
+
+#: src/widgets/preferences_window.rs:183
+msgctxt ""
+"Name of the color set from the GNOME color palette (https://developer.gnome."
+"org/hig/reference/palette.html)"
+msgid "GNOME color palette"
+msgstr "GNOME-kleurenpalet"
+
+#: src/widgets/preferences_window.rs:184
+msgid "Show color names from the GNOME color palette"
+msgstr "Geeft kleurnamen weer van het GNOME-kleurenpalet"
+
+#: src/widgets/preferences_window.rs:188
+msgctxt "Name of the color set from the xkcd color survey"
+msgid "xkcd"
+msgstr "xkcd"
+
+#: src/widgets/preferences_window.rs:189
+msgid "Show color names from the xkcd color survey"
+msgstr "Geeft kleurnamen weer van de xkcd-kleurenenquête"
+
+#: src/widgets/preferences_window.rs:328
+msgid "Move Up"
+msgstr "Naar boven verplaatsen"
+
+#: src/widgets/preferences_window.rs:330
+msgid "Move Down"
+msgstr "Naar beneden verplaatsen"
+
+#: src/widgets/preferences_window.rs:453
+msgid "Hex-Code"
+msgstr "Hex-code"
+
+#: src/widgets/preferences_window.rs:458
+msgid "RGB"
+msgstr "RGB"
+
+#: src/widgets/preferences_window.rs:461
+msgid "HSL"
+msgstr "HSL"
+
+#: src/widgets/preferences_window.rs:464
+msgid "HSV"
+msgstr "HSV/KVW"
+
+#: src/widgets/preferences_window.rs:468
+msgid "CMYK"
+msgstr "CMYK"
+
+#: src/widgets/preferences_window.rs:473
+msgid "XYZ"
+msgstr "XYZ"
+
+#: src/widgets/preferences_window.rs:477
+msgid "CIELAB"
+msgstr "CIELAB"
+
+#: src/widgets/preferences_window.rs:482
+msgid "HWB"
+msgstr "HWB"
+
+#: src/widgets/preferences_window.rs:486
+msgid "CIELCh / HCL"
+msgstr "CIELCh/HCL"
+
+#: src/widgets/preferences_window.rs:492
+msgid "Name"
+msgstr "Naam"
+
+#: src/widgets/preferences_window.rs:495 src/window.rs:432 src/window.rs:455
+#: src/window.rs:630 src/window.rs:701
+msgctxt "Information that no name for the color could be found"
+msgid "Not named"
+msgstr "Geen naam beschikbaar"
+
+#: src/widgets/preferences_window.rs:500
+msgid "LMS"
+msgstr "LMS"
+
+#: src/widgets/preferences_window.rs:504
+msgid "Hunter Lab"
+msgstr "Hunter-Lab"
+
+#. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
+#: src/widgets/about_window.rs:51
+msgid "translator-credits"
+msgstr "Philip Goto <philip.goto@gmail.com>"
+
+#: src/widgets/about_window.rs:111
+msgctxt ""
+"The changelog of the current version. Should be similar to the CHANGELOG.md "
+"file at the project root. Please ensure that the tags have a matching "
+"closing tag. Since xgettext does not recognize rust multiline strings, this "
+"should be on a single line using line breaks (\\n) for new lines."
+msgid ""
+"<p>A minor release with many small QoL improvements.</p><p>Added:</p>\n"
+"<ul><li>Show a toast with an Undo option when clearing the history</"
+"li><li>Use Ctrl-Q to close the window</li><li>Use a default minimum window "
+"size, content should no longer unnecessarily cut off</li><li>New icon by "
+"@bertob</li><li>Export palettes as Adobe Swatch Exchange (ASE), hex, PAL, "
+"Paint.NET (txt) files</li><li>Minor changes to the store metadata</li></"
+"ul><p>Changed:</p>\n"
+"<ul><li>Hunter-Lab now displays 0 instead of NaN</li><li>Improved tooltips "
+"for copying colors</li><li>Palette window now uses a button with a more "
+"explicit text instead of an icon</li><li>Reworded project description</"
+"li><li>Updated all screenshots</li></ul><p>Fixed:</p>\n"
+"<ul><li>Separator is now hidden when the history list is hidden</"
+"li><li>Improved editing experience when change the Hex color/name</li></ul>"
+msgstr ""
+"<p>Een kleine uitgave met veel kleine QoL-verbeteringen</p><p>Toegevoegd:</"
+"p>\n"
+"<ul><li>Toast met een Ongedaan maken-optie wordt getoond bij het wissen van "
+"de geschiedenis</li><li>Gebruik Ctrl-Q om het venster te sluiten</"
+"li><li>Standaard minimale venstergrootte ingesteld, inhoud wordt niet langer "
+"onnodig afgesneden</li><li>Nieuw pictogram door @bertob</li><li>Exporteer "
+"paletten als bestanden van type Adobe Swatch Exchange (ASE), hex, PAL en "
+"Paint.NET (txt)</li><li>Kleine veranderingen aan de app-metadata</li></"
+"ul><p>Veranderd:</p>\n"
+"<ul><li>Hunter-Lab toont nu 0 in plaats van NaN</li><li>Verbeterde tooltips "
+"voor het kopiëren van kleuren</li><li>Paletvenster gebruikt nu een knop met "
+"een duidelijkere tekst in plaats van een pictogram</"
+"li><li>Projectbeschrijving anders verwoord</li><li>Alle schermafdrukken "
+"bijgewerkt</li></ul><p>Foutoplossingen:</p>\n"
+"<ul><li>Scheidingslijn is nu verborgen wanneer de geschiedenislijst "
+"verborgen is</li><li>Verbeterde bewerkingservaring bij het veranderen van de "
+"hex-kleur/-naam</li></ul>"
+
+#: src/window.rs:213
+msgid "Cleared history"
+msgstr "Geschiedenis gewist"
+
+#: src/window.rs:214
+msgid "Undo"
+msgstr "Ongedaan maken"
+
+#: src/window.rs:528
 msgid "Failed to get palette color"
 msgstr "Paletkleur verkrijgen mislukt"
 
-#: src/window.rs:514
+#: src/window.rs:552
 msgid "Failed to pick a color"
 msgstr "Kleur kiezen mislukt"
 
 #. Translators: Do not replace the {}. These are used as placeholders for the copied values
-#: src/window.rs:597
+#: src/window.rs:647
 msgid "Copied: “{}”"
 msgstr "‘{}’ gekopieerd"
+
+#~ msgid "A powerful color picker and formatter"
+#~ msgstr "Een krachtige kleurenkiezer en -formateerder"
+
+#~ msgid "Main window dark"
+#~ msgstr "Hoofdvenster (donker)"
+
+#~ msgid "Main window light"
+#~ msgstr "Hoofdvenster (licht)"
+
+#~ msgid "Customized color formatting in dark mode"
+#~ msgstr "Aangepast kleurformaat in donkere modus"
+
+#~ msgctxt "Tooltip of the copy button for format rows"
+#~ msgid "Copy Format"
+#~ msgstr "Formaat kopiëren"
+
+#~ msgctxt ""
+#~ "The changelog of the current version. Should be similar to the CHANGELOG."
+#~ "md file at the project root. Please ensure that the tags have a matching "
+#~ "closing tag. Since xgettext does not recognize rust multiline strings, "
+#~ "this should be on a single line using line breaks (\\n) for new lines."
+#~ msgid ""
+#~ "<p>A new release with exciting new features.</p><p>New Features:</p>\n"
+#~ "<ul><li>Customize formats in the settings</li><li>Export the colorscheme "
+#~ "as a GIMP palette using the new export option</li><li>A placeholder is "
+#~ "shown when no color is picked</li><li> Hunter-Lab and LMS color spaces "
+#~ "have been added</li><li>The GNOME color palette has been added</"
+#~ "li><li>Fixed minor issues</li></ul>"
+#~ msgstr ""
+#~ "<p>Een nieuwe uitgave met spannende nieuwe functies.</p><p>Nieuwe "
+#~ "functies:</p>\n"
+#~ "<ul><li>Pas formaten aan onder instellingen</li><li>Exporteer het "
+#~ "kleurenschema als GIMP-palet gebruikmakend van de nieuwe exporteeroptie</"
+#~ "li><li>Een plaatshouder wordt getoond wanneer geen kleur is gekozen</"
+#~ "li><li>De kleurenruimtes Hunter-Lab en LMS zijn toegevoegd</li><li>Het "
+#~ "GNOME-kleurenpalet is toegevoegd</li><li>Kleine foutoplossingen "
+#~ "toegepast</li></ul>"
+
+#~ msgctxt ""
+#~ "Name of the save palette file, do not add a file extension, .gpl will be "
+#~ "added automatically"
+#~ msgid "palettes"
+#~ msgstr "paletten"
 
 #~ msgctxt ""
 #~ "The changelog of the current version. Should be similar to the CHANGELOG."

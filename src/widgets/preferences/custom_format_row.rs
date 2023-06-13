@@ -3,7 +3,7 @@ use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 
 mod imp {
-    use std::cell::RefCell;
+    use std::cell::{Cell, RefCell};
 
     use crate::config;
 
@@ -23,7 +23,7 @@ mod imp {
         #[property(get, set)]
         pub default_format: RefCell<String>,
         #[property(get, set, default = false)]
-        pub editable: RefCell<bool>,
+        pub editable: Cell<bool>,
     }
 
     #[glib::object_subclass]
@@ -37,7 +37,7 @@ mod imp {
                 settings: gtk::gio::Settings::new(config::APP_ID),
                 settings_key: RefCell::new(String::new()),
                 default_format: RefCell::new(String::new()),
-                editable: RefCell::new(false),
+                editable: Cell::new(false),
             }
         }
 

@@ -15,7 +15,7 @@ use crate::widgets::color_format_row::ColorFormatRow;
 use crate::widgets::palette_dialog::PaletteDialog;
 
 mod imp {
-    use std::cell::RefCell;
+    use std::cell::{Cell, RefCell};
 
     use crate::widgets;
 
@@ -36,7 +36,7 @@ mod imp {
         #[template_child]
         pub format_box: TemplateChild<gtk::Box>,
         #[template_child]
-        pub color_button: TemplateChild<gtk::ColorButton>,
+        pub color_button: TemplateChild<gtk::ColorDialogButton>,
         #[template_child]
         pub color_picker_button: TemplateChild<gtk::Button>,
         #[template_child]
@@ -67,7 +67,7 @@ mod imp {
         pub history_list: TemplateChild<gtk::ListBox>,
         pub history: RefCell<Option<gio::ListStore>>,
         pub settings: gio::Settings,
-        pub color: RefCell<Option<Color>>,
+        pub color: Cell<Option<Color>>,
         pub portal_error: RefCell<Option<ashpd::Error>>,
     }
 
@@ -95,7 +95,7 @@ mod imp {
                 history_list: TemplateChild::default(),
                 history: Default::default(),
                 settings: gio::Settings::new(APP_ID),
-                color: RefCell::new(None),
+                color: Cell::new(None),
                 portal_error: RefCell::new(None),
             }
         }
@@ -109,7 +109,13 @@ mod imp {
 
         fn class_init(klass: &mut Self::Class) {
             Self::bind_template(klass);
-            klass.bind_template_instance_callbacks();
+            Self::Type::bind_template_callbacks(klass);
+
+            klass.install_action("win.show-toast", Some("(si)"), move |win, _, var| {
+                if let Some((ref toast, i)) = var.and_then(|v| v.get::<(String, i32)>()) {
+                    win.show_toast(toast, adw::ToastPriority::__Unknown(i));
+                }
+            });
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -132,7 +138,7 @@ mod imp {
             obj.load_window_size();
             obj.setup_history();
             obj.setup_callbacks();
-            obj.set_order();
+            obj.order_formats();
             obj.load_visibility_settings();
             obj.set_stack();
         }
@@ -169,15 +175,17 @@ impl AppWindow {
     }
 
     /// Shows a basic toast with the given text.
-    fn show_toast(&self, text: &str) {
-        self.imp().toast_overlay.add_toast(adw::Toast::new(text));
+    fn show_toast(&self, text: impl AsRef<str>, priority: adw::ToastPriority) {
+        let toast = adw::Toast::new(text.as_ref());
+        toast.set_priority(priority);
+        self.imp()
+            .toast_overlay
+            .add_toast(adw::Toast::new(text.as_ref()));
     }
 
-    /// The currently picked color.
-    ///
-    /// Returns `None` if no color has been picked yet.
+    /// The currently picked color, or `None` if the user hasn't picked one yet.
     fn color(&self) -> Option<Color> {
-        *self.imp().color.borrow()
+        self.imp().color.get()
     }
 
     /// Set the stack to either show the main page or the placeholder,
@@ -210,8 +218,8 @@ impl AppWindow {
 
         //show toast to undo
         let toast = adw::Toast::builder()
-            .title(&gettext("Cleared history"))
-            .button_label(&gettext("Undo"))
+            .title(gettext("Cleared history"))
+            .button_label(gettext("Undo"))
             .priority(adw::ToastPriority::High)
             .build();
 
@@ -224,6 +232,11 @@ impl AppWindow {
 
         history.remove_all();
         self.imp().toast_overlay.add_toast(toast);
+
+        if let Some(color) = self.color() {
+            let history_item = HistoryObject::new(color);
+            self.history().insert(0, &history_item);
+        }
     }
 
     /// Setup the history by setting up a model
@@ -257,7 +270,8 @@ impl AppWindow {
     /// Assure that history is only visible
     /// if the number of items is greater than 0
     fn set_history_list_visible(&self, history: &gio::ListStore) {
-        self.imp().history_list.set_visible(history.n_items() > 0);
+        let visible = history.n_items() > 1;
+        self.imp().history_list.set_visible(visible);
     }
 
     /// Create a new history item
@@ -265,7 +279,7 @@ impl AppWindow {
         let color_button = gtk::Button::builder().margin_end(2).margin_start(2).build();
 
         // color button with the history color
-        let color = history_object.color();
+        let color: Color = history_object.color().into();
         let mut formatter = ColorFormatter::with_color(color);
         let color_hex = formatter.hex_code();
 
@@ -274,11 +288,12 @@ impl AppWindow {
         let css_provider = gtk::CssProvider::new();
 
         if let Some(display) = gtk::gdk::Display::default() {
+            #[allow(deprecated)] //https://github.com/gtk-rs/gtk4-rs/issues/1317
             gtk::StyleContext::add_provider_for_display(&display, &css_provider, 400);
         }
 
         css_provider.load_from_data(&format!(
-            ".{} {{background-color: {};border-radius: 6px;}}",
+            ".{} {{box-shadow: 5px 5px 5px @shade_color; background-color: {}; border-radius: 6px;}}",
             class_name,
             // ignore alpha values, they are not displayed properly
             color_hex
@@ -296,7 +311,7 @@ impl AppWindow {
         //switch to color when clicked
         color_button.connect_clicked(
             glib::clone!(@weak self as window, @weak history_object => move |_, | {
-                window.set_color(history_object.color());
+                window.set_color(history_object.color().into());
                 //remove from history when clicking on it
                 match window.history().find(&history_object) {
                     Some(index) => window.history().remove(index),
@@ -331,16 +346,16 @@ impl AppWindow {
         let default_width = imp
             .settings
             .default_value("window-width")
-            .expect("Failed to get width i32 ")
+            .expect("Failed to get width widow-width")
             .get::<i32>()
-            .expect("Failed to get width i32 ");
+            .expect("Failed to get width i32");
 
         let default_height = imp
             .settings
             .default_value("window-height")
-            .expect("Failed to get height i32 ")
+            .expect("Failed to get height window-height")
             .get::<i32>()
-            .expect("Failed to get height i32 ");
+            .expect("Failed to get height i32");
 
         let width = imp.settings.int("window-width").max(default_width);
         let height = imp.settings.int("window-height").max(default_height);
@@ -365,14 +380,14 @@ impl AppWindow {
             Some("format-order"),
             glib::clone!(@weak self as window => move |_, _| {
                 log::debug!("Updating format order");
-                window.set_order();
+                window.order_formats();
             }),
         );
 
         // update the color by setting it again
         let update_color = glib::clone!(@weak self as window => move |_: &gio::Settings, _:&str| {
             if let Some(color) = window.color() {
-            window.set_color(color);
+                window.set_color(color);
             }
         });
 
@@ -383,11 +398,7 @@ impl AppWindow {
         settings.connect_changed(Some("cie-illuminants"), update_color.clone());
         settings.connect_changed(Some("cie-standard-observer"), update_color.clone());
 
-        // update color name
-        settings.connect_changed(Some("show-color-name"), update_color.clone());
-
         //update precision
-        settings.connect_changed(Some("use-default-precision"), update_color.clone());
         settings.connect_changed(Some("precision-digits"), update_color.clone());
 
         // update for custom formats
@@ -402,19 +413,12 @@ impl AppWindow {
         settings.connect_changed(Some("custom-format-lms"), update_color.clone());
         settings.connect_changed(Some("custom-format-hunter-lab"), update_color);
 
-        imp.hex_row.set_settings_name("show-hex-format");
-        imp.rgb_row.set_settings_name("show-rgb-format");
-        imp.hsl_row.set_settings_name("show-hsl-format");
-        imp.hsv_row.set_settings_name("show-hsv-format");
-        imp.cmyk_row.set_settings_name("show-cmyk-format");
-        imp.xyz_row.set_settings_name("show-xyz-format");
-        imp.cie_lab_row.set_settings_name("show-cie-lab-format");
-        imp.hwb_row.set_settings_name("show-hwb-format");
-        imp.hcl_row.set_settings_name("show-hcl-format");
-        imp.lms_row.set_settings_name("show-lms-format");
-        imp.hunter_lab_row
-            .set_settings_name("show-hunter-lab-format");
-        imp.name_row.set_settings_name("show-color-name");
+        settings.connect_changed(
+            Some("visible-formats"),
+            glib::clone!(@weak self as window => move |_settings: &gio::Settings, _: &str| {
+                window.order_formats();
+            }),
+        );
 
         //update name when it changes
         let update_color_names = glib::clone!(@weak self as window => move |settings: &gio::Settings, _: &str| {
@@ -426,8 +430,7 @@ impl AppWindow {
                     settings.boolean("name-source-gnome-palette"),
                     settings.boolean("name-source-xkcd"),
                 );
-                window.
-                imp().name_row.set_text(name.unwrap_or_else(|| pgettext(
+                window.imp().name_row.set_text(name.unwrap_or_else(|| pgettext(
                     "Information that no name for the color could be found",
                     "Not named",
                 )));
@@ -438,7 +441,9 @@ impl AppWindow {
         settings.connect_changed(Some("name-source-extended"), update_color_names.clone());
         settings.connect_changed(Some("name-source-xkcd"), update_color_names.clone());
 
-        let show_name_model = settings.boolean("show-color-name");
+        let show_name_model = settings
+            .get::<Vec<String>>("visible-formats")
+            .contains(&"name".to_owned());
         if show_name_model {
             if let Some(color) = self.color() {
                 //update field to show name
@@ -460,12 +465,10 @@ impl AppWindow {
     }
 
     /// Insert the formats in the order in which they are saved in the settings.
-    fn set_order(&self) {
+    fn order_formats(&self) {
         let imp = self.imp();
         let format_box = &imp.format_box;
-        //clear box
 
-        //remove all children that are color model entries
         format_box
             .observe_children()
             .snapshot()
@@ -473,32 +476,51 @@ impl AppWindow {
             .filter_map(Cast::downcast_ref::<ColorFormatRow>)
             .for_each(|row| format_box.remove(row));
 
-        //parse current order
         let order = imp.settings.get::<Vec<String>>("format-order");
-        log::debug!("Format-Order: {:?}", order);
+        let visible = imp.settings.get::<Vec<String>>("visible-formats");
+        log::debug!("Formats: {:?}", order);
+        log::debug!("Visible: {:?}", visible);
 
-        //insert items in order
-        for item in order {
-            let child = match item.to_lowercase().as_str() {
-                "hex" => &imp.hex_row,
-                "rgb" => &imp.rgb_row,
-                "hsl" => &imp.hsl_row,
-                "hsv" => &imp.hsv_row,
-                "cmyk" => &imp.cmyk_row,
-                "xyz" => &imp.xyz_row,
-                "cielab" => &imp.cie_lab_row,
-                "hwb" => &imp.hwb_row,
-                "hcl" => &imp.hcl_row,
-                "name" => &imp.name_row,
-                "lms" => &imp.lms_row,
-                "hunterlab" => &imp.hunter_lab_row,
-                _ => {
-                    log::error!("Failed to find format: {}", item);
-                    continue;
-                }
-            };
+        order
+            .iter()
+            .filter(|item| visible.contains(item))
+            .filter_map(|item| self.map_format(item))
+            .for_each(|child| {
+                format_box.append(&child.get());
+                child.set_visible(true);
+            });
+    }
 
-            format_box.append(&child.get());
+    /// Returns a reference to the `input` named `ColorFormatRow`, or `None` if it could not be found.
+    ///
+    /// The checking is done case insensitive.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// if let Some(row) = self.map_format("rgb") {
+    ///     row.set_text("RGB");
+    /// }
+    /// ```
+    fn map_format(&self, item: &str) -> Option<&TemplateChild<ColorFormatRow>> {
+        let imp = self.imp();
+        match item.to_lowercase().as_str() {
+            "hex" => Some(&imp.hex_row),
+            "rgb" => Some(&imp.rgb_row),
+            "hsl" => Some(&imp.hsl_row),
+            "hsv" => Some(&imp.hsv_row),
+            "cmyk" => Some(&imp.cmyk_row),
+            "xyz" => Some(&imp.xyz_row),
+            "cielab" => Some(&imp.cie_lab_row),
+            "hwb" => Some(&imp.hwb_row),
+            "hcl" => Some(&imp.hcl_row),
+            "name" => Some(&imp.name_row),
+            "lms" => Some(&imp.lms_row),
+            "hunterlab" => Some(&imp.hunter_lab_row),
+            _ => {
+                log::error!("Failed to find format: {}", item);
+                None
+            }
         }
     }
 
@@ -510,7 +532,7 @@ impl AppWindow {
         //safe to unwrap, if the user opens this dialog, the color button must be clicked
         let palette_dialog = PaletteDialog::new(self.color().unwrap());
         palette_dialog.set_transient_for(Some(self));
-        palette_dialog.show();
+        palette_dialog.set_visible(true);
 
         //when a palette is chosen, add all colors of the palette in reverse order to the history
         palette_dialog.connect_closure(
@@ -525,7 +547,7 @@ impl AppWindow {
                     Ok(color) => window.set_color(color),
                     Err(_) => {
                         log::error!("Failed to parse color {}", slice);
-                        window.show_toast(&gettext("Failed to get palette color"))
+                        window.show_toast(gettext("Failed to get palette color"), adw::ToastPriority::Normal)
                 },
             });
             }),
@@ -540,39 +562,36 @@ impl AppWindow {
         log::debug!("Picking a color using the color picker");
         gtk_macros::spawn!(glib::clone!(@weak self as window => async move {
 
-        let connection = ashpd::zbus::Connection::session().await.expect("Failed to open connection to zbus");
-        let proxy = ashpd::desktop::screenshot::ScreenshotProxy::new(&connection).await.expect("Failed to open screenshot proxy");
-        match proxy.pick_color(&ashpd::WindowIdentifier::default()).await {
+        let root = window.root().unwrap();
+        let identifier = ashpd::WindowIdentifier::from_native(&root).await;
+        let request = ashpd::desktop::screenshot::Color::request()
+            .identifier(identifier)
+            .send()
+            .await
+            .expect("Failed to build color request")
+            .response();
+
+        match request {
             Ok(color) => {
                 window.imp().portal_error.replace(None);
                 window.set_color(Color::from(color));
             },
             Err(err) => {
                 log::error!("{}", err);
-                window.show_toast(&gettext("Failed to pick a color"));
-                window.imp().portal_error.replace(Some(err));
+                if !matches!(err, ashpd::Error::Response(ashpd::desktop::ResponseError::Cancelled)) {
+                    window.show_toast(gettext("Failed to pick a color"), adw::ToastPriority::Normal);
+                    window.imp().portal_error.replace(Some(err));
+                }
             },
         };
         }));
     }
 
     /// Update the current color to the given color.
-    /// The previous color will be added to the history list.
+    /// The new color will be added to the history list.
     pub fn set_color(&self, color: Color) {
-        //append previous color to history
-        if self.color() != Some(color) && self.color().is_some() {
-            let history_item = HistoryObject::new(self.color().unwrap());
-
-            if let Some(previous_index) = self.history().snapshot().into_iter().position(|item| {
-                item.downcast_ref::<HistoryObject>().unwrap().color() == history_item.color()
-            }) {
-                log::trace!(
-                    "Found {} in history at index {}",
-                    self.color().unwrap(),
-                    previous_index
-                );
-                self.history().remove(previous_index as u32);
-            }
+        if self.color() != Some(color) {
+            let history_item = HistoryObject::new(color);
             self.history().insert(0, &history_item);
         }
 
@@ -590,7 +609,6 @@ impl AppWindow {
             settings.int("cie-standard-observer") == 1,
             Illuminant::from(settings.int("cie-illuminants") as u32),
             AlphaPosition::from(settings.int("alpha-position") as u32),
-            settings.boolean("use-default-precision"),
             settings.uint("precision-digits") as usize,
             color,
         );
@@ -641,41 +659,10 @@ impl AppWindow {
         //load imp
         let imp = self.imp();
 
-        //show a toast when copying values
-        let show_toast_closure = glib::closure_local!(@watch self as window => move |_: ColorFormatRow, text: String| {
-            //Translators: Do not replace the {}. These are used as placeholders for the copied values
-            window.show_toast(&gettext("Copied: “{}”").replace("{}", &text));
-        });
-
-        imp.hex_row
-            .connect_closure("copied-text", false, show_toast_closure.clone());
-        imp.rgb_row
-            .connect_closure("copied-text", false, show_toast_closure.clone());
-        imp.hsl_row
-            .connect_closure("copied-text", false, show_toast_closure.clone());
-        imp.hsv_row
-            .connect_closure("copied-text", false, show_toast_closure.clone());
-        imp.cmyk_row
-            .connect_closure("copied-text", false, show_toast_closure.clone());
-        imp.xyz_row
-            .connect_closure("copied-text", false, show_toast_closure.clone());
-        imp.cie_lab_row
-            .connect_closure("copied-text", false, show_toast_closure.clone());
-        imp.hwb_row
-            .connect_closure("copied-text", false, show_toast_closure.clone());
-        imp.hcl_row
-            .connect_closure("copied-text", false, show_toast_closure.clone());
-        imp.name_row
-            .connect_closure("copied-text", false, show_toast_closure.clone());
-        imp.lms_row
-            .connect_closure("copied-text", false, show_toast_closure.clone());
-        imp.hunter_lab_row
-            .connect_closure("copied-text", false, show_toast_closure);
-
         imp.hex_row.connect_closure(
             "text-edited",
             false,
-            glib::closure_local!(@watch self as window => move |_: ColorFormatRow, color: String| {
+            glib::closure_local!(@watch self as window => move |format_row: ColorFormatRow, color: String| {
                 log::debug!("Changed hex entry: {color}");
                 let hex_alpha_position = AlphaPosition::from(window.imp().settings.int("alpha-position") as u32);
 
@@ -683,17 +670,158 @@ impl AppWindow {
                 if let Some(current_color) = window.color(){
 
                 match Color::from_hex(&color, hex_alpha_position) {
-                    Ok(color) => if color != current_color{ window.set_color(color) },
-                    Err(_) => log::debug!("Failed to parse color: {color}"),
+                    Ok(color) => if color != current_color {
+                        window.set_color(color);
+                        format_row.show_success();
+                    },
+                    Err(_) => {
+                        log::debug!("Failed to parse color: {color}");
+                        format_row.show_error();
+                    },
                 }
             }
+            }),
+        );
+
+        imp.rgb_row.connect_closure(
+            "text-edited",
+            false,
+            glib::closure_local!(@watch self as window => move |format_row: ColorFormatRow, color: String| {
+                log::debug!("Changed RGB entry: {color}");
+
+                if let Some(current_color) = window.color(){
+                    match Color::from_rgb(&color) {
+                        Ok(color) if color != current_color => {
+                            window.set_color(color);
+                            format_row.show_success();
+                        },
+                        Err(_) => {
+                            log::debug!("Failed to parse color: {color}");
+                            format_row.show_error();
+                        },
+                        _ => {}
+                    }
+                }
+            }),
+        );
+
+        imp.hsl_row.connect_closure(
+            "text-edited",
+            false,
+            glib::closure_local!(@watch self as window => move |format_row: ColorFormatRow, color: String| {
+                log::debug!("Changed HSL entry: {color}");
+
+                if let Some(current_color) = window.color(){
+                    match Color::from_hsl_string(&color) {
+                        Ok(color) if color != current_color => {
+                            window.set_color(color);
+                            format_row.show_success();
+                        },
+                        Err(_) => {
+                            log::debug!("Failed to parse color: {color}");
+                            format_row.show_error();
+                        },
+                        _ => {}
+                    }
+                }
+            }),
+        );
+
+        imp.hsv_row.connect_closure(
+            "text-edited",
+            false,
+            glib::closure_local!(@watch self as window => move |format_row: ColorFormatRow, color: String| {
+                log::debug!("Changed HSV entry: {color}");
+
+                if let Some(current_color) = window.color(){
+                    match Color::from_hsv_string(&color) {
+                        Ok(color) if color != current_color => {
+                            window.set_color(color);
+                            format_row.show_success();
+                        },
+                        Err(_) => {
+                            log::debug!("Failed to parse color: {color}");
+                            format_row.show_error();
+                        },
+                        _ => {}
+                    }
+                }
+            }),
+        );
+
+        imp.cmyk_row.connect_closure(
+            "text-edited",
+            false,
+            glib::closure_local!(@watch self as window => move |format_row: ColorFormatRow, color: String| {
+                log::debug!("Changed CMYK entry: {color}");
+
+                if let Some(current_color) = window.color(){
+                    match Color::from_cmyk_string(&color) {
+                        Ok(color) if color != current_color => {
+                            window.set_color(color);
+                            format_row.show_success();
+                        },
+                        Err(_) => {
+                            log::debug!("Failed to parse color: {color}");
+                            format_row.show_error();
+                        },
+                        _ => {}
+                    }
+                }
+            }),
+        );
+
+        imp.xyz_row.connect_closure(
+            "text-edited",
+            false,
+            glib::closure_local!(@watch self as window => move |format_row: ColorFormatRow, color: String| {
+                log::debug!("Changed XYZ entry: {color}");
+
+                if let Some(current_color) = window.color(){
+                    match Color::from_xyz_string(&color) {
+                        Ok(color) if color != current_color => {
+                            window.set_color(color);
+                            format_row.show_success();
+                        },
+                        Err(_) => {
+                            log::debug!("Failed to parse color: {color}");
+                            format_row.show_error();
+                        },
+                        _ => {}
+                    }
+                }
+            }),
+        );
+
+        imp.cie_lab_row.connect_closure(
+            "text-edited",
+            false,
+            glib::closure_local!(@watch self as window => move |format_row: ColorFormatRow, color: String| {
+                log::debug!("Changed CIELab entry: {color}");
+
+                if let Some(current_color) = window.color(){
+                    match Color::from_cie_lab_string(&color,
+                        Illuminant::from(window.imp().settings.int("cie-illuminants") as u32),
+                        window.imp().settings.int("cie-standard-observer") == 1,
+                    ) {
+                        Ok(color) if color != current_color => {
+                            window.set_color(color);
+                            format_row.show_success();
+                        },
+                        Err(_) => {
+                            log::debug!("Failed to parse color: {color}");
+                            format_row.show_error();
+                        },
+                        _ => {}
+                    }
+                }
             }),
         );
 
         imp.name_row.connect_closure(
             "text-edited",
             false,
-            glib::closure_local!(@watch self as window => move |_: ColorFormatRow, name: String| {
+            glib::closure_local!(@watch self as window => move |format_row: ColorFormatRow, name: String| {
                 log::debug!("Changed name entry: {name}");
                 //do not search for unnamed colors
                 if name != pgettext(
@@ -709,11 +837,106 @@ impl AppWindow {
                         window.imp().settings.boolean("name-source-extended"),
                         window.imp().settings.boolean("name-source-gnome-palette"),
                         window.imp().settings.boolean("name-source-xkcd")) {
-                    Some(color) => if color != current_color { window.set_color(color) },
-                    None => log::debug!("Failed to find color for name: {name}"),
-                }
+                    Some(color) => if color != current_color {
+                        window.set_color(color);
+                        format_row.show_success();
+                     },
+                    None => {
+                        log::debug!("Failed to find color for name: {name}");
+                        format_row.show_error();
+                    },
                 }
             }
+        }}),
+        );
+
+        imp.hwb_row.connect_closure(
+            "text-edited",
+            false,
+            glib::closure_local!(@watch self as window => move |format_row: ColorFormatRow, color: String| {
+                log::debug!("Changed HWB entry: {color}");
+
+                if let Some(current_color) = window.color(){
+                    match Color::from_hwb_string(&color) {
+                        Ok(color) if color != current_color => {
+                            window.set_color(color);
+                            format_row.show_success();
+                        },
+                        Err(_) => {
+                            log::debug!("Failed to parse color: {color}");
+                            format_row.show_error();
+                        },
+                        _ => {}
+                    }
+                }
+            }),
+        );
+
+        imp.hcl_row.connect_closure(
+            "text-edited",
+            false,
+            glib::closure_local!(@watch self as window => move |format_row: ColorFormatRow, color: String| {
+                log::debug!("Changed HCL entry: {color}");
+
+                if let Some(current_color) = window.color(){
+                    match Color::from_hcl_string(&color) {
+                        Ok(color) if color != current_color => {
+                            window.set_color(color);
+                            format_row.show_success();
+                        },
+                        Err(_) => {
+                            log::debug!("Failed to parse color: {color}");
+                            format_row.show_error();
+                        },
+                        _ => {}
+                    }
+                }
+            }),
+        );
+
+        imp.lms_row.connect_closure(
+            "text-edited",
+            false,
+            glib::closure_local!(@watch self as window => move |format_row: ColorFormatRow, color: String| {
+                log::debug!("Changed LMS entry: {color}");
+
+                if let Some(current_color) = window.color(){
+                    match Color::from_lms_string(&color) {
+                        Ok(color) if color != current_color => {
+                            window.set_color(color);
+                            format_row.show_success();
+                        },
+                        Err(_) => {
+                            log::debug!("Failed to parse color: {color}");
+                            format_row.show_error();
+                        },
+                        _ => {}
+                    }
+                }
+            }),
+        );
+
+        imp.hunter_lab_row.connect_closure(
+            "text-edited",
+            false,
+            glib::closure_local!(@watch self as window => move |format_row: ColorFormatRow, color: String| {
+                log::debug!("Changed Hunter Lab entry: {color}");
+
+                if let Some(current_color) = window.color(){
+                    match Color::from_hunter_lab_string(&color,
+                        Illuminant::from(window.imp().settings.int("cie-illuminants") as u32),
+                        window.imp().settings.int("cie-standard-observer") == 1) {
+                        Ok(color) if color != current_color => {
+                            window.set_color(color);
+                            format_row.show_success();
+                        },
+                        Err(_) => {
+                            log::debug!("Failed to parse color: {color}");
+                            format_row.show_error();
+                        },
+                        _ => {}
+                    }
+                }
             }),
         );
     }
