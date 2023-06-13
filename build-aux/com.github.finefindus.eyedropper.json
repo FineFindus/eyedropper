@@ -12,21 +12,133 @@
         "--socket=wayland",
         "--device=dri",
         "--env=G_MESSAGES_DEBUG=none",
-        "--env=RUST_BACKTRACE=1",
-        "--own-name=com.github.finefindus.eyedropper.SearchProvider"
+        "--env=RUST_BACKTRACE=1"
     ],
     "build-options": {
         "append-path": "/usr/lib/sdk/rust-stable/bin"
     },
     "modules": [
         {
+            "name": "gtk",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dbuild-testsuite=false",
+                "-Dgtk_doc=false",
+                "-Dintrospection=disabled",
+                "-Dbuild-tests=false"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gtk/4.11/gtk-4.11.2.tar.xz",
+                    "sha256": "4a481da6b65b6add3f59966b0bb27e8139c381d0699402df662df2ce1c9e6913",
+                    "x-checker-data": {
+                        "type": "gnome",
+                        "name": "gtk",
+                        "stable-only": false
+                    }
+                }
+            ]
+        },
+        {
+            "name": "libsass",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/lazka/libsass.git",
+                    "branch": "meson",
+                    "commit": "aac79dccd3c8f7e8f22125f87a119f3b1ee9d487"
+                }
+            ]
+        },
+        {
+            "name": "sassc",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/lazka/sassc.git",
+                    "branch": "meson",
+                    "commit": "a1950c2d95ea4c051feb90bb1f43559fbb54bf36"
+                }
+            ]
+        },
+        {
+            "name": "libyaml",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/yaml/libyaml.git",
+                    "commit": "2c891fc7a770e8ba2fec34fc6b545c672beb37e6"
+                }
+            ]
+        },
+        {
+            "name": "libxmlb",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dintrospection=false",
+                "-Dgtkdoc=false",
+                "-Dstemmer=false",
+                "-Dcli=false",
+                "-Dtests=false"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/hughsie/libxmlb.git",
+                    "commit": "6191220071233972d798b57841d08e4964952a17"
+                }
+            ]
+        },
+        {
+            "name": "appstream",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dstemming=false",
+                "-Ddocs=false",
+                "-Dgir=false"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/ximion/appstream.git",
+                    "tag": "v0.16.2",
+                    "commit": "1ee6af91310f9deb47f3863a7a7ffb22c46bcce6",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^v([\\d.]+)$"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "libadwaita",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dtests=false",
+                "-Dvapi=false",
+                "-Dintrospection=disabled",
+                "-Dgtk_doc=false",
+                "-Dexamples=false"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/libadwaita.git",
+                    "commit": "081673f4d099edce7d31af5006df871ee60b7d98"
+                }
+            ]
+        },
+        {
             "name": "eyedropper",
             "buildsystem": "meson",
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/FineFindus/eyedropper/releases/download/v0.6.0/eyedropper-0.6.0.tar.xz",
-                    "sha256": "9e92ca182c1cfd2433f2367bd1dd4c2c4db1f1032e5a6c1f66f8436db453f9be"
+                    "url": "https://github.com/FineFindus/eyedropper/releases/download/v0.7.0-beta/eyedropper-0.7.0.beta.tar.xz",
+                    "sha256": "42518afb555f5f64ef10461adacd44f47ee6ea7d0f00d7ce171bc80e46397ea7"
                 }
             ]
         }
