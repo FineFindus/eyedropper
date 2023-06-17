@@ -36,16 +36,11 @@
               <object class="GtkStackPage">
                 <property name="name">placeholder</property>
                 <property name="child">
-                  <object class="GtkBox">
-                    <property name="orientation">vertical</property>
-                    <child>
-                      <object class="GtkHeaderBar">
-                        <style>
-                          <class name="flat" />
-                        </style>
-                      </object>
+                  <object class="AdwToolbarView">
+                    <child type="top">
+                      <object class="AdwHeaderBar"/>
                     </child>
-                    <child>
+                    <property name="content">
                       <object class="GtkWindowHandle">
                         <property name="vexpand">True</property>
                         <property name="child">
@@ -68,7 +63,7 @@
                           </object>
                         </property>
                       </object>
-                    </child>
+                    </property>
                   </object>
                 </property>
               </object>
@@ -77,11 +72,8 @@
               <object class="GtkStackPage">
                 <property name="name">main</property>
                 <property name="child">
-                  <object class="GtkBox">
-                    <property name="orientation">vertical</property>
-                    <property name="vexpand">true</property>
-                    <property name="vexpand-set">True</property>
-                    <child>
+                  <object class="AdwToolbarView">
+                    <child type="top">
                       <object class="AdwHeaderBar" id="headerbar">
                         <property name="title-widget">
                           <object class="AdwWindowTitle">
@@ -108,7 +100,7 @@
                         </child>
                       </object>
                     </child>
-                    <child>
+                    <property name="content">
                       <object class="GtkBox">
                         <property name="orientation">horizontal</property>
                         <child>
@@ -231,7 +223,7 @@
                           </object>
                         </child>
                       </object>
-                    </child>
+                    </property>
                   </object>
                 </property>
               </object>
