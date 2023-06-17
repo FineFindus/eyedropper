@@ -565,11 +565,9 @@ impl AppWindow {
         let request = ashpd::desktop::screenshot::Color::request()
             .identifier(identifier)
             .send()
-            .await
-            .expect("Failed to build color request")
-            .response();
+            .await;
 
-        match request {
+        match request.and_then(|req| req.response()) {
             Ok(color) => {
                 window.imp().portal_error.replace(None);
                 window.set_color(Color::from(color));
