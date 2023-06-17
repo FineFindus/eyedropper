@@ -231,14 +231,13 @@ impl App {
         renderer.realize(gdk::Surface::NONE)?;
         paintable.snapshot_symbolic(&snapshot, SIZE.into(), SIZE.into(), &[color]);
 
-        let node = snapshot.to_node().unwrap();
-        let texture = renderer.render_texture(&node, None);
+        let texture = renderer.render_texture(&snapshot.to_node().unwrap(), None);
         renderer.unrealize();
 
-        let bytes = texture.save_to_png_bytes();
-        let stream = gio::MemoryInputStream::from_bytes(&bytes);
-
-        gtk::gdk_pixbuf::Pixbuf::from_stream(&stream, gio::Cancellable::NONE)
+        gtk::gdk_pixbuf::Pixbuf::from_stream(
+            &gio::MemoryInputStream::from_bytes(&texture.save_to_png_bytes()),
+            gio::Cancellable::NONE,
+        )
     }
 }
 
