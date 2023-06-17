@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-06-11 19:36+0000\n"
+"POT-Creation-Date: 2023-06-17 13:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:88 src/main.rs:25 src/widgets/about_window.rs:45
+#: data/resources/ui/window.ui:80 src/main.rs:25 src/widgets/about_window.rs:45
 msgid "Eyedropper"
 msgstr ""
 
@@ -149,45 +149,45 @@ msgstr ""
 msgid "Name Sources"
 msgstr ""
 
-#: data/resources/ui/preferences/name-sources-dialog.ui:34
+#: data/resources/ui/preferences/name-sources-dialog.ui:22
 msgctxt ""
 "Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
 "#html4"
 msgid "Basic"
 msgstr ""
 
-#: data/resources/ui/preferences/name-sources-dialog.ui:35
+#: data/resources/ui/preferences/name-sources-dialog.ui:23
 msgid "Basic web colors"
 msgstr ""
 
-#: data/resources/ui/preferences/name-sources-dialog.ui:40
+#: data/resources/ui/preferences/name-sources-dialog.ui:28
 msgctxt ""
 "Name of the extended color keyword set from https://www.w3.org/TR/css-"
 "color-3/#svg-color"
 msgid "Extended"
 msgstr ""
 
-#: data/resources/ui/preferences/name-sources-dialog.ui:41
+#: data/resources/ui/preferences/name-sources-dialog.ui:29
 msgid "X11 and SVG color values"
 msgstr ""
 
-#: data/resources/ui/preferences/name-sources-dialog.ui:46
+#: data/resources/ui/preferences/name-sources-dialog.ui:34
 msgctxt ""
 "Name of the color set from the GNOME color palette (https://developer.gnome."
 "org/hig/reference/palette.html)"
 msgid "GNOME Color Palette"
 msgstr ""
 
-#: data/resources/ui/preferences/name-sources-dialog.ui:47
+#: data/resources/ui/preferences/name-sources-dialog.ui:35
 msgid "Colors for GNOME app icons and illustrations"
 msgstr ""
 
-#: data/resources/ui/preferences/name-sources-dialog.ui:52
+#: data/resources/ui/preferences/name-sources-dialog.ui:40
 msgctxt "Name of the color set from the xkcd color survey"
 msgid "xkcd Color Survey"
 msgstr ""
 
-#: data/resources/ui/preferences/name-sources-dialog.ui:53
+#: data/resources/ui/preferences/name-sources-dialog.ui:41
 msgid "954 RGB colors named by volunteers"
 msgstr ""
 
@@ -500,77 +500,77 @@ msgstr ""
 msgid "_About Eyedropper"
 msgstr ""
 
-#: data/resources/ui/window.ui:54
+#: data/resources/ui/window.ui:49
 msgid "No Color"
 msgstr ""
 
-#: data/resources/ui/window.ui:55
+#: data/resources/ui/window.ui:50
 msgid "Select a color from the screen to get started."
 msgstr ""
 
-#: data/resources/ui/window.ui:58
+#: data/resources/ui/window.ui:53
 msgid "_Pick a Color"
 msgstr ""
 
-#: data/resources/ui/window.ui:96
+#: data/resources/ui/window.ui:88
 msgctxt "Tooltip of the colorpicker button"
 msgid "Pick a Color"
 msgstr ""
 
-#: data/resources/ui/window.ui:103
+#: data/resources/ui/window.ui:95
 msgid "Main Menu"
 msgstr ""
 
-#: data/resources/ui/window.ui:129
+#: data/resources/ui/window.ui:121
 msgctxt "Tooltip of the palette button"
 msgid "Open Palette Window"
 msgstr ""
 
-#: data/resources/ui/window.ui:150
+#: data/resources/ui/window.ui:142
 msgid "Copy Name"
 msgstr ""
 
-#: data/resources/ui/window.ui:156
+#: data/resources/ui/window.ui:148
 msgid "Copy Hex Code"
 msgstr ""
 
-#: data/resources/ui/window.ui:161
+#: data/resources/ui/window.ui:153
 msgid "Copy RGB"
 msgstr ""
 
-#: data/resources/ui/window.ui:166
+#: data/resources/ui/window.ui:158
 msgid "Copy HSL"
 msgstr ""
 
-#: data/resources/ui/window.ui:171
+#: data/resources/ui/window.ui:163
 msgid "Copy HSV"
 msgstr ""
 
-#: data/resources/ui/window.ui:176
+#: data/resources/ui/window.ui:168
 msgid "Copy CMYK"
 msgstr ""
 
-#: data/resources/ui/window.ui:181
+#: data/resources/ui/window.ui:173
 msgid "Copy XYZ"
 msgstr ""
 
-#: data/resources/ui/window.ui:187
+#: data/resources/ui/window.ui:179
 msgid "Copy CIELAB"
 msgstr ""
 
-#: data/resources/ui/window.ui:193
+#: data/resources/ui/window.ui:185
 msgid "Copy HWB"
 msgstr ""
 
-#: data/resources/ui/window.ui:199
+#: data/resources/ui/window.ui:191
 msgid "Copy CIELCh / HCL"
 msgstr ""
 
-#: data/resources/ui/window.ui:205
+#: data/resources/ui/window.ui:197
 msgid "Copy LMS"
 msgstr ""
 
-#: data/resources/ui/window.ui:211
+#: data/resources/ui/window.ui:203
 msgid "Copy Hunter Lab"
 msgstr ""
 
