@@ -14,14 +14,13 @@ use crate::window::AppWindow;
 
 mod imp {
 
-    use std::cell::Cell;
+    use std::cell::{Cell, OnceCell};
 
     use crate::config;
 
     use super::*;
     use adw::subclass::prelude::AdwApplicationImpl;
     use glib::WeakRef;
-    use once_cell::sync::OnceCell;
     use search_provider::SearchProvider;
 
     #[derive(Default)]
