@@ -123,18 +123,18 @@ impl EyedropperAbout {
         information.push_str(&format!("Profile: {}\n", config::PROFILE));
         information.push_str(&format!(
             "Backend: {}\n",
-            Self::backend().unwrap_or_else(|| "Failed to get backend")
+            Self::backend().unwrap_or("Failed to get backend")
         ));
 
         //used OS infos
         information.push_str("OS:\n");
         information.push_str(&format!(
             " - Name: {:?}\n",
-            gtk::glib::os_info("NAME").unwrap_or_else(|| "Failed to get OS NAME".into())
+            gtk::glib::os_info("NAME").unwrap_or("Failed to get OS NAME".into())
         ));
         information.push_str(&format!(
             " - Version: {:?}\n",
-            gtk::glib::os_info("VERSION").unwrap_or_else(|| "Failed to get VERSION".into())
+            gtk::glib::os_info("VERSION").unwrap_or("Failed to get VERSION".into())
         ));
         //used libraries version
         information.push_str("Libraries:\n");
