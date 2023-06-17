@@ -165,7 +165,6 @@ impl App {
             })
             .build();
 
-        // It is safe to `unwrap` as we don't pass any parameter type that requires validation
         self.add_action_entries([
             action_pick_color,
             action_clear_history,
@@ -212,7 +211,7 @@ impl App {
     ///
     /// # Panics
     /// This function may panic, if some of the underlying code return [`None`].
-    fn icon(color: &str) -> Result<gtk::gdk_pixbuf::Pixbuf, glib::Error> {
+    fn icon(color: gdk::RGBA) -> Result<gtk::gdk_pixbuf::Pixbuf, glib::Error> {
         const SIZE: i32 = 48;
 
         let display = gdk::Display::default().unwrap();
@@ -230,12 +229,7 @@ impl App {
 
         let renderer = gtk::gsk::GLRenderer::new();
         renderer.realize(gdk::Surface::NONE)?;
-        paintable.snapshot_symbolic(
-            &snapshot,
-            SIZE.into(),
-            SIZE.into(),
-            &[gtk::gdk::RGBA::parse(color).unwrap()],
-        );
+        paintable.snapshot_symbolic(&snapshot, SIZE.into(), SIZE.into(), &[color]);
 
         let node = snapshot.to_node().unwrap();
         let texture = renderer.render_texture(&node, None);
@@ -270,7 +264,10 @@ impl SearchProviderImpl for App {
             .map(|identifier| {
                 ResultMeta::builder(identifier.to_owned(), identifier)
                     .icon_data(IconData::from(
-                        &App::icon(identifier).expect("Failed to render search icon"),
+                        &App::icon(
+                            gdk::RGBA::parse(identifier).expect("Failed to parse identifier color"),
+                        )
+                        .expect("Failed to render search icon"),
                     ))
                     .build()
             })
