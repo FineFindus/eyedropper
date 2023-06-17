@@ -123,7 +123,7 @@ impl EyedropperAbout {
         information.push_str(&format!("Profile: {}\n", config::PROFILE));
         information.push_str(&format!(
             "Backend: {}\n",
-            Self::backend().unwrap_or_else(|| "Failed to get backend".to_owned())
+            Self::backend().unwrap_or_else(|| "Failed to get backend")
         ));
 
         //used OS infos
@@ -163,19 +163,16 @@ impl EyedropperAbout {
     }
 
     ///Returns the used display server
-    fn backend() -> Option<String> {
+    fn backend() -> Option<&'static str> {
         let display = gtk::gdk::Display::default()?;
         //get display backend
-        Some(
-            match display.backend() {
-                gtk::gdk::Backend::Wayland => "Wayland",
-                gtk::gdk::Backend::X11 => "X11",
-                gtk::gdk::Backend::Win32 => "Win32",
-                gtk::gdk::Backend::MacOS => "MacOS",
-                gtk::gdk::Backend::Broadway => "Broadway",
-            }
-            .to_owned(),
-        )
+        Some(match display.backend() {
+            gtk::gdk::Backend::Wayland => "Wayland",
+            gtk::gdk::Backend::X11 => "X11",
+            gtk::gdk::Backend::Win32 => "Win32",
+            gtk::gdk::Backend::MacOS => "MacOS",
+            gtk::gdk::Backend::Broadway => "Broadway",
+        })
     }
 
     /// Returns info about the sandbox the app is using.
@@ -202,7 +199,7 @@ impl EyedropperAbout {
         } else {
             let gtk_portal_env = std::env::var("GTK_USE_PORTAL")
                 .map(|v| v == "1")
-                .unwrap_or(false);
+                .unwrap_or_default();
             info.push_str(&format!(" - GTK_USE_PORTAL: {}\n", gtk_portal_env));
         }
 
