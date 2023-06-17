@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-06-17 13:43+0000\n"
+"POT-Creation-Date: 2023-06-17 19:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -149,45 +149,45 @@ msgstr ""
 msgid "Name Sources"
 msgstr ""
 
-#: data/resources/ui/preferences/name-sources-dialog.ui:22
+#: data/resources/ui/preferences/name-sources-dialog.ui:21
 msgctxt ""
 "Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
 "#html4"
 msgid "Basic"
 msgstr ""
 
-#: data/resources/ui/preferences/name-sources-dialog.ui:23
+#: data/resources/ui/preferences/name-sources-dialog.ui:22
 msgid "Basic web colors"
 msgstr ""
 
-#: data/resources/ui/preferences/name-sources-dialog.ui:28
+#: data/resources/ui/preferences/name-sources-dialog.ui:27
 msgctxt ""
 "Name of the extended color keyword set from https://www.w3.org/TR/css-"
 "color-3/#svg-color"
 msgid "Extended"
 msgstr ""
 
-#: data/resources/ui/preferences/name-sources-dialog.ui:29
+#: data/resources/ui/preferences/name-sources-dialog.ui:28
 msgid "X11 and SVG color values"
 msgstr ""
 
-#: data/resources/ui/preferences/name-sources-dialog.ui:34
+#: data/resources/ui/preferences/name-sources-dialog.ui:33
 msgctxt ""
 "Name of the color set from the GNOME color palette (https://developer.gnome."
 "org/hig/reference/palette.html)"
 msgid "GNOME Color Palette"
 msgstr ""
 
-#: data/resources/ui/preferences/name-sources-dialog.ui:35
+#: data/resources/ui/preferences/name-sources-dialog.ui:34
 msgid "Colors for GNOME app icons and illustrations"
 msgstr ""
 
-#: data/resources/ui/preferences/name-sources-dialog.ui:40
+#: data/resources/ui/preferences/name-sources-dialog.ui:39
 msgctxt "Name of the color set from the xkcd color survey"
 msgid "xkcd Color Survey"
 msgstr ""
 
-#: data/resources/ui/preferences/name-sources-dialog.ui:41
+#: data/resources/ui/preferences/name-sources-dialog.ui:40
 msgid "954 RGB colors named by volunteers"
 msgstr ""
 
@@ -512,65 +512,65 @@ msgstr ""
 msgid "_Pick a Color"
 msgstr ""
 
-#: data/resources/ui/window.ui:88
+#: data/resources/ui/window.ui:85
 msgctxt "Tooltip of the colorpicker button"
 msgid "Pick a Color"
 msgstr ""
 
-#: data/resources/ui/window.ui:95
+#: data/resources/ui/window.ui:92
 msgid "Main Menu"
 msgstr ""
 
-#: data/resources/ui/window.ui:121
+#: data/resources/ui/window.ui:118
 msgctxt "Tooltip of the palette button"
 msgid "Open Palette Window"
 msgstr ""
 
-#: data/resources/ui/window.ui:142
+#: data/resources/ui/window.ui:139
 msgid "Copy Name"
 msgstr ""
 
-#: data/resources/ui/window.ui:148
+#: data/resources/ui/window.ui:145
 msgid "Copy Hex Code"
 msgstr ""
 
-#: data/resources/ui/window.ui:153
+#: data/resources/ui/window.ui:150
 msgid "Copy RGB"
 msgstr ""
 
-#: data/resources/ui/window.ui:158
+#: data/resources/ui/window.ui:155
 msgid "Copy HSL"
 msgstr ""
 
-#: data/resources/ui/window.ui:163
+#: data/resources/ui/window.ui:160
 msgid "Copy HSV"
 msgstr ""
 
-#: data/resources/ui/window.ui:168
+#: data/resources/ui/window.ui:165
 msgid "Copy CMYK"
 msgstr ""
 
-#: data/resources/ui/window.ui:173
+#: data/resources/ui/window.ui:170
 msgid "Copy XYZ"
 msgstr ""
 
-#: data/resources/ui/window.ui:179
+#: data/resources/ui/window.ui:176
 msgid "Copy CIELAB"
 msgstr ""
 
-#: data/resources/ui/window.ui:185
+#: data/resources/ui/window.ui:182
 msgid "Copy HWB"
 msgstr ""
 
-#: data/resources/ui/window.ui:191
+#: data/resources/ui/window.ui:188
 msgid "Copy CIELCh / HCL"
 msgstr ""
 
-#: data/resources/ui/window.ui:197
+#: data/resources/ui/window.ui:194
 msgid "Copy LMS"
 msgstr ""
 
-#: data/resources/ui/window.ui:203
+#: data/resources/ui/window.ui:200
 msgid "Copy Hunter Lab"
 msgstr ""
 
@@ -691,8 +691,8 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:402 src/window.rs:435
-#: src/window.rs:460 src/window.rs:648 src/window.rs:829
+#: src/widgets/preferences/preferences_window.rs:402 src/window.rs:434
+#: src/window.rs:459 src/window.rs:647 src/window.rs:828
 msgctxt "Information that no name for the color could be found"
 msgid "Not named"
 msgstr ""
@@ -705,18 +705,18 @@ msgstr ""
 msgid "Hunter Lab"
 msgstr ""
 
-#: src/window.rs:221
+#: src/window.rs:220
 msgid "Cleared history"
 msgstr ""
 
-#: src/window.rs:222
+#: src/window.rs:221
 msgid "Undo"
 msgstr ""
 
-#: src/window.rs:550
+#: src/window.rs:549
 msgid "Failed to get palette color"
 msgstr ""
 
-#: src/window.rs:582
+#: src/window.rs:581
 msgid "Failed to pick a color"
 msgstr ""
