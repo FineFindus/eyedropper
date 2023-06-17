@@ -234,7 +234,7 @@ impl PaletteDialog {
         let color_string = colors
             .into_iter()
             .map(|color| {
-                let formatter = ColorFormatter::with_alpha_position(color, AlphaPosition::None);
+                let formatter = ColorFormatter::with_color(color);
                 formatter.hex_code()
             })
             .collect::<Vec<String>>()
