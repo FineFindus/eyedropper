@@ -279,6 +279,7 @@ impl PaletteDialog {
                 match res.ok().and_then(|file| file.path()) {
                     Some(path) => {
                         log::debug!("Selected path: {}", path.display());
+                        let colors = window.palettes();
 
                         let file_name = path.file_name().and_then(|name| name.to_str()).unwrap_or("Eyedropper Palette");
                         let palette = match path.extension().and_then(|extension| extension.to_str()) {
