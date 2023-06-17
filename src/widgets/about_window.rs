@@ -9,9 +9,6 @@ use gettextrs::pgettext;
 use glib::object::IsA;
 use gtk::{Application, License, Window};
 
-//code 'inspired' by https://gitlab.com/news-flash/news_flash_gtk/-/blob/master/src/about_dialog.rs
-
-//this is non-translatable information, so it can be const
 pub const COPYRIGHT: &str = "Copyright © 2022 - 2023 FineFindus";
 pub const WEBSITE: &str = "https://github.com/finefindus/eyedropper/";
 pub const ISSUE_TRACKER: &str = "https://github.com/finefindus/eyedropper/issues/new/choose";
@@ -19,7 +16,7 @@ pub const DEVELOPERS: &[&str] = &["FineFindus https://github.com/FineFindus"];
 pub const DESIGNERS: &[&str] = &["FineFindus https://github.com/FineFindus"];
 pub const ARTISTS: &[&str] = &["bertob https://github.com/bertob"];
 
-#[derive(Clone, Debug)]
+#[derive(Debug)]
 pub struct EyedropperAbout;
 
 impl EyedropperAbout {
@@ -28,7 +25,6 @@ impl EyedropperAbout {
         window: &W,
         portal_error: Option<ashpd::Error>,
     ) {
-        //translatable strings which will be retrieved via gettext
         let details = Self::details();
 
         //translatable changelog
