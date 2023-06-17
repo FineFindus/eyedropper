@@ -200,7 +200,6 @@ impl AppWindow {
 
     /// Returns the history list store object.
     fn history(&self) -> gio::ListStore {
-        // Get state
         self.imp()
             .history
             .borrow()

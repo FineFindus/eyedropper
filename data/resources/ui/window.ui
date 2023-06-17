@@ -80,9 +80,6 @@
                             <property name="title" translatable="yes">Eyedropper</property>
                           </object>
                         </property>
-                        <style>
-                          <class name="flat" />
-                        </style>
                         <child>
                           <object class="GtkButton" id="color_picker_button">
                             <property name="tooltip-text" translatable="yes" context="Tooltip of the colorpicker button">Pick a Color</property>

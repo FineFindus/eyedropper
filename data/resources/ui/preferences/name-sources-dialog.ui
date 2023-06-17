@@ -6,7 +6,6 @@
         <property name="default-width">450</property>
         <property name="content">
             <object class="AdwToolbarView">
-                <property name="top-bar-style">flat</property>
                 <child type="top">
                     <object class="AdwHeaderBar"/>
                 </child>
