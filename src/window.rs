@@ -652,7 +652,6 @@ impl AppWindow {
     }
 
     fn setup_callbacks(&self) {
-        //load imp
         let imp = self.imp();
 
         imp.hex_row.connect_closure(
@@ -663,19 +662,18 @@ impl AppWindow {
                 let hex_alpha_position = AlphaPosition::from(window.imp().settings.int("alpha-position") as u32);
 
                 //to avoid a endless set-color loop, only set the color if it is different
-                if let Some(current_color) = window.color(){
-
-                match Color::from_hex(&color, hex_alpha_position) {
-                    Ok(color) => if color != current_color {
-                        window.set_color(color);
-                        format_row.show_success();
-                    },
-                    Err(_) => {
-                        log::debug!("Failed to parse color: {color}");
-                        format_row.show_error();
-                    },
+                if let Some(current_color) = window.color() {
+                    match Color::from_hex(&color, hex_alpha_position) {
+                        Ok(color) => if color != current_color {
+                            window.set_color(color);
+                            format_row.show_success();
+                        },
+                        Err(_) => {
+                            log::debug!("Failed to parse color: {color}");
+                            format_row.show_error();
+                        },
+                    }
                 }
-            }
             }),
         );
 
