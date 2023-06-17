@@ -259,12 +259,9 @@ impl PaletteDialog {
     /// Opens a dialog to save a palette file. The file format is determined from the file extension.
     /// An extension can be suggested to the user via the `suggested_extension` parameter.
     pub fn save_to_file(&self, suggested_extension: Option<String>) {
-        let colors = self.palettes();
-
         let mut file_name = String::from("eyedropper_palette");
         if let Some(extension) = suggested_extension {
-            file_name.push('.');
-            file_name.push_str(&extension);
+            file_name.push_str(&format!(".{}", extension));
         }
 
         let file_chooser = gtk::FileDialog::builder()
