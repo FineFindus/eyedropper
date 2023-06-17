@@ -197,7 +197,6 @@ impl EyedropperAbout {
                     "arch" => info.push_str(&format!(" - Arch: {}\n", value)),
                     "flatpak-version" => info.push_str(&format!(" - Flatpak Version: {}\n", value)),
                     "devel" => info.push_str(&format!(" - Devel: {}\n", value)),
-                    "LANG" => info.push_str(&format!(" - Language: {}\n", value)),
                     _ => {}
                 });
         } else {
