@@ -2,7 +2,7 @@ use adw::{prelude::*, subclass::prelude::*};
 use gettextrs::pgettext;
 use gtk::{glib, CompositeTemplate};
 
-use crate::colors::{color::Color, formatter::ColorFormatter, position::AlphaPosition};
+use crate::colors::{color::Color, formatter::ColorFormatter};
 
 mod imp {
 
@@ -14,8 +14,6 @@ mod imp {
     };
     use once_cell::sync::Lazy;
 
-    use crate::config;
-
     use super::*;
 
     #[derive(Debug, CompositeTemplate, Properties)]
@@ -26,7 +24,6 @@ mod imp {
         pub color: Cell<gtk::gdk::RGBA>,
         #[template_child]
         pub palettes_list: TemplateChild<gtk::ListBox>,
-        pub settings: gtk::gio::Settings,
     }
 
     #[glib::object_subclass]
@@ -39,7 +36,6 @@ mod imp {
             Self {
                 color: Cell::new(gtk::gdk::RGBA::BLACK),
                 palettes_list: TemplateChild::default(),
-                settings: gtk::gio::Settings::new(config::APP_ID),
             }
         }
 
@@ -110,10 +106,8 @@ impl PaletteDialog {
         //capacity for all palettes
         let mut colors = Vec::with_capacity(28);
 
-        let quantity = self.imp().settings.uint("shades-tints-quantity").max(1) as usize;
-
-        colors.append(&mut color.tints(0.15, quantity));
-        colors.append(&mut color.shades(0.15, quantity));
+        colors.append(&mut color.tints(0.15, 5));
+        colors.append(&mut color.shades(0.15, 5));
         colors.append(&mut vec![color, color.complementary_color()]);
         colors.append(&mut color.split_complementary_color());
         colors.append(&mut color.triadic_colors());
@@ -128,16 +122,14 @@ impl PaletteDialog {
         let imp = self.imp();
         let palettes = &imp.palettes_list;
 
-        let quantity = self.imp().settings.uint("shades-tints-quantity").max(1) as usize;
-
         let color: Color = self.color().into();
         palettes.append(&self.create_palette_row(
             &pgettext("Name for tints (lighter variants) of the color", "Tints"),
-            color.tints(0.15, quantity),
+            color.tints(0.15, 5),
         ));
         palettes.append(&self.create_palette_row(
             &pgettext("Name for shades (darker variants) of the color", "Shades"),
-            color.shades(0.15, quantity),
+            color.shades(0.15, 5),
         ));
         palettes.append(&self.create_palette_row(
             &pgettext(
