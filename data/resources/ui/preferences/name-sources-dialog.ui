@@ -4,60 +4,61 @@
         <property name="title" translatable="yes">Name Sources</property>
         <property name="modal">True</property>
         <property name="default-width">450</property>
-        <child>
-            <object class="GtkBox">
-                <property name="orientation">vertical</property>
-                <child>
-                    <object class="GtkShortcutController">
-                        <property name="scope">managed</property>
-                        <child>
-                            <object class="GtkShortcut">
-                                <property name="trigger">Escape|&lt;Ctrl&gt;w</property>
-                                <property name="action">action(window.close)</property>
-                            </object>
-                        </child>
-                    </object>
+        <property name="content">
+            <object class="AdwToolbarView">
+                <property name="top-bar-style">flat</property>
+                <child type="top">
+                    <object class="AdwHeaderBar"/>
                 </child>
-                <child>
-                    <object class="AdwHeaderBar">
-                        <style>
-                            <class name="flat"/>
-                        </style>
-                    </object>
-                </child>
-                <child>
-                    <object class="AdwPreferencesPage">
+                <property name="content">
+                    <object class="GtkBox">
+                        <property name="orientation">vertical</property>
                         <child>
-                            <object class="AdwPreferencesGroup">
+                            <object class="AdwPreferencesPage">
                                 <child>
-                                    <object class="AdwSwitchRow" id="name_source_basic">
-                                        <property name="title" translatable="yes" context="Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/#html4">Basic</property>
-                                        <property name="subtitle" translatable="yes">Basic web colors</property>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="AdwSwitchRow" id="name_source_extended">
-                                        <property name="title" translatable="yes" context="Name of the extended color keyword set from https://www.w3.org/TR/css-color-3/#svg-color">Extended</property>
-                                        <property name="subtitle" translatable="yes">X11 and SVG color values</property>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="AdwSwitchRow" id="name_source_gnome">
-                                        <property name="title" translatable="yes" context="Name of the color set from the GNOME color palette (https://developer.gnome.org/hig/reference/palette.html)">GNOME Color Palette</property>
-                                        <property name="subtitle" translatable="yes">Colors for GNOME app icons and illustrations</property>
-                                    </object>
-                                </child>
-                                <child>
-                                    <object class="AdwSwitchRow" id="name_source_xkcd">
-                                        <property name="title" translatable="yes" context="Name of the color set from the xkcd color survey">xkcd Color Survey</property>
-                                        <property name="subtitle" translatable="yes">954 RGB colors named by volunteers</property>
+                                    <object class="AdwPreferencesGroup">
+                                        <child>
+                                            <object class="AdwSwitchRow" id="name_source_basic">
+                                                <property name="title" translatable="yes" context="Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/#html4">Basic</property>
+                                                <property name="subtitle" translatable="yes">Basic web colors</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="AdwSwitchRow" id="name_source_extended">
+                                                <property name="title" translatable="yes" context="Name of the extended color keyword set from https://www.w3.org/TR/css-color-3/#svg-color">Extended</property>
+                                                <property name="subtitle" translatable="yes">X11 and SVG color values</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="AdwSwitchRow" id="name_source_gnome">
+                                                <property name="title" translatable="yes" context="Name of the color set from the GNOME color palette (https://developer.gnome.org/hig/reference/palette.html)">GNOME Color Palette</property>
+                                                <property name="subtitle" translatable="yes">Colors for GNOME app icons and illustrations</property>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="AdwSwitchRow" id="name_source_xkcd">
+                                                <property name="title" translatable="yes" context="Name of the color set from the xkcd color survey">xkcd Color Survey</property>
+                                                <property name="subtitle" translatable="yes">954 RGB colors named by volunteers</property>
+                                            </object>
+                                        </child>
                                     </object>
                                 </child>
                             </object>
                         </child>
+                        <child>
+                            <object class="GtkShortcutController">
+                                <property name="scope">managed</property>
+                                <child>
+                                    <object class="GtkShortcut">
+                                        <property name="trigger">Escape|&lt;Ctrl&gt;w</property>
+                                        <property name="action">action(window.close)</property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
                     </object>
-                </child>
+                </property>
             </object>
-        </child>
+        </property>
     </template>
 </interface>
