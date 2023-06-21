@@ -1,7 +1,9 @@
 [Desktop Entry]
 Name=Eyedropper
 GenericName=Color Picker
+GenericName[de]=Farbauswahl
 Comment=Pick and format colors
+Comment[de]=Farben auswählen und formatieren
 Type=Application
 Exec=eyedropper
 Terminal=false
