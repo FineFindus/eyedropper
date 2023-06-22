@@ -1,0 +1,209 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $PreferencesWindow : Adw.PreferencesWindow {
+  default-width: 550;
+  default-height: 570;
+  can-navigate-back: true;
+
+  Adw.PreferencesPage {
+    icon-name: "applications-system-symbolic";
+    title: _("General");
+
+    Adw.PreferencesGroup {
+      title: _("Formatting");
+
+      Adw.ComboRow alpha_pos_box {
+        title: _("Alpha-Value-Position");
+        subtitle: _("Where the Alphavalue is positioned in the Hexstring");
+        model: StringList {
+          strings [ 
+            C_("Alphavalue is not shown", "None"),
+            C_("Alphavalue is shown at the end", "End"),
+            C_("Alphavalue is shown at the start", "Start"),
+          ]
+        };
+      }
+
+      Adw.ActionRow {
+        title: _("Name Sources");
+        subtitle: _("Sources for displaying color names");
+        activatable: true;
+        activated => $on_name_row_activated() swapped;
+
+        [suffix]
+        Image {
+          icon-name: "go-next-symbolic";
+        }
+      }
+
+      Adw.ActionRow {
+        title: _("Precision");
+
+        [suffix]
+        SpinButton precision_spin_button {
+          adjustment: Adjustment {
+            lower: 0;
+            upper: 15;
+            value: 2;
+            step-increment: 1;
+          };
+
+          tooltip-text: _("Precision");
+          climb-rate: 1;
+          numeric: true;
+          valign: center;
+        }
+      }
+    }
+
+    Adw.PreferencesGroup {
+      title: _("CIE Color Space");
+
+      Adw.ActionRow {
+        title: _("CIE Illuminants");
+        subtitle: _("Lighting conditions for the CIE color space");
+        activatable-widget: cie_illuminants_box;
+
+        [suffix]
+        DropDown cie_illuminants_box {
+          valign: center;
+          model: StringList {
+            strings [
+              _("A (Incandescent/tungsten)"),
+              _("B (Old direct sunlight at noon)"),
+              _("C (Old daylight)"),
+              _("D50 (ICC profile PCS)"),
+              _("D55 (Mid-morning daylight)"),
+              _("D65 (Daylight, sRGB, Adobe-RGB)"),
+              _("D75 (North sky daylight)"),
+              _("E (Equal energy)"),
+              _("F1 (Daylight Fluorescent)"),
+              _("F2 (Cool fluorescent)"),
+              _("F3 (White Fluorescent)"),
+              _("F4 (Warm White Fluorescent)"),
+              _("F5 (Daylight Fluorescent)"),
+              _("F6 (Lite White Fluorescent)"),
+              _("F7 (Daylight fluorescent, D65 simulator)"),
+              _("F8 (Sylvania F40, D50 simulator)"),
+              _("F9 (Cool White Fluorescent)"),
+              _("F10 (Ultralume 50, Philips TL85)"),
+              _("F11 (Ultralume 40, Philips TL84)"),
+              _("F12 (Ultralume 30, Philips TL83)"),
+            ]
+          };
+
+          styles [
+            "flat",
+          ]
+
+        }
+      }
+
+      Adw.ComboRow standard_observer_box {
+        title: _("CIE Standard Observer");
+        subtitle: _("The CIE standard observer\'s field of view");
+        model: StringList {
+          strings [
+            _("2°"),
+            _("10°"),
+          ]
+        };
+      }
+    }
+
+    Adw.PreferencesGroup {
+      title: _("Color Formats");
+      description: _("Customize the visible formats and in which order they are displayed.");
+
+      [header-suffix]
+      Button {
+        icon-name: "edit-clear-symbolic";
+        tooltip-text: C_(" Tooltip of the button to reset the format order", "Reset Order");
+        clicked => $on_reset_pressed() swapped;
+
+        styles [
+          "flat",
+        ]
+      }
+
+      ListBox order_list {
+        selection-mode: none;
+
+        styles [
+          "boxed-list",
+        ]
+      }
+    }
+  }
+
+  Adw.PreferencesPage {
+    icon-name: "document-edit-symbolic";
+    title: _("Formats");
+
+    Adw.PreferencesGroup {
+      title: _("Formats");
+      description: _("Edit how the color formats are displayed. The “{}” will be replaced in with the values of the formats. Custom formats cannot be used as input.");
+
+      $CustomFormatRow _custom_format {
+        title: _("RGB Format");
+        default-format: "rgb({r}, {g}, {b})";
+        settings-key: "custom-format-rgb";
+      }
+
+      $CustomFormatRow {
+        title: _("HSL Format");
+        default-format: "hsl({h}, {s}%, {l}%)";
+        settings-key: "custom-format-hsl";
+      }
+
+      $CustomFormatRow {
+        title: _("HSV Format");
+        default-format: "hsv({h}, {s}%, {v}%)";
+        settings-key: "custom-format-hsv";
+      }
+
+      $CustomFormatRow {
+        title: _("CMYK Format");
+        default-format: "cmyk({c}%, {m}%, {y}%, {k}%)";
+        settings-key: "custom-format-cmyk";
+      }
+
+      $CustomFormatRow {
+        title: _("XYZ Format");
+        default-format: "XYZ({x}, {y}, {z})";
+        settings-key: "custom-format-xyz";
+      }
+
+      $CustomFormatRow {
+        title: _("CIELAB Format");
+        default-format: "CIELAB({l}, {a}, {b})";
+        settings-key: "custom-format-cie-lab";
+      }
+
+      $CustomFormatRow {
+        title: _("HWB Format");
+        default-format: "hwb({h}, {w}%, {b}%)";
+        settings-key: "custom-format-hwb";
+      }
+
+      $CustomFormatRow {
+        title: _("CIELCh/HCL Format");
+        default-format: "lch({l}, {c}, {h})";
+        settings-key: "custom-format-hcl";
+      }
+
+      $CustomFormatRow {
+        title: _("LMS Format");
+        default-format: "L: {l}, M: {m}, S: {s}";
+        settings-key: "custom-format-lms";
+      }
+
+      $CustomFormatRow {
+        title: _("Hunter Lab Format");
+        default-format: "L: {l}, a: {a}, b: {b}";
+        settings-key: "custom-format-hunter-lab";
+      }
+    }
+  }
+}

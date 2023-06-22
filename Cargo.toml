@@ -8,6 +8,7 @@ readme = "README.md"
 license-file = "LICENSE"
 homepage = "https://github.com/finefindus/eyedropper"
 repository = "https://github.com/finefindus/eyedropper"
+rust-version = "1.70"
 
 
 #override package level optimization, to always be maximum
