@@ -30,6 +30,9 @@ jobs:
       options: --privileged
     steps:
       - uses: actions/checkout@v3
+      - name: Add Flathub Beta remote
+        run: |
+          flatpak --user remote-add --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
       - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v6
         with:
           bundle: eyedropper.flatpak
