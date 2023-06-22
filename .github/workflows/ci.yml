@@ -76,7 +76,7 @@ jobs:
           echo "data/com.github.finefindus.eyedropper.metainfo.xml.in.in" >> po/POTFILES.in
           # add ui files
           echo "# UI files" >> po/POTFILES.in
-          find data -name "*.ui*" -print | sort >> po/POTFILES.in
+          find data -name "*.blp*" -print | sort >> po/POTFILES.in
           # add rust files
           echo "# RUST files" >> po/POTFILES.in
           grep gettext src/ -r | grep .rs  | cut -d: -f1 | uniq | sort >> po/POTFILES.in
