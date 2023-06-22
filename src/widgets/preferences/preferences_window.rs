@@ -143,7 +143,7 @@ impl PreferencesWindow {
     fn on_name_row_activated(&self, _row: &adw::ActionRow) {
         let dialog = NameSourcesDialog::new();
         dialog.set_transient_for(Some(self));
-        dialog.set_visible(true);
+        dialog.present();
     }
 
     /// Returns the formats list store object.

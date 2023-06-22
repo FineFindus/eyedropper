@@ -530,7 +530,7 @@ impl AppWindow {
         //safe to unwrap, if the user opens this dialog, the color button must be clicked
         let palette_dialog = PaletteDialog::new(self.color().unwrap());
         palette_dialog.set_transient_for(Some(self));
-        palette_dialog.set_visible(true);
+        palette_dialog.present();
 
         //when a palette is chosen, add all colors of the palette in reverse order to the history
         palette_dialog.connect_closure(

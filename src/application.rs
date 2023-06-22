@@ -194,7 +194,7 @@ impl App {
     fn show_preferences_dialog(&self) {
         let preferences = PreferencesWindow::new();
         preferences.set_transient_for(Some(&self.main_window()));
-        preferences.set_visible(true);
+        preferences.present();
     }
 
     pub fn run(&self) -> ExitCode {
