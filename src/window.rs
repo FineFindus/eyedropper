@@ -142,6 +142,10 @@ mod imp {
             obj.load_visibility_settings();
             obj.set_stack();
         }
+
+        fn dispose(&self) {
+            self.dispose_template();
+        }
     }
 
     impl WidgetImpl for AppWindow {}

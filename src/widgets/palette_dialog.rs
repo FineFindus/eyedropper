@@ -80,6 +80,10 @@ mod imp {
         fn constructed(&self) {
             self.parent_constructed();
         }
+
+        fn dispose(&self) {
+            self.dispose_template();
+        }
     }
     impl WindowImpl for PaletteDialog {}
     impl WidgetImpl for PaletteDialog {}

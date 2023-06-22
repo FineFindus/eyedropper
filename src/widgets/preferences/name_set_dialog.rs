@@ -56,6 +56,10 @@ mod imp {
             self.parent_constructed();
             self.obj().setup_widget();
         }
+
+        fn dispose(&self) {
+            self.dispose_template();
+        }
     }
     impl WindowImpl for NameSourcesDialog {}
     impl WidgetImpl for NameSourcesDialog {}

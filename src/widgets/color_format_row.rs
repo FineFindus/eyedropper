@@ -96,6 +96,10 @@ mod imp {
             obj.setup_properties();
             obj.set_visible(false);
         }
+
+        fn dispose(&self) {
+            self.dispose_template();
+        }
     }
 
     impl WidgetImpl for ColorFormatRow {}

@@ -81,6 +81,10 @@ mod imp {
             let obj = self.obj();
             obj.setup_properties();
         }
+
+        fn dispose(&self) {
+            self.dispose_template();
+        }
     }
 
     impl WidgetImpl for CustomFormatRow {}

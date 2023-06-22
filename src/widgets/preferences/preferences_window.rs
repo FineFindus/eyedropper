@@ -85,6 +85,10 @@ mod imp {
             obj.setup_settings();
             obj.populate_formats();
         }
+
+        fn dispose(&self) {
+            self.dispose_template();
+        }
     }
 
     impl WidgetImpl for PreferencesWindow {}
