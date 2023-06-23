@@ -86,7 +86,7 @@ jobs:
 
       - name: Update Eyedropper.pot
         run: |
-          GETTEXT_PACKAGE="Eyedropper" XGETTEXT_KEYWORDS="--msgid-bugs-address="https://github.com/FineFindus/eyedropper" --package-name=Eyedropper" ./scripts/make-pot.sh
+          ./scripts/make-pot.sh
           echo "POT_LINES_CHANGED=$(git diff -U0 | grep '^[+|-][^+|-]' | grep -Ev '^[+-]"POT-Creation-Date' | wc -l)" >> $GITHUB_ENV
       - name: Push changes  
         if: ${{ env.POT_LINES_CHANGED != 0}}
