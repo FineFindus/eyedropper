@@ -122,8 +122,8 @@ impl App {
     fn setup_gactions(&self) {
         // Pick a color using the picker button
         let action_pick_color = gio::ActionEntry::builder("pick_color")
-            .activate(move |obj: &Self, _, _| {
-                obj.main_window().pick_color();
+            .activate(move |app: &Self, _, _| {
+                app.main_window().pick_color();
             })
             .build();
 
