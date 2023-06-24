@@ -42,8 +42,8 @@ template $AppWindow : Adw.ApplicationWindow {
         child: $AdwToolbarView {
           [top]
           Adw.HeaderBar {}
-          content: 
-          WindowHandle {
+          
+          content: WindowHandle {
             vexpand: true;
             child: Adw.StatusPage {
               icon-name: "color-select-symbolic";
@@ -88,6 +88,7 @@ template $AppWindow : Adw.ApplicationWindow {
               menu-model: primary_menu;
             }
           }
+          
           content: Box {
             orientation: horizontal;
 
