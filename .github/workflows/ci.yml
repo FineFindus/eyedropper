@@ -37,6 +37,7 @@ jobs:
       - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v6
         with:
           bundle: eyedropper.flatpak
+          repository-name: flathub-beta 
           manifest-path: build-aux/com.github.finefindus.eyedropper.Devel.json
           run-tests: true
           cache-key: flatpak-builder-${{ github.sha }}
