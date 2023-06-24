@@ -79,6 +79,9 @@ mod imp {
 
         fn constructed(&self) {
             self.parent_constructed();
+            let obj = self.obj();
+
+            obj.setup_palettes_list();
         }
 
         fn dispose(&self) {
@@ -100,7 +103,6 @@ impl PaletteDialog {
         let dialog = glib::Object::builder::<PaletteDialog>()
             .property("color", gtk::gdk::RGBA::from(color))
             .build();
-        dialog.setup_palettes_list();
         dialog
     }
 
