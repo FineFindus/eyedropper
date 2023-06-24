@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-06-23 20:26+0000\n"
+"POT-Creation-Date: 2023-06-24 09:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -136,7 +136,7 @@ msgstr ""
 msgid "Palettes"
 msgstr ""
 
-#: data/resources/ui/palette-window.blp:55
+#: data/resources/ui/palette-window.blp:54
 msgid "Save Palettes…"
 msgstr ""
 
@@ -480,56 +480,56 @@ msgstr ""
 msgid "Main Menu"
 msgstr ""
 
-#: data/resources/ui/window.blp:107
+#: data/resources/ui/window.blp:108
 msgctxt "Tooltip of the palette button"
 msgid "Open Palette Window"
 msgstr ""
 
-#: data/resources/ui/window.blp:127
+#: data/resources/ui/window.blp:128
 msgid "Copy Name"
 msgstr ""
 
-#: data/resources/ui/window.blp:132
+#: data/resources/ui/window.blp:133
 msgid "Copy Hex Code"
 msgstr ""
 
-#: data/resources/ui/window.blp:136
+#: data/resources/ui/window.blp:137
 msgid "Copy RGB"
 msgstr ""
 
-#: data/resources/ui/window.blp:140
+#: data/resources/ui/window.blp:141
 msgid "Copy HSL"
 msgstr ""
 
-#: data/resources/ui/window.blp:144
+#: data/resources/ui/window.blp:145
 msgid "Copy HSV"
 msgstr ""
 
-#: data/resources/ui/window.blp:148
+#: data/resources/ui/window.blp:149
 msgid "Copy CMYK"
 msgstr ""
 
-#: data/resources/ui/window.blp:152
+#: data/resources/ui/window.blp:153
 msgid "Copy XYZ"
 msgstr ""
 
-#: data/resources/ui/window.blp:157
+#: data/resources/ui/window.blp:158
 msgid "Copy CIELAB"
 msgstr ""
 
-#: data/resources/ui/window.blp:162
+#: data/resources/ui/window.blp:163
 msgid "Copy HWB"
 msgstr ""
 
-#: data/resources/ui/window.blp:167
+#: data/resources/ui/window.blp:168
 msgid "Copy CIELCh / HCL"
 msgstr ""
 
-#: data/resources/ui/window.blp:172
+#: data/resources/ui/window.blp:173
 msgid "Copy LMS"
 msgstr ""
 
-#: data/resources/ui/window.blp:177
+#: data/resources/ui/window.blp:178
 msgid "Copy Hunter Lab"
 msgstr ""
 
@@ -564,40 +564,40 @@ msgstr ""
 msgid "Copied “{}”"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:131
+#: src/widgets/palette_dialog.rs:133
 msgctxt "Name for tints (lighter variants) of the color"
 msgid "Tints"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:135
+#: src/widgets/palette_dialog.rs:137
 msgctxt "Name for shades (darker variants) of the color"
 msgid "Shades"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:141
+#: src/widgets/palette_dialog.rs:143
 msgctxt "Name for the opposite/complementary color (e.g. blue ⇔ yellow)"
 msgid "Complementary"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:148
+#: src/widgets/palette_dialog.rs:150
 msgctxt ""
 "The name of the color palette. Consist of the two opposite colors (e.g. blue "
 "⇔ orange / green)"
 msgid "Split-Complementary"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:155
+#: src/widgets/palette_dialog.rs:157
 msgctxt ""
 "Name of the color palette, which would form a triangle above the color wheel"
 msgid "Triadic"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:160
+#: src/widgets/palette_dialog.rs:162
 msgctxt "The name of the color palette."
 msgid "Tetradic"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:166
+#: src/widgets/palette_dialog.rs:168
 msgctxt "Color palette consisting of six slight shifted colors"
 msgid "Analogous"
 msgstr ""
