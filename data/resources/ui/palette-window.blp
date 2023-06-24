@@ -45,9 +45,8 @@ template $PaletteDialog : Adw.Window {
   modal: true;
   title: _("Palettes");
 
-  Box {
-    orientation: vertical;
-
+  $AdwToolbarView {
+    [top]
     Adw.HeaderBar {
       title-widget: Adw.WindowTitle {};
 
@@ -58,7 +57,7 @@ template $PaletteDialog : Adw.Window {
       }
     }
 
-    ListBox palettes_list {
+    content: ListBox palettes_list {
       selection-mode: none;
       margin-top: 12;
       margin-bottom: 12;
@@ -68,7 +67,7 @@ template $PaletteDialog : Adw.Window {
       styles [
         "boxed-list",
       ]
-    }
+    };
   }
 
   ShortcutController {
