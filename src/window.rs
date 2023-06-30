@@ -563,7 +563,8 @@ impl AppWindow {
     #[template_callback]
     pub fn pick_color(&self) {
         log::debug!("Picking a color using the color picker");
-        gtk_macros::spawn!(glib::clone!(@weak self as window => async move {
+        let main_context = glib::MainContext::default();
+        main_context.spawn_local(glib::clone!(@weak self as window => async move {
 
         let root = window.root().unwrap();
         let identifier = ashpd::WindowIdentifier::from_native(&root).await;
