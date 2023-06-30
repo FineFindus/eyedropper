@@ -12,18 +12,15 @@ use gtk::{
 mod imp {
     use std::cell::{Cell, RefCell};
 
-    use crate::config;
-
     use super::*;
 
     use glib::{subclass::Signal, ParamSpec, Value};
     use once_cell::sync::Lazy;
 
-    #[derive(gtk::CompositeTemplate, glib::Properties)]
+    #[derive(Default, Debug, gtk::CompositeTemplate, glib::Properties)]
     #[template(resource = "/com/github/finefindus/eyedropper/ui/color-format-row.ui")]
     #[properties(wrapper_type = super::ColorFormatRow)]
     pub struct ColorFormatRow {
-        pub settings: gtk::gio::Settings,
         #[template_child]
         pub entry: TemplateChild<gtk::Entry>,
         #[template_child]
@@ -41,17 +38,6 @@ mod imp {
         const NAME: &'static str = "ColorFormatRow";
         type ParentType = gtk::Box;
         type Type = super::ColorFormatRow;
-
-        fn new() -> Self {
-            Self {
-                settings: gtk::gio::Settings::new(config::APP_ID),
-                entry: TemplateChild::default(),
-                format_button: TemplateChild::default(),
-                tooltip: RefCell::new(String::new()),
-                color: RefCell::new(String::new()),
-                editable: Cell::new(true),
-            }
-        }
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
