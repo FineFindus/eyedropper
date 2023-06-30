@@ -37,7 +37,7 @@ mod imp {
         #[template_child()]
         pub standard_observer_box: TemplateChild<adw::ComboRow>,
         #[template_child()]
-        pub precision_spin_button: TemplateChild<gtk::SpinButton>,
+        pub precision_row: TemplateChild<adw::SpinRow>,
         #[template_child()]
         pub cie_illuminants_box: TemplateChild<gtk::DropDown>,
         // this exist only to load the CustomFormatRow, otherwise it would crash
@@ -60,7 +60,7 @@ mod imp {
                 alpha_pos_box: TemplateChild::default(),
                 standard_observer_box: TemplateChild::default(),
                 cie_illuminants_box: TemplateChild::default(),
-                precision_spin_button: TemplateChild::default(),
+                precision_row: TemplateChild::default(),
                 _custom_format: TemplateChild::default(),
                 order_list: TemplateChild::default(),
                 format_order: Default::default(),
@@ -129,7 +129,7 @@ impl PreferencesWindow {
             .build();
 
         imp.settings
-            .bind("precision-digits", &*imp.precision_spin_button, "value")
+            .bind("precision-digits", &*imp.precision_row, "value")
             .build();
     }
 

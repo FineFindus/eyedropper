@@ -37,23 +37,19 @@ template $PreferencesWindow : Adw.PreferencesWindow {
         }
       }
 
-      Adw.ActionRow {
+      $AdwSpinRow  precision_row {
         title: _("Precision");
-
-        [suffix]
-        SpinButton precision_spin_button {
           adjustment: Adjustment {
+            value: 2;
             lower: 0;
             upper: 15;
             step-increment: 1;
-            value: 2;
           };
 
           tooltip-text: _("Precision");
           climb-rate: 1;
           numeric: true;
           valign: center;
-        }
       }
     }
 
