@@ -1,43 +1,46 @@
-# SOME DESCRIPTIVE TITLE.
+# Eyedropper Chinese translation.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Eyedropper package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# lumingzh <lumingzh@qq.com>, 2023.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-06-30 09:10+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2023-07-21 13:05+0800\n"
+"Last-Translator: lumingzh <lumingzh@qq.com>\n"
+"Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: Gtranslator 42.0\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
 #: data/resources/ui/window.blp:74 src/main.rs:25
 #: src/widgets/about_window.rs:41
 msgid "Eyedropper"
-msgstr ""
+msgstr "Eyedropper"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:4
 msgid "Color Picker"
-msgstr ""
+msgstr "颜色拾取器"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
 #: src/widgets/about_window.rs:71
 msgid "Pick and format colors"
-msgstr ""
+msgstr "拾取并格式化颜色"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
 msgid "Gnome;GTK;Color;Color Picker;Picker;Palette;"
 msgstr ""
+"Gnome;GTK;Color;Color Picker;Picker;Palette;颜色;色彩;拾取器;吸取器;色板;调色"
+"盘;"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
 #: src/widgets/about_window.rs:74
@@ -46,497 +49,501 @@ msgid ""
 "picked color or go back to a previously picked color from the history list. "
 "Generate a list of different shades from the picked color."
 msgstr ""
+"从您的屏幕上拾取任意颜色并以不同格式查看它。更改拾取的颜色或从历史列表返回至"
+"上个拾取的颜色。基于拾取的颜色生成不同暗调的列表。"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
 #: src/widgets/about_window.rs:79
 msgid "Features"
-msgstr ""
+msgstr "特性"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:16
 #: src/widgets/about_window.rs:83
 msgid "Pick a Color"
-msgstr ""
+msgstr "拾取颜色"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
 #: src/widgets/about_window.rs:84
 msgid "Enter a color in Hex-Format"
-msgstr ""
+msgstr "以 16 进制格式输入颜色"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:18
 #: src/widgets/about_window.rs:85
 msgid "Parse RGBA/ARGB Hex-Colors"
-msgstr ""
+msgstr "解析 RGBA/ARGB 16 进制颜色"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
 #: src/widgets/about_window.rs:86
 msgid "View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format"
-msgstr ""
+msgstr "以 16 进制、RGB、HSV、HSL、CMYK、XYZ 和 CIE-Lab 格式查看颜色"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
 #: src/widgets/about_window.rs:87
 msgid "Customize which formats appear as well as their order"
-msgstr ""
+msgstr "自定义显示的格式和它们的顺序"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
 #: src/widgets/about_window.rs:88
 msgid "Generate a palette of different shades"
-msgstr ""
+msgstr "生成不同暗调的色板"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:27
 msgid "Main window with a color in different formats"
-msgstr ""
+msgstr "具有不同格式颜色的主窗口"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:31
 msgid "Main window with customized formats"
-msgstr ""
+msgstr "具有自定义格式的主窗口"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:35
 msgid "Dialog showing generated color palettes"
-msgstr ""
+msgstr "显示生成颜色色板的对话框"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:39
 msgid "Status page stating to pick a color to get started"
-msgstr ""
+msgstr "说明拾取颜色以开始的状态页"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:179
 msgid "FineFindus"
-msgstr ""
+msgstr "FineFindus"
 
 #: data/resources/ui/palette-window.blp:7
 msgctxt "Adobes palette format"
 msgid "Adobe Swatch Exchange"
-msgstr ""
+msgstr "Adobe Swatch Exchange"
 
 #: data/resources/ui/palette-window.blp:13
 msgctxt "LibreOffice/OpenOffice palette file"
 msgid "LibreOffice Palette"
-msgstr ""
+msgstr "LibreOffice 色板"
 
 #: data/resources/ui/palette-window.blp:19
 msgctxt "Gimp/Inkscape palette format"
 msgid "Gimp Palette"
-msgstr ""
+msgstr "Gimp 色板"
 
 #: data/resources/ui/palette-window.blp:25
 msgctxt "Paint.net palette format, should most like not be translated"
 msgid "Paint.NET"
-msgstr ""
+msgstr "Paint.NET"
 
 #: data/resources/ui/palette-window.blp:31
 msgctxt "Palette format file name"
 msgid "Hex"
-msgstr ""
+msgstr "Hex"
 
 #: data/resources/ui/palette-window.blp:37
 msgctxt "Palette format file name"
 msgid "PAL"
-msgstr ""
+msgstr "PAL"
 
 #: data/resources/ui/palette-window.blp:46
 msgid "Palettes"
-msgstr ""
+msgstr "色板"
 
 #: data/resources/ui/palette-window.blp:54
 msgid "Save Palettes…"
-msgstr ""
+msgstr "保存色板…"
 
 #: data/resources/ui/preferences/custom-format-row.blp:12
 msgctxt "Tooltip of the reset button for custom format"
 msgid "Reset Format"
-msgstr ""
+msgstr "重置格式"
 
 #: data/resources/ui/preferences/name-sources-dialog.blp:5
 #: data/resources/ui/preferences/preferences.blp:29
 msgid "Name Sources"
-msgstr ""
+msgstr "命名源"
 
 #: data/resources/ui/preferences/name-sources-dialog.blp:17
 msgctxt ""
 "Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
 "#html4"
 msgid "Basic"
-msgstr ""
+msgstr "基本"
 
 #: data/resources/ui/preferences/name-sources-dialog.blp:18
 msgid "Basic web colors"
-msgstr ""
+msgstr "基本网络颜色"
 
 #: data/resources/ui/preferences/name-sources-dialog.blp:22
 msgctxt ""
 "Name of the extended color keyword set from https://www.w3.org/TR/css-"
 "color-3/#svg-color"
 msgid "Extended"
-msgstr ""
+msgstr "扩展"
 
 #: data/resources/ui/preferences/name-sources-dialog.blp:23
 msgid "X11 and SVG color values"
-msgstr ""
+msgstr "X11 和 SVG 颜色值"
 
 #: data/resources/ui/preferences/name-sources-dialog.blp:27
 msgctxt ""
 "Name of the color set from the GNOME color palette (https://developer.gnome."
 "org/hig/reference/palette.html)"
 msgid "GNOME Color Palette"
-msgstr ""
+msgstr "GNOME 颜色色板"
 
 #: data/resources/ui/preferences/name-sources-dialog.blp:28
 msgid "Colors for GNOME app icons and illustrations"
-msgstr ""
+msgstr "用于 GNOME 应用图标和图解的颜色"
 
 #: data/resources/ui/preferences/name-sources-dialog.blp:32
 msgctxt "Name of the color set from the xkcd color survey"
 msgid "xkcd Color Survey"
-msgstr ""
+msgstr "xkcd 颜色测量"
 
 #: data/resources/ui/preferences/name-sources-dialog.blp:33
 msgid "954 RGB colors named by volunteers"
-msgstr ""
+msgstr "由志愿者命名的 954 种 RGB 颜色"
 
 #: data/resources/ui/preferences/preferences.blp:11
 msgid "General"
-msgstr ""
+msgstr "常规"
 
 #: data/resources/ui/preferences/preferences.blp:14
 msgid "Formatting"
-msgstr ""
+msgstr "格式化"
 
 #: data/resources/ui/preferences/preferences.blp:17
 msgid "Alpha-Value-Position"
-msgstr ""
+msgstr "透明值位置"
 
 #: data/resources/ui/preferences/preferences.blp:18
 msgid "Where the Alphavalue is positioned in the Hexstring"
-msgstr ""
+msgstr "透明值在 16 进制字符串中的位置"
 
 #: data/resources/ui/preferences/preferences.blp:21
 msgctxt "Alphavalue is not shown"
 msgid "None"
-msgstr ""
+msgstr "无"
 
 #: data/resources/ui/preferences/preferences.blp:22
 msgctxt "Alphavalue is shown at the end"
 msgid "End"
-msgstr ""
+msgstr "末尾"
 
 #: data/resources/ui/preferences/preferences.blp:23
 msgctxt "Alphavalue is shown at the start"
 msgid "Start"
-msgstr ""
+msgstr "起始"
 
 #: data/resources/ui/preferences/preferences.blp:30
 msgid "Sources for displaying color names"
-msgstr ""
+msgstr "显示颜色名称的来源"
 
 #: data/resources/ui/preferences/preferences.blp:41
 #: data/resources/ui/preferences/preferences.blp:49
 msgid "Precision"
-msgstr ""
+msgstr "精度"
 
 #: data/resources/ui/preferences/preferences.blp:57
 msgid "CIE Color Space"
-msgstr ""
+msgstr "CIE 色彩空间"
 
 #: data/resources/ui/preferences/preferences.blp:60
 msgid "CIE Illuminants"
-msgstr ""
+msgstr "CIE 光照"
 
 #: data/resources/ui/preferences/preferences.blp:61
 msgid "Lighting conditions for the CIE color space"
-msgstr ""
+msgstr "CIE 色彩空间的光照条件"
 
 #: data/resources/ui/preferences/preferences.blp:69
 msgid "A (Incandescent/tungsten)"
-msgstr ""
+msgstr "A（白炽灯/钨丝灯）"
 
 #: data/resources/ui/preferences/preferences.blp:70
 msgid "B (Old direct sunlight at noon)"
-msgstr ""
+msgstr "B（旧的中午直射日光）"
 
 #: data/resources/ui/preferences/preferences.blp:71
 msgid "C (Old daylight)"
-msgstr ""
+msgstr "C（旧的日光）"
 
 #: data/resources/ui/preferences/preferences.blp:72
 msgid "D50 (ICC profile PCS)"
-msgstr ""
+msgstr "D50（ICC 配置文件 PCS）"
 
 #: data/resources/ui/preferences/preferences.blp:73
 msgid "D55 (Mid-morning daylight)"
-msgstr ""
+msgstr "D55（上午的日光）"
 
 #: data/resources/ui/preferences/preferences.blp:74
 msgid "D65 (Daylight, sRGB, Adobe-RGB)"
-msgstr ""
+msgstr "D65（日光、sRGB、Adobe-RGB）"
 
 #: data/resources/ui/preferences/preferences.blp:75
 msgid "D75 (North sky daylight)"
-msgstr ""
+msgstr "D75（北方天空的日光）"
 
 #: data/resources/ui/preferences/preferences.blp:76
 msgid "E (Equal energy)"
-msgstr ""
+msgstr "E（等能量）"
 
 #: data/resources/ui/preferences/preferences.blp:77
 msgid "F1 (Daylight Fluorescent)"
-msgstr ""
+msgstr "F1（日光荧光灯）"
 
 #: data/resources/ui/preferences/preferences.blp:78
 msgid "F2 (Cool fluorescent)"
-msgstr ""
+msgstr "F2（冷光荧光灯）"
 
 #: data/resources/ui/preferences/preferences.blp:79
 msgid "F3 (White Fluorescent)"
-msgstr ""
+msgstr "F3（白光荧光灯）"
 
 #: data/resources/ui/preferences/preferences.blp:80
 msgid "F4 (Warm White Fluorescent)"
-msgstr ""
+msgstr "F4（暖白荧光灯）"
 
 #: data/resources/ui/preferences/preferences.blp:81
 msgid "F5 (Daylight Fluorescent)"
-msgstr ""
+msgstr "F5（日光荧光灯）"
 
 #: data/resources/ui/preferences/preferences.blp:82
 msgid "F6 (Lite White Fluorescent)"
-msgstr ""
+msgstr "F6（淡白荧光灯）"
 
 #: data/resources/ui/preferences/preferences.blp:83
 msgid "F7 (Daylight fluorescent, D65 simulator)"
-msgstr ""
+msgstr "F7（日光荧光灯、D65 模拟器）"
 
 #: data/resources/ui/preferences/preferences.blp:84
 msgid "F8 (Sylvania F40, D50 simulator)"
-msgstr ""
+msgstr "F8（喜万年 F40、D50 模拟器）"
 
 #: data/resources/ui/preferences/preferences.blp:85
 msgid "F9 (Cool White Fluorescent)"
-msgstr ""
+msgstr "F9（冷白荧光灯）"
 
 #: data/resources/ui/preferences/preferences.blp:86
 msgid "F10 (Ultralume 50, Philips TL85)"
-msgstr ""
+msgstr "F10（Ultralume 50、飞利浦 TL85）"
 
 #: data/resources/ui/preferences/preferences.blp:87
 msgid "F11 (Ultralume 40, Philips TL84)"
-msgstr ""
+msgstr "F11（Ultralume 40、飞利浦 TL84）"
 
 #: data/resources/ui/preferences/preferences.blp:88
 msgid "F12 (Ultralume 30, Philips TL83)"
-msgstr ""
+msgstr "F12（Ultralume 30、飞利浦 TL83）"
 
 #: data/resources/ui/preferences/preferences.blp:100
 msgid "CIE Standard Observer"
-msgstr ""
+msgstr "CIE 标准观察器"
 
 #: data/resources/ui/preferences/preferences.blp:101
 msgid "The CIE standard observer's field of view"
-msgstr ""
+msgstr "CIE 标准观察器的视域"
 
 #: data/resources/ui/preferences/preferences.blp:104
 msgid "2°"
-msgstr ""
+msgstr "2°"
 
 #: data/resources/ui/preferences/preferences.blp:105
 msgid "10°"
-msgstr ""
+msgstr "10°"
 
 #: data/resources/ui/preferences/preferences.blp:112
 msgid "Color Formats"
-msgstr ""
+msgstr "颜色格式"
 
 #: data/resources/ui/preferences/preferences.blp:113
 msgid "Customize the visible formats and in which order they are displayed."
-msgstr ""
+msgstr "自定义可见格式和它们显示的顺序。"
 
 #: data/resources/ui/preferences/preferences.blp:118
 msgctxt " Tooltip of the button to reset the format order"
 msgid "Reset Order"
-msgstr ""
+msgstr "重置顺序"
 
 #: data/resources/ui/preferences/preferences.blp:138
 #: data/resources/ui/preferences/preferences.blp:141
 msgid "Formats"
-msgstr ""
+msgstr "格式"
 
 #: data/resources/ui/preferences/preferences.blp:142
 msgid ""
 "Edit how the color formats are displayed. The “{}” will be replaced in with "
 "the values of the formats. Custom formats cannot be used as input."
 msgstr ""
+"编辑颜色格式显示的方式。“{}”将被该格式的数值代替。自定义格式无法作为输入使"
+"用。"
 
 #: data/resources/ui/preferences/preferences.blp:145
 msgid "RGB Format"
-msgstr ""
+msgstr "RGB 格式"
 
 #: data/resources/ui/preferences/preferences.blp:151
 msgid "HSL Format"
-msgstr ""
+msgstr "HSL 格式"
 
 #: data/resources/ui/preferences/preferences.blp:157
 msgid "HSV Format"
-msgstr ""
+msgstr "HSV 格式"
 
 #: data/resources/ui/preferences/preferences.blp:163
 msgid "CMYK Format"
-msgstr ""
+msgstr "CMYK 格式"
 
 #: data/resources/ui/preferences/preferences.blp:169
 msgid "XYZ Format"
-msgstr ""
+msgstr "XYZ 格式"
 
 #: data/resources/ui/preferences/preferences.blp:175
 msgid "CIELAB Format"
-msgstr ""
+msgstr "CIELAB 格式"
 
 #: data/resources/ui/preferences/preferences.blp:181
 msgid "HWB Format"
-msgstr ""
+msgstr "HWB 格式"
 
 #: data/resources/ui/preferences/preferences.blp:187
 msgid "CIELCh/HCL Format"
-msgstr ""
+msgstr "CIELCh/HCL 格式"
 
 #: data/resources/ui/preferences/preferences.blp:193
 msgid "LMS Format"
-msgstr ""
+msgstr "LMS 格式"
 
 #: data/resources/ui/preferences/preferences.blp:199
 msgid "Hunter Lab Format"
-msgstr ""
+msgstr "HunterLab 格式"
 
 #: data/resources/ui/shortcuts.blp:11
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "常规"
 
 #: data/resources/ui/shortcuts.blp:14
 msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr ""
+msgstr "显示首选项"
 
 #: data/resources/ui/shortcuts.blp:19
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "显示快捷键"
 
 #: data/resources/ui/shortcuts.blp:24
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr ""
+msgstr "退出"
 
 #: data/resources/ui/shortcuts.blp:30
 msgctxt "shortcut window"
 msgid "Color"
-msgstr ""
+msgstr "颜色"
 
 #: data/resources/ui/shortcuts.blp:33
 msgctxt "shortcut window"
 msgid "Pick a new Color"
-msgstr ""
+msgstr "拾取新颜色"
 
 #: data/resources/ui/shortcuts.blp:38
 msgctxt "shortcut window"
 msgid "Randomize the Color"
-msgstr ""
+msgstr "随机颜色"
 
 #: data/resources/ui/window.blp:7
 msgid "_Clear History"
-msgstr ""
+msgstr "清除历史(_C)"
 
 #: data/resources/ui/window.blp:12
 msgid "_Random Color"
-msgstr ""
+msgstr "随机颜色(_R)"
 
 #: data/resources/ui/window.blp:19
 msgid "_Preferences"
-msgstr ""
+msgstr "首选项(_P)"
 
 #: data/resources/ui/window.blp:24
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "键盘快捷键(_K)"
 
 #: data/resources/ui/window.blp:29
 msgid "_About Eyedropper"
-msgstr ""
+msgstr "关于 Eyedropper(_A)"
 
 #: data/resources/ui/window.blp:50
 msgid "No Color"
-msgstr ""
+msgstr "无颜色"
 
 #: data/resources/ui/window.blp:51
 msgid "Select a color from the screen to get started."
-msgstr ""
+msgstr "从屏幕选择一个颜色以开始。"
 
 #: data/resources/ui/window.blp:53
 msgid "_Pick a Color"
-msgstr ""
+msgstr "拾取颜色(_P)"
 
 #: data/resources/ui/window.blp:78
 msgctxt "Tooltip of the colorpicker button"
 msgid "Pick a Color"
-msgstr ""
+msgstr "拾取颜色"
 
 #: data/resources/ui/window.blp:85
 msgid "Main Menu"
-msgstr ""
+msgstr "主菜单"
 
 #: data/resources/ui/window.blp:108
 msgctxt "Tooltip of the palette button"
 msgid "Open Palette Window"
-msgstr ""
+msgstr "打开色板窗口"
 
 #: data/resources/ui/window.blp:128
 msgid "Copy Name"
-msgstr ""
+msgstr "复制名称"
 
 #: data/resources/ui/window.blp:133
 msgid "Copy Hex Code"
-msgstr ""
+msgstr "复制 Hex 代码"
 
 #: data/resources/ui/window.blp:137
 msgid "Copy RGB"
-msgstr ""
+msgstr "复制 RGB"
 
 #: data/resources/ui/window.blp:141
 msgid "Copy HSL"
-msgstr ""
+msgstr "复制 HSL"
 
 #: data/resources/ui/window.blp:145
 msgid "Copy HSV"
-msgstr ""
+msgstr "复制 HSV"
 
 #: data/resources/ui/window.blp:149
 msgid "Copy CMYK"
-msgstr ""
+msgstr "复制 CMYK"
 
 #: data/resources/ui/window.blp:153
 msgid "Copy XYZ"
-msgstr ""
+msgstr "复制 XYZ"
 
 #: data/resources/ui/window.blp:158
 msgid "Copy CIELAB"
-msgstr ""
+msgstr "复制 CIELAB"
 
 #: data/resources/ui/window.blp:163
 msgid "Copy HWB"
-msgstr ""
+msgstr "复制 HWB"
 
 #: data/resources/ui/window.blp:168
 msgid "Copy CIELCh / HCL"
-msgstr ""
+msgstr "复制 CIELCh/HCL"
 
 #: data/resources/ui/window.blp:173
 msgid "Copy LMS"
-msgstr ""
+msgstr "复制 LMS"
 
 #: data/resources/ui/window.blp:178
 msgid "Copy Hunter Lab"
-msgstr ""
+msgstr "复制 HunterLab"
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/widgets/about_window.rs:47
 msgid "translator-credits"
-msgstr ""
+msgstr "lumingzh <lumingzh@qq.com>"
 
 #: src/widgets/about_window.rs:105
 msgctxt ""
@@ -559,123 +566,133 @@ msgid ""
 "<ul><li>Separator is now hidden when the history list is hidden</"
 "li><li>Improved editing experience when change the Hex color/name</li></ul>"
 msgstr ""
+"<p>具有很多用户体验提升的小型发布。</p><p>已添加：</p>\n"
+"<ul><li>清除历史时显示带有撤消选项的提示</li><li>使用 Ctrl-Q 关闭窗口</"
+"li><li>使用默认最小的窗口大小，内容应不再非必要裁切</li><li>@bertob 创作的新"
+"图标</li><li>导出色板为 Adobe Swatch Exchange (ASE)、hex、PAL、Paint.NET "
+"(txt) 文件</li><li>对存储元数据的微小更改</li></ul><p>已更改：</p>\n"
+"<ul><li>Hunter-Lab 现在显示 0 而不是 NaN</li><li>优化复制颜色的工具提示</"
+"li><li>色板窗口现在使用带有明确文字的按钮而不是图标</li><li>重新组织的工程描"
+"述</li><li>更新了所有截图</li></ul><p>已修复：</p>\n"
+"<ul><li>历史列表隐藏时隐藏分隔符</li><li>优化更改 Hex 颜色/名称时的编辑体验</"
+"li></ul>"
 
 #: src/widgets/color_format_row.rs:244
 msgid "Copied “{}”"
-msgstr ""
+msgstr "已复制“{}”"
 
 #: src/widgets/palette_dialog.rs:133
 msgctxt "Name for tints (lighter variants) of the color"
 msgid "Tints"
-msgstr ""
+msgstr "淡色"
 
 #: src/widgets/palette_dialog.rs:137
 msgctxt "Name for shades (darker variants) of the color"
 msgid "Shades"
-msgstr ""
+msgstr "暗调"
 
 #: src/widgets/palette_dialog.rs:143
 msgctxt "Name for the opposite/complementary color (e.g. blue ⇔ yellow)"
 msgid "Complementary"
-msgstr ""
+msgstr "补色"
 
 #: src/widgets/palette_dialog.rs:150
 msgctxt ""
 "The name of the color palette. Consist of the two opposite colors (e.g. blue "
 "⇔ orange / green)"
 msgid "Split-Complementary"
-msgstr ""
+msgstr "分割补色"
 
 #: src/widgets/palette_dialog.rs:157
 msgctxt ""
 "Name of the color palette, which would form a triangle above the color wheel"
 msgid "Triadic"
-msgstr ""
+msgstr "三色"
 
 #: src/widgets/palette_dialog.rs:162
 msgctxt "The name of the color palette."
 msgid "Tetradic"
-msgstr ""
+msgstr "四色"
 
 #: src/widgets/palette_dialog.rs:168
 msgctxt "Color palette consisting of six slight shifted colors"
 msgid "Analogous"
-msgstr ""
+msgstr "相似色"
 
 #: src/widgets/preferences/preferences_window.rs:294
 msgid "Move Up"
-msgstr ""
+msgstr "上移"
 
 #: src/widgets/preferences/preferences_window.rs:296
 msgid "Move Down"
-msgstr ""
+msgstr "下移"
 
 #: src/widgets/preferences/preferences_window.rs:392
 msgid "Hex-Code"
-msgstr ""
+msgstr "Hex 代码"
 
 #: src/widgets/preferences/preferences_window.rs:393
 msgid "RGB"
-msgstr ""
+msgstr "RGB"
 
 #: src/widgets/preferences/preferences_window.rs:394
 msgid "HSL"
-msgstr ""
+msgstr "HSL"
 
 #: src/widgets/preferences/preferences_window.rs:395
 msgid "HSV"
-msgstr ""
+msgstr "HSV"
 
 #: src/widgets/preferences/preferences_window.rs:396
 msgid "CMYK"
-msgstr ""
+msgstr "CMYK"
 
 #: src/widgets/preferences/preferences_window.rs:397
 msgid "XYZ"
-msgstr ""
+msgstr "XYZ"
 
 #: src/widgets/preferences/preferences_window.rs:398
 msgid "CIELAB"
-msgstr ""
+msgstr "CIELAB"
 
 #: src/widgets/preferences/preferences_window.rs:399
 msgid "HWB"
-msgstr ""
+msgstr "HWB"
 
 #: src/widgets/preferences/preferences_window.rs:400
 msgid "CIELCh / HCL"
-msgstr ""
+msgstr "CIELCh / HCL"
 
 #: src/widgets/preferences/preferences_window.rs:403
 msgid "Name"
-msgstr ""
+msgstr "名称"
 
 #: src/widgets/preferences/preferences_window.rs:406 src/window.rs:438
 #: src/window.rs:463 src/window.rs:650 src/window.rs:829
 msgctxt "Information that no name for the color could be found"
 msgid "Not named"
-msgstr ""
+msgstr "未命名"
 
 #: src/widgets/preferences/preferences_window.rs:409
 msgid "LMS"
-msgstr ""
+msgstr "LMS"
 
 #: src/widgets/preferences/preferences_window.rs:411
 msgid "Hunter Lab"
-msgstr ""
+msgstr "Hunter Lab"
 
 #: src/window.rs:224
 msgid "Cleared history"
-msgstr ""
+msgstr "已清除历史"
 
 #: src/window.rs:225
 msgid "Undo"
-msgstr ""
+msgstr "撤消"
 
 #: src/window.rs:553
 msgid "Failed to get palette color"
-msgstr ""
+msgstr "获取色板颜色失败"
 
 #: src/window.rs:584
 msgid "Failed to pick a color"
-msgstr ""
+msgstr "拾取颜色失败"
