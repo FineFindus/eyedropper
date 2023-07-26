@@ -39,7 +39,7 @@ fn generate_map<T: AsRef<Path>>(
     input_file
         .lines()
         .filter(|line| !line.trim().is_empty() && !line.starts_with("#"))
-        .filter_map(|line| line.split_once('\t'))
+        .filter_map(|line| line.split_once(','))
         .map(|(name, val)| (name.trim(), val.trim()))
         .for_each(|(name, hex)| {
             map.entry(name, &format!("\"{}\"", hex));
