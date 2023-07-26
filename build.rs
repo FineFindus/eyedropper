@@ -43,7 +43,12 @@ fn generate_map<T: AsRef<Path>>(
         .map(|(name, val)| (name.trim(), val.trim()))
         .for_each(|(name, hex)| {
             map.entry(name, &format!("\"{}\"", hex));
-            reverse_map.entry(hex, &format!("\"{}\"", name));
+
+            // the map must have unique keys
+            // some colors have multiple names, so they need to be removed
+            if name == "cyan" || name == "darkgray" {
+                reverse_map.entry(hex, &format!("\"{}\"", name));
+            }
         });
 
     write_map(file, name, map)?;
