@@ -317,7 +317,8 @@ impl AppWindow {
                 window.set_color(history_object.color().into());
                 //remove from history when clicking on it
                 match window.history().find(&history_object) {
-                    Some(index) => window.history().remove(index),
+                    Some(index) if index != 0 => window.history().remove(index),
+                    Some(_) => {} // currently show item has index 0, it cannot be set and removed
                     None => log::error!("Failed to find index for {}", history_object.color()),
                 }
             }),
