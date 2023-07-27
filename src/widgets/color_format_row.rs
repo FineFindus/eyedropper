@@ -79,8 +79,31 @@ mod imp {
             let obj = self.obj();
             obj.set_direction(gtk::TextDirection::Ltr);
             obj.setup_signals();
-            obj.setup_properties();
             obj.set_visible(false);
+
+            obj.bind_property("tooltip", &*self.format_button, "tooltip-text")
+                .flags(glib::BindingFlags::SYNC_CREATE)
+                .build();
+
+            //bind texts
+            obj.bind_property("color", &*self.entry, "text")
+                .flags(glib::BindingFlags::SYNC_CREATE)
+                .build();
+            //bind editable
+            obj.bind_property("editable", &*self.entry, "editable")
+                .flags(glib::BindingFlags::SYNC_CREATE)
+                .build();
+            obj.bind_property("editable", &*self.entry, "can-focus")
+                .flags(glib::BindingFlags::SYNC_CREATE)
+                .build();
+            obj.bind_property("editable", &*self.entry, "can-target")
+                .flags(glib::BindingFlags::SYNC_CREATE)
+                .build();
+
+            self.entry
+                .connect_changed(glib::clone!(@weak obj => move |_entry| {
+                    obj.switch_button(obj.text_changed());
+                }));
         }
 
         fn dispose(&self) {
@@ -159,38 +182,6 @@ impl ColorFormatRow {
             glib::timeout_future_with_priority(glib::PRIORITY_DEFAULT, Duration::from_millis(350)).await;
             widget.remove_css_class("success");
         }));
-    }
-
-    /// Bind the properties to the target values.
-    ///
-    /// Binds the `text` properties to the text of the entry, and
-    /// the `editable` property to different properties
-    /// of the entry to make it (un)-editable
-    fn setup_properties(&self) {
-        self.bind_property("tooltip", &*self.imp().format_button, "tooltip-text")
-            .flags(glib::BindingFlags::SYNC_CREATE)
-            .build();
-
-        //bind texts
-        self.bind_property("color", &*self.imp().entry, "text")
-            .flags(glib::BindingFlags::SYNC_CREATE)
-            .build();
-        //bind editable
-        self.bind_property("editable", &*self.imp().entry, "editable")
-            .flags(glib::BindingFlags::SYNC_CREATE)
-            .build();
-        self.bind_property("editable", &*self.imp().entry, "can-focus")
-            .flags(glib::BindingFlags::SYNC_CREATE)
-            .build();
-        self.bind_property("editable", &*self.imp().entry, "can-target")
-            .flags(glib::BindingFlags::SYNC_CREATE)
-            .build();
-
-        self.imp()
-            .entry
-            .connect_changed(glib::clone!(@weak self as widget => move |_entry| {
-                widget.switch_button(widget.text_changed());
-            }));
     }
 
     /// Registers a signal for when the text entry is changed to emit
