@@ -546,14 +546,15 @@ impl AppWindow {
                 log::debug!("Palette: {palette}");
 
                 palette
-                .split(' ')
-                .for_each(|slice| match Color::from_hex(slice, AlphaPosition::None) {
-                    Ok(color) => window.set_color(color),
-                    Err(_) => {
+                .split_ascii_whitespace()
+                .for_each(|slice|
+                    if let Ok(color) = Color::from_hex(slice, AlphaPosition::None) {
+                        window.set_color(color);
+                    } else {
                         log::error!("Failed to parse color {}", slice);
-                        window.show_toast(gettext("Failed to get palette color"), adw::ToastPriority::Normal)
-                },
-            });
+                        window.show_toast(gettext("Failed to get palette color"), adw::ToastPriority::Normal);
+                    }
+                );
             }),
         );
     }
