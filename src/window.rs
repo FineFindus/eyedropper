@@ -534,7 +534,7 @@ impl AppWindow {
     #[template_callback]
     fn open_palette_dialog(&self) {
         //safe to unwrap, if the user opens this dialog, the color button must be clicked
-        let palette_dialog = PaletteDialog::new(self.color().unwrap());
+        let palette_dialog = PaletteDialog::new(self.color().expect("Failed to get current color"));
         palette_dialog.set_transient_for(Some(self));
         palette_dialog.present();
 
@@ -567,7 +567,7 @@ impl AppWindow {
         let main_context = glib::MainContext::default();
         main_context.spawn_local(glib::clone!(@weak self as window => async move {
 
-        let root = window.root().unwrap();
+        let root = window.root().expect("Failed to get window root");
         let identifier = ashpd::WindowIdentifier::from_native(&root).await;
         let request = ashpd::desktop::screenshot::Color::request()
             .identifier(identifier)
