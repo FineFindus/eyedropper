@@ -10,7 +10,7 @@ use gtk::{
 };
 
 mod imp {
-    use std::cell::{Cell, RefCell};
+    use std::cell::RefCell;
 
     use super::*;
 
@@ -29,8 +29,6 @@ mod imp {
         pub color: RefCell<String>,
         #[property(set, get)]
         pub tooltip: RefCell<String>,
-        #[property(set, get, default = true)]
-        pub editable: Cell<bool>,
     }
 
     #[glib::object_subclass]
@@ -85,18 +83,7 @@ mod imp {
                 .flags(glib::BindingFlags::SYNC_CREATE)
                 .build();
 
-            //bind texts
             obj.bind_property("color", &*self.entry, "text")
-                .flags(glib::BindingFlags::SYNC_CREATE)
-                .build();
-            //bind editable
-            obj.bind_property("editable", &*self.entry, "editable")
-                .flags(glib::BindingFlags::SYNC_CREATE)
-                .build();
-            obj.bind_property("editable", &*self.entry, "can-focus")
-                .flags(glib::BindingFlags::SYNC_CREATE)
-                .build();
-            obj.bind_property("editable", &*self.entry, "can-target")
                 .flags(glib::BindingFlags::SYNC_CREATE)
                 .build();
 
