@@ -4,10 +4,7 @@ use gettextrs::gettext;
 use glib::translate::IntoGlib;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
-use gtk::{
-    glib,
-    prelude::{ObjectExt, ToValue},
-};
+use gtk::{glib, prelude::ObjectExt};
 
 mod imp {
     use std::cell::RefCell;
@@ -76,7 +73,6 @@ mod imp {
             self.parent_constructed();
             let obj = self.obj();
             obj.set_direction(gtk::TextDirection::Ltr);
-            obj.setup_signals();
             obj.set_visible(false);
 
             obj.bind_property("tooltip", &*self.format_button, "tooltip-text")
@@ -86,6 +82,15 @@ mod imp {
             obj.bind_property("color", &*self.entry, "text")
                 .flags(glib::BindingFlags::SYNC_CREATE)
                 .build();
+
+            self.entry
+                .connect_activate(glib::clone!(@weak obj => move |entry| {
+                    let text = entry.buffer().text();
+                    if obj.is_visible() && !text.is_empty() {
+                        obj.switch_button(false);
+                        obj.emit_by_name("text-edited", &[&text.to_value()])
+                    }
+                }));
 
             self.entry
                 .connect_changed(glib::clone!(@weak obj => move |_entry| {
@@ -169,20 +174,6 @@ impl ColorFormatRow {
             glib::timeout_future_with_priority(glib::PRIORITY_DEFAULT, Duration::from_millis(350)).await;
             widget.remove_css_class("success");
         }));
-    }
-
-    /// Registers a signal for when the text entry is changed to emit
-    /// a signal containing the edited text.
-    fn setup_signals(&self) {
-        self.imp()
-            .entry
-            .connect_activate(glib::clone!(@weak self as widget => move |entry| {
-                let text = entry.buffer().text();
-                if widget.is_visible() && !text.is_empty() {
-                    widget.switch_button(false);
-                    widget.emit_by_name("text-edited", &[&text.to_value()])
-                }
-            }));
     }
 
     /// Callback when the button next to the entry is pressed.
