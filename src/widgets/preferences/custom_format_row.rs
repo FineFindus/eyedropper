@@ -79,7 +79,21 @@ mod imp {
         fn constructed(&self) {
             self.parent_constructed();
             let obj = self.obj();
-            obj.setup_properties();
+
+            obj.connect_notify(Some("settings-key"), |widget, _| {
+                let custom_format = widget
+                    .imp()
+                    .settings
+                    .string(&widget.settings_key())
+                    .to_string();
+
+                let text = if custom_format.is_empty() {
+                    widget.default_format()
+                } else {
+                    custom_format
+                };
+                widget.set_text(text);
+            });
         }
 
         fn dispose(&self) {
@@ -133,22 +147,5 @@ impl CustomFormatRow {
         } else {
             log::debug!("Format is the same, not updating")
         }
-    }
-
-    /// Bind the properties to the target values.
-    /// This sets the text to the default value.
-    fn setup_properties(&self) {
-        self.connect_notify(Some("settings-key"), |widget, _| {
-            let custom_format = widget
-                .imp()
-                .settings
-                .string(&widget.settings_key())
-                .to_string();
-            if custom_format.is_empty() {
-                widget.set_text(widget.default_format());
-            } else {
-                widget.set_text(custom_format);
-            }
-        });
     }
 }
