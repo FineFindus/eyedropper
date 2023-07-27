@@ -79,9 +79,47 @@ mod imp {
 
         fn constructed(&self) {
             self.parent_constructed();
-            let obj = self.obj();
 
-            obj.setup_palettes_list();
+            self.obj().connect_notify_local(
+                Some("color"),
+                glib::clone!(@weak self as obj => move |dialog, _| {
+                    let palettes = &obj.palettes_list;
+                    let color: Color = dialog.color().into();
+                    let palette_variants = [
+                        (&pgettext("Name for tints (lighter variants) of the color", "Tints"),
+                        color.tints(0.15, 5)),
+                        (&pgettext("Name for shades (darker variants) of the color", "Shades"),
+                        color.shades(0.15, 5)),
+                        (&pgettext(
+                            "Name for the opposite/complementary color (e.g. blue ⇔ yellow)",
+                            "Complementary",
+                        ),
+                        vec![color, color.complementary_color()]),
+                        (&pgettext(
+                            "The name of the color palette. Consist of the two opposite colors (e.g. blue ⇔ orange / green)",
+                            "Split-Complementary",
+                        ),
+                        color.split_complementary_color()),
+                        (&pgettext(
+                            "Name of the color palette, which would form a triangle above the color wheel",
+                            "Triadic",
+                        ),
+                        color.triadic_colors()),
+                        (&pgettext("The name of the color palette.", "Tetradic"),
+                        color.tetradic_colors()),
+                        (&pgettext(
+                            "Color palette consisting of six slight shifted colors",
+                            "Analogous",
+                        ),
+                        color.analogous_colors(6)),
+                    ];
+
+                    palette_variants
+                        .iter()
+                        .map(|(title, colors)| dialog.create_palette_row(title, colors))
+                        .for_each(|row| palettes.append(&row));
+                }),
+            );
         }
 
         fn dispose(&self) {
@@ -123,56 +161,8 @@ impl PaletteDialog {
         colors
     }
 
-    ///Setup the list by adding a the generate color palettes
-    fn setup_palettes_list(&self) {
-        let imp = self.imp();
-        let palettes = &imp.palettes_list;
-
-        let color: Color = self.color().into();
-        palettes.append(&self.create_palette_row(
-            &pgettext("Name for tints (lighter variants) of the color", "Tints"),
-            color.tints(0.15, 5),
-        ));
-        palettes.append(&self.create_palette_row(
-            &pgettext("Name for shades (darker variants) of the color", "Shades"),
-            color.shades(0.15, 5),
-        ));
-        palettes.append(&self.create_palette_row(
-            &pgettext(
-                "Name for the opposite/complementary color (e.g. blue ⇔ yellow)",
-                "Complementary",
-            ),
-            vec![color, color.complementary_color()],
-        ));
-        palettes.append(&self.create_palette_row(
-            &pgettext(
-                "The name of the color palette. Consist of the two opposite colors (e.g. blue ⇔ orange / green)",
-                "Split-Complementary",
-            ),
-            color.split_complementary_color(),
-        ));
-        palettes.append(&self.create_palette_row(
-            &pgettext(
-                "Name of the color palette, which would form a triangle above the color wheel",
-                "Triadic",
-            ),
-            color.triadic_colors(),
-        ));
-        palettes.append(&self.create_palette_row(
-            &pgettext("The name of the color palette.", "Tetradic"),
-            color.tetradic_colors(),
-        ));
-        palettes.append(&self.create_palette_row(
-            &pgettext(
-                "Color palette consisting of six slight shifted colors",
-                "Analogous",
-            ),
-            color.analogous_colors(6),
-        ));
-    }
-
     /// Create a new row with the title and the colors.
-    fn create_palette_row(&self, title: &str, colors: Vec<Color>) -> adw::ActionRow {
+    fn create_palette_row(&self, title: &str, colors: &[Color]) -> adw::ActionRow {
         let palette_box = gtk::Box::builder().build();
 
         //add two invisible spacer bins
@@ -196,8 +186,8 @@ impl PaletteDialog {
                 .build(),
         );
 
-        for color in colors.clone() {
-            let formatter = ColorFormatter::with_color(color);
+        for color in colors {
+            let formatter = ColorFormatter::with_color(*color);
             let color_hex = formatter.hex_code();
 
             let class_name = format!("colorbin-{}", color_hex.replace('#', ""));
@@ -232,7 +222,7 @@ impl PaletteDialog {
         let color_string = colors
             .into_iter()
             .map(|color| {
-                let formatter = ColorFormatter::with_color(color);
+                let formatter = ColorFormatter::with_color(*color);
                 formatter.hex_code()
             })
             .collect::<Vec<String>>()
