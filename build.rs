@@ -32,6 +32,22 @@ fn generate_map<T: AsRef<Path>>(
     name: &str,
     rev_name: &str,
 ) -> Result<(), io::Error> {
+    // the resulting map must have unique key
+    // some colors have multiple names, so they need to be removed
+    // these should (hopefully) be the less used ones
+    const DUPLICATED_COLORS: [&'static str; 10] = [
+        "aqua",           //conflicts with cyan
+        "darkgray",       //conflicts with darkgrey
+        "darkslategray",  //conflicts with darkslategrey
+        "dimgray",        //conflicts with dimgrey
+        "gray",           //conflicts with grey
+        "olive",          //conflicts with grey
+        "lightgray",      //conflicts with lightgrey
+        "lightslategray", //conflicts with lightslategrey
+        "fuchsia",        //conflicts with magenta
+        "slategray",      //conflicts with slategrey
+    ];
+
     let input_file = std::fs::read_to_string(path)?;
     let mut map = phf_codegen::Map::new();
     let mut reverse_map = phf_codegen::Map::new();
@@ -42,12 +58,10 @@ fn generate_map<T: AsRef<Path>>(
         .filter_map(|line| line.split_once(','))
         .map(|(name, val)| (name.trim(), val.trim()))
         .for_each(|(name, hex)| {
-            map.entry(name, &format!("\"{}\"", hex));
+            map.entry(name.to_ascii_lowercase(), &format!("\"{}\"", hex));
 
-            // the map must have unique keys
-            // some colors have multiple names, so they need to be removed
-            if name == "cyan" || name == "darkgray" {
-                reverse_map.entry(hex, &format!("\"{}\"", name));
+            if !DUPLICATED_COLORS.contains(&name) {
+                reverse_map.entry(hex.to_ascii_lowercase(), &format!("\"{}\"", name));
             }
         });
 
@@ -58,7 +72,7 @@ fn generate_map<T: AsRef<Path>>(
 fn write_map(
     file: &mut BufWriter<File>,
     name: &str,
-    map: phf_codegen::Map<&str>,
+    map: phf_codegen::Map<String>,
 ) -> Result<(), io::Error> {
     write!(
         file,
