@@ -315,10 +315,12 @@ impl AppWindow {
         //switch to color when clicked
         color_button.connect_clicked(
             glib::clone!(@weak self as window, @weak history_object => move |_, | {
-                window.set_color(history_object.color().into());
                 //remove from history when clicking on it
                 match window.history().find(&history_object) {
-                    Some(index) if index != 0 => window.history().remove(index),
+                    Some(index) if index != 0 => {
+                        window.history().remove(index);
+                        window.set_color(history_object.color().into());
+                    },
                     Some(_) => {} // currently show item has index 0, it cannot be set and removed
                     None => log::error!("Failed to find index for {}", history_object.color()),
                 }
