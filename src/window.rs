@@ -23,6 +23,7 @@ mod imp {
 
     use adw::subclass::prelude::AdwApplicationWindowImpl;
     use gtk::CompositeTemplate;
+    use once_cell::sync::OnceCell;
 
     #[derive(Debug, CompositeTemplate)]
     #[template(resource = "/com/github/finefindus/eyedropper/ui/window.ui")]
@@ -65,7 +66,7 @@ mod imp {
         pub hunter_lab_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
         #[template_child]
         pub history_list: TemplateChild<gtk::ListBox>,
-        pub history: RefCell<Option<gio::ListStore>>,
+        pub history: OnceCell<gio::ListStore>,
         pub settings: gio::Settings,
         pub color: Cell<Option<Color>>,
         pub portal_error: RefCell<Option<ashpd::Error>>,
@@ -195,20 +196,17 @@ impl AppWindow {
     /// Set the stack to either show the main page or the placeholder,
     /// depending on if a color is chosen.
     fn set_stack(&self) {
-        if self.color().is_some() {
-            self.imp().stack.set_visible_child_name("main");
+        let visible_child = if self.color().is_some() {
+            "main"
         } else {
-            self.imp().stack.set_visible_child_name("placeholder");
-        }
+            "placeholder"
+        };
+        self.imp().stack.set_visible_child_name(visible_child);
     }
 
     /// Returns the history list store object.
-    fn history(&self) -> gio::ListStore {
-        self.imp()
-            .history
-            .borrow()
-            .clone()
-            .expect("Could not get current history.")
+    fn history(&self) -> &gio::ListStore {
+        self.imp().history.get().unwrap()
     }
 
     /// Clear the history by removing all items from the list.
@@ -248,10 +246,13 @@ impl AppWindow {
         let model = gio::ListStore::new(HistoryObject::static_type());
 
         // Get state and set model
-        self.imp().history.replace(Some(model));
+        self.imp()
+            .history
+            .set(model)
+            .expect("Failed to set history model");
 
         // Wrap model with selection and pass it to the list view
-        let selection_model = gtk::NoSelection::new(Some(self.history()));
+        let selection_model = gtk::NoSelection::new(Some(self.history().clone()));
         self.imp().history_list.bind_model(
             Some(&selection_model),
             glib::clone!(@weak self as window => @default-panic, move |obj| {
