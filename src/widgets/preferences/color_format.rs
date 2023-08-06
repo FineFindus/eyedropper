@@ -1,4 +1,3 @@
-use glib::prelude::*;
 use glib::subclass::prelude::*;
 use glib::{Object, ObjectExt};
 

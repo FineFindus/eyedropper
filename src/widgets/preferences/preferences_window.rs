@@ -184,7 +184,7 @@ impl PreferencesWindow {
     ///Setup the format list
     fn setup_order_list(&self) {
         // Create new model
-        let model = ListStore::new(ColorFormatObject::static_type());
+        let model = ListStore::new::<ColorFormatObject>();
 
         // Get state and set model
         self.imp().format_order.replace(Some(model));

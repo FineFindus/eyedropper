@@ -152,7 +152,7 @@ mod imp {
     impl WidgetImpl for AppWindow {}
     impl WindowImpl for AppWindow {
         // Save window state on delete event
-        fn close_request(&self) -> gtk::Inhibit {
+        fn close_request(&self) -> glib::Propagation {
             //save current window size
             if let Err(err) = self.obj().save_window_size() {
                 log::warn!("Failed to save window state, {}", &err);
@@ -243,7 +243,7 @@ impl AppWindow {
     /// Setup the history by setting up a model
     fn setup_history(&self) {
         // Create new model
-        let model = gio::ListStore::new(HistoryObject::static_type());
+        let model = gio::ListStore::new::<HistoryObject>();
 
         // Get state and set model
         self.imp()
