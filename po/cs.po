@@ -3,19 +3,20 @@
 # This file is distributed under the same license as the Eyedropper package.
 # Písek Pískovec <pisekpiskovec@gmail.com>, 2023.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-06-30 09:10+0000\n"
-"PO-Revision-Date: 2023-07-09 17:26+0200\n"
+"POT-Creation-Date: 2023-07-27 09:10+0000\n"
+"PO-Revision-Date: 2023-08-06 15:36+0200\n"
 "Last-Translator: Písek Pískovec <pisekpiskovec@gmail.com>\n"
 "Language-Team: \n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
@@ -146,7 +147,7 @@ msgstr "Uložit Palety…"
 #: data/resources/ui/preferences/custom-format-row.blp:12
 msgctxt "Tooltip of the reset button for custom format"
 msgid "Reset Format"
-msgstr ""
+msgstr "Resetovat Formát"
 
 #: data/resources/ui/preferences/name-sources-dialog.blp:5
 #: data/resources/ui/preferences/preferences.blp:29
@@ -592,30 +593,30 @@ msgctxt "Name for shades (darker variants) of the color"
 msgid "Shades"
 msgstr "Odstíny"
 
-#: src/widgets/palette_dialog.rs:143
+#: src/widgets/palette_dialog.rs:95
 msgctxt "Name for the opposite/complementary color (e.g. blue ⇔ yellow)"
 msgid "Complementary"
 msgstr "Komplementární"
 
-#: src/widgets/palette_dialog.rs:150
+#: src/widgets/palette_dialog.rs:100
 msgctxt ""
 "The name of the color palette. Consist of the two opposite colors (e.g. blue "
 "⇔ orange / green)"
 msgid "Split-Complementary"
 msgstr "Dělené Doplňkové"
 
-#: src/widgets/palette_dialog.rs:157
+#: src/widgets/palette_dialog.rs:105
 msgctxt ""
 "Name of the color palette, which would form a triangle above the color wheel"
 msgid "Triadic"
 msgstr "Triadické"
 
-#: src/widgets/palette_dialog.rs:162
+#: src/widgets/palette_dialog.rs:108
 msgctxt "The name of the color palette."
 msgid "Tetradic"
 msgstr "Tetradické"
 
-#: src/widgets/palette_dialog.rs:168
+#: src/widgets/palette_dialog.rs:112
 msgctxt "Color palette consisting of six slight shifted colors"
 msgid "Analogous"
 msgstr "Analogické"
