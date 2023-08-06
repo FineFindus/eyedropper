@@ -10,7 +10,7 @@ mod imp {
 
     use glib::{
         subclass::{self, Signal},
-        ParamSpec, Properties, Value,
+        Properties,
     };
     use once_cell::sync::Lazy;
 
@@ -54,6 +54,7 @@ mod imp {
         }
     }
 
+    #[glib::derived_properties]
     impl ObjectImpl for PaletteDialog {
         fn signals() -> &'static [Signal] {
             static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
@@ -65,16 +66,6 @@ mod imp {
                     .build()]
             });
             SIGNALS.as_ref()
-        }
-
-        fn properties() -> &'static [ParamSpec] {
-            Self::derived_properties()
-        }
-        fn set_property(&self, _id: usize, _value: &Value, _pspec: &ParamSpec) {
-            Self::derived_set_property(self, _id, _value, _pspec)
-        }
-        fn property(&self, _id: usize, _pspec: &ParamSpec) -> Value {
-            Self::derived_property(self, _id, _pspec)
         }
 
         fn constructed(&self) {

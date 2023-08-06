@@ -10,7 +10,7 @@ mod imp {
     use super::*;
 
     use adw::subclass::prelude::{EntryRowImpl, PreferencesRowImpl};
-    use glib::{subclass::Signal, ParamSpec, Properties, Value};
+    use glib::{subclass::Signal, Properties};
     use once_cell::sync::Lazy;
 
     #[derive(gtk::CompositeTemplate, Properties)]
@@ -51,6 +51,7 @@ mod imp {
         }
     }
 
+    #[glib::derived_properties]
     impl ObjectImpl for CustomFormatRow {
         fn signals() -> &'static [Signal] {
             static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
@@ -64,16 +65,6 @@ mod imp {
                 ]
             });
             SIGNALS.as_ref()
-        }
-
-        fn properties() -> &'static [ParamSpec] {
-            Self::derived_properties()
-        }
-        fn set_property(&self, _id: usize, _value: &Value, _pspec: &ParamSpec) {
-            Self::derived_set_property(self, _id, _value, _pspec)
-        }
-        fn property(&self, _id: usize, _pspec: &ParamSpec) -> Value {
-            Self::derived_property(self, _id, _pspec)
         }
 
         fn constructed(&self) {

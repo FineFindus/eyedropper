@@ -11,7 +11,7 @@ mod imp {
 
     use super::*;
 
-    use glib::{subclass::Signal, ParamSpec, Value};
+    use glib::subclass::Signal;
     use once_cell::sync::Lazy;
 
     #[derive(Default, Debug, gtk::CompositeTemplate, glib::Properties)]
@@ -44,6 +44,7 @@ mod imp {
         }
     }
 
+    #[glib::derived_properties]
     impl ObjectImpl for ColorFormatRow {
         fn signals() -> &'static [Signal] {
             static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
@@ -57,16 +58,6 @@ mod imp {
                 ]
             });
             SIGNALS.as_ref()
-        }
-
-        fn properties() -> &'static [ParamSpec] {
-            Self::derived_properties()
-        }
-        fn set_property(&self, _id: usize, _value: &Value, _pspec: &ParamSpec) {
-            Self::derived_set_property(self, _id, _value, _pspec)
-        }
-        fn property(&self, _id: usize, _pspec: &ParamSpec) -> Value {
-            Self::derived_property(self, _id, _pspec)
         }
 
         fn constructed(&self) {

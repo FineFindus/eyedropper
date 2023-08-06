@@ -9,7 +9,7 @@ mod imp {
 
     use glib::{
         subclass::{prelude::ObjectImpl, types::ObjectSubclass},
-        ParamSpec, Properties, Value,
+        Properties,
     };
     use gtk::gdk;
 
@@ -36,17 +36,8 @@ mod imp {
         type Type = super::HistoryObject;
     }
 
-    impl ObjectImpl for HistoryObject {
-        fn properties() -> &'static [ParamSpec] {
-            Self::derived_properties()
-        }
-        fn set_property(&self, _id: usize, _value: &Value, _pspec: &ParamSpec) {
-            Self::derived_set_property(self, _id, _value, _pspec)
-        }
-        fn property(&self, _id: usize, _pspec: &ParamSpec) -> Value {
-            Self::derived_property(self, _id, _pspec)
-        }
-    }
+    #[glib::derived_properties]
+    impl ObjectImpl for HistoryObject {}
 }
 
 glib::wrapper! {
