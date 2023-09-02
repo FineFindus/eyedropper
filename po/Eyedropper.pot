@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-07-27 19:51+0000\n"
+"POT-Creation-Date: 2023-09-02 06:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -560,44 +560,44 @@ msgid ""
 "li><li>Improved editing experience when change the Hex color/name</li></ul>"
 msgstr ""
 
-#: src/widgets/color_format_row.rs:199
+#: src/widgets/color_format_row.rs:190
 msgid "Copied “{}”"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:89
+#: src/widgets/palette_dialog.rs:80
 msgctxt "Name for tints (lighter variants) of the color"
 msgid "Tints"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:91
+#: src/widgets/palette_dialog.rs:82
 msgctxt "Name for shades (darker variants) of the color"
 msgid "Shades"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:95
+#: src/widgets/palette_dialog.rs:86
 msgctxt "Name for the opposite/complementary color (e.g. blue ⇔ yellow)"
 msgid "Complementary"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:100
+#: src/widgets/palette_dialog.rs:91
 msgctxt ""
 "The name of the color palette. Consist of the two opposite colors (e.g. blue "
 "⇔ orange / green)"
 msgid "Split-Complementary"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:105
+#: src/widgets/palette_dialog.rs:96
 msgctxt ""
 "Name of the color palette, which would form a triangle above the color wheel"
 msgid "Triadic"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:108
+#: src/widgets/palette_dialog.rs:99
 msgctxt "The name of the color palette."
 msgid "Tetradic"
 msgstr ""
 
-#: src/widgets/palette_dialog.rs:112
+#: src/widgets/palette_dialog.rs:103
 msgctxt "Color palette consisting of six slight shifted colors"
 msgid "Analogous"
 msgstr ""
@@ -650,8 +650,8 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:406 src/window.rs:438
-#: src/window.rs:463 src/window.rs:650 src/window.rs:829
+#: src/widgets/preferences/preferences_window.rs:406 src/window.rs:442
+#: src/window.rs:467 src/window.rs:655 src/window.rs:834
 msgctxt "Information that no name for the color could be found"
 msgid "Not named"
 msgstr ""
@@ -664,18 +664,18 @@ msgstr ""
 msgid "Hunter Lab"
 msgstr ""
 
-#: src/window.rs:224
+#: src/window.rs:222
 msgid "Cleared history"
 msgstr ""
 
-#: src/window.rs:225
+#: src/window.rs:223
 msgid "Undo"
 msgstr ""
 
-#: src/window.rs:553
+#: src/window.rs:558
 msgid "Failed to get palette color"
 msgstr ""
 
-#: src/window.rs:584
+#: src/window.rs:589
 msgid "Failed to pick a color"
 msgstr ""
