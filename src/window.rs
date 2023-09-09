@@ -599,14 +599,13 @@ impl AppWindow {
     /// Previous entries of the same color will be deleted.
     pub fn set_color(&self, color: Color) {
         if self.color() != Some(color) {
-            let history_item = HistoryObject::new(color);
-
             if let Some(i) = self.history().find_with_equal_func(|item| {
                 item.downcast_ref::<HistoryObject>().unwrap().color() == color.into()
             }) {
                 self.history().remove(i as u32);
             }
 
+            let history_item = HistoryObject::new(color);
             self.history().insert(0, &history_item);
         }
 
