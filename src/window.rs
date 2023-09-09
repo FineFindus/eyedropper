@@ -599,15 +599,13 @@ impl AppWindow {
     pub fn set_color(&self, color: Color) {
         if self.color() != Some(color) {
             let history_item = HistoryObject::new(color);
-            for (index, item) in self.history().snapshot().iter().enumerate() {
-                if Cast::downcast_ref::<HistoryObject>(item)
-                    .expect("Couldn't read history object")
-                    .color()
-                    == color.into()
-                {
-                    self.history().remove(index.try_into().unwrap());
-                }
+
+            if let Some(i) = self.history().find_with_equal_func(|item| {
+                item.downcast_ref::<HistoryObject>().unwrap().color() == color.into()
+            }) {
+                self.history().remove(i as u32);
             }
+
             self.history().insert(0, &history_item);
         }
 
