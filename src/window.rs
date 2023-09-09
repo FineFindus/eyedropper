@@ -594,9 +594,11 @@ impl AppWindow {
         }));
     }
 
-    /// Update the current color to the given color.
-    /// The new color will be added to the history list.
-    /// Previous entries of the same color will be deleted.
+    /// Set the current color to the given color.
+    /// 
+    /// If the given color is different from the current color, 
+    /// it will be added to the history. If the history includes the given 
+    /// color, the preceding occurrence will be removed.
     pub fn set_color(&self, color: Color) {
         if self.color() != Some(color) {
             if let Some(i) = self.history().find_with_equal_func(|item| {
