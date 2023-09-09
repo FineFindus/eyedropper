@@ -595,9 +595,9 @@ impl AppWindow {
     }
 
     /// Set the current color to the given color.
-    /// 
-    /// If the given color is different from the current color, 
-    /// it will be added to the history. If the history includes the given 
+    ///
+    /// If the given color is different from the current color,
+    /// it will be added to the history. If the history includes the given
     /// color, the preceding occurrence will be removed.
     pub fn set_color(&self, color: Color) {
         if self.color() != Some(color) {
