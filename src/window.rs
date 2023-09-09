@@ -596,6 +596,7 @@ impl AppWindow {
 
     /// Update the current color to the given color.
     /// The new color will be added to the history list.
+    /// Previous entries of the same color will be deleted.
     pub fn set_color(&self, color: Color) {
         if self.color() != Some(color) {
             let history_item = HistoryObject::new(color);
