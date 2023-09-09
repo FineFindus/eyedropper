@@ -33,11 +33,11 @@ jobs:
       - name: Add Flathub Beta remote
         run: |
           flatpak --user remote-add --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
-          flatpak install --user -y flathub-beta org.freedesktop.Sdk.Extension.rust-stable//23.08beta org.freedesktop.Sdk.Extension.llvm16//23.08beta
+          # flatpak install --user -y flathub-beta org.freedesktop.Sdk.Extension.rust-stable//23.08beta org.freedesktop.Sdk.Extension.llvm16//23.08beta
       - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v6
         with:
           bundle: eyedropper.flatpak
-          repository-name: flathub-beta 
+          # repository-name: flathub-beta
           manifest-path: build-aux/com.github.finefindus.eyedropper.Devel.json
           run-tests: true
           cache-key: flatpak-builder-${{ github.sha }}
@@ -90,14 +90,14 @@ jobs:
         run: |
           ./scripts/make-pot.sh
           echo "POT_LINES_CHANGED=$(git diff -U0 | grep '^[+|-][^+|-]' | grep -Ev '^[+-]"POT-Creation-Date' | wc -l)" >> $GITHUB_ENV
-      - name: Push changes  
+      - name: Push changes
         if: ${{ env.POT_LINES_CHANGED != 0}}
         uses: EndBug/add-and-commit@v9
         with:
           default_author: github_actions
           message: "chore(translations): update template"
           add: "['po/Eyedropper.pot', 'po/POTFILES.in']"
- 
+
   # notify_translators:
   #   name: Notify Translators
   #   runs-on: ubuntu-latest
@@ -128,7 +128,7 @@ jobs:
   #         # email subject
   #         subject: Eyedropper has new translations available
   #         # email body as text
-  #         body: Hi,\n the translation of Eyedropper have been updated. This is an automated email, send whenever the template file changes. If you do not wish to receive this email, please open an issue on the project github page.   
+  #         body: Hi,\n the translation of Eyedropper have been updated. This is an automated email, send whenever the template file changes. If you do not wish to receive this email, please open an issue on the project github page.
   #         # comma-separated string, send email to
   #         to: $ {{ env.EMAILS }}
   #         # from email name
