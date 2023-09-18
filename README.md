@@ -55,15 +55,11 @@ This application is geared towards advanced users (developers, designers, etc…
 
 ## Installation
 
-### Official
+### Flatpak
 <a href='https://flathub.org/apps/details/com.github.finefindus.eyedropper'><img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-i-en.png'/></a>
 
-
-### Unofficial
-
-> :warning: **These installation methods are not recommended**: Installing them may result in bugs or unexpected behavior.
-
 #### Nightly Flatpak
+> :warning: The nightly flatpak may contain bugs or unexpected behaviour.
 
 Download the latest artifact from the [CI](https://github.com/FineFindus/eyedropper/actions/workflows/ci.yml).
 
