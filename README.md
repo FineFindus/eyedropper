@@ -98,7 +98,8 @@ To contribute:
 
 Translations are a great way to contribute. This project uses the [GNU gettext](https://www.gnu.org/software/gettext/manual/html_node/index.html#SEC_Contents) for translations. If you want to learn more, visit the [translator section](https://www.gnu.org/software/gettext/manual/html_node/Translators.html#Translators).
 
-The easiest way to add a translation, is by importing the [`Eyedropper.pot`](po/Eyedropper.pot) file into a program like [Poedit](https://poedit.net) or [Gtranslator](https://gitlab.gnome.org/GNOME/gtranslator/).
+You can either contribute translations using [Weblate](https://hosted.weblate.org/projects/eyedropper/eyedropper/),
+or manually using programs like [Poedit](https://poedit.net) or [Gtranslator](https://gitlab.gnome.org/GNOME/gtranslator/).
 
 After finishing the translations, add the translated language code into the [LINGUAS](po/LINGUAS) file. Then follow the above steps to create a pull request. Please also state in the description if you are willing to maintain the translation.
 
