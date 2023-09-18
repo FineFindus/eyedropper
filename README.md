@@ -67,19 +67,6 @@ This application is geared towards advanced users (developers, designers, etc…
 
 Download the latest artifact from the [CI](https://github.com/FineFindus/eyedropper/actions/workflows/ci.yml).
 
-#### [AUR](https://aur.archlinux.org/packages/eyedropper)
-
-```sh
-yay -S eyedropper
-```
-
-#### [AUR Git](https://aur.archlinux.org/packages/eyedropper-git)
-
-```sh
-yay -S eyedropper-git
-```
-
-
 ## Contributing
 
 Contributors are expected to follow the [GNOME Code of Conduct](https://wiki.gnome.org/Foundation/CodeOfConduct).
