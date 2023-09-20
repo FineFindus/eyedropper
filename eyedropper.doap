@@ -6,7 +6,6 @@
 
     <name xml:lang="en">Eyedropper</name>
     <shortdesc xml:lang="en">Pick and format colors</shortdesc>
-    <shortdesc xml:lang="de">Farben auswählen und formatieren</shortdesc>
     <homepage rdf:resource="https://github.com/FineFindus/eyedropper" />
     <download-page rdf:resource="https://github.com/FineFindus/eyedropper/releases" />
     <bug-database rdf:resource="https://github.com/FineFindus/eyedropper/issues" />
