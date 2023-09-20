@@ -10,7 +10,7 @@ mod imp {
     use super::*;
 
     use adw::subclass::prelude::{EntryRowImpl, PreferencesRowImpl};
-    use glib::{subclass::Signal, ParamSpec, Properties, Value};
+    use glib::{subclass::Signal, Properties};
     use once_cell::sync::Lazy;
 
     #[derive(gtk::CompositeTemplate, Properties)]
@@ -51,6 +51,7 @@ mod imp {
         }
     }
 
+    #[glib::derived_properties]
     impl ObjectImpl for CustomFormatRow {
         fn signals() -> &'static [Signal] {
             static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
@@ -66,20 +67,28 @@ mod imp {
             SIGNALS.as_ref()
         }
 
-        fn properties() -> &'static [ParamSpec] {
-            Self::derived_properties()
-        }
-        fn set_property(&self, _id: usize, _value: &Value, _pspec: &ParamSpec) {
-            Self::derived_set_property(self, _id, _value, _pspec)
-        }
-        fn property(&self, _id: usize, _pspec: &ParamSpec) -> Value {
-            Self::derived_property(self, _id, _pspec)
-        }
-
         fn constructed(&self) {
             self.parent_constructed();
             let obj = self.obj();
-            obj.setup_properties();
+
+            obj.connect_notify(Some("settings-key"), |widget, _| {
+                let custom_format = widget
+                    .imp()
+                    .settings
+                    .string(&widget.settings_key())
+                    .to_string();
+
+                let text = if custom_format.is_empty() {
+                    widget.default_format()
+                } else {
+                    custom_format
+                };
+                widget.set_text(text);
+            });
+        }
+
+        fn dispose(&self) {
+            self.dispose_template();
         }
     }
 
@@ -129,22 +138,5 @@ impl CustomFormatRow {
         } else {
             log::debug!("Format is the same, not updating")
         }
-    }
-
-    /// Bind the properties to the target values.
-    /// This sets the text to the default value.
-    fn setup_properties(&self) {
-        self.connect_notify(Some("settings-key"), |widget, _| {
-            let custom_format = widget
-                .imp()
-                .settings
-                .string(&widget.settings_key())
-                .to_string();
-            if custom_format.is_empty() {
-                widget.set_text(widget.default_format());
-            } else {
-                widget.set_text(custom_format);
-            }
-        });
     }
 }

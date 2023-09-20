@@ -59,6 +59,14 @@ mod imp {
             app.main_window().present();
         }
 
+        fn command_line(&self, command_line: &gio::ApplicationCommandLine) -> ExitCode {
+            self.activate();
+            if command_line.arguments().contains(&"--pick-color".into()) {
+                self.window.get().unwrap().upgrade().unwrap().pick_color();
+            }
+            glib::ExitCode::SUCCESS
+        }
+
         fn startup(&self) {
             debug!("GtkApplication<App>::startup");
             self.parent_startup();
@@ -107,7 +115,7 @@ impl App {
     pub fn new() -> Self {
         glib::Object::builder::<Self>()
             .property("application-id", Some(APP_ID))
-            .property("flags", gio::ApplicationFlags::empty())
+            .property("flags", gio::ApplicationFlags::HANDLES_COMMAND_LINE)
             .property(
                 "resource-base-path",
                 Some("/com/github/finefindus/eyedropper/"),
@@ -122,8 +130,8 @@ impl App {
     fn setup_gactions(&self) {
         // Pick a color using the picker button
         let action_pick_color = gio::ActionEntry::builder("pick_color")
-            .activate(move |obj: &Self, _, _| {
-                obj.main_window().pick_color();
+            .activate(move |app: &Self, _, _| {
+                app.main_window().pick_color();
             })
             .build();
 
@@ -194,7 +202,7 @@ impl App {
     fn show_preferences_dialog(&self) {
         let preferences = PreferencesWindow::new();
         preferences.set_transient_for(Some(&self.main_window()));
-        preferences.set_visible(true);
+        preferences.present();
     }
 
     pub fn run(&self) -> ExitCode {

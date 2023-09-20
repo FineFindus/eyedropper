@@ -54,7 +54,34 @@ mod imp {
     impl ObjectImpl for NameSourcesDialog {
         fn constructed(&self) {
             self.parent_constructed();
-            self.obj().setup_widget();
+
+            self.settings
+                .bind("name-source-basic", &*self.name_source_basic, "active")
+                .build();
+
+            self.settings
+                .bind(
+                    "name-source-extended",
+                    &*self.name_source_extended,
+                    "active",
+                )
+                .build();
+
+            self.settings
+                .bind(
+                    "name-source-gnome-palette",
+                    &*self.name_source_gnome,
+                    "active",
+                )
+                .build();
+
+            self.settings
+                .bind("name-source-xkcd", &*self.name_source_xkcd, "active")
+                .build();
+        }
+
+        fn dispose(&self) {
+            self.dispose_template();
         }
     }
     impl WindowImpl for NameSourcesDialog {}
@@ -72,29 +99,5 @@ impl NameSourcesDialog {
     pub fn new() -> Self {
         let dialog = glib::Object::builder::<NameSourcesDialog>().build();
         dialog
-    }
-
-    fn setup_widget(&self) {
-        let imp = self.imp();
-
-        imp.settings
-            .bind("name-source-basic", &*imp.name_source_basic, "active")
-            .build();
-
-        imp.settings
-            .bind("name-source-extended", &*imp.name_source_extended, "active")
-            .build();
-
-        imp.settings
-            .bind(
-                "name-source-gnome-palette",
-                &*imp.name_source_gnome,
-                "active",
-            )
-            .build();
-
-        imp.settings
-            .bind("name-source-xkcd", &*imp.name_source_xkcd, "active")
-            .build();
     }
 }

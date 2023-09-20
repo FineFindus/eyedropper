@@ -10,7 +10,7 @@ mod imp {
 
     use glib::{
         subclass::{self, Signal},
-        ParamSpec, Properties, Value,
+        Properties,
     };
     use once_cell::sync::Lazy;
 
@@ -54,6 +54,7 @@ mod imp {
         }
     }
 
+    #[glib::derived_properties]
     impl ObjectImpl for PaletteDialog {
         fn signals() -> &'static [Signal] {
             static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
@@ -67,18 +68,53 @@ mod imp {
             SIGNALS.as_ref()
         }
 
-        fn properties() -> &'static [ParamSpec] {
-            Self::derived_properties()
-        }
-        fn set_property(&self, _id: usize, _value: &Value, _pspec: &ParamSpec) {
-            Self::derived_set_property(self, _id, _value, _pspec)
-        }
-        fn property(&self, _id: usize, _pspec: &ParamSpec) -> Value {
-            Self::derived_property(self, _id, _pspec)
-        }
-
         fn constructed(&self) {
             self.parent_constructed();
+
+            self.obj().connect_notify_local(
+                Some("color"),
+                glib::clone!(@weak self as obj => move |dialog, _| {
+                    let palettes = &obj.palettes_list;
+                    let color: Color = dialog.color().into();
+                    let palette_variants = [
+                        (&pgettext("Name for tints (lighter variants) of the color", "Tints"),
+                        color.tints(0.15, 5)),
+                        (&pgettext("Name for shades (darker variants) of the color", "Shades"),
+                        color.shades(0.15, 5)),
+                        (&pgettext(
+                            "Name for the opposite/complementary color (e.g. blue ⇔ yellow)",
+                            "Complementary",
+                        ),
+                        vec![color, color.complementary_color()]),
+                        (&pgettext(
+                            "The name of the color palette. Consist of the two opposite colors (e.g. blue ⇔ orange / green)",
+                            "Split-Complementary",
+                        ),
+                        color.split_complementary_color()),
+                        (&pgettext(
+                            "Name of the color palette, which would form a triangle above the color wheel",
+                            "Triadic",
+                        ),
+                        color.triadic_colors()),
+                        (&pgettext("The name of the color palette.", "Tetradic"),
+                        color.tetradic_colors()),
+                        (&pgettext(
+                            "Color palette consisting of six slight shifted colors",
+                            "Analogous",
+                        ),
+                        color.analogous_colors(6)),
+                    ];
+
+                    palette_variants
+                        .iter()
+                        .map(|(title, colors)| dialog.create_palette_row(title, colors))
+                        .for_each(|row| palettes.append(&row));
+                }),
+            );
+        }
+
+        fn dispose(&self) {
+            self.dispose_template();
         }
     }
     impl WindowImpl for PaletteDialog {}
@@ -96,7 +132,6 @@ impl PaletteDialog {
         let dialog = glib::Object::builder::<PaletteDialog>()
             .property("color", gtk::gdk::RGBA::from(color))
             .build();
-        dialog.setup_palettes_list();
         dialog
     }
 
@@ -117,56 +152,8 @@ impl PaletteDialog {
         colors
     }
 
-    ///Setup the list by adding a the generate color palettes
-    fn setup_palettes_list(&self) {
-        let imp = self.imp();
-        let palettes = &imp.palettes_list;
-
-        let color: Color = self.color().into();
-        palettes.append(&self.create_palette_row(
-            &pgettext("Name for tints (lighter variants) of the color", "Tints"),
-            color.tints(0.15, 5),
-        ));
-        palettes.append(&self.create_palette_row(
-            &pgettext("Name for shades (darker variants) of the color", "Shades"),
-            color.shades(0.15, 5),
-        ));
-        palettes.append(&self.create_palette_row(
-            &pgettext(
-                "Name for the opposite/complementary color (e.g. blue ⇔ yellow)",
-                "Complementary",
-            ),
-            vec![color, color.complementary_color()],
-        ));
-        palettes.append(&self.create_palette_row(
-            &pgettext(
-                "The name of the color palette. Consist of the two opposite colors (e.g. blue ⇔ orange / green)",
-                "Split-Complementary",
-            ),
-            color.split_complementary_color(),
-        ));
-        palettes.append(&self.create_palette_row(
-            &pgettext(
-                "Name of the color palette, which would form a triangle above the color wheel",
-                "Triadic",
-            ),
-            color.triadic_colors(),
-        ));
-        palettes.append(&self.create_palette_row(
-            &pgettext("The name of the color palette.", "Tetradic"),
-            color.tetradic_colors(),
-        ));
-        palettes.append(&self.create_palette_row(
-            &pgettext(
-                "Color palette consisting of six slight shifted colors",
-                "Analogous",
-            ),
-            color.analogous_colors(6),
-        ));
-    }
-
     /// Create a new row with the title and the colors.
-    fn create_palette_row(&self, title: &str, colors: Vec<Color>) -> adw::ActionRow {
+    fn create_palette_row(&self, title: &str, colors: &[Color]) -> adw::ActionRow {
         let palette_box = gtk::Box::builder().build();
 
         //add two invisible spacer bins
@@ -190,8 +177,8 @@ impl PaletteDialog {
                 .build(),
         );
 
-        for color in colors.clone() {
-            let formatter = ColorFormatter::with_color(color);
+        for color in colors {
+            let formatter = ColorFormatter::with_color(*color);
             let color_hex = formatter.hex_code();
 
             let class_name = format!("colorbin-{}", color_hex.replace('#', ""));
@@ -226,7 +213,7 @@ impl PaletteDialog {
         let color_string = colors
             .into_iter()
             .map(|color| {
-                let formatter = ColorFormatter::with_color(color);
+                let formatter = ColorFormatter::with_color(*color);
                 formatter.hex_code()
             })
             .collect::<Vec<String>>()
@@ -265,27 +252,27 @@ impl PaletteDialog {
             Some(self),
             gtk::gio::Cancellable::NONE,
             glib::clone!(@weak self as window => move |res| {
-                match res.ok().and_then(|file| file.path()) {
-                    Some(path) => {
-                        log::debug!("Selected path: {}", path.display());
-                        let colors = window.palettes();
+                let Some(path) = res.ok().and_then(|file| file.path()) else {
+                    log::error!("Failed to save file");
+                    return;
+                };
+                log::debug!("Selected path: {}", path.display());
+                let colors = window.palettes();
 
-                        let file_name = path.file_name().and_then(|name| name.to_str()).unwrap_or("Eyedropper Palette");
-                        let palette = match path.extension().and_then(|extension| extension.to_str()) {
-                            Some("gpl") => ColorFormatter::gpl_file(file_name, &colors),
-                            Some("txt") => ColorFormatter::paint_dot_net_file(file_name, &colors),
-                            Some("pal") => ColorFormatter::pal_file(&colors),
-                            Some("soc") => ColorFormatter::soc_file(&colors),
-                            Some("ase") => ColorFormatter::ase_file(colors),
-                            _ => {
-                                //default to exporting the hex colors
-                                ColorFormatter::hex_file(&colors)
-                            },
-                        };
-                        std::fs::write(path, palette).expect("Failed to write palette file");
+                let file_name = path.file_name().and_then(|name| name.to_str()).unwrap_or("Eyedropper Palette");
+                let palette = match path.extension().and_then(|extension| extension.to_str()) {
+                    Some("gpl") => ColorFormatter::gpl_file(file_name, &colors),
+                    Some("txt") => ColorFormatter::paint_dot_net_file(file_name, &colors),
+                    Some("pal") => ColorFormatter::pal_file(&colors),
+                    Some("soc") => ColorFormatter::soc_file(&colors),
+                    Some("ase") => {
+                        //only binary type, write it directly, so the others can be used as a string
+                        std::fs::write(path, ColorFormatter::ase_file(&colors)).expect("Failed to write palette file");
+                        return;
                     },
-                    None => log::error!("Failed to save file"),
-                }
+                    _ => ColorFormatter::hex_file(&colors), //default to exporting the hex colors
+                };
+                std::fs::write(path, palette).expect("Failed to write palette file");
             }),
         );
     }

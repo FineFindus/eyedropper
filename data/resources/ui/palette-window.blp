@@ -1,0 +1,81 @@
+using Gtk 4.0;
+using Adw 1;
+
+menu export_menu {
+  section {
+    item {
+      label: C_("Adobes palette format", "Adobe Swatch Exchange");
+      action: "export";
+      target: "ase";
+    }
+
+    item {
+      label: C_("LibreOffice/OpenOffice palette file", "LibreOffice Palette");
+      action: "export";
+      target: "soc";
+    }
+
+    item {
+      label: C_("Gimp/Inkscape palette format", "Gimp Palette");
+      action: "export";
+      target: "gpl";
+    }
+
+    item {
+      label: C_("Paint.net palette format, should most like not be translated", "Paint.NET");
+      action: "export";
+      target: "txt";
+    }
+
+    item {
+      label: C_("Palette format file name", "Hex");
+      action: "export";
+      target: "hex";
+    }
+
+    item {
+      label: C_("Palette format file name", "PAL");
+      action: "export";
+      target: "pal";
+    }
+  }
+}
+
+template $PaletteDialog : Adw.Window {
+  modal: true;
+  title: _("Palettes");
+
+  $AdwToolbarView {
+    [top]
+    Adw.HeaderBar {
+      title-widget: Adw.WindowTitle {};
+
+      Adw.SplitButton {
+        label: _("Save Palettes…");
+        menu-model: export_menu;
+        clicked => $on_save_clicked() swapped;
+      }
+    }
+
+    content: ListBox palettes_list {
+      selection-mode: none;
+      margin-top: 12;
+      margin-bottom: 12;
+      margin-start: 12;
+      margin-end: 12;
+
+      styles [
+        "boxed-list",
+      ]
+    };
+  }
+
+  ShortcutController {
+    scope: global;
+
+    Shortcut {
+      trigger: "Escape|<Ctrl>w";
+      action: "action(window.close)";
+    }
+  }
+}

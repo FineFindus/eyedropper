@@ -1,0 +1,25 @@
+using Gtk 4.0;
+
+template $ColorFormatRow : Box {
+  margin-top: 12;
+  margin-start: 12;
+  margin-end: 12;
+  orientation: horizontal;
+
+  styles [
+    "linked",
+  ]
+
+  Entry entry {
+    hexpand: true;
+
+    styles [
+      "monospace",
+    ]
+  }
+
+  Button format_button {
+    icon-name: "edit-copy-symbolic";
+    clicked => $on_button_pressed() swapped;
+  }
+}

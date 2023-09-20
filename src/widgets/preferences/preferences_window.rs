@@ -37,7 +37,7 @@ mod imp {
         #[template_child()]
         pub standard_observer_box: TemplateChild<adw::ComboRow>,
         #[template_child()]
-        pub precision_spin_button: TemplateChild<gtk::SpinButton>,
+        pub precision_row: TemplateChild<adw::SpinRow>,
         #[template_child()]
         pub cie_illuminants_box: TemplateChild<gtk::DropDown>,
         // this exist only to load the CustomFormatRow, otherwise it would crash
@@ -60,7 +60,7 @@ mod imp {
                 alpha_pos_box: TemplateChild::default(),
                 standard_observer_box: TemplateChild::default(),
                 cie_illuminants_box: TemplateChild::default(),
-                precision_spin_button: TemplateChild::default(),
+                precision_row: TemplateChild::default(),
                 _custom_format: TemplateChild::default(),
                 order_list: TemplateChild::default(),
                 format_order: Default::default(),
@@ -84,6 +84,10 @@ mod imp {
             obj.setup_order_list();
             obj.setup_settings();
             obj.populate_formats();
+        }
+
+        fn dispose(&self) {
+            self.dispose_template();
         }
     }
 
@@ -125,7 +129,7 @@ impl PreferencesWindow {
             .build();
 
         imp.settings
-            .bind("precision-digits", &*imp.precision_spin_button, "value")
+            .bind("precision-digits", &*imp.precision_row, "value")
             .build();
     }
 
@@ -143,7 +147,7 @@ impl PreferencesWindow {
     fn on_name_row_activated(&self, _row: &adw::ActionRow) {
         let dialog = NameSourcesDialog::new();
         dialog.set_transient_for(Some(self));
-        dialog.set_visible(true);
+        dialog.present();
     }
 
     /// Returns the formats list store object.
@@ -180,7 +184,7 @@ impl PreferencesWindow {
     ///Setup the format list
     fn setup_order_list(&self) {
         // Create new model
-        let model = ListStore::new(ColorFormatObject::static_type());
+        let model = ListStore::new::<ColorFormatObject>();
 
         // Get state and set model
         self.imp().format_order.replace(Some(model));

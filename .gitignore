@@ -11,3 +11,4 @@ src/config.rs
 .flatpak/
 vendor
 .flatpak-builder
+/subprojects/blueprint-compiler

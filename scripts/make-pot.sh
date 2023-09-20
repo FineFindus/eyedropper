@@ -31,12 +31,13 @@ XGETTEXT="${XGETTEXT:-xgettext}"
 top_srcdir="${top_srcdir:-.}"
 
 srcdir="${srcdir:-$top_srcdir/po}"
-GETTEXT_PACKAGE="${GETTEXT_PACKAGE:-gtk40}"
+GETTEXT_PACKAGE="Eyedropper"
 XGETTEXT_KEYWORDS="${XGETTEXT_KEYWORDS:- --keyword=_ --keyword=N_ --keyword=C_:1c,2 --keyword=NC_:1c,2 --keyword=g_dngettext:2,3 }"
 
 $XGETTEXT --default-domain="$GETTEXT_PACKAGE" \
           --directory="$top_srcdir" \
-          --msgid-bugs-address="https://gitlab.gnome.org/GNOME/gtk/-/issues/" \
+          --msgid-bugs-address="https://github.com/FineFindus/eyedropper" \
+          --package-name="Eyedropper" \
           --add-comments \
           $XGETTEXT_KEYWORDS \
           --from-code=utf-8 \

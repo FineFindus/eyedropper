@@ -55,30 +55,13 @@ This application is geared towards advanced users (developers, designers, etc…
 
 ## Installation
 
-### Official
+### Flatpak
 <a href='https://flathub.org/apps/details/com.github.finefindus.eyedropper'><img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-i-en.png'/></a>
 
-
-### Unofficial
-
-> :warning: **These installation methods are not recommended**: Installing them may result in bugs or unexpected behavior.
-
 #### Nightly Flatpak
+> :warning: The nightly flatpak may contain bugs or unexpected behaviour.
 
 Download the latest artifact from the [CI](https://github.com/FineFindus/eyedropper/actions/workflows/ci.yml).
-
-#### [AUR](https://aur.archlinux.org/packages/eyedropper)
-
-```sh
-yay -S eyedropper
-```
-
-#### [AUR Git](https://aur.archlinux.org/packages/eyedropper-git)
-
-```sh
-yay -S eyedropper-git
-```
-
 
 ## Contributing
 
@@ -98,7 +81,8 @@ To contribute:
 
 Translations are a great way to contribute. This project uses the [GNU gettext](https://www.gnu.org/software/gettext/manual/html_node/index.html#SEC_Contents) for translations. If you want to learn more, visit the [translator section](https://www.gnu.org/software/gettext/manual/html_node/Translators.html#Translators).
 
-The easiest way to add a translation, is by importing the [`Eyedropper.pot`](po/Eyedropper.pot) file into a program like [Poedit](https://poedit.net) or [Gtranslator](https://gitlab.gnome.org/GNOME/gtranslator/).
+You can either contribute translations using [Weblate](https://hosted.weblate.org/projects/eyedropper/eyedropper/),
+or manually using programs like [Poedit](https://poedit.net) or [Gtranslator](https://gitlab.gnome.org/GNOME/gtranslator/).
 
 After finishing the translations, add the translated language code into the [LINGUAS](po/LINGUAS) file. Then follow the above steps to create a pull request. Please also state in the description if you are willing to maintain the translation.
 

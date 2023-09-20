@@ -1,4 +1,3 @@
-use glib::prelude::*;
 use glib::subclass::prelude::*;
 use glib::{Object, ObjectExt};
 
@@ -10,7 +9,7 @@ mod imp {
 
     use glib::{
         subclass::{prelude::ObjectImpl, types::ObjectSubclass},
-        ParamSpec, Properties, Value,
+        Properties,
     };
 
     #[derive(Debug, Default, Properties)]
@@ -32,19 +31,8 @@ mod imp {
         type Type = super::ColorFormatObject;
     }
 
-    impl ObjectImpl for ColorFormatObject {
-        fn properties() -> &'static [ParamSpec] {
-            Self::derived_properties()
-        }
-
-        fn set_property(&self, id: usize, value: &Value, pspec: &ParamSpec) {
-            self.derived_set_property(id, value, pspec)
-        }
-
-        fn property(&self, id: usize, pspec: &ParamSpec) -> Value {
-            self.derived_property(id, pspec)
-        }
-    }
+    #[glib::derived_properties]
+    impl ObjectImpl for ColorFormatObject {}
 }
 
 glib::wrapper! {

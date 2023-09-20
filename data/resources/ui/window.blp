@@ -1,0 +1,202 @@
+using Gtk 4.0;
+using Adw 1;
+
+menu primary_menu {
+  section {
+    item {
+      label: _("_Clear History");
+      action: "app.clear_history";
+    }
+
+    item {
+      label: _("_Random Color");
+      action: "app.random_color";
+    }
+  }
+
+  section {
+    item {
+      label: _("_Preferences");
+      action: "app.preferences";
+    }
+
+    item {
+      label: _("_Keyboard Shortcuts");
+      action: "win.show-help-overlay";
+    }
+
+    item {
+      label: _("_About Eyedropper");
+      action: "app.about";
+    }
+  }
+}
+
+template $AppWindow : Adw.ApplicationWindow {
+  content: Adw.ToastOverlay toast_overlay {
+    child: Stack stack {
+      transition-type: crossfade;
+
+      StackPage {
+        name: "placeholder";
+        child: $AdwToolbarView {
+          [top]
+          Adw.HeaderBar {}
+          
+          content: WindowHandle {
+            vexpand: true;
+            child: Adw.StatusPage {
+              icon-name: "color-select-symbolic";
+              title: _("No Color");
+              description: _("Select a color from the screen to get started.");
+              child: Button {
+                label: _("_Pick a Color");
+                use-underline: true;
+                halign: center;
+                action-name: "app.pick_color";
+
+                styles [
+                  "pill",
+                  "suggested-action",
+                ]
+              };
+            };
+          };
+        };
+      }
+
+      StackPage {
+        name: "main";
+        child: $AdwToolbarView {
+          [top]
+          Adw.HeaderBar headerbar {
+            title-widget: Adw.WindowTitle {
+              title: _("Eyedropper");
+            };
+
+            Button color_picker_button {
+              tooltip-text: C_("Tooltip of the colorpicker button", "Pick a Color");
+              icon-name: "color-select-symbolic";
+              clicked => $pick_color() swapped;
+            }
+
+            [end]
+            MenuButton appmenu_button {
+              tooltip-text: _("Main Menu");
+              primary: true;
+              icon-name: "open-menu-symbolic";
+              menu-model: primary_menu;
+            }
+          }
+          
+          content: Box {
+            orientation: horizontal;
+
+            Box format_box {
+              orientation: vertical;
+              halign: fill;
+              vexpand: false;
+              vexpand-set: false;
+              margin-bottom: 12;
+              valign: start;
+
+              Adw.Clamp {
+                orientation: vertical;
+                tightening-threshold: 35;
+                maximum-size: 50;
+                child: Button {
+                  tooltip-text: C_("Tooltip of the palette button", "Open Palette Window");
+                  margin-top: 12;
+                  margin-start: 12;
+                  margin-end: 12;
+                  vexpand: true;
+                  width-request: 267;
+
+                  ColorDialogButton color_button {
+                    can-focus: false;
+                  }
+
+                  clicked => $open_palette_dialog() swapped;
+
+                  styles [
+                    "no-padding",
+                  ]
+                };
+              }
+
+              $ColorFormatRow name_row {
+                tooltip: _("Copy Name");
+                visible: "False";
+              }
+
+              $ColorFormatRow hex_row {
+                tooltip: _("Copy Hex Code");
+              }
+
+              $ColorFormatRow rgb_row {
+                tooltip: _("Copy RGB");
+              }
+
+              $ColorFormatRow hsl_row {
+                tooltip: _("Copy HSL");
+              }
+
+              $ColorFormatRow hsv_row {
+                tooltip: _("Copy HSV");
+              }
+
+              $ColorFormatRow cmyk_row {
+                tooltip: _("Copy CMYK");
+              }
+
+              $ColorFormatRow xyz_row {
+                tooltip: _("Copy XYZ");
+                visible: "False";
+              }
+
+              $ColorFormatRow cie_lab_row {
+                tooltip: _("Copy CIELAB");
+                visible: "False";
+              }
+
+              $ColorFormatRow hwb_row {
+                tooltip: _("Copy HWB");
+                visible: "False";
+              }
+
+              $ColorFormatRow hcl_row {
+                tooltip: _("Copy CIELCh / HCL");
+                visible: "False";
+              }
+
+              $ColorFormatRow lms_row {
+                tooltip: _("Copy LMS");
+                visible: "False";
+              }
+
+              $ColorFormatRow hunter_lab_row {
+                tooltip: _("Copy Hunter Lab");
+                visible: "False";
+              }
+            }
+
+            ScrolledWindow {
+              hscrollbar-policy: never;
+              min-content-height: 200;
+              vexpand: true;
+
+              ListBox history_list {
+                visible: true;
+                selection-mode: none;
+
+                styles [
+                  "background",
+                ]
+              }
+            }
+          };
+        };
+      }
+    };
+  };
+}

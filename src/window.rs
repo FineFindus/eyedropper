@@ -23,6 +23,7 @@ mod imp {
 
     use adw::subclass::prelude::AdwApplicationWindowImpl;
     use gtk::CompositeTemplate;
+    use once_cell::sync::OnceCell;
 
     #[derive(Debug, CompositeTemplate)]
     #[template(resource = "/com/github/finefindus/eyedropper/ui/window.ui")]
@@ -65,7 +66,7 @@ mod imp {
         pub hunter_lab_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
         #[template_child]
         pub history_list: TemplateChild<gtk::ListBox>,
-        pub history: RefCell<Option<gio::ListStore>>,
+        pub history: OnceCell<gio::ListStore>,
         pub settings: gio::Settings,
         pub color: Cell<Option<Color>>,
         pub portal_error: RefCell<Option<ashpd::Error>>,
@@ -142,12 +143,16 @@ mod imp {
             obj.load_visibility_settings();
             obj.set_stack();
         }
+
+        fn dispose(&self) {
+            self.dispose_template();
+        }
     }
 
     impl WidgetImpl for AppWindow {}
     impl WindowImpl for AppWindow {
         // Save window state on delete event
-        fn close_request(&self) -> gtk::Inhibit {
+        fn close_request(&self) -> glib::Propagation {
             //save current window size
             if let Err(err) = self.obj().save_window_size() {
                 log::warn!("Failed to save window state, {}", &err);
@@ -191,20 +196,17 @@ impl AppWindow {
     /// Set the stack to either show the main page or the placeholder,
     /// depending on if a color is chosen.
     fn set_stack(&self) {
-        if self.color().is_some() {
-            self.imp().stack.set_visible_child_name("main");
+        let visible_child = if self.color().is_some() {
+            "main"
         } else {
-            self.imp().stack.set_visible_child_name("placeholder");
-        }
+            "placeholder"
+        };
+        self.imp().stack.set_visible_child_name(visible_child);
     }
 
     /// Returns the history list store object.
-    fn history(&self) -> gio::ListStore {
-        self.imp()
-            .history
-            .borrow()
-            .clone()
-            .expect("Could not get current history.")
+    fn history(&self) -> &gio::ListStore {
+        self.imp().history.get().unwrap()
     }
 
     /// Clear the history by removing all items from the list.
@@ -241,13 +243,16 @@ impl AppWindow {
     /// Setup the history by setting up a model
     fn setup_history(&self) {
         // Create new model
-        let model = gio::ListStore::new(HistoryObject::static_type());
+        let model = gio::ListStore::new::<HistoryObject>();
 
         // Get state and set model
-        self.imp().history.replace(Some(model));
+        self.imp()
+            .history
+            .set(model)
+            .expect("Failed to set history model");
 
         // Wrap model with selection and pass it to the list view
-        let selection_model = gtk::NoSelection::new(Some(self.history()));
+        let selection_model = gtk::NoSelection::new(Some(self.history().clone()));
         self.imp().history_list.bind_model(
             Some(&selection_model),
             glib::clone!(@weak self as window => @default-panic, move |obj| {
@@ -271,6 +276,7 @@ impl AppWindow {
     fn set_history_list_visible(&self, history: &gio::ListStore) {
         let visible = history.n_items() > 1;
         self.imp().history_list.set_visible(visible);
+        self.action_set_enabled("app.clear_history", visible);
     }
 
     /// Create a new history item
@@ -309,10 +315,13 @@ impl AppWindow {
         //switch to color when clicked
         color_button.connect_clicked(
             glib::clone!(@weak self as window, @weak history_object => move |_, | {
-                window.set_color(history_object.color().into());
                 //remove from history when clicking on it
                 match window.history().find(&history_object) {
-                    Some(index) => window.history().remove(index),
+                    Some(index) if index != 0 => {
+                        window.history().remove(index);
+                        window.set_color(history_object.color().into());
+                    },
+                    Some(_) => {} // currently show item has index 0, it cannot be set and removed
                     None => log::error!("Failed to find index for {}", history_object.color()),
                 }
             }),
@@ -528,9 +537,9 @@ impl AppWindow {
     #[template_callback]
     fn open_palette_dialog(&self) {
         //safe to unwrap, if the user opens this dialog, the color button must be clicked
-        let palette_dialog = PaletteDialog::new(self.color().unwrap());
+        let palette_dialog = PaletteDialog::new(self.color().expect("Failed to get current color"));
         palette_dialog.set_transient_for(Some(self));
-        palette_dialog.set_visible(true);
+        palette_dialog.present();
 
         //when a palette is chosen, add all colors of the palette in reverse order to the history
         palette_dialog.connect_closure(
@@ -540,14 +549,15 @@ impl AppWindow {
                 log::debug!("Palette: {palette}");
 
                 palette
-                .split(' ')
-                .for_each(|slice| match Color::from_hex(slice, AlphaPosition::None) {
-                    Ok(color) => window.set_color(color),
-                    Err(_) => {
+                .split_ascii_whitespace()
+                .for_each(|slice|
+                    if let Ok(color) = Color::from_hex(slice, AlphaPosition::None) {
+                        window.set_color(color);
+                    } else {
                         log::error!("Failed to parse color {}", slice);
-                        window.show_toast(gettext("Failed to get palette color"), adw::ToastPriority::Normal)
-                },
-            });
+                        window.show_toast(gettext("Failed to get palette color"), adw::ToastPriority::Normal);
+                    }
+                );
             }),
         );
     }
@@ -558,9 +568,10 @@ impl AppWindow {
     #[template_callback]
     pub fn pick_color(&self) {
         log::debug!("Picking a color using the color picker");
-        gtk_macros::spawn!(glib::clone!(@weak self as window => async move {
+        let main_context = glib::MainContext::default();
+        main_context.spawn_local(glib::clone!(@weak self as window => async move {
 
-        let root = window.root().unwrap();
+        let root = window.root().expect("Failed to get window root");
         let identifier = ashpd::WindowIdentifier::from_native(&root).await;
         let request = ashpd::desktop::screenshot::Color::request()
             .identifier(identifier)
@@ -583,10 +594,21 @@ impl AppWindow {
         }));
     }
 
-    /// Update the current color to the given color.
-    /// The new color will be added to the history list.
+    /// Set the current color to the given color.
+    ///
+    /// If the given color is different from the current color,
+    /// it will be added to the history. If the history includes the given
+    /// color, the preceding occurrence will be removed.
     pub fn set_color(&self, color: Color) {
         if self.color() != Some(color) {
+            if self.history().n_items() > 0 {
+                if let Some(i) = self.history().find_with_equal_func(|item| {
+                    item.downcast_ref::<HistoryObject>().unwrap().color() == color.into()
+                }) {
+                    self.history().remove(i as u32);
+                }
+            }
+
             let history_item = HistoryObject::new(color);
             self.history().insert(0, &history_item);
         }

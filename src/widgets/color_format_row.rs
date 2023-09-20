@@ -4,26 +4,20 @@ use gettextrs::gettext;
 use glib::translate::IntoGlib;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
-use gtk::{
-    glib,
-    prelude::{ObjectExt, ToValue},
-};
+use gtk::{glib, prelude::ObjectExt};
 
 mod imp {
-    use std::cell::{Cell, RefCell};
-
-    use crate::config;
+    use std::cell::RefCell;
 
     use super::*;
 
-    use glib::{subclass::Signal, ParamSpec, Value};
+    use glib::subclass::Signal;
     use once_cell::sync::Lazy;
 
-    #[derive(gtk::CompositeTemplate, glib::Properties)]
+    #[derive(Default, Debug, gtk::CompositeTemplate, glib::Properties)]
     #[template(resource = "/com/github/finefindus/eyedropper/ui/color-format-row.ui")]
     #[properties(wrapper_type = super::ColorFormatRow)]
     pub struct ColorFormatRow {
-        pub settings: gtk::gio::Settings,
         #[template_child]
         pub entry: TemplateChild<gtk::Entry>,
         #[template_child]
@@ -32,8 +26,6 @@ mod imp {
         pub color: RefCell<String>,
         #[property(set, get)]
         pub tooltip: RefCell<String>,
-        #[property(set, get, default = true)]
-        pub editable: Cell<bool>,
     }
 
     #[glib::object_subclass]
@@ -41,17 +33,6 @@ mod imp {
         const NAME: &'static str = "ColorFormatRow";
         type ParentType = gtk::Box;
         type Type = super::ColorFormatRow;
-
-        fn new() -> Self {
-            Self {
-                settings: gtk::gio::Settings::new(config::APP_ID),
-                entry: TemplateChild::default(),
-                format_button: TemplateChild::default(),
-                tooltip: RefCell::new(String::new()),
-                color: RefCell::new(String::new()),
-                editable: Cell::new(true),
-            }
-        }
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
@@ -63,6 +44,7 @@ mod imp {
         }
     }
 
+    #[glib::derived_properties]
     impl ObjectImpl for ColorFormatRow {
         fn signals() -> &'static [Signal] {
             static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
@@ -78,23 +60,37 @@ mod imp {
             SIGNALS.as_ref()
         }
 
-        fn properties() -> &'static [ParamSpec] {
-            Self::derived_properties()
-        }
-        fn set_property(&self, _id: usize, _value: &Value, _pspec: &ParamSpec) {
-            Self::derived_set_property(self, _id, _value, _pspec)
-        }
-        fn property(&self, _id: usize, _pspec: &ParamSpec) -> Value {
-            Self::derived_property(self, _id, _pspec)
-        }
-
         fn constructed(&self) {
             self.parent_constructed();
             let obj = self.obj();
             obj.set_direction(gtk::TextDirection::Ltr);
-            obj.setup_signals();
-            obj.setup_properties();
             obj.set_visible(false);
+
+            obj.bind_property("tooltip", &*self.format_button, "tooltip-text")
+                .flags(glib::BindingFlags::SYNC_CREATE)
+                .build();
+
+            obj.bind_property("color", &*self.entry, "text")
+                .flags(glib::BindingFlags::SYNC_CREATE)
+                .build();
+
+            self.entry
+                .connect_activate(glib::clone!(@weak obj => move |entry| {
+                    let text = entry.buffer().text();
+                    if obj.is_visible() && !text.is_empty() {
+                        obj.switch_button(false);
+                        obj.emit_by_name("text-edited", &[&text.to_value()])
+                    }
+                }));
+
+            self.entry
+                .connect_changed(glib::clone!(@weak obj => move |_entry| {
+                    obj.switch_button(obj.text_changed());
+                }));
+        }
+
+        fn dispose(&self) {
+            self.dispose_template();
         }
     }
 
@@ -153,7 +149,7 @@ impl ColorFormatRow {
         let main_context = glib::MainContext::default();
         main_context.spawn_local(glib::clone!(@weak self as widget => async move {
             widget.add_css_class("error");
-            glib::timeout_future_with_priority(glib::PRIORITY_DEFAULT, Duration::from_millis(350)).await;
+            glib::timeout_future_with_priority(glib::Priority::default(), Duration::from_millis(350)).await;
             widget.remove_css_class("error");
         }));
     }
@@ -166,55 +162,9 @@ impl ColorFormatRow {
         let main_context = glib::MainContext::default();
         main_context.spawn_local(glib::clone!(@weak self as widget => async move {
             widget.add_css_class("success");
-            glib::timeout_future_with_priority(glib::PRIORITY_DEFAULT, Duration::from_millis(350)).await;
+            glib::timeout_future_with_priority(glib::Priority::default(), Duration::from_millis(350)).await;
             widget.remove_css_class("success");
         }));
-    }
-
-    /// Bind the properties to the target values.
-    ///
-    /// Binds the `text` properties to the text of the entry, and
-    /// the `editable` property to different properties
-    /// of the entry to make it (un)-editable
-    fn setup_properties(&self) {
-        self.bind_property("tooltip", &*self.imp().format_button, "tooltip-text")
-            .flags(glib::BindingFlags::SYNC_CREATE)
-            .build();
-
-        //bind texts
-        self.bind_property("color", &*self.imp().entry, "text")
-            .flags(glib::BindingFlags::SYNC_CREATE)
-            .build();
-        //bind editable
-        self.bind_property("editable", &*self.imp().entry, "editable")
-            .flags(glib::BindingFlags::SYNC_CREATE)
-            .build();
-        self.bind_property("editable", &*self.imp().entry, "can-focus")
-            .flags(glib::BindingFlags::SYNC_CREATE)
-            .build();
-        self.bind_property("editable", &*self.imp().entry, "can-target")
-            .flags(glib::BindingFlags::SYNC_CREATE)
-            .build();
-
-        self.imp()
-            .entry
-            .connect_changed(glib::clone!(@weak self as widget => move |_entry| {
-                widget.switch_button(widget.text_changed());
-            }));
-    }
-
-    /// Registers a signal for when the text entry is changed to emit
-    /// a signal containing the edited text.
-    fn setup_signals(&self) {
-        self.imp()
-            .entry
-            .connect_activate(glib::clone!(@weak self as widget => move |entry| {
-                let text = entry.buffer().text();
-                if widget.is_visible() && !text.is_empty() {
-                    widget.switch_button(false);
-                    widget.emit_by_name("text-edited", &[&text.to_value()])
-                }
-            }));
     }
 
     /// Callback when the button next to the entry is pressed.

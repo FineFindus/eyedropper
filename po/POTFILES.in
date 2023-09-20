@@ -4,13 +4,13 @@
 data/com.github.finefindus.eyedropper.desktop.in.in
 data/com.github.finefindus.eyedropper.metainfo.xml.in.in
 # UI files
-data/resources/ui/color-format-row.ui
-data/resources/ui/palette-window.ui
-data/resources/ui/preferences/custom-format-row.ui
-data/resources/ui/preferences/name-sources-dialog.ui
-data/resources/ui/preferences/preferences.ui
-data/resources/ui/shortcuts.ui
-data/resources/ui/window.ui
+data/resources/ui/color-format-row.blp
+data/resources/ui/palette-window.blp
+data/resources/ui/preferences/custom-format-row.blp
+data/resources/ui/preferences/name-sources-dialog.blp
+data/resources/ui/preferences/preferences.blp
+data/resources/ui/shortcuts.blp
+data/resources/ui/window.blp
 # RUST files
 src/main.rs
 src/widgets/about_window.rs

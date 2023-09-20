@@ -1,0 +1,19 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $CustomFormatRow : Adw.EntryRow {
+  show-apply-button: true;
+  apply => $on_apply() swapped;
+
+  [suffix]
+  Button {
+    icon-name: "edit-clear-symbolic";
+    valign: center;
+    tooltip-text: C_("Tooltip of the reset button for custom format", "Reset Format");
+    clicked => $on_reset_pressed() swapped;
+
+    styles [
+      "flat",
+    ]
+  }
+}
