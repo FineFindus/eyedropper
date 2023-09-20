@@ -265,7 +265,11 @@ impl PaletteDialog {
                     Some("txt") => ColorFormatter::paint_dot_net_file(file_name, &colors),
                     Some("pal") => ColorFormatter::pal_file(&colors),
                     Some("soc") => ColorFormatter::soc_file(&colors),
-                    Some("ase") => ColorFormatter::ase_file(colors),
+                    Some("ase") => {
+                        //only binary type, write it directly, so the others can be used as a string
+                        std::fs::write(path, ColorFormatter::ase_file(&colors)).expect("Failed to write palette file");
+                        return;
+                    },
                     _ => ColorFormatter::hex_file(&colors), //default to exporting the hex colors
                 };
                 std::fs::write(path, palette).expect("Failed to write palette file");

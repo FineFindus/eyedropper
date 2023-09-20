@@ -475,7 +475,7 @@ impl ColorFormatter {
     /// `.ase` files are used by Adobe products and have no public spec, this implementation follows a
     /// [blog post by car.camera](https://carl.camera/default.aspx?id=109) and
     /// http://www.selapa.net/swatches/colors/fileformats.php#adobe_ase.
-    pub fn ase_file(colors: Vec<Color>) -> String {
+    pub fn ase_file(colors: &[Color]) -> Vec<u8> {
         let mut buf = BytesMut::with_capacity(12 + colors.len() * 42);
 
         //magic header letters
@@ -487,7 +487,7 @@ impl ColorFormatter {
         //number of following 'ASECHUNK's
         buf.put_u32(colors.len() as u32);
 
-        for color in colors {
+        for &color in colors {
             let hex = Self::with_alpha_position(color, AlphaPosition::None).hex_code();
 
             //start of color entry
@@ -516,6 +516,6 @@ impl ColorFormatter {
             buf.put_u16(0);
         }
 
-        unsafe { String::from_utf8_unchecked(buf.freeze().to_vec()) }
+        buf.freeze().to_vec()
     }
 }
