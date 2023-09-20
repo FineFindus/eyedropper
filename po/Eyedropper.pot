@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-09-18 16:55+0000\n"
+"POT-Creation-Date: 2023-09-20 15:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,14 +28,14 @@ msgstr ""
 msgid "Color Picker"
 msgstr ""
 
-#: data/com.github.finefindus.eyedropper.desktop.in.in:5
+#: data/com.github.finefindus.eyedropper.desktop.in.in:6
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
 #: src/widgets/about_window.rs:71
 msgid "Pick and format colors"
 msgstr ""
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/com.github.finefindus.eyedropper.desktop.in.in:11
+#: data/com.github.finefindus.eyedropper.desktop.in.in:13
 msgid "Gnome;GTK;Color;Color Picker;Picker;Palette;"
 msgstr ""
 
