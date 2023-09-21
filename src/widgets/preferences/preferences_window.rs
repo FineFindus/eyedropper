@@ -171,7 +171,7 @@ impl PreferencesWindow {
 
         self.imp()
             .settings
-            .set("format-order", &formats)
+            .set("format-order", formats)
             .expect("Failed to save format-order: {}");
     }
 
