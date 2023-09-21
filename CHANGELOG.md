@@ -5,6 +5,47 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+# [Unreleased] - 2023-09-
+
+### Added
+- Show visual feedback when parsing input
+- Apply input with a new button
+- Display colors in overview search
+- Shadow to differentiate colors from background 
+- Export palettes to LibreOffice
+- Tooltip on primary menu
+- Czech translation
+- Portuguese translation 
+- Parse any format input
+- Allow for different separators in formats
+- Allow for whitespace in formats
+- Allow precision of 0
+- Set a maximum precision of 15
+- Duplicated colors will be removed from the history by @gregorni
+- Commanding option for opening the picker
+
+### Changed
+- Use flat headerbar
+- Show pop-over for export file formats
+- Use GNOME 44 runtime
+- Use CSS `lab` format
+- Use `von Kries` Matrix to convert to XYZ
+- Update to libadwaita 1.4
+- Improved settings backend
+- Improved Name sources dialog
+- Removed default precision switch
+- Removed unused debug info
+- Moved to Blueprint
+- Improved Search performance
+
+### Fixed
+- Hide toast when cancelled
+- Fixed sandbox debug info
+- Use correct screenshot links
+- Fixed clippy lints
+- Fixed typos
+- Remove unused code
+
 # [0.6.0] - 2023-02-24
 
 ### Added
