@@ -14,7 +14,7 @@ fn main() {
 
     let out_dir = env::var_os("OUT_DIR").unwrap();
     let path = Path::new(&out_dir).join("codegen.rs");
-    let mut file = BufWriter::new(File::create(&path).expect("Failed to create map file"));
+    let mut file = BufWriter::new(File::create(path).expect("Failed to create map file"));
 
     sources
         .iter()
@@ -35,7 +35,7 @@ fn generate_map<T: AsRef<Path>>(
     // the resulting map must have unique key
     // some colors have multiple names, so they need to be removed
     // these should (hopefully) be the less used ones
-    const DUPLICATED_COLORS: [&'static str; 10] = [
+    const DUPLICATED_COLORS: [&str; 10] = [
         "aqua",           //conflicts with cyan
         "darkgray",       //conflicts with darkgrey
         "darkslategray",  //conflicts with darkslategrey
@@ -54,7 +54,7 @@ fn generate_map<T: AsRef<Path>>(
 
     input_file
         .lines()
-        .filter(|line| !line.trim().is_empty() && !line.starts_with("#"))
+        .filter(|line| !line.trim().is_empty() && !line.starts_with('#'))
         .filter_map(|line| line.split_once(','))
         .map(|(name, val)| (name.trim(), val.trim()))
         .for_each(|(name, hex)| {
@@ -80,5 +80,5 @@ fn write_map(
         name,
         map.build()
     )?;
-    write!(file, ";\n")
+    writeln!(file, ";")
 }

@@ -263,7 +263,7 @@ impl AppWindow {
         );
 
         // Assure that the history list is only visible when it is supposed to
-        self.set_history_list_visible(&self.history());
+        self.set_history_list_visible(self.history());
         self.history().connect_items_changed(
             glib::clone!(@weak self as window => move |items, _, _, _| {
                 window.set_history_list_visible(items);
@@ -605,7 +605,7 @@ impl AppWindow {
                 if let Some(i) = self.history().find_with_equal_func(|item| {
                     item.downcast_ref::<HistoryObject>().unwrap().color() == color.into()
                 }) {
-                    self.history().remove(i as u32);
+                    self.history().remove(i);
                 }
             }
 

@@ -211,7 +211,7 @@ impl PaletteDialog {
 
         //Convert color to a string so the signal can emit it
         let color_string = colors
-            .into_iter()
+            .iter()
             .map(|color| {
                 let formatter = ColorFormatter::with_color(*color);
                 formatter.hex_code()

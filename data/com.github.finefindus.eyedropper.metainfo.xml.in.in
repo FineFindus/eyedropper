@@ -15,7 +15,7 @@
     <ul>
       <li>Pick a Color</li>
       <li>Enter a color in Hex-Format</li>
-      <li>Parse RGBA/ARGB Hex-Colors</li>
+      <li>Enter colors in different formats</li>
       <li>View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format</li>
       <li>Customize which formats appear as well as their order</li>
       <li>Generate a palette of different shades</li>
@@ -47,6 +47,9 @@
   <url type="translate">https://github.com/FineFindus/eyedropper#translation</url>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="1.0.0">
+    <p>A new release with exciting new features and many improvements.</p>\n<ul><li>Allow entering any format</li><li>Display color in overview search</li><li>Export palettes to LibreOffice</li><li>A visual differentiation between color and background</li><li>Improved color conversion</li><li>Visual refinements to match the state of the art of GNOME apps</li><li>Internal code improvements and bug fixes</li></ul>
+    </release>
     <release version="0.6.0" date="2023-02-24">
       <description>
         <p>Added:</p>
