@@ -7,35 +7,41 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-09-21 08:49+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2023-09-21 10:09+0000\n"
+"Last-Translator: Joan Aymà <joanayma@gmail.com>\n"
+"Language-Team: Catalan <https://hosted.weblate.org/projects/eyedropper/"
+"eyedropper/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.1-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
 #: data/resources/ui/window.blp:74 src/main.rs:25
 #: src/widgets/about_window.rs:41
+#, fuzzy
 msgid "Eyedropper"
-msgstr ""
+msgstr "Eyedropper"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:4
+#, fuzzy
 msgid "Color Picker"
-msgstr ""
+msgstr "Selector de color"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
 #: src/widgets/about_window.rs:71
 msgid "Pick and format colors"
-msgstr ""
+msgstr "Escull i formata colors"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
+#, fuzzy
 msgid "Gnome;GTK;Color;Color Picker;Picker;Palette;"
-msgstr ""
+msgstr "Gnome;GTK;Color;Selector de color;Selector;Paleta;"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
 #: src/widgets/about_window.rs:74
@@ -44,16 +50,19 @@ msgid ""
 "picked color or go back to a previously picked color from the history list. "
 "Generate a list of different shades from the picked color."
 msgstr ""
+"Escull qualsevol color de la teva pantalla i visualitza'l en diferents "
+"formats. Canvia el color o torna a un color escollit prèviament de "
+"l'historial. Genera una llista de diferents tons del color escollit."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
 #: src/widgets/about_window.rs:79
 msgid "Features"
-msgstr ""
+msgstr "Característiques"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:16
 #: src/widgets/about_window.rs:83
 msgid "Pick a Color"
-msgstr ""
+msgstr "Escull un color"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
 #: src/widgets/about_window.rs:84
