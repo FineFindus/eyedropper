@@ -7,21 +7,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-02-21 19:58+0000\n"
-"PO-Revision-Date: 2023-02-22 00:00+0300\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2023-09-21 08:49+0000\n"
+"PO-Revision-Date: 2023-09-25 18:04+0300\n"
+"Last-Translator: Aleksandr Melman <Alexmelman88@gmail.com>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.1.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.ui:88 src/main.rs:26 src/widgets/about_window.rs:45
+#: data/resources/ui/window.blp:74 src/main.rs:25
+#: src/widgets/about_window.rs:41
 msgid "Eyedropper"
 msgstr "Eyedropper"
 
@@ -31,17 +32,17 @@ msgstr "Выбор цвета"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
-#: src/widgets/about_window.rs:75
+#: src/widgets/about_window.rs:71
 msgid "Pick and format colors"
 msgstr "Выбирайте и форматируйте цвета"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
 msgid "Gnome;GTK;Color;Color Picker;Picker;Palette;"
-msgstr "Gnome;GTK;Цвет;Выбор цвета;Пипетка;Палитра;"
+msgstr "Gnome;GTK;Color;Picker;Цвет;Выбор цвета;Пипетка;Палитра;"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
-#: src/widgets/about_window.rs:78
+#: src/widgets/about_window.rs:74
 msgid ""
 "Pick any color from your screen and view it in different formats. Change the "
 "picked color or go back to a previously picked color from the history list. "
@@ -52,40 +53,38 @@ msgstr ""
 "Создавайте список различных оттенков из выбранного цвета."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
-#: src/widgets/about_window.rs:83
+#: src/widgets/about_window.rs:79
 msgid "Features"
 msgstr "Функции"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:16
-#: src/widgets/about_window.rs:87
+#: src/widgets/about_window.rs:83
 msgid "Pick a Color"
-msgstr "Выберите цвет"
+msgstr "Подбор цвета"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
-#: src/widgets/about_window.rs:88
+#: src/widgets/about_window.rs:84
 msgid "Enter a color in Hex-Format"
-msgstr "Введите цвет в шестнадцатеричном формате"
+msgstr "Ввод цвета в шестнадцатеричном формате"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:18
-#: src/widgets/about_window.rs:89
-msgid "Parse RGBA/ARGB Hex-Colors"
-msgstr "Разберите шестнадцатеричные цвета RGBA/ARGB"
+msgid "Enter colors in different formats"
+msgstr "Ввод цветов в разных форматах"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
-#: src/widgets/about_window.rs:90
+#: src/widgets/about_window.rs:86
 msgid "View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format"
-msgstr ""
-"Просматривайте цвета в форматах Hex, RGB, HSV, HSL, CMYK, XYZ и CIE-Lab"
+msgstr "Просмотр цветов в формате Hex, RGB, HSV, HSL, CMYK, XYZ и CIE-Lab"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
-#: src/widgets/about_window.rs:91
+#: src/widgets/about_window.rs:87
 msgid "Customize which formats appear as well as their order"
-msgstr "Настройте отображаемые форматы и их порядок"
+msgstr "Настройка отображения форматов, а также их порядка"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
-#: src/widgets/about_window.rs:92
+#: src/widgets/about_window.rs:88
 msgid "Generate a palette of different shades"
-msgstr "Генерируйте палитру различных оттенков"
+msgstr "Создание палитры различных оттенков"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:27
 msgid "Main window with a color in different formats"
@@ -103,622 +102,666 @@ msgstr "Диалог показывающий сгенерированную ц�
 msgid "Status page stating to pick a color to get started"
 msgstr "Страница состояния с указанием выбрать цвет чтобы начать"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:152
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:182
 msgid "FineFindus"
 msgstr "FineFindus"
 
-#: data/resources/ui/preferences/custom-format-row.ui:10
+#: data/resources/ui/palette-window.blp:7
+msgctxt "Adobes palette format"
+msgid "Adobe Swatch Exchange"
+msgstr "Adobe Swatch Exchange"
+
+#: data/resources/ui/palette-window.blp:13
+msgctxt "LibreOffice/OpenOffice palette file"
+msgid "LibreOffice Palette"
+msgstr "Палитра LibreOffice"
+
+#: data/resources/ui/palette-window.blp:19
+msgctxt "Gimp/Inkscape palette format"
+msgid "Gimp Palette"
+msgstr "Палитра Gimp"
+
+#: data/resources/ui/palette-window.blp:25
+msgctxt "Paint.net palette format, should most like not be translated"
+msgid "Paint.NET"
+msgstr "Paint.NET"
+
+#: data/resources/ui/palette-window.blp:31
+msgctxt "Palette format file name"
+msgid "Hex"
+msgstr "Hex"
+
+#: data/resources/ui/palette-window.blp:37
+msgctxt "Palette format file name"
+msgid "PAL"
+msgstr "PAL"
+
+#: data/resources/ui/palette-window.blp:46
+msgid "Palettes"
+msgstr "Палитры"
+
+#: data/resources/ui/palette-window.blp:54
+msgid "Save Palettes…"
+msgstr "Сохранить палитры…"
+
+#: data/resources/ui/preferences/custom-format-row.blp:12
 msgctxt "Tooltip of the reset button for custom format"
 msgid "Reset Format"
 msgstr "Сбросить формат"
 
-#: data/resources/ui/palette-window.ui:5
-msgid "Palettes"
-msgstr "Палитры"
-
-#: data/resources/ui/palette-window.ui:16
-msgid "Save Palettes…"
-msgstr "Сохранить палитры…"
-
-#: data/resources/ui/shortcuts.ui:11
-msgctxt "shortcut window"
-msgid "General"
-msgstr "Основное"
-
-#: data/resources/ui/shortcuts.ui:14
-msgctxt "shortcut window"
-msgid "Show Preferences"
-msgstr "Показать параметры"
-
-#: data/resources/ui/shortcuts.ui:20
-msgctxt "shortcut window"
-msgid "Show Shortcuts"
-msgstr "Показать комбинации клавиш"
-
-#: data/resources/ui/shortcuts.ui:26
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Выйти"
-
-#: data/resources/ui/shortcuts.ui:34
-msgctxt "shortcut window"
-msgid "Color"
-msgstr "Цвет"
-
-#: data/resources/ui/shortcuts.ui:37
-msgctxt "shortcut window"
-msgid "Pick a new Color"
-msgstr "Выбрать новый цвет"
-
-#: data/resources/ui/shortcuts.ui:43
-msgctxt "shortcut window"
-msgid "Randomize the Color"
-msgstr "Случайный цвет"
-
-#: data/resources/ui/window.ui:6
-msgid "_Clear History"
-msgstr "_Очистить историю"
-
-#: data/resources/ui/window.ui:10
-msgid "_Random Color"
-msgstr "_Случайный цвет"
-
-#: data/resources/ui/window.ui:16
-msgid "_Preferences"
-msgstr "_Параметры"
-
-#: data/resources/ui/window.ui:20
-msgid "_Keyboard Shortcuts"
-msgstr "_Комбинации клавиш"
-
-#: data/resources/ui/window.ui:24
-msgid "_About Eyedropper"
-msgstr "_О Eyedropper"
-
-#: data/resources/ui/window.ui:54
-msgid "No Color"
-msgstr "Нет цвета"
-
-#: data/resources/ui/window.ui:55
-msgid "Select a color from the screen to get started."
-msgstr "Выберите цвет с экрана чтобы начать."
-
-#: data/resources/ui/window.ui:58
-msgid "_Pick a Color"
-msgstr "_Выбрать цвет"
-
-#: data/resources/ui/window.ui:93
-msgctxt "Tooltip of the colorpicker button"
-msgid "Pick a Color"
-msgstr "Выбрать цвет"
-
-#: data/resources/ui/window.ui:125
-msgctxt "Tooltip of the palette button"
-msgid "Open Palette Window"
-msgstr "Открыть окно палитры"
-
-#: data/resources/ui/window.ui:148
-msgid "Copy Name"
-msgstr "Копировать название"
-
-#: data/resources/ui/window.ui:154
-msgid "Copy Hex Code"
-msgstr "Копировать шестнадцатеричный код"
-
-#: data/resources/ui/window.ui:159
-msgid "Copy RGB"
-msgstr "Копировать RGB"
-
-#: data/resources/ui/window.ui:164
-msgid "Copy HSL"
-msgstr "Копировать HSL"
-
-#: data/resources/ui/window.ui:169
-msgid "Copy HSV"
-msgstr "Копировать HSV"
-
-#: data/resources/ui/window.ui:174
-msgid "Copy CMYK"
-msgstr "Копировать CMYK"
-
-#: data/resources/ui/window.ui:179
-msgid "Copy XYZ"
-msgstr "Копировать XYZ"
-
-#: data/resources/ui/window.ui:185
-msgid "Copy CIELAB"
-msgstr "Копировать CIELAB"
-
-#: data/resources/ui/window.ui:191
-msgid "Copy HWB"
-msgstr "Копировать HWB"
-
-#: data/resources/ui/window.ui:197
-msgid "Copy CIELCh / HCL"
-msgstr "Копировать CIELCh/HCL"
-
-#: data/resources/ui/window.ui:203
-msgid "Copy LMS"
-msgstr "Копировать LMS"
-
-#: data/resources/ui/window.ui:209
-msgid "Copy Hunter Lab"
-msgstr "Копировать Hunter Lab"
-
-#: data/resources/ui/preferences.ui:10
-msgid "General"
-msgstr "Основное"
-
-#: data/resources/ui/preferences.ui:13
-msgid "Formatting"
-msgstr "Форматирование"
-
-#: data/resources/ui/preferences.ui:16
-msgid "Alpha-Value-Position"
-msgstr "Позиция-альфа-значения"
-
-#: data/resources/ui/preferences.ui:17
-msgid "Where the Alphavalue is positioned in the Hexstring"
-msgstr "Позиция альфа-значения в шестнадцатеричной строке"
-
-#: data/resources/ui/preferences.ui:21
-msgctxt "Alpha is not shown"
-msgid "Not shown"
-msgstr "Не показано"
-
-#: data/resources/ui/preferences.ui:22
-msgctxt "Alpha is shown at the end of the string"
-msgid "End"
-msgstr "В Конце"
-
-#: data/resources/ui/preferences.ui:23
-msgctxt "Alpha is shown at the start of the string"
-msgid "Start"
-msgstr "В Начале"
-
-#: data/resources/ui/preferences.ui:31
-msgid "Name Sets"
-msgstr "Наборы названий"
-
-#: data/resources/ui/preferences.ui:32
-msgid "Which color name sets should be used for the names"
-msgstr "Какие наборы названий цветов следует использовать для названий"
-
-#: data/resources/ui/preferences.ui:44
-msgid "Default Precision"
-msgstr "Точность по умолчанию"
-
-#: data/resources/ui/preferences.ui:45
-msgid "Use the recommended precision"
-msgstr "Использовать рекомендуемую точность"
-
-#: data/resources/ui/preferences.ui:58 data/resources/ui/preferences.ui:69
-msgid "Precision"
-msgstr "Точность"
-
-#: data/resources/ui/preferences.ui:81
-msgid "CIE Color Space"
-msgstr "Цветовое пространство CIE"
-
-#: data/resources/ui/preferences.ui:84
-msgid "CIE Illuminants"
-msgstr "Источники света CIE"
-
-#: data/resources/ui/preferences.ui:85
-msgid "Lighting conditions for the CIE color space"
-msgstr "Условия освещения для цветового пространства CIE"
-
-#: data/resources/ui/preferences.ui:93
-msgctxt ""
-"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
-msgid "A (Incandescent/tungsten)"
-msgstr "A (Лампа накаливания/вольфрам)"
-
-#: data/resources/ui/preferences.ui:94
-msgctxt ""
-"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
-msgid "B (Old direct sunlight at noon)"
-msgstr "B (Старый прямой солнечный свет в полдень)"
-
-#: data/resources/ui/preferences.ui:95
-msgctxt ""
-"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
-msgid "C (Old daylight)"
-msgstr "C (Старый дневной свет)"
-
-#: data/resources/ui/preferences.ui:96
-msgctxt ""
-"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
-msgid "D50 (ICC profile PCS)"
-msgstr "D50 (Профиль ICC PCS)"
-
-#: data/resources/ui/preferences.ui:97
-msgctxt ""
-"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
-msgid "D55 (Mid-morning daylight)"
-msgstr "D55 (Средний утренний свет)"
-
-#: data/resources/ui/preferences.ui:98
-msgctxt ""
-"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
-msgid "D65 (Daylight, sRGB, Adobe-RGB)"
-msgstr "D65 (Дневной свет, sRGB, Adobe-RGB)"
-
-#: data/resources/ui/preferences.ui:99
-msgctxt ""
-"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
-msgid "D75 (North sky daylight)"
-msgstr "D75 (Дневной свет северного неба)"
-
-#: data/resources/ui/preferences.ui:100
-msgctxt ""
-"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
-msgid "E (Equal energy)"
-msgstr "E (Равная энергия)"
-
-#: data/resources/ui/preferences.ui:101
-msgctxt ""
-"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
-msgid "F1 (Daylight Fluorescent)"
-msgstr "F1 (Дневной флуоресцентный)"
-
-#: data/resources/ui/preferences.ui:102
-msgctxt ""
-"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
-msgid "F2 (Cool fluorescent)"
-msgstr "F2 (Холодный флуоресцентный)"
-
-#: data/resources/ui/preferences.ui:103
-msgctxt ""
-"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
-msgid "F3 (White Fluorescent)"
-msgstr "F3 (Белый флуоресцентный)"
-
-#: data/resources/ui/preferences.ui:104
-msgctxt ""
-"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
-msgid "F4 (Warm White Fluorescent)"
-msgstr "F4 (Теплый белый флуоресцентный)"
-
-#: data/resources/ui/preferences.ui:105
-msgctxt ""
-"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
-msgid "F5 (Daylight Fluorescent)"
-msgstr "F5 (Дневной флуоресцентный)"
-
-#: data/resources/ui/preferences.ui:106
-msgctxt ""
-"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
-msgid "F6 (Lite White Fluorescent)"
-msgstr "F6 (Легкий белый флуоресцентный)"
-
-#: data/resources/ui/preferences.ui:107
-msgctxt ""
-"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
-msgid "F7 (Daylight fluorescent, D65 simulator)"
-msgstr "F7 (Дневной флуоресцентный, имитация D65)"
-
-#: data/resources/ui/preferences.ui:108
-msgctxt ""
-"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
-msgid "F8 (Sylvania F40, D50 simulator)"
-msgstr "F8 (Сильвания F40, имитация D50)"
-
-#: data/resources/ui/preferences.ui:109
-msgctxt ""
-"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
-msgid "F9 (Cool White Fluorescent)"
-msgstr "F9 (Холодный белый флуоресцентный)"
-
-#: data/resources/ui/preferences.ui:110
-msgctxt ""
-"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
-msgid "F10 (Ultralume 50, Philips TL85)"
-msgstr "F10 (Ультралюм 50, Philips TL85)"
-
-#: data/resources/ui/preferences.ui:111
-msgctxt ""
-"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
-msgid "F11 (Ultralume 40, Philips TL84)"
-msgstr "F11 (Ультралюм 40, Philips TL84)"
-
-#: data/resources/ui/preferences.ui:112
-msgctxt ""
-"CIE illuminant, more info at https: en.wikipedia.org wiki Standard_illuminant"
-msgid "F12 (Ultralume 30, Philips TL83)"
-msgstr "F12 (Ультралюм 30, Philips TL83)"
-
-#: data/resources/ui/preferences.ui:125
-msgid "CIE Standard Observer"
-msgstr "Стандарт измерения CIE"
-
-#: data/resources/ui/preferences.ui:126
-msgid "The CIE standard observer's field of view"
-msgstr "Поле зрения стандарта измерения CIE"
-
-#: data/resources/ui/preferences.ui:130
-msgctxt "CIE 2° standard observer"
-msgid "2°"
-msgstr "2°"
-
-#: data/resources/ui/preferences.ui:131
-msgctxt "CIE 10° standard observer"
-msgid "10°"
-msgstr "10°"
-
-#: data/resources/ui/preferences.ui:141
-msgid "Color Formats"
-msgstr "Форматы цветов"
-
-#: data/resources/ui/preferences.ui:142
-msgid "Customize the visible formats and in which order they are displayed."
-msgstr "Настройте видимые форматы и порядок их отображения."
-
-#: data/resources/ui/preferences.ui:146
-msgctxt " Tooltip of the button to reset the format order"
-msgid "Reset Order"
-msgstr "Сбросить порядок"
-
-#: data/resources/ui/preferences.ui:168 data/resources/ui/preferences.ui:171
-msgid "Formats"
-msgstr "Форматы"
-
-#: data/resources/ui/preferences.ui:172
-msgid ""
-"Edit how the color formats are displayed. The “{}” will be replaced in with "
-"the values of the formats."
-msgstr ""
-"Изменить способ отображения цветовых форматов. “{}” будут заменены на "
-"значения форматов."
-
-#: data/resources/ui/preferences.ui:175
-msgid "RGB Format"
-msgstr "Формат RGB"
-
-#: data/resources/ui/preferences.ui:182
-msgid "HSL Format"
-msgstr "Формат HSL"
-
-#: data/resources/ui/preferences.ui:189
-msgid "HSV Format"
-msgstr "Формат HSV"
-
-#: data/resources/ui/preferences.ui:196
-msgid "CMYK Format"
-msgstr "Формат CMYK"
-
-#: data/resources/ui/preferences.ui:203
-msgid "XYZ Format"
-msgstr "Формат XYZ"
-
-#: data/resources/ui/preferences.ui:210
-msgid "CIELAB Format"
-msgstr "Формат CIELAB"
-
-#: data/resources/ui/preferences.ui:217
-msgid "HWB Format"
-msgstr "Формат HWB"
-
-#: data/resources/ui/preferences.ui:224
-msgid "CIELCh/HCL Format"
-msgstr "Формат CIELCh/HCL"
-
-#: data/resources/ui/preferences.ui:231
-msgid "LMS Format"
-msgstr "Формат LMS"
-
-#: data/resources/ui/preferences.ui:238
-msgid "Hunter Lab Format"
-msgstr "Формат Hunter Lab"
-
-#: src/widgets/palette_dialog.rs:122
-msgctxt "Name for tints (lighter variants) of the color"
-msgid "Tints"
-msgstr "Тона"
-
-#: src/widgets/palette_dialog.rs:126
-msgctxt "Name for shades (darker variants) of the color"
-msgid "Shades"
-msgstr "Оттенки"
-
-#: src/widgets/palette_dialog.rs:132
-msgctxt "Name for the opposite/complementary color (e.g. blue ⇔ yellow)"
-msgid "Complementary"
-msgstr "Дополнительный"
-
-#: src/widgets/palette_dialog.rs:139
-msgctxt ""
-"The name of the color palette. Consist of the two opposite colors (e.g. blue "
-"⇔ orange / green)"
-msgid "Split-Complementary"
-msgstr "Дополнительный-раздельный"
-
-#: src/widgets/palette_dialog.rs:146
-msgctxt ""
-"Name of the color palette, which would form a triangle above the color wheel"
-msgid "Triadic"
-msgstr "Триадический"
-
-#: src/widgets/palette_dialog.rs:151
-msgctxt "The name of the color palette."
-msgid "Tetradic"
-msgstr "Тетрадический"
-
-#: src/widgets/palette_dialog.rs:157
-msgctxt "Color palette consisting of six slight shifted colors"
-msgid "Analogous"
-msgstr "Аналоговый"
-
-#: src/widgets/preferences_window.rs:169
+#: data/resources/ui/preferences/name-sources-dialog.blp:5
+#: data/resources/ui/preferences/preferences.blp:29
+msgid "Name Sources"
+msgstr "Источники названий"
+
+#: data/resources/ui/preferences/name-sources-dialog.blp:17
 msgctxt ""
 "Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
 "#html4"
 msgid "Basic"
 msgstr "Базовый"
 
-#: src/widgets/preferences_window.rs:171
-msgid "Show color names from the w3c basic color keyword set"
-msgstr "Показать названия цветов из базового набора ключевых слов w3c"
+#: data/resources/ui/preferences/name-sources-dialog.blp:18
+msgid "Basic web colors"
+msgstr "Основные веб-цвета"
 
-#: src/widgets/preferences_window.rs:177
+#: data/resources/ui/preferences/name-sources-dialog.blp:22
 msgctxt ""
 "Name of the extended color keyword set from https://www.w3.org/TR/css-"
 "color-3/#svg-color"
 msgid "Extended"
 msgstr "Расширенный"
 
-#: src/widgets/preferences_window.rs:179
-msgid "Show color names from the w3c extended color keyword  set"
-msgstr ""
-"Показать названия цветов из расширенного набора ключевых слов цвета w3c"
+#: data/resources/ui/preferences/name-sources-dialog.blp:23
+msgid "X11 and SVG color values"
+msgstr "Значения цветов X11 и SVG"
 
-#: src/widgets/preferences_window.rs:183
+#: data/resources/ui/preferences/name-sources-dialog.blp:27
 msgctxt ""
 "Name of the color set from the GNOME color palette (https://developer.gnome."
 "org/hig/reference/palette.html)"
-msgid "GNOME color palette"
+msgid "GNOME Color Palette"
 msgstr "Цветовая палитра GNOME"
 
-#: src/widgets/preferences_window.rs:184
-msgid "Show color names from the GNOME color palette"
-msgstr "Показать названия цветов из цветовой палитры GNOME"
+#: data/resources/ui/preferences/name-sources-dialog.blp:28
+msgid "Colors for GNOME app icons and illustrations"
+msgstr "Цвета для значков и иллюстраций приложений GNOME"
 
-#: src/widgets/preferences_window.rs:188
+#: data/resources/ui/preferences/name-sources-dialog.blp:32
 msgctxt "Name of the color set from the xkcd color survey"
-msgid "xkcd"
-msgstr "xkcd"
+msgid "xkcd Color Survey"
+msgstr "xkcd исследование цвета"
 
-#: src/widgets/preferences_window.rs:189
-msgid "Show color names from the xkcd color survey"
-msgstr "Показать названия цветов из цветового опроса xkcd"
+#: data/resources/ui/preferences/name-sources-dialog.blp:33
+msgid "954 RGB colors named by volunteers"
+msgstr "954 цвета RGB, названные волонтерами"
 
-#: src/widgets/preferences_window.rs:328
-msgid "Move Up"
-msgstr "Переместить вверх"
+#: data/resources/ui/preferences/preferences.blp:11
+msgid "General"
+msgstr "Общие"
 
-#: src/widgets/preferences_window.rs:330
-msgid "Move Down"
-msgstr "Переместить вниз"
+#: data/resources/ui/preferences/preferences.blp:14
+msgid "Formatting"
+msgstr "Форматирование"
 
-#: src/widgets/preferences_window.rs:453
-msgid "Hex-Code"
-msgstr "Шестнадцатеричный код"
+#: data/resources/ui/preferences/preferences.blp:17
+msgid "Alpha-Value-Position"
+msgstr "Позиция-альфа-значения"
 
-#: src/widgets/preferences_window.rs:458
-msgid "RGB"
-msgstr "RGB"
+#: data/resources/ui/preferences/preferences.blp:18
+msgid "Where the Alphavalue is positioned in the Hexstring"
+msgstr "Позиция альфа-значения в шестнадцатеричной строке"
 
-#: src/widgets/preferences_window.rs:461
-msgid "HSL"
-msgstr "HSL"
+#: data/resources/ui/preferences/preferences.blp:21
+msgctxt "Alphavalue is not shown"
+msgid "None"
+msgstr "Нет"
 
-#: src/widgets/preferences_window.rs:464
-msgid "HSV"
-msgstr "HSV"
+#: data/resources/ui/preferences/preferences.blp:22
+msgctxt "Alphavalue is shown at the end"
+msgid "End"
+msgstr "В конце"
 
-#: src/widgets/preferences_window.rs:468
-msgid "CMYK"
-msgstr "CMYK"
+#: data/resources/ui/preferences/preferences.blp:23
+msgctxt "Alphavalue is shown at the start"
+msgid "Start"
+msgstr "В начале"
 
-#: src/widgets/preferences_window.rs:473
-msgid "XYZ"
-msgstr "XYZ"
+#: data/resources/ui/preferences/preferences.blp:30
+msgid "Sources for displaying color names"
+msgstr "Источники для отображения названий цветов"
 
-#: src/widgets/preferences_window.rs:477
-msgid "CIELAB"
-msgstr "CIELAB"
+#: data/resources/ui/preferences/preferences.blp:41
+#: data/resources/ui/preferences/preferences.blp:49
+msgid "Precision"
+msgstr "Точность"
 
-#: src/widgets/preferences_window.rs:482
-msgid "HWB"
-msgstr "HWB"
+#: data/resources/ui/preferences/preferences.blp:57
+msgid "CIE Color Space"
+msgstr "Цветовое пространство CIE"
 
-#: src/widgets/preferences_window.rs:486
-msgid "CIELCh / HCL"
-msgstr "CIELCh / HCL"
+#: data/resources/ui/preferences/preferences.blp:60
+msgid "CIE Illuminants"
+msgstr "Источники света CIE"
 
-#: src/widgets/preferences_window.rs:492
-msgid "Name"
-msgstr "Название"
+#: data/resources/ui/preferences/preferences.blp:61
+msgid "Lighting conditions for the CIE color space"
+msgstr "Условия освещения для цветового пространства CIE"
 
-#: src/widgets/preferences_window.rs:495 src/window.rs:432 src/window.rs:455
-#: src/window.rs:630 src/window.rs:701
-msgctxt "Information that no name for the color could be found"
-msgid "Not named"
-msgstr "Без названия"
+#: data/resources/ui/preferences/preferences.blp:69
+msgid "A (Incandescent/tungsten)"
+msgstr "A (Лампа накаливания/вольфрамовая лампа)"
 
-#: src/widgets/preferences_window.rs:500
-msgid "LMS"
-msgstr "LMS"
+#: data/resources/ui/preferences/preferences.blp:70
+msgid "B (Old direct sunlight at noon)"
+msgstr "B (Старый прямой солнечный свет в полдень)"
 
-#: src/widgets/preferences_window.rs:504
-msgid "Hunter Lab"
-msgstr "Hunter Lab"
+#: data/resources/ui/preferences/preferences.blp:71
+msgid "C (Old daylight)"
+msgstr "C (Старый дневной свет)"
+
+#: data/resources/ui/preferences/preferences.blp:72
+msgid "D50 (ICC profile PCS)"
+msgstr "D50 (Профиль ICC PCS)"
+
+#: data/resources/ui/preferences/preferences.blp:73
+msgid "D55 (Mid-morning daylight)"
+msgstr "D55 (Средний утренний свет)"
+
+#: data/resources/ui/preferences/preferences.blp:74
+msgid "D65 (Daylight, sRGB, Adobe-RGB)"
+msgstr "D65 (Дневной свет, sRGB, Adobe-RGB)"
+
+#: data/resources/ui/preferences/preferences.blp:75
+msgid "D75 (North sky daylight)"
+msgstr "D75 (Дневной свет северного неба)"
+
+#: data/resources/ui/preferences/preferences.blp:76
+msgid "E (Equal energy)"
+msgstr "E (Равная энергия)"
+
+#: data/resources/ui/preferences/preferences.blp:77
+msgid "F1 (Daylight Fluorescent)"
+msgstr "F1 (Дневной флуоресцентный)"
+
+#: data/resources/ui/preferences/preferences.blp:78
+msgid "F2 (Cool fluorescent)"
+msgstr "F2 (Холодный флуоресцентный)"
+
+#: data/resources/ui/preferences/preferences.blp:79
+msgid "F3 (White Fluorescent)"
+msgstr "F3 (Белый флуоресцентный)"
+
+#: data/resources/ui/preferences/preferences.blp:80
+msgid "F4 (Warm White Fluorescent)"
+msgstr "F4 (Теплый белый флуоресцентный)"
+
+#: data/resources/ui/preferences/preferences.blp:81
+msgid "F5 (Daylight Fluorescent)"
+msgstr "F5 (Дневной флуоресцентный)"
+
+#: data/resources/ui/preferences/preferences.blp:82
+msgid "F6 (Lite White Fluorescent)"
+msgstr "F6 (Легкий белый флуоресцентный)"
+
+#: data/resources/ui/preferences/preferences.blp:83
+msgid "F7 (Daylight fluorescent, D65 simulator)"
+msgstr "F7 (Дневной флуоресцентный, имитация D65)"
+
+#: data/resources/ui/preferences/preferences.blp:84
+msgid "F8 (Sylvania F40, D50 simulator)"
+msgstr "F8 (Сильвания F40, имитация D50)"
+
+#: data/resources/ui/preferences/preferences.blp:85
+msgid "F9 (Cool White Fluorescent)"
+msgstr "F9 (Холодный белый флуоресцентный)"
+
+#: data/resources/ui/preferences/preferences.blp:86
+msgid "F10 (Ultralume 50, Philips TL85)"
+msgstr "F10 (Ультралюм 50, Philips TL85)"
+
+#: data/resources/ui/preferences/preferences.blp:87
+msgid "F11 (Ultralume 40, Philips TL84)"
+msgstr "F11 (Ультралюм 40, Philips TL84)"
+
+#: data/resources/ui/preferences/preferences.blp:88
+msgid "F12 (Ultralume 30, Philips TL83)"
+msgstr "F12 (Ультралюм 30, Philips TL83)"
+
+#: data/resources/ui/preferences/preferences.blp:100
+msgid "CIE Standard Observer"
+msgstr "Стандарт измерения CIE"
+
+#: data/resources/ui/preferences/preferences.blp:101
+msgid "The CIE standard observer's field of view"
+msgstr "Поле зрения стандарта измерения CIE"
+
+#: data/resources/ui/preferences/preferences.blp:104
+msgid "2°"
+msgstr "2°"
+
+#: data/resources/ui/preferences/preferences.blp:105
+msgid "10°"
+msgstr "10°"
+
+#: data/resources/ui/preferences/preferences.blp:112
+msgid "Color Formats"
+msgstr "Форматы цветов"
+
+#: data/resources/ui/preferences/preferences.blp:113
+msgid "Customize the visible formats and in which order they are displayed."
+msgstr "Настройте видимые форматы и порядок их отображения."
+
+#: data/resources/ui/preferences/preferences.blp:118
+msgctxt " Tooltip of the button to reset the format order"
+msgid "Reset Order"
+msgstr "Сбросить порядок"
+
+#: data/resources/ui/preferences/preferences.blp:138
+#: data/resources/ui/preferences/preferences.blp:141
+msgid "Formats"
+msgstr "Форматы"
+
+#: data/resources/ui/preferences/preferences.blp:142
+msgid ""
+"Edit how the color formats are displayed. The “{}” will be replaced in with "
+"the values of the formats. Custom formats cannot be used as input."
+msgstr ""
+"Изменить способ отображения цветовых форматов. “{}” будут заменены на "
+"значения форматов. Пользовательские форматы не могут быть использованы в "
+"качестве входных."
+
+#: data/resources/ui/preferences/preferences.blp:145
+msgid "RGB Format"
+msgstr "Формат RGB"
+
+#: data/resources/ui/preferences/preferences.blp:151
+msgid "HSL Format"
+msgstr "Формат HSL"
+
+#: data/resources/ui/preferences/preferences.blp:157
+msgid "HSV Format"
+msgstr "Формат HSV"
+
+#: data/resources/ui/preferences/preferences.blp:163
+msgid "CMYK Format"
+msgstr "Формат CMYK"
+
+#: data/resources/ui/preferences/preferences.blp:169
+msgid "XYZ Format"
+msgstr "Формат XYZ"
+
+#: data/resources/ui/preferences/preferences.blp:175
+msgid "CIELAB Format"
+msgstr "Формат CIELAB"
+
+#: data/resources/ui/preferences/preferences.blp:181
+msgid "HWB Format"
+msgstr "Формат HWB"
+
+#: data/resources/ui/preferences/preferences.blp:187
+msgid "CIELCh/HCL Format"
+msgstr "Формат CIELCh/HCL"
+
+#: data/resources/ui/preferences/preferences.blp:193
+msgid "LMS Format"
+msgstr "Формат LMS"
+
+#: data/resources/ui/preferences/preferences.blp:199
+msgid "Hunter Lab Format"
+msgstr "Формат Hunter Lab"
+
+#: data/resources/ui/shortcuts.blp:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Общие"
+
+#: data/resources/ui/shortcuts.blp:14
+msgctxt "shortcut window"
+msgid "Show Preferences"
+msgstr "Показать параметры"
+
+#: data/resources/ui/shortcuts.blp:19
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Показать комбинации клавиш"
+
+#: data/resources/ui/shortcuts.blp:24
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Выйти"
+
+#: data/resources/ui/shortcuts.blp:30
+msgctxt "shortcut window"
+msgid "Color"
+msgstr "Цвет"
+
+#: data/resources/ui/shortcuts.blp:33
+msgctxt "shortcut window"
+msgid "Pick a new Color"
+msgstr "Выбрать новый цвет"
+
+#: data/resources/ui/shortcuts.blp:38
+msgctxt "shortcut window"
+msgid "Randomize the Color"
+msgstr "Случайный цвет"
+
+#: data/resources/ui/window.blp:7
+msgid "_Clear History"
+msgstr "_Очистить историю"
+
+#: data/resources/ui/window.blp:12
+msgid "_Random Color"
+msgstr "_Случайный цвет"
+
+#: data/resources/ui/window.blp:19
+msgid "_Preferences"
+msgstr "_Параметры"
+
+#: data/resources/ui/window.blp:24
+msgid "_Keyboard Shortcuts"
+msgstr "_Комбинации клавиш"
+
+#: data/resources/ui/window.blp:29
+msgid "_About Eyedropper"
+msgstr "_О приложении"
+
+#: data/resources/ui/window.blp:50
+msgid "No Color"
+msgstr "Нет цвета"
+
+#: data/resources/ui/window.blp:51
+msgid "Select a color from the screen to get started."
+msgstr "Выберите цвет с экрана чтобы начать."
+
+#: data/resources/ui/window.blp:53
+msgid "_Pick a Color"
+msgstr "_Выбрать цвет"
+
+#: data/resources/ui/window.blp:78
+msgctxt "Tooltip of the colorpicker button"
+msgid "Pick a Color"
+msgstr "Выбрать цвет"
+
+#: data/resources/ui/window.blp:85
+msgid "Main Menu"
+msgstr "Главное меню"
+
+#: data/resources/ui/window.blp:108
+msgctxt "Tooltip of the palette button"
+msgid "Open Palette Window"
+msgstr "Открыть окно палитры"
+
+#: data/resources/ui/window.blp:128
+msgid "Copy Name"
+msgstr "Копировать название"
+
+#: data/resources/ui/window.blp:133
+msgid "Copy Hex Code"
+msgstr "Копировать шестнадцатеричный код"
+
+#: data/resources/ui/window.blp:137
+msgid "Copy RGB"
+msgstr "Копировать RGB"
+
+#: data/resources/ui/window.blp:141
+msgid "Copy HSL"
+msgstr "Копировать HSL"
+
+#: data/resources/ui/window.blp:145
+msgid "Copy HSV"
+msgstr "Копировать HSV"
+
+#: data/resources/ui/window.blp:149
+msgid "Copy CMYK"
+msgstr "Копировать CMYK"
+
+#: data/resources/ui/window.blp:153
+msgid "Copy XYZ"
+msgstr "Копировать XYZ"
+
+#: data/resources/ui/window.blp:158
+msgid "Copy CIELAB"
+msgstr "Копировать CIELAB"
+
+#: data/resources/ui/window.blp:163
+msgid "Copy HWB"
+msgstr "Копировать HWB"
+
+#: data/resources/ui/window.blp:168
+msgid "Copy CIELCh / HCL"
+msgstr "Копировать CIELCh/HCL"
+
+#: data/resources/ui/window.blp:173
+msgid "Copy LMS"
+msgstr "Копировать LMS"
+
+#: data/resources/ui/window.blp:178
+msgid "Copy Hunter Lab"
+msgstr "Копировать Hunter Lab"
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
-#: src/widgets/about_window.rs:51
+#: src/widgets/about_window.rs:47
 msgid "translator-credits"
 msgstr ""
 "Сергей Ворон <voron.s.a@gmail.com>\n"
-"Давид Лапшин <ddaudix@gmail.com>"
+"Давид Лапшин <ddaudix@gmail.com>\n"
+"Aleksandr Melman <Alexmelman88@gmail.com>"
 
-#: src/widgets/about_window.rs:111
+#: src/widgets/about_window.rs:85
+msgid "Parse RGBA/ARGB Hex-Colors"
+msgstr "Разбор шестнадцатеричных цветов RGBA/ARGB"
+
+#: src/widgets/about_window.rs:105
 msgctxt ""
 "The changelog of the current version. Should be similar to the CHANGELOG.md "
 "file at the project root. Please ensure that the tags have a matching "
 "closing tag. Since xgettext does not recognize rust multiline strings, this "
 "should be on a single line using line breaks (\\n) for new lines."
 msgid ""
-"<p>A minor release with many small QoL improvements.</p><p>Added:</p>\n"
-"<ul><li>Show a toast with an Undo option when clearing the history</"
-"li><li>Use Ctrl-Q to close the window</li><li>Use a default minium window "
-"size, content should no longer unnecessarily cut off</li><li>New icon by "
-"@bertob</li><li>Export palettes as Adobe Swatch Exchange (ASE), hex, PAL, "
-"Paint.NET (txt) files</li><li>Minor changes to the store metadata</li></"
-"ul><p>Changed:</p>\n"
-"<ul><li>Hunter-Lab now displays 0 instead of NaN</li><li>Improved tooltips "
-"for copying colors</li><li>Palette window now uses a button with a more "
-"explicit text instead of an icon</li><li>Reworded project description</"
-"li><li>Updated all screenshots</li></ul><p>Fixed:</p>\n"
-"<ul><li>Separator is now hidden when the history list is hidden</"
-"li><li>Improved editing experience when change the Hex color/name</li></ul>"
+"<p>A new release with exciting new features and many improvements.</p>\n"
+"<ul><li>Allow entering any format</li><li>Display color in overview search</"
+"li><li>Export palettes to LibreOffice</li><li>A visual differentiation "
+"between color and background</li><li>Improved color conversion</"
+"li><li>Visual refinements to match the state of the art of GNOME apps</"
+"li><li>Internal code improvements and bug fixes</li></ul>"
 msgstr ""
-"<p>Незначительный выпуск с множеством небольших улучшений качества жизни.</"
-"p><p>Добавлено:</p>\n"
-"<ul><li>Отображение всплывающего уведомления с опцией \"Отменить\" при "
-"очистке истории</li><li>Использование Ctrl-Q для закрытия окна</"
-"li><li>Использование минимального размер окна по умолчанию, содержимое "
-"больше не должно обрезаться без необходимости</li><li>Новая иконка от "
-"@bertob</li><li>Экспорт палитр в виде файлов Adobe Swatch Exchange (ASE), "
-"hex, PAL, Paint.NET (txt)</li><li>Небольшие изменения в метаданных хранения</"
-"li></ul><p>Изменено:</p>\n"
-"<ul><li>Hunter-Lab теперь отображает 0 вместо NaN</li><li>Улучшенные "
-"всплывающие подсказки для копирования цветов</li><li>Окно палитры теперь "
-"использует кнопку с более подробным текстом вместо иконки.</"
-"li><li>Переформулировано описание проекта</li><li>Обновлены все снимки "
-"экрана</li></ul><p>Исправлено:</p>\n"
-"<ul><li>Разделитель теперь скрыт, когда список истории скрыт</li><li>Улучшен "
-"опыт редактирования при изменении цвета/имени Hex</li></ul>"
+"<p> Новый релиз с захватывающими новыми функциями и множеством улучшений.</"
+"p>\n"
+"<ul><li>Позволяет вводить любой формат</li><li>Отображать цвет в обзорном "
+"поиске</li><li>Экспорт палитр в LibreOffice</li><li>Визуальное различие "
+"между цветом и фоном</li><li>Улучшенное преобразование цветов</"
+"li><li>Визуальные усовершенствования, соответствующие современному уровню "
+"приложений GNOME</li><li>Улучшения внутреннего кода и исправления ошибок</"
+"li></ul>"
 
-#: src/window.rs:213
+#: src/widgets/color_format_row.rs:190
+msgid "Copied “{}”"
+msgstr "Скопировано “{}”"
+
+#: src/widgets/palette_dialog.rs:80
+msgctxt "Name for tints (lighter variants) of the color"
+msgid "Tints"
+msgstr "Тона"
+
+#: src/widgets/palette_dialog.rs:82
+msgctxt "Name for shades (darker variants) of the color"
+msgid "Shades"
+msgstr "Оттенки"
+
+#: src/widgets/palette_dialog.rs:86
+msgctxt "Name for the opposite/complementary color (e.g. blue ⇔ yellow)"
+msgid "Complementary"
+msgstr "Дополнительный"
+
+#: src/widgets/palette_dialog.rs:91
+msgctxt ""
+"The name of the color palette. Consist of the two opposite colors (e.g. blue "
+"⇔ orange / green)"
+msgid "Split-Complementary"
+msgstr "Дополнительный-раздельный"
+
+#: src/widgets/palette_dialog.rs:96
+msgctxt ""
+"Name of the color palette, which would form a triangle above the color wheel"
+msgid "Triadic"
+msgstr "Триадический"
+
+#: src/widgets/palette_dialog.rs:99
+msgctxt "The name of the color palette."
+msgid "Tetradic"
+msgstr "Тетрадический"
+
+#: src/widgets/palette_dialog.rs:103
+msgctxt "Color palette consisting of six slight shifted colors"
+msgid "Analogous"
+msgstr "Аналоговый"
+
+#: src/widgets/preferences/preferences_window.rs:294
+msgid "Move Up"
+msgstr "Переместить вверх"
+
+#: src/widgets/preferences/preferences_window.rs:296
+msgid "Move Down"
+msgstr "Переместить вниз"
+
+#: src/widgets/preferences/preferences_window.rs:392
+msgid "Hex-Code"
+msgstr "Шестнадцатеричный код"
+
+#: src/widgets/preferences/preferences_window.rs:393
+msgid "RGB"
+msgstr "RGB"
+
+#: src/widgets/preferences/preferences_window.rs:394
+msgid "HSL"
+msgstr "HSL"
+
+#: src/widgets/preferences/preferences_window.rs:395
+msgid "HSV"
+msgstr "HSV"
+
+#: src/widgets/preferences/preferences_window.rs:396
+msgid "CMYK"
+msgstr "CMYK"
+
+#: src/widgets/preferences/preferences_window.rs:397
+msgid "XYZ"
+msgstr "XYZ"
+
+#: src/widgets/preferences/preferences_window.rs:398
+msgid "CIELAB"
+msgstr "CIELAB"
+
+#: src/widgets/preferences/preferences_window.rs:399
+msgid "HWB"
+msgstr "HWB"
+
+#: src/widgets/preferences/preferences_window.rs:400
+msgid "CIELCh / HCL"
+msgstr "CIELCh / HCL"
+
+#: src/widgets/preferences/preferences_window.rs:403
+msgid "Name"
+msgstr "Название"
+
+#: src/widgets/preferences/preferences_window.rs:406 src/window.rs:442
+#: src/window.rs:467 src/window.rs:666 src/window.rs:845
+msgctxt "Information that no name for the color could be found"
+msgid "Not named"
+msgstr "Без названия"
+
+#: src/widgets/preferences/preferences_window.rs:409
+msgid "LMS"
+msgstr "LMS"
+
+#: src/widgets/preferences/preferences_window.rs:411
+msgid "Hunter Lab"
+msgstr "Hunter Lab"
+
+#: src/window.rs:222
 msgid "Cleared history"
 msgstr "История очищена"
 
-#: src/window.rs:214
+#: src/window.rs:223
 msgid "Undo"
 msgstr "Отменить"
 
-#: src/window.rs:528
+#: src/window.rs:558
 msgid "Failed to get palette color"
 msgstr "Не удалось получить цвет палитры"
 
-#: src/window.rs:552
+#: src/window.rs:589
 msgid "Failed to pick a color"
 msgstr "Не удалось выбрать цвет"
 
-#. Translators: Do not replace the {}. These are used as placeholders for the copied values
-#: src/window.rs:647
-msgid "Copied: “{}”"
-msgstr "Скопировано: “{}”"
+#~ msgctxt "Alpha is not shown"
+#~ msgid "Not shown"
+#~ msgstr "Не показано"
+
+#~ msgid "Which color name sets should be used for the names"
+#~ msgstr "Какие наборы названий цветов следует использовать для названий"
+
+#~ msgid "Default Precision"
+#~ msgstr "Точность по умолчанию"
+
+#~ msgid "Use the recommended precision"
+#~ msgstr "Использовать рекомендуемую точность"
+
+#~ msgid "Show color names from the w3c basic color keyword set"
+#~ msgstr "Показать названия цветов из базового набора ключевых слов w3c"
+
+#~ msgid "Show color names from the w3c extended color keyword  set"
+#~ msgstr ""
+#~ "Показать названия цветов из расширенного набора ключевых слов цвета w3c"
+
+#~ msgid "Show color names from the GNOME color palette"
+#~ msgstr "Показать названия цветов из цветовой палитры GNOME"
+
+#~ msgctxt "Name of the color set from the xkcd color survey"
+#~ msgid "xkcd"
+#~ msgstr "xkcd"
+
+#~ msgid "Show color names from the xkcd color survey"
+#~ msgstr "Показать названия цветов из цветового опроса xkcd"
+
+#~ msgctxt ""
+#~ "The changelog of the current version. Should be similar to the CHANGELOG."
+#~ "md file at the project root. Please ensure that the tags have a matching "
+#~ "closing tag. Since xgettext does not recognize rust multiline strings, "
+#~ "this should be on a single line using line breaks (\\n) for new lines."
+#~ msgid ""
+#~ "<p>A minor release with many small QoL improvements.</p><p>Added:</p>\n"
+#~ "<ul><li>Show a toast with an Undo option when clearing the history</"
+#~ "li><li>Use Ctrl-Q to close the window</li><li>Use a default minium window "
+#~ "size, content should no longer unnecessarily cut off</li><li>New icon by "
+#~ "@bertob</li><li>Export palettes as Adobe Swatch Exchange (ASE), hex, PAL, "
+#~ "Paint.NET (txt) files</li><li>Minor changes to the store metadata</li></"
+#~ "ul><p>Changed:</p>\n"
+#~ "<ul><li>Hunter-Lab now displays 0 instead of NaN</li><li>Improved "
+#~ "tooltips for copying colors</li><li>Palette window now uses a button with "
+#~ "a more explicit text instead of an icon</li><li>Reworded project "
+#~ "description</li><li>Updated all screenshots</li></ul><p>Fixed:</p>\n"
+#~ "<ul><li>Separator is now hidden when the history list is hidden</"
+#~ "li><li>Improved editing experience when change the Hex color/name</li></"
+#~ "ul>"
+#~ msgstr ""
+#~ "<p>Незначительный выпуск с множеством небольших улучшений качества жизни."
+#~ "</p><p>Добавлено:</p>\n"
+#~ "<ul><li>Отображение всплывающего уведомления с опцией \"Отменить\" при "
+#~ "очистке истории</li><li>Использование Ctrl-Q для закрытия окна</"
+#~ "li><li>Использование минимального размер окна по умолчанию, содержимое "
+#~ "больше не должно обрезаться без необходимости</li><li>Новая иконка от "
+#~ "@bertob</li><li>Экспорт палитр в виде файлов Adobe Swatch Exchange (ASE), "
+#~ "hex, PAL, Paint.NET (txt)</li><li>Небольшие изменения в метаданных "
+#~ "хранения</li></ul><p>Изменено:</p>\n"
+#~ "<ul><li>Hunter-Lab теперь отображает 0 вместо NaN</li><li>Улучшенные "
+#~ "всплывающие подсказки для копирования цветов</li><li>Окно палитры теперь "
+#~ "использует кнопку с более подробным текстом вместо иконки.</"
+#~ "li><li>Переформулировано описание проекта</li><li>Обновлены все снимки "
+#~ "экрана</li></ul><p>Исправлено:</p>\n"
+#~ "<ul><li>Разделитель теперь скрыт, когда список истории скрыт</"
+#~ "li><li>Улучшен опыт редактирования при изменении цвета/имени Hex</li></ul>"
 
 #~ msgctxt ""
 #~ "The changelog of the current version. Should be similar to the CHANGELOG."
