@@ -8,7 +8,7 @@
   <summary>Pick and format colors</summary>
   <description>
     <p>
-      Pick any color from your screen and view it in different formats. Change the picked color or go back to 
+      Pick any color from your screen and view it in different formats. Change the picked color or go back to
       a previously picked color from the history list. Generate a list of different shades from the picked color.
     </p>
     <p>Features</p>
@@ -47,7 +47,7 @@
   <url type="translate">https://github.com/FineFindus/eyedropper#translation</url>
   <content_rating type="oars-1.1" />
   <releases>
-    <release version="1.0.0">
+    <release version="1.0.0" date="2023-09-27">
     <p>A new release with exciting new features and many improvements.</p>\n<ul><li>Allow entering any format</li><li>Display color in overview search</li><li>Export palettes to LibreOffice</li><li>A visual differentiation between color and background</li><li>Improved color conversion</li><li>Visual refinements to match the state of the art of GNOME apps</li><li>Internal code improvements and bug fixes</li></ul>
     </release>
     <release version="0.6.0" date="2023-02-24">

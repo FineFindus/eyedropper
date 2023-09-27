@@ -5,17 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-# [Unreleased] - 2023-09-
+# [1.0.0] - 2023-09-27
 
 ### Added
 - Show visual feedback when parsing input
 - Apply input with a new button
 - Display colors in overview search
-- Shadow to differentiate colors from background 
+- Shadow to differentiate colors from background
 - Export palettes to LibreOffice
 - Tooltip on primary menu
 - Czech translation
-- Portuguese translation 
+- Portuguese translation
 - Parse any format input
 - Allow for different separators in formats
 - Allow for whitespace in formats
@@ -27,7 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Use flat headerbar
 - Show pop-over for export file formats
-- Use GNOME 44 runtime
+- Use GNOME 45 runtime
 - Use CSS `lab` format
 - Use `von Kries` Matrix to convert to XYZ
 - Update to libadwaita 1.4
@@ -69,9 +69,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.5.1] - 2023-01-29
 
-### Added 
+### Added
 - Russian translation by @vorons
-- Use higher optimization options when compiling a release 
+- Use higher optimization options when compiling a release
 - Return the exit code when quitting
 
 ### Changed
@@ -85,7 +85,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Export the generated palettes from the palette dialog as a GIMP palette file
-- A `.doap` file to describe the project 
+- A `.doap` file to describe the project
 - Show a placeholder page when no color is picked
 - LMS color space can now be shown
 - Convert to Hunter-Lab color space
@@ -107,12 +107,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CIE standard observer for CIELab and CIELCh
 - Change CIE illuminants
 - The following translations have been added
-    - Spanish by [IngrownMink4](https://github.com/IngrownMink4)  
-    - Basque by [IngrownMink4](https://github.com/IngrownMink4)  
-    - Turkish by [libreajans](https://github.com/libreajans)  
-    - Dutch by [flipflop97](https://github.com/flipflop97)  
+    - Spanish by [IngrownMink4](https://github.com/IngrownMink4)
+    - Basque by [IngrownMink4](https://github.com/IngrownMink4)
+    - Turkish by [libreajans](https://github.com/libreajans)
+    - Dutch by [flipflop97](https://github.com/flipflop97)
     - Italian by [phaerrax](https://github.com/phaerrax)
-- Code refactoring 
+- Code refactoring
 
 ### Removed
 - Removed explicit dependency on the `libc` crate, as it is no longer needed with the new palette dialog
