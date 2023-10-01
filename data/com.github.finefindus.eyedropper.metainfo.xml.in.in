@@ -185,6 +185,6 @@
   <launchable type="desktop-id">@app-id@.desktop</launchable>
 
   <custom>
-    <value key="GnomeSoftware::key-colors">[(51, 209, 122), (39, 100, 132)]</value>
+    <value key="GnomeSoftware::key-colors">[(120, 217, 247)]</value>
   </custom>
 </component>
