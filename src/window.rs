@@ -281,7 +281,12 @@ impl AppWindow {
 
     /// Create a new history item
     fn create_history_item(&self, history_object: &HistoryObject) -> gtk::Button {
-        let color_button = gtk::Button::builder().margin_end(2).margin_start(2).build();
+        let color_button = gtk::Button::builder()
+            .margin_start(2)
+            .margin_end(2)
+            .margin_bottom(2)
+            .margin_top(2)
+            .build();
 
         // color button with the history color
         let color: Color = history_object.color().into();
