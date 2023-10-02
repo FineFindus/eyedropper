@@ -129,7 +129,7 @@ impl ColorFormatRow {
     pub fn switch_button(&self, show_apply: bool) {
         let button = &self.imp().format_button;
         if show_apply {
-            button.set_icon_name("checkmark-symbolic");
+            button.set_icon_name("check-plain-symbolic");
             button.add_css_class("suggested-action");
         } else {
             button.set_icon_name("edit-copy-symbolic");
