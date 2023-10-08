@@ -89,11 +89,14 @@ mod imp {
 
             obj.add_css_class(&css_class_name);
 
+            //set the action when the button is clicked
+            obj.set_detailed_action_name(&format!("win.set-color('{}')", color_hex));
+
             let tooltip = if color.alpha != 255 {
                 formatter.alpha_position = AlphaPosition::End;
                 formatter.hex_code()
             } else {
-                color_hex.clone()
+                color_hex
             };
             obj.set_tooltip_text(Some(&tooltip));
         }
@@ -103,7 +106,7 @@ mod imp {
 glib::wrapper! {
     pub struct HistoryItem(ObjectSubclass<imp::HistoryItem>)
     @extends gtk::Box, gtk::Widget, gtk::Button,
-    @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget, gtk::Orientable;
+    @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget, gtk::Orientable, gtk::Actionable;
 }
 
 #[gtk::template_callbacks]

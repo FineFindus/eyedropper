@@ -119,6 +119,16 @@ mod imp {
                 }
             });
 
+            klass.install_action("win.set-color", Some("s"), move |win, _, var| {
+                let Some(Ok(color)) = var
+                    .and_then(|v| v.get::<String>())
+                    .map(|v| Color::from_hex(&v, AlphaPosition::None))
+                else {
+                    return;
+                };
+                win.set_color(color);
+            });
+
             klass.install_action("win.remove-item", Some("s"), |win, _, var| {
                 let Some(Ok(color)) = var
                     .and_then(|v| v.get::<String>())
@@ -290,8 +300,8 @@ impl AppWindow {
         self.imp().history_list.bind_model(
             Some(&selection_model),
             glib::clone!(@weak self as window => @default-panic, move |obj| {
-                let history_object = obj.downcast_ref().expect("The object is not of type `HistoryObject`.");
-                let history_item = window.create_history_item(history_object);
+                let history_object = obj.downcast_ref::<HistoryObject>().expect("The object is not of type `HistoryObject`.");
+                let history_item = HistoryItem::new(history_object.color());
                 history_item.upcast()
             }),
         );
@@ -311,28 +321,6 @@ impl AppWindow {
         let visible = history.n_items() > 1;
         self.imp().history_list.set_visible(visible);
         self.action_set_enabled("app.clear_history", visible);
-    }
-
-    /// Create a new history item
-    fn create_history_item(&self, history_object: &HistoryObject) -> HistoryItem {
-        let color_button = HistoryItem::new(history_object.color());
-
-        //switch to color when clicked
-        color_button.connect_clicked(
-            glib::clone!(@weak self as window, @weak history_object => move |_, | {
-                //remove from history when clicking on it
-                match window.history().find(&history_object) {
-                    Some(index) if index != 0 => {
-                        window.history().remove(index);
-                        window.set_color(history_object.color().into());
-                    },
-                    Some(_) => {} // currently show item has index 0, it cannot be set and removed
-                    None => log::error!("Failed to find index for {}", history_object.color()),
-                }
-            }),
-        );
-
-        color_button
     }
 
     /// Save the window size when closing the window
