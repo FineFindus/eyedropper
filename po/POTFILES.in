@@ -16,6 +16,7 @@ data/resources/ui/window.blp
 src/main.rs
 src/widgets/about_window.rs
 src/widgets/color_format_row.rs
+src/widgets/history_item.rs
 src/widgets/palette_dialog.rs
 src/widgets/preferences/preferences_window.rs
 src/window.rs
