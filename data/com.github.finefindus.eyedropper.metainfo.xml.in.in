@@ -81,7 +81,7 @@
         <p>Added:</p>
         <ul>
           <li>Russian translation</li>
-          <li>Better optimizied releases</li>
+          <li>Better optimized releases</li>
           <li>Returns the exit code on quitting</li>
         </ul>
         <p>Changed:</p>
