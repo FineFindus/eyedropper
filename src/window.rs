@@ -12,6 +12,7 @@ use crate::colors::position::AlphaPosition;
 use crate::config::{APP_ID, PROFILE};
 use crate::model::history::HistoryObject;
 use crate::widgets::color_format_row::ColorFormatRow;
+use crate::widgets::history_item::HistoryItem;
 use crate::widgets::palette_dialog::PaletteDialog;
 
 mod imp {
@@ -115,6 +116,39 @@ mod imp {
             klass.install_action("win.show-toast", Some("(si)"), move |win, _, var| {
                 if let Some((ref toast, i)) = var.and_then(|v| v.get::<(String, i32)>()) {
                     win.show_toast(toast, adw::ToastPriority::__Unknown(i));
+                }
+            });
+
+            klass.install_action("win.remove-item", Some("s"), |win, _, var| {
+                let Some(Ok(color)) = var
+                    .and_then(|v| v.get::<String>())
+                    .map(|v| Color::from_hex(&v, AlphaPosition::None))
+                else {
+                    return;
+                };
+
+                let Some(index) = win.history().find_with_equal_func(|item| {
+                    item.downcast_ref::<HistoryObject>().unwrap().color() == color.into()
+                }) else {
+                    return;
+                };
+
+                win.history().remove(index);
+
+                // if the removed item was the current color/first item, show the next color
+                // otherwise the current (removed) color would still be shown
+                // safe to unwrap as the user should only be able to click the remove option when
+                // the list is showm, which is only the case for 2+ colors
+                if index == 0 {
+                    let next_color = win
+                        .history()
+                        .item(0)
+                        .and_then(|item| {
+                            item.downcast_ref::<HistoryObject>()
+                                .map(|item| item.color())
+                        })
+                        .unwrap();
+                    win.set_color(next_color.into());
                 }
             });
         }
@@ -280,42 +314,8 @@ impl AppWindow {
     }
 
     /// Create a new history item
-    fn create_history_item(&self, history_object: &HistoryObject) -> gtk::Button {
-        let color_button = gtk::Button::builder()
-            .margin_start(2)
-            .margin_end(2)
-            .margin_bottom(2)
-            .margin_top(2)
-            .build();
-
-        // color button with the history color
-        let color: Color = history_object.color().into();
-        let mut formatter = ColorFormatter::with_color(color);
-        let color_hex = formatter.hex_code();
-
-        let class_name = format!("history-button-{}", color_hex.replace('#', ""));
-
-        let css_provider = gtk::CssProvider::new();
-
-        if let Some(display) = gtk::gdk::Display::default() {
-            gtk::style_context_add_provider_for_display(&display, &css_provider, 400);
-        }
-
-        css_provider.load_from_data(&format!(
-            ".{} {{box-shadow: 5px 5px 5px @shade_color; background-color: {}; border-radius: 6px;}}",
-            class_name,
-            // ignore alpha values, they are not displayed properly
-            color_hex
-        ));
-        color_button.add_css_class(&class_name);
-
-        let tooltip = if color.alpha != 255 {
-            formatter.alpha_position = AlphaPosition::End;
-            formatter.hex_code()
-        } else {
-            color_hex
-        };
-        color_button.set_tooltip_text(Some(&tooltip));
+    fn create_history_item(&self, history_object: &HistoryObject) -> HistoryItem {
+        let color_button = HistoryItem::new(history_object.color());
 
         //switch to color when clicked
         color_button.connect_clicked(

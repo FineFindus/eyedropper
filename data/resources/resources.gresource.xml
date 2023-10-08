@@ -6,6 +6,7 @@
     <file compressed="true" preprocess="xml-stripblanks">ui/window.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/palette-window.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/color-format-row.ui</file>
+    <file compressed="true" preprocess="xml-stripblanks">ui/history-item.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/preferences/preferences.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/preferences/name-sources-dialog.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/preferences/custom-format-row.ui</file>
