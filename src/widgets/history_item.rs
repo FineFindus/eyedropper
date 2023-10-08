@@ -7,6 +7,8 @@ mod imp {
 
     use std::cell::Cell;
 
+    use gettextrs::gettext;
+
     use crate::colors::{color::Color, formatter::ColorFormatter, position::AlphaPosition};
 
     use super::*;
@@ -113,7 +115,7 @@ mod imp {
 
             let menu = gtk::gio::Menu::new();
             menu.append(
-                Some("Remove"),
+                Some(&gettext("Remove")),
                 Some(&format!("win.remove-item('{}')", color_hex)),
             );
             menu.freeze();
