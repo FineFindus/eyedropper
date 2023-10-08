@@ -5,4 +5,19 @@ template $HistoryItem : Button {
   margin-end: 2;
   margin-top: 2;
   margin-bottom: 2;
+
+  child: Gtk.Box {
+    Gtk.GestureClick right_click_gesture {
+      button: 3;
+    }
+
+    Gtk.GestureLongPress press_gesture {
+      touch-only: true;
+    }
+
+    Gtk.PopoverMenu popover {
+      halign: start;
+      has-arrow: false;
+    }
+  };
 }

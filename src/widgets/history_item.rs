@@ -17,12 +17,21 @@ mod imp {
     pub struct HistoryItem {
         #[property(get, set = Self::set_color)]
         pub(super) color: Cell<gtk::gdk::RGBA>,
+        #[template_child]
+        pub(super) popover: TemplateChild<gtk::PopoverMenu>,
+        #[template_child]
+        pub(super) right_click_gesture: TemplateChild<gtk::GestureClick>,
+        #[template_child]
+        pub(super) press_gesture: TemplateChild<gtk::GestureLongPress>,
     }
 
     impl Default for HistoryItem {
         fn default() -> Self {
             Self {
                 color: Cell::new(gtk::gdk::RGBA::TRANSPARENT),
+                popover: TemplateChild::default(),
+                right_click_gesture: TemplateChild::default(),
+                press_gesture: TemplateChild::default(),
             }
         }
     }
@@ -48,6 +57,19 @@ mod imp {
         fn constructed(&self) {
             self.parent_constructed();
             let obj = self.obj();
+
+            self.right_click_gesture.connect_pressed(
+                glib::clone!(@weak obj => move |gesture, _, _x, _y| {
+                    obj.show_popover();
+                    gesture.set_state(gtk::EventSequenceState::Claimed);
+                }),
+            );
+
+            self.press_gesture
+                .connect_pressed(glib::clone!(@weak obj => move |gesture, _x, _y| {
+                    obj.show_popover();
+                    gesture.set_state(gtk::EventSequenceState::Claimed);
+                }));
         }
 
         fn dispose(&self) {
@@ -89,6 +111,14 @@ mod imp {
 
             obj.add_css_class(&css_class_name);
 
+            let menu = gtk::gio::Menu::new();
+            menu.append(
+                Some("Remove"),
+                Some(&format!("win.remove-item('{}')", color_hex)),
+            );
+            menu.freeze();
+            self.popover.set_menu_model(Some(&menu));
+
             //set the action when the button is clicked
             obj.set_detailed_action_name(&format!("win.set-color('{}')", color_hex));
 
@@ -113,5 +143,10 @@ glib::wrapper! {
 impl HistoryItem {
     pub fn new(color: gtk::gdk::RGBA) -> Self {
         Object::builder().property("color", color).build()
+    }
+
+    pub(super) fn show_popover(&self) {
+        let imp = self.imp();
+        imp.popover.popup();
     }
 }
