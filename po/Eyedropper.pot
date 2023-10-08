@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-10-02 21:04+0000\n"
+"POT-Creation-Date: 2023-10-08 19:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -646,8 +646,8 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:406 src/window.rs:447
-#: src/window.rs:472 src/window.rs:671 src/window.rs:850
+#: src/widgets/preferences/preferences_window.rs:406 src/window.rs:435
+#: src/window.rs:460 src/window.rs:659 src/window.rs:838
 msgctxt "Information that no name for the color could be found"
 msgid "Not named"
 msgstr ""
@@ -660,18 +660,18 @@ msgstr ""
 msgid "Hunter Lab"
 msgstr ""
 
-#: src/window.rs:222
+#: src/window.rs:266
 msgid "Cleared history"
 msgstr ""
 
-#: src/window.rs:223
+#: src/window.rs:267
 msgid "Undo"
 msgstr ""
 
-#: src/window.rs:563
+#: src/window.rs:551
 msgid "Failed to get palette color"
 msgstr ""
 
-#: src/window.rs:594
+#: src/window.rs:582
 msgid "Failed to pick a color"
 msgstr ""

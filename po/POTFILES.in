@@ -5,6 +5,7 @@ data/com.github.finefindus.eyedropper.desktop.in.in
 data/com.github.finefindus.eyedropper.metainfo.xml.in.in
 # UI files
 data/resources/ui/color-format-row.blp
+data/resources/ui/history-item.blp
 data/resources/ui/palette-window.blp
 data/resources/ui/preferences/custom-format-row.blp
 data/resources/ui/preferences/name-sources-dialog.blp
