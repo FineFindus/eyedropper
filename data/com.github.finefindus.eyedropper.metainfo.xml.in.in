@@ -6,6 +6,9 @@
   <project_license>GPL-3.0</project_license>
   <name>Eyedropper</name>
   <summary>Pick and format colors</summary>
+  <developer_name translatable="no">FineFindus</developer_name>
+  <update_contact>finefindus@proton.me</update_contact>
+  <project_group>GNOME</project_group>
   <description>
     <p>
       Pick any color from your screen and view it in different formats. Change the picked color or go back to
@@ -197,8 +200,6 @@
     <keyword>Picker</keyword>
     <keyword>Palette</keyword>
   </keywords>
-  <developer_name translatable="no">FineFindus</developer_name>
-  <update_contact>finefindusgh@gmail.com</update_contact>
   <translation type="gettext">@gettext-package@</translation>
   <launchable type="desktop-id">@app-id@.desktop</launchable>
 
