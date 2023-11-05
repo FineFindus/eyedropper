@@ -724,3 +724,102 @@ mod tests {
         );
     }
 }
+
+pub fn oklab(input: &str) -> IResult<&str, Color> {
+    let (input, _) =   tag("oklab(")(input)?;
+
+    //lightness can either be an percentage or a number between 0 and 100
+    let (input, l) = terminated(
+        whitespace(alt((
+            map(whitespace(parse_percentage), |percentage| {
+                percentage
+            }),
+            nom::number::complete::float,
+        ))),
+        opt(whitespace(separator)),
+    )(input)?;
+
+    //both a and b can either be an percentage between -100% and 100% or a number between -0.4 and 0.4
+    let (input, ok_a_b) = many_m_n(
+        2,
+        2,
+        terminated(
+            whitespace(alt((
+                map(alt((parse_percentage, percentage)), |percentage| {
+                    percentage * 0.4
+                }),
+                nom::number::complete::float,
+            ))),
+            opt(whitespace(separator)),
+        ),
+    )(input)?;
+
+    let (input, alpha) = opt(whitespace(map(
+        alt((percentage, relative_percentage)),
+        |percentage| (percentage * 255.0) as u8,
+    )))(input)?;
+
+    let (input, _) = opt(whitespace(tag(")")))(input)?;
+
+    let color = Color::from_oklab(
+        l.clamp(0.0, 1.0),
+        ok_a_b[0].clamp(-0.4, 0.4),
+        ok_a_b[1].clamp(-0.4, 0.4),
+        alpha.unwrap_or(255),
+    );
+
+    Ok((input, color))
+}
+
+pub fn oklch(input: &str) -> IResult<&str, Color> {
+    let (input, _) =   tag("oklab(")(input)?;
+
+    //lightness can either be an percentage or a number between 0 and 100
+    let (input, l) = terminated(
+        whitespace(alt((
+            map(whitespace(parse_percentage), |percentage| {
+                percentage
+            }),
+            nom::number::complete::float,
+        ))),
+        opt(whitespace(separator)),
+    )(input)?;
+
+    //chroma can be percentage between -100% and 100% or a value between -0.4 and 0.4
+    let (input, c) = terminated(
+        whitespace(alt((
+            map(whitespace(parse_percentage), |percentage| {
+                percentage * 0.4
+            }),
+            nom::number::complete::float,
+        ))),
+        opt(whitespace(separator)),
+    )(input)?;
+
+    //hue can be percentage between 0% and 100% or value between 0 and 360
+    let (input, h) = terminated(
+        whitespace(alt((
+            map(whitespace(parse_percentage), |percentage| {
+                percentage * 360.0
+            }),
+            nom::number::complete::float,
+        ))),
+        opt(whitespace(separator)),
+    )(input)?;
+
+    let (input, alpha) = opt(whitespace(map(
+        alt((percentage, relative_percentage)),
+        |percentage| (percentage * 255.0) as u8,
+    )))(input)?;
+
+    let (input, _) = opt(whitespace(tag(")")))(input)?;
+
+    let color = Color::from_oklch(
+        l.clamp(0.0, 1.0),
+        c.clamp(-0.4, 0.4),
+        h.clamp(0.0, 360.0),
+        alpha.unwrap_or(255),
+    );
+
+    Ok((input, color))
+}

@@ -337,6 +337,36 @@ impl Color {
         (long, medium, short)
     }
 
+    /// Convert color to OKLAB color space
+    ///
+    /// https://bottosson.github.io/posts/oklab/
+    pub fn to_oklab(self) -> (f32, f32, f32) {
+        let (x, y, z) = self.to_xyz();
+
+        let l = 0.8189330101 * x + 0.3618667424 * y - 0.1288597137 * z;
+        let m = 0.0329845436 * x + 0.9293118715 * y + 0.0361456387 * z;
+        let s = 0.0482003018 * x + 0.2643662691 * y + 0.6338517070 * z;
+
+        let ll = l.cbrt();
+        let mm = m.cbrt();
+        let ss = s.cbrt();
+
+        return (
+            0.2104542553 * ll + 0.7936177850 * mm - 0.0040720468 * ss,
+            1.9779984951 * ll - 2.4285922050 * mm + 0.4505937099 * ss,
+            0.0259040371 * ll + 0.7827717662 * mm - 0.8086757660 * ss,
+        )
+    }
+
+    pub fn to_oklch(self) -> (f32, f32, f32) {
+        let (l, a, b) = self.to_oklab();
+
+        let c = a.hypot(b);
+        let h = b.atan2(a).to_degrees();
+
+        (l, c, h)
+    }
+
     /// Create a color from a hex string.
     ///
     /// The hex color optionally start with '#'.
@@ -456,6 +486,30 @@ impl Color {
         ten_deg_observer: bool,
     ) -> Result<Color, ColorError> {
         match parser::hunter_lab(input, illuminant, ten_deg_observer) {
+            Ok((_input, color)) => Ok(color),
+            Err(err) => {
+                log::error!("Failed to parse color: {}", err);
+                Err(ColorError::ParsingError(err.to_string()))
+            }
+        }
+    }
+
+    pub fn from_oklab_string(
+        input: &str,
+    ) -> Result<Color, ColorError> {
+        match parser::oklab(input) {
+            Ok((_input, color)) => Ok(color),
+            Err(err) => {
+                log::error!("Failed to parse color: {}", err);
+                Err(ColorError::ParsingError(err.to_string()))
+            }
+        }
+    }
+
+    pub fn from_oklch_string(
+        input: &str,
+    ) -> Result<Color, ColorError> {
+        match parser::oklch(input) {
             Ok((_input, color)) => Ok(color),
             Err(err) => {
                 log::error!("Failed to parse color: {}", err);
@@ -712,6 +766,29 @@ impl Color {
         let z = -(b / kb * (y / ref_y).sqrt() - (y / ref_y)) * ref_z;
 
         Self::from_xyz(x, y, z, 255)
+    }
+
+    pub fn from_oklab(l: f32, a: f32, b: f32, alpha: u8) -> Self {
+        let ll = l + 0.3963377774 * a + 0.2158037573 * b;
+        let mm = l - 0.1055613458 * a - 0.0638541728 * b;
+        let ss = l - 0.0894841775 * a - 1.2914855480 * b;
+        
+        let l = ll * ll * ll;
+        let m = mm * mm * mm;
+        let s = ss * ss * ss;
+
+        let x = +1.2270138511 * l - 0.5577999807 * m + 0.2812561490 * s,
+        let y = -0.0405801784 * l + 1.1122568696 * m - 0.0716766787 * s,
+        let z = -0.0763812845 * l - 0.4214819784 * m + 1.5861632204 * s,
+            
+        
+    }
+
+    pub fn from_oklch(l: f32, c: f32, h: f32, alpha: u8) -> Self {
+        let a = c * h.to_radians().cos();
+        let b = c * h.to_radians().sin();
+
+        Self::from_oklab(l, a, b, alpha)
     }
 
     /// Return n tints (adding pure white) of the color by the tint factor.

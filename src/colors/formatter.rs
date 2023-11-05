@@ -351,6 +351,44 @@ impl ColorFormatter {
         )
     }
 
+    /// Format the color as Oklab
+    pub fn oklab(&self) -> String {
+        let (l, a, b) = self.color.to_oklab();
+        custom_format!(
+            self.custom_format("custom-format-oklab"),
+            ("l", self.round_percentage(l)),
+            ("a", a),
+            ("b", b)
+        );
+
+        format!(
+            "oklab({}%, {:.precision$}, {:.precision$})",
+            self.round_percentage(l),
+            a,
+            b,
+            precision = self.precision()
+        )
+    }
+
+    /// Format the color as Oklch
+    pub fn oklch(&self) -> String {
+        let (l, c, h) = self.color.to_oklch();
+        custom_format!(
+            self.custom_format("custom-format-oklch"),
+            ("lightness", self.round_percentage(l)),
+            ("chroma", c),
+            ("hue", h)
+        );
+
+        format!(
+            "oklch({}%, {:.precision$}, {:.precision$})",
+            self.round_percentage(l),
+            c,
+            h,
+            precision = self.precision()
+        )
+    }
+
     /// Format the colors as a GIMP palette file.
     ///
     /// The name will be the name of the palette, each color will be

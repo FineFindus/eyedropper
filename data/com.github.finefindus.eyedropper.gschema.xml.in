@@ -19,7 +19,7 @@
       <description>Visible formats in the main screen</description>
     </key>
     <key name="format-order" type="as">
-      <default>[ 'name', 'hex', 'rgb', 'hsl', 'hsv', 'cmyk', 'xyz', 'cielab', 'hwb', 'hcl', 'lms', 'hunterlab' ]</default>
+      <default>[ 'name', 'hex', 'rgb', 'hsl', 'hsv', 'cmyk', 'xyz', 'cielab', 'hwb', 'hcl', 'lms', 'hunterlab', 'oklab', 'oklch']</default>
       <summary>Format Order</summary>
       <description>Order, in which the available formats are displayed.</description>
     </key>
@@ -117,6 +117,16 @@
       <default>''</default>
       <summary>Custom Hunter-Lab format</summary>
       <description>A user set format for Hunter-Lab. If it's empty, the default format will be used.</description>
+    </key>
+    <key name="custom-format-oklab" type="s">
+      <default>''</default>
+      <summary>Custom Oklab format</summary>
+      <description>A user set format for Oklab. If it's empty, the default format will be used.</description>
+    </key>
+    <key name="custom-format-oklch" type="s">
+      <default>''</default>
+      <summary>Custom Oklch format</summary>
+      <description>A user set format for Oklch. If it's empty, the default format will be used.</description>
     </key>
   </schema>
 </schemalist>

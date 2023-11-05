@@ -66,6 +66,10 @@ mod imp {
         #[template_child]
         pub hunter_lab_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
         #[template_child]
+        pub oklab_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
+        #[template_child]
+        pub oklch_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
+        #[template_child]
         pub history_list: TemplateChild<gtk::ListBox>,
         pub history: OnceCell<gio::ListStore>,
         pub settings: gio::Settings,
@@ -90,6 +94,8 @@ mod imp {
                 xyz_row: TemplateChild::default(),
                 cie_lab_row: TemplateChild::default(),
                 hunter_lab_row: TemplateChild::default(),
+                oklab_row: TemplateChild::default(),
+                oklch_row: TemplateChild::default(),
                 hwb_row: TemplateChild::default(),
                 hcl_row: TemplateChild::default(),
                 name_row: TemplateChild::default(),
@@ -411,7 +417,9 @@ impl AppWindow {
         settings.connect_changed(Some("custom-format-hwb"), update_color.clone());
         settings.connect_changed(Some("custom-format-hcl"), update_color.clone());
         settings.connect_changed(Some("custom-format-lms"), update_color.clone());
-        settings.connect_changed(Some("custom-format-hunter-lab"), update_color);
+        settings.connect_changed(Some("custom-format-hunter-lab"), update_color.clone());
+        settings.connect_changed(Some("custom-format-oklab"), update_color.clone());
+        settings.connect_changed(Some("custom-format-oklch"), update_color);
 
         settings.connect_changed(
             Some("visible-formats"),
@@ -517,6 +525,8 @@ impl AppWindow {
             "name" => Some(&imp.name_row),
             "lms" => Some(&imp.lms_row),
             "hunterlab" => Some(&imp.hunter_lab_row),
+            "oklab" => Some(&imp.oklab_row),
+            "oklch" => Some(&imp.oklch_row),
             _ => {
                 log::error!("Failed to find format: {}", item);
                 None
@@ -664,6 +674,11 @@ impl AppWindow {
         imp.lms_row.set_text(formatter.lms());
 
         imp.hunter_lab_row.set_text(formatter.hunter_lab());
+
+        imp.oklab_row.set_text(formatter.oklab());
+
+        imp.oklch_row.set_text(formatter.oklch());
+
     }
 
     fn setup_callbacks(&self) {
@@ -935,6 +950,50 @@ impl AppWindow {
                     match Color::from_hunter_lab_string(&color,
                         Illuminant::from(window.imp().settings.int("cie-illuminants") as u32),
                         window.imp().settings.int("cie-standard-observer") == 1) {
+                        Ok(color) if color != current_color => {
+                            window.set_color(color);
+                            format_row.show_success();
+                        },
+                        Err(_) => {
+                            log::debug!("Failed to parse color: {color}");
+                            format_row.show_error();
+                        },
+                        _ => {}
+                    }
+                }
+            }),
+        );
+
+        imp.oklab_row.connect_closure(
+            "text-edited",
+            false,
+            glib::closure_local!(@watch self as window => move |format_row: ColorFormatRow, color: String| {
+                log::debug!("Changed Oklab Lab entry: {color}");
+
+                if let Some(current_color) = window.color(){
+                    match Color::from_oklab_string(&color) {
+                        Ok(color) if color != current_color => {
+                            window.set_color(color);
+                            format_row.show_success();
+                        },
+                        Err(_) => {
+                            log::debug!("Failed to parse color: {color}");
+                            format_row.show_error();
+                        },
+                        _ => {}
+                    }
+                }
+            }),
+        );
+
+        imp.oklch_row.connect_closure(
+            "text-edited",
+            false,
+            glib::closure_local!(@watch self as window => move |format_row: ColorFormatRow, color: String| {
+                log::debug!("Changed Oklab Lab entry: {color}");
+
+                if let Some(current_color) = window.color(){
+                    match Color::from_oklch_string(&color) {
                         Ok(color) if color != current_color => {
                             window.set_color(color);
                             format_row.show_success();
