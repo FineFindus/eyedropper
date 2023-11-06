@@ -337,34 +337,46 @@ impl Color {
         (long, medium, short)
     }
 
+    /// convert normalized RGB value to linear value
+    fn to_linear(u: f32) -> f32 {
+        if u >= 0.04045 {
+            ((u + 0.055) / (1. + 0.055)).powf(2.4)
+        } else {
+            u / 12.92
+        }
+    }
+
     /// Convert color to OKLAB color space
     ///
     /// https://bottosson.github.io/posts/oklab/
     pub fn to_oklab(self) -> (f32, f32, f32) {
-        let (x, y, z) = self.to_xyz();
+        let red = Self::to_linear(self.red as f32 / 255f32);
+        let green = Self::to_linear(self.green as f32 / 255f32);
+        let blue = Self::to_linear(self.blue as f32 / 255f32);
 
-        let l = 0.8189330101 * x + 0.3618667424 * y - 0.1288597137 * z;
-        let m = 0.0329845436 * x + 0.9293118715 * y + 0.0361456387 * z;
-        let s = 0.0482003018 * x + 0.2643662691 * y + 0.6338517070 * z;
+        let l = 0.4122214708 * red + 0.5363325363 * green + 0.0514459929 * blue;
+        let m = 0.2119034982 * red + 0.6806995451 * green + 0.1073969566 * blue;
+        let s = 0.0883024619 * red + 0.2817188376 * green + 0.6299787005 * blue;
 
-        let ll = l.cbrt();
-        let mm = m.cbrt();
-        let ss = s.cbrt();
+        let l_ = l.cbrt();
+        let m_ = m.cbrt();
+        let s_ = s.cbrt();
 
         return (
-            0.2104542553 * ll + 0.7936177850 * mm - 0.0040720468 * ss,
-            1.9779984951 * ll - 2.4285922050 * mm + 0.4505937099 * ss,
-            0.0259040371 * ll + 0.7827717662 * mm - 0.8086757660 * ss,
-        )
+            0.2104542553 * l_ + 0.7936177850 * m_ - 0.0040720468 * s_,
+            1.9779984951 * l_ - 2.4285922050 * m_ + 0.4505937099 * s_,
+            0.0259040371 * l_ + 0.7827717662 * m_ - 0.8086757660 * s_,
+        );
     }
 
+    /// Convert RGB to Oklab space and then get the polar values 
     pub fn to_oklch(self) -> (f32, f32, f32) {
         let (l, a, b) = self.to_oklab();
 
-        let c = a.hypot(b);
-        let h = b.atan2(a).to_degrees();
+        let hue = b.atan2(a).to_degrees();
+        let chroma = f32::sqrt(a.powi(2) + b.powi(2));
 
-        (l, c, h)
+        (l, chroma, if hue % 360.0 < 0.0 { hue + 360.0 } else { hue })
     }
 
     /// Create a color from a hex string.
@@ -494,9 +506,7 @@ impl Color {
         }
     }
 
-    pub fn from_oklab_string(
-        input: &str,
-    ) -> Result<Color, ColorError> {
+    pub fn from_oklab_string(input: &str) -> Result<Color, ColorError> {
         match parser::oklab(input) {
             Ok((_input, color)) => Ok(color),
             Err(err) => {
@@ -506,9 +516,7 @@ impl Color {
         }
     }
 
-    pub fn from_oklch_string(
-        input: &str,
-    ) -> Result<Color, ColorError> {
+    pub fn from_oklch_string(input: &str) -> Result<Color, ColorError> {
         match parser::oklch(input) {
             Ok((_input, color)) => Ok(color),
             Err(err) => {
@@ -768,20 +776,34 @@ impl Color {
         Self::from_xyz(x, y, z, 255)
     }
 
-    pub fn from_oklab(l: f32, a: f32, b: f32, alpha: u8) -> Self {
-        let ll = l + 0.3963377774 * a + 0.2158037573 * b;
-        let mm = l - 0.1055613458 * a - 0.0638541728 * b;
-        let ss = l - 0.0894841775 * a - 1.2914855480 * b;
-        
-        let l = ll * ll * ll;
-        let m = mm * mm * mm;
-        let s = ss * ss * ss;
+    /// Convert linear value to normalized gamma
+    fn to_gamma(u: f32) -> f32 {
+        if u >= 0.0031308 {
+            (1.055) * u.powf(1.0 / 2.4) - 0.055
+        } else {
+            12.92 * u
+        }
+    }
 
-        let x = +1.2270138511 * l - 0.5577999807 * m + 0.2812561490 * s,
-        let y = -0.0405801784 * l + 1.1122568696 * m - 0.0716766787 * s,
-        let z = -0.0763812845 * l - 0.4214819784 * m + 1.5861632204 * s,
-            
+    pub fn from_oklab(l: f32, a: f32, b: f32, alpha: u8) -> Self {
+        let l_ = l + 0.3963377774 * a + 0.2158037573 * b;
+        let m_ = l - 0.1055613458 * a - 0.0638541728 * b;
+        let s_ = l - 0.0894841775 * a - 1.2914855480 * b;
         
+        let l = l_ * l_ * l_;
+        let m = m_ * m_ * m_;
+        let s = s_ * s_ * s_;
+
+        let r = 4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s;
+        let g = -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s;
+        let b = -0.0041960863 * l - 0.7034186147 * m + 1.7076147010 * s;
+
+        Self::rgba(
+            (Self::to_gamma(r) * 255.0).round() as u8,
+            (Self::to_gamma(g) * 255.0).round() as u8,
+            (Self::to_gamma(b) * 255.0).round() as u8,
+            alpha
+        )
     }
 
     pub fn from_oklch(l: f32, c: f32, h: f32, alpha: u8) -> Self {
@@ -1069,5 +1091,17 @@ mod tests {
             Ok(Color::rgb(46, 52, 64)),
             Color::from_hex("#2E3440", AlphaPosition::None)
         )
+    }
+
+    #[test]
+    fn test_to_oklab() {
+        let color = Color::rgb(46, 52, 64);
+        assert_eq!((0.32437435, -0.0023258477, -0.022826374), color.to_oklab())
+    }
+
+    #[test]
+    fn test_to_oklch() {
+        let color = Color::rgb(46, 52, 64);
+        assert_eq!((0.32437435, 0.022944562, 264.18204), color.to_oklch())
     }
 }

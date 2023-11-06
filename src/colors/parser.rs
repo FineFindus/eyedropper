@@ -726,14 +726,12 @@ mod tests {
 }
 
 pub fn oklab(input: &str) -> IResult<&str, Color> {
-    let (input, _) =   tag("oklab(")(input)?;
+    let (input, _) = tag("oklab(")(input)?;
 
     //lightness can either be an percentage or a number between 0 and 100
     let (input, l) = terminated(
         whitespace(alt((
-            map(whitespace(parse_percentage), |percentage| {
-                percentage
-            }),
+            map(whitespace(parse_percentage), |percentage| percentage),
             nom::number::complete::float,
         ))),
         opt(whitespace(separator)),
@@ -771,26 +769,35 @@ pub fn oklab(input: &str) -> IResult<&str, Color> {
     Ok((input, color))
 }
 
+#[cfg(test)]
+mod parse_oklab {
+    use super::*;
+
+    #[test]
+    fn parses_oklab() {
+        assert_eq!(
+            Ok(("", Color::rgb(46, 52, 64))),
+            oklab("32%, -0.003600, -0.023222")
+        );
+    }
+}
+
 pub fn oklch(input: &str) -> IResult<&str, Color> {
-    let (input, _) =   tag("oklab(")(input)?;
+    let (input, _) = tag("oklch(")(input)?;
 
     //lightness can either be an percentage or a number between 0 and 100
     let (input, l) = terminated(
         whitespace(alt((
-            map(whitespace(parse_percentage), |percentage| {
-                percentage
-            }),
+            map(whitespace(parse_percentage), |percentage| percentage),
             nom::number::complete::float,
         ))),
         opt(whitespace(separator)),
     )(input)?;
 
-    //chroma can be percentage between -100% and 100% or a value between -0.4 and 0.4
+    //chroma can be percentage or a value between 0 and 0.4
     let (input, c) = terminated(
         whitespace(alt((
-            map(whitespace(parse_percentage), |percentage| {
-                percentage * 0.4
-            }),
+            map(whitespace(parse_percentage), |percentage| percentage * 0.4),
             nom::number::complete::float,
         ))),
         opt(whitespace(separator)),
@@ -816,10 +823,24 @@ pub fn oklch(input: &str) -> IResult<&str, Color> {
 
     let color = Color::from_oklch(
         l.clamp(0.0, 1.0),
-        c.clamp(-0.4, 0.4),
+        c.clamp(0.0, 0.4),
         h.clamp(0.0, 360.0),
         alpha.unwrap_or(255),
     );
 
     Ok((input, color))
+}
+
+
+#[cfg(test)]
+mod parse_oklch {
+    use super::*;
+
+    #[test]
+    fn parses_oklch() {
+        assert_eq!(
+            Ok(("", Color::rgb(46, 52, 64))),
+            oklch("32%, 0.023499, 261.187836")
+        );
+    }
 }
