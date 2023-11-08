@@ -678,7 +678,6 @@ impl AppWindow {
         imp.oklab_row.set_text(formatter.oklab());
 
         imp.oklch_row.set_text(formatter.oklch());
-
     }
 
     fn setup_callbacks(&self) {

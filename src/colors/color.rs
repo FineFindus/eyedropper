@@ -369,7 +369,7 @@ impl Color {
         );
     }
 
-    /// Convert RGB to Oklab space and then get the polar values 
+    /// Convert RGB to Oklab space and then get the polar values
     pub fn to_oklch(self) -> (f32, f32, f32) {
         let (l, a, b) = self.to_oklab();
 
@@ -789,7 +789,7 @@ impl Color {
         let l_ = l + 0.3963377774 * a + 0.2158037573 * b;
         let m_ = l - 0.1055613458 * a - 0.0638541728 * b;
         let s_ = l - 0.0894841775 * a - 1.2914855480 * b;
-        
+
         let l = l_ * l_ * l_;
         let m = m_ * m_ * m_;
         let s = s_ * s_ * s_;
@@ -802,7 +802,7 @@ impl Color {
             (Self::to_gamma(r) * 255.0).round() as u8,
             (Self::to_gamma(g) * 255.0).round() as u8,
             (Self::to_gamma(b) * 255.0).round() as u8,
-            alpha
+            alpha,
         )
     }
 

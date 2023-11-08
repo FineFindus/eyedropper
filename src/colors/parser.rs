@@ -752,10 +752,10 @@ pub fn oklab(input: &str) -> IResult<&str, Color> {
         ),
     )(input)?;
 
-    let (input, alpha) = opt(whitespace(map(
-        alt((percentage, relative_percentage)),
-        |percentage| (percentage * 255.0) as u8,
-    )))(input)?;
+    let (input, alpha) = opt(map(
+        whitespace(alt((percentage, relative_percentage))),
+        |percent| (percent * 255f32) as u8,
+    ))(input)?;
 
     let (input, _) = opt(whitespace(tag(")")))(input)?;
 
@@ -814,10 +814,10 @@ pub fn oklch(input: &str) -> IResult<&str, Color> {
         opt(whitespace(separator)),
     )(input)?;
 
-    let (input, alpha) = opt(whitespace(map(
-        alt((percentage, relative_percentage)),
-        |percentage| (percentage * 255.0) as u8,
-    )))(input)?;
+    let (input, alpha) = opt(map(
+        whitespace(alt((percentage, relative_percentage))),
+        |percent| (percent * 255f32) as u8,
+    ))(input)?;
 
     let (input, _) = opt(whitespace(tag(")")))(input)?;
 
@@ -830,7 +830,6 @@ pub fn oklch(input: &str) -> IResult<&str, Color> {
 
     Ok((input, color))
 }
-
 
 #[cfg(test)]
 mod parse_oklch {

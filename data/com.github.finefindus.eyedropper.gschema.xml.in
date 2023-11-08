@@ -19,7 +19,7 @@
       <description>Visible formats in the main screen</description>
     </key>
     <key name="format-order" type="as">
-      <default>[ 'name', 'hex', 'rgb', 'hsl', 'hsv', 'cmyk', 'xyz', 'cielab', 'hwb', 'hcl', 'lms', 'hunterlab', 'oklab', 'oklch']</default>
+      <default>[ 'name', 'hex', 'rgb', 'hsl', 'hsv', 'cmyk', 'xyz', 'cielab', 'hwb', 'hcl', 'lms', 'hunterlab', 'oklab', 'oklch' ]</default>
       <summary>Format Order</summary>
       <description>Order, in which the available formats are displayed.</description>
     </key>
