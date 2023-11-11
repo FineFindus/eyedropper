@@ -2,7 +2,12 @@ use adw::{prelude::*, subclass::prelude::*};
 use gettextrs::pgettext;
 use gtk::{glib, CompositeTemplate};
 
-use crate::colors::{color::Color, formatter::ColorFormatter};
+use crate::{
+    colors::{color::Color, formatter::ColorFormatter},
+    model::history::HistoryObject,
+};
+
+use super::history_item::HistoryItem;
 
 mod imp {
 
@@ -178,28 +183,17 @@ impl PaletteDialog {
         );
 
         for color in colors {
-            let formatter = ColorFormatter::with_color(*color);
-            let color_hex = formatter.hex_code();
+            let history_object = HistoryObject::new(*color);
+            let history_item = HistoryItem::new(history_object.color());
 
-            let class_name = format!("colorbin-{}", color_hex.replace('#', ""));
             let color_box = adw::Bin::builder()
                 .width_request(32)
                 .height_request(32)
-                .margin_end(5)
+                .margin_end(2)
+                .child(&history_item)
                 .valign(gtk::Align::Center)
                 .build();
 
-            let css_provider = gtk::CssProvider::new();
-
-            if let Some(display) = gtk::gdk::Display::default() {
-                gtk::style_context_add_provider_for_display(&display, &css_provider, 400);
-            }
-
-            css_provider.load_from_data(&format!(
-                ".{} {{background-color: {};border-radius: 6px;}}",
-                class_name, color_hex
-            ));
-            color_box.add_css_class(&class_name);
             palette_box.append(&color_box);
         }
 
