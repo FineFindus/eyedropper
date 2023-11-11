@@ -71,7 +71,10 @@ mod imp {
                     let text = entry.buffer().text();
                     if obj.is_visible() && !text.is_empty() {
                         obj.switch_button(false);
-                        obj.emit_by_name("text-edited", &[&text.to_value()])
+                        let color = crate::colors::color::Color::from_hex(text.as_str(), crate::colors::position::AlphaPosition::None).unwrap();
+                        obj.set_text(format!("#{:02x}{:02x}{:02x}", color.red, color.green, color.blue))
+
+                        // obj.emit_by_name("text-edited", &[&text.to_value()])
                     }
                 }));
 
