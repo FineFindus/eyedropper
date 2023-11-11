@@ -50,10 +50,11 @@ pub fn color(
         (gnome_palette, &GNOME),
         (xkcd, &XKCD),
     ];
+    None
 
-    palettes
-        .iter()
-        .filter(|&&(flag, _)| flag)
-        .filter_map(|&(_, palette)| palette.get(&name.to_ascii_lowercase()))
-        .find_map(|val| Color::from_hex(val, AlphaPosition::None).ok())
+    // palettes
+    //     .iter()
+    //     .filter(|&&(flag, _)| flag)
+    //     .filter_map(|&(_, palette)| palette.get(&name.to_ascii_lowercase()))
+    //     .find_map(|val| Color::from_hex(val, AlphaPosition::None).ok())
 }

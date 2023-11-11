@@ -579,7 +579,7 @@ impl AppWindow {
                 .split_ascii_whitespace()
                 .for_each(|slice|
                     if let Ok(color) = Color::from_hex(slice, AlphaPosition::None) {
-                        window.set_color(color);
+                        // window.set_color(color);
                     } else {
                         log::error!("Failed to parse color {}", slice);
                         window.show_toast(gettext("Failed to get palette color"), adw::ToastPriority::Normal);
@@ -716,18 +716,18 @@ impl AppWindow {
                 let hex_alpha_position = AlphaPosition::from(window.imp().settings.int("alpha-position") as u32);
 
                 //to avoid a endless set-color loop, only set the color if it is different
-                if let Some(current_color) = window.color() {
-                    match Color::from_hex(&color, hex_alpha_position) {
-                        Ok(color) => if color != current_color {
-                            window.set_color(color);
-                            format_row.show_success();
-                        },
-                        Err(_) => {
-                            log::debug!("Failed to parse color: {color}");
-                            format_row.show_error();
-                        },
-                    }
-                }
+                // if let Some(current_color) = window.color() {
+                //     match Color::from_hex(&color, hex_alpha_position) {
+                //         Ok(color) => if color != current_color {
+                //             // window.set_color(color);
+                //             format_row.show_success();
+                //         },
+                //         Err(_) => {
+                //             log::debug!("Failed to parse color: {color}");
+                //             format_row.show_error();
+                //         },
+                //     }
+                // }
             }),
         );
 
