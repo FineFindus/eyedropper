@@ -337,8 +337,8 @@ impl Color {
         (long, medium, short)
     }
 
-    /// convert normalized RGB value to linear value
-    fn to_linear(u: f32) -> f32 {
+    /// Convert a normalized RGB value to a linear value
+    fn to_linear(value: f32) -> f32 {
         if u >= 0.04045 {
             ((u + 0.055) / (1. + 0.055)).powf(2.4)
         } else {
@@ -346,9 +346,9 @@ impl Color {
         }
     }
 
-    /// Convert color to OKLAB color space
+    /// Converts the color to OKLAB color space.
     ///
-    /// https://bottosson.github.io/posts/oklab/
+    /// For more information see <https://bottosson.github.io/posts/oklab/>.
     pub fn to_oklab(self) -> (f32, f32, f32) {
         let red = Self::to_linear(self.red as f32 / 255f32);
         let green = Self::to_linear(self.green as f32 / 255f32);
@@ -369,7 +369,9 @@ impl Color {
         );
     }
 
-    /// Convert RGB to Oklab space and then get the polar values
+    /// Converts the color to Oklch.
+    ///
+    /// This is achieved by converting it to Oklab and getting the polar values
     pub fn to_oklch(self) -> (f32, f32, f32) {
         let (l, a, b) = self.to_oklab();
 
@@ -776,8 +778,8 @@ impl Color {
         Self::from_xyz(x, y, z, 255)
     }
 
-    /// Convert linear value to normalized gamma
-    fn to_gamma(u: f32) -> f32 {
+    /// Converts a linear value to a normalized gamma
+    fn to_gamma(value: f32) -> f32 {
         if u >= 0.0031308 {
             (1.055) * u.powf(1.0 / 2.4) - 0.055
         } else {

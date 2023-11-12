@@ -967,7 +967,7 @@ impl AppWindow {
             "text-edited",
             false,
             glib::closure_local!(@watch self as window => move |format_row: ColorFormatRow, color: String| {
-                log::debug!("Changed Oklab Lab entry: {color}");
+                log::debug!("Changed Oklab entry: {color}");
 
                 if let Some(current_color) = window.color(){
                     match Color::from_oklab_string(&color) {
@@ -989,7 +989,7 @@ impl AppWindow {
             "text-edited",
             false,
             glib::closure_local!(@watch self as window => move |format_row: ColorFormatRow, color: String| {
-                log::debug!("Changed Oklab Lab entry: {color}");
+                log::debug!("Changed Oklab entry: {color}");
 
                 if let Some(current_color) = window.color(){
                     match Color::from_oklch_string(&color) {
