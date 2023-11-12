@@ -361,13 +361,27 @@ impl ColorFormatter {
             ("b", b)
         );
 
-        format!(
-            "oklab({}%, {:.precision$}, {:.precision$})",
-            self.round_percentage(l),
-            a,
-            b,
-            precision = self.precision()
-        )
+        match self.alpha_position {
+            AlphaPosition::End => format!(
+                "oklab({}% {:.precision$} {:.precision$} / {})",
+                self.round_percentage(l),
+                a,
+                b,
+                //convert from [0-255] to [0-1]
+                self.pretty_print_percent(
+                    self.round_percentage(self.color.alpha as f32 / 255f32) / 100f32
+                ),
+                precision = self.precision(),
+            ),
+            //normal format for non-alpha/ alpha at start
+            _ => format!(
+                "oklab({}% {:.precision$} {:.precision$})",
+                self.round_percentage(l),
+                a,
+                b,
+                precision = self.precision()
+            ),
+        }
     }
 
     /// Format the color as Oklch
@@ -380,13 +394,27 @@ impl ColorFormatter {
             ("hue", h)
         );
 
-        format!(
-            "oklch({}%, {:.precision$}, {:.precision$})",
-            self.round_percentage(l),
-            c,
-            h,
-            precision = self.precision()
-        )
+        match self.alpha_position {
+            AlphaPosition::End => format!(
+                "oklch({}% {:.precision$} {:.precision$} / {})",
+                self.round_percentage(l),
+                c,
+                h,
+                //convert from [0-255] to [0-1]
+                self.pretty_print_percent(
+                    self.round_percentage(self.color.alpha as f32 / 255f32) / 100f32
+                ),
+                precision = self.precision(),
+            ),
+            //normal format for non-alpha/ alpha at start
+            _ => format!(
+                "oklch({}% {:.precision$} {:.precision$})",
+                self.round_percentage(l),
+                c,
+                h,
+                precision = self.precision()
+            ),
+        }
     }
 
     /// Format the colors as a GIMP palette file.

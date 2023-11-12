@@ -777,7 +777,7 @@ mod parse_oklab {
     fn parses_oklab() {
         assert_eq!(
             Ok(("", Color::rgb(46, 52, 64))),
-            oklab("32%, -0.003600, -0.023222")
+            oklab("32% -0.003600 -0.023222")
         );
     }
 }
@@ -839,7 +839,7 @@ mod parse_oklch {
     fn parses_oklch() {
         assert_eq!(
             Ok(("", Color::rgb(46, 52, 64))),
-            oklch("32%, 0.023499, 261.187836")
+            oklch("32% 0.023499 261.187836")
         );
     }
 }
