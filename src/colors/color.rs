@@ -338,11 +338,13 @@ impl Color {
     }
 
     /// Convert a normalized RGB value to a linear value
+    /// 
+    /// For more information see <https://bottosson.github.io/posts/colorwrong/#what-can-we-do%3F>.
     fn to_linear(value: f32) -> f32 {
-        if u >= 0.04045 {
-            ((u + 0.055) / (1. + 0.055)).powf(2.4)
+        if value >= 0.04045 {
+            ((value + 0.055) / (1. + 0.055)).powf(2.4)
         } else {
-            u / 12.92
+            value / 12.92
         }
     }
 
@@ -358,14 +360,14 @@ impl Color {
         let m = 0.2119034982 * red + 0.6806995451 * green + 0.1073969566 * blue;
         let s = 0.0883024619 * red + 0.2817188376 * green + 0.6299787005 * blue;
 
-        let l_ = l.cbrt();
-        let m_ = m.cbrt();
-        let s_ = s.cbrt();
+        let l_aux = l.cbrt();
+        let m_aux = m.cbrt();
+        let s_aux = s.cbrt();
 
         return (
-            0.2104542553 * l_ + 0.7936177850 * m_ - 0.0040720468 * s_,
-            1.9779984951 * l_ - 2.4285922050 * m_ + 0.4505937099 * s_,
-            0.0259040371 * l_ + 0.7827717662 * m_ - 0.8086757660 * s_,
+            0.2104542553 * l_aux + 0.7936177850 * m_aux - 0.0040720468 * s_aux,
+            1.9779984951 * l_aux - 2.4285922050 * m_aux + 0.4505937099 * s_aux,
+            0.0259040371 * l_aux + 0.7827717662 * m_aux - 0.8086757660 * s_aux,
         );
     }
 
@@ -780,21 +782,22 @@ impl Color {
 
     /// Converts a linear value to a normalized gamma
     fn to_gamma(value: f32) -> f32 {
-        if u >= 0.0031308 {
-            (1.055) * u.powf(1.0 / 2.4) - 0.055
+        if value >= 0.0031308 {
+            (1.055) * value.powf(1.0 / 2.4) - 0.055
         } else {
-            12.92 * u
+            12.92 * value
         }
     }
 
+    /// Converts from oklab to RGB
     pub fn from_oklab(l: f32, a: f32, b: f32, alpha: u8) -> Self {
-        let l_ = l + 0.3963377774 * a + 0.2158037573 * b;
-        let m_ = l - 0.1055613458 * a - 0.0638541728 * b;
-        let s_ = l - 0.0894841775 * a - 1.2914855480 * b;
+        let l_aux = l + 0.3963377774 * a + 0.2158037573 * b;
+        let m_aux = l - 0.1055613458 * a - 0.0638541728 * b;
+        let s_aux = l - 0.0894841775 * a - 1.2914855480 * b;
 
-        let l = l_ * l_ * l_;
-        let m = m_ * m_ * m_;
-        let s = s_ * s_ * s_;
+        let l = l_aux * l_aux * l_aux;
+        let m = m_aux * m_aux * m_aux;
+        let s = s_aux * s_aux * s_aux;
 
         let r = 4.0767416621 * l - 3.3077115913 * m + 0.2309699292 * s;
         let g = -1.2684380046 * l + 2.6097574011 * m - 0.3413193965 * s;
@@ -808,6 +811,7 @@ impl Color {
         )
     }
 
+    /// Converts from oklch to RGB
     pub fn from_oklch(l: f32, c: f32, h: f32, alpha: u8) -> Self {
         let a = c * h.to_radians().cos();
         let b = c * h.to_radians().sin();

@@ -728,8 +728,8 @@ mod tests {
 pub fn oklab(input: &str) -> IResult<&str, Color> {
     let (input, _) = tag("oklab(")(input)?;
 
-    //lightness can either be an percentage or a number between 0 and 100
-    let (input, l) = terminated(
+    //lightness can either be a percentage or a number between 0 and 1
+    let (input, lightness) = terminated(
         whitespace(alt((
             map(whitespace(parse_percentage), |percentage| percentage),
             nom::number::complete::float,
@@ -760,7 +760,7 @@ pub fn oklab(input: &str) -> IResult<&str, Color> {
     let (input, _) = opt(whitespace(tag(")")))(input)?;
 
     let color = Color::from_oklab(
-        l.clamp(0.0, 1.0),
+        lightness.clamp(0.0, 1.0),
         ok_a_b[0].clamp(-0.4, 0.4),
         ok_a_b[1].clamp(-0.4, 0.4),
         alpha.unwrap_or(255),
@@ -785,8 +785,8 @@ mod parse_oklab {
 pub fn oklch(input: &str) -> IResult<&str, Color> {
     let (input, _) = tag("oklch(")(input)?;
 
-    //lightness can either be an percentage or a number between 0 and 100
-    let (input, l) = terminated(
+    //lightness can either be a percentage or a number between 0 and 1
+    let (input, lightness) = terminated(
         whitespace(alt((
             map(whitespace(parse_percentage), |percentage| percentage),
             nom::number::complete::float,
@@ -795,7 +795,7 @@ pub fn oklch(input: &str) -> IResult<&str, Color> {
     )(input)?;
 
     //chroma can be percentage or a value between 0 and 0.4
-    let (input, c) = terminated(
+    let (input, chroma) = terminated(
         whitespace(alt((
             map(whitespace(parse_percentage), |percentage| percentage * 0.4),
             nom::number::complete::float,
@@ -804,7 +804,7 @@ pub fn oklch(input: &str) -> IResult<&str, Color> {
     )(input)?;
 
     //hue can be percentage between 0% and 100% or value between 0 and 360
-    let (input, h) = terminated(
+    let (input, hue) = terminated(
         whitespace(alt((
             map(whitespace(parse_percentage), |percentage| {
                 percentage * 360.0
@@ -822,9 +822,9 @@ pub fn oklch(input: &str) -> IResult<&str, Color> {
     let (input, _) = opt(whitespace(tag(")")))(input)?;
 
     let color = Color::from_oklch(
-        l.clamp(0.0, 1.0),
-        c.clamp(0.0, 0.4),
-        h.clamp(0.0, 360.0),
+        lightness.clamp(0.0, 1.0),
+        chroma.clamp(0.0, 0.4),
+        hue.clamp(0.0, 360.0),
         alpha.unwrap_or(255),
     );
 
