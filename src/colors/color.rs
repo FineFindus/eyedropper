@@ -338,7 +338,7 @@ impl Color {
     }
 
     /// Convert a normalized RGB value to a linear value
-    /// 
+    ///
     /// For more information see <https://bottosson.github.io/posts/colorwrong/#what-can-we-do%3F>.
     fn to_linear(value: f32) -> f32 {
         if value >= 0.04045 {
