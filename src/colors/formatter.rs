@@ -353,7 +353,11 @@ impl ColorFormatter {
 
     /// Format the color as Oklab
     pub fn oklab(&self) -> String {
-        let (l, a, b) = self.color.to_oklab();
+        let (l_in_f64, a_in_f64, b_in_f64) = self.color.to_oklab();
+        let l = l_in_f64 as f32;
+        let a = a_in_f64 as f32;
+        let b = b_in_f64 as f32;
+
         custom_format!(
             self.custom_format("custom-format-oklab"),
             ("l", self.round_percentage(l)),
@@ -386,7 +390,11 @@ impl ColorFormatter {
 
     /// Format the color as Oklch
     pub fn oklch(&self) -> String {
-        let (l, c, h) = self.color.to_oklch();
+        let (l_in_f64, c_in_f64, h_in_f64) = self.color.to_oklch();
+        let l = l_in_f64 as f32;
+        let c = c_in_f64 as f32;
+        let h = h_in_f64 as f32;
+
         custom_format!(
             self.custom_format("custom-format-oklch"),
             ("lightness", self.round_percentage(l)),

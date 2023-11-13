@@ -760,9 +760,9 @@ pub fn oklab(input: &str) -> IResult<&str, Color> {
     let (input, _) = opt(whitespace(tag(")")))(input)?;
 
     let color = Color::from_oklab(
-        lightness.clamp(0.0, 1.0),
-        ok_a_b[0].clamp(-0.4, 0.4),
-        ok_a_b[1].clamp(-0.4, 0.4),
+        lightness.clamp(0.0, 1.0).into(),
+        ok_a_b[0].clamp(-0.4, 0.4).into(),
+        ok_a_b[1].clamp(-0.4, 0.4).into(),
         alpha.unwrap_or(255),
     );
 
@@ -822,9 +822,9 @@ pub fn oklch(input: &str) -> IResult<&str, Color> {
     let (input, _) = opt(whitespace(tag(")")))(input)?;
 
     let color = Color::from_oklch(
-        lightness.clamp(0.0, 1.0),
-        chroma.clamp(0.0, 0.4),
-        hue.clamp(0.0, 360.0),
+        lightness.clamp(0.0, 1.0).into(),
+        chroma.clamp(0.0, 0.4).into(),
+        hue.clamp(0.0, 360.0).into(),
         alpha.unwrap_or(255),
     );
 
