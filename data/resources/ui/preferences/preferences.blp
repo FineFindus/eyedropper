@@ -200,6 +200,18 @@ template $PreferencesWindow : Adw.PreferencesWindow {
         default-format: "L: {l}, a: {a}, b: {b}";
         settings-key: "custom-format-hunter-lab";
       }
+
+      $CustomFormatRow {
+        title: _("Oklab Format");
+        default-format: "oklab({l}% {a} {b})";
+        settings-key: "custom-format-oklab";
+      }
+
+       $CustomFormatRow {
+        title: _("Oklch Format");
+        default-format: "oklch({l}% {c} {h})";
+        settings-key: "custom-format-oklch";
+      }
     }
   }
 }

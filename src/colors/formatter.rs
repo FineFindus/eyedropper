@@ -351,6 +351,80 @@ impl ColorFormatter {
         )
     }
 
+    /// Format the color as Oklab
+    pub fn oklab(&self) -> String {
+        let (l_in_f64, a_in_f64, b_in_f64) = self.color.to_oklab();
+        let l = l_in_f64 as f32;
+        let a = a_in_f64 as f32;
+        let b = b_in_f64 as f32;
+
+        custom_format!(
+            self.custom_format("custom-format-oklab"),
+            ("l", self.round_percentage(l)),
+            ("a", a),
+            ("b", b)
+        );
+
+        match self.alpha_position {
+            AlphaPosition::End => format!(
+                "oklab({}% {:.precision$} {:.precision$} / {})",
+                self.round_percentage(l),
+                a,
+                b,
+                //convert from [0-255] to [0-1]
+                self.pretty_print_percent(
+                    self.round_percentage(self.color.alpha as f32 / 255f32) / 100f32
+                ),
+                precision = self.precision(),
+            ),
+            //normal format for non-alpha/ alpha at start
+            _ => format!(
+                "oklab({}% {:.precision$} {:.precision$})",
+                self.round_percentage(l),
+                a,
+                b,
+                precision = self.precision()
+            ),
+        }
+    }
+
+    /// Format the color as Oklch
+    pub fn oklch(&self) -> String {
+        let (l_in_f64, c_in_f64, h_in_f64) = self.color.to_oklch();
+        let l = l_in_f64 as f32;
+        let c = c_in_f64 as f32;
+        let h = h_in_f64 as f32;
+
+        custom_format!(
+            self.custom_format("custom-format-oklch"),
+            ("lightness", self.round_percentage(l)),
+            ("chroma", c),
+            ("hue", h)
+        );
+
+        match self.alpha_position {
+            AlphaPosition::End => format!(
+                "oklch({}% {:.precision$} {:.precision$} / {})",
+                self.round_percentage(l),
+                c,
+                h,
+                //convert from [0-255] to [0-1]
+                self.pretty_print_percent(
+                    self.round_percentage(self.color.alpha as f32 / 255f32) / 100f32
+                ),
+                precision = self.precision(),
+            ),
+            //normal format for non-alpha/ alpha at start
+            _ => format!(
+                "oklch({}% {:.precision$} {:.precision$})",
+                self.round_percentage(l),
+                c,
+                h,
+                precision = self.precision()
+            ),
+        }
+    }
+
     /// Format the colors as a GIMP palette file.
     ///
     /// The name will be the name of the palette, each color will be

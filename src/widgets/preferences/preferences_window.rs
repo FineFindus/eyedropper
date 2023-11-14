@@ -410,6 +410,8 @@ impl PreferencesWindow {
                 "hunterlab" => {
                     ColorFormatObject::new(item, gettext("Hunter Lab"), formatter.hunter_lab())
                 }
+                "oklab" => ColorFormatObject::new(item, gettext("Oklab"), formatter.oklab()),
+                "oklch" => ColorFormatObject::new(item, gettext("Oklch"), formatter.oklch()),
                 _ => {
                     log::error!("Failed to find format: {item}");
                     continue;
