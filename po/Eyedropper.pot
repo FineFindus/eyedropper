@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-11-11 13:52+0000\n"
+"POT-Creation-Date: 2023-11-14 19:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -403,6 +403,14 @@ msgstr ""
 msgid "Hunter Lab Format"
 msgstr ""
 
+#: data/resources/ui/preferences/preferences.blp:205
+msgid "Oklab Format"
+msgstr ""
+
+#: data/resources/ui/preferences/preferences.blp:211
+msgid "Oklch Format"
+msgstr ""
+
 #: data/resources/ui/shortcuts.blp:11
 msgctxt "shortcut window"
 msgid "General"
@@ -532,6 +540,14 @@ msgstr ""
 msgid "Copy Hunter Lab"
 msgstr ""
 
+#: data/resources/ui/window.blp:183
+msgid "Copy Oklab"
+msgstr ""
+
+#: data/resources/ui/window.blp:188
+msgid "Copy Oklch"
+msgstr ""
+
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/widgets/about_window.rs:47
 msgid "translator-credits"
@@ -650,8 +666,8 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:406 src/window.rs:435
-#: src/window.rs:460 src/window.rs:659 src/window.rs:838
+#: src/widgets/preferences/preferences_window.rs:406 src/window.rs:443
+#: src/window.rs:468 src/window.rs:669 src/window.rs:852
 msgctxt "Information that no name for the color could be found"
 msgid "Not named"
 msgstr ""
@@ -664,18 +680,26 @@ msgstr ""
 msgid "Hunter Lab"
 msgstr ""
 
-#: src/window.rs:266
+#: src/widgets/preferences/preferences_window.rs:413
+msgid "Oklab"
+msgstr ""
+
+#: src/widgets/preferences/preferences_window.rs:414
+msgid "Oklch"
+msgstr ""
+
+#: src/window.rs:272
 msgid "Cleared history"
 msgstr ""
 
-#: src/window.rs:267
+#: src/window.rs:273
 msgid "Undo"
 msgstr ""
 
-#: src/window.rs:551
+#: src/window.rs:561
 msgid "Failed to get palette color"
 msgstr ""
 
-#: src/window.rs:582
+#: src/window.rs:592
 msgid "Failed to pick a color"
 msgstr ""
