@@ -1,0 +1,719 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Eyedropper\n"
+"Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
+"POT-Creation-Date: 2023-11-14 19:29+0000\n"
+"PO-Revision-Date: 2023-11-30 18:00+0100\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"Language-Team: \n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.0\n"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:3
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
+#: data/resources/ui/window.blp:74 src/main.rs:25
+#: src/widgets/about_window.rs:41
+msgid "Eyedropper"
+msgstr "Kapaljka"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:4
+msgid "Color Picker"
+msgstr "Birač boja"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:5
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
+#: src/widgets/about_window.rs:71
+msgid "Pick and format colors"
+msgstr "Odaberi i formatiraj boje"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/com.github.finefindus.eyedropper.desktop.in.in:11
+msgid "Gnome;GTK;Color;Color Picker;Picker;Palette;"
+msgstr "Gnome;GTK;Boja;Birač boja;Birač;Paleta;"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:9
+msgid "FineFindus"
+msgstr "FineFindus"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:13
+#: src/widgets/about_window.rs:74
+msgid ""
+"Pick any color from your screen and view it in different formats. Change the "
+"picked color or go back to a previously picked color from the history list. "
+"Generate a list of different shades from the picked color."
+msgstr ""
+"Odaberi bilo koju boju s tvog ekrana i pogledaj je u različitim formatima. "
+"Promijeni odabranu boju ili se vrati na prethodno odabranu boju u popisu "
+"povijesti. Generiraj popis različitih nijansi odabrane boje."
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
+#: src/widgets/about_window.rs:79
+msgid "Features"
+msgstr "Značajke"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
+#: src/widgets/about_window.rs:83
+msgid "Pick a Color"
+msgstr "Odaberi boju"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
+#: src/widgets/about_window.rs:84
+msgid "Enter a color in Hex-Format"
+msgstr "Upiši boju u heksadecimalnom formatu"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
+msgid "Enter colors in different formats"
+msgstr "Upiši boju u raznim formatima"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
+#: src/widgets/about_window.rs:86
+msgid "View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format"
+msgstr ""
+"Prikaži boje u heksadecimalnom, RGB, HSV, HSL, CMYK, XYZ i CIE-Lab formatu"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:23
+#: src/widgets/about_window.rs:87
+msgid "Customize which formats appear as well as their order"
+msgstr "Prilagodi formate koji će se pojaviti kao i njihov redoslijed"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:24
+#: src/widgets/about_window.rs:88
+msgid "Generate a palette of different shades"
+msgstr "Generiraj paletu različitih nijansi"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:30
+msgid "Main window with a color in different formats"
+msgstr "Glavni prozor s bojom u različitim formatima"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:34
+msgid "Main window with customized formats"
+msgstr "Glavni prozor s prilagođenim formatima"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:38
+msgid "Dialog showing generated color palettes"
+msgstr "Dijalog koji prikazuje generirane palete boja"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:42
+msgid "Status page stating to pick a color to get started"
+msgstr "Stranica stanja za biranje boje za početak"
+
+#: data/resources/ui/palette-window.blp:7
+msgctxt "Adobes palette format"
+msgid "Adobe Swatch Exchange"
+msgstr "Adobe Swatch Exchange"
+
+#: data/resources/ui/palette-window.blp:13
+msgctxt "LibreOffice/OpenOffice palette file"
+msgid "LibreOffice Palette"
+msgstr "LibreOffice paleta"
+
+#: data/resources/ui/palette-window.blp:19
+msgctxt "Gimp/Inkscape palette format"
+msgid "Gimp Palette"
+msgstr "Gimp paleta"
+
+#: data/resources/ui/palette-window.blp:25
+msgctxt "Paint.net palette format, should most like not be translated"
+msgid "Paint.NET"
+msgstr "Paint.NET"
+
+#: data/resources/ui/palette-window.blp:31
+msgctxt "Palette format file name"
+msgid "Hex"
+msgstr "Hex"
+
+#: data/resources/ui/palette-window.blp:37
+msgctxt "Palette format file name"
+msgid "PAL"
+msgstr "PAL"
+
+#: data/resources/ui/palette-window.blp:46
+msgid "Palettes"
+msgstr "Palete"
+
+#: data/resources/ui/palette-window.blp:54
+msgid "Save Palettes…"
+msgstr "Spremi palete …"
+
+#: data/resources/ui/preferences/custom-format-row.blp:12
+msgctxt "Tooltip of the reset button for custom format"
+msgid "Reset Format"
+msgstr "Resetiraj format"
+
+#: data/resources/ui/preferences/name-sources-dialog.blp:5
+#: data/resources/ui/preferences/preferences.blp:29
+msgid "Name Sources"
+msgstr "Izvori imena"
+
+#: data/resources/ui/preferences/name-sources-dialog.blp:17
+msgctxt ""
+"Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
+"#html4"
+msgid "Basic"
+msgstr "Imena osnovnih boja"
+
+#: data/resources/ui/preferences/name-sources-dialog.blp:18
+msgid "Basic web colors"
+msgstr "Osnovne web boje"
+
+#: data/resources/ui/preferences/name-sources-dialog.blp:22
+msgctxt ""
+"Name of the extended color keyword set from https://www.w3.org/TR/css-"
+"color-3/#svg-color"
+msgid "Extended"
+msgstr "Imena drugih boja"
+
+#: data/resources/ui/preferences/name-sources-dialog.blp:23
+msgid "X11 and SVG color values"
+msgstr "Vrijednosti X11 i SVG boja"
+
+#: data/resources/ui/preferences/name-sources-dialog.blp:27
+msgctxt ""
+"Name of the color set from the GNOME color palette (https://developer.gnome."
+"org/hig/reference/palette.html)"
+msgid "GNOME Color Palette"
+msgstr "GNOME paleta boja"
+
+#: data/resources/ui/preferences/name-sources-dialog.blp:28
+msgid "Colors for GNOME app icons and illustrations"
+msgstr "Boje za ikone i ilustracije GNOME aplikacija"
+
+#: data/resources/ui/preferences/name-sources-dialog.blp:32
+msgctxt "Name of the color set from the xkcd color survey"
+msgid "xkcd Color Survey"
+msgstr "xkcd istraživanje boja"
+
+#: data/resources/ui/preferences/name-sources-dialog.blp:33
+msgid "954 RGB colors named by volunteers"
+msgstr "954 RGB boje koje su imenovali volonteri"
+
+#: data/resources/ui/preferences/preferences.blp:11
+msgid "General"
+msgstr "Općenito"
+
+#: data/resources/ui/preferences/preferences.blp:14
+msgid "Formatting"
+msgstr "Formatiranje"
+
+#: data/resources/ui/preferences/preferences.blp:17
+msgid "Alpha-Value-Position"
+msgstr "Pozicija vrijednosti Alpha kanala"
+
+#: data/resources/ui/preferences/preferences.blp:18
+msgid "Where the Alphavalue is positioned in the Hexstring"
+msgstr "Pozicija vrijednosti Alpha kanala u heksadecimalnom nizu"
+
+#: data/resources/ui/preferences/preferences.blp:21
+msgctxt "Alphavalue is not shown"
+msgid "None"
+msgstr "Bez"
+
+#: data/resources/ui/preferences/preferences.blp:22
+msgctxt "Alphavalue is shown at the end"
+msgid "End"
+msgstr "Kraj"
+
+#: data/resources/ui/preferences/preferences.blp:23
+msgctxt "Alphavalue is shown at the start"
+msgid "Start"
+msgstr "Početak"
+
+#: data/resources/ui/preferences/preferences.blp:30
+msgid "Sources for displaying color names"
+msgstr "Izvori za prikazivanje imena boja"
+
+#: data/resources/ui/preferences/preferences.blp:41
+#: data/resources/ui/preferences/preferences.blp:49
+msgid "Precision"
+msgstr "Preciznost"
+
+#: data/resources/ui/preferences/preferences.blp:57
+msgid "CIE Color Space"
+msgstr "CIE prostor boja"
+
+#: data/resources/ui/preferences/preferences.blp:60
+msgid "CIE Illuminants"
+msgstr "CIE izvori svjetlosti"
+
+#: data/resources/ui/preferences/preferences.blp:61
+msgid "Lighting conditions for the CIE color space"
+msgstr "Uvjeti osvjetljenja za CIE prostor boja"
+
+#: data/resources/ui/preferences/preferences.blp:69
+msgid "A (Incandescent/tungsten)"
+msgstr "A (žarulja/volfram)"
+
+#: data/resources/ui/preferences/preferences.blp:70
+msgid "B (Old direct sunlight at noon)"
+msgstr "B (stara izravna sunčeva svjetlost u podne)"
+
+#: data/resources/ui/preferences/preferences.blp:71
+msgid "C (Old daylight)"
+msgstr "C (staro dnevno svjetlo)"
+
+#: data/resources/ui/preferences/preferences.blp:72
+msgid "D50 (ICC profile PCS)"
+msgstr "D50 (ICC profil PCS)"
+
+#: data/resources/ui/preferences/preferences.blp:73
+msgid "D55 (Mid-morning daylight)"
+msgstr "D55 (jutarnje dnevno svjetlo)"
+
+#: data/resources/ui/preferences/preferences.blp:74
+msgid "D65 (Daylight, sRGB, Adobe-RGB)"
+msgstr "D65 (dnevno svjetlo, sRGB, Adobe-RGB)"
+
+#: data/resources/ui/preferences/preferences.blp:75
+msgid "D75 (North sky daylight)"
+msgstr "D75 (sjeverno nebo, dnevno svjetlo)"
+
+#: data/resources/ui/preferences/preferences.blp:76
+msgid "E (Equal energy)"
+msgstr "E (jednaka energija)"
+
+#: data/resources/ui/preferences/preferences.blp:77
+msgid "F1 (Daylight Fluorescent)"
+msgstr "F1 (dnevno svjetlo, fluorescentno)"
+
+#: data/resources/ui/preferences/preferences.blp:78
+msgid "F2 (Cool fluorescent)"
+msgstr "F2 (hladno, fluorescentno)"
+
+#: data/resources/ui/preferences/preferences.blp:79
+msgid "F3 (White Fluorescent)"
+msgstr "F3 (bijelo, fluorescentno)"
+
+#: data/resources/ui/preferences/preferences.blp:80
+msgid "F4 (Warm White Fluorescent)"
+msgstr "F4 (toplo, fluorescentno)"
+
+#: data/resources/ui/preferences/preferences.blp:81
+msgid "F5 (Daylight Fluorescent)"
+msgstr "F5 (dnevno svjetlo, fluorescentno)"
+
+#: data/resources/ui/preferences/preferences.blp:82
+msgid "F6 (Lite White Fluorescent)"
+msgstr "F6 (svijetlo bijelo, fluorescentno)"
+
+#: data/resources/ui/preferences/preferences.blp:83
+msgid "F7 (Daylight fluorescent, D65 simulator)"
+msgstr "F7 (dnevno svjetlo, fluorescentno, D65 simulator)"
+
+#: data/resources/ui/preferences/preferences.blp:84
+msgid "F8 (Sylvania F40, D50 simulator)"
+msgstr "F8 (Sylvania F40, D50 simulator)"
+
+#: data/resources/ui/preferences/preferences.blp:85
+msgid "F9 (Cool White Fluorescent)"
+msgstr "F9 (hladno bijelo, fluorescentno)"
+
+#: data/resources/ui/preferences/preferences.blp:86
+msgid "F10 (Ultralume 50, Philips TL85)"
+msgstr "F10 (Ultralume 50, Philips TL85)"
+
+#: data/resources/ui/preferences/preferences.blp:87
+msgid "F11 (Ultralume 40, Philips TL84)"
+msgstr "F11 (Ultralume 40, Philips TL84)"
+
+#: data/resources/ui/preferences/preferences.blp:88
+msgid "F12 (Ultralume 30, Philips TL83)"
+msgstr "F12 (Ultralume 30, Philips TL83)"
+
+#: data/resources/ui/preferences/preferences.blp:100
+msgid "CIE Standard Observer"
+msgstr "Standardna percepcija CIE prostora"
+
+#: data/resources/ui/preferences/preferences.blp:101
+msgid "The CIE standard observer's field of view"
+msgstr "Standardno vidno polje CIE prostora"
+
+#: data/resources/ui/preferences/preferences.blp:104
+msgid "2°"
+msgstr "2°"
+
+#: data/resources/ui/preferences/preferences.blp:105
+msgid "10°"
+msgstr "10°"
+
+#: data/resources/ui/preferences/preferences.blp:112
+msgid "Color Formats"
+msgstr "Formati boja"
+
+#: data/resources/ui/preferences/preferences.blp:113
+msgid "Customize the visible formats and in which order they are displayed."
+msgstr "Prilagodi vidljive formate i prikaz redoslijeda."
+
+#: data/resources/ui/preferences/preferences.blp:118
+msgctxt " Tooltip of the button to reset the format order"
+msgid "Reset Order"
+msgstr "Resetiraj redoslijed"
+
+#: data/resources/ui/preferences/preferences.blp:138
+#: data/resources/ui/preferences/preferences.blp:141
+msgid "Formats"
+msgstr "Formati"
+
+#: data/resources/ui/preferences/preferences.blp:142
+msgid ""
+"Edit how the color formats are displayed. The “{}” will be replaced in with "
+"the values of the formats. Custom formats cannot be used as input."
+msgstr ""
+"Uredite način prikaza formata boja. „{}” će se zamijeniti s vrijednostima "
+"formata. Prilagođeni formati se ne mogu koristiti kao unos."
+
+#: data/resources/ui/preferences/preferences.blp:145
+msgid "RGB Format"
+msgstr "RGB format"
+
+#: data/resources/ui/preferences/preferences.blp:151
+msgid "HSL Format"
+msgstr "HSL format"
+
+#: data/resources/ui/preferences/preferences.blp:157
+msgid "HSV Format"
+msgstr "HSV format"
+
+#: data/resources/ui/preferences/preferences.blp:163
+msgid "CMYK Format"
+msgstr "CMYK format"
+
+#: data/resources/ui/preferences/preferences.blp:169
+msgid "XYZ Format"
+msgstr "XYZ format"
+
+#: data/resources/ui/preferences/preferences.blp:175
+msgid "CIELAB Format"
+msgstr "CIELAB format"
+
+#: data/resources/ui/preferences/preferences.blp:181
+msgid "HWB Format"
+msgstr "HWB format"
+
+#: data/resources/ui/preferences/preferences.blp:187
+msgid "CIELCh/HCL Format"
+msgstr "CIELCh/HCL format"
+
+#: data/resources/ui/preferences/preferences.blp:193
+msgid "LMS Format"
+msgstr "LMS format"
+
+#: data/resources/ui/preferences/preferences.blp:199
+msgid "Hunter Lab Format"
+msgstr "Hunter Lab format"
+
+#: data/resources/ui/preferences/preferences.blp:205
+msgid "Oklab Format"
+msgstr "Oklab format"
+
+#: data/resources/ui/preferences/preferences.blp:211
+msgid "Oklch Format"
+msgstr "Oklch format"
+
+#: data/resources/ui/shortcuts.blp:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Općenito"
+
+#: data/resources/ui/shortcuts.blp:14
+msgctxt "shortcut window"
+msgid "Show Preferences"
+msgstr "Prikaži postavke"
+
+#: data/resources/ui/shortcuts.blp:19
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Prikaži tipkovničke prečace"
+
+#: data/resources/ui/shortcuts.blp:24
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Zatvori program"
+
+#: data/resources/ui/shortcuts.blp:30
+msgctxt "shortcut window"
+msgid "Color"
+msgstr "Boja"
+
+#: data/resources/ui/shortcuts.blp:33
+msgctxt "shortcut window"
+msgid "Pick a new Color"
+msgstr "Odaberi jednu novu boju"
+
+#: data/resources/ui/shortcuts.blp:38
+msgctxt "shortcut window"
+msgid "Randomize the Color"
+msgstr "Odaberi boju slučajno"
+
+#: data/resources/ui/window.blp:7
+msgid "_Clear History"
+msgstr "_Izbriši povijest"
+
+#: data/resources/ui/window.blp:12
+msgid "_Random Color"
+msgstr "_Slučajna boja"
+
+#: data/resources/ui/window.blp:19
+msgid "_Preferences"
+msgstr "_Postavke"
+
+#: data/resources/ui/window.blp:24
+msgid "_Keyboard Shortcuts"
+msgstr "_Tipkovnički prečaci"
+
+#: data/resources/ui/window.blp:29
+msgid "_About Eyedropper"
+msgstr "O aplikaciji _Kapaljka"
+
+#: data/resources/ui/window.blp:50
+msgid "No Color"
+msgstr "Bez boje"
+
+#: data/resources/ui/window.blp:51
+msgid "Select a color from the screen to get started."
+msgstr "Za početak odaberi jednu boju na ekranu."
+
+#: data/resources/ui/window.blp:53
+msgid "_Pick a Color"
+msgstr "_Odaberi boju"
+
+#: data/resources/ui/window.blp:78
+msgctxt "Tooltip of the colorpicker button"
+msgid "Pick a Color"
+msgstr "Odaberi boju"
+
+#: data/resources/ui/window.blp:85
+msgid "Main Menu"
+msgstr "Glavni izbornik"
+
+#: data/resources/ui/window.blp:108
+msgctxt "Tooltip of the palette button"
+msgid "Open Palette Window"
+msgstr "Otvori prozor palete"
+
+#: data/resources/ui/window.blp:128
+msgid "Copy Name"
+msgstr "Kopiraj ime"
+
+#: data/resources/ui/window.blp:133
+msgid "Copy Hex Code"
+msgstr "Kopiraj heksadecimalni kod"
+
+#: data/resources/ui/window.blp:137
+msgid "Copy RGB"
+msgstr "Kopiraj RGB"
+
+#: data/resources/ui/window.blp:141
+msgid "Copy HSL"
+msgstr "Kopiraj HSL"
+
+#: data/resources/ui/window.blp:145
+msgid "Copy HSV"
+msgstr "Kopiraj HSV"
+
+#: data/resources/ui/window.blp:149
+msgid "Copy CMYK"
+msgstr "Kopiraj CMYK"
+
+#: data/resources/ui/window.blp:153
+msgid "Copy XYZ"
+msgstr "Kopiraj XYZ"
+
+#: data/resources/ui/window.blp:158
+msgid "Copy CIELAB"
+msgstr "Kopiraj CIELAB"
+
+#: data/resources/ui/window.blp:163
+msgid "Copy HWB"
+msgstr "Kopiraj HWB"
+
+#: data/resources/ui/window.blp:168
+msgid "Copy CIELCh / HCL"
+msgstr "Kopiraj CIELCh / HCL"
+
+#: data/resources/ui/window.blp:173
+msgid "Copy LMS"
+msgstr "Kopiraj LMS"
+
+#: data/resources/ui/window.blp:178
+msgid "Copy Hunter Lab"
+msgstr "Kopiraj Hunter Lab"
+
+#: data/resources/ui/window.blp:183
+msgid "Copy Oklab"
+msgstr "Kopiraj Oklab"
+
+#: data/resources/ui/window.blp:188
+msgid "Copy Oklch"
+msgstr "Kopiraj Oklch"
+
+#. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
+#: src/widgets/about_window.rs:47
+msgid "translator-credits"
+msgstr "Milo Ivir <mail@milotype.de>"
+
+#: src/widgets/about_window.rs:85
+msgid "Parse RGBA/ARGB Hex-Colors"
+msgstr "Analiziraj RGBA/ARGB heksadecimalne boje"
+
+#: src/widgets/about_window.rs:105
+msgctxt ""
+"The changelog of the current version. Should be similar to the CHANGELOG.md "
+"file at the project root. Please ensure that the tags have a matching "
+"closing tag. Since xgettext does not recognize rust multiline strings, this "
+"should be on a single line using line breaks (\\n) for new lines."
+msgid ""
+"<p>A new release with exciting new features and many improvements.</p>\n"
+"<ul><li>Allow entering any format</li><li>Display color in overview search</"
+"li><li>Export palettes to LibreOffice</li><li>A visual differentiation "
+"between color and background</li><li>Improved color conversion</"
+"li><li>Visual refinements to match the state of the art of GNOME apps</"
+"li><li>Internal code improvements and bug fixes</li></ul>"
+msgstr ""
+"<p>Novo izdanje s uzbudljivim novim značajkama i mnogim poboljšanjima.</p>\n"
+"<ul><li>Mogućnost unosa bilo kojeg formata</li><li>Prikaz boje u pregledu "
+"pretrage</li><li>Izvoz paleta u LibreOffice</li><li>Vizualno razlikovanje "
+"boje i pozadine</li ><li>Poboljšana konverzija boja</li><li>Vizualna "
+"poboljšanja koja odgovaraju najnovijem izgledu GNOME aplikacija</"
+"li><li>Poboljšanja internog koda i ispravci grešaka</li></ul>"
+
+#: src/widgets/color_format_row.rs:190
+msgid "Copied “{}”"
+msgstr "Kopiran je „{}”"
+
+#: src/widgets/history_item.rs:118
+msgid "Remove"
+msgstr "Ukloni"
+
+#: src/widgets/palette_dialog.rs:85
+msgctxt "Name for tints (lighter variants) of the color"
+msgid "Tints"
+msgstr "Nijanse"
+
+#: src/widgets/palette_dialog.rs:87
+msgctxt "Name for shades (darker variants) of the color"
+msgid "Shades"
+msgstr "Sjene"
+
+#: src/widgets/palette_dialog.rs:91
+msgctxt "Name for the opposite/complementary color (e.g. blue ⇔ yellow)"
+msgid "Complementary"
+msgstr "Komplementarna"
+
+#: src/widgets/palette_dialog.rs:96
+msgctxt ""
+"The name of the color palette. Consist of the two opposite colors (e.g. blue "
+"⇔ orange / green)"
+msgid "Split-Complementary"
+msgstr "Podijeljena komplementarna"
+
+#: src/widgets/palette_dialog.rs:101
+msgctxt ""
+"Name of the color palette, which would form a triangle above the color wheel"
+msgid "Triadic"
+msgstr "Trijadna"
+
+#: src/widgets/palette_dialog.rs:104
+msgctxt "The name of the color palette."
+msgid "Tetradic"
+msgstr "Tetraedrična"
+
+#: src/widgets/palette_dialog.rs:108
+msgctxt "Color palette consisting of six slight shifted colors"
+msgid "Analogous"
+msgstr "Analogna"
+
+#: src/widgets/preferences/preferences_window.rs:294
+msgid "Move Up"
+msgstr "Premjesti prema gore"
+
+#: src/widgets/preferences/preferences_window.rs:296
+msgid "Move Down"
+msgstr "Premjesti prema dolje"
+
+#: src/widgets/preferences/preferences_window.rs:392
+msgid "Hex-Code"
+msgstr "Heksadecimalni kod"
+
+#: src/widgets/preferences/preferences_window.rs:393
+msgid "RGB"
+msgstr "RBG"
+
+#: src/widgets/preferences/preferences_window.rs:394
+msgid "HSL"
+msgstr "HSL"
+
+#: src/widgets/preferences/preferences_window.rs:395
+msgid "HSV"
+msgstr "HSV"
+
+#: src/widgets/preferences/preferences_window.rs:396
+msgid "CMYK"
+msgstr "CMYK"
+
+#: src/widgets/preferences/preferences_window.rs:397
+msgid "XYZ"
+msgstr "XYZ"
+
+#: src/widgets/preferences/preferences_window.rs:398
+msgid "CIELAB"
+msgstr "CIELAB"
+
+#: src/widgets/preferences/preferences_window.rs:399
+msgid "HWB"
+msgstr "HWB"
+
+#: src/widgets/preferences/preferences_window.rs:400
+msgid "CIELCh / HCL"
+msgstr "CIELCh / HCL"
+
+#: src/widgets/preferences/preferences_window.rs:403
+msgid "Name"
+msgstr "Ime"
+
+#: src/widgets/preferences/preferences_window.rs:406 src/window.rs:443
+#: src/window.rs:468 src/window.rs:669 src/window.rs:852
+msgctxt "Information that no name for the color could be found"
+msgid "Not named"
+msgstr "Bez imena"
+
+#: src/widgets/preferences/preferences_window.rs:409
+msgid "LMS"
+msgstr "LMS"
+
+#: src/widgets/preferences/preferences_window.rs:411
+msgid "Hunter Lab"
+msgstr "Hunter Lab"
+
+#: src/widgets/preferences/preferences_window.rs:413
+msgid "Oklab"
+msgstr "Oklab"
+
+#: src/widgets/preferences/preferences_window.rs:414
+msgid "Oklch"
+msgstr "Oklch"
+
+#: src/window.rs:272
+msgid "Cleared history"
+msgstr "Povijest je izbrisana"
+
+#: src/window.rs:273
+msgid "Undo"
+msgstr "Poništi"
+
+#: src/window.rs:561
+msgid "Failed to get palette color"
+msgstr "Neusjelo preuzimanje boje palete"
+
+#: src/window.rs:592
+msgid "Failed to pick a color"
+msgstr "Neusjelo biranje boje"
