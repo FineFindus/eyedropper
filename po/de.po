@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# Milo Ivir <mail@milotype.de>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-09-21 08:49+0000\n"
-"PO-Revision-Date: 2023-09-21 12:18+0200\n"
-"Last-Translator: FineFindus <FineFindus@proton.me>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2023-12-14 22:11+0000\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/eyedropper/"
+"eyedropper/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.3\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
@@ -327,7 +327,7 @@ msgstr "F11 (Ultralume 40, Philips TL84)"
 
 #: data/resources/ui/preferences/preferences.blp:88
 msgid "F12 (Ultralume 30, Philips TL83)"
-msgstr "A (Glühlampe)"
+msgstr "F12 (Ultralume 30, Philips TL83)"
 
 #: data/resources/ui/preferences/preferences.blp:100
 msgid "CIE Standard Observer"
