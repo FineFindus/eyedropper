@@ -546,6 +546,14 @@ msgstr "Copier LMS"
 msgid "Copy Hunter Lab"
 msgstr "Copier Hunter Lab"
 
+#: data/resources/ui/window.blp:183
+msgid "Copy Oklab"
+msgstr "Copier Oklab"
+
+#: data/resources/ui/window.blp:188
+msgid "Copy Oklch"
+msgstr "Copier Oklch"
+
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/widgets/about_window.rs:47
 msgid "translator-credits"

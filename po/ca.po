@@ -371,43 +371,51 @@ msgstr ""
 
 #: data/resources/ui/preferences/preferences.blp:145
 msgid "RGB Format"
-msgstr ""
+msgstr "Format RGB"
 
 #: data/resources/ui/preferences/preferences.blp:151
 msgid "HSL Format"
-msgstr ""
+msgstr "Format HSL"
 
 #: data/resources/ui/preferences/preferences.blp:157
 msgid "HSV Format"
-msgstr ""
+msgstr "Format HSV"
 
 #: data/resources/ui/preferences/preferences.blp:163
 msgid "CMYK Format"
-msgstr ""
+msgstr "Format CMYK"
 
 #: data/resources/ui/preferences/preferences.blp:169
 msgid "XYZ Format"
-msgstr ""
+msgstr "Format XYZ"
 
 #: data/resources/ui/preferences/preferences.blp:175
 msgid "CIELAB Format"
-msgstr ""
+msgstr "Format CIELAB"
 
 #: data/resources/ui/preferences/preferences.blp:181
 msgid "HWB Format"
-msgstr ""
+msgstr "Format HWB"
 
 #: data/resources/ui/preferences/preferences.blp:187
 msgid "CIELCh/HCL Format"
-msgstr ""
+msgstr "Format CIELCh/HCL"
 
 #: data/resources/ui/preferences/preferences.blp:193
 msgid "LMS Format"
-msgstr ""
+msgstr "Format LMS"
 
 #: data/resources/ui/preferences/preferences.blp:199
 msgid "Hunter Lab Format"
-msgstr ""
+msgstr "Format Hunter Lab"
+
+#: data/resources/ui/preferences/preferences.blp:205
+msgid "Oklab Format"
+msgstr "Format Oklab"
+
+#: data/resources/ui/preferences/preferences.blp:211
+msgid "Oklch Format"
+msgstr "Format Oklch"
 
 #: data/resources/ui/shortcuts.blp:11
 msgctxt "shortcut window"

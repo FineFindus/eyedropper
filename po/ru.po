@@ -412,6 +412,14 @@ msgstr "Формат LMS"
 msgid "Hunter Lab Format"
 msgstr "Формат Hunter Lab"
 
+#: data/resources/ui/preferences/preferences.blp:205
+msgid "Oklab Format"
+msgstr "Формат Oklab"
+
+#: data/resources/ui/preferences/preferences.blp:211
+msgid "Oklch Format"
+msgstr "Формат Oklch"
+
 #: data/resources/ui/shortcuts.blp:11
 msgctxt "shortcut window"
 msgid "General"
@@ -540,6 +548,14 @@ msgstr "Копировать LMS"
 #: data/resources/ui/window.blp:178
 msgid "Copy Hunter Lab"
 msgstr "Копировать Hunter Lab"
+
+#: data/resources/ui/window.blp:183
+msgid "Copy Oklab"
+msgstr "Копировать  Oklab"
+
+#: data/resources/ui/window.blp:188
+msgid "Copy Oklch"
+msgstr "Копировать  Oklch"
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/widgets/about_window.rs:47

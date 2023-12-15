@@ -24,7 +24,7 @@ msgstr ""
 #: data/resources/ui/window.blp:74 src/main.rs:25
 #: src/widgets/about_window.rs:41
 msgid "Eyedropper"
-msgstr "Kapaljka"
+msgstr "Pipeta"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:4
 msgid "Color Picker"
