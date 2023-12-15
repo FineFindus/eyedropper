@@ -1,7 +1,8 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# Milo Ivir <mail@milotype.de>, 2023.
+# German translations for Eyedropper package.
+# Copyright (C) 2022 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Eyedropper package.
+# FineFindus <FineFindus@proton.me>, 2023.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"

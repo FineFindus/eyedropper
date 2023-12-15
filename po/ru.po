@@ -1,7 +1,8 @@
-# Russian translations for eyedropper package.
-# Copyright (C) 2023 THE eyedropper's COPYRIGHT HOLDER
+# Russian translations for Eyedropper package.
+# Copyright (C) 2022 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Eyedropper package.
 # Сергей Ворон <voron.s.a@gmail.com>, 2023.
+# Aleksandr Melman <Alexmelman88@gmail.com>, 2023.
 #
 msgid ""
 msgstr ""
