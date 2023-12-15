@@ -412,6 +412,14 @@ msgstr "LMS Biçimi"
 msgid "Hunter Lab Format"
 msgstr "Hunter Lab Biçimi"
 
+#: data/resources/ui/preferences/preferences.blp:205
+msgid "Oklab Format"
+msgstr "Oklab Biçimi"
+
+#: data/resources/ui/preferences/preferences.blp:211
+msgid "Oklch Format"
+msgstr "Oklch Biçimi"
+
 #: data/resources/ui/shortcuts.blp:11
 msgctxt "shortcut window"
 msgid "General"
@@ -540,6 +548,14 @@ msgstr "LMS Kopyala"
 #: data/resources/ui/window.blp:178
 msgid "Copy Hunter Lab"
 msgstr "Hunter Lab Kopyala"
+
+#: data/resources/ui/window.blp:183
+msgid "Copy Oklab"
+msgstr "Oklab Kopyala"
+
+#: data/resources/ui/window.blp:188
+msgid "Copy Oklch"
+msgstr "Oklch Kopyala"
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/widgets/about_window.rs:47

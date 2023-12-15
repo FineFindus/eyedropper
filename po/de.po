@@ -542,6 +542,14 @@ msgstr "LMS kopieren"
 msgid "Copy Hunter Lab"
 msgstr "Hunter Lab kopieren"
 
+#: data/resources/ui/window.blp:183
+msgid "Copy Oklab"
+msgstr "Oklab kopieren"
+
+#: data/resources/ui/window.blp:188
+msgid "Copy Oklch"
+msgstr "Oklch kopieren"
+
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/widgets/about_window.rs:47
 msgid "translator-credits"
@@ -578,7 +586,11 @@ msgstr ""
 msgid "Copied “{}”"
 msgstr "„{}” kopiert"
 
-#: src/widgets/palette_dialog.rs:80
+#: src/widgets/history_item.rs:118
+msgid "Remove"
+msgstr "Entfernen"
+
+#: src/widgets/palette_dialog.rs:85
 msgctxt "Name for tints (lighter variants) of the color"
 msgid "Tints"
 msgstr "Tönung"

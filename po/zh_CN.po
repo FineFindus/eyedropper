@@ -411,6 +411,14 @@ msgstr "LMS 格式"
 msgid "Hunter Lab Format"
 msgstr "HunterLab 格式"
 
+#: data/resources/ui/preferences/preferences.blp:205
+msgid "Oklab Format"
+msgstr "Oklab 格式"
+
+#: data/resources/ui/preferences/preferences.blp:211
+msgid "Oklch Format"
+msgstr "Oklch 格式"
+
 #: data/resources/ui/shortcuts.blp:11
 msgctxt "shortcut window"
 msgid "General"
@@ -540,10 +548,22 @@ msgstr "复制 LMS"
 msgid "Copy Hunter Lab"
 msgstr "复制 HunterLab"
 
+#: data/resources/ui/window.blp:183
+msgid "Copy Oklab"
+msgstr "复制 Oklab"
+
+#: data/resources/ui/window.blp:188
+msgid "Copy Oklch"
+msgstr "复制 Oklch"
+
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/widgets/about_window.rs:47
 msgid "translator-credits"
 msgstr "lumingzh <lumingzh@qq.com>"
+
+#: src/widgets/about_window.rs:85
+msgid "Parse RGBA/ARGB Hex-Colors"
+msgstr "解析 RGBA/ARGB 16 进制颜色"
 
 #: src/widgets/about_window.rs:105
 msgctxt ""
