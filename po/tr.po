@@ -1,7 +1,6 @@
-# Turkish translation for com.github.finefindus.eyedropper.
-# Copyright (C) 2022-2023 com.github.finefindus.eyedropper's COPYRIGHT HOLDER
-# This file is distributed under the same license as the com.github.finefindus.eyedropper package.
-#
+# Turkish translations for Eyedropper package.
+# Copyright (C) 2022 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Eyedropper package.
 # Sabri Ünal <libreajans@gmail.com>, 2022, 2023.
 #
 msgid ""

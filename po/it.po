@@ -1,6 +1,6 @@
-# Italian translation for eyedropper.
-# Copyright (C) 2022 eyedropper'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the eyedropper package.
+# Italian translations for Eyedropper package.
+# Copyright (C) 2022 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Eyedropper package.
 # Davide Ferracin <davide.ferracin@protonmail.com>, 2022.
 #
 msgid ""
