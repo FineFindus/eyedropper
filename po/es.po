@@ -40,8 +40,12 @@ msgstr "Elija y formatee los colores"
 msgid "Gnome;GTK;Color;Color Picker;Picker;Palette;"
 msgstr "Gnome;GTK;Color;Selector de color;Selector;Paleta;"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
-#: src/widgets/about_window.rs:77
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:9
+msgid "FineFindus"
+msgstr "FineFindus"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:13
+#: src/widgets/about_window.rs:74
 msgid ""
 "Pick any color from your screen and view it in different formats. Change the "
 "picked color or go back to a previously picked color from the history list. "
