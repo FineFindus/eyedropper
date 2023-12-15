@@ -115,12 +115,12 @@ msgstr ""
 #: data/resources/ui/palette-window.blp:13
 msgctxt "LibreOffice/OpenOffice palette file"
 msgid "LibreOffice Palette"
-msgstr ""
+msgstr "LibreOffice paleta"
 
 #: data/resources/ui/palette-window.blp:19
 msgctxt "Gimp/Inkscape palette format"
 msgid "Gimp Palette"
-msgstr ""
+msgstr "Gimp paleta"
 
 #: data/resources/ui/palette-window.blp:25
 msgctxt "Paint.net palette format, should most like not be translated"
@@ -139,7 +139,7 @@ msgstr ""
 
 #: data/resources/ui/palette-window.blp:46
 msgid "Palettes"
-msgstr ""
+msgstr "Paletes"
 
 #: data/resources/ui/palette-window.blp:54
 msgid "Save Palettes…"
@@ -508,43 +508,51 @@ msgstr ""
 
 #: data/resources/ui/window.blp:137
 msgid "Copy RGB"
-msgstr ""
+msgstr "Copia RGB"
 
 #: data/resources/ui/window.blp:141
 msgid "Copy HSL"
-msgstr ""
+msgstr "Copia HSL"
 
 #: data/resources/ui/window.blp:145
 msgid "Copy HSV"
-msgstr ""
+msgstr "Copia HSV"
 
 #: data/resources/ui/window.blp:149
 msgid "Copy CMYK"
-msgstr ""
+msgstr "Copia CMYK"
 
 #: data/resources/ui/window.blp:153
 msgid "Copy XYZ"
-msgstr ""
+msgstr "Copia XYZ"
 
 #: data/resources/ui/window.blp:158
 msgid "Copy CIELAB"
-msgstr ""
+msgstr "Copia CIELAB"
 
 #: data/resources/ui/window.blp:163
 msgid "Copy HWB"
-msgstr ""
+msgstr "Copia HWB"
 
 #: data/resources/ui/window.blp:168
 msgid "Copy CIELCh / HCL"
-msgstr ""
+msgstr "Copia CIELCh / HCL"
 
 #: data/resources/ui/window.blp:173
 msgid "Copy LMS"
-msgstr ""
+msgstr "Copia LMS"
 
 #: data/resources/ui/window.blp:178
 msgid "Copy Hunter Lab"
-msgstr ""
+msgstr "Copia Hunter Lab"
+
+#: data/resources/ui/window.blp:183
+msgid "Copy Oklab"
+msgstr "Copia Oklab"
+
+#: data/resources/ui/window.blp:188
+msgid "Copy Oklch"
+msgstr "Copia Oklch"
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/widgets/about_window.rs:47

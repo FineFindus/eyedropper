@@ -472,7 +472,7 @@ msgstr "_Tipkovnički prečaci"
 
 #: data/resources/ui/window.blp:29
 msgid "_About Eyedropper"
-msgstr "O aplikaciji _Kapaljka"
+msgstr "O aplikaciji _Pipeta"
 
 #: data/resources/ui/window.blp:50
 msgid "No Color"
