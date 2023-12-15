@@ -2,13 +2,14 @@
 # Copyright (C) 2022 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Eyedropper package.
 # Joan Aymà <joanayma@gmail.com>, 2023.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-09-21 08:49+0000\n"
-"PO-Revision-Date: 2023-09-21 10:09+0000\n"
-"Last-Translator: Joan Aymà <joanayma@gmail.com>\n"
+"POT-Creation-Date: 2023-11-14 19:29+0000\n"
+"PO-Revision-Date: 2023-12-03 15:10+0100\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/ca/>\n"
 "Language: ca\n"
@@ -16,18 +17,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"X-Generator: Poedit 3.0\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
 #: data/resources/ui/window.blp:74 src/main.rs:25
 #: src/widgets/about_window.rs:41
-#, fuzzy
 msgid "Eyedropper"
 msgstr "Eyedropper"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:4
-#, fuzzy
 msgid "Color Picker"
 msgstr "Selector de color"
 

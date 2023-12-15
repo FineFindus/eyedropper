@@ -7,15 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper master\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-09-21 08:49+0000\n"
-"PO-Revision-Date: 2023-09-22 12:48+0200\n"
-"Last-Translator: Davide Ferracin <davide.ferracin@protonmail.com>\n"
+"POT-Creation-Date: 2023-11-14 19:29+0000\n"
+"PO-Revision-Date: 2023-12-03 16:20+0100\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.0\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
@@ -679,170 +680,26 @@ msgstr "LMS"
 msgid "Hunter Lab"
 msgstr "Hunter Lab"
 
-#: src/window.rs:222
+#: src/widgets/preferences/preferences_window.rs:413
+msgid "Oklab"
+msgstr "Oklab"
+
+#: src/widgets/preferences/preferences_window.rs:414
+msgid "Oklch"
+msgstr "Oklch"
+
+#: src/window.rs:272
 msgid "Cleared history"
 msgstr "Cronologia azzerata"
 
-#: src/window.rs:223
+#: src/window.rs:273
 msgid "Undo"
 msgstr "Annulla"
 
-#: src/window.rs:558
+#: src/window.rs:561
 msgid "Failed to get palette color"
 msgstr "Errore nell'ottenere il colore della tavolozza"
 
-#: src/window.rs:589
+#: src/window.rs:592
 msgid "Failed to pick a color"
 msgstr "Errore nel prelievo del colore"
-
-#~ msgctxt "Alpha is not shown"
-#~ msgid "Not shown"
-#~ msgstr "Non mostrato"
-
-#~ msgid "Which color name sets should be used for the names"
-#~ msgstr "Quali collezioni di nomi di colori sono da usare per i nomi"
-
-#~ msgid "Default Precision"
-#~ msgstr "Precisione predefinita"
-
-#~ msgid "Use the recommended precision"
-#~ msgstr "Usa la precisione consigliata"
-
-#~ msgid "Show color names from the w3c basic color keyword set"
-#~ msgstr ""
-#~ "Mostra i nomi dei colori dall'insieme di base di colori chiave di w3c"
-
-#~ msgid "Show color names from the w3c extended color keyword  set"
-#~ msgstr ""
-#~ "Mostra i nomi dei colori dall'insieme esteso di colori chiave di w3c"
-
-#~ msgid "Show color names from the GNOME color palette"
-#~ msgstr "Mostra i nomi dei colori dalla tavolozza di colori di GNOME"
-
-#~ msgctxt "Name of the color set from the xkcd color survey"
-#~ msgid "xkcd"
-#~ msgstr "xkcd"
-
-#~ msgid "Show color names from the xkcd color survey"
-#~ msgstr "Mostra i nomi dei colori dal sondaggio di xkcd"
-
-#~ msgctxt ""
-#~ "The changelog of the current version. Should be similar to the CHANGELOG."
-#~ "md file at the project root. Please ensure that the tags have a matching "
-#~ "closing tag. Since xgettext does not recognize rust multiline strings, "
-#~ "this should be on a single line using line breaks (\\n) for new lines."
-#~ msgid ""
-#~ "<p>A minor release with many small QoL improvements.</p><p>Added:</p>\n"
-#~ "<ul><li>Show a toast with an Undo option when clearing the history</"
-#~ "li><li>Use Ctrl-Q to close the window</li><li>Use a default minimum "
-#~ "window size, content should no longer unnecessarily cut off</li><li>New "
-#~ "icon by @bertob</li><li>Export palettes as Adobe Swatch Exchange (ASE), "
-#~ "hex, PAL, Paint.NET (txt) files</li><li>Minor changes to the store "
-#~ "metadata</li></ul><p>Changed:</p>\n"
-#~ "<ul><li>Hunter-Lab now displays 0 instead of NaN</li><li>Improved "
-#~ "tooltips for copying colors</li><li>Palette window now uses a button with "
-#~ "a more explicit text instead of an icon</li><li>Reworded project "
-#~ "description</li><li>Updated all screenshots</li></ul><p>Fixed:</p>\n"
-#~ "<ul><li>Separator is now hidden when the history list is hidden</"
-#~ "li><li>Improved editing experience when change the Hex color/name</li></"
-#~ "ul>"
-#~ msgstr ""
-#~ "<p>Una nuova versione minore con tanti piccoli miglioramenti all'uso "
-#~ "dell'applicazione.</p><p>Novità:</p>\n"
-#~ "<ul><li>Un messaggio “toast” viene mostrato con l'opzione di annullare lo "
-#~ "svuotamento della cronologia</li><li>Chiusura della finestra con Ctrl-Q</"
-#~ "li><li>Uso di una dimensione minima della finestra di default; in questo "
-#~ "modo il contenuto non dovrebbe più venire tagliato</li><li>Nuova icona da "
-#~ "parte di @bertob</li><li>Esportazione delle tavolozze nei formati di file "
-#~ "Adobe Swatch Exchange (ASE), esadecimale, e Paint.NET (txt)</"
-#~ "li><li>Cambiamenti minori ai metadati nello store</li></ul><p>Cambiamenti:"
-#~ "</p>\n"
-#~ "<ul><li>Hunter-Lab ora mostra uno 0 invece di NaN</li><li>Migliorati i "
-#~ "tooltip per copiare i colori</li><li>La finestra delle tavolozze ora usa "
-#~ "un pulsante con testo esplicito invece di un'icona</li><li>Riformulata la "
-#~ "descrizione del progetto</li><li>Aggiornate le schermate "
-#~ "dell'applicazione</li></ul><p>Correzioni:</p>\n"
-#~ "<ul><li>Il separatore viene ora nascosto quando la cronologia è nascosta</"
-#~ "li><li>Migliorata l'esperienza delle modifiche quando viene cambiato il "
-#~ "nome o il colore in esadecimale</li></ul>"
-
-#~ msgid "A powerful color picker and formatter"
-#~ msgstr "Un potente selettore ed editor di colori"
-
-#~ msgid "Main window dark"
-#~ msgstr "Finestra principale scura"
-
-#~ msgid "Main window light"
-#~ msgstr "Finestra principale chiara"
-
-#~ msgid "Customized color formatting in dark mode"
-#~ msgstr "Formattazione dei colori personalizzata nel tema scuro"
-
-#~ msgid "Customized color formatting"
-#~ msgstr "Formattazione dei colori personalizzata"
-
-#~ msgctxt "Tooltip of the copy button for format rows"
-#~ msgid "Copy Format"
-#~ msgstr "Copia formato"
-
-#~ msgctxt ""
-#~ "The changelog of the current version. Should be similar to the CHANGELOG."
-#~ "md file at the project root. Please ensure that the tags have a matching "
-#~ "closing tag. Since xgettext does not recognize rust multiline strings, "
-#~ "this should be on a single line using line breaks (\\n) for new lines."
-#~ msgid ""
-#~ "<p>A new release with exciting new features.</p><p>New Features:</p>\n"
-#~ "<ul><li>Customize formats in the settings</li><li>Export the colorscheme "
-#~ "as a GIMP palette using the new export option</li><li>A placeholder is "
-#~ "shown when no color is picked</li><li> Hunter-Lab and LMS color spaces "
-#~ "have been added</li><li>The GNOME color palette has been added</"
-#~ "li><li>Fixed minor issues</li></ul>"
-#~ msgstr ""
-#~ "<p>Una nuova versione con nuove funzionalità interessanti.</p><p>Nuove "
-#~ "funzionalità:</p>\n"
-#~ "<ul><li>Personalizzazione dei formati nelle impostazioni</"
-#~ "li><li>Esportazione degli schemi di colori come tavolozze di GIMP con la "
-#~ "nuova opzione per esportare</li><li>Viene mostrato un segnaposto se "
-#~ "nessun colore è stato prelevato</li><li>Aggiunti gli spazi di colore "
-#~ "Hunter Lab e LMS</li><li>Aggiunta la tavolozza di colori di GNOME</"
-#~ "li><li>Corretti errori minori</li></ul>"
-
-#~ msgctxt ""
-#~ "Name of the save palette file, do not add a file extension, .gpl will be "
-#~ "added automatically"
-#~ msgid "palettes"
-#~ msgstr "tavolozze"
-
-#~ msgctxt "Tooltip of the copy button for the hex format"
-#~ msgid "Copy Format"
-#~ msgstr "Copia formato"
-
-#~ msgctxt ""
-#~ "The changelog of the current version. Should be similar to the CHANGELOG."
-#~ "md file at the project root. Please ensure that the tags have a matching "
-#~ "closing tag. Since xgettext does not recognize rust multiline strings, "
-#~ "this should be on a single line using line breaks (\\n) for new lines."
-#~ msgid ""
-#~ "<p>This release extends the current available features.</p>\n"
-#~ "<p> Features:</p>\n"
-#~ "<ul><li> A new Palette dialog showing different color palettes</li><li> "
-#~ "Using the new AdwAboutWindow</li><li> Added new translations</"
-#~ "li><li>Fixed minor issues</li></ul>"
-#~ msgstr ""
-#~ "<p>Questa versione estende le funzionalità attualmente disponibili.</p>\n"
-#~ "<p> Funzionalità:</p>\n"
-#~ "<ul><li> Una nuova finestra di dialogo Tavolozza che mostra diverse "
-#~ "tavolozze di colori</li><li> Utilizzo della nuova AdwAboutWindow</li><li> "
-#~ "Aggiunte nuove traduzioni</li><li> Corretti errori minori</li></ul>"
-
-#~ msgid "An easy-to-use color picker"
-#~ msgstr "Un selettore di colori facile da usare"
-
-#~ msgid "Available Formats:"
-#~ msgstr "Formati disponibili:"
-
-#~ msgid "Choose which formats will be visible"
-#~ msgstr "Scegliere quali formati saranno visibili"
-
-#~ msgid "CMKY"
-#~ msgstr "CMYK"
