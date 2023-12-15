@@ -44,7 +44,11 @@ msgstr ""
 "Gnome;GTK;Color;Color Picker;Picker;Palette;Pipette;couleur;sélecteur;"
 "eyedropper;"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:9
+msgid "FineFindus"
+msgstr "FineFindus"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:13
 #: src/widgets/about_window.rs:74
 msgid ""
 "Pick any color from your screen and view it in different formats. Change the "
@@ -56,61 +60,57 @@ msgstr ""
 "précédemment sélectionnée depuis l’historique. Générez une liste de "
 "différentes nuances à partir de la couleur choisie."
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
 #: src/widgets/about_window.rs:79
 msgid "Features"
 msgstr "Fonctionnalités"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:16
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
 #: src/widgets/about_window.rs:83
 msgid "Pick a Color"
 msgstr "Choisissez une couleur"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
 #: src/widgets/about_window.rs:84
 msgid "Enter a color in Hex-Format"
 msgstr "Entrez une couleur en format hexadécimal"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:18
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
 msgid "Enter colors in different formats"
 msgstr "Entrez des couleurs dans différents formats"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
 #: src/widgets/about_window.rs:86
 msgid "View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format"
 msgstr ""
 "Visualisez les couleurs en format hexadécimal, RGB, HSV, HSL, CMYK, XYZ et "
 "CIELAB"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:23
 #: src/widgets/about_window.rs:87
 msgid "Customize which formats appear as well as their order"
 msgstr "Personnalisez les formats visibles et leur ordre d’affichage"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:24
 #: src/widgets/about_window.rs:88
 msgid "Generate a palette of different shades"
 msgstr "Générez une palette de différentes nuances"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:27
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:30
 msgid "Main window with a color in different formats"
 msgstr "Fenêtre principale avec une couleur dans différents formats"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:31
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:34
 msgid "Main window with customized formats"
 msgstr "Fenêtre principales avec des formats personnalisés"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:35
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:38
 msgid "Dialog showing generated color palettes"
 msgstr "Fenêtre montrant des palettes de couleur générées"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:39
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:42
 msgid "Status page stating to pick a color to get started"
 msgstr "Page d’état indiquant de choisir une couleur pour commencer"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:182
-msgid "FineFindus"
-msgstr "FineFindus"
 
 #: data/resources/ui/palette-window.blp:7
 msgctxt "Adobes palette format"
@@ -591,40 +591,44 @@ msgstr ""
 msgid "Copied “{}”"
 msgstr "« {} » Copié"
 
-#: src/widgets/palette_dialog.rs:80
+#: src/widgets/history_item.rs:118
+msgid "Remove"
+msgstr ""
+
+#: src/widgets/palette_dialog.rs:85
 msgctxt "Name for tints (lighter variants) of the color"
 msgid "Tints"
 msgstr "Nuances claires"
 
-#: src/widgets/palette_dialog.rs:82
+#: src/widgets/palette_dialog.rs:87
 msgctxt "Name for shades (darker variants) of the color"
 msgid "Shades"
 msgstr "Nuances sombres"
 
-#: src/widgets/palette_dialog.rs:86
+#: src/widgets/palette_dialog.rs:91
 msgctxt "Name for the opposite/complementary color (e.g. blue ⇔ yellow)"
 msgid "Complementary"
 msgstr "Complémentaire"
 
-#: src/widgets/palette_dialog.rs:91
+#: src/widgets/palette_dialog.rs:96
 msgctxt ""
 "The name of the color palette. Consist of the two opposite colors (e.g. blue "
 "⇔ orange / green)"
 msgid "Split-Complementary"
 msgstr "Complémentaires séparées"
 
-#: src/widgets/palette_dialog.rs:96
+#: src/widgets/palette_dialog.rs:101
 msgctxt ""
 "Name of the color palette, which would form a triangle above the color wheel"
 msgid "Triadic"
 msgstr "Triadique"
 
-#: src/widgets/palette_dialog.rs:99
+#: src/widgets/palette_dialog.rs:104
 msgctxt "The name of the color palette."
 msgid "Tetradic"
 msgstr "Tétradique"
 
-#: src/widgets/palette_dialog.rs:103
+#: src/widgets/palette_dialog.rs:108
 msgctxt "Color palette consisting of six slight shifted colors"
 msgid "Analogous"
 msgstr "Analogues"
@@ -677,8 +681,8 @@ msgstr "CIELCh / HCL"
 msgid "Name"
 msgstr "Nom"
 
-#: src/widgets/preferences/preferences_window.rs:406 src/window.rs:442
-#: src/window.rs:467 src/window.rs:666 src/window.rs:845
+#: src/widgets/preferences/preferences_window.rs:406 src/window.rs:443
+#: src/window.rs:468 src/window.rs:669 src/window.rs:852
 msgctxt "Information that no name for the color could be found"
 msgid "Not named"
 msgstr "Pas de nom"

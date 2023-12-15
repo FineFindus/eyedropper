@@ -32,7 +32,7 @@ msgstr "Kleurenkiezer"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
-#: src/widgets/about_window.rs:75
+#: src/widgets/about_window.rs:71
 msgid "Pick and format colors"
 msgstr "Kies en formatteer kleuren"
 
@@ -43,8 +43,12 @@ msgstr ""
 "Gnome;GTK;Color;Color Picker;Picker;Palette;Kleur;Kleurenkiezer;Kiezer;"
 "Selecteren;Palet;"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
-#: src/widgets/about_window.rs:78
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:9
+msgid "FineFindus"
+msgstr "FineFindus"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:13
+#: src/widgets/about_window.rs:74
 msgid ""
 "Pick any color from your screen and view it in different formats. Change the "
 "picked color or go back to a previously picked color from the history list. "

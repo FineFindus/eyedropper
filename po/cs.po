@@ -39,7 +39,11 @@ msgstr "Vyberte a formátujte barvy"
 msgid "Gnome;GTK;Color;Color Picker;Picker;Palette;"
 msgstr "Gnome;GTK;Barva;Výběr Barev;Vybírač barev;Výběr;Vybírač;Paleta;"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:9
+msgid "FineFindus"
+msgstr "FineFindus"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:13
 #: src/widgets/about_window.rs:74
 msgid ""
 "Pick any color from your screen and view it in different formats. Change the "
@@ -50,60 +54,55 @@ msgstr ""
 "Změňte vybranou barvu nebo jděte na dříve vybranou barvu v seznamu historie. "
 "Generujte seznam odstínů z vybrané barvy."
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
 #: src/widgets/about_window.rs:79
 msgid "Features"
 msgstr "Funkce"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:16
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
 #: src/widgets/about_window.rs:83
 msgid "Pick a Color"
 msgstr "Vyberte Barvu"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
 #: src/widgets/about_window.rs:84
 msgid "Enter a color in Hex-Format"
 msgstr "Vložte barvu v Hex-Formátu"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:18
-#: src/widgets/about_window.rs:85
-msgid "Parse RGBA/ARGB Hex-Colors"
-msgstr "Rozbor RGBA/ARGB Hex-Barev"
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
+msgid "Enter colors in different formats"
+msgstr ""
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
 #: src/widgets/about_window.rs:86
 msgid "View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format"
 msgstr "Zobrazte barvy ve formátech Hex, RGB. HSV, HSL, CMYL, XYZ a CIE-Lab"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:23
 #: src/widgets/about_window.rs:87
 msgid "Customize which formats appear as well as their order"
 msgstr "Přizpůsobte které formáty se zobrazí a v jakém pořadí"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:24
 #: src/widgets/about_window.rs:88
 msgid "Generate a palette of different shades"
 msgstr "Generujte paletu různých odstínů"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:27
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:30
 msgid "Main window with a color in different formats"
 msgstr "Hlavní okno s barvou v různých formátech"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:31
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:34
 msgid "Main window with customized formats"
 msgstr "Hlavní okno s přizpůsobenými formáty"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:35
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:38
 msgid "Dialog showing generated color palettes"
 msgstr "Dialogové okno zobrazující vygenerovanou barevnou paletu"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:39
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:42
 msgid "Status page stating to pick a color to get started"
 msgstr "Stránka stavu uvádějící pro začátek vyberte barvu"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:179
-msgid "FineFindus"
-msgstr "FineFindus"
 
 #: data/resources/ui/palette-window.blp:7
 msgctxt "Adobes palette format"
@@ -570,72 +569,56 @@ msgctxt ""
 "closing tag. Since xgettext does not recognize rust multiline strings, this "
 "should be on a single line using line breaks (\\n) for new lines."
 msgid ""
-"<p>A minor release with many small QoL improvements.</p><p>Added:</p>\n"
-"<ul><li>Show a toast with an Undo option when clearing the history</"
-"li><li>Use Ctrl-Q to close the window</li><li>Use a default minimum window "
-"size, content should no longer unnecessarily cut off</li><li>New icon by "
-"@bertob</li><li>Export palettes as Adobe Swatch Exchange (ASE), hex, PAL, "
-"Paint.NET (txt) files</li><li>Minor changes to the store metadata</li></"
-"ul><p>Changed:</p>\n"
-"<ul><li>Hunter-Lab now displays 0 instead of NaN</li><li>Improved tooltips "
-"for copying colors</li><li>Palette window now uses a button with a more "
-"explicit text instead of an icon</li><li>Reworded project description</"
-"li><li>Updated all screenshots</li></ul><p>Fixed:</p>\n"
-"<ul><li>Separator is now hidden when the history list is hidden</"
-"li><li>Improved editing experience when change the Hex color/name</li></ul>"
+"<p>A new release with exciting new features and many improvements.</p>\n"
+"<ul><li>Allow entering any format</li><li>Display color in overview search</"
+"li><li>Export palettes to LibreOffice</li><li>A visual differentiation "
+"between color and background</li><li>Improved color conversion</"
+"li><li>Visual refinements to match the state of the art of GNOME apps</"
+"li><li>Internal code improvements and bug fixes</li></ul>"
 msgstr ""
-"<p>Malé vydání s mnoho malými QoL vylepšeními.</p><p>Přidáno:</p>\n"
-"<ul><li>Zobrazuje se toust s akcí Zpět po vyčištění historie</"
-"li><li>Zkratkou Ctrl-Q zavřete okno</li><li>Přidána výchozí minimální "
-"velikost okna, obsah by už neměl být odříznut</li><li>Nová ikona od @bertob</"
-"li><li>Exportujte palety jako Adobe Swatch Exchange (ASE), hex, PAL, Paint."
-"NET (txt) soubory</li><li>Menší změny v úložišť metadat</li></ul><p>Změněno:"
-"</p>\n"
-"<ul><li>Hunter-Lab nyní ukazuje 0 namísto NaN</li><li>Vylepšeny tooltipy pro "
-"kopírování barev</li><li>Okno palety nyní používá tlačítko s více explicitím "
-"texte namísto ikony</li><li>Přeformulován popisek projektu</"
-"li><li>Aktualizovány všechny snímky obrazovky</li></ul><p>Opraveno:</p>\n"
-"<ul><li>Oddělovač je nyní schován pokud seznam historie je schován</"
-"li><li>Vylepšena zkušenost editování při změně Hex barvy/názvu</li></ul>"
 
-#: src/widgets/color_format_row.rs:244
+#: src/widgets/color_format_row.rs:190
 msgid "Copied “{}”"
 msgstr "Kopírováno: “{}”"
 
-#: src/widgets/palette_dialog.rs:133
+#: src/widgets/history_item.rs:118
+msgid "Remove"
+msgstr ""
+
+#: src/widgets/palette_dialog.rs:85
 msgctxt "Name for tints (lighter variants) of the color"
 msgid "Tints"
 msgstr "Tónování"
 
-#: src/widgets/palette_dialog.rs:137
+#: src/widgets/palette_dialog.rs:87
 msgctxt "Name for shades (darker variants) of the color"
 msgid "Shades"
 msgstr "Odstíny"
 
-#: src/widgets/palette_dialog.rs:95
+#: src/widgets/palette_dialog.rs:91
 msgctxt "Name for the opposite/complementary color (e.g. blue ⇔ yellow)"
 msgid "Complementary"
 msgstr "Komplementární"
 
-#: src/widgets/palette_dialog.rs:100
+#: src/widgets/palette_dialog.rs:96
 msgctxt ""
 "The name of the color palette. Consist of the two opposite colors (e.g. blue "
 "⇔ orange / green)"
 msgid "Split-Complementary"
 msgstr "Dělené Doplňkové"
 
-#: src/widgets/palette_dialog.rs:105
+#: src/widgets/palette_dialog.rs:101
 msgctxt ""
 "Name of the color palette, which would form a triangle above the color wheel"
 msgid "Triadic"
 msgstr "Triadické"
 
-#: src/widgets/palette_dialog.rs:108
+#: src/widgets/palette_dialog.rs:104
 msgctxt "The name of the color palette."
 msgid "Tetradic"
 msgstr "Tetradické"
 
-#: src/widgets/palette_dialog.rs:112
+#: src/widgets/palette_dialog.rs:108
 msgctxt "Color palette consisting of six slight shifted colors"
 msgid "Analogous"
 msgstr "Analogické"
@@ -688,8 +671,8 @@ msgstr "CIELCh / HCL"
 msgid "Name"
 msgstr "Název"
 
-#: src/widgets/preferences/preferences_window.rs:406 src/window.rs:438
-#: src/window.rs:463 src/window.rs:650 src/window.rs:829
+#: src/widgets/preferences/preferences_window.rs:406 src/window.rs:443
+#: src/window.rs:468 src/window.rs:669 src/window.rs:852
 msgctxt "Information that no name for the color could be found"
 msgid "Not named"
 msgstr "Nepojmenováno"
@@ -702,18 +685,26 @@ msgstr "LMS"
 msgid "Hunter Lab"
 msgstr "Hunter Lab"
 
-#: src/window.rs:224
+#: src/widgets/preferences/preferences_window.rs:413
+msgid "Oklab"
+msgstr "Oklab"
+
+#: src/widgets/preferences/preferences_window.rs:414
+msgid "Oklch"
+msgstr "Oklch"
+
+#: src/window.rs:272
 msgid "Cleared history"
 msgstr "Historie vyčištěna"
 
-#: src/window.rs:225
+#: src/window.rs:273
 msgid "Undo"
 msgstr "Zpět"
 
-#: src/window.rs:553
+#: src/window.rs:561
 msgid "Failed to get palette color"
 msgstr "Získání barevné palety selhalo"
 
-#: src/window.rs:584
+#: src/window.rs:592
 msgid "Failed to pick a color"
 msgstr "Vybrání barvy selhalo"

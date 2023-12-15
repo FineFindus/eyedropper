@@ -41,10 +41,14 @@ msgstr "Обирайте та форматуйте кольори"
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
 msgid "Gnome;GTK;Color;Color Picker;Picker;Palette;"
 msgstr ""
-"Gnome;GTK;Color;Color "
-"Picker;Picker;Palette;гном;гтк;колір;піпетка;палітра;обрати;"
+"Gnome;GTK;Color;Color Picker;Picker;Palette;гном;гтк;колір;піпетка;палітра;"
+"обрати;"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:9
+msgid "FineFindus"
+msgstr "FineFindus"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:13
 #: src/widgets/about_window.rs:74
 msgid ""
 "Pick any color from your screen and view it in different formats. Change the "
@@ -56,61 +60,58 @@ msgstr ""
 "із списку історії обраних кольорів. Генеруйте різні відтінки із обраних "
 "кольорів."
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
 #: src/widgets/about_window.rs:79
 msgid "Features"
 msgstr "Можливості"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:16
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
 #: src/widgets/about_window.rs:83
 msgid "Pick a Color"
 msgstr "Обирання кольорів"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
 #: src/widgets/about_window.rs:84
 msgid "Enter a color in Hex-Format"
 msgstr "Ввід кольорів у шістнадцятковому форматі"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:18
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
 msgid "Enter colors in different formats"
 msgstr "Ввід кольорів у будь-якому форматі"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
 #: src/widgets/about_window.rs:86
 msgid "View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format"
 msgstr ""
 "Перегляд кольорів у шістнадцятковому, RGB, HSV, HSL, CMYK, XYZ і CIE-Lab "
 "форматах"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:23
 #: src/widgets/about_window.rs:87
 msgid "Customize which formats appear as well as their order"
 msgstr "Налаштування які формати будуть відображатися і у якому порядку"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:24
 #: src/widgets/about_window.rs:88
 msgid "Generate a palette of different shades"
 msgstr "Генрування палітри різних відтінків"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:27
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:30
 msgid "Main window with a color in different formats"
 msgstr "Головне вікно з кольорами у різних форматах"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:31
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:34
 msgid "Main window with customized formats"
 msgstr "Головне вікно з налаштованими форматами"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:35
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:38
 msgid "Dialog showing generated color palettes"
 msgstr "Діалогове вікно з згенерованими палітрами"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:39
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:42
 msgid "Status page stating to pick a color to get started"
-msgstr "Сторінка стану із зазначенням, що потрібно вибрати колір, щоб розпочати"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:182
-msgid "FineFindus"
-msgstr "FineFindus"
+msgstr ""
+"Сторінка стану із зазначенням, що потрібно вибрати колір, щоб розпочати"
 
 #: data/resources/ui/palette-window.blp:7
 msgctxt "Adobes palette format"
@@ -596,40 +597,44 @@ msgstr ""
 msgid "Copied “{}”"
 msgstr "Скопійовано “{}”"
 
-#: src/widgets/palette_dialog.rs:80
+#: src/widgets/history_item.rs:118
+msgid "Remove"
+msgstr ""
+
+#: src/widgets/palette_dialog.rs:85
 msgctxt "Name for tints (lighter variants) of the color"
 msgid "Tints"
 msgstr "Тона"
 
-#: src/widgets/palette_dialog.rs:82
+#: src/widgets/palette_dialog.rs:87
 msgctxt "Name for shades (darker variants) of the color"
 msgid "Shades"
 msgstr "Відтінки"
 
-#: src/widgets/palette_dialog.rs:86
+#: src/widgets/palette_dialog.rs:91
 msgctxt "Name for the opposite/complementary color (e.g. blue ⇔ yellow)"
 msgid "Complementary"
 msgstr "Комплементарні"
 
-#: src/widgets/palette_dialog.rs:91
+#: src/widgets/palette_dialog.rs:96
 msgctxt ""
 "The name of the color palette. Consist of the two opposite colors (e.g. blue "
 "⇔ orange / green)"
 msgid "Split-Complementary"
 msgstr "Комплементарно-роздільні"
 
-#: src/widgets/palette_dialog.rs:96
+#: src/widgets/palette_dialog.rs:101
 msgctxt ""
 "Name of the color palette, which would form a triangle above the color wheel"
 msgid "Triadic"
 msgstr "Триадичні"
 
-#: src/widgets/palette_dialog.rs:99
+#: src/widgets/palette_dialog.rs:104
 msgctxt "The name of the color palette."
 msgid "Tetradic"
 msgstr "Тетрадійні"
 
-#: src/widgets/palette_dialog.rs:103
+#: src/widgets/palette_dialog.rs:108
 msgctxt "Color palette consisting of six slight shifted colors"
 msgid "Analogous"
 msgstr "Аналогічні"
@@ -682,8 +687,8 @@ msgstr "CIELCh/HCL"
 msgid "Name"
 msgstr "Назва"
 
-#: src/widgets/preferences/preferences_window.rs:406 src/window.rs:442
-#: src/window.rs:467 src/window.rs:666 src/window.rs:845
+#: src/widgets/preferences/preferences_window.rs:406 src/window.rs:443
+#: src/window.rs:468 src/window.rs:669 src/window.rs:852
 msgctxt "Information that no name for the color could be found"
 msgid "Not named"
 msgstr "Без назви"
@@ -700,14 +705,14 @@ msgstr "Hunter Lab"
 msgid "Cleared history"
 msgstr "Історія видалена"
 
-#: src/window.rs:223
+#: src/window.rs:273
 msgid "Undo"
 msgstr "Скасувати"
 
-#: src/window.rs:558
+#: src/window.rs:561
 msgid "Failed to get palette color"
 msgstr "Не вдалося отримати колір палітри"
 
-#: src/window.rs:589
+#: src/window.rs:592
 msgid "Failed to pick a color"
 msgstr "Не вдалося отримати колір"
