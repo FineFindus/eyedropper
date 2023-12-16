@@ -2,21 +2,22 @@
 # Copyright (C) 2022 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Eyedropper package.
 # swyknox <swyknox@gmail.com>, 2023.
-#
+# Milo Ivir <mail@milotype.de>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-11-14 19:29+0000\n"
-"PO-Revision-Date: 2023-12-03 16:19+0100\n"
+"PO-Revision-Date: 2023-12-16 16:35+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
-"Language-Team: Brazilian Portuguese <>\n"
-"Language: pt_BR\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/eyedropper/"
+"eyedropper/pt/>\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.0\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.3\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
@@ -318,15 +319,15 @@ msgstr ""
 
 #: data/resources/ui/preferences/preferences.blp:86
 msgid "F10 (Ultralume 50, Philips TL85)"
-msgstr ""
+msgstr "F10 (Ultralume 50, Philips TL85)"
 
 #: data/resources/ui/preferences/preferences.blp:87
 msgid "F11 (Ultralume 40, Philips TL84)"
-msgstr ""
+msgstr "F11 (Ultralume 40, Philips TL84)"
 
 #: data/resources/ui/preferences/preferences.blp:88
 msgid "F12 (Ultralume 30, Philips TL83)"
-msgstr ""
+msgstr "F12 (Ultralume 30, Philips TL83)"
 
 #: data/resources/ui/preferences/preferences.blp:100
 msgid "CIE Standard Observer"
@@ -350,7 +351,7 @@ msgstr "Formatos de cores"
 
 #: data/resources/ui/preferences/preferences.blp:113
 msgid "Customize the visible formats and in which order they are displayed."
-msgstr "Personalize os formatos visíveis e a ordem em que são exibidos"
+msgstr "Personalize os formatos visíveis e a ordem em que são exibidos."
 
 #: data/resources/ui/preferences/preferences.blp:118
 msgctxt " Tooltip of the button to reset the format order"
@@ -477,7 +478,7 @@ msgstr "Nenhuma cor selecionada"
 
 #: data/resources/ui/window.blp:51
 msgid "Select a color from the screen to get started."
-msgstr "Selecione uma cor na tela para começar"
+msgstr "Selecione uma cor na tela para começar."
 
 #: data/resources/ui/window.blp:53
 msgid "_Pick a Color"
