@@ -2,21 +2,22 @@
 # Copyright (C) 2022 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Eyedropper package.
 # Sergio Varela <sergiovg01@outlook.com>, 2023.
-#
+# Milo Ivir <mail@milotype.de>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-11-14 19:29+0000\n"
-"PO-Revision-Date: 2023-12-03 16:20+0100\n"
+"PO-Revision-Date: 2023-12-16 16:35+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
-"Language-Team: Spanish - Spain <sergiovg01@outlook.com>\n"
-"Language: es_ES\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/eyedropper/"
+"eyedropper/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.3\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
@@ -115,7 +116,7 @@ msgstr "Adobe Swatch Exchange"
 #: data/resources/ui/palette-window.blp:13
 msgctxt "LibreOffice/OpenOffice palette file"
 msgid "LibreOffice Palette"
-msgstr "LibreOffice Palette"
+msgstr "LibreOffice paleta"
 
 #: data/resources/ui/palette-window.blp:19
 msgctxt "Gimp/Inkscape palette format"
@@ -561,9 +562,7 @@ msgstr "Copiar Oklch"
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/widgets/about_window.rs:47
 msgid "translator-credits"
-msgstr ""
-"Sergio Varela\n"
-"https://github.com/IngrownMink4"
+msgstr "Sergio Varela https://github.com/IngrownMink4"
 
 #: src/widgets/about_window.rs:85
 msgid "Parse RGBA/ARGB Hex-Colors"
