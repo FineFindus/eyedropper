@@ -3,21 +3,22 @@
 # This file is distributed under the same license as the Eyedropper package.
 # Automatically generated, 2022.
 # Philip Goto <philip.goto@gmail.com>, 2023.
-#
+# Milo Ivir <mail@milotype.de>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-11-14 19:29+0000\n"
-"PO-Revision-Date: 2023-12-03 16:19+0100\n"
+"PO-Revision-Date: 2023-12-16 16:35+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
-"Language-Team: none\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/eyedropper/"
+"eyedropper/nl/>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.3\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
@@ -323,15 +324,15 @@ msgstr ""
 
 #: data/resources/ui/preferences/preferences.blp:86
 msgid "F10 (Ultralume 50, Philips TL85)"
-msgstr ""
+msgstr "F10 (Ultralume 50, Philips TL85)"
 
 #: data/resources/ui/preferences/preferences.blp:87
 msgid "F11 (Ultralume 40, Philips TL84)"
-msgstr ""
+msgstr "F11 (Ultralume 40, Philips TL84)"
 
 #: data/resources/ui/preferences/preferences.blp:88
 msgid "F12 (Ultralume 30, Philips TL83)"
-msgstr ""
+msgstr "F12 (Ultralume 30, Philips TL83)"
 
 #: data/resources/ui/preferences/preferences.blp:100
 msgid "CIE Standard Observer"
@@ -509,7 +510,7 @@ msgstr "Naam kopiëren"
 
 #: data/resources/ui/window.blp:133
 msgid "Copy Hex Code"
-msgstr "Hex-code  kopiëren"
+msgstr "Hex-code kopiëren"
 
 #: data/resources/ui/window.blp:137
 msgid "Copy RGB"
