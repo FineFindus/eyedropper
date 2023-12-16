@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the Eyedropper package.
 # Sabri Ünal <libreajans@gmail.com>, 2022, 2023.
 # Milo Ivir <mail@milotype.de>, 2023.
+# Deleted User <noreply+13144@weblate.org>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: com.github.finefindus.eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-11-14 19:29+0000\n"
 "PO-Revision-Date: 2025-06-04 14:02+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Last-Translator: Deleted User <noreply+13144@weblate.org>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/tr/>\n"
 "Language: tr\n"
