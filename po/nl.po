@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the Eyedropper package.
 # Automatically generated, 2022.
 # Philip Goto <philip.goto@gmail.com>, 2023.
-# Milo Ivir <mail@milotype.de>, 2023.
+# Milo Ivir <mail@milotype.de>, 2023, 2025.
 # Cirilla <cirilla@tuta.io>, 2025.
 msgid ""
 msgstr ""
@@ -11,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-11-14 19:29+0000\n"
 "PO-Revision-Date: 2025-06-04 14:02+0000\n"
-"Last-Translator: Cirilla <cirilla@tuta.io>\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/nl/>\n"
 "Language: nl\n"
