@@ -4,13 +4,14 @@
 # Sergio Varela <sergiovg01@outlook.com>, 2023.
 # Milo Ivir <mail@milotype.de>, 2023.
 # gallegonovato <fran-carro@hotmail.es>, 2023, 2024.
+# Deleted User <noreply+48943@weblate.org>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-11-14 19:29+0000\n"
 "PO-Revision-Date: 2025-06-04 14:02+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Last-Translator: Deleted User <noreply+48943@weblate.org>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/es/>\n"
 "Language: es\n"
