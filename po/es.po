@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the Eyedropper package.
 # Sergio Varela <sergiovg01@outlook.com>, 2023.
 # Milo Ivir <mail@milotype.de>, 2023.
+# gallegonovato <fran-carro@hotmail.es>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-11-14 19:29+0000\n"
-"PO-Revision-Date: 2023-12-16 16:35+0000\n"
-"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"PO-Revision-Date: 2023-12-18 12:06+0000\n"
+"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/es/>\n"
 "Language: es\n"
@@ -74,7 +75,7 @@ msgstr "Introduce un color en formato hexadecimal"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
 msgid "Enter colors in different formats"
-msgstr ""
+msgstr "Introducir colores en diferentes formatos"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
 #: src/widgets/about_window.rs:86
@@ -582,6 +583,14 @@ msgid ""
 "li><li>Visual refinements to match the state of the art of GNOME apps</"
 "li><li>Internal code improvements and bug fixes</li></ul>"
 msgstr ""
+"<p>Una nueva versión con interesantes nuevas funciones y muchas mejoras.</p>"
+"\n"
+"<ul><li>Permitir introducir cualquier formato</li><li>Mostrar el color en la "
+"búsqueda general</li><li>Exportar paletas a LibreOffice</"
+"li><li>Diferenciación visual entre color y fondo</li><li>Conversión de color "
+"mejorada</li><li>Refinamientos visuales para igualar el estado del arte de "
+"las aplicaciones de GNOME</li><li>Mejoras de código interno y corrección de "
+"errores</li></ul>"
 
 #: src/widgets/color_format_row.rs:190
 msgid "Copied “{}”"
@@ -589,7 +598,7 @@ msgstr "Copiado “{}”"
 
 #: src/widgets/history_item.rs:118
 msgid "Remove"
-msgstr ""
+msgstr "Eliminar"
 
 #: src/widgets/palette_dialog.rs:85
 msgctxt "Name for tints (lighter variants) of the color"
