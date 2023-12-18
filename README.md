@@ -1,6 +1,9 @@
 [![Part of GNOME Circle](https://circle.gnome.org/assets/button/badge.svg)](https://apps.gnome.org/Eyedropper/)
 ![maintenance-status](https://img.shields.io/badge/maintenance-actively--developed-brightgreen.svg)
 [![CI](https://github.com/FineFindus/eyedropper/actions/workflows/ci.yml/badge.svg)](https://github.com/FineFindus/eyedropper/actions/workflows/ci.yml)
+<a href="https://hosted.weblate.org/engage/eyedropper/">
+<img src="https://hosted.weblate.org/widget/eyedropper/svg-badge.svg" alt="Translation status" />
+</a>
 
 ![Eyedropper](data/icons/com.github.finefindus.eyedropper.svg)
 
