@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Eyedropper master\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-11-14 19:29+0000\n"
-"PO-Revision-Date: 2023-12-03 16:20+0100\n"
+"PO-Revision-Date: 2023-12-19 14:14+0100\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/fr/>\n"
@@ -416,6 +416,14 @@ msgstr "Format LMS"
 #: data/resources/ui/preferences/preferences.blp:199
 msgid "Hunter Lab Format"
 msgstr "Format Hunter Lab"
+
+#: data/resources/ui/preferences/preferences.blp:205
+msgid "Oklab Format"
+msgstr ""
+
+#: data/resources/ui/preferences/preferences.blp:211
+msgid "Oklch Format"
+msgstr ""
 
 #: data/resources/ui/shortcuts.blp:11
 msgctxt "shortcut window"

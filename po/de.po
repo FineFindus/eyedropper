@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-11-14 19:29+0000\n"
-"PO-Revision-Date: 2023-12-03 16:20+0100\n"
+"PO-Revision-Date: 2023-12-19 14:13+0100\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: \n"
 "Language: de\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.3\n"
+"X-Generator: Poedit 3.0\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
@@ -412,6 +412,14 @@ msgstr "LMS Format"
 #: data/resources/ui/preferences/preferences.blp:199
 msgid "Hunter Lab Format"
 msgstr "Hunter Lab Format"
+
+#: data/resources/ui/preferences/preferences.blp:205
+msgid "Oklab Format"
+msgstr ""
+
+#: data/resources/ui/preferences/preferences.blp:211
+msgid "Oklch Format"
+msgstr ""
 
 #: data/resources/ui/shortcuts.blp:11
 msgctxt "shortcut window"

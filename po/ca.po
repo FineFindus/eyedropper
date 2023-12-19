@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-11-14 19:29+0000\n"
-"PO-Revision-Date: 2023-12-16 16:35+0000\n"
+"PO-Revision-Date: 2023-12-19 14:11+0100\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/ca/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.3\n"
+"X-Generator: Poedit 3.0\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
@@ -683,6 +683,14 @@ msgstr ""
 
 #: src/widgets/preferences/preferences_window.rs:411
 msgid "Hunter Lab"
+msgstr ""
+
+#: src/widgets/preferences/preferences_window.rs:413
+msgid "Oklab"
+msgstr ""
+
+#: src/widgets/preferences/preferences_window.rs:414
+msgid "Oklch"
 msgstr ""
 
 #: src/window.rs:272
