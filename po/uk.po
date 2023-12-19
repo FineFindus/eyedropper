@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-11-14 19:29+0000\n"
-"PO-Revision-Date: 2023-12-03 14:49+0100\n"
+"PO-Revision-Date: 2023-12-19 14:15+0100\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/uk/>\n"
@@ -701,7 +701,15 @@ msgstr "LMS"
 msgid "Hunter Lab"
 msgstr "Hunter Lab"
 
-#: src/window.rs:222
+#: src/widgets/preferences/preferences_window.rs:413
+msgid "Oklab"
+msgstr ""
+
+#: src/widgets/preferences/preferences_window.rs:414
+msgid "Oklch"
+msgstr ""
+
+#: src/window.rs:272
 msgid "Cleared history"
 msgstr "Історія видалена"
 
