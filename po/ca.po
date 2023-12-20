@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-11-14 19:29+0000\n"
-"PO-Revision-Date: 2023-12-19 14:11+0100\n"
+"PO-Revision-Date: 2023-12-21 12:23+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/ca/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Weblate 5.4-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
@@ -109,7 +109,7 @@ msgstr ""
 #: data/resources/ui/palette-window.blp:7
 msgctxt "Adobes palette format"
 msgid "Adobe Swatch Exchange"
-msgstr ""
+msgstr "Adobe Swatch Exchange"
 
 #: data/resources/ui/palette-window.blp:13
 msgctxt "LibreOffice/OpenOffice palette file"
@@ -124,7 +124,7 @@ msgstr "Gimp paleta"
 #: data/resources/ui/palette-window.blp:25
 msgctxt "Paint.net palette format, should most like not be translated"
 msgid "Paint.NET"
-msgstr ""
+msgstr "Paint.NET"
 
 #: data/resources/ui/palette-window.blp:31
 msgctxt "Palette format file name"
@@ -134,7 +134,7 @@ msgstr ""
 #: data/resources/ui/palette-window.blp:37
 msgctxt "Palette format file name"
 msgid "PAL"
-msgstr ""
+msgstr "PAL"
 
 #: data/resources/ui/palette-window.blp:46
 msgid "Palettes"
@@ -338,11 +338,11 @@ msgstr ""
 
 #: data/resources/ui/preferences/preferences.blp:104
 msgid "2°"
-msgstr ""
+msgstr "2°"
 
 #: data/resources/ui/preferences/preferences.blp:105
 msgid "10°"
-msgstr ""
+msgstr "10°"
 
 #: data/resources/ui/preferences/preferences.blp:112
 msgid "Color Formats"
@@ -481,12 +481,12 @@ msgstr ""
 
 #: data/resources/ui/window.blp:53
 msgid "_Pick a Color"
-msgstr ""
+msgstr "_Escull un color"
 
 #: data/resources/ui/window.blp:78
 msgctxt "Tooltip of the colorpicker button"
 msgid "Pick a Color"
-msgstr ""
+msgstr "Escull un color"
 
 #: data/resources/ui/window.blp:85
 msgid "Main Menu"
@@ -637,35 +637,35 @@ msgstr ""
 
 #: src/widgets/preferences/preferences_window.rs:393
 msgid "RGB"
-msgstr ""
+msgstr "RGB"
 
 #: src/widgets/preferences/preferences_window.rs:394
 msgid "HSL"
-msgstr ""
+msgstr "HSL"
 
 #: src/widgets/preferences/preferences_window.rs:395
 msgid "HSV"
-msgstr ""
+msgstr "HSV"
 
 #: src/widgets/preferences/preferences_window.rs:396
 msgid "CMYK"
-msgstr ""
+msgstr "CMYK"
 
 #: src/widgets/preferences/preferences_window.rs:397
 msgid "XYZ"
-msgstr ""
+msgstr "XYZ"
 
 #: src/widgets/preferences/preferences_window.rs:398
 msgid "CIELAB"
-msgstr ""
+msgstr "CIELAB"
 
 #: src/widgets/preferences/preferences_window.rs:399
 msgid "HWB"
-msgstr ""
+msgstr "HWB"
 
 #: src/widgets/preferences/preferences_window.rs:400
 msgid "CIELCh / HCL"
-msgstr ""
+msgstr "CIELCh / HCL"
 
 #: src/widgets/preferences/preferences_window.rs:403
 msgid "Name"
@@ -679,19 +679,19 @@ msgstr ""
 
 #: src/widgets/preferences/preferences_window.rs:409
 msgid "LMS"
-msgstr ""
+msgstr "LMS"
 
 #: src/widgets/preferences/preferences_window.rs:411
 msgid "Hunter Lab"
-msgstr ""
+msgstr "Hunter Lab"
 
 #: src/widgets/preferences/preferences_window.rs:413
 msgid "Oklab"
-msgstr ""
+msgstr "Oklab"
 
 #: src/widgets/preferences/preferences_window.rs:414
 msgid "Oklch"
-msgstr ""
+msgstr "Oklch"
 
 #: src/window.rs:272
 msgid "Cleared history"
