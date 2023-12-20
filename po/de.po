@@ -2,21 +2,22 @@
 # Copyright (C) 2022 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Eyedropper package.
 # FineFindus <FineFindus@proton.me>, 2023.
-#
+# Milo Ivir <mail@milotype.de>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-11-14 19:29+0000\n"
-"PO-Revision-Date: 2023-12-19 14:13+0100\n"
+"PO-Revision-Date: 2023-12-21 12:23+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
-"Language-Team: \n"
+"Language-Team: German <https://hosted.weblate.org/projects/eyedropper/"
+"eyedropper/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Weblate 5.4-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
@@ -415,11 +416,11 @@ msgstr "Hunter Lab Format"
 
 #: data/resources/ui/preferences/preferences.blp:205
 msgid "Oklab Format"
-msgstr ""
+msgstr "Oklab Format"
 
 #: data/resources/ui/preferences/preferences.blp:211
 msgid "Oklch Format"
-msgstr ""
+msgstr "Oklch Format"
 
 #: data/resources/ui/shortcuts.blp:11
 msgctxt "shortcut window"
