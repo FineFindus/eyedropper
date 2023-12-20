@@ -2,14 +2,14 @@
 # Copyright (C) 2022 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Eyedropper package.
 # Joan Aymà <joanayma@gmail.com>, 2023, 2025.
-# Milo Ivir <mail@milotype.de>, 2023.
+# Milo Ivir <mail@milotype.de>, 2023, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-11-14 19:29+0000\n"
 "PO-Revision-Date: 2025-06-04 14:02+0000\n"
-"Last-Translator: Joan Aymà <joanayma@gmail.com>\n"
+"Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/ca/>\n"
 "Language: ca\n"
