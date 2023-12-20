@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: com.github.finefindus.eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-11-14 19:29+0000\n"
-"PO-Revision-Date: 2023-12-16 16:35+0000\n"
+"PO-Revision-Date: 2023-12-21 12:23+0000\n"
 "Last-Translator: Milo Ivir <mail@milotype.de>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/eu/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.3\n"
+"X-Generator: Weblate 5.4-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
@@ -65,7 +65,7 @@ msgstr "Características"
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
 #: src/widgets/about_window.rs:83
 msgid "Pick a Color"
-msgstr "Aukeratu colore bat"
+msgstr "Aukeratu kolore bat"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
 #: src/widgets/about_window.rs:84
@@ -484,7 +484,7 @@ msgstr ""
 
 #: data/resources/ui/window.blp:53
 msgid "_Pick a Color"
-msgstr ""
+msgstr "_Aukeratu colore bat"
 
 #: data/resources/ui/window.blp:78
 msgctxt "Tooltip of the colorpicker button"
