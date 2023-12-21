@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-12-21 12:33+0000\n"
+"POT-Creation-Date: 2023-12-21 22:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -331,14 +331,6 @@ msgstr ""
 msgid "The CIE standard observer's field of view"
 msgstr ""
 
-#: data/resources/ui/preferences/preferences.blp:104
-msgid "2°"
-msgstr ""
-
-#: data/resources/ui/preferences/preferences.blp:105
-msgid "10°"
-msgstr ""
-
 #: data/resources/ui/preferences/preferences.blp:112
 msgid "Color Formats"
 msgstr ""
@@ -630,38 +622,6 @@ msgstr ""
 msgid "Hex-Code"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:393
-msgid "RGB"
-msgstr ""
-
-#: src/widgets/preferences/preferences_window.rs:394
-msgid "HSL"
-msgstr ""
-
-#: src/widgets/preferences/preferences_window.rs:395
-msgid "HSV"
-msgstr ""
-
-#: src/widgets/preferences/preferences_window.rs:396
-msgid "CMYK"
-msgstr ""
-
-#: src/widgets/preferences/preferences_window.rs:397
-msgid "XYZ"
-msgstr ""
-
-#: src/widgets/preferences/preferences_window.rs:398
-msgid "CIELAB"
-msgstr ""
-
-#: src/widgets/preferences/preferences_window.rs:399
-msgid "HWB"
-msgstr ""
-
-#: src/widgets/preferences/preferences_window.rs:400
-msgid "CIELCh / HCL"
-msgstr ""
-
 #: src/widgets/preferences/preferences_window.rs:403
 msgid "Name"
 msgstr ""
@@ -670,22 +630,6 @@ msgstr ""
 #: src/window.rs:468 src/window.rs:669 src/window.rs:852
 msgctxt "Information that no name for the color could be found"
 msgid "Not named"
-msgstr ""
-
-#: src/widgets/preferences/preferences_window.rs:409
-msgid "LMS"
-msgstr ""
-
-#: src/widgets/preferences/preferences_window.rs:411
-msgid "Hunter Lab"
-msgstr ""
-
-#: src/widgets/preferences/preferences_window.rs:413
-msgid "Oklab"
-msgstr ""
-
-#: src/widgets/preferences/preferences_window.rs:414
-msgid "Oklch"
 msgstr ""
 
 #: src/window.rs:272
