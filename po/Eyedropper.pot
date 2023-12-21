@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-11-14 19:29+0000\n"
+"POT-Creation-Date: 2023-12-21 12:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -348,7 +348,7 @@ msgid "Customize the visible formats and in which order they are displayed."
 msgstr ""
 
 #: data/resources/ui/preferences/preferences.blp:118
-msgctxt " Tooltip of the button to reset the format order"
+msgctxt "Tooltip of the button to reset the format order"
 msgid "Reset Order"
 msgstr ""
 
