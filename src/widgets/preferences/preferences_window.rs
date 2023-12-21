@@ -389,29 +389,27 @@ impl PreferencesWindow {
 
         for item in order {
             let format = match item.to_lowercase().as_str() {
-                "hex" => ColorFormatObject::new(item, gettext("Hex-Code"), formatter.hex_code()),
-                "rgb" => ColorFormatObject::new(item, gettext("RGB"), formatter.rgb()),
-                "hsl" => ColorFormatObject::new(item, gettext("HSL"), formatter.hsl()),
-                "hsv" => ColorFormatObject::new(item, gettext("HSV"), formatter.hsv()),
-                "cmyk" => ColorFormatObject::new(item, gettext("CMYK"), formatter.cmyk()),
-                "xyz" => ColorFormatObject::new(item, gettext("XYZ"), formatter.xyz()),
-                "cielab" => ColorFormatObject::new(item, gettext("CIELAB"), formatter.cie_lab()),
-                "hwb" => ColorFormatObject::new(item, gettext("HWB"), formatter.hwb()),
-                "hcl" => ColorFormatObject::new(item, gettext("CIELCh / HCL"), formatter.hcl()),
+                "hex" => ColorFormatObject::new(item, &gettext("Hex-Code"), formatter.hex_code()),
+                "rgb" => ColorFormatObject::new(item, "RGB", formatter.rgb()),
+                "hsl" => ColorFormatObject::new(item, "HSL", formatter.hsl()),
+                "hsv" => ColorFormatObject::new(item, "HSV", formatter.hsv()),
+                "cmyk" => ColorFormatObject::new(item, "CMYK", formatter.cmyk()),
+                "xyz" => ColorFormatObject::new(item, "XYZ", formatter.xyz()),
+                "cielab" => ColorFormatObject::new(item, "CIELAB", formatter.cie_lab()),
+                "hwb" => ColorFormatObject::new(item, "HWB", formatter.hwb()),
+                "hcl" => ColorFormatObject::new(item, "CIELCh / HCL", formatter.hcl()),
                 "name" => ColorFormatObject::new(
                     item,
-                    gettext("Name"),
+                    &gettext("Name"),
                     pgettext(
                         "Information that no name for the color could be found",
                         "Not named",
                     ),
                 ),
-                "lms" => ColorFormatObject::new(item, gettext("LMS"), formatter.lms()),
-                "hunterlab" => {
-                    ColorFormatObject::new(item, gettext("Hunter Lab"), formatter.hunter_lab())
-                }
-                "oklab" => ColorFormatObject::new(item, gettext("Oklab"), formatter.oklab()),
-                "oklch" => ColorFormatObject::new(item, gettext("Oklch"), formatter.oklch()),
+                "lms" => ColorFormatObject::new(item, "LMS", formatter.lms()),
+                "hunterlab" => ColorFormatObject::new(item, "Hunter Lab", formatter.hunter_lab()),
+                "oklab" => ColorFormatObject::new(item, "Oklab", formatter.oklab()),
+                "oklch" => ColorFormatObject::new(item, "Oklch", formatter.oklch()),
                 _ => {
                     log::error!("Failed to find format: {item}");
                     continue;
