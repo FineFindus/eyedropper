@@ -91,35 +91,6 @@ See this [general guide](https://wiki.gnome.org/Newcomers/BuildProject) for buil
 
 Alternatively use this [VS Code Extension](https://marketplace.visualstudio.com/items?itemName=bilelmoussaoui.flatpak-vscode#:~:text=VSCode%20%2B%20Flatpak%20Integration,run%2C%20and%20export%20a%20bundle) for working inside VS Code.
 
-### Building manually
-
-Alternatively, it is possible to build the project manually using `flatpak-builder`.
-First install the required sdks:
-
-```sh
-flatpak install org.gnome.Sdk//43 org.freedesktop.Sdk.Extension.rust-stable//22.08 org.gnome.Platform//43
-```
-
-Then build it using:
-
-```sh
-flatpak-builder --user flatpak_app build-aux/com.github.finefindus.eyedropper.Devel.json
-```
-
-To run it:
-
-```sh
-flatpak-builder --run flatpak_app build-aux/com.github.finefindus.eyedropper.Devel.json eyedropper
-```
-
-#### Build without flatpak
-
-```sh
-meson --prefix=/usr build
-ninja -C build
-sudo ninja -C build install
-```
-
 ## Credits
 
 A huge thanks to these projects who served either as an inspiration or as code examples on how to use gtk-rs.
