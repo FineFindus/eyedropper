@@ -3,7 +3,6 @@ name: Bug report
 about: Create a report to help us improve
 labels: bug
 assignees: ''
-
 ---
 
 **Describe the bug**
@@ -24,11 +23,6 @@ If applicable, add screenshots to help explain your problem.
 
 **Information**
 
-- OS: [e.g. Ubuntu 20.10, Archlinux]
-- Desktop Environment: [e.g. Gnome 42, KDE]
-- GTK-Theme/Adwaita-Style: [e.g. Adwaita, Dark]
-- Version: [e.g. 0.1.0]
-
 <details>
   <summary>Debugging Information</summary>
 
@@ -44,4 +38,3 @@ If applicable, add screenshots to help explain your problem.
 
 **Additional context**
 Add any other context about the problem here.
->
