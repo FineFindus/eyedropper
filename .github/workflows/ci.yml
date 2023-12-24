@@ -10,12 +10,10 @@ jobs:
     name: Rustfmt
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions-rs/toolchain@v1
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@v1
         with:
-          profile: minimal
           toolchain: stable
-          override: true
           components: rustfmt
       - name: Create blank versions of configured file
         run: echo -e "" >> src/config.rs
@@ -29,7 +27,7 @@ jobs:
       image: bilelmoussaoui/flatpak-github-actions:gnome-nightly
       options: --privileged
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Add Flathub Beta remote
         run: |
           flatpak --user remote-add --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
@@ -46,7 +44,7 @@ jobs:
     name: Spell Checker
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
