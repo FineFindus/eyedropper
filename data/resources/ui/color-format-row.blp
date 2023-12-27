@@ -12,6 +12,7 @@ template $ColorFormatRow : Box {
 
   Entry entry {
     hexpand: true;
+    text: bind template.color;
 
     styles [
       "monospace",
@@ -21,5 +22,6 @@ template $ColorFormatRow : Box {
   Button format_button {
     icon-name: "edit-copy-symbolic";
     clicked => $on_button_pressed() swapped;
+    tooltip-text: bind template.tooltip;
   }
 }

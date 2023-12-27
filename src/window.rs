@@ -436,7 +436,7 @@ impl AppWindow {
                     settings.boolean("name-source-gnome-palette"),
                     settings.boolean("name-source-xkcd"),
                 );
-                window.imp().name_row.set_text(name.unwrap_or_else(|| pgettext(
+                window.imp().name_row.set_color(name.unwrap_or_else(|| pgettext(
                     "Information that no name for the color could be found",
                     "Not named",
                 )));
@@ -460,7 +460,7 @@ impl AppWindow {
                     settings.boolean("name-source-gnome-palette"),
                     settings.boolean("name-source-xkcd"),
                 );
-                imp.name_row.set_text(name.unwrap_or_else(|| {
+                imp.name_row.set_color(name.unwrap_or_else(|| {
                     pgettext(
                         "Information that no name for the color could be found",
                         "Not named",
@@ -505,7 +505,7 @@ impl AppWindow {
     ///
     /// ```
     /// if let Some(row) = self.map_format("rgb") {
-    ///     row.set_text("RGB");
+    ///     row.set_color("RGB");
     /// }
     /// ```
     fn map_format(&self, item: &str) -> Option<&TemplateChild<ColorFormatRow>> {
@@ -635,23 +635,23 @@ impl AppWindow {
 
         log::info!("Changing color: {}", formatter.hex_code());
 
-        imp.hex_row.set_text(formatter.hex_code());
+        imp.hex_row.set_color(formatter.hex_code());
 
-        imp.rgb_row.set_text(formatter.rgb());
+        imp.rgb_row.set_color(formatter.rgb());
 
-        imp.hsl_row.set_text(formatter.hsl());
+        imp.hsl_row.set_color(formatter.hsl());
 
-        imp.hsv_row.set_text(formatter.hsv());
+        imp.hsv_row.set_color(formatter.hsv());
 
-        imp.cmyk_row.set_text(formatter.cmyk());
+        imp.cmyk_row.set_color(formatter.cmyk());
 
-        imp.xyz_row.set_text(formatter.xyz());
+        imp.xyz_row.set_color(formatter.xyz());
 
-        imp.cie_lab_row.set_text(formatter.cie_lab());
+        imp.cie_lab_row.set_color(formatter.cie_lab());
 
-        imp.hwb_row.set_text(formatter.hwb());
+        imp.hwb_row.set_color(formatter.hwb());
 
-        imp.hcl_row.set_text(formatter.hcl());
+        imp.hcl_row.set_color(formatter.hcl());
 
         //only update when necessary, to avoid searches, that might be a bit more costly
         if imp.name_row.is_visible() {
@@ -662,7 +662,7 @@ impl AppWindow {
                 settings.boolean("name-source-gnome-palette"),
                 settings.boolean("name-source-xkcd"),
             );
-            imp.name_row.set_text(name.unwrap_or_else(|| {
+            imp.name_row.set_color(name.unwrap_or_else(|| {
                 pgettext(
                     "Information that no name for the color could be found",
                     "Not named",
@@ -670,13 +670,13 @@ impl AppWindow {
             }));
         }
 
-        imp.lms_row.set_text(formatter.lms());
+        imp.lms_row.set_color(formatter.lms());
 
-        imp.hunter_lab_row.set_text(formatter.hunter_lab());
+        imp.hunter_lab_row.set_color(formatter.hunter_lab());
 
-        imp.oklab_row.set_text(formatter.oklab());
+        imp.oklab_row.set_color(formatter.oklab());
 
-        imp.oklch_row.set_text(formatter.oklch());
+        imp.oklch_row.set_color(formatter.oklch());
     }
 
     fn setup_callbacks(&self) {

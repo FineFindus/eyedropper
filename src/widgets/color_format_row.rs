@@ -66,14 +66,6 @@ mod imp {
             obj.set_direction(gtk::TextDirection::Ltr);
             obj.set_visible(false);
 
-            obj.bind_property("tooltip", &*self.format_button, "tooltip-text")
-                .flags(glib::BindingFlags::SYNC_CREATE)
-                .build();
-
-            obj.bind_property("color", &*self.entry, "text")
-                .flags(glib::BindingFlags::SYNC_CREATE)
-                .build();
-
             self.entry
                 .connect_activate(glib::clone!(@weak obj => move |entry| {
                     let text = entry.buffer().text();
@@ -109,16 +101,6 @@ impl ColorFormatRow {
     #[allow(clippy::new_without_default)]
     pub fn new() -> Self {
         glib::Object::new::<Self>()
-    }
-
-    /// Get the currently shown text.
-    pub fn text(&self) -> String {
-        self.property("color")
-    }
-
-    /// Set the currently shown text
-    pub fn set_text(&self, text: String) {
-        self.set_property("color", text);
     }
 
     /// Switches the button next to the entry.
