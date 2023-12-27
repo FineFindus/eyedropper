@@ -246,12 +246,9 @@ impl AppWindow {
     /// Set the stack to either show the main page or the placeholder,
     /// depending on if a color is chosen.
     fn set_stack(&self) {
-        let visible_child = if self.color().is_some() {
-            "main"
-        } else {
-            "placeholder"
-        };
-        self.imp().stack.set_visible_child_name(visible_child);
+        self.imp()
+            .stack
+            .set_visible_child_name(self.color().map(|_| "main").unwrap_or("placeholder"));
     }
 
     /// Returns the history list store object.
