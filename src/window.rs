@@ -279,6 +279,7 @@ impl AppWindow {
         );
 
         history.remove_all();
+        // we cannot use `show_toast` here since that only works for simple text-only toasts
         self.imp().toast_overlay.add_toast(toast);
 
         if let Some(color) = self.color() {
@@ -601,6 +602,7 @@ impl AppWindow {
     /// color, the preceding occurrence will be removed.
     pub fn set_color(&self, color: Color) {
         if self.color() != Some(color) {
+            //TODO remove check once bug is fixed
             if self.history().n_items() > 0 {
                 if let Some(i) = self.history().find_with_equal_func(|item| {
                     item.downcast_ref::<HistoryObject>().unwrap().color() == color.into()
