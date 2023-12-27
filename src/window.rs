@@ -253,7 +253,7 @@ impl AppWindow {
 
     /// Returns the history list store object.
     fn history(&self) -> &gio::ListStore {
-        self.imp().history.get().unwrap()
+        self.imp().history.get().expect("Failed to get history")
     }
 
     /// Clear the history by removing all items from the list.
