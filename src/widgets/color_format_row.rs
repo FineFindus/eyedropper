@@ -125,11 +125,11 @@ impl ColorFormatRow {
         !entry_text.trim().is_empty() && entry_text.trim() != self.color().trim()
     }
 
-    /// Applies the specified style cass for 350ms.
+    /// Animates the specified style cass, by applying it for 350ms.
     ///
-    /// Thsi can be used with the [`error`](https://gnome.pages.gitlab.gnome.org/libadwaita/doc/1-latest/named-colors.html#error-colors)
+    /// This can be used with the [`error`](https://gnome.pages.gitlab.gnome.org/libadwaita/doc/1-latest/named-colors.html#error-colors)
     /// and the [`success`](https://gnome.pages.gitlab.gnome.org/libadwaita/doc/1-latest/named-colors.html#success-colors) color for entries.
-    fn apply_style_class(&self, style_class: &'static str) {
+    fn animate_style_class(&self, style_class: &'static str) {
         let main_context = glib::MainContext::default();
         main_context.spawn_local(glib::clone!(@weak self as widget @strong style_class => async move {
             widget.add_css_class(style_class);
@@ -143,7 +143,7 @@ impl ColorFormatRow {
     /// To visualize the success, the `error` libadwaita style class is applied
     /// for a few milliseconds.
     pub fn show_error(&self) {
-        self.apply_style_class("error");
+        self.animate_style_class("error");
     }
 
     /// Indicate success/valid input.
@@ -151,7 +151,7 @@ impl ColorFormatRow {
     /// To visualize the success, the `success` libadwaita style class is applied
     /// for a few milliseconds.
     pub fn show_success(&self) {
-        self.apply_style_class("success");
+        self.animate_style_class("success");
     }
 
     /// Callback when the button next to the entry is pressed.
