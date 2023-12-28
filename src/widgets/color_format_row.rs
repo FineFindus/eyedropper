@@ -131,11 +131,13 @@ impl ColorFormatRow {
     /// and the [`success`](https://gnome.pages.gitlab.gnome.org/libadwaita/doc/1-latest/named-colors.html#success-colors) color for entries.
     fn animate_style_class(&self, style_class: &'static str) {
         let main_context = glib::MainContext::default();
-        main_context.spawn_local(glib::clone!(@weak self as widget @strong style_class => async move {
-            widget.add_css_class(style_class);
-            glib::timeout_future_with_priority(glib::Priority::default(), Duration::from_millis(350)).await;
-            widget.remove_css_class(style_class);
-        }));
+        main_context.spawn_local(
+            glib::clone!(@weak self as widget @strong style_class => async move {
+                widget.add_css_class(style_class);
+                glib::timeout_future(Duration::from_millis(350)).await;
+                widget.remove_css_class(style_class);
+            }),
+        );
     }
 
     /// Indicate an error/invalid input.
