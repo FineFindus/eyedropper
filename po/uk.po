@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the Eyedropper package.
 # volkov <d2oo1dle2x@gmail.com>, 2023.
 # Milo Ivir <mail@milotype.de>, 2023.
+# Сергій <sergiy.goncharuk.1@gmail.com>, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-11-14 19:29+0000\n"
-"PO-Revision-Date: 2023-12-21 12:23+0000\n"
-"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"PO-Revision-Date: 2023-12-31 12:08+0000\n"
+"Last-Translator: Сергій <sergiy.goncharuk.1@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/uk/>\n"
 "Language: uk\n"
@@ -599,7 +600,7 @@ msgstr "Скопійовано “{}”"
 
 #: src/widgets/history_item.rs:118
 msgid "Remove"
-msgstr ""
+msgstr "Видалити"
 
 #: src/widgets/palette_dialog.rs:85
 msgctxt "Name for tints (lighter variants) of the color"
