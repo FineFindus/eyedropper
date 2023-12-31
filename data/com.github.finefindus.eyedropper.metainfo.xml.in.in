@@ -184,22 +184,6 @@
     <kudo>ModernToolkit</kudo>
     <kudo>HiDpiIcon</kudo>
   </kudos>
-  <categories>
-    <category>GNOME</category>
-    <category>GTK</category>
-    <category>Development</category>
-    <category>Graphics</category>
-    <category>Utility</category>
-    <category>WebDevelopment</category>
-  </categories>
-  <keywords>
-    <keyword>Gnome</keyword>
-    <keyword>GTK</keyword>
-    <keyword>Color</keyword>
-    <keyword>Color Picker</keyword>
-    <keyword>Picker</keyword>
-    <keyword>Palette</keyword>
-  </keywords>
   <translation type="gettext">@gettext-package@</translation>
   <launchable type="desktop-id">@app-id@.desktop</launchable>
 
