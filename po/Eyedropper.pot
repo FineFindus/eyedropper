@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2023-12-28 11:06+0000\n"
+"POT-Creation-Date: 2024-01-01 21:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,11 +39,12 @@ msgstr ""
 msgid "Gnome;GTK;Color;Color Picker;Picker;Palette;"
 msgstr ""
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:9
+#. developer_name tag deprecated with Appstream 1.0
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
 msgid "FineFindus"
 msgstr ""
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:13
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
 #: src/widgets/about_window.rs:74
 msgid ""
 "Pick any color from your screen and view it in different formats. Change the "
@@ -51,53 +52,53 @@ msgid ""
 "Generate a list of different shades from the picked color."
 msgstr ""
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
 #: src/widgets/about_window.rs:79
 msgid "Features"
 msgstr ""
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:23
 #: src/widgets/about_window.rs:83
 msgid "Pick a Color"
 msgstr ""
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:24
 #: src/widgets/about_window.rs:84
 msgid "Enter a color in Hex-Format"
 msgstr ""
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:25
 msgid "Enter colors in different formats"
 msgstr ""
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:26
 #: src/widgets/about_window.rs:86
 msgid "View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format"
 msgstr ""
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:23
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:27
 #: src/widgets/about_window.rs:87
 msgid "Customize which formats appear as well as their order"
 msgstr ""
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:24
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:28
 #: src/widgets/about_window.rs:88
 msgid "Generate a palette of different shades"
 msgstr ""
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:30
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:34
 msgid "Main window with a color in different formats"
 msgstr ""
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:34
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:38
 msgid "Main window with customized formats"
 msgstr ""
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:38
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:42
 msgid "Dialog showing generated color palettes"
 msgstr ""
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:42
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:46
 msgid "Status page stating to pick a color to get started"
 msgstr ""
 
