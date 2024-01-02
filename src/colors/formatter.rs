@@ -135,15 +135,23 @@ impl ColorFormatter {
         match self.alpha_position {
             AlphaPosition::Start => format!(
                 "#{:02x}{:02x}{:02x}{:02x}",
-                self.color.alpha, self.color.red, self.color.green, self.color.blue
+                (self.color.alpha * 255.0) as u8,
+                (self.color.red * 255.0) as u8,
+                (self.color.green * 255.0) as u8,
+                (self.color.blue * 255.0) as u8,
             ),
             AlphaPosition::End => format!(
                 "#{:02x}{:02x}{:02x}{:02x}",
-                self.color.red, self.color.green, self.color.blue, self.color.alpha
+                (self.color.red * 255.0) as u8,
+                (self.color.green * 255.0) as u8,
+                (self.color.blue * 255.0) as u8,
+                (self.color.alpha * 255.0) as u8,
             ),
             AlphaPosition::None => format!(
                 "#{:02x}{:02x}{:02x}",
-                self.color.red, self.color.green, self.color.blue
+                (self.color.red * 255.0) as u8,
+                (self.color.green * 255.0) as u8,
+                (self.color.blue * 255.0) as u8,
             ),
         }
         .to_ascii_uppercase()
