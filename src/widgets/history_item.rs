@@ -124,7 +124,7 @@ mod imp {
             //set the action when the button is clicked
             obj.set_detailed_action_name(&format!("win.set-color('{}')", color_hex));
 
-            let tooltip = if color.alpha != 255 {
+            let tooltip = if color.alpha != 1.0 {
                 formatter.alpha_position = AlphaPosition::End;
                 formatter.hex_code()
             } else {

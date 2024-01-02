@@ -153,10 +153,7 @@ where
     delimited(opt(multispace0), inner, opt(multispace0))
 }
 
-pub fn hex_color(
-    input: &str,
-    alpha_position: AlphaPosition,
-) -> IResult<&str, palette::Alpha<palette::rgb::Rgb<palette::encoding::Srgb, u8>, u8>> {
+pub fn hex_color(input: &str, alpha_position: AlphaPosition) -> IResult<&str, Color> {
     let (input, _) = opt(whitespace(tag("#")))(input)?;
 
     let (input, first_alpha) = if alpha_position == AlphaPosition::Start && input.len() >= 8 {
@@ -174,7 +171,7 @@ pub fn hex_color(
         AlphaPosition::End => opt(hex)(input)?.1.unwrap_or(255),
     };
 
-    let color = palette::Srgba::new(red, green, blue, alpha);
+    let color = Color::rgba(red, green, blue, alpha);
 
     Ok((input, color))
 }

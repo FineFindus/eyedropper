@@ -9,6 +9,8 @@ use gtk::{glib, prelude::ObjectExt};
 mod imp {
     use std::cell::RefCell;
 
+    use crate::colors::color;
+
     use super::*;
 
     use glib::subclass::Signal;
@@ -26,6 +28,8 @@ mod imp {
         pub color: RefCell<String>,
         #[property(set, get)]
         pub tooltip: RefCell<String>,
+        #[property(set, get, builder(color::Format::default()))]
+        pub color_format: RefCell<color::Format>,
     }
 
     #[glib::object_subclass]
@@ -71,10 +75,7 @@ mod imp {
                     let text = entry.buffer().text();
                     if obj.is_visible() && !text.is_empty() {
                         obj.switch_button(false);
-                        let color = crate::colors::color::Color::from_hex(text.as_str(), crate::colors::position::AlphaPosition::None).unwrap();
-                        obj.set_text(format!("#{:02x}{:02x}{:02x}", color.red, color.green, color.blue))
-
-                        // obj.emit_by_name("text-edited", &[&text.to_value()])
+                        obj.emit_by_name("text-edited", &[&text.to_value()])
                     }
                 }));
 

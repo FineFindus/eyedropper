@@ -1,14 +1,48 @@
 use core::fmt;
 use std::f32::consts::PI;
 
+use palette::IntoColor;
+
 use super::{illuminant::Illuminant, parser, position::AlphaPosition};
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
-pub struct Color {
-    pub alpha: u8,
-    pub red: u8,
-    pub green: u8,
-    pub blue: u8,
+#[derive(Debug, Default, Copy, Clone, PartialEq, Eq, glib::Enum)]
+#[enum_type(name = "SupportedFormat")]
+pub enum Format {
+    #[default]
+    Hex,
+    Rgb,
+    Hsl,
+    Hsv,
+    Cmyk,
+    Xyz,
+    CieLab,
+    Hwb,
+    Hcl,
+    Name,
+    Lms,
+    HunterLab,
+    Oklab,
+    Oklch,
+}
+
+/// Eyedropper's internal color representation.
+///
+/// Utility struct to
+#[derive(Debug, Default, Clone, Copy, PartialEq)]
+pub struct Color(palette::Srgba);
+
+impl std::ops::Deref for Color {
+    type Target = palette::Srgba;
+
+    fn deref(&self) -> &Self::Target {
+        &self.0
+    }
+}
+
+impl std::ops::DerefMut for Color {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.0
+    }
 }
 
 impl Color {
@@ -16,22 +50,17 @@ impl Color {
     ///
     /// This consist of red, green and blue values. The `alpha` value is set to it's maximum by default.
     pub fn rgb(red: u8, green: u8, blue: u8) -> Self {
-        Self {
-            red,
-            green,
-            blue,
-            alpha: 255,
-        }
+        Self::rgba(red, green, blue, 255)
     }
 
     /// Create a new Color object with an alpha value.
     pub fn rgba(red: u8, green: u8, blue: u8, alpha: u8) -> Self {
-        Self {
-            red,
-            green,
-            blue,
-            alpha,
-        }
+        Self(palette::Srgba::new(
+            red as f32 / 255.0,
+            green as f32 / 255.0,
+            blue as f32 / 255.0,
+            alpha as f32,
+        ))
     }
 
     /// Generate a random color.
@@ -39,7 +68,7 @@ impl Color {
     /// Although the RGB values will be randomized, the alpha value will be maximized,
     /// so the color will not be transparent.
     pub fn random() -> Self {
-        Color::rgb(
+        Self::rgb(
             rand::random::<u8>(),
             rand::random::<u8>(),
             rand::random::<u8>(),
@@ -392,11 +421,7 @@ impl Color {
     /// The alpha_position indicates where the alpha values is stored. View [AlphaPosition] for more information.
     /// If the the has less than 8 chars, and thus cannot contain a alpha value it will be handled the same as being given
     /// `AlphaPosition::None`.
-    pub fn from_hex(
-        input: &str,
-        alpha_position: AlphaPosition,
-    ) -> Result<palette::Alpha<palette::rgb::Rgb<palette::encoding::Srgb, u8>, u8>, ColorError>
-    {
+    pub fn from_hex(input: &str, alpha_position: AlphaPosition) -> Result<Color, ColorError> {
         match parser::hex_color(input, alpha_position) {
             Ok((_input, color)) => Ok(color),
             Err(err) => {
@@ -653,17 +678,16 @@ impl Color {
 
         let mut color = Self::from_hsl(hue, 1.0, 0.5);
 
-        let modify_value = |value| {
-            let mut tmp = (value as f32) / 255.0;
-            tmp *= 1.0 - white - black;
-            tmp += white;
-            (tmp * 255.0).round() as u8
+        let modify_value = |mut value| {
+            value *= 1.0 - white - black;
+            value += white;
+            value
         };
 
         color.red = modify_value(color.red);
         color.green = modify_value(color.green);
         color.blue = modify_value(color.blue);
-        color.alpha = alpha;
+        color.alpha = alpha as f32 / 255.0;
 
         color
     }
@@ -874,7 +898,8 @@ impl Color {
 
     /// Returns the complementary/opposite to self.
     pub fn complementary_color(&self) -> Self {
-        Color::rgb(255 - self.red, 255 - self.green, 255 - self.blue)
+        // Color::rgb(1.0 - self.red, 1.0 - self.green, 1.0 - self.blue)
+        Self::random()
     }
 
     /// Returns slit complementary colors.
@@ -935,23 +960,17 @@ impl Color {
     }
 }
 
-impl Default for Color {
-    fn default() -> Self {
-        Self {
-            alpha: 1,
-            red: 0,
-            green: 0,
-            blue: 0,
-        }
-    }
-}
-
 impl fmt::Display for Color {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(
             f,
             "[RGB ({:03}, {:03}, {:03}); Hex (#{:02x}{:02x}{:02x})]",
-            self.red, self.green, self.blue, self.red, self.green, self.blue,
+            (self.color.red * 255.0) as u8,
+            (self.color.green * 255.0) as u8,
+            (self.color.blue * 255.0) as u8,
+            (self.color.red * 255.0) as u8,
+            (self.color.green * 255.0) as u8,
+            (self.color.blue * 255.0) as u8,
         )
     }
 }
@@ -996,19 +1015,13 @@ impl From<gtk::gdk::RGBA> for Color {
 
 impl From<Color> for gtk::gdk::RGBA {
     fn from(color: Color) -> Self {
-        gtk::gdk::RGBA::new(
-            color.red as f32 / 255f32,
-            color.green as f32 / 255f32,
-            color.blue as f32 / 255f32,
-            color.alpha as f32 / 255f32,
-        )
+        gtk::gdk::RGBA::new(color.red, color.green, color.blue, color.alpha)
     }
 }
 
 impl From<search_provider::ResultID> for Color {
     fn from(value: search_provider::ResultID) -> Self {
-        // Self::from_hex(&value, AlphaPosition::None).expect("Failed to get color from ResultID")
-        Color::random()
+        Self::from_hex(&value, AlphaPosition::None).expect("Failed to get color from ResultID")
     }
 }
 
