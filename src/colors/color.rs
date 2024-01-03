@@ -107,25 +107,6 @@ impl Color {
         hue.round() as u16
     }
 
-    /// Converts the color to HSV values.
-    ///
-    /// Formula from <https://en.wikipedia.org/wiki/HSL_and_HSV>
-    pub fn to_hsv(self) -> (u16, f32, f32) {
-        let red = self.red as f32 / 255f32;
-        let green = self.green as f32 / 255f32;
-        let blue = self.blue as f32 / 255f32;
-
-        //find the max out of 3 values
-        let max = red.max(green.max(blue));
-        let min = red.min(green.min(blue));
-
-        let hue = self.calculate_hue();
-
-        let saturation = if max == 0f32 { 0f32 } else { (max - min) / max };
-
-        (hue, saturation, max)
-    }
-
     /// Returns the [HWB](https://en.wikipedia.org/wiki/HWB_color_model) values of the color.
     ///
     /// The color is converted from RGB according to the formula on the wikipedia page.

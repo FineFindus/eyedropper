@@ -1,5 +1,6 @@
 use bytes::{BufMut, BytesMut};
 use gtk::prelude::SettingsExt;
+use palette::IntoColor;
 
 use crate::config;
 
@@ -213,19 +214,19 @@ impl ColorFormatter {
 
     /// Format the color as HSV.
     pub fn hsv(&self) -> String {
-        let (h, s, v) = self.color.to_hsv();
+        let hsv: palette::Hsv = self.color.color.into_color();
         custom_format!(
             self.custom_format("custom-format-hsv"),
-            ("h", h),
-            ("s", self.round_percentage(s)),
-            ("v", self.round_percentage(v))
+            ("h", hsv.hue.into_positive_degrees()),
+            ("s", self.round_percentage(hsv.saturation)),
+            ("v", self.round_percentage(hsv.value * 100.0))
         );
 
         format!(
             "hsv({}, {}%, {}%)",
-            h,
-            self.round_percentage(s),
-            self.round_percentage(v)
+            hsv.hue.into_positive_degrees(),
+            self.round_percentage(hsv.saturation),
+            self.round_percentage(hsv.value)
         )
     }
 
