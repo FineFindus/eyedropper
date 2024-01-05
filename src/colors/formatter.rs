@@ -252,18 +252,18 @@ impl ColorFormatter {
 
     /// Format the color as XYZ
     pub fn xyz(&self) -> String {
-        let (x, y, z) = self.color.to_xyz();
+        let xyz: palette::Xyz = self.color.color.into_color();
         custom_format!(
             self.custom_format("custom-format-xyz"),
-            ("x", x),
-            ("y", y),
-            ("z", z)
+            ("x", xyz.x * 100.0),
+            ("y", xyz.y * 100.0),
+            ("z", xyz.z * 100.0)
         );
         format!(
             "XYZ({:.precision$}, {:.precision$}, {:.precision$})",
-            x,
-            y,
-            z,
+            xyz.x * 100.0,
+            xyz.y * 100.0,
+            xyz.z * 100.0,
             precision = self.precision()
         )
     }

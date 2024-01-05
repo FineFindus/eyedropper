@@ -180,52 +180,14 @@ impl Color {
         (c, m, y, k)
     }
 
-    /// Return the color as its XYZ equivalent.
-    ///
-    /// Formula from <http://www.easyrgb.com/en/math.php#text2>
-    pub fn to_xyz(self) -> (f32, f32, f32) {
-        //normalize color between 0 and 1
-        let mut red = self.red as f32 / 255f32;
-        let mut green = self.green as f32 / 255f32;
-        let mut blue = self.blue as f32 / 255f32;
-
-        if red > 0.04045 {
-            red = f32::powf((red + 0.055) / 1.055, 2.4);
-        } else {
-            red /= 12.92;
-        }
-
-        if green > 0.04045 {
-            green = f32::powf((green + 0.055) / 1.055, 2.4);
-        } else {
-            green /= 12.92;
-        }
-
-        if blue > 0.04045 {
-            blue = f32::powf((blue + 0.055) / 1.055, 2.4);
-        } else {
-            blue /= 12.92;
-        }
-
-        red *= 100f32;
-        green *= 100f32;
-        blue *= 100f32;
-
-        let x = red * 0.4124 + green * 0.3576 + blue * 0.1805;
-        let y = red * 0.2126 + green * 0.7152 + blue * 0.0722;
-        let z = red * 0.0193 + green * 0.1192 + blue * 0.9505;
-
-        (x, y, z)
-    }
-
     /// Return the color as Adobe RGB.
     ///
     /// Formula from <http://www.easyrgb.com/en/math.php>
     pub fn _to_adobe_rgb(self) -> (f32, f32, f32) {
-        let xyz = self.to_xyz();
-        let x = xyz.0 / 100.0;
-        let y = xyz.1 / 100.0;
-        let z = xyz.2 / 100.0;
+        let xyz: palette::Xyz = self.color.into_color();
+        let x = xyz.x / 100.0;
+        let y = xyz.y / 100.0;
+        let z = xyz.z / 100.0;
 
         let mut r = x * 2.04137 + y * -0.56495 + z * -0.34469;
         let mut g = x * -0.96927 + y * 1.87601 + z * 0.04156;
@@ -252,11 +214,11 @@ impl Color {
             illuminant.two_degrees()
         };
 
-        let xyz = self.to_xyz();
+        let xyz: palette::Xyz = self.color.into_color();
 
-        let mut x = xyz.0 / reference_x;
-        let mut y = xyz.1 / reference_y;
-        let mut z = xyz.2 / reference_z;
+        let mut x = xyz.x / reference_x;
+        let mut y = xyz.y / reference_y;
+        let mut z = xyz.z / reference_z;
 
         x = if x > 0.008856 {
             f32::powf(x, 1f32 / 3f32)
@@ -295,14 +257,16 @@ impl Color {
             illuminant.two_degrees()
         };
 
-        let (x, y, z) = self.to_xyz();
+        let xyz: palette::Xyz = self.color.into_color();
 
         let ka = (175.0 / 198.04) * (reference_x + reference_y);
         let kb = (70.0 / 218.11) * (reference_y + reference_z);
 
-        let l = 100.0 * f32::sqrt(y / reference_y);
-        let a = ka * (((x / reference_x) - (y / reference_y)) / f32::sqrt(y / reference_y));
-        let b = kb * (((y / reference_y) - (z / reference_z)) / f32::sqrt(y / reference_y));
+        let l = 100.0 * f32::sqrt(xyz.y / reference_y);
+        let a =
+            ka * (((xyz.x / reference_x) - (xyz.y / reference_y)) / f32::sqrt(xyz.y / reference_y));
+        let b =
+            kb * (((xyz.y / reference_y) - (xyz.z / reference_z)) / f32::sqrt(xyz.y / reference_y));
 
         (
             l,
@@ -337,12 +301,12 @@ impl Color {
     /// The conversion uses the formula form [Fundamentals of Imaging Colour Spaces](https://www.uni-weimar.de/fileadmin/user/fak/medien/professuren/Computer_Graphics/3-ima-color-spaces17.pdf)
     /// The matrix is assumed to be under [Illuminant::E].
     pub fn to_lms(self) -> (f32, f32, f32) {
-        let (x, y, z) = self.to_xyz();
+        let xyz: palette::Xyz = self.color.into_color();
 
         //TODO: use illuminant depended matrices, found here http://brucelindbloom.com/index.html?Eqn_ChromAdapt.html
-        let long = x * 0.3897 + y * 0.6890 + z * -0.0787;
-        let medium = x * -0.2298 + y * 1.1834 + z * 0.0464;
-        let short = x * 0.0 + y * 0.0 + z * 1.0;
+        let long = xyz.x * 0.3897 + xyz.y * 0.6890 + xyz.z * -0.0787;
+        let medium = xyz.x * -0.2298 + xyz.y * 1.1834 + xyz.z * 0.0464;
+        let short = xyz.x * 0.0 + xyz.y * 0.0 + xyz.z * 1.0;
 
         (long, medium, short)
     }
