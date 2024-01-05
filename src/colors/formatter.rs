@@ -290,18 +290,18 @@ impl ColorFormatter {
 
     /// Format the color as HWB.
     pub fn hwb(&self) -> String {
-        let (h, w, b) = self.color.to_hwb();
+        let hwb: palette::Hwb = self.color.color.into_color();
         custom_format!(
             self.custom_format("custom-format-hwb"),
-            ("h", h),
-            ("w", self.round_percentage(w)),
-            ("b", self.round_percentage(b))
+            ("h", hwb.hue.into_positive_degrees()),
+            ("w", self.round_percentage(hwb.whiteness)),
+            ("b", self.round_percentage(hwb.blackness))
         );
         format!(
             "hwb({}, {}%, {}%)",
-            h,
-            self.round_percentage(w),
-            self.round_percentage(b)
+            hwb.hue.into_positive_degrees(),
+            self.round_percentage(hwb.whiteness),
+            self.round_percentage(hwb.blackness)
         )
     }
 
