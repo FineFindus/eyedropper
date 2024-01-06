@@ -185,13 +185,13 @@ impl ColorFormatter {
 
     /// Format the color as HSL.
     pub fn hsl(&self) -> String {
-        let (hue, saturation, lightness) = self.color.to_hsl();
+        let hsl: palette::Hsl = self.color.color.into_color();
         //format saturation and lightness to be full percentages
-        let saturation = self.round_percentage(saturation);
-        let lightness = self.round_percentage(lightness);
+        let saturation = self.round_percentage(hsl.saturation);
+        let lightness = self.round_percentage(hsl.lightness);
         custom_format!(
             self.custom_format("custom-format-hsl"),
-            ("h", hue),
+            ("h", hsl.hue.into_positive_degrees()),
             ("s", saturation),
             ("l", lightness)
         );
@@ -199,7 +199,7 @@ impl ColorFormatter {
         match self.alpha_position {
             AlphaPosition::End => format!(
                 "hsla({}, {}%, {}%, {})",
-                hue,
+                hsl.hue.into_positive_degrees(),
                 saturation,
                 lightness,
                 //convert from [0-255] to [0-1]
@@ -208,7 +208,12 @@ impl ColorFormatter {
                 )
             ),
             //normal format for non-alpha/ alpha at start
-            _ => format!("hsl({}, {}%, {}%)", hue, saturation, lightness),
+            _ => format!(
+                "hsl({}, {}%, {}%)",
+                hsl.hue.into_positive_degrees(),
+                saturation,
+                lightness
+            ),
         }
     }
 

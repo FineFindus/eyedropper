@@ -107,31 +107,6 @@ impl Color {
         hue.round() as u16
     }
 
-    /// Converts the color to HSL values.
-    ///
-    /// Formula from <https://en.wikipedia.org/wiki/HSL_and_HSV>
-    pub fn to_hsl(self) -> (u16, f32, f32) {
-        let red = self.red as f32 / 255f32;
-        let green = self.green as f32 / 255f32;
-        let blue = self.blue as f32 / 255f32;
-
-        //find the max out of 3 values
-        let max = red.max(green.max(blue));
-        let min = red.min(green.min(blue));
-
-        let hue = self.calculate_hue();
-
-        let saturation = if max == 0f32 || min == 1f32 {
-            0f32
-        } else {
-            (max - min) / (1f32 - (max + min - 1f32).abs())
-        };
-
-        let lightness = (max + min) / 2f32;
-
-        (hue, saturation, lightness)
-    }
-
     /// Returns the CMYK values of the color
     ///
     /// Based on <https://www.easyrgb.com/en/math.php>
@@ -828,18 +803,29 @@ impl Color {
 
     /// Returns the complementary/opposite to self.
     pub fn complementary_color(&self) -> Self {
-        // Color::rgb(1.0 - self.red, 1.0 - self.green, 1.0 - self.blue)
-        Self::random()
+        Color::rgb(
+            ((1.0 - self.red) * 255.0).round() as u8,
+            ((1.0 - self.green) * 255.0).round() as u8,
+            ((1.0 - self.blue) * 255.0).round() as u8,
+        )
     }
 
     /// Returns slit complementary colors.
     pub fn split_complementary_color(&self) -> Vec<Self> {
         let mut colors = Vec::with_capacity(2);
 
-        let (hue, saturation, lightness) = self.to_hsl();
+        let hsl: palette::Hsl = self.color.into_color();
         colors.push(*self);
-        colors.push(Color::from_hsl((hue + 150) % 360, saturation, lightness));
-        colors.push(Color::from_hsl((hue + 210) % 360, saturation, lightness));
+        colors.push(Color::from_hsl(
+            (hsl.hue.into_positive_degrees() as u16 + 150) % 360,
+            hsl.saturation,
+            hsl.lightness,
+        ));
+        colors.push(Color::from_hsl(
+            (hsl.hue.into_positive_degrees() as u16 + 210) % 360,
+            hsl.saturation,
+            hsl.lightness,
+        ));
         colors
     }
 
@@ -847,10 +833,18 @@ impl Color {
     pub fn triadic_colors(&self) -> Vec<Self> {
         let mut colors = Vec::with_capacity(2);
 
-        let (hue, saturation, lightness) = self.to_hsl();
+        let hsl: palette::Hsl = self.color.into_color();
         colors.push(*self);
-        colors.push(Color::from_hsl((hue + 120) % 360, saturation, lightness));
-        colors.push(Color::from_hsl((hue + 240) % 360, saturation, lightness));
+        colors.push(Color::from_hsl(
+            (hsl.hue.into_positive_degrees() as u16 + 120) % 360,
+            hsl.saturation,
+            hsl.lightness,
+        ));
+        colors.push(Color::from_hsl(
+            (hsl.hue.into_positive_degrees() as u16 + 240) % 360,
+            hsl.saturation,
+            hsl.lightness,
+        ));
         colors
     }
 
@@ -858,11 +852,23 @@ impl Color {
     pub fn tetradic_colors(&self) -> Vec<Self> {
         let mut colors = Vec::with_capacity(2);
 
-        let (hue, saturation, lightness) = self.to_hsl();
+        let hsl: palette::Hsl = self.color.into_color();
         colors.push(*self);
-        colors.push(Color::from_hsl((hue + 90) % 360, saturation, lightness));
-        colors.push(Color::from_hsl((hue + 180) % 360, saturation, lightness));
-        colors.push(Color::from_hsl((hue + 270) % 360, saturation, lightness));
+        colors.push(Color::from_hsl(
+            (hsl.hue.into_positive_degrees() as u16 + 90) % 360,
+            hsl.saturation,
+            hsl.lightness,
+        ));
+        colors.push(Color::from_hsl(
+            (hsl.hue.into_positive_degrees() as u16 + 180) % 360,
+            hsl.saturation,
+            hsl.lightness,
+        ));
+        colors.push(Color::from_hsl(
+            (hsl.hue.into_positive_degrees() as u16 + 270) % 360,
+            hsl.saturation,
+            hsl.lightness,
+        ));
         colors
     }
 
@@ -873,7 +879,7 @@ impl Color {
         let slices = 30;
 
         //convert from RGB to HSL
-        let (mut hue, saturation, lightness) = self.to_hsl();
+        let hsl: palette::Hsl = self.color.into_color();
         let part = 360 / slices;
 
         let mut colors = Vec::with_capacity(n);
@@ -882,8 +888,8 @@ impl Color {
         //always shift by at least 1 slice
         for i in 1..n {
             //add hue degrees
-            hue = (hue + part * i as u16) % 360;
-            colors.push(Self::from_hsl(hue, saturation, lightness));
+            let hue = (hsl.hue.into_positive_degrees() as u16 + part * i as u16) % 360;
+            colors.push(Self::from_hsl(hue, hsl.saturation, hsl.lightness));
         }
 
         colors
