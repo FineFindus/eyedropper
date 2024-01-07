@@ -275,20 +275,18 @@ impl ColorFormatter {
 
     /// Format the color as CIE-Lab.
     pub fn cie_lab(&self) -> String {
-        let (l, a, b) = self
-            .color
-            .to_cie_lab(self.illuminant, self.ten_deg_observer);
+        let lab: palette::Lab = self.color.color.into_color();
         custom_format!(
             self.custom_format("custom-format-cie-lab"),
-            ("l", l),
-            ("a", a),
-            ("b", b)
+            ("l", lab.l),
+            ("a", lab.a),
+            ("b", lab.b)
         );
         format!(
             "lab({:.precision$}, {:.precision$}, {:.precision$})",
-            l,
-            a,
-            b,
+            lab.l,
+            lab.a,
+            lab.b,
             precision = self.precision()
         )
     }
@@ -312,7 +310,7 @@ impl ColorFormatter {
 
     /// Format the color as CIELCh / HCL.
     pub fn hcl(&self) -> String {
-        let (h, c, l) = self.color.to_hcl(self.illuminant, self.ten_deg_observer);
+        let (h, c, l) = self.color.to_hcl();
         custom_format!(
             self.custom_format("custom-format-hcl"),
             ("h", h),
