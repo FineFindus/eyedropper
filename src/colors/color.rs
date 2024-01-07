@@ -158,21 +158,6 @@ impl Color {
         )
     }
 
-    /// Convert the color to hcl/ CIELCh
-    ///
-    /// This steps involves converting the color to CIElab first.
-    /// If ten_deg_observer is true, the function will use 10° observer values instead of the 2° ones.
-    pub fn to_hcl(self) -> (f32, f32, f32) {
-        //convert color to lab first
-
-        let lab: palette::Lab = self.color.into_color();
-
-        let hue = lab.b.atan2(lab.a).to_degrees();
-        let chroma = f32::sqrt(lab.a.powi(2) + lab.b.powi(2));
-
-        (if hue >= 0.0 { hue } else { hue + 360.0 }, chroma, lab.l)
-    }
-
     /// Convert the color to the LMS color space.
     ///
     /// LMS (long, medium short) is a a color space, that
@@ -915,24 +900,6 @@ mod tests {
     fn test_to_cmyk() {
         let color = Color::rgb(46, 52, 64);
         assert_eq!((28.0, 19.0, 0.0, 75.0), color.to_cmyk())
-    }
-
-    #[test]
-    fn test_to_cie_lab() {
-        let color = Color::rgb(46, 52, 64);
-        assert_eq!(
-            (21.605232, 0.6957203, -8.349299),
-            color.to_cie_lab(Illuminant::D65, false)
-        )
-    }
-
-    #[test]
-    fn test_to_hcl() {
-        let color = Color::rgb(46, 52, 64);
-        assert_eq!(
-            (274.76328, 8.378235, 21.605232),
-            color.to_hcl(Illuminant::D65, false)
-        )
     }
 
     #[test]

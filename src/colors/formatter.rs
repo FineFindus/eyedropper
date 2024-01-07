@@ -310,18 +310,18 @@ impl ColorFormatter {
 
     /// Format the color as CIELCh / HCL.
     pub fn hcl(&self) -> String {
-        let (h, c, l) = self.color.to_hcl();
+        let lch: palette::Lch = self.color.color.into_color();
         custom_format!(
             self.custom_format("custom-format-hcl"),
-            ("h", h),
-            ("c", c),
-            ("l", l)
+            ("h", lch.hue.into_positive_degrees()),
+            ("c", lch.chroma),
+            ("l", lch.l)
         );
         format!(
             "lch({:.precision$}, {:.precision$}, {:.precision$})",
-            l,
-            c,
-            h,
+            lch.l,
+            lch.chroma,
+            lch.hue.into_positive_degrees(),
             precision = self.precision()
         )
     }
