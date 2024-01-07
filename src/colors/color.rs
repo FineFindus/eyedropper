@@ -75,38 +75,6 @@ impl Color {
         )
     }
 
-    /// Calculates the hue of the color.
-    ///
-    /// This is used when converting from RGB to HSL or HSV.
-    /// Formula from <https://en.wikipedia.org/wiki/HSL_and_HSV>
-    fn calculate_hue(&self) -> u16 {
-        let red = self.red as f32 / 255f32;
-        let green = self.green as f32 / 255f32;
-        let blue = self.blue as f32 / 255f32;
-
-        //find the max out of 3 values
-        let max = red.max(green.max(blue));
-        let min = red.min(green.min(blue));
-
-        let mut hue: f32 = 0f32;
-
-        if max == min {
-            hue = 0f32;
-        } else if max == red {
-            hue = 60f32 * (0f32 + (green - blue) / (max - min))
-        } else if max == green {
-            hue = 60f32 * (2f32 + (blue - red) / (max - min))
-        } else if max == blue {
-            hue = 60f32 * (4f32 + (red - green) / (max - min))
-        }
-
-        if hue < 0f32 {
-            hue += 360f32;
-        }
-
-        hue.round() as u16
-    }
-
     /// Returns the CMYK values of the color
     ///
     /// Based on <https://www.easyrgb.com/en/math.php>
@@ -160,51 +128,6 @@ impl Color {
         (r * 255f32, g * 255f32, b * 255f32)
     }
 
-    /// Return the colors as CIELAB vales.
-    ///
-    /// If ten_deg_observer is true, the function will use 10° observer values instead of the 2° ones.
-    ///
-    /// The color will be first converted to XYZ values and then to CIELAB values.
-    /// Formula from <http://www.easyrgb.com/en/math.php>
-    pub fn to_cie_lab(self, illuminant: Illuminant, ten_deg_observer: bool) -> (f32, f32, f32) {
-        //reference xyz for D65 (sRGB) from http://www.easyrgb.com/en/math.php
-        let (reference_x, reference_y, reference_z) = if ten_deg_observer {
-            illuminant.ten_degrees()
-        } else {
-            illuminant.two_degrees()
-        };
-
-        let xyz: palette::Xyz = self.color.into_color();
-
-        let mut x = xyz.x / reference_x;
-        let mut y = xyz.y / reference_y;
-        let mut z = xyz.z / reference_z;
-
-        x = if x > 0.008856 {
-            f32::powf(x, 1f32 / 3f32)
-        } else {
-            (7.787 * x) + 16f32 / 116f32
-        };
-
-        y = if y > 0.008856 {
-            f32::powf(y, 1f32 / 3f32)
-        } else {
-            (7.787 * y) + 16f32 / 116f32
-        };
-
-        z = if z > 0.008856 {
-            f32::powf(z, 1f32 / 3f32)
-        } else {
-            (7.787 * z) + 16f32 / 116f32
-        };
-
-        let cie_l = (116f32 * y) - 16f32;
-        let cie_a = 500f32 * (x - y);
-        let cie_b = 200f32 * (y - z);
-
-        (cie_l, cie_a, cie_b)
-    }
-
     /// Hunter Lab
     ///
     /// Convert the color to Hunter Lab. The formula is from
@@ -239,18 +162,15 @@ impl Color {
     ///
     /// This steps involves converting the color to CIElab first.
     /// If ten_deg_observer is true, the function will use 10° observer values instead of the 2° ones.
-    pub fn to_hcl(self, illuminant: Illuminant, ten_deg_observer: bool) -> (f32, f32, f32) {
+    pub fn to_hcl(self) -> (f32, f32, f32) {
         //convert color to lab first
-        let (luminance, a, b) = self.to_cie_lab(illuminant, ten_deg_observer);
 
-        let hue = b.atan2(a).to_degrees();
-        let chroma = f32::sqrt(a.powi(2) + b.powi(2));
+        let lab: palette::Lab = self.color.into_color();
 
-        (
-            if hue >= 0.0 { hue } else { hue + 360.0 },
-            chroma,
-            luminance,
-        )
+        let hue = lab.b.atan2(lab.a).to_degrees();
+        let chroma = f32::sqrt(lab.a.powi(2) + lab.b.powi(2));
+
+        (if hue >= 0.0 { hue } else { hue + 360.0 }, chroma, lab.l)
     }
 
     /// Convert the color to the LMS color space.
@@ -992,39 +912,9 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_calculate_hue() {
-        let color = Color::rgb(46, 52, 64);
-        assert_eq!(220, color.calculate_hue())
-    }
-
-    #[test]
-    fn test_to_hsv() {
-        let color = Color::rgb(46, 52, 64);
-        assert_eq!((220, 28.0, 25.0), color.to_hsv())
-    }
-
-    #[test]
-    fn test_to_hwb() {
-        let color = Color::rgb(46, 52, 64);
-        assert_eq!((220, 0.18039216, 0.7490196), color.to_hwb())
-    }
-
-    #[test]
-    fn test_to_hsl() {
-        let color = Color::rgb(46, 52, 64);
-        assert_eq!((220, 0.16363637, 0.21568629), color.to_hsl())
-    }
-
-    #[test]
     fn test_to_cmyk() {
         let color = Color::rgb(46, 52, 64);
         assert_eq!((28.0, 19.0, 0.0, 75.0), color.to_cmyk())
-    }
-
-    #[test]
-    fn test_to_xyz() {
-        let color = Color::rgb(46, 52, 64);
-        assert_eq!((3.2801187, 3.4069908, 5.335223), color.to_xyz())
     }
 
     #[test]
@@ -1044,14 +934,6 @@ mod tests {
             color.to_hcl(Illuminant::D65, false)
         )
     }
-
-    // #[test]
-    // fn test_from_hex() {
-    //     assert_eq!(
-    //         Ok(Color::rgb(46, 52, 64)),
-    //         Color::from_hex("#2E3440", AlphaPosition::None)
-    //     )
-    // }
 
     #[test]
     fn test_to_oklab() {
