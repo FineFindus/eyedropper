@@ -365,24 +365,21 @@ impl ColorFormatter {
 
     /// Format the color as Oklab
     pub fn oklab(&self) -> String {
-        let (l_in_f64, a_in_f64, b_in_f64) = self.color.to_oklab();
-        let l = l_in_f64 as f32;
-        let a = a_in_f64 as f32;
-        let b = b_in_f64 as f32;
+        let oklab: palette::Oklab = self.color.color.into_color();
 
         custom_format!(
             self.custom_format("custom-format-oklab"),
-            ("l", self.round_percentage(l)),
-            ("a", a),
-            ("b", b)
+            ("l", self.round_percentage(oklab.l)),
+            ("a", oklab.a),
+            ("b", oklab.b)
         );
 
         match self.alpha_position {
             AlphaPosition::End => format!(
                 "oklab({}% {:.precision$} {:.precision$} / {})",
-                self.round_percentage(l),
-                a,
-                b,
+                self.round_percentage(oklab.l),
+                oklab.a,
+                oklab.b,
                 //convert from [0-255] to [0-1]
                 self.pretty_print_percent(
                     self.round_percentage(self.color.alpha as f32 / 255f32) / 100f32
@@ -392,9 +389,9 @@ impl ColorFormatter {
             //normal format for non-alpha/ alpha at start
             _ => format!(
                 "oklab({}% {:.precision$} {:.precision$})",
-                self.round_percentage(l),
-                a,
-                b,
+                self.round_percentage(oklab.l),
+                oklab.a,
+                oklab.b,
                 precision = self.precision()
             ),
         }
