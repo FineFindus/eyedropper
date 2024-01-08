@@ -210,18 +210,6 @@ impl Color {
         )
     }
 
-    /// Converts the color to Oklch.
-    ///
-    /// This is achieved by converting it to Oklab and getting the polar values
-    pub fn to_oklch(self) -> (f64, f64, f64) {
-        let (l, a, b) = self.to_oklab();
-
-        let hue = b.atan2(a).to_degrees();
-        let chroma = f64::sqrt(a.powi(2) + b.powi(2));
-
-        (l, chroma, if hue % 360.0 < 0.0 { hue + 360.0 } else { hue })
-    }
-
     /// Create a color from a hex string.
     ///
     /// The hex color optionally start with '#'.
