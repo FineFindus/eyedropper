@@ -176,40 +176,6 @@ impl Color {
         (long, medium, short)
     }
 
-    /// Convert a normalized RGB value to a linear value
-    ///
-    /// For more information see <https://bottosson.github.io/posts/colorwrong/#what-can-we-do%3F>.
-    fn to_linear(value: f64) -> f64 {
-        if value >= 0.04045 {
-            ((value + 0.055) / (1. + 0.055)).powf(2.4)
-        } else {
-            value / 12.92
-        }
-    }
-
-    /// Converts the color to OKLAB color space.
-    ///
-    /// For more information see <https://bottosson.github.io/posts/oklab/>.
-    pub fn to_oklab(self) -> (f64, f64, f64) {
-        let red = Self::to_linear(self.red as f64 / 255f64);
-        let green = Self::to_linear(self.green as f64 / 255f64);
-        let blue = Self::to_linear(self.blue as f64 / 255f64);
-
-        let l = 0.412_221_470_8 * red + 0.536_332_536_3 * green + 0.051_445_992_9 * blue;
-        let m = 0.211_903_498_2 * red + 0.680_699_545_1 * green + 0.107_396_956_6 * blue;
-        let s = 0.088_302_461_9 * red + 0.281_718_837_6 * green + 0.629_978_700_5 * blue;
-
-        let l_aux = l.cbrt();
-        let m_aux = m.cbrt();
-        let s_aux = s.cbrt();
-
-        (
-            0.210_454_255_3 * l_aux + 0.793_617_785_0 * m_aux - 0.004_072_046_8 * s_aux,
-            1.977_998_495_1 * l_aux - 2.428_592_205_0 * m_aux + 0.450_593_709_9 * s_aux,
-            0.025_904_037_1 * l_aux + 0.782_771_766_2 * m_aux - 0.808_675_766_0 * s_aux,
-        )
-    }
-
     /// Create a color from a hex string.
     ///
     /// The hex color optionally start with '#'.
@@ -888,17 +854,5 @@ mod tests {
     fn test_to_cmyk() {
         let color = Color::rgb(46, 52, 64);
         assert_eq!((28.0, 19.0, 0.0, 75.0), color.to_cmyk())
-    }
-
-    #[test]
-    fn test_to_oklab() {
-        let color = Color::rgb(46, 52, 64);
-        assert_eq!((0.32437435, -0.0023258477, -0.022826374), color.to_oklab())
-    }
-
-    #[test]
-    fn test_to_oklch() {
-        let color = Color::rgb(46, 52, 64);
-        assert_eq!((0.32437435, 0.022944562, 264.18204), color.to_oklch())
     }
 }
