@@ -165,20 +165,25 @@ impl ColorFormatter {
     pub fn rgb(&self) -> String {
         custom_format!(
             self.custom_format("custom-format-rgb"),
-            ("r", self.color.red),
-            ("g", self.color.green),
-            ("b", self.color.blue)
+            ("r", (self.color.red * 255.0).round() as u8),
+            ("g", (self.color.green * 255.0).round() as u8),
+            ("b", (self.color.blue * 255.0).round() as u8)
         );
         match self.alpha_position {
             //show alpha at the end (rgba)
             AlphaPosition::End => format!(
                 "rgba({}, {}, {}, {})",
-                self.color.red, self.color.green, self.color.blue, self.color.alpha
+                (self.color.red * 255.0).round() as u8,
+                (self.color.green * 255.0).round() as u8,
+                (self.color.blue * 255.0).round() as u8,
+                (self.color.alpha * 255.0).round() as u8,
             ),
             // no alpha / there is no argb
             _ => format!(
                 "rgb({}, {}, {})",
-                self.color.red, self.color.green, self.color.blue
+                (self.color.red * 255.0).round() as u8,
+                (self.color.green * 255.0).round() as u8,
+                (self.color.blue * 255.0).round() as u8,
             ),
         }
     }
