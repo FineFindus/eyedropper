@@ -5,26 +5,6 @@ use palette::IntoColor;
 
 use super::{illuminant::Illuminant, parser, position::AlphaPosition};
 
-#[derive(Debug, Default, Copy, Clone, PartialEq, Eq, glib::Enum)]
-#[enum_type(name = "SupportedFormat")]
-pub enum Format {
-    #[default]
-    Hex,
-    Rgb,
-    Hsl,
-    Hsv,
-    Cmyk,
-    Xyz,
-    CieLab,
-    Hwb,
-    Hcl,
-    Name,
-    Lms,
-    HunterLab,
-    Oklab,
-    Oklch,
-}
-
 /// Eyedropper's internal color representation.
 ///
 /// Utility struct to
