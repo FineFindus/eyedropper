@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2024-01-01 21:48+0000\n"
-"PO-Revision-Date: 2024-01-06 04:09+0000\n"
+"PO-Revision-Date: 2024-01-11 01:06+0000\n"
 "Last-Translator: Filipe Motta <luiz_filipe_motta@hotmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "eyedropper/eyedropper/pt_BR/>\n"
@@ -54,25 +54,29 @@ msgid ""
 "picked color or go back to a previously picked color from the history list. "
 "Generate a list of different shades from the picked color."
 msgstr ""
+"Selecione qualquer cor na tela e visualize-a em diferentes formatos. Altere "
+"a cor escolhida ou volte para uma cor escolhida anteriormente na lista de "
+"histórico. Gere uma lista de diferentes tonalidades a partir da cor "
+"escolhida."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
 #: src/widgets/about_window.rs:79
 msgid "Features"
-msgstr ""
+msgstr "Funções"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:23
 #: src/widgets/about_window.rs:83
 msgid "Pick a Color"
-msgstr ""
+msgstr "Selecione uma cor na tela"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:24
 #: src/widgets/about_window.rs:84
 msgid "Enter a color in Hex-Format"
-msgstr ""
+msgstr "Insira uma cor em formato hexadecimal"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:25
 msgid "Enter colors in different formats"
-msgstr ""
+msgstr "Insira cores em diferentes formatos"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:26
 #: src/widgets/about_window.rs:86
