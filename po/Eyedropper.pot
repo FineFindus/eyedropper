@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2024-01-01 21:48+0000\n"
+"POT-Creation-Date: 2024-01-11 14:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -36,7 +36,7 @@ msgstr ""
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
-msgid "Gnome;GTK;Color;Color Picker;Picker;Palette;"
+msgid "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
 msgstr ""
 
 #. developer_name tag deprecated with Appstream 1.0
