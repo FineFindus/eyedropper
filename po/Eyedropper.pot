@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2024-01-11 14:15+0000\n"
+"POT-Creation-Date: 2024-02-04 16:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -113,8 +113,8 @@ msgid "LibreOffice Palette"
 msgstr ""
 
 #: data/resources/ui/palette-window.blp:19
-msgctxt "Gimp/Inkscape palette format"
-msgid "Gimp Palette"
+msgctxt "GIMP/Inkscape palette format"
+msgid "GIMP Palette"
 msgstr ""
 
 #: data/resources/ui/palette-window.blp:25
@@ -337,7 +337,7 @@ msgid "Color Formats"
 msgstr ""
 
 #: data/resources/ui/preferences/preferences.blp:113
-msgid "Customize the visible formats and in which order they are displayed."
+msgid "Customize the visible formats and in which order they are displayed"
 msgstr ""
 
 #: data/resources/ui/preferences/preferences.blp:118
@@ -431,7 +431,7 @@ msgstr ""
 
 #: data/resources/ui/shortcuts.blp:33
 msgctxt "shortcut window"
-msgid "Pick a new Color"
+msgid "Pick a New Color"
 msgstr ""
 
 #: data/resources/ui/shortcuts.blp:38
@@ -464,7 +464,7 @@ msgid "No Color"
 msgstr ""
 
 #: data/resources/ui/window.blp:51
-msgid "Select a color from the screen to get started."
+msgid "Select a color from the screen to get started"
 msgstr ""
 
 #: data/resources/ui/window.blp:53
