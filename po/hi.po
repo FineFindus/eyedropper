@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2024-02-04 16:12+0000\n"
-"PO-Revision-Date: 2024-02-10 11:01+0000\n"
+"PO-Revision-Date: 2024-02-11 17:01+0000\n"
 "Last-Translator: Nitin Khalia <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/hi/>\n"
@@ -33,7 +33,7 @@ msgstr "रंग चयनकर्ता"
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
 #: src/widgets/about_window.rs:71
 msgid "Pick and format colors"
-msgstr "रंग चुनें और फ़ॉर्मेट करें"
+msgstr "रंग चुनें और फार्मेट करें"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
@@ -202,7 +202,7 @@ msgstr "जनरल"
 
 #: data/resources/ui/preferences/preferences.blp:14
 msgid "Formatting"
-msgstr "फ़ॉर्मेटिंग"
+msgstr "फार्मेटिंग"
 
 #: data/resources/ui/preferences/preferences.blp:17
 msgid "Alpha-Value-Position"
@@ -465,7 +465,7 @@ msgstr "_कीबोर्ड शॉर्टकट"
 
 #: data/resources/ui/window.blp:29
 msgid "_About Eyedropper"
-msgstr "Eyedropper के बारे में"
+msgstr "_Eyedropper के बारे में"
 
 #: data/resources/ui/window.blp:50
 msgid "No Color"
@@ -575,8 +575,8 @@ msgstr ""
 "<p>रोमांचक नई सुविधाओं और कई सुधारों के साथ एक नई रिलीज़।</p>\n"
 "<ul><li>किसी भी प्रारूप में प्रवेश करने की अनुमति दें</li><li>अवलोकन खोज में "
 "रंग प्रदर्शित करें</li><li>LibreOffice में पैलेट निर्यात करें</li><li>रंग और "
-"पृष्ठभूमि के बीच एक दृश्य अंतर</li> <li>बेहतर रंग रूपांतरण</li><li>GNOME ऐप्"
-"स की अत्याधुनिकता से मेल खाने के लिए दृश्य परिशोधन</li><li>आंतरिक कोड में "
+"पृष्ठभूमि के बीच एक स्पष्ट अंतर</li> <li>बेहतर रंग रूपांतरण</li><li>GNOME ऐप्"
+"स की अत्याधुनिकता से मेल खाने के लिए दिखाऊ परिशोधन</li><li>आंतरिक कोड में "
 "सुधार और बग फिक्स</li></ul>"
 
 #: src/widgets/color_format_row.rs:179
