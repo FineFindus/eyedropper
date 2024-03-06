@@ -191,6 +191,11 @@
   <translation type="gettext">@gettext-package@</translation>
   <launchable type="desktop-id">@app-id@.desktop</launchable>
 
+  <branding>
+      <color type="primary" scheme_preference="light">#78D9F7</color>
+      <color type="primary" scheme_preference="dark">#085367</color>
+  </branding>
+
   <custom>
     <value key="GnomeSoftware::key-colors">[(120, 217, 247)]</value>
   </custom>
