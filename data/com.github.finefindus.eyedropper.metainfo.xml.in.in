@@ -7,9 +7,9 @@
   <name>Eyedropper</name>
   <summary>Pick and format colors</summary>
   <!-- developer_name tag deprecated with Appstream 1.0 -->
-  <developer_name translatable="no">FineFindus</developer_name>
+  <developer_name translate="no">FineFindus</developer_name>
   <developer id="io.github.finefindus">
-      <name translatable="no">FineFindus</name>
+      <name translate="no">FineFindus</name>
   </developer>
   <update_contact>finefindus@proton.me</update_contact>
   <project_group>GNOME</project_group>
@@ -55,12 +55,12 @@
   <content_rating type="oars-1.1" />
   <releases>
     <release version="1.0.0" date="2023-09-27">
-      <description translatable="no">
+      <description translate="no">
         <p>A new release with exciting new features and many improvements.</p>\n<ul><li>Allow entering any format</li><li>Display color in overview search</li><li>Export palettes to LibreOffice</li><li>A visual differentiation between color and background</li><li>Improved color conversion</li><li>Visual refinements to match the state of the art of GNOME apps</li><li>Internal code improvements and bug fixes</li></ul>
       </description>
     </release>
     <release version="0.6.0" date="2023-02-24">
-      <description translatable="no">
+      <description translate="no">
         <p>Added:</p>
         <ul>
           <li>Show a toast with an Undo option when clearing the history</li>
@@ -86,7 +86,7 @@
       </description>
     </release>
     <release version="0.5.1" date="2023-01-29">
-      <description translatable="no">
+      <description translate="no">
         <p>Added:</p>
         <ul>
           <li>Russian translation</li>
@@ -105,7 +105,7 @@
       </description>
     </release>
     <release version="0.5.0" date="2023-01-03">
-      <description translatable="no">
+      <description translate="no">
         <p>Added:</p>
         <ul>
           <li>Export the generated palettes from the palette dialog as a GIMP palette file</li>
@@ -123,7 +123,7 @@
       </description>
     </release>
     <release version="0.4.0" date="2022-10-20">
-      <description translatable="no">
+      <description translate="no">
         <p>Added:</p>
         <ul>
           <li>Options to show names of color (from w3c basic, extended and xkcd)</li>
@@ -138,12 +138,12 @@
       </description>
     </release>
     <release version="0.3.1" date="2022-09-23">
-      <description translatable="no">
+      <description translate="no">
         Fixed a few bugs and added Dutch translations.
       </description>
     </release>
     <release version="0.3.0" date="2022-09-21">
-      <description translatable="no">
+      <description translate="no">
         <p>Added:</p>
         <ul>
           <li>Palettes, consisting of darker shades and lighter tints, are now generated from the currently picked color as well as the previous 3</li>
@@ -155,7 +155,7 @@
       </description>
     </release>
     <release version="0.2.0" date="2022-09-08">
-      <description translatable="no">
+      <description translate="no">
         <p>Added:</p>
         <ul>
           <li>Issue and feature-request templates</li>
@@ -167,7 +167,7 @@
       </description>
     </release>
     <release version="0.1.0" date="2022-08-28">
-      <description translatable="no">
+      <description translate="no">
         <p>Added:</p>
         <ul>
           <li>Basic UI</li>
