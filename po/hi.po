@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Eyedropper package.
 # Nitin Khalia <weblate.scrambled777@simplelogin.com>, 2024.
+# Scrambled777 <weblate.scrambled777@simplelogin.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2024-02-04 16:12+0000\n"
-"PO-Revision-Date: 2024-02-11 17:01+0000\n"
-"Last-Translator: Nitin Khalia <weblate.scrambled777@simplelogin.com>\n"
+"PO-Revision-Date: 2024-03-28 17:02+0000\n"
+"Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/hi/>\n"
 "Language: hi\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
@@ -38,7 +39,7 @@ msgstr "रंग चुनें और फार्मेट करें"
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
 msgid "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
-msgstr "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
+msgstr "Gnome;GTK;Color;Colorpicker;Picker;Palette;रंग;चयनकर्ता;पैलेट;"
 
 #. developer_name tag deprecated with Appstream 1.0
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
@@ -69,7 +70,7 @@ msgstr "एक रंग चुनें"
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:24
 #: src/widgets/about_window.rs:84
 msgid "Enter a color in Hex-Format"
-msgstr "Hex-प्रारूप में एक रंग दर्ज करें"
+msgstr "हेक्स-प्रारूप में एक रंग दर्ज करें"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:25
 msgid "Enter colors in different formats"
@@ -78,7 +79,7 @@ msgstr "विभिन्न स्वरूपों में रंग द�
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:26
 #: src/widgets/about_window.rs:86
 msgid "View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format"
-msgstr "Hex, RGB, HSV, HSL, CMYK, XYZ और CIE-Lab प्रारूप में रंग देखें"
+msgstr "हेक्स, RGB, HSV, HSL, CMYK, XYZ और CIE-Lab प्रारूप में रंग देखें"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:27
 #: src/widgets/about_window.rs:87
@@ -129,7 +130,7 @@ msgstr "Paint.NET"
 #: data/resources/ui/palette-window.blp:31
 msgctxt "Palette format file name"
 msgid "Hex"
-msgstr "Hex"
+msgstr "हेक्स"
 
 #: data/resources/ui/palette-window.blp:37
 msgctxt "Palette format file name"
@@ -206,7 +207,7 @@ msgstr "फार्मेटिंग"
 
 #: data/resources/ui/preferences/preferences.blp:17
 msgid "Alpha-Value-Position"
-msgstr "Alpha-मान-स्थिति"
+msgstr "अल्फा-मान-स्थिति"
 
 #: data/resources/ui/preferences/preferences.blp:18
 msgid "Where the Alphavalue is positioned in the Hexstring"
@@ -449,23 +450,23 @@ msgstr "रंग को यादृच्छिक करें"
 
 #: data/resources/ui/window.blp:7
 msgid "_Clear History"
-msgstr "_इतिहास साफ़ करें"
+msgstr "इतिहास साफ़ करें (_C)"
 
 #: data/resources/ui/window.blp:12
 msgid "_Random Color"
-msgstr "_यादृच्छिक रंग"
+msgstr "यादृच्छिक रंग (_R)"
 
 #: data/resources/ui/window.blp:19
 msgid "_Preferences"
-msgstr "_प्राथमिकताएँ"
+msgstr "प्राथमिकताएँ (_P)"
 
 #: data/resources/ui/window.blp:24
 msgid "_Keyboard Shortcuts"
-msgstr "_कीबोर्ड शॉर्टकट"
+msgstr "कीबोर्ड शॉर्टकट (_K)"
 
 #: data/resources/ui/window.blp:29
 msgid "_About Eyedropper"
-msgstr "_Eyedropper के बारे में"
+msgstr "Eyedropper के बारे में (_A)"
 
 #: data/resources/ui/window.blp:50
 msgid "No Color"
@@ -477,7 +478,7 @@ msgstr "आरंभ करने के लिए स्क्रीन से 
 
 #: data/resources/ui/window.blp:53
 msgid "_Pick a Color"
-msgstr "_एक रंग चुनें"
+msgstr "एक रंग चुनें (_P)"
 
 #: data/resources/ui/window.blp:78
 msgctxt "Tooltip of the colorpicker button"
@@ -499,7 +500,7 @@ msgstr "नाम कॉपी करें"
 
 #: data/resources/ui/window.blp:133
 msgid "Copy Hex Code"
-msgstr "Hex कोड कॉपी करें"
+msgstr "हेक्स कोड कॉपी करें"
 
 #: data/resources/ui/window.blp:137
 msgid "Copy RGB"
@@ -635,7 +636,7 @@ msgstr "नीचे ले जाएँ"
 
 #: src/widgets/preferences/preferences_window.rs:392
 msgid "Hex-Code"
-msgstr "Hex-कोड"
+msgstr "हेक्स-कोड"
 
 #: src/widgets/preferences/preferences_window.rs:403
 msgid "Name"
