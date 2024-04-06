@@ -64,7 +64,7 @@ Download the latest artifact from the [CI](https://github.com/FineFindus/eyedrop
 
 ## Contributing
 
-Contributors are expected to follow the [GNOME Code of Conduct](https://wiki.gnome.org/Foundation/CodeOfConduct).
+Contributors are expected to follow the [GNOME Code of Conduct](https://conduct.gnome.org/).
 
 Any contributions you make are greatly appreciated. For major changes, please open an issue first to discuss what you would like to change.
 
