@@ -307,6 +307,8 @@ impl PreferencesWindow {
         row.add_suffix(&menu_button);
 
         //drag handle
+        let icon_theme = gtk::IconTheme::default();
+        icon_theme.add_resource_path("/com/github/finefindus/eyedropper/icons/scalable/actions/");
         let drag_handle = gtk::Image::from_icon_name("list-drag-handle-symbolic");
         drag_handle.add_css_class("drag-handle");
         row.add_prefix(&drag_handle);
