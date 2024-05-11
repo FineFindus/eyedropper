@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2024-02-04 16:12+0000\n"
+"POT-Creation-Date: 2024-05-11 08:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -619,15 +619,15 @@ msgstr ""
 msgid "Move Down"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:392
+#: src/widgets/preferences/preferences_window.rs:394
 msgid "Hex-Code"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:403
+#: src/widgets/preferences/preferences_window.rs:405
 msgid "Name"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:406 src/window.rs:441
+#: src/widgets/preferences/preferences_window.rs:408 src/window.rs:441
 #: src/window.rs:466 src/window.rs:668 src/window.rs:851
 msgctxt "Information that no name for the color could be found"
 msgid "Not named"
