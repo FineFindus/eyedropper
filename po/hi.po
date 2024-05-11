@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2024-02-04 16:12+0000\n"
-"PO-Revision-Date: 2024-03-28 17:02+0000\n"
+"PO-Revision-Date: 2024-05-11 08:27+0000\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/hi/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.5.4\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
@@ -34,12 +34,12 @@ msgstr "रंग चयनकर्ता"
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
 #: src/widgets/about_window.rs:71
 msgid "Pick and format colors"
-msgstr "रंग चुनें और फार्मेट करें"
+msgstr "रंग चुनें और प्रारूपित करें"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
 msgid "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
-msgstr "Gnome;GTK;Color;Colorpicker;Picker;Palette;रंग;चयनकर्ता;पैलेट;"
+msgstr "Gnome;GTK;रंग;रंग चयनकर्ता;चयनकर्ता;पैलेट;"
 
 #. developer_name tag deprecated with Appstream 1.0
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
@@ -53,14 +53,14 @@ msgid ""
 "picked color or go back to a previously picked color from the history list. "
 "Generate a list of different shades from the picked color."
 msgstr ""
-"अपनी स्क्रीन से कोई भी रंग चुनें और उसे विभिन्न स्वरूपों में देखें। चुने गए "
-"रंग को बदलें या इतिहास सूची से पहले से चुने गए रंग पर वापस जाएँ। चुने गए रंग "
+"अपनी स्क्रीन से कोई भी रंग चुनें और उसे विभिन्न प्रारूपों में देखें। चुने गए "
+"रंग को बदलें या इतिहास सूची से पहले से चुने गए रंग पर वापस जाएं। चुने गए रंग "
 "से विभिन्न रंगों की एक सूची तैयार करें।"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
 #: src/widgets/about_window.rs:79
 msgid "Features"
-msgstr "विशेषताएँ"
+msgstr "विशेषताएं"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:23
 #: src/widgets/about_window.rs:83
@@ -70,11 +70,11 @@ msgstr "एक रंग चुनें"
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:24
 #: src/widgets/about_window.rs:84
 msgid "Enter a color in Hex-Format"
-msgstr "हेक्स-प्रारूप में एक रंग दर्ज करें"
+msgstr "हेक्स-प्रारूप में रंग दर्ज करें"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:25
 msgid "Enter colors in different formats"
-msgstr "विभिन्न स्वरूपों में रंग दर्ज करें"
+msgstr "विभिन्न प्रारूपों में रंग दर्ज करें"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:26
 #: src/widgets/about_window.rs:86
@@ -89,23 +89,23 @@ msgstr "कौन से प्रारूप दिखाई दें और 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:28
 #: src/widgets/about_window.rs:88
 msgid "Generate a palette of different shades"
-msgstr "विभिन्न रंगों का एक पैलेट तैयार करें"
+msgstr "विभिन्न रंगों का पैलेट तैयार करें"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:34
 msgid "Main window with a color in different formats"
-msgstr "विभिन्न स्वरूपों में रंगों वाली मुख्य विंडो"
+msgstr "विभिन्न स्वरूपों में रंगों वाली मुख्य खिड़की"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:38
 msgid "Main window with customized formats"
-msgstr "अनुकूलित प्रारूपों के साथ मुख्य विंडो"
+msgstr "अनुकूलित प्रारूपों के साथ मुख्य खिड़की"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:42
 msgid "Dialog showing generated color palettes"
-msgstr "उत्पन्न रंग पट्टियाँ दिखाने वाला संवाद"
+msgstr "उत्पन्न रंग पट्टियां दिखाने वाला संवाद"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:46
 msgid "Status page stating to pick a color to get started"
-msgstr "आरंभ करने के लिए एक रंग चुनने के बारे में बताने वाला स्थिति पेज"
+msgstr "आरंभ करने के लिए एक रंग चुनने के बारे में बताने वाला स्थिति पृष्ठ"
 
 #: data/resources/ui/palette-window.blp:7
 msgctxt "Adobes palette format"
@@ -199,11 +199,11 @@ msgstr "स्वयंसेवकों द्वारा नामित 954
 
 #: data/resources/ui/preferences/preferences.blp:11
 msgid "General"
-msgstr "जनरल"
+msgstr "सामान्य"
 
 #: data/resources/ui/preferences/preferences.blp:14
 msgid "Formatting"
-msgstr "फार्मेटिंग"
+msgstr "प्रारूपण"
 
 #: data/resources/ui/preferences/preferences.blp:17
 msgid "Alpha-Value-Position"
@@ -211,7 +211,7 @@ msgstr "अल्फा-मान-स्थिति"
 
 #: data/resources/ui/preferences/preferences.blp:18
 msgid "Where the Alphavalue is positioned in the Hexstring"
-msgstr "जहां अल्फ़ावैल्यू हेक्सस्ट्रिंग में स्थित है"
+msgstr "जहां अल्फामान हेक्सस्ट्रिंग में स्थित है"
 
 #: data/resources/ui/preferences/preferences.blp:21
 msgctxt "Alphavalue is not shown"
@@ -226,7 +226,7 @@ msgstr "अंत"
 #: data/resources/ui/preferences/preferences.blp:23
 msgctxt "Alphavalue is shown at the start"
 msgid "Start"
-msgstr "शुरू में"
+msgstr "प्रारंभ"
 
 #: data/resources/ui/preferences/preferences.blp:30
 msgid "Sources for displaying color names"
@@ -239,11 +239,11 @@ msgstr "परिशुद्धता"
 
 #: data/resources/ui/preferences/preferences.blp:57
 msgid "CIE Color Space"
-msgstr "CIE कलर स्पेस"
+msgstr "CIE रंग स्थान"
 
 #: data/resources/ui/preferences/preferences.blp:60
 msgid "CIE Illuminants"
-msgstr "CIE इलुमिनेंट्स"
+msgstr "CIE प्रकाशक"
 
 #: data/resources/ui/preferences/preferences.blp:61
 msgid "Lighting conditions for the CIE color space"
@@ -251,7 +251,7 @@ msgstr "CIE रंग स्थान के लिए प्रकाश की
 
 #: data/resources/ui/preferences/preferences.blp:69
 msgid "A (Incandescent/tungsten)"
-msgstr "A (इन्कन्डेसन्ट/टंगस्टन)"
+msgstr "A (तापदीप्त/टंगस्टन)"
 
 #: data/resources/ui/preferences/preferences.blp:70
 msgid "B (Old direct sunlight at noon)"
@@ -263,7 +263,7 @@ msgstr "C (पुराना दिन का उजाला)"
 
 #: data/resources/ui/preferences/preferences.blp:72
 msgid "D50 (ICC profile PCS)"
-msgstr "D50 (ICC प्रोफ़ाइल PCS)"
+msgstr "D50 (ICC प्रोफाइल PCS)"
 
 #: data/resources/ui/preferences/preferences.blp:73
 msgid "D55 (Mid-morning daylight)"
@@ -283,39 +283,39 @@ msgstr "E (समान ऊर्जा)"
 
 #: data/resources/ui/preferences/preferences.blp:77
 msgid "F1 (Daylight Fluorescent)"
-msgstr "F1 (डेलाइट फ्लोरोसेंट)"
+msgstr "F1 (दिन का प्रकाश प्रतिदीप्त)"
 
 #: data/resources/ui/preferences/preferences.blp:78
 msgid "F2 (Cool fluorescent)"
-msgstr "F2 (कूल फ्लोरोसेंट)"
+msgstr "F2 (ठंडा प्रतिदीप्त)"
 
 #: data/resources/ui/preferences/preferences.blp:79
 msgid "F3 (White Fluorescent)"
-msgstr "F3 (सफ़ेद फ्लोरोसेंट)"
+msgstr "F3 (सफेद प्रतिदीप्त)"
 
 #: data/resources/ui/preferences/preferences.blp:80
 msgid "F4 (Warm White Fluorescent)"
-msgstr "F4 (गर्म सफेद फ्लोरोसेंट)"
+msgstr "F4 (गर्म सफेद प्रतिदीप्त)"
 
 #: data/resources/ui/preferences/preferences.blp:81
 msgid "F5 (Daylight Fluorescent)"
-msgstr "F5 (डेलाइट फ्लोरोसेंट)"
+msgstr "F5 (दिन का प्रकाश प्रतिदीप्त)"
 
 #: data/resources/ui/preferences/preferences.blp:82
 msgid "F6 (Lite White Fluorescent)"
-msgstr "F6 (लाइट व्हाइट फ्लोरोसेंट)"
+msgstr "F6 (हल्की सफेद प्रतिदीप्त)"
 
 #: data/resources/ui/preferences/preferences.blp:83
 msgid "F7 (Daylight fluorescent, D65 simulator)"
-msgstr "F7 (डेलाइट फ्लोरोसेंट, D65 सिम्युलेटर)"
+msgstr "F7 (दिन का प्रकाश प्रतिदीप्त, D65 अनुकारी)"
 
 #: data/resources/ui/preferences/preferences.blp:84
 msgid "F8 (Sylvania F40, D50 simulator)"
-msgstr "F8 (सिल्वेनिया F40, D50 सिम्युलेटर)"
+msgstr "F8 (सिल्वेनिया F40, D50 अनुकारी)"
 
 #: data/resources/ui/preferences/preferences.blp:85
 msgid "F9 (Cool White Fluorescent)"
-msgstr "F9 (कूल व्हाइट फ्लोरोसेंट)"
+msgstr "F9 (ठंडा सफेद प्रतिदीप्त)"
 
 #: data/resources/ui/preferences/preferences.blp:86
 msgid "F10 (Ultralume 50, Philips TL85)"
@@ -361,8 +361,8 @@ msgid ""
 "Edit how the color formats are displayed. The “{}” will be replaced in with "
 "the values of the formats. Custom formats cannot be used as input."
 msgstr ""
-"संपादित करें कि रंग प्रारूप कैसे प्रदर्शित होते हैं। \"{}\" को प्रारूपों के "
-"मानों से बदल दिया जाएगा। कस्टम प्रारूपों का उपयोग इनपुट के रूप में नहीं किया "
+"संपादित करें कि रंग प्रारूप कैसे प्रदर्शित होते हैं। “{}” को प्रारूपों के "
+"मानों से बदल दिया जाएगा। तदनुकूल प्रारूपों का उपयोग आगत के रूप में नहीं किया "
 "जा सकता।"
 
 #: data/resources/ui/preferences/preferences.blp:145
@@ -416,17 +416,17 @@ msgstr "Oklch प्रारूप"
 #: data/resources/ui/shortcuts.blp:11
 msgctxt "shortcut window"
 msgid "General"
-msgstr "जनरल"
+msgstr "सामान्य"
 
 #: data/resources/ui/shortcuts.blp:14
 msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr "प्राथमिकताएँ दिखाएँ"
+msgstr "प्राथमिकताएं दिखाएं"
 
 #: data/resources/ui/shortcuts.blp:19
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr "शॉर्टकट दिखाएँ"
+msgstr "शॉर्टकट दिखाएं"
 
 #: data/resources/ui/shortcuts.blp:24
 msgctxt "shortcut window"
@@ -441,7 +441,7 @@ msgstr "रंग"
 #: data/resources/ui/shortcuts.blp:33
 msgctxt "shortcut window"
 msgid "Pick a New Color"
-msgstr "एक नया रंग चुनें"
+msgstr "नया रंग चुनें"
 
 #: data/resources/ui/shortcuts.blp:38
 msgctxt "shortcut window"
@@ -450,7 +450,7 @@ msgstr "रंग को यादृच्छिक करें"
 
 #: data/resources/ui/window.blp:7
 msgid "_Clear History"
-msgstr "इतिहास साफ़ करें (_C)"
+msgstr "इतिहास साफ करें (_C)"
 
 #: data/resources/ui/window.blp:12
 msgid "_Random Color"
@@ -458,7 +458,7 @@ msgstr "यादृच्छिक रंग (_R)"
 
 #: data/resources/ui/window.blp:19
 msgid "_Preferences"
-msgstr "प्राथमिकताएँ (_P)"
+msgstr "प्राथमिकताएं (_P)"
 
 #: data/resources/ui/window.blp:24
 msgid "_Keyboard Shortcuts"
@@ -478,21 +478,21 @@ msgstr "आरंभ करने के लिए स्क्रीन से 
 
 #: data/resources/ui/window.blp:53
 msgid "_Pick a Color"
-msgstr "एक रंग चुनें (_P)"
+msgstr "रंग चुनें (_P)"
 
 #: data/resources/ui/window.blp:78
 msgctxt "Tooltip of the colorpicker button"
 msgid "Pick a Color"
-msgstr "एक रंग चुनें"
+msgstr "रंग चुनें"
 
 #: data/resources/ui/window.blp:85
 msgid "Main Menu"
-msgstr "मुख्य मेन्यू"
+msgstr "मुख्य मेनू"
 
 #: data/resources/ui/window.blp:108
 msgctxt "Tooltip of the palette button"
 msgid "Open Palette Window"
-msgstr "पैलेट विंडो खोलें"
+msgstr "पैलेट खिड़की खोलें"
 
 #: data/resources/ui/window.blp:128
 msgid "Copy Name"
@@ -557,7 +557,7 @@ msgstr "Scrambled777 <weblate.scrambled777@simplelogin.com>"
 
 #: src/widgets/about_window.rs:85
 msgid "Parse RGBA/ARGB Hex-Colors"
-msgstr "पार्स RGBA/ARGB हेक्स-रंग"
+msgstr "RGBA/ARGB हेक्स-रंग का विश्लेषण"
 
 #: src/widgets/about_window.rs:105
 msgctxt ""
@@ -586,17 +586,17 @@ msgstr "“{}” कॉपी किया गया"
 
 #: src/widgets/history_item.rs:118
 msgid "Remove"
-msgstr "हटाएँ"
+msgstr "हटाएं"
 
 #: src/widgets/palette_dialog.rs:85
 msgctxt "Name for tints (lighter variants) of the color"
 msgid "Tints"
-msgstr "टिन्ट्स"
+msgstr "हल्के संस्करण"
 
 #: src/widgets/palette_dialog.rs:87
 msgctxt "Name for shades (darker variants) of the color"
 msgid "Shades"
-msgstr "शेड्स"
+msgstr "गहरे संस्करण"
 
 #: src/widgets/palette_dialog.rs:91
 msgctxt "Name for the opposite/complementary color (e.g. blue ⇔ yellow)"
@@ -628,11 +628,11 @@ msgstr "अनुरूप"
 
 #: src/widgets/preferences/preferences_window.rs:294
 msgid "Move Up"
-msgstr "ऊपर ले जाएँ"
+msgstr "ऊपर ले जाएं"
 
 #: src/widgets/preferences/preferences_window.rs:296
 msgid "Move Down"
-msgstr "नीचे ले जाएँ"
+msgstr "नीचे ले जाएं"
 
 #: src/widgets/preferences/preferences_window.rs:392
 msgid "Hex-Code"
@@ -646,11 +646,11 @@ msgstr "नाम"
 #: src/window.rs:466 src/window.rs:668 src/window.rs:851
 msgctxt "Information that no name for the color could be found"
 msgid "Not named"
-msgstr "नाम नहीं दिया गया"
+msgstr "नामित नहीं"
 
 #: src/window.rs:269
 msgid "Cleared history"
-msgstr "इतिहास साफ़ किया"
+msgstr "इतिहास साफ किया"
 
 #: src/window.rs:270
 msgid "Undo"
