@@ -1,7 +1,7 @@
 # Chinese - China translations for Eyedropper package.
 # Copyright (C) 2022 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Eyedropper package.
-# lumingzh <lumingzh@qq.com>, 2023.
+# lumingzh <lumingzh@qq.com>, 2023, 2024.
 # Milo Ivir <mail@milotype.de>, 2023.
 # 复予 <clonewith@qq.com>, 2024.
 msgid ""
@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-11-14 19:29+0000\n"
-"PO-Revision-Date: 2024-03-28 17:02+0000\n"
-"Last-Translator: 复予 <clonewith@qq.com>\n"
+"PO-Revision-Date: 2024-05-14 11:01+0000\n"
+"Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "eyedropper/eyedropper/zh_Hans/>\n"
 "Language: zh_CN\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.6-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
@@ -560,7 +560,9 @@ msgstr "复制 Oklch"
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/widgets/about_window.rs:47
 msgid "translator-credits"
-msgstr "lumingzh <lumingzh@qq.com>, 复予 <clonewith@qq.com>"
+msgstr ""
+"lumingzh <lumingzh@qq.com>\n"
+"复予 <clonewith@qq.com>"
 
 #: src/widgets/about_window.rs:85
 msgid "Parse RGBA/ARGB Hex-Colors"
@@ -592,12 +594,12 @@ msgstr "已复制“{}”"
 
 #: src/widgets/history_item.rs:118
 msgid "Remove"
-msgstr "删除"
+msgstr "移除"
 
 #: src/widgets/palette_dialog.rs:85
 msgctxt "Name for tints (lighter variants) of the color"
 msgid "Tints"
-msgstr "淡色"
+msgstr "亮调"
 
 #: src/widgets/palette_dialog.rs:87
 msgctxt "Name for shades (darker variants) of the color"
