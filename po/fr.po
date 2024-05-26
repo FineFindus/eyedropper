@@ -4,14 +4,14 @@
 # Irénée THIRION <irenee.thirion@e.email>, 2022.
 # "J. Lavoie" <j.lavoie@net-c.ca>, 2023, 2025.
 # Milo Ivir <mail@milotype.de>, 2023.
-# Patricio Carrau <duckycb@proton.me>, 2024.
+# Patricio Carrau <duckycb@proton.me>, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper master\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-11-14 19:29+0000\n"
 "PO-Revision-Date: 2025-06-04 14:02+0000\n"
-"Last-Translator: \"J. Lavoie\" <j.lavoie@net-c.ca>\n"
+"Last-Translator: Patricio Carrau <duckycb@proton.me>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/fr/>\n"
 "Language: fr\n"
