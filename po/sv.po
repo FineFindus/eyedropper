@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Eyedropper package.
-# Ramin Samadi <raminsam05+github@gmail.com>, 2024.
+# Ramin Samadi <raminsam05+github@gmail.com>, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2024-05-11 08:27+0000\n"
 "PO-Revision-Date: 2025-06-04 14:02+0000\n"
-"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Last-Translator: Ramin Samadi <raminsam05+github@gmail.com>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/sv/>\n"
 "Language: sv\n"
