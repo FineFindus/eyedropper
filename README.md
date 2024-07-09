@@ -55,7 +55,7 @@ This application is geared towards advanced users (developers, designers, etc…
 ## Installation
 
 ### Flatpak
-<a href='https://flathub.org/apps/details/com.github.finefindus.eyedropper'><img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-i-en.png'/></a>
+<a href='https://flathub.org/apps/details/com.github.finefindus.eyedropper'><img width='240' alt='Get it on Flathub' src='https://flathub.org/api/badge?locale=en&light'/></a>
 
 #### Nightly Flatpak
 > :warning: The nightly flatpak may contain bugs or unexpected behaviour.
