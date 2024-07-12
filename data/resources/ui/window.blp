@@ -66,6 +66,33 @@ template $AppWindow : Adw.ApplicationWindow {
       }
 
       StackPage {
+        name: "portal-error";
+        child: $AdwToolbarView {
+          [top]
+          Adw.HeaderBar {}
+
+          content: WindowHandle {
+            vexpand: true;
+            child: Adw.StatusPage {
+              icon-name: "portal-missing-symbolic";
+              title: _("Color Picker not available");
+              description: _("The system is not properly configured to allow for color picking");
+              child: Button {
+                label: _("_Continue regardless");
+                use-underline: true;
+                halign: center;
+                action-name: "app.random_color";
+
+                styles [
+                  "pill",
+                ]
+              };
+            };
+          };
+        };
+      }
+
+      StackPage {
         name: "main";
         child: $AdwToolbarView {
           [top]

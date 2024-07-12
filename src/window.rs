@@ -185,6 +185,15 @@ mod imp {
                 obj.add_css_class("devel");
             }
 
+            let main_context = glib::MainContext::default();
+            main_context.spawn_local(glib::clone!(@weak self as window => async move {
+                if window.is_color_picker_available().await.is_ok_and(|portal_exists| !portal_exists) {
+                    window.stack
+                        .set_visible_child_name("portal-error");
+                    window.color_picker_button.set_sensitive(false);
+                }
+            }));
+
             // Load latest window state
             obj.load_window_size();
             obj.setup_history();
@@ -215,6 +224,23 @@ mod imp {
 
     impl ApplicationWindowImpl for AppWindow {}
     impl AdwApplicationWindowImpl for AppWindow {}
+
+    impl AppWindow {
+        async fn is_color_picker_available(&self) -> zbus::Result<bool> {
+            let connection = zbus::Connection::session().await?;
+
+            let msg = connection
+                .call_method(
+                    Some("org.freedesktop.portal.Desktop"),
+                    "/org/freedesktop/portal/desktop",
+                    Some("org.freedesktop.DBus.Introspectable"),
+                    "Introspect",
+                    &(),
+                )
+                .await?;
+            Ok(msg.body::<String>()?.contains("PickColor"))
+        }
+    }
 }
 
 glib::wrapper! {
