@@ -6,10 +6,12 @@ use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{glib, prelude::ObjectExt};
 
+use crate::colors::color::Color;
+
 mod imp {
     use std::cell::RefCell;
 
-    use crate::colors::color;
+    use crate::colors::{self, formatter::ColorFormatter};
 
     use super::*;
 
@@ -25,11 +27,11 @@ mod imp {
         #[template_child]
         pub format_button: TemplateChild<gtk::Button>,
         #[property(set, get)]
-        pub color: RefCell<String>,
-        #[property(set, get)]
         pub tooltip: RefCell<String>,
-        #[property(set, get, builder(color::Format::default()))]
-        pub color_format: RefCell<color::Format>,
+        #[property(set, get)]
+        pub color: RefCell<String>,
+        #[property(set, get, builder(colors::Notation::default()))]
+        pub color_format: RefCell<colors::Notation>,
     }
 
     #[glib::object_subclass]
@@ -52,14 +54,9 @@ mod imp {
     impl ObjectImpl for ColorFormatRow {
         fn signals() -> &'static [Signal] {
             static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
-                vec![
-                    Signal::builder("copied-text")
-                        .param_types([String::static_type()])
-                        .build(),
-                    Signal::builder("text-edited")
-                        .param_types([String::static_type()])
-                        .build(),
-                ]
+                vec![Signal::builder("copied-text")
+                    .param_types([String::static_type()])
+                    .build()]
             });
             SIGNALS.as_ref()
         }
@@ -73,10 +70,16 @@ mod imp {
             self.entry
                 .connect_activate(glib::clone!(@weak obj => move |entry| {
                     let text = entry.buffer().text();
-                    if obj.is_visible() && !text.is_empty() {
-                        obj.switch_button(false);
-                        obj.emit_by_name("text-edited", &[&text.to_value()])
-                    }
+                    let Ok(color) = obj.color_format().parse(text.as_str()) else {
+                        log::debug!("Failed to parse color: {}", text);
+                        obj.show_error();
+                        return;
+                    };
+                    obj.display_color(color);
+                    obj.show_success();
+
+                    let hex = ColorFormatter::with_color(color).hex_code();
+                    obj.activate_action("win.set-color", Some(&hex.to_variant())).expect("Failed to set color");
                 }));
 
             self.entry
@@ -105,6 +108,15 @@ impl ColorFormatRow {
     #[allow(clippy::new_without_default)]
     pub fn new() -> Self {
         glib::Object::new::<Self>()
+    }
+
+    /// Updates the displayed color to the given color.
+    ///
+    /// The displayed color format is determined by the `color_format` of
+    /// the widget.
+    pub fn display_color(&self, color: Color) {
+        let color = self.color_format().as_str(color);
+        self.set_color(color);
     }
 
     /// Switches the button next to the entry.

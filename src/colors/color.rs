@@ -806,6 +806,12 @@ pub enum ColorError {
     ParsingError(String),
 }
 
+impl From<nom::Err<nom::error::Error<&str>>> for ColorError {
+    fn from(value: nom::Err<nom::error::Error<&str>>) -> Self {
+        Self::ParsingError(value.to_string())
+    }
+}
+
 impl<I, O, E> From<nom::IResult<I, O, E>> for ColorError {
     fn from(_error: Result<(I, O), nom::Err<E>>) -> Self {
         Self::ParsingError(String::new())
