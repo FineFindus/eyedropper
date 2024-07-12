@@ -43,7 +43,7 @@ impl ColorFormatObject {
     pub fn new(identifier: String, label: &str, format: String) -> Self {
         Object::builder()
             .property("identifier", &identifier)
-            .property("label", &label)
+            .property("label", label)
             .property("example", &format)
             .build()
     }
