@@ -1,3 +1,5 @@
+use std::str::FromStr;
+
 use gettextrs::{gettext, pgettext};
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
@@ -6,7 +8,7 @@ use gtk::{gio, glib};
 use crate::application::App;
 use crate::colors::color::Color;
 use crate::colors::position::AlphaPosition;
-use crate::colors::{self, color_names, Notation};
+use crate::colors::{color_names, Notation};
 use crate::config::{APP_ID, PROFILE};
 use crate::model::history::HistoryObject;
 use crate::widgets::color_format_row::ColorFormatRow;
@@ -15,8 +17,6 @@ use crate::widgets::palette_dialog::PaletteDialog;
 
 mod imp {
     use std::cell::{Cell, RefCell};
-
-    use crate::widgets;
 
     use super::*;
 
@@ -40,34 +40,6 @@ mod imp {
         #[template_child]
         pub color_picker_button: TemplateChild<gtk::Button>,
         #[template_child]
-        pub hex_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
-        #[template_child]
-        pub rgb_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
-        #[template_child]
-        pub hsl_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
-        #[template_child]
-        pub hsv_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
-        #[template_child]
-        pub cmyk_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
-        #[template_child]
-        pub xyz_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
-        #[template_child]
-        pub cie_lab_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
-        #[template_child]
-        pub hwb_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
-        #[template_child]
-        pub hcl_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
-        #[template_child]
-        pub name_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
-        #[template_child]
-        pub lms_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
-        #[template_child]
-        pub hunter_lab_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
-        #[template_child]
-        pub oklab_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
-        #[template_child]
-        pub oklch_row: TemplateChild<widgets::color_format_row::ColorFormatRow>,
-        #[template_child]
         pub history_list: TemplateChild<gtk::ListBox>,
         pub history: OnceCell<gio::ListStore>,
         pub settings: gio::Settings,
@@ -84,20 +56,6 @@ mod imp {
                 color_picker_button: TemplateChild::default(),
                 toast_overlay: TemplateChild::default(),
                 format_box: TemplateChild::default(),
-                hex_row: TemplateChild::default(),
-                rgb_row: TemplateChild::default(),
-                hsl_row: TemplateChild::default(),
-                hsv_row: TemplateChild::default(),
-                cmyk_row: TemplateChild::default(),
-                xyz_row: TemplateChild::default(),
-                cie_lab_row: TemplateChild::default(),
-                hunter_lab_row: TemplateChild::default(),
-                oklab_row: TemplateChild::default(),
-                oklch_row: TemplateChild::default(),
-                hwb_row: TemplateChild::default(),
-                hcl_row: TemplateChild::default(),
-                name_row: TemplateChild::default(),
-                lms_row: TemplateChild::default(),
                 history_list: TemplateChild::default(),
                 history: Default::default(),
                 settings: gio::Settings::new(APP_ID),
@@ -459,10 +417,10 @@ impl AppWindow {
                     settings.boolean("name-source-gnome-palette"),
                     settings.boolean("name-source-xkcd"),
                 );
-                window.imp().name_row.set_color(name.unwrap_or_else(|| pgettext(
-                    "Information that no name for the color could be found",
-                    "Not named",
-                )));
+                // window.imp().name_row.set_color(name.unwrap_or_else(|| pgettext(
+                //     "Information that no name for the color could be found",
+                //     "Not named",
+                // )));
             }
         });
 
@@ -483,12 +441,12 @@ impl AppWindow {
                     settings.boolean("name-source-gnome-palette"),
                     settings.boolean("name-source-xkcd"),
                 );
-                imp.name_row.set_color(name.unwrap_or_else(|| {
-                    pgettext(
-                        "Information that no name for the color could be found",
-                        "Not named",
-                    )
-                }));
+                // imp.name_row.set_color(name.unwrap_or_else(|| {
+                //     pgettext(
+                //         "Information that no name for the color could be found",
+                //         "Not named",
+                //     )
+                // }));
             }
         }
     }
@@ -505,55 +463,21 @@ impl AppWindow {
             .filter_map(Cast::downcast_ref::<ColorFormatRow>)
             .for_each(|row| format_box.remove(row));
 
-        let order = imp.settings.get::<Vec<String>>("format-order");
-        let visible = imp.settings.get::<Vec<String>>("visible-formats");
+        let order: Vec<String> = imp.settings.get("format-order");
+        let visible: Vec<String> = imp.settings.get("visible-formats");
         log::debug!("Formats: {:?}", order);
         log::debug!("Visible: {:?}", visible);
 
         order
             .iter()
             .filter(|item| visible.contains(item))
-            .filter_map(|item| self.map_format(item))
-            .for_each(|(child, notation)| {
-                format_box.append(&child.get());
-                child.set_color_format(notation);
-                child.set_visible(true);
+            .filter_map(|item| Some(Notation::from_str(item).ok()?.widget()))
+            .for_each(|widget| {
+                format_box.append(&widget);
+                if let Some(color) = self.color() {
+                    widget.display_color(color);
+                }
             });
-    }
-
-    /// Returns a reference to the `input` named `ColorFormatRow`, or `None` if it could not be found.
-    ///
-    /// The checking is done case insensitive.
-    ///
-    /// # Examples
-    ///
-    /// ```
-    /// if let Some((row, notation)) = self.map_format("rgb") {
-    ///     row.set_color("RGB");
-    /// }
-    /// ```
-    fn map_format(&self, item: &str) -> Option<(&TemplateChild<ColorFormatRow>, colors::Notation)> {
-        let imp = self.imp();
-        match item.to_lowercase().as_str() {
-            "hex" => Some((&imp.hex_row, Notation::Hex)),
-            "rgb" => Some((&imp.rgb_row, Notation::Rgb)),
-            "hsl" => Some((&imp.hsl_row, Notation::Hsl)),
-            "hsv" => Some((&imp.hsv_row, Notation::Hsv)),
-            "cmyk" => Some((&imp.cmyk_row, Notation::Cmyk)),
-            "xyz" => Some((&imp.xyz_row, Notation::Xyz)),
-            "cielab" => Some((&imp.cie_lab_row, Notation::Lab)),
-            "hwb" => Some((&imp.hwb_row, Notation::Hwb)),
-            "hcl" => Some((&imp.hcl_row, Notation::Hcl)),
-            "name" => Some((&imp.name_row, Notation::Name)),
-            "lms" => Some((&imp.lms_row, Notation::Lms)),
-            "hunterlab" => Some((&imp.hunter_lab_row, Notation::HunterLab)),
-            "oklab" => Some((&imp.oklab_row, Notation::Oklab)),
-            "oklch" => Some((&imp.oklch_row, Notation::Oklch)),
-            _ => {
-                log::error!("Failed to find format: {}", item);
-                None
-            }
-        }
     }
 
     /// Opens a dialog with different palettes.

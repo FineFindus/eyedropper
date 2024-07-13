@@ -7,9 +7,10 @@ use gtk::subclass::prelude::*;
 use gtk::{glib, prelude::ObjectExt};
 
 use crate::colors::color::Color;
+use crate::colors::Notation;
 
 mod imp {
-    use std::cell::RefCell;
+    use std::cell::{Cell, RefCell};
 
     use crate::colors::{self, formatter::ColorFormatter};
 
@@ -30,8 +31,8 @@ mod imp {
         pub tooltip: RefCell<String>,
         #[property(set, get)]
         pub color: RefCell<String>,
-        #[property(set, get, builder(colors::Notation::default()))]
-        pub color_format: RefCell<colors::Notation>,
+        #[property(construct_only, get, builder(colors::Notation::default()))]
+        pub color_format: Cell<colors::Notation>,
     }
 
     #[glib::object_subclass]
@@ -64,8 +65,6 @@ mod imp {
         fn constructed(&self) {
             self.parent_constructed();
             let obj = self.obj();
-            obj.set_direction(gtk::TextDirection::Ltr);
-            obj.set_visible(false);
 
             self.entry
                 .connect_activate(glib::clone!(@weak obj => move |entry| {
@@ -106,8 +105,10 @@ glib::wrapper! {
 #[gtk::template_callbacks]
 impl ColorFormatRow {
     #[allow(clippy::new_without_default)]
-    pub fn new() -> Self {
-        glib::Object::new::<Self>()
+    pub fn new(notation: &Notation) -> Self {
+        glib::Object::builder::<Self>()
+            .property("color-format", notation)
+            .build()
     }
 
     /// Updates the displayed color to the given color.
@@ -129,9 +130,11 @@ impl ColorFormatRow {
         if show_apply {
             button.set_icon_name("check-plain-symbolic");
             button.add_css_class("suggested-action");
+            self.set_tooltip(gettext("Apply"));
         } else {
             button.set_icon_name("edit-copy-symbolic");
             button.remove_css_class("suggested-action");
+            self.set_tooltip(self.color_format().display_copy_string());
         }
     }
 
