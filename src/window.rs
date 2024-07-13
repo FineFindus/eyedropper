@@ -360,95 +360,17 @@ impl AppWindow {
         let imp = self.imp();
         let settings = &imp.settings;
 
-        //update order
         settings.connect_changed(
-            Some("format-order"),
-            glib::clone!(@weak self as window => move |_, _| {
-                log::debug!("Updating format order");
-                window.order_formats();
+            None,
+            glib::clone!(@weak self as window => move |_, setting| {
+                log::debug!("{} was changed", setting);
+                if setting == "format-order" || setting == "visible-formats"{
+                    window.order_formats();
+                } else if let Some(color) = window.color() {
+                    window.set_color(color);
+                }
             }),
         );
-
-        // update the color by setting it again
-        let update_color = glib::clone!(@weak self as window => move |_: &gio::Settings, _:&str| {
-            if let Some(color) = window.color() {
-                window.set_color(color);
-            }
-        });
-
-        //update hex row with new alpha position
-        settings.connect_changed(Some("alpha-position"), update_color.clone());
-
-        //update colors that use observer values in their calculation
-        settings.connect_changed(Some("cie-illuminants"), update_color.clone());
-        settings.connect_changed(Some("cie-standard-observer"), update_color.clone());
-
-        //update precision
-        settings.connect_changed(Some("precision-digits"), update_color.clone());
-
-        // update for custom formats
-        settings.connect_changed(Some("custom-format-rgb"), update_color.clone());
-        settings.connect_changed(Some("custom-format-hsl"), update_color.clone());
-        settings.connect_changed(Some("custom-format-hsv"), update_color.clone());
-        settings.connect_changed(Some("custom-format-cmyk"), update_color.clone());
-        settings.connect_changed(Some("custom-format-xyz"), update_color.clone());
-        settings.connect_changed(Some("custom-format-cie-lab"), update_color.clone());
-        settings.connect_changed(Some("custom-format-hwb"), update_color.clone());
-        settings.connect_changed(Some("custom-format-hcl"), update_color.clone());
-        settings.connect_changed(Some("custom-format-lms"), update_color.clone());
-        settings.connect_changed(Some("custom-format-hunter-lab"), update_color.clone());
-        settings.connect_changed(Some("custom-format-oklab"), update_color.clone());
-        settings.connect_changed(Some("custom-format-oklch"), update_color);
-
-        settings.connect_changed(
-            Some("visible-formats"),
-            glib::clone!(@weak self as window => move |_settings: &gio::Settings, _: &str| {
-                window.order_formats();
-            }),
-        );
-
-        //update name when it changes
-        let update_color_names = glib::clone!(@weak self as window => move |settings: &gio::Settings, _: &str| {
-            log::debug!("Updating color names");
-            if let Some(color) = window.color() {
-                let name = color_names::name(color,
-                    settings.boolean("name-source-basic"),
-                    settings.boolean("name-source-extended"),
-                    settings.boolean("name-source-gnome-palette"),
-                    settings.boolean("name-source-xkcd"),
-                );
-                // window.imp().name_row.set_color(name.unwrap_or_else(|| pgettext(
-                //     "Information that no name for the color could be found",
-                //     "Not named",
-                // )));
-            }
-        });
-
-        settings.connect_changed(Some("name-source-basic"), update_color_names.clone());
-        settings.connect_changed(Some("name-source-extended"), update_color_names.clone());
-        settings.connect_changed(Some("name-source-xkcd"), update_color_names.clone());
-
-        let show_name_model = settings
-            .get::<Vec<String>>("visible-formats")
-            .contains(&"name".to_owned());
-        if show_name_model {
-            if let Some(color) = self.color() {
-                //update field to show name
-                let name = color_names::name(
-                    color,
-                    settings.boolean("name-source-basic"),
-                    settings.boolean("name-source-extended"),
-                    settings.boolean("name-source-gnome-palette"),
-                    settings.boolean("name-source-xkcd"),
-                );
-                // imp.name_row.set_color(name.unwrap_or_else(|| {
-                //     pgettext(
-                //         "Information that no name for the color could be found",
-                //         "Not named",
-                //     )
-                // }));
-            }
-        }
     }
 
     /// Insert the formats in the order in which they are saved in the settings.
