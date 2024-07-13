@@ -18,13 +18,14 @@ pub struct ColorFormatter {
 
 impl Default for ColorFormatter {
     fn default() -> Self {
+        let settings = gtk::gio::Settings::new(config::APP_ID);
         Self {
             color: Default::default(),
-            precision: 2,
-            alpha_position: Default::default(),
-            illuminant: Default::default(),
-            ten_deg_observer: Default::default(),
-            settings: gtk::gio::Settings::new(config::APP_ID),
+            precision: settings.uint("precision-digits") as usize,
+            alpha_position: AlphaPosition::from(settings.int("alpha-position") as u32),
+            illuminant: Illuminant::from(settings.int("cie-illuminants") as u32),
+            ten_deg_observer: settings.int("cie-standard-observer") == 1,
+            settings,
         }
     }
 }
