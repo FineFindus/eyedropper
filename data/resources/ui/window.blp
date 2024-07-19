@@ -32,23 +32,26 @@ menu primary_menu {
   }
 }
 
-template $AppWindow : Adw.ApplicationWindow {
+template $AppWindow: Adw.ApplicationWindow {
   content: Adw.ToastOverlay toast_overlay {
     child: Stack stack {
       transition-type: crossfade;
 
       StackPage {
         name: "placeholder";
+
         child: $AdwToolbarView {
           [top]
           Adw.HeaderBar {}
 
           content: WindowHandle {
             vexpand: true;
+
             child: Adw.StatusPage {
               icon-name: "color-select-symbolic";
               title: _("No Color");
               description: _("Select a color from the screen to get started");
+
               child: Button {
                 label: _("_Pick a Color");
                 use-underline: true;
@@ -73,20 +76,64 @@ template $AppWindow : Adw.ApplicationWindow {
 
           content: WindowHandle {
             vexpand: true;
-            child: Adw.StatusPage {
-              icon-name: "portal-missing-symbolic";
-              title: _("Color Picker not available");
-              description: _("The system is not properly configured to allow for color picking");
-              child: Button {
-                label: _("_Continue regardless");
-                use-underline: true;
-                halign: center;
-                action-name: "app.random_color";
+            child: Adw.Bin {
+              css-name: "statuspage";
 
-                styles [
-                  "pill",
-                ]
-              };
+              ScrolledWindow {
+                hscrollbar-policy: never;
+
+                Box {
+                  orientation: vertical;
+                  valign: center;
+
+                  Adw.Clamp {
+                    Box {
+                      orientation: vertical;
+
+                      Box {
+                        halign: center;
+
+                        Picture {
+                          can-shrink: false;
+                          margin-bottom: 25;
+                          file: "resource:///com/github/finefindus/eyedropper/shattered-picker.svg";
+                        }
+                      }
+
+                      Label {
+                        label: _("Color Picker not Available");
+                        wrap: true;
+                        justify: center;
+
+                        styles [
+                          "title-1",
+                        ]
+                      }
+
+                      Label {
+                        label: _("The system is not properly configured to allow for color picking");
+                        wrap: true;
+                        justify: center;
+
+                        styles [
+                          "body",
+                        ]
+                      }
+                    }
+                  }
+
+                  Button {
+                    label: _("_Continue Regardless");
+                    use-underline: true;
+                    halign: center;
+                    action-name: "app.random_color";
+
+                    styles [
+                      "pill",
+                    ]
+                  }
+                }
+              }
             };
           };
         };
@@ -94,6 +141,7 @@ template $AppWindow : Adw.ApplicationWindow {
 
       StackPage {
         name: "main";
+
         child: $AdwToolbarView {
           [top]
           Adw.HeaderBar headerbar {
@@ -131,6 +179,7 @@ template $AppWindow : Adw.ApplicationWindow {
                 orientation: vertical;
                 tightening-threshold: 35;
                 maximum-size: 50;
+
                 child: Button {
                   tooltip-text: C_("Tooltip of the palette button", "Open Palette Window");
                   margin-top: 12;

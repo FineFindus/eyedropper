@@ -14,7 +14,7 @@ pub const WEBSITE: &str = "https://github.com/finefindus/eyedropper/";
 pub const ISSUE_TRACKER: &str = "https://github.com/finefindus/eyedropper/issues/new/choose";
 pub const DEVELOPERS: &[&str] = &["FineFindus https://github.com/FineFindus"];
 pub const DESIGNERS: &[&str] = &["FineFindus https://github.com/FineFindus"];
-pub const ARTISTS: &[&str] = &["bertob https://github.com/bertob"];
+pub const ARTISTS: &[&str] = &["bertob https://github.com/bertob", "Brage Fuglseth"];
 
 #[derive(Debug)]
 pub struct EyedropperAbout;
@@ -170,7 +170,7 @@ impl EyedropperAbout {
     /// Returns info about the sandbox the app is using.
     ///
     /// If it is running inside the flatpak sandbox, info about it is returned, otherwise only
-    /// the information if the `GTK_USE_PORTAL` environment is set to `1`.  
+    /// the information if the `GTK_USE_PORTAL` environment is set to `1`.
     fn sandbox_info() -> String {
         let mut info = String::new();
         if Path::new("/.flatpak-info").exists() {
