@@ -4,7 +4,6 @@
     <file compressed="true" alias="shattered-picker.svg">illustrations/shattered-picker.svg</file>
     <file compressed="true" preprocess="xml-stripblanks" alias="gtk/help-overlay.ui">ui/shortcuts.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/window.ui</file>
-    <file compressed="true" preprocess="xml-stripblanks">ui/palette-window.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/color-format-row.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/history-item.ui</file>
     <file compressed="true" preprocess="xml-stripblanks">ui/preferences/preferences.ui</file>
