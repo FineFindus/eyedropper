@@ -25,7 +25,7 @@ mod imp {
     use adw::subclass::{prelude::PreferencesWindowImpl, window::AdwWindowImpl};
     use gtk::gio;
 
-    use crate::{config, widgets::preferences::custom_format_row::CustomFormatRow};
+    use crate::config;
 
     use super::*;
 
@@ -41,9 +41,6 @@ mod imp {
         pub precision_row: TemplateChild<adw::SpinRow>,
         #[template_child()]
         pub cie_illuminants_box: TemplateChild<gtk::DropDown>,
-        // this exist only to load the CustomFormatRow, otherwise it would crash
-        #[template_child()]
-        pub _custom_format: TemplateChild<CustomFormatRow>,
         #[template_child()]
         pub order_list: TemplateChild<gtk::ListBox>,
         pub format_order: RefCell<Option<gio::ListStore>>,
@@ -62,7 +59,6 @@ mod imp {
                 standard_observer_box: TemplateChild::default(),
                 cie_illuminants_box: TemplateChild::default(),
                 precision_row: TemplateChild::default(),
-                _custom_format: TemplateChild::default(),
                 order_list: TemplateChild::default(),
                 format_order: Default::default(),
             }
