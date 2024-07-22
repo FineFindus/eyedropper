@@ -9,10 +9,12 @@ template $HistoryItem : Button {
   child: Gtk.Box {
     Gtk.GestureClick right_click_gesture {
       button: 3;
+      pressed => $show_popover() swapped;
     }
 
     Gtk.GestureLongPress press_gesture {
       touch-only: true;
+      pressed => $show_popover() swapped;
     }
 
     Gtk.PopoverMenu popover {
