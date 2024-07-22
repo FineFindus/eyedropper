@@ -73,54 +73,66 @@ mod imp {
             Self::bind_template(klass);
             Self::Type::bind_template_callbacks(klass);
 
-            klass.install_action("win.show-toast", Some("(si)"), move |win, _, var| {
-                if let Some((ref toast, i)) = var.and_then(|v| v.get::<(String, i32)>()) {
-                    win.show_toast(toast, adw::ToastPriority::__Unknown(i));
-                }
-            });
+            klass.install_action(
+                "win.show-toast",
+                Some(glib::VariantTy::TUPLE),
+                move |win, _, var| {
+                    if let Some((ref toast, i)) = var.and_then(|v| v.get::<(String, i32)>()) {
+                        win.show_toast(toast, adw::ToastPriority::__Unknown(i));
+                    }
+                },
+            );
 
-            klass.install_action("win.set-color", Some("s"), move |win, _, var| {
-                let Some(Ok(color)) = var
-                    .and_then(|v| v.get::<String>())
-                    .map(|v| Color::from_str(&v))
-                else {
-                    return;
-                };
-                win.set_color(color);
-            });
+            klass.install_action(
+                "win.set-color",
+                Some(glib::VariantTy::STRING),
+                move |win, _, var| {
+                    let Some(Ok(color)) = var
+                        .and_then(|v| v.get::<String>())
+                        .map(|v| Color::from_str(&v))
+                    else {
+                        return;
+                    };
+                    win.set_color(color);
+                },
+            );
 
-            klass.install_action("win.remove-item", Some("s"), |win, _, var| {
-                let Some(Ok(color)) = var
-                    .and_then(|v| v.get::<String>())
-                    .map(|v| Color::from_str(&v))
-                else {
-                    return;
-                };
+            klass.install_action(
+                "win.remove-item",
+                Some(glib::VariantTy::STRING),
+                |win, _, var| {
+                    let Some(Ok(color)) = var
+                        .and_then(|v| v.get::<String>())
+                        .map(|v| Color::from_str(&v))
+                    else {
+                        return;
+                    };
 
-                let Some(index) = win.history().find_with_equal_func(|item| {
-                    item.downcast_ref::<HistoryObject>().unwrap().color() == color.into()
-                }) else {
-                    return;
-                };
+                    let Some(index) = win.history().find_with_equal_func(|item| {
+                        item.downcast_ref::<HistoryObject>().unwrap().color() == color.into()
+                    }) else {
+                        return;
+                    };
 
-                win.history().remove(index);
+                    win.history().remove(index);
 
-                // if the removed item was the current color/first item, show the next color
-                // otherwise the current (removed) color would still be shown
-                // safe to unwrap as the user should only be able to click the remove option when
-                // the list is showm, which is only the case for 2+ colors
-                if index == 0 {
-                    let next_color = win
-                        .history()
-                        .item(0)
-                        .and_then(|item| {
-                            item.downcast_ref::<HistoryObject>()
-                                .map(|item| item.color())
-                        })
-                        .unwrap();
-                    win.set_color(next_color.into());
-                }
-            });
+                    // if the removed item was the current color/first item, show the next color
+                    // otherwise the current (removed) color would still be shown
+                    // safe to unwrap as the user should only be able to click the remove option when
+                    // the list is showm, which is only the case for 2+ colors
+                    if index == 0 {
+                        let next_color = win
+                            .history()
+                            .item(0)
+                            .and_then(|item| {
+                                item.downcast_ref::<HistoryObject>()
+                                    .map(|item| item.color())
+                            })
+                            .unwrap();
+                        win.set_color(next_color.into());
+                    }
+                },
+            );
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -140,13 +152,20 @@ mod imp {
             }
 
             let main_context = glib::MainContext::default();
-            main_context.spawn_local(glib::clone!(@weak self as window => async move {
-                if window.is_color_picker_available().await.is_ok_and(|portal_exists| !portal_exists) {
-                    window.stack
-                        .set_visible_child_name("portal-error");
-                    window.color_picker_button.set_sensitive(false);
+            main_context.spawn_local(glib::clone!(
+                #[weak(rename_to = window)]
+                self,
+                async move {
+                    if window
+                        .is_color_picker_available()
+                        .await
+                        .is_ok_and(|portal_exists| !portal_exists)
+                    {
+                        window.stack.set_visible_child_name("portal-error");
+                        window.color_picker_button.set_sensitive(false);
+                    }
                 }
-            }));
+            ));
 
             // Load latest window state
             obj.load_window_size();
@@ -191,7 +210,7 @@ mod imp {
                     &(),
                 )
                 .await?;
-            Ok(msg.body::<String>()?.contains("PickColor"))
+            Ok(msg.body().deserialize::<String>()?.contains("PickColor"))
         }
     }
 }
@@ -250,12 +269,16 @@ impl AppWindow {
             .priority(adw::ToastPriority::High)
             .build();
 
-        toast.connect_button_clicked(
-            glib::clone!(@weak self as window, @strong items => move |_toast| {
+        toast.connect_button_clicked(glib::clone!(
+            #[weak(rename_to = window)]
+            self,
+            #[strong]
+            items,
+            move |_toast| {
                 window.history().extend_from_slice(&items);
                 log::debug!("Undo clicked: {}", items.len());
-            }),
-        );
+            }
+        ));
 
         history.remove_all();
         // we cannot use `show_toast` here since that only works for simple text-only toasts
@@ -280,22 +303,25 @@ impl AppWindow {
 
         // Wrap model with selection and pass it to the list view
         let selection_model = gtk::NoSelection::new(Some(self.history().clone()));
-        self.imp().history_list.bind_model(
-            Some(&selection_model),
-            glib::clone!(@weak self as window => @default-panic, move |obj| {
-                let history_object = obj.downcast_ref::<HistoryObject>().expect("The object is not of type `HistoryObject`.");
+        self.imp()
+            .history_list
+            .bind_model(Some(&selection_model), move |obj| {
+                let history_object = obj
+                    .downcast_ref::<HistoryObject>()
+                    .expect("The object is not of type `HistoryObject`.");
                 let history_item = HistoryItem::new(history_object.color());
                 history_item.upcast()
-            }),
-        );
+            });
 
         // Assure that the history list is only visible when it is supposed to
         self.set_history_list_visible(self.history());
-        self.history().connect_items_changed(
-            glib::clone!(@weak self as window => move |items, _, _, _| {
+        self.history().connect_items_changed(glib::clone!(
+            #[weak(rename_to = window)]
+            self,
+            move |items, _, _, _| {
                 window.set_history_list_visible(items);
-            }),
-        );
+            }
+        ));
     }
 
     /// Assure that history is only visible
@@ -360,14 +386,18 @@ impl AppWindow {
 
         settings.connect_changed(
             None,
-            glib::clone!(@weak self as window => move |_, setting| {
-                log::debug!("{} was changed", setting);
-                if setting == "format-order" || setting == "visible-formats"{
-                    window.order_formats();
-                } else if let Some(color) = window.color() {
-                    window.set_color(color);
+            glib::clone!(
+                #[weak(rename_to = window)]
+                self,
+                move |_, setting| {
+                    log::debug!("{} was changed", setting);
+                    if setting == "format-order" || setting == "visible-formats" {
+                        window.order_formats();
+                    } else if let Some(color) = window.color() {
+                        window.set_color(color);
+                    }
                 }
-            }),
+            ),
         );
     }
 
@@ -407,29 +437,38 @@ impl AppWindow {
     pub fn pick_color(&self) {
         log::debug!("Picking a color using the color picker");
         let main_context = glib::MainContext::default();
-        main_context.spawn_local(glib::clone!(@weak self as window => async move {
+        main_context.spawn_local(glib::clone!(
+            #[weak(rename_to = window)]
+            self,
+            async move {
+                let root = window.root().expect("Failed to get window root");
+                let identifier = ashpd::WindowIdentifier::from_native(&root).await;
+                let request = ashpd::desktop::screenshot::ColorRequest::default()
+                    .identifier(identifier)
+                    .send()
+                    .await;
 
-        let root = window.root().expect("Failed to get window root");
-        let identifier = ashpd::WindowIdentifier::from_native(&root).await;
-        let request = ashpd::desktop::screenshot::Color::request()
-            .identifier(identifier)
-            .send()
-            .await;
-
-        match request.and_then(|req| req.response()) {
-            Ok(color) => {
-                window.imp().portal_error.replace(None);
-                window.set_color(Color::from(color));
-            },
-            Err(err) => {
-                log::error!("{}", err);
-                if !matches!(err, ashpd::Error::Response(ashpd::desktop::ResponseError::Cancelled)) {
-                    window.show_toast(gettext("Failed to pick a color"), adw::ToastPriority::Normal);
-                    window.imp().portal_error.replace(Some(err));
-                }
-            },
-        };
-        }));
+                match request.and_then(|req| req.response()) {
+                    Ok(color) => {
+                        window.imp().portal_error.replace(None);
+                        window.set_color(Color::from(gtk::gdk::RGBA::from(color)));
+                    }
+                    Err(err) => {
+                        log::error!("{}", err);
+                        if !matches!(
+                            err,
+                            ashpd::Error::Response(ashpd::desktop::ResponseError::Cancelled)
+                        ) {
+                            window.show_toast(
+                                gettext("Failed to pick a color"),
+                                adw::ToastPriority::Normal,
+                            );
+                            window.imp().portal_error.replace(Some(err));
+                        }
+                    }
+                };
+            }
+        ));
     }
 
     /// Set the current color to the given color.

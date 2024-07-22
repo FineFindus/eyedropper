@@ -103,17 +103,6 @@ impl fmt::Display for Color {
     }
 }
 
-impl From<ashpd::desktop::screenshot::Color> for Color {
-    fn from(color: ashpd::desktop::screenshot::Color) -> Self {
-        Color::rgba(
-            (255f64 * color.red()) as u8,
-            (255f64 * color.green()) as u8,
-            (255f64 * color.blue()) as u8,
-            255,
-        )
-    }
-}
-
 impl From<gtk::gdk::RGBA> for Color {
     fn from(color: gtk::gdk::RGBA) -> Self {
         Color::rgba(

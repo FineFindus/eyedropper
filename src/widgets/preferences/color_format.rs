@@ -1,8 +1,9 @@
 use glib::subclass::prelude::*;
-use glib::{Object, ObjectExt};
+use glib::Object;
 
 mod imp {
 
+    use gtk::prelude::ObjectExt;
     use std::cell::{Cell, RefCell};
 
     use super::*;

@@ -1,6 +1,5 @@
 use std::str::FromStr;
 
-use adw::traits::ActionRowExt;
 use gettextrs::gettext;
 use gtk::gdk;
 use gtk::gio;
@@ -17,6 +16,7 @@ use crate::colors::Notation;
 
 use super::color_format::ColorFormatObject;
 use super::name_set_dialog::NameSourcesDialog;
+use adw::prelude::ActionRowExt;
 
 mod imp {
 
@@ -190,20 +190,29 @@ impl PreferencesWindow {
         let selection_model = gtk::NoSelection::new(Some(self.formats()));
         self.imp().order_list.bind_model(
             Some(&selection_model),
-            glib::clone!(@weak self as widget => @default-panic, move |obj| {
-                let formats_object = obj.downcast_ref().expect("The object is not of type `ColorFormatObject`.");
-                let hist = widget.create_format_row(formats_object);
-                hist.upcast()
-            }),
+            glib::clone!(
+                #[weak(rename_to = widget)]
+                self,
+                #[upgrade_or_panic]
+                move |obj| {
+                    let formats_object = obj
+                        .downcast_ref()
+                        .expect("The object is not of type `ColorFormatObject`.");
+                    let hist = widget.create_format_row(formats_object);
+                    hist.upcast()
+                }
+            ),
         );
 
         // Assure that the formats list is only visible when it is supposed to
         self.set_order_list_visible(&self.formats());
-        self.formats().connect_items_changed(
-            glib::clone!(@weak self as window => move |items, _, _, _| {
+        self.formats().connect_items_changed(glib::clone!(
+            #[weak(rename_to = window)]
+            self,
+            move |items, _, _, _| {
                 window.set_order_list_visible(items);
-            }),
-        );
+            }
+        ));
     }
 
     /// Returns a new format row, consisting of the format title, a format example, as well as a switch and a drag handle.
@@ -217,16 +226,29 @@ impl PreferencesWindow {
         self.imp()
             .settings
             .bind("visible-formats", item, "visible")
-            .mapping(
-                glib::clone!(@weak item => @default-return None, move |value, _variant| {
+            .mapping(glib::clone!(
+                #[weak]
+                item,
+                #[upgrade_or]
+                None,
+                move |value, _variant| {
                     let visible = value.get::<Vec<String>>().unwrap_or(Vec::with_capacity(0));
                     Some(visible.contains(&item.identifier()).to_value())
-                }),
-            )
-            .set_mapping(
-                glib::clone!(@weak self as window, @weak item => @default-return None, move |value, _variant| {
-                    let active = value.get::<bool>().expect("Failed to get bool from switch active property");
-                    let mut visible_formats= window.imp().settings.get::<Vec<String>>("visible-formats");
+                }
+            ))
+            .set_mapping(glib::clone!(
+                #[weak(rename_to = window)]
+                self,
+                #[weak]
+                item,
+                #[upgrade_or]
+                None,
+                move |value, _variant| {
+                    let active = value
+                        .get::<bool>()
+                        .expect("Failed to get bool from switch active property");
+                    let mut visible_formats =
+                        window.imp().settings.get::<Vec<String>>("visible-formats");
 
                     if active {
                         visible_formats.push(item.identifier());
@@ -235,8 +257,8 @@ impl PreferencesWindow {
                     }
 
                     Some(visible_formats.to_variant())
-                }),
-            )
+                }
+            ))
             .build();
         item.bind_property("visible", &switch, "active")
             .bidirectional()
@@ -261,30 +283,40 @@ impl PreferencesWindow {
         //create actions for accessibility reasons
         let actions = gtk::gio::SimpleActionGroup::new();
         let up_action = gio::SimpleAction::new("move-up", None);
-        up_action.connect_activate(
-            glib::clone!(@weak self as window, @weak item => move |_, _| {
+        up_action.connect_activate(glib::clone!(
+            #[weak(rename_to = window)]
+            self,
+            #[weak]
+            item,
+            move |_, _| {
                 if let Some(index) = window.formats().find(&item) {
                     log::debug!("Moving {} up", item.label());
                     window.formats().remove(index);
                     window.formats().insert(index.saturating_sub(1), &item);
                     window.save_format_order();
                 }
-            }),
-        );
+            }
+        ));
         actions.add_action(&up_action);
 
         let down_action = gio::SimpleAction::new("move-down", None);
-        down_action.connect_activate(
-            glib::clone!(@weak self as window, @weak item => move |_, _| {
+        down_action.connect_activate(glib::clone!(
+            #[weak(rename_to = window)]
+            self,
+            #[weak]
+            item,
+            move |_, _| {
                 if let Some(index) = window.formats().find(&item) {
                     log::debug!("Moving {} down", item.label());
                     window.formats().remove(index);
                     //index should not be larger than the largest index
-                    window.formats().insert((index + 1).min(window.formats().n_items()), &item);
+                    window
+                        .formats()
+                        .insert((index + 1).min(window.formats().n_items()), &item);
                     window.save_format_order();
                 }
-            }),
-        );
+            }
+        ));
         actions.add_action(&down_action);
 
         let menu = Menu::new();
@@ -315,13 +347,19 @@ impl PreferencesWindow {
             .actions(gtk::gdk::DragAction::MOVE)
             .build();
 
-        drag.connect_prepare(
-            glib::clone!(@weak self as list, @weak item, @weak row as widget => @default-return None, move |source, _, _| {
+        drag.connect_prepare(glib::clone!(
+            #[weak]
+            item,
+            #[weak(rename_to = widget)]
+            row,
+            #[upgrade_or]
+            None,
+            move |source, _, _| {
                 let icon = gtk::WidgetPaintable::new(Some(&widget));
                 source.set_icon(Some(&icon), 0, 0);
                 Some(gdk::ContentProvider::for_value(&item.to_value()))
-            }),
-        );
+            }
+        ));
         row.add_controller(drag);
 
         let drop_target = gtk::DropTarget::builder()
@@ -332,24 +370,38 @@ impl PreferencesWindow {
 
         drop_target.set_types(&[ColorFormatObject::static_type()]);
 
-        drop_target.connect_drop(glib::clone!(@weak self as widget, @weak item => @default-return false, move |_, value, _, _| {
-            let value = value.get::<ColorFormatObject>().expect("Failed to get index value");
+        drop_target.connect_drop(glib::clone!(
+            #[weak(rename_to = widget)]
+            self,
+            #[weak]
+            item,
+            #[upgrade_or]
+            false,
+            move |_, value, _, _| {
+                let value = value
+                    .get::<ColorFormatObject>()
+                    .expect("Failed to get index value");
 
-            if item == value {
-                return false;
-            }
+                if item == value {
+                    return false;
+                }
 
-            match (widget.formats().find(&value), widget.formats().find(&item)) {
-                (Some(source_index), Some(target_index)) => {
-                    log::debug!("Source: {} Target: {}", source_index, target_index);
-                    widget.formats().remove(source_index);
-                    widget.formats().insert(target_index, &value);
-                    widget.save_format_order();
-                },
-                (source, target) => log::error!("Failed to find indices for dragged row, source: {:?}, target: {:?}", source, target),
+                match (widget.formats().find(&value), widget.formats().find(&item)) {
+                    (Some(source_index), Some(target_index)) => {
+                        log::debug!("Source: {} Target: {}", source_index, target_index);
+                        widget.formats().remove(source_index);
+                        widget.formats().insert(target_index, &value);
+                        widget.save_format_order();
+                    }
+                    (source, target) => log::error!(
+                        "Failed to find indices for dragged row, source: {:?}, target: {:?}",
+                        source,
+                        target
+                    ),
+                }
+                true
             }
-            true
-        }));
+        ));
         row.add_controller(drop_target);
         row
     }
