@@ -56,29 +56,6 @@ mod imp {
 
     #[glib::derived_properties]
     impl ObjectImpl for HistoryItem {
-        fn constructed(&self) {
-            self.parent_constructed();
-            let obj = self.obj();
-
-            self.right_click_gesture.connect_pressed(glib::clone!(
-                #[weak]
-                obj,
-                move |gesture, _, _x, _y| {
-                    obj.show_popover();
-                    gesture.set_state(gtk::EventSequenceState::Claimed);
-                }
-            ));
-
-            self.press_gesture.connect_pressed(glib::clone!(
-                #[weak]
-                obj,
-                move |gesture, _x, _y| {
-                    obj.show_popover();
-                    gesture.set_state(gtk::EventSequenceState::Claimed);
-                }
-            ));
-        }
-
         fn dispose(&self) {
             self.dispose_template();
         }
@@ -150,6 +127,7 @@ impl HistoryItem {
         Object::builder().property("color", color).build()
     }
 
+    #[template_callback]
     pub(super) fn show_popover(&self) {
         let imp = self.imp();
         imp.popover.popup();
