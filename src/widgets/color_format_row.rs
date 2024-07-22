@@ -82,8 +82,10 @@ mod imp {
             self.parent_constructed();
             let obj = self.obj();
 
-            self.entry
-                .connect_activate(glib::clone!(@weak obj => move |entry| {
+            self.entry.connect_activate(glib::clone!(
+                #[weak]
+                obj,
+                move |entry| {
                     let text = entry.buffer().text();
                     let Ok(color) = obj.color_format().parse(text.as_str()) else {
                         log::debug!("Failed to parse color: {}", text);
@@ -93,13 +95,18 @@ mod imp {
                     obj.display_color(color);
                     obj.show_success();
 
-                    obj.activate_action("win.set-color", Some(&color.hex().to_variant())).expect("Failed to set color");
-                }));
+                    obj.activate_action("win.set-color", Some(&color.hex().to_variant()))
+                        .expect("Failed to set color");
+                }
+            ));
 
-            self.entry
-                .connect_changed(glib::clone!(@weak obj => move |_entry| {
+            self.entry.connect_changed(glib::clone!(
+                #[weak]
+                obj,
+                move |_entry| {
                     obj.switch_button(obj.text_changed());
-                }));
+                }
+            ));
         }
 
         fn dispose(&self) {
@@ -167,13 +174,17 @@ impl ColorFormatRow {
     /// and the [`success`](https://gnome.pages.gitlab.gnome.org/libadwaita/doc/1-latest/named-colors.html#success-colors) color for entries.
     fn animate_style_class(&self, style_class: &'static str) {
         let main_context = glib::MainContext::default();
-        main_context.spawn_local(
-            glib::clone!(@weak self as widget @strong style_class => async move {
+        main_context.spawn_local(glib::clone!(
+            #[weak(rename_to = widget)]
+            self,
+            #[strong]
+            style_class,
+            async move {
                 widget.add_css_class(style_class);
                 glib::timeout_future(Duration::from_millis(350)).await;
                 widget.remove_css_class(style_class);
-            }),
-        );
+            }
+        ));
     }
 
     /// Indicate an error/invalid input.

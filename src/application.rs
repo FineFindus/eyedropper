@@ -85,15 +85,24 @@ mod imp {
                 search_provider_path
             );
 
-            ctx.spawn_local(glib::clone!(@weak app => async move {
-                match SearchProvider::new(app.clone(), search_provider_name, search_provider_path).await {
-                    Ok(search_provider) => {
-                        app.imp().search_provider.replace(Some(search_provider));
-                    },
-                    Err(err) => log::debug!("Could not start search provider: {}", err),
-                };
-
-            }));
+            ctx.spawn_local(glib::clone!(
+                #[weak]
+                app,
+                async move {
+                    match SearchProvider::new(
+                        app.clone(),
+                        search_provider_name,
+                        search_provider_path,
+                    )
+                    .await
+                    {
+                        Ok(search_provider) => {
+                            app.imp().search_provider.replace(Some(search_provider));
+                        }
+                        Err(err) => log::debug!("Could not start search provider: {}", err),
+                    };
+                }
+            ));
 
             app.setup_gactions();
             app.setup_accels();

@@ -60,18 +60,23 @@ mod imp {
             self.parent_constructed();
             let obj = self.obj();
 
-            self.right_click_gesture.connect_pressed(
-                glib::clone!(@weak obj => move |gesture, _, _x, _y| {
+            self.right_click_gesture.connect_pressed(glib::clone!(
+                #[weak]
+                obj,
+                move |gesture, _, _x, _y| {
                     obj.show_popover();
                     gesture.set_state(gtk::EventSequenceState::Claimed);
-                }),
-            );
+                }
+            ));
 
-            self.press_gesture
-                .connect_pressed(glib::clone!(@weak obj => move |gesture, _x, _y| {
+            self.press_gesture.connect_pressed(glib::clone!(
+                #[weak]
+                obj,
+                move |gesture, _x, _y| {
                     obj.show_popover();
                     gesture.set_state(gtk::EventSequenceState::Claimed);
-                }));
+                }
+            ));
         }
 
         fn dispose(&self) {
