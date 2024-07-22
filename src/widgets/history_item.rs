@@ -124,11 +124,11 @@ mod imp {
             obj.set_detailed_action_name(&format!("win.set-color('{}')", color_hex));
 
             let tooltip = if color.alpha != 1.0 {
-                Notation::Hex.as_str(color, AlphaPosition::End, 2)
-            } else {
                 color_hex
+            } else {
+                Notation::Hex.as_str(color, AlphaPosition::None, 2)
             };
-            obj.set_tooltip_text(Some(&tooltip));
+            obj.set_tooltip_text(Some(&tooltip.to_uppercase()));
         }
     }
 }
