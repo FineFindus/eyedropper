@@ -1,7 +1,7 @@
 use core::fmt;
 use std::str::FromStr;
 
-use palette::{IntoColor, WithAlpha};
+use palette::IntoColor;
 
 /// Eyedropper's internal color representation.
 ///
@@ -30,7 +30,7 @@ impl Color {
             red as f32 / 255.0,
             green as f32 / 255.0,
             blue as f32 / 255.0,
-            alpha as f32,
+            alpha as f32 / 255.0,
         ))
     }
 
@@ -53,10 +53,11 @@ impl Color {
 
     pub fn hex(&self) -> String {
         format!(
-            "#{:02x}{:02x}{:02x}",
+            "#{:02x}{:02x}{:02x}{:02x}",
             (self.color.red * 255.0) as u8,
             (self.color.green * 255.0) as u8,
             (self.color.blue * 255.0) as u8,
+            (self.alpha * 255.0) as u8,
         )
     }
 
@@ -132,10 +133,8 @@ impl FromStr for Color {
     type Err = palette::rgb::FromHexError;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        let rgb: palette::Srgb<u8> = s.parse()?;
-        Ok(Color::from_palette(
-            rgb.with_alpha(1.0).into_format::<f32, f32>(),
-        ))
+        let rgb: palette::Srgba<u8> = s.parse()?;
+        Ok(Color::from_palette(rgb.into_format::<f32, f32>()))
     }
 }
 
