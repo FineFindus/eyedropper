@@ -12,7 +12,7 @@ use nom::{
     AsChar, IResult, InputTakeAtPosition, Parser,
 };
 
-use super::{color::Color, illuminant::Illuminant, position::AlphaPosition};
+use super::{cmyk::Cmyka, color::Color, hunterlab::HunterLab, position::AlphaPosition};
 
 /// Parses a hexadecimal value from a string input and returns the parsed value.
 ///
@@ -269,16 +269,16 @@ pub fn rgb(input: &str) -> IResult<&str, Color> {
 
     let (input, _output) = opt(whitespace(tag(")")))(input)?;
 
-    //should always be safe to convert, as the length is always at least `minimum_length`, so at least 3
-    let color = match alpha {
-        AlphaPosition::None | AlphaPosition::End => Color::try_from(color_values),
-        AlphaPosition::Start => {
-            let alpha = color_values.remove(0);
-            color_values.push(alpha);
-            Color::try_from(color_values)
-        }
+    if alpha == AlphaPosition::Start {
+        assert!(color_values.len() == 4);
+        color_values.swap(0, 3)
     }
-    .expect("Failed to convert rgb color values to color");
+    let color = Color::rgba(
+        color_values[0],
+        color_values[1],
+        color_values[2],
+        *color_values.get(3).unwrap_or(&255),
+    );
 
     Ok((input, color))
 }
@@ -331,17 +331,17 @@ pub fn hsl(input: &str) -> IResult<&str, Color> {
 
     let (input, alpha) = opt(map(
         whitespace(alt((percentage, relative_percentage))),
-        |percent| (percent * 255f32) as u8,
+        |percent| percent,
     ))(input)?;
 
     let (input, _output) = opt(whitespace(tag(")")))(input)?;
 
-    let color = Color::from_hsla(
-        hue as u16,
+    let color = Color::from_palette(palette::Hsla::new(
+        hue,
         color_values[0],
         color_values[1],
-        alpha.unwrap_or(255),
-    );
+        alpha.unwrap_or(1.0),
+    ));
 
     Ok((input, color))
 }
@@ -386,19 +386,14 @@ pub fn hsv(input: &str) -> IResult<&str, Color> {
 
     let (input, alpha) = opt(map(
         whitespace(alt((percentage, relative_percentage))),
-        |percent| (percent * 255f32) as u8,
+        |percent| percent,
     ))(input)?;
 
     let (input, _output) = opt(whitespace(tag(")")))(input)?;
 
-    let color = Color::from_hsva(
-        hue as u16,
-        color_values[0],
-        color_values[1],
-        alpha.unwrap_or(255),
-    );
+    let color = palette::Hsva::new(hue, color_values[0], color_values[1], alpha.unwrap_or(1.0));
 
-    Ok((input, color))
+    Ok((input, Color::from_palette(color)))
 }
 
 #[cfg(test)]
@@ -431,14 +426,15 @@ pub fn cmyk(input: &str) -> IResult<&str, Color> {
         opt(whitespace(tag(")"))),
     )(input)?;
 
-    let color = Color::from_cmyk(
+    let color = Cmyka::new(
         color_values[0],
         color_values[1],
         color_values[2],
         color_values[3],
+        1.0,
     );
 
-    Ok((input, color))
+    Ok((input, Color::from_palette(color)))
 }
 
 #[cfg(test)]
@@ -469,9 +465,9 @@ pub fn xyz(input: &str) -> IResult<&str, Color> {
         opt(whitespace(tag(")"))),
     )(input)?;
 
-    let color = Color::from_xyz(color_values[0], color_values[1], color_values[2], 255);
+    let color = palette::Xyz::new(color_values[0], color_values[1], color_values[2]);
 
-    Ok((input, color))
+    Ok((input, Color::from_palette(color)))
 }
 
 #[cfg(test)]
@@ -488,7 +484,7 @@ mod parse_xyz {
 }
 
 /// Parses a cielab representation of a color.
-pub fn cielab(input: &str, illuminant: Illuminant, ten_deg_observer: bool) -> IResult<&str, Color> {
+pub fn cielab(input: &str) -> IResult<&str, Color> {
     let (input, _) = whitespace(alt((tag_no_case("lab("), tag_no_case("cielab("))))(input)?;
 
     //can either be an percentage or a number between 0 and 100
@@ -519,19 +515,17 @@ pub fn cielab(input: &str, illuminant: Illuminant, ten_deg_observer: bool) -> IR
 
     let (input, alpha) = opt(whitespace(map(
         alt((percentage, relative_percentage)),
-        |percentage| (percentage * 255.0) as u8,
+        |percentage| percentage,
     )))(input)?;
 
     let (input, _) = opt(whitespace(tag(")")))(input)?;
 
-    let color = Color::from_cie_lab(
+    let color = Color::from_palette(palette::Laba::new(
         cie_l.clamp(0.0, 100.0),
         cie_a_b[0].clamp(-125.0, 125.0),
         cie_a_b[1].clamp(-125.0, 125.0),
-        alpha.unwrap_or(255),
-        illuminant,
-        ten_deg_observer,
-    );
+        alpha.unwrap_or(1.0),
+    ));
 
     Ok((input, color))
 }
@@ -544,11 +538,11 @@ mod parse_cie_lab {
     fn it_parses() {
         assert_eq!(
             Ok(("", Color::rgb(46, 52, 64))),
-            cielab(" lab(21.61%, 0.56%,  -6.68%)", Illuminant::default(), false)
+            cielab(" lab(21.61%, 0.56%,  -6.68%)")
         );
         assert_eq!(
             Ok(("", Color::rgb(46, 52, 64))),
-            cielab("lab(21.61, 0.70, -8.35)", Illuminant::default(), false)
+            cielab("lab(21.61, 0.70, -8.35)")
         );
     }
 }
@@ -565,19 +559,16 @@ pub fn hwb(input: &str) -> IResult<&str, Color> {
         terminated(whitespace(percentage), opt(whitespace(separator))),
     )(input)?;
 
-    let (input, alpha) = opt(map(
-        whitespace(alt((percentage, relative_percentage))),
-        |percent| (percent * 255f32) as u8,
-    ))(input)?;
+    let (input, alpha) = opt(whitespace(alt((percentage, relative_percentage))))(input)?;
 
     let (input, _output) = opt(whitespace(tag(")")))(input)?;
 
-    let color = Color::from_hwba(
-        hue as u16,
+    let color = Color::from_palette(palette::Hwba::new(
+        hue,
         color_values[0],
         color_values[1],
-        alpha.unwrap_or(255),
-    );
+        alpha.unwrap_or(1.0),
+    ));
 
     Ok((input, color))
 }
@@ -618,14 +609,16 @@ pub fn lch(input: &str) -> IResult<&str, Color> {
 
     let (input, hue) = terminated(hue, opt(whitespace(separator)))(input)?;
 
-    let (input, alpha) = opt(map(
-        whitespace(alt((percentage, relative_percentage))),
-        |percent| (percent * 255f32) as u8,
-    ))(input)?;
+    let (input, alpha) = opt(whitespace(alt((percentage, relative_percentage))))(input)?;
 
     let (input, _) = opt(whitespace(tag(")")))(input)?;
 
-    let color = Color::from_lch(lightness, chroma, hue, alpha.unwrap_or(255));
+    let color = Color::from_palette(palette::Lcha::new(
+        lightness,
+        chroma,
+        hue,
+        alpha.unwrap_or(1.0),
+    ));
 
     Ok((input, color))
 }
@@ -684,30 +677,26 @@ mod parse_lms {
 }
 
 /// Parses a hunter lab representation of a color.
-pub fn hunter_lab(
-    input: &str,
-    illuminant: Illuminant,
-    ten_deg_observer: bool,
-) -> IResult<&str, Color> {
-    let (input, long) = delimited(
+pub fn hunter_lab(input: &str) -> IResult<&str, Color> {
+    let (input, l) = delimited(
         whitespace(tag("L:")),
         whitespace(nom::number::complete::float),
         opt(whitespace(separator)),
     )(input)?;
-    let (input, medium) = delimited(
+    let (input, a) = delimited(
         whitespace(tag("a:")),
         whitespace(nom::number::complete::float),
         opt(whitespace(separator)),
     )(input)?;
-    let (input, short) = delimited(
+    let (input, b) = delimited(
         whitespace(tag("b:")),
         whitespace(nom::number::complete::float),
         opt(whitespace(separator)),
     )(input)?;
 
-    let color = Color::from_hunter_lab(long, medium, short, illuminant, ten_deg_observer);
+    let color = HunterLab::new(l, a, b);
 
-    Ok((input, color))
+    Ok((input, Color::from_palette(color)))
 }
 
 #[cfg(test)]
@@ -718,11 +707,7 @@ mod tests {
     fn parse_hunter_lab() {
         assert_eq!(
             Ok(("", Color::rgb(46, 52, 64))),
-            hunter_lab(
-                "L: 18.45804, a: 0.41141, b: -5.42239",
-                Illuminant::default(),
-                false
-            )
+            hunter_lab("L: 18.45804, a: 0.41141, b: -5.42239",)
         );
     }
 }
@@ -754,19 +739,16 @@ pub fn oklab(input: &str) -> IResult<&str, Color> {
         ),
     )(input)?;
 
-    let (input, alpha) = opt(map(
-        whitespace(alt((percentage, relative_percentage))),
-        |percent| (percent * 255f32) as u8,
-    ))(input)?;
+    let (input, alpha) = opt(whitespace(alt((percentage, relative_percentage))))(input)?;
 
     let (input, _) = opt(whitespace(tag(")")))(input)?;
 
-    let color = Color::from_oklab(
-        lightness.clamp(0.0, 1.0).into(),
-        ok_a_b[0].clamp(-0.4, 0.4).into(),
-        ok_a_b[1].clamp(-0.4, 0.4).into(),
-        alpha.unwrap_or(255),
-    );
+    let color = Color::from_palette(palette::Oklaba::new(
+        lightness,
+        ok_a_b[0],
+        ok_a_b[1],
+        alpha.unwrap_or(1.0),
+    ));
 
     Ok((input, color))
 }
@@ -816,19 +798,16 @@ pub fn oklch(input: &str) -> IResult<&str, Color> {
         opt(whitespace(separator)),
     )(input)?;
 
-    let (input, alpha) = opt(map(
-        whitespace(alt((percentage, relative_percentage))),
-        |percent| (percent * 255f32) as u8,
-    ))(input)?;
+    let (input, alpha) = opt(whitespace(alt((percentage, relative_percentage))))(input)?;
 
     let (input, _) = opt(whitespace(tag(")")))(input)?;
 
-    let color = Color::from_oklch(
-        lightness.clamp(0.0, 1.0).into(),
-        chroma.clamp(0.0, 0.4).into(),
-        hue.clamp(0.0, 360.0).into(),
-        alpha.unwrap_or(255),
-    );
+    let color = Color::from_palette(palette::Oklcha::new(
+        lightness,
+        chroma,
+        hue,
+        alpha.unwrap_or(1.0),
+    ));
 
     Ok((input, color))
 }

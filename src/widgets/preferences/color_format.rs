@@ -40,7 +40,7 @@ glib::wrapper! {
 }
 
 impl ColorFormatObject {
-    pub fn new(identifier: String, label: &str, format: String) -> Self {
+    pub fn new(identifier: String, label: String, format: String) -> Self {
         Object::builder()
             .property("identifier", &identifier)
             .property("label", label)

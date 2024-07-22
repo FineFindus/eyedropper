@@ -1,14 +1,13 @@
 use std::str::FromStr;
 
-use gettextrs::{gettext, pgettext};
+use gettextrs::gettext;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gio, glib};
 
 use crate::application::App;
 use crate::colors::color::Color;
-use crate::colors::position::AlphaPosition;
-use crate::colors::{color_names, Notation};
+use crate::colors::Notation;
 use crate::config::{APP_ID, PROFILE};
 use crate::model::history::HistoryObject;
 use crate::widgets::color_format_row::ColorFormatRow;
@@ -84,7 +83,7 @@ mod imp {
             klass.install_action("win.set-color", Some("s"), move |win, _, var| {
                 let Some(Ok(color)) = var
                     .and_then(|v| v.get::<String>())
-                    .map(|v| Color::from_hex(&v, AlphaPosition::None))
+                    .map(|v| Color::from_str(&v))
                 else {
                     return;
                 };
@@ -94,7 +93,7 @@ mod imp {
             klass.install_action("win.remove-item", Some("s"), |win, _, var| {
                 let Some(Ok(color)) = var
                     .and_then(|v| v.get::<String>())
-                    .map(|v| Color::from_hex(&v, AlphaPosition::None))
+                    .map(|v| Color::from_str(&v))
                 else {
                     return;
                 };
@@ -393,7 +392,7 @@ impl AppWindow {
         order
             .iter()
             .filter(|item| visible.contains(item))
-            .filter_map(|item| Some(Notation::from_str(item).ok()?.widget()))
+            .filter_map(|item| Some(ColorFormatRow::new(&Notation::from_str(item).ok()?)))
             .for_each(|widget| {
                 format_box.append(&widget);
                 if let Some(color) = self.color() {
@@ -422,7 +421,7 @@ impl AppWindow {
                 palette
                 .split_ascii_whitespace()
                 .for_each(|slice|
-                    if let Ok(color) = Color::from_hex(slice, AlphaPosition::None) {
+                    if let Ok(color) = Color::from_str(slice) {
                         window.set_color(color);
                     } else {
                         log::error!("Failed to parse color {}", slice);

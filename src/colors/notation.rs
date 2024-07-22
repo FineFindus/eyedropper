@@ -1,17 +1,17 @@
 use std::str::FromStr;
 
-use gtk::{
-    gio,
-    prelude::{SettingsExt, WidgetExt},
-};
+use gtk::{gio, prelude::SettingsExt};
+use palette::IntoColor;
 
-use crate::{config, widgets::color_format_row::ColorFormatRow};
+use crate::{
+    colors::{cmyk::Cmyka, hunterlab::HunterLab},
+    config,
+    widgets::preferences::color_format::ColorFormatObject,
+};
 
 use super::{
     color::{Color, ColorError},
-    color_names,
-    illuminant::Illuminant,
-    parser,
+    color_names, parser,
     position::AlphaPosition,
 };
 
@@ -38,8 +38,6 @@ pub enum Notation {
 impl Notation {
     pub fn parse(&self, input: &str) -> Result<Color, ColorError> {
         let settings = gio::Settings::new(config::APP_ID);
-        let ten_deg_observer = settings.int("cie-standard-observer") == 1;
-        let illuminant = Illuminant::from(settings.int("cie-illuminants") as u32);
         let (_, color) = match self {
             Notation::Hex => parser::hex_color(
                 input,
@@ -50,11 +48,11 @@ impl Notation {
             Notation::Hsv => parser::hsv(input),
             Notation::Cmyk => parser::cmyk(input),
             Notation::Xyz => parser::xyz(input),
-            Notation::Lab => parser::cielab(input, illuminant, ten_deg_observer),
+            Notation::Lab => parser::cielab(input),
             Notation::Hwb => parser::hwb(input),
             Notation::Hcl => parser::lch(input),
             Notation::Lms => parser::lms(input),
-            Notation::HunterLab => parser::hunter_lab(input, illuminant, ten_deg_observer),
+            Notation::HunterLab => parser::hunter_lab(input),
             Notation::Oklab => parser::oklab(input),
             Notation::Oklch => parser::oklch(input),
             Notation::Name => {
@@ -65,33 +63,166 @@ impl Notation {
         Ok(color)
     }
 
-    pub fn as_str(&self, color: Color) -> String {
-        let settings = gio::Settings::new(config::APP_ID);
-        let formatter = super::formatter::ColorFormatter::with_alpha_position(
-            color,
-            AlphaPosition::from(settings.int("alpha-position") as u32),
-        );
-        match self {
-            Notation::Hex => formatter.hex_code(),
-            Notation::Rgb => formatter.rgb(),
-            Notation::Hsl => formatter.hsl(),
-            Notation::Hsv => formatter.hsv(),
-            Notation::Cmyk => formatter.cmyk(),
-            Notation::Xyz => formatter.xyz(),
-            Notation::Lab => formatter.cie_lab(),
-            Notation::Hwb => formatter.hwb(),
-            Notation::Hcl => formatter.hcl(),
-            Notation::Lms => formatter.lms(),
-            Notation::HunterLab => formatter.hunter_lab(),
-            Notation::Oklab => formatter.oklab(),
-            Notation::Oklch => formatter.oklch(),
-            Notation::Name => color_names::name(color, true, true, true, true)
-                .unwrap_or(gettextrs::gettext("Not named")),
-        }
-    }
+    pub fn as_str(&self, color: Color, alpha_position: AlphaPosition, precision: usize) -> String {
+        let percent = |value: f32| (value * 100.0).round();
+        let pretty_percent = |value: f32| match value {
+            1.0 => "1".to_string(),
+            0.0 => "0".to_string(),
+            _ => format!("{:.2}", value),
+        };
 
-    pub fn widget(&self) -> ColorFormatRow {
-        ColorFormatRow::new(self)
+        match self {
+            Notation::Hex => {
+                let hex = |value: f32| format!("{:02X}", (value * 255.0) as u8);
+                let (r, g, b, a) = (
+                    hex(color.red),
+                    hex(color.green),
+                    hex(color.blue),
+                    hex(color.alpha),
+                );
+                match alpha_position {
+                    AlphaPosition::Start => format!("#{}{}{}{}", a, r, g, b),
+                    AlphaPosition::End => format!("#{}{}{}{}", r, g, b, a),
+                    AlphaPosition::None => format!("#{}{}{}", r, g, b),
+                }
+            }
+            Notation::Rgb => {
+                let rgb = |a: f32| (a * 255.0).round() as u8;
+                let (r, g, b, a) = (
+                    rgb(color.red),
+                    rgb(color.green),
+                    rgb(color.blue),
+                    rgb(color.alpha),
+                );
+                match alpha_position {
+                    AlphaPosition::End => format!("rgba({}, {}, {}, {})", r, g, b, a),
+                    _ => format!("rgb({}, {}, {})", r, g, b),
+                }
+            }
+            Notation::Hsl => {
+                let hsl: palette::Hsl = color.color.into_color();
+                let (h, s, l) = (
+                    hsl.hue.into_positive_degrees(),
+                    percent(hsl.saturation),
+                    percent(hsl.lightness),
+                );
+                match alpha_position {
+                    AlphaPosition::End => format!(
+                        "hsla({}, {}%, {}%, {})",
+                        h,
+                        s,
+                        l,
+                        pretty_percent(color.alpha)
+                    ),
+                    _ => format!("hsl({}, {}%, {}%)", h, s, l),
+                }
+            }
+            Notation::Hsv => {
+                let hsv: palette::Hsv = color.color.into_color();
+                format!(
+                    "hsv({}, {}%, {}%)",
+                    hsv.hue.into_positive_degrees(),
+                    percent(hsv.saturation),
+                    percent(hsv.value)
+                )
+            }
+            Notation::Cmyk => {
+                let cmyk: Cmyka = color.color.into_color();
+                format!(
+                    "cmyk({}%, {}%, {}%, {}%)",
+                    percent(cmyk.cyan),
+                    percent(cmyk.magenta),
+                    percent(cmyk.yellow),
+                    percent(cmyk.k)
+                )
+            }
+            Notation::Xyz => {
+                let xyz: palette::Xyz = color.color.into_color();
+                format!(
+                    "XYZ({:.precision$}, {:.precision$}, {:.precision$})",
+                    xyz.x * 100.0,
+                    xyz.y * 100.0,
+                    xyz.z * 100.0,
+                )
+            }
+            Notation::Lab => {
+                let lab: palette::Lab = color.color.into_color();
+                format!(
+                    "lab({:.precision$}, {:.precision$}, {:.precision$})",
+                    lab.l, lab.a, lab.b,
+                )
+            }
+            Notation::Hwb => {
+                let hwb: palette::Hwb = color.color.into_color();
+                format!(
+                    "hwb({}, {}%, {}%)",
+                    hwb.hue.into_positive_degrees(),
+                    percent(hwb.whiteness),
+                    percent(hwb.blackness)
+                )
+            }
+            Notation::Hcl => {
+                let lch: palette::Lch = color.color.into_color();
+                format!(
+                    "lch({:.precision$}, {:.precision$}, {:.precision$})",
+                    lch.l,
+                    lch.chroma,
+                    lch.hue.into_positive_degrees(),
+                )
+            }
+            Notation::Lms => {
+                let (l, m, s) = color.to_lms();
+                format!(
+                    "L: {:.precision$}, M: {:.precision$}, S: {:.precision$}",
+                    l, m, s,
+                )
+            }
+            Notation::HunterLab => {
+                let lab: HunterLab = color.color.into_color();
+                format!(
+                    "L: {:.precision$}, a: {:.precision$}, b: {:.precision$}",
+                    lab.l, lab.a, lab.b,
+                )
+            }
+            Notation::Oklab => {
+                let oklab: palette::Oklab = color.color.into_color();
+                match alpha_position {
+                    AlphaPosition::End => format!(
+                        "oklab({}% {:.precision$} {:.precision$} / {})",
+                        percent(oklab.l),
+                        oklab.a,
+                        oklab.b,
+                        pretty_percent(percent(color.alpha) / 100.0),
+                    ),
+                    _ => format!(
+                        "oklab({}% {:.precision$} {:.precision$})",
+                        percent(oklab.l),
+                        oklab.a,
+                        oklab.b,
+                    ),
+                }
+            }
+            Notation::Oklch => {
+                let oklch: palette::Oklch = color.color.into_color();
+                match alpha_position {
+                    AlphaPosition::End => format!(
+                        "oklch({}% {:.precision$} {:.precision$} / {})",
+                        percent(oklch.l),
+                        oklch.chroma,
+                        oklch.hue.into_positive_degrees(),
+                        pretty_percent(percent(color.alpha) / 100.0),
+                    ),
+                    _ => format!(
+                        "oklch({}% {:.precision$} {:.precision$})",
+                        percent(oklch.l),
+                        oklch.chroma,
+                        oklch.hue.into_positive_degrees(),
+                    ),
+                }
+            }
+            Notation::Name => color_names::name(color, true, true, true, true)
+                .unwrap_or_else(|| gettextrs::gettext("Not named")),
+        }
     }
 
     pub fn display_copy_string(&self) -> String {
@@ -101,7 +232,7 @@ impl Notation {
             Notation::Hsl => "Copy HSL",
             Notation::Hsv => "Copy HSV",
             Notation::Cmyk => "Copy CMYK",
-            Notation::Xyz => "Copy Xyz",
+            Notation::Xyz => "Copy XYZ",
             Notation::Lab => "Copy CIELAB",
             Notation::Hwb => "Copy HWB",
             Notation::Hcl => "Copy CIELCh / HCL",
@@ -111,6 +242,29 @@ impl Notation {
             Notation::Oklch => "Copy Oklch",
             Notation::Name => "Copy Name",
         })
+    }
+
+    pub fn to_color_format_object(self, identifier: String, color: Color) -> ColorFormatObject {
+        ColorFormatObject::new(
+            identifier,
+            match self {
+                Notation::Hex => gettextrs::gettext("Hex Code"),
+                Notation::Rgb => "RGB".to_string(),
+                Notation::Hsl => "HSL".to_string(),
+                Notation::Hsv => "HSV".to_string(),
+                Notation::Cmyk => "CMYK".to_string(),
+                Notation::Xyz => "XYZ".to_string(),
+                Notation::Lab => "CIELAB".to_string(),
+                Notation::Hwb => "HWB".to_string(),
+                Notation::Hcl => "CIELCh / HCL".to_string(),
+                Notation::Lms => "LMS".to_string(),
+                Notation::HunterLab => "Hunter Lab".to_string(),
+                Notation::Oklab => "Oklab".to_string(),
+                Notation::Oklch => "Oklch".to_string(),
+                Notation::Name => "Name".to_string(),
+            },
+            self.as_str(color, AlphaPosition::None, 2),
+        )
     }
 }
 

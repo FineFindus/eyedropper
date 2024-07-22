@@ -7,22 +7,25 @@ use gtk::subclass::prelude::*;
 use gtk::{glib, prelude::ObjectExt};
 
 use crate::colors::color::Color;
+use crate::colors::position::AlphaPosition;
 use crate::colors::Notation;
 
 mod imp {
     use std::cell::{Cell, RefCell};
 
-    use crate::colors::{self, formatter::ColorFormatter};
+    use crate::{colors, config};
 
     use super::*;
 
     use glib::subclass::Signal;
+    use gtk::gio;
     use once_cell::sync::Lazy;
 
-    #[derive(Default, Debug, gtk::CompositeTemplate, glib::Properties)]
+    #[derive(Debug, gtk::CompositeTemplate, glib::Properties)]
     #[template(resource = "/com/github/finefindus/eyedropper/ui/color-format-row.ui")]
     #[properties(wrapper_type = super::ColorFormatRow)]
     pub struct ColorFormatRow {
+        pub settings: gio::Settings,
         #[template_child]
         pub entry: TemplateChild<gtk::Entry>,
         #[template_child]
@@ -33,6 +36,19 @@ mod imp {
         pub color: RefCell<String>,
         #[property(construct_only, get, builder(colors::Notation::default()))]
         pub color_format: Cell<colors::Notation>,
+    }
+
+    impl Default for ColorFormatRow {
+        fn default() -> Self {
+            Self {
+                settings: gtk::gio::Settings::new(config::APP_ID),
+                entry: TemplateChild::default(),
+                format_button: TemplateChild::default(),
+                tooltip: RefCell::default(),
+                color: RefCell::default(),
+                color_format: Cell::default(),
+            }
+        }
     }
 
     #[glib::object_subclass]
@@ -77,8 +93,7 @@ mod imp {
                     obj.display_color(color);
                     obj.show_success();
 
-                    let hex = ColorFormatter::with_color(color).hex_code();
-                    obj.activate_action("win.set-color", Some(&hex.to_variant())).expect("Failed to set color");
+                    obj.activate_action("win.set-color", Some(&color.hex().to_variant())).expect("Failed to set color");
                 }));
 
             self.entry
@@ -116,7 +131,9 @@ impl ColorFormatRow {
     /// The displayed color format is determined by the `color_format` of
     /// the widget.
     pub fn display_color(&self, color: Color) {
-        let color = self.color_format().as_str(color);
+        let alpha_position = AlphaPosition::from(self.imp().settings.int("alpha-position") as u32);
+        let precision = self.imp().settings.uint("precision-digits") as usize;
+        let color = self.color_format().as_str(color, alpha_position, precision);
         self.set_color(color);
     }
 

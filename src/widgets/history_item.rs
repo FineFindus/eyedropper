@@ -9,7 +9,7 @@ mod imp {
 
     use gettextrs::gettext;
 
-    use crate::colors::{color::Color, formatter::ColorFormatter, position::AlphaPosition};
+    use crate::colors::{color::Color, position::AlphaPosition, Notation};
 
     use super::*;
 
@@ -89,8 +89,7 @@ mod imp {
             let obj = self.obj();
 
             let color: Color = color.into();
-            let mut formatter = ColorFormatter::with_color(color);
-            let color_hex = formatter.hex_code();
+            let color_hex = color.hex();
 
             let css_class_name = format!("history-button-{}", color_hex.replace('#', ""));
 
@@ -125,8 +124,7 @@ mod imp {
             obj.set_detailed_action_name(&format!("win.set-color('{}')", color_hex));
 
             let tooltip = if color.alpha != 1.0 {
-                formatter.alpha_position = AlphaPosition::End;
-                formatter.hex_code()
+                Notation::Hex.as_str(color, AlphaPosition::End, 2)
             } else {
                 color_hex
             };
