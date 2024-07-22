@@ -12,7 +12,6 @@ use crate::config::{APP_ID, PROFILE};
 use crate::model::history::HistoryObject;
 use crate::widgets::color_format_row::ColorFormatRow;
 use crate::widgets::history_item::HistoryItem;
-use crate::widgets::palette_dialog::PaletteDialog;
 
 mod imp {
     use std::cell::{Cell, RefCell};
@@ -399,37 +398,6 @@ impl AppWindow {
                     widget.display_color(color);
                 }
             });
-    }
-
-    /// Opens a dialog with different palettes.
-    ///
-    /// When a palette is clicked it will be added to the history list.
-    #[template_callback]
-    fn open_palette_dialog(&self) {
-        //safe to unwrap, if the user opens this dialog, the color button must be clicked
-        let palette_dialog = PaletteDialog::new(self.color().expect("Failed to get current color"));
-        palette_dialog.set_transient_for(Some(self));
-        palette_dialog.present();
-
-        //when a palette is chosen, add all colors of the palette in reverse order to the history
-        palette_dialog.connect_closure(
-            "palette-clicked",
-            false,
-            glib::closure_local!(@watch self as window => move |_: PaletteDialog, palette: String| {
-                log::debug!("Palette: {palette}");
-
-                palette
-                .split_ascii_whitespace()
-                .for_each(|slice|
-                    if let Ok(color) = Color::from_str(slice) {
-                        window.set_color(color);
-                    } else {
-                        log::error!("Failed to parse color {}", slice);
-                        window.show_toast(gettext("Failed to get palette color"), adw::ToastPriority::Normal);
-                    }
-                );
-            }),
-        );
     }
 
     /// Pick a color from the desktop using [ashpd].

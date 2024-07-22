@@ -24,13 +24,6 @@ impl std::ops::DerefMut for Color {
 }
 
 impl Color {
-    /// Create a new Color object without alpha values.
-    ///
-    /// This consist of red, green and blue values. The `alpha` value is set to it's maximum by default.
-    pub fn rgb(red: u8, green: u8, blue: u8) -> Self {
-        Self::rgba(red, green, blue, 255)
-    }
-
     /// Create a new Color object with an alpha value.
     pub fn rgba(red: u8, green: u8, blue: u8, alpha: u8) -> Self {
         Self(palette::Srgba::new(
@@ -46,10 +39,11 @@ impl Color {
     /// Although the RGB values will be randomized, the alpha value will be maximized,
     /// so the color will not be transparent.
     pub fn random() -> Self {
-        Self::rgb(
+        Self::rgba(
             rand::random::<u8>(),
             rand::random::<u8>(),
             rand::random::<u8>(),
+            255,
         )
     }
 
@@ -91,151 +85,6 @@ impl Color {
         let z = long * 0.0 + medium * 0.0 + short * 1.0;
 
         Color::from_palette(palette::Xyza::new(x, y, z, alpha as f32 / 255.0))
-    }
-
-    /// Return n tints (adding pure white) of the color by the tint factor.
-    ///
-    /// The following formula from <https://maketintsandshades.com/about> will be used to calculate tinted RGB values:
-    /// ```
-    /// New value = current value + ((255 - current value) x tint factor)
-    /// ```
-    pub fn tints(&self, factor: f32, n: usize) -> Vec<Self> {
-        let mut colors = Vec::with_capacity(n);
-
-        for i in 0..n {
-            //New value = current value + ((255 - current value) x tint factor)
-            let red = self.red + ((1.0 - self.red) * (i as f32 * factor));
-            let green = self.green + ((1.0 - self.green) * (i as f32 * factor));
-            let blue = self.blue + ((1.0 - self.blue) * (i as f32 * factor));
-
-            colors.push(Color::rgb(
-                red.round() as u8,
-                green.round() as u8,
-                blue.round() as u8,
-            ));
-        }
-        colors
-    }
-
-    /// Return n shades (adding pure black) of the color.
-    ///
-    /// The following formula from <https://maketintsandshades.com/about> will be used to calculate tinted RGB values:
-    /// ```
-    /// New value = current value x shade factor
-    /// ```
-    pub fn shades(&self, factor: f32, n: usize) -> Vec<Self> {
-        let mut colors = Vec::with_capacity(n);
-
-        //go reverse, so the lighter stuff comes first
-        for i in (0..n).rev() {
-            //New value = current value x shade factor
-            let red = self.red * (i as f32 * factor);
-            let green = self.green * (i as f32 * factor);
-            let blue = self.blue * (i as f32 * factor);
-
-            colors.push(Color::rgb(
-                red.round() as u8,
-                green.round() as u8,
-                blue.round() as u8,
-            ));
-        }
-        colors
-    }
-
-    /// Returns the complementary/opposite to self.
-    pub fn complementary_color(&self) -> Self {
-        Color::rgb(
-            ((1.0 - self.red) * 255.0).round() as u8,
-            ((1.0 - self.green) * 255.0).round() as u8,
-            ((1.0 - self.blue) * 255.0).round() as u8,
-        )
-    }
-
-    /// Returns slit complementary colors.
-    pub fn split_complementary_color(&self) -> Vec<Self> {
-        let colors = Vec::with_capacity(2);
-
-        // let hsl: palette::Hsl = self.color.into_color();
-        // colors.push(*self);
-        // colors.push(Color::from_hsl(
-        //     (hsl.hue.into_positive_degrees() as u16 + 150) % 360,
-        //     hsl.saturation,
-        //     hsl.lightness,
-        // ));
-        // colors.push(Color::from_hsl(
-        //     (hsl.hue.into_positive_degrees() as u16 + 210) % 360,
-        //     hsl.saturation,
-        //     hsl.lightness,
-        // ));
-        colors
-    }
-
-    /// Returns triadic colors.
-    pub fn triadic_colors(&self) -> Vec<Self> {
-        let colors = Vec::with_capacity(2);
-
-        // let hsl: palette::Hsl = self.color.into_color();
-        // colors.push(*self);
-        // colors.push(Color::from_hsl(
-        //     (hsl.hue.into_positive_degrees() as u16 + 120) % 360,
-        //     hsl.saturation,
-        //     hsl.lightness,
-        // ));
-        // colors.push(Color::from_hsl(
-        //     (hsl.hue.into_positive_degrees() as u16 + 240) % 360,
-        //     hsl.saturation,
-        //     hsl.lightness,
-        // ));
-        colors
-    }
-
-    /// Returns tetradic colors.
-    pub fn tetradic_colors(&self) -> Vec<Self> {
-        let colors = Vec::with_capacity(2);
-        //
-        // let hsl: palette::Hsl = self.color.into_color();
-        // colors.push(*self);
-        // colors.push(Color::from_hsl(
-        //     (hsl.hue.into_positive_degrees() as u16 + 90) % 360,
-        //     hsl.saturation,
-        //     hsl.lightness,
-        // ));
-        // colors.push(Color::from_hsl(
-        //     (hsl.hue.into_positive_degrees() as u16 + 180) % 360,
-        //     hsl.saturation,
-        //     hsl.lightness,
-        // ));
-        // colors.push(Color::from_hsl(
-        //     (hsl.hue.into_positive_degrees() as u16 + 270) % 360,
-        //     hsl.saturation,
-        //     hsl.lightness,
-        // ));
-        colors
-    }
-
-    /// Returns `n` analogous colors, include itself.
-    ///
-    /// The colors are generated by shifting the hue by 30°.
-    pub fn analogous_colors(&self, n: usize) -> Vec<Self> {
-        let slices = 30;
-
-        //convert from RGB to HSL
-        // let hsl: palette::Hsl = self.color.into_color();
-        // let part = 360 / slices;
-        //
-        let colors = Vec::with_capacity(n);
-        // colors.push(*self);
-        //
-        // //always shift by at least 1 slice
-        // for i in 1..n {
-        //     //add hue degrees
-        //     let hue = (hsl.hue.into_positive_degrees() as u16 + part * i as u16) % 360;
-        //     colors.push(Color::from_palette_rgb(
-        //         palette::Hsl::new(hue, hsl.saturation, hsl.lightness).into_color(),
-        //     ));
-        // }
-        //
-        colors
     }
 }
 
