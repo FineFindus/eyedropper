@@ -289,7 +289,10 @@ mod parse_rgb {
 
     #[test]
     fn it_parses_basic() {
-        assert_eq!(Ok(("", Color::rgb(46, 52, 64))), rgb("rgb(46, 52, 64)"));
+        assert_eq!(
+            Ok(("", Color::rgba(46, 52, 64, 255))),
+            rgb("rgb(46, 52, 64)")
+        );
         assert_eq!(
             Ok(("", Color::rgba(46, 52, 64, 100))),
             rgb("rgba(46, 52, 64, 100)")
@@ -302,13 +305,16 @@ mod parse_rgb {
 
     #[test]
     fn it_parses_percent() {
-        assert_eq!(Ok(("", Color::rgb(46, 51, 64))), rgb("rgb(46, 20%, 64)"));
+        assert_eq!(
+            Ok(("", Color::rgba(46, 51, 64, 255))),
+            rgb("rgb(46, 20%, 64)")
+        );
         assert_eq!(
             Ok(("", Color::rgba(45, 51, 63, 255))),
             rgb("rgba(18%, 20%, 25%, 100%)")
         );
         assert_eq!(
-            Ok(("", Color::rgb(127, 127, 127))),
+            Ok(("", Color::rgba(127, 127, 127, 255))),
             rgb("rgb(0.5, 0.5, 0.5)")
         );
     }
