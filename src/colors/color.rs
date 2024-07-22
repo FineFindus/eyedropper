@@ -3,6 +3,8 @@ use std::str::FromStr;
 
 use palette::IntoColor;
 
+use super::parser;
+
 /// Eyedropper's internal color representation.
 ///
 /// Utility struct to
@@ -130,11 +132,12 @@ impl From<Color> for gtk::gdk::RGBA {
 }
 
 impl FromStr for Color {
-    type Err = palette::rgb::FromHexError;
+    type Err = ColorError;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        let rgb: palette::Srgba<u8> = s.parse()?;
-        Ok(Color::from_palette(rgb.into_format::<f32, f32>()))
+        let rgb = parser::hex_color(s, super::position::AlphaPosition::End)
+            .map_err(|_error| ColorError::HexConversion("Failed to parse string".to_string()))?;
+        Ok(rgb.1)
     }
 }
 
