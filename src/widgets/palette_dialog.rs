@@ -2,10 +2,7 @@ use adw::{prelude::*, subclass::prelude::*};
 use gettextrs::pgettext;
 use gtk::{glib, CompositeTemplate};
 
-use crate::{
-    colors::{color::Color, formatter::ColorFormatter},
-    model::history::HistoryObject,
-};
+use crate::{colors::color::Color, model::history::HistoryObject};
 
 use super::history_item::HistoryItem;
 
@@ -206,10 +203,7 @@ impl PaletteDialog {
         //Convert color to a string so the signal can emit it
         let color_string = colors
             .iter()
-            .map(|color| {
-                let formatter = ColorFormatter::with_color(*color);
-                formatter.hex_code()
-            })
+            .map(|color| color.hex())
             .collect::<Vec<String>>()
             .join(" ");
 
@@ -254,19 +248,20 @@ impl PaletteDialog {
                 let colors = window.palettes();
 
                 let file_name = path.file_name().and_then(|name| name.to_str()).unwrap_or("Eyedropper Palette");
-                let palette = match path.extension().and_then(|extension| extension.to_str()) {
-                    Some("gpl") => ColorFormatter::gpl_file(file_name, &colors),
-                    Some("txt") => ColorFormatter::paint_dot_net_file(file_name, &colors),
-                    Some("pal") => ColorFormatter::pal_file(&colors),
-                    Some("soc") => ColorFormatter::soc_file(&colors),
-                    Some("ase") => {
-                        //only binary type, write it directly, so the others can be used as a string
-                        std::fs::write(path, ColorFormatter::ase_file(&colors)).expect("Failed to write palette file");
-                        return;
-                    },
-                    _ => ColorFormatter::hex_file(&colors), //default to exporting the hex colors
-                };
-                std::fs::write(path, palette).expect("Failed to write palette file");
+                todo!();
+                // let palette = match path.extension().and_then(|extension| extension.to_str()) {
+                //     // Some("gpl") => ColorFormatter::gpl_file(file_name, &colors),
+                //     // Some("txt") => ColorFormatter::paint_dot_net_file(file_name, &colors),
+                //     // Some("pal") => ColorFormatter::pal_file(&colors),
+                //     // Some("soc") => ColorFormatter::soc_file(&colors),
+                //     // Some("ase") => {
+                //     //     //only binary type, write it directly, so the others can be used as a string
+                //     //     std::fs::write(path, ColorFormatter::ase_file(&colors)).expect("Failed to write palette file");
+                //     //     return;
+                //     // },
+                //     // _ => ColorFormatter::hex_file(&colors), //default to exporting the hex colors
+                // };
+                // std::fs::write(path, palette).expect("Failed to write palette file");
             }),
         );
     }

@@ -1,6 +1,7 @@
+use std::str::FromStr;
+
 use adw::traits::ActionRowExt;
 use gettextrs::gettext;
-use gettextrs::pgettext;
 use gtk::gdk;
 use gtk::gio;
 use gtk::gio::ListStore;
@@ -12,7 +13,7 @@ use gtk::subclass::prelude::*;
 use gtk::Switch;
 
 use crate::colors::color::Color;
-use crate::colors::formatter::ColorFormatter;
+use crate::colors::Notation;
 
 use super::color_format::ColorFormatObject;
 use super::name_set_dialog::NameSourcesDialog;
@@ -359,9 +360,7 @@ impl PreferencesWindow {
 
     fn populate_formats(&self) {
         //color used as examples
-        let example_color = Color::rgb(46, 52, 64);
-
-        let formatter = ColorFormatter::with_color(example_color);
+        let example_color = Color::random();
 
         let mut order = self.imp().settings.get::<Vec<String>>("format-order");
         log::debug!("Order: {:?}", order);
@@ -390,33 +389,9 @@ impl PreferencesWindow {
         }
 
         for item in order {
-            let format = match item.to_lowercase().as_str() {
-                "hex" => ColorFormatObject::new(item, &gettext("Hex-Code"), formatter.hex_code()),
-                "rgb" => ColorFormatObject::new(item, "RGB", formatter.rgb()),
-                "hsl" => ColorFormatObject::new(item, "HSL", formatter.hsl()),
-                "hsv" => ColorFormatObject::new(item, "HSV", formatter.hsv()),
-                "cmyk" => ColorFormatObject::new(item, "CMYK", formatter.cmyk()),
-                "xyz" => ColorFormatObject::new(item, "XYZ", formatter.xyz()),
-                "cielab" => ColorFormatObject::new(item, "CIELAB", formatter.cie_lab()),
-                "hwb" => ColorFormatObject::new(item, "HWB", formatter.hwb()),
-                "hcl" => ColorFormatObject::new(item, "CIELCh / HCL", formatter.hcl()),
-                "name" => ColorFormatObject::new(
-                    item,
-                    &gettext("Name"),
-                    pgettext(
-                        "Information that no name for the color could be found",
-                        "Not named",
-                    ),
-                ),
-                "lms" => ColorFormatObject::new(item, "LMS", formatter.lms()),
-                "hunterlab" => ColorFormatObject::new(item, "Hunter Lab", formatter.hunter_lab()),
-                "oklab" => ColorFormatObject::new(item, "Oklab", formatter.oklab()),
-                "oklch" => ColorFormatObject::new(item, "Oklch", formatter.oklch()),
-                _ => {
-                    log::error!("Failed to find format: {item}");
-                    continue;
-                }
-            };
+            let format = Notation::from_str(&item)
+                .expect("Failed to create ColorFormatObject")
+                .to_color_format_object(item, example_color);
 
             self.formats().append(&format);
         }

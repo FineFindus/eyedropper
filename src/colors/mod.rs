@@ -1,7 +1,7 @@
+pub mod cmyk;
 pub mod color;
 pub mod color_names;
-pub mod formatter;
-pub mod illuminant;
+pub mod hunterlab;
 mod notation;
 pub mod parser;
 pub mod position;

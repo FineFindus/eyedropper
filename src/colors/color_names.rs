@@ -1,6 +1,6 @@
-use crate::colors::color::Color;
+use std::str::FromStr;
 
-use super::{formatter::ColorFormatter, position::AlphaPosition};
+use crate::colors::color::Color;
 
 // generated color maps from build.rs
 include!(concat!(env!("OUT_DIR"), "/codegen.rs"));
@@ -16,9 +16,7 @@ pub fn name(
     gnome_palette: bool,
     xkcd: bool,
 ) -> Option<String> {
-    let hex = ColorFormatter::with_color(color)
-        .hex_code()
-        .to_ascii_lowercase();
+    let hex = color.hex().to_ascii_lowercase();
 
     let palettes = [
         (basic, &BASIC_VALUES),
@@ -50,11 +48,10 @@ pub fn color(
         (gnome_palette, &GNOME),
         (xkcd, &XKCD),
     ];
-    None
 
-    // palettes
-    //     .iter()
-    //     .filter(|&&(flag, _)| flag)
-    //     .filter_map(|&(_, palette)| palette.get(&name.to_ascii_lowercase()))
-    //     .find_map(|val| Color::from_hex(val, AlphaPosition::None).ok())
+    palettes
+        .iter()
+        .filter(|&&(flag, _)| flag)
+        .filter_map(|&(_, palette)| palette.get(&name.to_ascii_lowercase()))
+        .find_map(|val| Color::from_str(val).ok())
 }
