@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the Eyedropper package.
 # Filipe Motta <luiz_filipe_motta@hotmail.com>, 2024.
 # Ciro Mota <contato.ciromota@outlook.com>, 2024.
+# Tiago Lucas Flach <tiagolucas9830@gmail.com>, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2024-01-01 21:48+0000\n"
-"PO-Revision-Date: 2024-03-02 15:45+0000\n"
-"Last-Translator: Ciro Mota <contato.ciromota@outlook.com>\n"
+"PO-Revision-Date: 2024-07-26 00:09+0000\n"
+"Last-Translator: Tiago Lucas Flach <tiagolucas9830@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "eyedropper/eyedropper/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"X-Generator: Weblate 5.7-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
@@ -108,7 +109,7 @@ msgstr "Caixa de diálogo mostrando paletas de cores geradas"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:46
 msgid "Status page stating to pick a color to get started"
-msgstr "Página de status indicando para escolher uma cor para começar."
+msgstr "Página de status indicando para escolher uma cor para começar"
 
 #: data/resources/ui/palette-window.blp:7
 msgctxt "Adobes palette format"
@@ -554,7 +555,9 @@ msgstr "Copiar Oklch"
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/widgets/about_window.rs:47
 msgid "translator-credits"
-msgstr "Ciro Mota <contato.ciromota@outlook.com>"
+msgstr ""
+"Ciro Mota <contato.ciromota@outlook.com>\n"
+"Tiago Lucas Flach https://github.com/tiagoFlach"
 
 #: src/widgets/about_window.rs:85
 msgid "Parse RGBA/ARGB Hex-Colors"
