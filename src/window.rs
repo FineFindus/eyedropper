@@ -171,7 +171,6 @@ mod imp {
             obj.load_window_size();
             obj.setup_history();
             obj.order_formats();
-            obj.load_visibility_settings();
             obj.update_stack();
         }
 
@@ -379,30 +378,8 @@ impl AppWindow {
         }
     }
 
-    /// Update color when their visibility changes.
-    fn load_visibility_settings(&self) {
-        let imp = self.imp();
-        let settings = &imp.settings;
-
-        settings.connect_changed(
-            None,
-            glib::clone!(
-                #[weak(rename_to = window)]
-                self,
-                move |_, setting| {
-                    log::debug!("{} was changed", setting);
-                    if setting == "format-order" || setting == "visible-formats" {
-                        window.order_formats();
-                    } else if let Some(color) = window.color() {
-                        window.set_color(color);
-                    }
-                }
-            ),
-        );
-    }
-
     /// Insert the formats in the order in which they are saved in the settings.
-    fn order_formats(&self) {
+    pub fn order_formats(&self) {
         let imp = self.imp();
         let format_box = &imp.format_box;
 

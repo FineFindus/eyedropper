@@ -15,8 +15,8 @@ use crate::colors::color::Color;
 use crate::colors::Notation;
 
 use super::color_format::ColorFormatObject;
-use super::name_set_dialog::NameSourcesDialog;
 use adw::prelude::ActionRowExt;
+use adw::prelude::PreferencesDialogExt;
 
 mod imp {
 
@@ -25,24 +25,30 @@ mod imp {
     use adw::subclass::{dialog::AdwDialogImpl, preferences_dialog::PreferencesDialogImpl};
     use gtk::gio;
 
-    use crate::config;
+    use crate::{colors::color_names::ColorNameSources, config};
 
     use super::*;
 
     #[derive(Debug, gtk::CompositeTemplate)]
-    #[template(resource = "/com/github/finefindus/eyedropper/ui/preferences/preferences.ui")]
+    #[template(resource = "/com/github/finefindus/eyedropper/ui/preferences.ui")]
     pub struct PreferencesWindow {
         pub settings: gtk::gio::Settings,
         #[template_child()]
-        pub alpha_pos_box: TemplateChild<adw::ComboRow>,
+        pub name_source_page: TemplateChild<adw::NavigationPage>,
         #[template_child()]
-        pub standard_observer_box: TemplateChild<adw::ComboRow>,
+        pub alpha_pos_box: TemplateChild<adw::ComboRow>,
         #[template_child()]
         pub precision_row: TemplateChild<adw::SpinRow>,
         #[template_child()]
-        pub cie_illuminants_box: TemplateChild<gtk::DropDown>,
-        #[template_child()]
         pub order_list: TemplateChild<gtk::ListBox>,
+        #[template_child]
+        pub(super) name_source_basic: TemplateChild<adw::SwitchRow>,
+        #[template_child]
+        pub(super) name_source_extended: TemplateChild<adw::SwitchRow>,
+        #[template_child]
+        pub(super) name_source_gnome: TemplateChild<adw::SwitchRow>,
+        #[template_child]
+        pub(super) name_source_xkcd: TemplateChild<adw::SwitchRow>,
         pub format_order: RefCell<Option<gio::ListStore>>,
     }
 
@@ -55,11 +61,14 @@ mod imp {
         fn new() -> Self {
             Self {
                 settings: gtk::gio::Settings::new(config::APP_ID),
+                name_source_page: TemplateChild::default(),
                 alpha_pos_box: TemplateChild::default(),
-                standard_observer_box: TemplateChild::default(),
-                cie_illuminants_box: TemplateChild::default(),
                 precision_row: TemplateChild::default(),
                 order_list: TemplateChild::default(),
+                name_source_basic: TemplateChild::default(),
+                name_source_extended: TemplateChild::default(),
+                name_source_gnome: TemplateChild::default(),
+                name_source_xkcd: TemplateChild::default(),
                 format_order: Default::default(),
             }
         }
@@ -81,6 +90,11 @@ mod imp {
             obj.setup_order_list();
             obj.setup_settings();
             obj.populate_formats();
+
+            self.bind_setting(&self.name_source_basic, ColorNameSources::Html);
+            self.bind_setting(&self.name_source_extended, ColorNameSources::Svg);
+            self.bind_setting(&self.name_source_gnome, ColorNameSources::Gnome);
+            self.bind_setting(&self.name_source_xkcd, ColorNameSources::Xkcd);
         }
 
         fn dispose(&self) {
@@ -88,15 +102,43 @@ mod imp {
         }
     }
 
+    impl PreferencesWindow {
+        pub(super) fn bind_setting(&self, obj: &adw::SwitchRow, flag_val: ColorNameSources) {
+            self.settings
+                .bind("name-sources-flag", &*obj, "active")
+                .mapping(move |value, _variant| {
+                    let flag = ColorNameSources::from_bits(value.get::<u32>()?)?;
+                    Some(flag.contains(flag_val).to_value())
+                })
+                .set_mapping(glib::clone!(
+                    #[weak(rename_to = window)]
+                    self,
+                    #[upgrade_or]
+                    None,
+                    move |value, _variant| {
+                        let active = value
+                            .get::<bool>()
+                            .expect("Failed to get bool from switch active property");
+                        let mut color_names_flag = ColorNameSources::from_bits(
+                            window.settings.get::<u32>("name-sources-flag"),
+                        )?;
+                        color_names_flag.set(flag_val, active);
+
+                        Some(color_names_flag.bits().to_variant())
+                    }
+                ))
+                .build();
+        }
+    }
+
     impl WidgetImpl for PreferencesWindow {}
-    impl WindowImpl for PreferencesWindow {}
     impl AdwDialogImpl for PreferencesWindow {}
     impl PreferencesDialogImpl for PreferencesWindow {}
 }
 
 glib::wrapper! {
     pub struct PreferencesWindow(ObjectSubclass<imp::PreferencesWindow>)
-    @extends gtk::Widget, gtk::Window, adw::Window, adw::PreferencesDialog;
+    @extends gtk::Widget, adw::Dialog, adw::PreferencesDialog;
 }
 
 #[gtk::template_callbacks]
@@ -111,18 +153,6 @@ impl PreferencesWindow {
 
         imp.settings
             .bind("alpha-position", &*imp.alpha_pos_box, "selected")
-            .build();
-
-        imp.settings
-            .bind("cie-illuminants", &*imp.cie_illuminants_box, "selected")
-            .build();
-
-        imp.settings
-            .bind(
-                "cie-standard-observer",
-                &*imp.standard_observer_box,
-                "selected",
-            )
             .build();
 
         imp.settings
@@ -142,9 +172,7 @@ impl PreferencesWindow {
     /// Shows a dialog letting the use choose which name sets should be used.
     #[template_callback]
     fn on_name_row_activated(&self, _row: &adw::ActionRow) {
-        let dialog = NameSourcesDialog::new();
-        dialog.set_transient_for(Some(self));
-        dialog.present();
+        self.push_subpage(&*self.imp().name_source_page);
     }
 
     /// Returns the formats list store object.

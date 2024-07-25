@@ -1,0 +1,112 @@
+using Gtk 4.0;
+using Adw 1;
+
+Adw.NavigationPage name_source_page {
+  title: _("Name Sources");
+  child: $AdwToolbarView {
+    [top]
+    Adw.HeaderBar {}
+    content: Box {
+      orientation: vertical;
+
+      Adw.PreferencesPage {
+        Adw.PreferencesGroup {
+          $AdwSwitchRow name_source_basic {
+            title: C_("Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/#html4", "Basic");
+            subtitle: _("Basic web colors");
+          }
+
+          $AdwSwitchRow name_source_extended {
+            title: C_("Name of the extended color keyword set from https://www.w3.org/TR/css-color-3/#svg-color", "Extended");
+            subtitle: _("X11 and SVG color values");
+          }
+
+          $AdwSwitchRow name_source_gnome {
+            title: C_("Name of the color set from the GNOME color palette (https://developer.gnome.org/hig/reference/palette.html)", "GNOME Color Palette");
+            subtitle: _("Colors for GNOME app icons and illustrations");
+          }
+
+          $AdwSwitchRow name_source_xkcd {
+            title: C_("Name of the color set from the xkcd color survey", "xkcd Color Survey");
+            subtitle: _("954 RGB colors named by volunteers");
+          }
+        }
+      }
+    };
+  };
+}
+
+
+template $PreferencesWindow : Adw.PreferencesDialog {
+  Adw.PreferencesPage {
+    icon-name: "applications-system-symbolic";
+    title: _("General");
+
+    Adw.PreferencesGroup {
+      title: _("Formatting");
+
+      Adw.ComboRow alpha_pos_box {
+        title: _("Alpha-Value-Position");
+        subtitle: _("Where the Alphavalue is positioned in the Hexstring");
+        model: StringList {
+          strings [
+            C_("Alphavalue is not shown", "None"),
+            C_("Alphavalue is shown at the end", "End"),
+            C_("Alphavalue is shown at the start", "Start"),
+          ]
+        };
+      }
+
+      Adw.ActionRow {
+        title: _("Name Sources");
+        subtitle: _("Sources for displaying color names");
+        activatable: true;
+        activated => $on_name_row_activated() swapped;
+
+        [suffix]
+        Image {
+          icon-name: "go-next-symbolic";
+        }
+      }
+
+      $AdwSpinRow  precision_row {
+        title: _("Precision");
+          adjustment: Adjustment {
+            value: 2;
+            lower: 0;
+            upper: 15;
+            step-increment: 1;
+          };
+
+          tooltip-text: _("Precision");
+          climb-rate: 1;
+          numeric: true;
+          valign: center;
+      }
+    }
+
+    Adw.PreferencesGroup {
+      title: _("Color Formats");
+      description: _("Customize the visible formats and in which order they are displayed");
+
+      [header-suffix]
+      Button {
+        icon-name: "edit-clear-symbolic";
+        tooltip-text: C_("Tooltip of the button to reset the format order", "Reset Order");
+        clicked => $on_reset_pressed() swapped;
+
+        styles [
+          "flat",
+        ]
+      }
+
+      ListBox order_list {
+        selection-mode: none;
+
+        styles [
+          "boxed-list",
+        ]
+      }
+    }
+  }
+}
