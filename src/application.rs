@@ -208,8 +208,14 @@ impl App {
 
     fn show_preferences_dialog(&self) {
         let preferences = PreferencesWindow::new();
-        preferences.set_transient_for(Some(&self.main_window()));
-        preferences.present();
+        preferences.present(Some(&self.main_window()));
+        preferences.connect_closed(glib::clone!(
+            #[weak(rename_to = app)]
+            self,
+            move |_| {
+                app.main_window().order_formats();
+            }
+        ));
     }
 
     pub fn run(&self) -> ExitCode {
