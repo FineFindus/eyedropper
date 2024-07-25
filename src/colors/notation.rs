@@ -11,7 +11,8 @@ use crate::{
 
 use super::{
     color::{Color, ColorError},
-    color_names, parser,
+    color_names::{self, ColorNameSources},
+    parser,
     position::AlphaPosition,
 };
 
@@ -36,7 +37,7 @@ pub enum Notation {
 }
 
 impl Notation {
-    pub fn parse(&self, input: &str) -> Result<Color, ColorError> {
+    pub fn parse(&self, input: &str, name_sources: ColorNameSources) -> Result<Color, ColorError> {
         let settings = gio::Settings::new(config::APP_ID);
         let (_, color) = match self {
             Notation::Hex => parser::hex_color(
@@ -56,14 +57,20 @@ impl Notation {
             Notation::Oklab => parser::oklab(input),
             Notation::Oklch => parser::oklch(input),
             Notation::Name => {
-                return color_names::color(input, true, true, true, true)
+                return color_names::color(input, name_sources)
                     .ok_or(ColorError::ParsingError("No name found".to_owned()));
             }
         }?;
         Ok(color)
     }
 
-    pub fn as_str(&self, color: Color, alpha_position: AlphaPosition, precision: usize) -> String {
+    pub fn as_str(
+        &self,
+        color: Color,
+        alpha_position: AlphaPosition,
+        precision: usize,
+        name_sources: ColorNameSources,
+    ) -> String {
         let percent = |value: f32| (value * 100.0).round();
         let pretty_percent = |value: f32| match value {
             1.0 => "1".to_string(),
@@ -220,7 +227,7 @@ impl Notation {
                     ),
                 }
             }
-            Notation::Name => color_names::name(color, true, true, true, true)
+            Notation::Name => color_names::name(color, name_sources)
                 .unwrap_or_else(|| gettextrs::gettext("Not named")),
         }
     }
@@ -263,7 +270,7 @@ impl Notation {
                 Notation::Oklch => "Oklch".to_string(),
                 Notation::Name => "Name".to_string(),
             },
-            self.as_str(color, AlphaPosition::None, 2),
+            self.as_str(color, AlphaPosition::None, 2, ColorNameSources::empty()),
         )
     }
 }

@@ -28,31 +28,6 @@
       <summary>Alpha Position</summary>
       <description>At which position the alpha values are shown, e.g. not shown, the end or at the start. This preference is used in multiple formats, like hex, rgb and hsl.</description>
     </key>
-    <key name="shades-tints-quantity" type="u">
-      <default>5</default>
-      <summary>Shades/Tints Quantinty</summary>
-      <description>How many shades/tints are generated and displayed in the palette dialog. It's not recommend to change this setting beyond reseanable defaults, as it will not work correctly.</description>
-    </key>
-    <key name="name-source-basic" type="b">
-      <default>true</default>
-      <summary>Show basic color names</summary>
-      <description>Show color names from the w3c basic keyword set.</description>
-    </key>
-    <key name="name-source-extended" type="b">
-      <default>true</default>
-      <summary>Show extended color names</summary>
-      <description>Show color names from the w3c extended keyword set.</description>
-    </key>
-    <key name="name-source-xkcd" type="b">
-      <default>false</default>
-      <summary>Show xkcd color names</summary>
-      <description>Show color names from the xkcd color survey.</description>
-    </key>
-    <key name="name-source-gnome-palette" type="b">
-      <default>true</default>
-      <summary>Show GNOME palette color names</summary>
-      <description>Show color names from the GNOME color palette.</description>
-    </key>
     <key name="cie-illuminants" type="i">
       <default>5</default>
       <summary>Color Illuminant</summary>
@@ -68,65 +43,10 @@
       <summary>Precision</summary>
       <description>Number of digits displayed after the numeric point</description>
     </key>
-    <key name="custom-format-rgb" type="s">
-      <default>''</default>
-      <summary>Custom RGB format</summary>
-      <description>A user set format for RGB. If it's empty, the default format will be used.</description>
-    </key>
-    <key name="custom-format-hsl" type="s">
-      <default>''</default>
-      <summary>Custom HSl format</summary>
-      <description>A user set format for HSL. If it's empty, the default format will be used.</description>
-    </key>
-    <key name="custom-format-hsv" type="s">
-      <default>''</default>
-      <summary>Custom HSV format</summary>
-      <description>A user set format for HSV. If it's empty, the default format will be used.</description>
-    </key>
-    <key name="custom-format-cmyk" type="s">
-      <default>''</default>
-      <summary>Custom CMYK format</summary>
-      <description>A user set format for CMYK. If it's empty, the default format will be used.</description>
-    </key>
-    <key name="custom-format-xyz" type="s">
-      <default>''</default>
-      <summary>Custom XYZ format</summary>
-      <description>A user set format for XYZ. If it's empty, the default format will be used.</description>
-    </key>
-    <key name="custom-format-cie-lab" type="s">
-      <default>''</default>
-      <summary>Custom CIELab format</summary>
-      <description>A user set format for CIELab. If it's empty, the default format will be used.</description>
-    </key>
-    <key name="custom-format-hwb" type="s">
-      <default>''</default>
-      <summary>Custom HWB format</summary>
-      <description>A user set format for HWB. If it's empty, the default format will be used.</description>
-    </key>
-    <key name="custom-format-hcl" type="s">
-      <default>''</default>
-      <summary>Custom HCL format</summary>
-      <description>A user set format for HCL. If it's empty, the default format will be used.</description>
-    </key>
-    <key name="custom-format-lms" type="s">
-      <default>''</default>
-      <summary>Custom LMS format</summary>
-      <description>A user set format for LMS. If it's empty, the default format will be used.</description>
-    </key>
-    <key name="custom-format-hunter-lab" type="s">
-      <default>''</default>
-      <summary>Custom Hunter-Lab format</summary>
-      <description>A user set format for Hunter-Lab. If it's empty, the default format will be used.</description>
-    </key>
-    <key name="custom-format-oklab" type="s">
-      <default>''</default>
-      <summary>Custom Oklab format</summary>
-      <description>A user set format for Oklab. If it's empty, the default format will be used.</description>
-    </key>
-    <key name="custom-format-oklch" type="s">
-      <default>''</default>
-      <summary>Custom Oklch format</summary>
-      <description>A user set format for Oklch. If it's empty, the default format will be used.</description>
+    <key name="name-sources-flag" type="u">
+      <default>15</default>
+      <summary>Which color palettes are used as sources for color names</summary>
+      <description>A bitflag of which color names shources should be used.</description>
     </key>
   </schema>
 </schemalist>

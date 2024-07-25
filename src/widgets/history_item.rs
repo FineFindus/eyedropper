@@ -9,7 +9,9 @@ mod imp {
 
     use gettextrs::gettext;
 
-    use crate::colors::{color::Color, position::AlphaPosition, Notation};
+    use crate::colors::{
+        color::Color, color_names::ColorNameSources, position::AlphaPosition, Notation,
+    };
 
     use super::*;
 
@@ -108,7 +110,7 @@ mod imp {
             let tooltip = if color.alpha != 1.0 {
                 color_hex
             } else {
-                Notation::Hex.as_str(color, AlphaPosition::None, 2)
+                Notation::Hex.as_str(color, AlphaPosition::None, 2, ColorNameSources::empty())
             };
             obj.set_tooltip_text(Some(&tooltip.to_uppercase()));
         }

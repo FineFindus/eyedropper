@@ -1,11 +1,15 @@
 use adw::subclass::prelude::*;
+use gtk::prelude::*;
 use gtk::{glib, prelude::SettingsExtManual, CompositeTemplate};
 
 mod imp {
 
     use glib::subclass;
 
-    use crate::config;
+    use crate::{
+        colors::color_names::{self, ColorNameSources},
+        config,
+    };
 
     use super::*;
 
@@ -55,29 +59,10 @@ mod imp {
         fn constructed(&self) {
             self.parent_constructed();
 
-            self.settings
-                .bind("name-source-basic", &*self.name_source_basic, "active")
-                .build();
-
-            self.settings
-                .bind(
-                    "name-source-extended",
-                    &*self.name_source_extended,
-                    "active",
-                )
-                .build();
-
-            self.settings
-                .bind(
-                    "name-source-gnome-palette",
-                    &*self.name_source_gnome,
-                    "active",
-                )
-                .build();
-
-            self.settings
-                .bind("name-source-xkcd", &*self.name_source_xkcd, "active")
-                .build();
+            self.bind_setting(&self.name_source_basic, ColorNameSources::Html);
+            self.bind_setting(&self.name_source_extended, ColorNameSources::Svg);
+            self.bind_setting(&self.name_source_gnome, ColorNameSources::Gnome);
+            self.bind_setting(&self.name_source_xkcd, ColorNameSources::Xkcd);
         }
 
         fn dispose(&self) {
@@ -87,6 +72,34 @@ mod imp {
     impl WindowImpl for NameSourcesDialog {}
     impl WidgetImpl for NameSourcesDialog {}
     impl AdwWindowImpl for NameSourcesDialog {}
+    impl NameSourcesDialog {
+        pub(super) fn bind_setting(&self, obj: &adw::SwitchRow, flag_val: ColorNameSources) {
+            self.settings
+                .bind("name-sources-flag", &*obj, "active")
+                .mapping(move |value, _variant| {
+                    let flag = ColorNameSources::from_bits(value.get::<u32>()?)?;
+                    Some(flag.contains(flag_val).to_value())
+                })
+                .set_mapping(glib::clone!(
+                    #[weak(rename_to = window)]
+                    self,
+                    #[upgrade_or]
+                    None,
+                    move |value, _variant| {
+                        let active = value
+                            .get::<bool>()
+                            .expect("Failed to get bool from switch active property");
+                        let mut color_names_flag = ColorNameSources::from_bits(
+                            window.settings.get::<u32>("name-sources-flag"),
+                        )?;
+                        color_names_flag.set(flag_val, active);
+
+                        Some(color_names_flag.bits().to_variant())
+                    }
+                ))
+                .build();
+        }
+    }
 }
 
 glib::wrapper! {
