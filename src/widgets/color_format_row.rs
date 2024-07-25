@@ -7,16 +7,21 @@ use gtk::subclass::prelude::*;
 use gtk::{glib, prelude::ObjectExt};
 
 use crate::colors::color::Color;
+use crate::colors::color_names::ColorNameSources;
 use crate::colors::position::AlphaPosition;
 use crate::colors::Notation;
 
 mod imp {
     use std::cell::{Cell, RefCell};
 
-    use crate::{colors, config};
+    use crate::{
+        colors::{self, color_names::ColorNameSources},
+        config,
+    };
 
     use super::*;
 
+    use adw::subclass::window;
     use glib::subclass::Signal;
     use gtk::gio;
     use once_cell::sync::Lazy;
@@ -83,11 +88,15 @@ mod imp {
             let obj = self.obj();
 
             self.entry.connect_activate(glib::clone!(
-                #[weak]
-                obj,
+                #[weak(rename_to = widget)]
+                self,
                 move |entry| {
+                    let obj = widget.obj();
                     let text = entry.buffer().text();
-                    let Ok(color) = obj.color_format().parse(text.as_str()) else {
+                    let name_flags =
+                        ColorNameSources::from_bits(widget.settings.uint("name-sources-flag"))
+                            .unwrap_or(ColorNameSources::empty());
+                    let Ok(color) = obj.color_format().parse(text.as_str(), name_flags) else {
                         log::debug!("Failed to parse color: {}", text);
                         obj.show_error();
                         return;
@@ -140,7 +149,12 @@ impl ColorFormatRow {
     pub fn display_color(&self, color: Color) {
         let alpha_position = AlphaPosition::from(self.imp().settings.int("alpha-position") as u32);
         let precision = self.imp().settings.uint("precision-digits") as usize;
-        let color = self.color_format().as_str(color, alpha_position, precision);
+        let name_sources =
+            ColorNameSources::from_bits(self.imp().settings.uint("name-sources-flag"))
+                .unwrap_or(ColorNameSources::empty());
+        let color = self
+            .color_format()
+            .as_str(color, alpha_position, precision, name_sources);
         self.set_color(color);
     }
 

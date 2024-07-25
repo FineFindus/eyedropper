@@ -16,12 +16,10 @@ fn main() {
     let path = Path::new(&out_dir).join("codegen.rs");
     let mut file = BufWriter::new(File::create(path).expect("Failed to create map file"));
 
-    sources
-        .iter()
-        .inspect(|source| println!("cargo:rerun-if-changed={}", source.0))
-        .for_each(|(path, name, rev_name)| {
-            generate_map(&mut file, path, name, rev_name).expect("Failed to write map")
-        });
+    sources.iter().for_each(|(path, name, rev_name)| {
+        println!("cargo:rerun-if-changed={}", path);
+        generate_map(&mut file, path, name, rev_name).expect("Failed to write map")
+    });
 
     println!("cargo:rerun-if-changed=build.rs");
 }
@@ -58,10 +56,13 @@ fn generate_map<T: AsRef<Path>>(
         .filter_map(|line| line.split_once(','))
         .map(|(name, val)| (name.trim(), val.trim()))
         .for_each(|(name, hex)| {
-            map.entry(name.to_ascii_lowercase(), &format!("\"{}\"", hex));
+            map.entry(name.to_ascii_lowercase(), &format!("\"{}ff\"", hex));
 
             if !DUPLICATED_COLORS.contains(&name) {
-                reverse_map.entry(hex.to_ascii_lowercase(), &format!("\"{}\"", name));
+                reverse_map.entry(
+                    format!("{}ff", hex.to_ascii_lowercase()),
+                    &format!("\"{}\"", name),
+                );
             }
         });
 
