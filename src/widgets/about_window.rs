@@ -2,12 +2,10 @@ use std::path::Path;
 
 use crate::config;
 use crate::config::{APP_ID, VERSION};
-use adw::prelude::*;
-use adw::AboutWindow;
+use adw::{prelude::*, AboutDialog};
 use gettextrs::gettext;
 use gettextrs::pgettext;
-use glib::object::IsA;
-use gtk::{Application, License, Window};
+use gtk::License;
 
 pub const COPYRIGHT: &str = "Copyright © 2022 - 2023 FineFindus";
 pub const WEBSITE: &str = "https://github.com/finefindus/eyedropper/";
@@ -20,11 +18,7 @@ pub const ARTISTS: &[&str] = &["bertob https://github.com/bertob", "Brage Fuglse
 pub struct EyedropperAbout;
 
 impl EyedropperAbout {
-    pub fn show<A: IsA<Application> + AdwApplicationExt, W: IsA<Window> + GtkWindowExt>(
-        app: &A,
-        window: &W,
-        portal_error: Option<ashpd::Error>,
-    ) {
+    pub fn show(portal_error: Option<ashpd::Error>) -> adw::AboutDialog {
         let details = Self::details();
 
         //translatable changelog
@@ -33,10 +27,7 @@ impl EyedropperAbout {
 
         let debug_info = Self::debug_info(portal_error);
 
-        let about_window = AboutWindow::builder()
-            .application(app)
-            .transient_for(window)
-            .modal(true)
+        AboutDialog::builder()
             .application_icon(APP_ID)
             .application_name(gettext("Eyedropper"))
             .developer_name(DEVELOPERS[0].split(' ').collect::<Vec<&str>>()[0])
@@ -55,8 +46,7 @@ impl EyedropperAbout {
             .release_notes_version(changelog_version)
             .debug_info(debug_info)
             .debug_info_filename("eyedropper_debug_info")
-            .build();
-        about_window.present();
+            .build()
     }
 
     /// Build the details page text out of single components,

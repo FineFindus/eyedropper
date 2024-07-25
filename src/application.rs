@@ -1,6 +1,7 @@
 use glib::ExitCode;
 use log::{debug, info};
 
+use adw::prelude::AdwDialogExt;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gdk, gio, glib};
@@ -201,11 +202,8 @@ impl App {
     }
 
     fn show_about_dialog(&self) {
-        EyedropperAbout::show(
-            self,
-            &self.main_window(),
-            self.main_window().imp().portal_error.take(),
-        );
+        EyedropperAbout::show(self.main_window().imp().portal_error.take())
+            .present(Some(&self.main_window()));
     }
 
     fn show_preferences_dialog(&self) {

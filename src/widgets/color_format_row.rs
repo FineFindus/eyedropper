@@ -21,7 +21,6 @@ mod imp {
 
     use super::*;
 
-    use adw::subclass::window;
     use glib::subclass::Signal;
     use gtk::gio;
     use once_cell::sync::Lazy;
