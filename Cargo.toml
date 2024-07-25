@@ -32,7 +32,7 @@ gettext-rs = { version = "0.7", features = ["gettext-system"] }
 once_cell = "1.18.0"
 gtk = { version = "0.9", package = "gtk4", features = ["gnome_44"] }
 glib = "0.20"
-adw = { package = "libadwaita", version = "0.7", features = ["v1_5"] }
+adw = { package = "libadwaita", version = "0.7", features = ["v1_6"] }
 ashpd = { version = "0.9", features = ["gtk4"] }
 rand = "0.8"
 bytes = "1.4"

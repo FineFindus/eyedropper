@@ -6,10 +6,7 @@ mod imp {
 
     use glib::subclass;
 
-    use crate::{
-        colors::color_names::{self, ColorNameSources},
-        config,
-    };
+    use crate::{colors::color_names::ColorNameSources, config};
 
     use super::*;
 

@@ -22,7 +22,7 @@ mod imp {
 
     use std::cell::RefCell;
 
-    use adw::subclass::{prelude::PreferencesWindowImpl, window::AdwWindowImpl};
+    use adw::subclass::{dialog::AdwDialogImpl, preferences_dialog::PreferencesDialogImpl};
     use gtk::gio;
 
     use crate::config;
@@ -50,7 +50,7 @@ mod imp {
     impl ObjectSubclass for PreferencesWindow {
         const NAME: &'static str = "PreferencesWindow";
         type Type = super::PreferencesWindow;
-        type ParentType = adw::PreferencesWindow;
+        type ParentType = adw::PreferencesDialog;
 
         fn new() -> Self {
             Self {
@@ -90,13 +90,13 @@ mod imp {
 
     impl WidgetImpl for PreferencesWindow {}
     impl WindowImpl for PreferencesWindow {}
-    impl AdwWindowImpl for PreferencesWindow {}
-    impl PreferencesWindowImpl for PreferencesWindow {}
+    impl AdwDialogImpl for PreferencesWindow {}
+    impl PreferencesDialogImpl for PreferencesWindow {}
 }
 
 glib::wrapper! {
     pub struct PreferencesWindow(ObjectSubclass<imp::PreferencesWindow>)
-    @extends gtk::Widget, gtk::Window, adw::Window, adw::PreferencesWindow;
+    @extends gtk::Widget, gtk::Window, adw::Window, adw::PreferencesDialog;
 }
 
 #[gtk::template_callbacks]
