@@ -20,13 +20,13 @@ mod imp {
     #[properties(wrapper_type = super::HistoryItem)]
     pub struct HistoryItem {
         #[property(get, set = Self::set_color)]
-        pub(super) color: Cell<gtk::gdk::RGBA>,
+        color: Cell<gtk::gdk::RGBA>,
         #[template_child]
-        pub(super) popover: TemplateChild<gtk::PopoverMenu>,
+        popover: TemplateChild<gtk::PopoverMenu>,
         #[template_child]
-        pub(super) right_click_gesture: TemplateChild<gtk::GestureClick>,
+        right_click_gesture: TemplateChild<gtk::GestureClick>,
         #[template_child]
-        pub(super) press_gesture: TemplateChild<gtk::GestureLongPress>,
+        press_gesture: TemplateChild<gtk::GestureLongPress>,
     }
 
     impl Default for HistoryItem {
@@ -48,7 +48,7 @@ mod imp {
 
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
-            klass.bind_template_instance_callbacks();
+            klass.bind_template_callbacks();
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -79,6 +79,7 @@ mod imp {
     impl BoxImpl for HistoryItem {}
     impl ButtonImpl for HistoryItem {}
 
+    #[gtk::template_callbacks]
     impl HistoryItem {
         pub(super) fn set_color(&self, color: gtk::gdk::RGBA) {
             self.color.set(color);
@@ -97,13 +98,26 @@ mod imp {
 
             //set the action when the button is clicked
             obj.set_detailed_action_name(&format!("win.set-color('{}')", color_hex));
+            obj.queue_draw();
+        }
 
-            let tooltip = if color.alpha != 1.0 {
-                color_hex
+        #[template_callback]
+        fn show_popover(&self) {
+            self.popover.popup();
+        }
+
+        #[template_callback]
+        fn tooltip(&self, color: gtk::gdk::RGBA) -> String {
+            if color.alpha() != 1.0 {
+                Color::from(color).hex()
             } else {
-                Notation::Hex.as_str(color, AlphaPosition::None, 2, ColorNameSources::empty())
-            };
-            obj.set_tooltip_text(Some(&tooltip.to_uppercase()));
+                Notation::Hex.as_str(
+                    color.into(),
+                    AlphaPosition::None,
+                    2,
+                    ColorNameSources::empty(),
+                )
+            }
         }
     }
 }
@@ -114,15 +128,8 @@ glib::wrapper! {
     @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget, gtk::Orientable, gtk::Actionable;
 }
 
-#[gtk::template_callbacks]
 impl HistoryItem {
     pub fn new(color: gtk::gdk::RGBA) -> Self {
         Object::builder().property("color", color).build()
-    }
-
-    #[template_callback]
-    pub(super) fn show_popover(&self) {
-        let imp = self.imp();
-        imp.popover.popup();
     }
 }
