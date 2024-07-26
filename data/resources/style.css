@@ -10,3 +10,9 @@
 .invisible {
   background-color: transparent;
 }
+
+.shadow {
+  box-shadow: 5px 5px 5px @shade_color;
+}
+
+

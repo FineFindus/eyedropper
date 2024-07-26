@@ -63,7 +63,19 @@ mod imp {
         }
     }
 
-    impl WidgetImpl for HistoryItem {}
+    impl WidgetImpl for HistoryItem {
+        fn snapshot(&self, snapshot: &gtk::Snapshot) {
+            // width and height values from GTK Inspector
+            let rect = gtk::graphene::Rect::new(0.0, 0.0, 36.0, 34.0);
+            snapshot.translate(&gtk::graphene::Point::new(-10.0, -5.0));
+            snapshot.push_rounded_clip(&gtk::gsk::RoundedRect::from_rect(rect, 6.0));
+            snapshot.append_color(&self.color.get(), &rect);
+            snapshot.pop();
+            // translate back so that the focus ring is centered correctly
+            snapshot.translate(&gtk::graphene::Point::new(10.0, 5.0));
+        }
+    }
+
     impl BoxImpl for HistoryItem {}
     impl ButtonImpl for HistoryItem {}
 
@@ -74,27 +86,6 @@ mod imp {
 
             let color: Color = color.into();
             let color_hex = color.hex();
-
-            let css_class_name = format!("history-button-{}", color_hex.replace('#', ""));
-
-            let css_provider = gtk::CssProvider::default();
-
-            if let Some(display) = gtk::gdk::Display::default() {
-                gtk::style_context_add_provider_for_display(
-                    &display,
-                    &css_provider,
-                    gtk::STYLE_PROVIDER_PRIORITY_APPLICATION,
-                );
-            }
-
-            css_provider.load_from_data(&format!(
-                    ".{} {{box-shadow: 5px 5px 5px @shade_color; background-color: {}; border-radius: 6px;}}",
-                    css_class_name,
-                    // ignore alpha values, they are not displayed properly
-                    color_hex
-            ));
-
-            obj.add_css_class(&css_class_name);
 
             let menu = gtk::gio::Menu::new();
             menu.append(
