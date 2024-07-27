@@ -7,8 +7,6 @@ mod imp {
 
     use std::cell::Cell;
 
-    use gettextrs::gettext;
-
     use crate::colors::{
         color::Color, color_names::ColorNameSources, position::AlphaPosition, Notation,
     };
@@ -49,6 +47,20 @@ mod imp {
         fn class_init(klass: &mut Self::Class) {
             klass.bind_template();
             klass.bind_template_callbacks();
+            klass.install_action("history.remove", None, |item, _, _value| {
+                item.activate_action(
+                    "win.remove-item",
+                    Some(&Color::from(item.color()).hex().to_variant()),
+                )
+                .expect("Failed to call win.set-color action");
+            });
+            klass.install_action("history.clicked", None, |item, _, _value| {
+                item.activate_action(
+                    "win.set-color",
+                    Some(&Color::from(item.color()).hex().to_variant()),
+                )
+                .expect("Failed to call win.set-color action");
+            });
         }
 
         fn instance_init(obj: &glib::subclass::InitializingObject<Self>) {
@@ -83,22 +95,7 @@ mod imp {
     impl HistoryItem {
         pub(super) fn set_color(&self, color: gtk::gdk::RGBA) {
             self.color.set(color);
-            let obj = self.obj();
-
-            let color: Color = color.into();
-            let color_hex = color.hex();
-
-            let menu = gtk::gio::Menu::new();
-            menu.append(
-                Some(&gettext("Remove")),
-                Some(&format!("win.remove-item('{}')", color_hex)),
-            );
-            menu.freeze();
-            self.popover.set_menu_model(Some(&menu));
-
-            //set the action when the button is clicked
-            obj.set_detailed_action_name(&format!("win.set-color('{}')", color_hex));
-            obj.queue_draw();
+            self.obj().queue_draw();
         }
 
         #[template_callback]

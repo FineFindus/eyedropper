@@ -1,11 +1,19 @@
 using Gtk 4.0;
 
+menu popover_menu {
+  item {
+    label: _("Remove");
+    action: "history.remove";
+  }
+}
+
 template $HistoryItem : Button {
   margin-start: 2;
   margin-end: 2;
   margin-top: 2;
   margin-bottom: 2;
   tooltip-text: bind $tooltip(template.color) as <string>;
+  action-name: "history.clicked";
 
   styles ["shadow"]
 
@@ -23,6 +31,7 @@ template $HistoryItem : Button {
     Gtk.PopoverMenu popover {
       halign: start;
       has-arrow: false;
+      menu-model: popover_menu;
     }
   };
 }
