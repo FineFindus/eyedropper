@@ -4,6 +4,7 @@ use gettextrs::gettext;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gio, glib};
+use palette::{GetHue, IntoColor, SetHue};
 
 use crate::application::App;
 use crate::colors::color::Color;
@@ -38,11 +39,22 @@ mod imp {
         #[template_child]
         pub color_picker_button: TemplateChild<gtk::Button>,
         #[template_child]
+        pub edit_sheet: TemplateChild<adw::BottomSheet>,
+        #[template_child]
+        pub color_preview: TemplateChild<gtk::ColorDialogButton>,
+        #[template_child]
+        pub hue_scale: TemplateChild<gtk::Scale>,
+        #[template_child]
+        pub saturation_scale: TemplateChild<gtk::Scale>,
+        #[template_child]
+        pub lightness_scale: TemplateChild<gtk::Scale>,
+        #[template_child]
         pub history_list: TemplateChild<gtk::ListBox>,
         pub history: OnceCell<gio::ListStore>,
         pub settings: gio::Settings,
         pub color: Cell<Option<Color>>,
         pub portal_error: RefCell<Option<ashpd::Error>>,
+        pub css_provider: gtk::CssProvider,
     }
 
     impl Default for AppWindow {
@@ -54,11 +66,17 @@ mod imp {
                 color_picker_button: TemplateChild::default(),
                 toast_overlay: TemplateChild::default(),
                 format_box: TemplateChild::default(),
+                edit_sheet: TemplateChild::default(),
+                hue_scale: TemplateChild::default(),
+                saturation_scale: TemplateChild::default(),
+                lightness_scale: TemplateChild::default(),
+                color_preview: TemplateChild::default(),
                 history_list: TemplateChild::default(),
                 history: Default::default(),
                 settings: gio::Settings::new(APP_ID),
                 color: Cell::new(None),
                 portal_error: RefCell::new(None),
+                css_provider: Default::default(),
             }
         }
     }
@@ -172,6 +190,13 @@ mod imp {
             obj.setup_history();
             obj.order_formats();
             obj.update_stack();
+
+            // setup css provider to update the edit sheet scale colors
+            gtk::style_context_add_provider_for_display(
+                &obj.display(),
+                &self.css_provider,
+                gtk::STYLE_PROVIDER_PRIORITY_APPLICATION,
+            );
         }
 
         fn dispose(&self) {
@@ -217,7 +242,7 @@ mod imp {
 glib::wrapper! {
     pub struct AppWindow(ObjectSubclass<imp::AppWindow>)
         @extends gtk::Widget, gtk::Window,  gtk::ApplicationWindow,
-        @implements gio::ActionMap, gio::ActionGroup, gtk::Root;
+        @implements gio::ActionMap;
 }
 
 #[gtk::template_callbacks]
@@ -482,5 +507,50 @@ impl AppWindow {
             .iter()
             .filter_map(Cast::downcast_ref::<ColorFormatRow>)
             .for_each(|row| row.display_color(color));
+    }
+
+    /// Opens a bototm sheet with an HSL color picker.
+    #[template_callback]
+    fn open_sheet(&self) {
+        let imp = self.imp();
+        imp.color_preview.set_rgba(&self.color().unwrap().into());
+        let hsl: palette::Hsl = self.color().unwrap().color.into_color();
+        imp.hue_scale
+            .set_value(hsl.get_hue().into_positive_degrees() as f64);
+        imp.saturation_scale
+            .set_value(hsl.saturation as f64 * 100.0);
+        imp.lightness_scale.set_value(hsl.lightness as f64 * 100.0);
+        imp.edit_sheet.set_open(true);
+    }
+
+    /// Updates the preview color and color picker.
+    #[template_callback]
+    fn on_color_preview_updated(&self, scale: gtk::Scale) {
+        let mut hsl: palette::Hsl = Color::from(self.imp().color_preview.rgba())
+            .color
+            .into_color();
+
+        hsl.set_hue(self.imp().hue_scale.value() as f32);
+        hsl.lightness = self.imp().lightness_scale.value() as f32 / 100.0;
+        hsl.saturation = self.imp().saturation_scale.value() as f32 / 100.0;
+
+        let gkd_color: gtk::gdk::RGBA = Color::from_palette(hsl).into();
+        self.imp().color_preview.set_rgba(&gkd_color);
+
+        if scale != *self.imp().saturation_scale {
+            // update gradient of the saturation_scale
+            self.imp().css_provider.load_from_data(&format!(
+                "@define-color saturation_color {};",
+                gkd_color.to_string()
+            ));
+        }
+    }
+
+    /// Selects the edit color and closes the edit bottom sheet.
+    #[template_callback]
+    fn on_color_preview_select(&self) {
+        let color = Color::from(self.imp().color_preview.rgba());
+        self.set_color(color);
+        self.imp().edit_sheet.set_open(false);
     }
 }
