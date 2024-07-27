@@ -70,12 +70,14 @@ template $AppWindow: Adw.ApplicationWindow {
 
       StackPage {
         name: "portal-error";
+
         child: $AdwToolbarView {
           [top]
           Adw.HeaderBar {}
 
           content: WindowHandle {
             vexpand: true;
+
             child: Adw.Bin {
               css-name: "statuspage";
 
@@ -142,77 +144,158 @@ template $AppWindow: Adw.ApplicationWindow {
       StackPage {
         name: "main";
 
-        child: $AdwToolbarView {
-          [top]
-          Adw.HeaderBar headerbar {
-            title-widget: Adw.WindowTitle {
-              title: _("Eyedropper");
-            };
+        child: $AdwBottomSheet edit_sheet {
+          content: $AdwToolbarView {
+            [top]
+            Adw.HeaderBar headerbar {
+              title-widget: Adw.WindowTitle {
+                title: _("Eyedropper");
+              };
 
-            Button color_picker_button {
-              tooltip-text: C_("Tooltip of the colorpicker button", "Pick a Color");
-              icon-name: "color-select-symbolic";
-              clicked => $pick_color() swapped;
+              Button color_picker_button {
+                tooltip-text: C_("Tooltip of the colorpicker button", "Pick a Color");
+                icon-name: "color-select-symbolic";
+                clicked => $pick_color() swapped;
+              }
+
+              [end]
+              MenuButton appmenu_button {
+                tooltip-text: _("Main Menu");
+                primary: true;
+                icon-name: "open-menu-symbolic";
+                menu-model: primary_menu;
+              }
             }
 
-            [end]
-            MenuButton appmenu_button {
-              tooltip-text: _("Main Menu");
-              primary: true;
-              icon-name: "open-menu-symbolic";
-              menu-model: primary_menu;
-            }
-          }
+            content: Box {
+              orientation: horizontal;
 
-          content: Box {
-            orientation: horizontal;
-
-            Box format_box {
-              orientation: vertical;
-              halign: fill;
-              vexpand: false;
-              vexpand-set: false;
-              margin-bottom: 12;
-              valign: start;
-
-              Adw.Clamp {
+              Box format_box {
                 orientation: vertical;
-                tightening-threshold: 35;
-                maximum-size: 50;
+                halign: fill;
+                vexpand: false;
+                vexpand-set: false;
+                margin-bottom: 12;
+                valign: start;
 
-                child: Button {
-                  tooltip-text: C_("Tooltip of the palette button", "Open Palette Window");
-                  margin-top: 12;
-                  margin-start: 12;
-                  margin-end: 12;
-                  vexpand: true;
-                  width-request: 267;
+                Adw.Clamp {
+                  orientation: vertical;
+                  tightening-threshold: 35;
+                  maximum-size: 50;
 
-                  ColorDialogButton color_button {
-                    can-focus: false;
-                  }
+                  child: Button {
+                    tooltip-text: C_("Tooltip of the palette button", "Edit Color");
+                    margin-top: 12;
+                    margin-start: 12;
+                    margin-end: 12;
+                    vexpand: true;
+                    width-request: 267;
+
+                    ColorDialogButton color_button {
+                      can-focus: false;
+                    }
+
+                    clicked => $open_sheet() swapped;
+
+                    styles [
+                      "no-padding",
+                    ]
+                  };
+                }
+              }
+
+              ScrolledWindow {
+                hscrollbar-policy: never;
+                min-content-height: 200;
+                vexpand: true;
+
+                ListBox history_list {
+                  visible: true;
+                  selection-mode: none;
 
                   styles [
-                    "no-padding",
+                    "background",
                   ]
-                };
+                }
               }
-            }
+            };
+          };
 
-            ScrolledWindow {
-              hscrollbar-policy: never;
-              min-content-height: 200;
-              vexpand: true;
+          sheet: $AdwToolbarView {
+            content: Box {
+              margin-start: 8;
+              margin-end: 8;
+              margin-bottom: 12;
+              orientation: vertical;
 
-              ListBox history_list {
-                visible: true;
-                selection-mode: none;
+              ColorDialogButton color_preview {
+                  can-focus: false;
+                  can-target: false;
+              }
+
+              Scale hue_scale {
+                adjustment: Adjustment {
+                  lower: 0;
+                  upper: 360;
+                  step-increment: 1;
+                };
+
+                digits: 0;
+                has-origin: false;
+                draw-value: false;
+                value-changed => $on_color_preview_updated() swapped;
 
                 styles [
-                  "background",
+                  "hue-slider",
                 ]
               }
-            }
+
+              Scale saturation_scale {
+                adjustment: Adjustment {
+                  lower: 0;
+                  upper: 100;
+                  step-increment: 1;
+                };
+
+                digits: 0;
+                has-origin: false;
+                draw-value: false;
+                value-changed => $on_color_preview_updated() swapped;
+
+                styles [
+                  "saturation-slider",
+                ]
+              }
+
+              Scale lightness_scale {
+                adjustment: Adjustment {
+                  lower: 0;
+                  upper: 100;
+                  step-increment: 1;
+                };
+                value-changed => $on_color_preview_updated() swapped;
+
+                digits: 0;
+                has-origin: false;
+                draw-value: false;
+
+                styles [
+                  "value-slider",
+                ]
+              }
+
+              Button {
+                label: _("Apply");
+                use-underline: true;
+                halign: center;
+                clicked => $on_color_preview_select() swapped;
+
+                styles [
+                  "pill",
+                  "suggested-action",
+                ]
+              }
+            };
           };
         };
       }
