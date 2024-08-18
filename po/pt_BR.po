@@ -4,21 +4,22 @@
 # Ciro Mota <contato.ciromota@outlook.com>, 2024.
 # Tiago Lucas Flach <tiagolucas9830@gmail.com>, 2024.
 # Filipe Motta <luizfilipemotta@gmail.com>, 2024.
-#
+# Filipe Motta <luiz_filipe_motta@hotmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2024-09-18 17:02+0000\n"
-"PO-Revision-Date: 2024-09-19 03:04-0300\n"
-"Last-Translator: Filipe Motta <luizfilipemotta@gmail.com>\n"
-"Language-Team: Brazilian Portuguese\n"
+"PO-Revision-Date: 2025-06-04 14:02+0000\n"
+"Last-Translator: Filipe Motta <luiz_filipe_motta@hotmail.com>\n"
+"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
+"eyedropper/eyedropper/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
-"X-Generator: Gtranslator 46.1\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.12-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
