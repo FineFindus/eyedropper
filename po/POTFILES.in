@@ -6,17 +6,13 @@ data/com.github.finefindus.eyedropper.metainfo.xml.in.in
 # UI files
 data/resources/ui/color-format-row.blp
 data/resources/ui/history-item.blp
-data/resources/ui/palette-window.blp
-data/resources/ui/preferences/custom-format-row.blp
-data/resources/ui/preferences/name-sources-dialog.blp
-data/resources/ui/preferences/preferences.blp
+data/resources/ui/preferences.blp
 data/resources/ui/shortcuts.blp
 data/resources/ui/window.blp
 # RUST files
+src/colors/notation.rs
 src/main.rs
 src/widgets/about_window.rs
 src/widgets/color_format_row.rs
-src/widgets/history_item.rs
-src/widgets/palette_dialog.rs
 src/widgets/preferences/preferences_window.rs
 src/window.rs
