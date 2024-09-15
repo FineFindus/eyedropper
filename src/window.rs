@@ -15,13 +15,12 @@ use crate::widgets::color_format_row::ColorFormatRow;
 use crate::widgets::history_item::HistoryItem;
 
 mod imp {
-    use std::cell::{Cell, RefCell};
+    use std::cell::{Cell, OnceCell, RefCell};
 
     use super::*;
 
     use adw::subclass::prelude::AdwApplicationWindowImpl;
     use gtk::CompositeTemplate;
-    use once_cell::sync::OnceCell;
 
     #[derive(Debug, CompositeTemplate)]
     #[template(resource = "/com/github/finefindus/eyedropper/ui/window.ui")]
