@@ -241,7 +241,7 @@ mod imp {
 
 glib::wrapper! {
     pub struct AppWindow(ObjectSubclass<imp::AppWindow>)
-        @extends gtk::Widget, gtk::Window,  gtk::ApplicationWindow,
+        @extends gtk::Widget, gtk::Window,  gtk::ApplicationWindow, adw::ApplicationWindow,
         @implements gio::ActionMap;
 }
 
@@ -539,10 +539,9 @@ impl AppWindow {
 
         if scale != *self.imp().saturation_scale {
             // update gradient of the saturation_scale
-            self.imp().css_provider.load_from_data(&format!(
-                "@define-color saturation_color {};",
-                gkd_color.to_string()
-            ));
+            self.imp()
+                .css_provider
+                .load_from_data(&format!(":root {{ --saturation-color: {}; }}", gkd_color));
         }
     }
 
