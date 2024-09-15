@@ -105,7 +105,7 @@ mod imp {
     impl PreferencesWindow {
         pub(super) fn bind_setting(&self, obj: &adw::SwitchRow, flag_val: ColorNameSources) {
             self.settings
-                .bind("name-sources-flag", &*obj, "active")
+                .bind("name-sources-flag", obj, "active")
                 .mapping(move |value, _variant| {
                     let flag = ColorNameSources::from_bits(value.get::<u32>()?)?;
                     Some(flag.contains(flag_val).to_value())
