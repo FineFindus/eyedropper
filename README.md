@@ -7,18 +7,16 @@
 
 Pick and format colors.
 
-![Main Page](data/resources/screenshots/main_default_light.png)
+![Main Page](data/resources/screenshots/main_default.png)
 
 <details>
   <summary>More screenshots</summary>
 
-![Status page](data/resources/screenshots/status_light.png)
+![Status page](data/resources/screenshots/status.png)
 
-![Customize the shown formats (Dark UI)](data/resources/screenshots/main_customize_dark.png)
+![Customize the shown formats](data/resources/screenshots/main_customize.png)
 
-![Customize the shown formats (Light UI)](data/resources/screenshots/main_customize_light.png)
-
-![Generate Color Palettes](data/resources/screenshots/palette_dialog_new_export_light.png)
+![Edit Colors](data/resources/screenshots/edit_sheet.png)
 
 
 </details>
