@@ -12,7 +12,6 @@
       <name translatable="no">FineFindus</name>
   </developer>
   <update_contact>finefindus@proton.me</update_contact>
-  <project_group>GNOME</project_group>
   <description>
     <p>
       Pick any color from your screen and view it in different formats. Change the picked color or go back to
