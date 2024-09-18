@@ -53,6 +53,11 @@
   <url type="translate">https://github.com/FineFindus/eyedropper#translation</url>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="2.0.1" date="2024-09-18">
+      <description translatable="no">
+        <p>A small fix for failing metadata</p>
+      </description>
+    </release>
     <release version="2.0.0" date="2024-09-18">
       <description translatable="no">
         <p>A new release, including major reworks the the UI and the color system</p>

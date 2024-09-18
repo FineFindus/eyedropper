@@ -437,7 +437,7 @@ dependencies = [
 
 [[package]]
 name = "eyedropper"
-version = "2.0.0"
+version = "2.0.1"
 dependencies = [
  "ashpd",
  "bytes",
