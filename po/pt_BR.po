@@ -1,29 +1,29 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Eyedropper package.
-# Filipe Motta <luiz_filipe_motta@hotmail.com>, 2024.
 # Ciro Mota <contato.ciromota@outlook.com>, 2024.
 # Tiago Lucas Flach <tiagolucas9830@gmail.com>, 2024.
+# Filipe Motta <luizfilipemotta@gmail.com>, 2024.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2024-01-01 21:48+0000\n"
-"PO-Revision-Date: 2024-08-19 01:09+0000\n"
-"Last-Translator: Filipe Motta <luiz_filipe_motta@hotmail.com>\n"
-"Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
-"eyedropper/eyedropper/pt_BR/>\n"
+"POT-Creation-Date: 2024-09-18 17:02+0000\n"
+"PO-Revision-Date: 2024-09-19 03:04-0300\n"
+"Last-Translator: Filipe Motta <luizfilipemotta@gmail.com>\n"
+"Language-Team: Brazilian Portuguese\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.7\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"X-Generator: Gtranslator 46.1\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.blp:74 src/main.rs:25
-#: src/widgets/about_window.rs:41
+#: data/resources/ui/window.blp:152 src/main.rs:28
+#: src/widgets/about_window.rs:32
 msgid "Eyedropper"
 msgstr "Conta-Gotas"
 
@@ -33,24 +33,24 @@ msgstr "Seletor de cores"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
-#: src/widgets/about_window.rs:71
+#: src/widgets/about_window.rs:61
 msgid "Pick and format colors"
 msgstr "Selecione e formate cores"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
-msgid "Gnome;GTK;Color;Color Picker;Picker;Palette;"
+msgid "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
 msgstr ""
-"Gnome;GTK;Color;Color Picker;Picker;Palette;Cor;Cores;Seletor;Seletor de "
-"Cor;Paleta;Paleta de Cor;Paleta de Cores;Conta-Gotas;Selecionar;Escolher;"
+"Gnome;GTK;Color;Color Picker;Picker;Palette;Cor;Cores;Seletor;Seletor de Cor;"
+"Paleta;Paleta de Cor;Paleta de Cores;Conta-Gotas;Selecionar;Escolher;"
 
 #. developer_name tag deprecated with Appstream 1.0
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
 msgid "FineFindus"
-msgstr ""
+msgstr "FineFindus"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
-#: src/widgets/about_window.rs:74
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:16
+#: src/widgets/about_window.rs:64
 msgid ""
 "Pick any color from your screen and view it in different formats. Change the "
 "picked color or go back to a previously picked color from the history list. "
@@ -61,360 +61,157 @@ msgstr ""
 "histórico. Gere uma lista de diferentes tonalidades a partir da cor "
 "escolhida."
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
-#: src/widgets/about_window.rs:79
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
+#: src/widgets/about_window.rs:69
 msgid "Features"
 msgstr "Funções"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:23
-#: src/widgets/about_window.rs:83
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
+#: src/widgets/about_window.rs:73
 msgid "Pick a Color"
 msgstr "Selecione uma cor na tela"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:24
-#: src/widgets/about_window.rs:84
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:23
+#: src/widgets/about_window.rs:74
 msgid "Enter a color in Hex-Format"
 msgstr "Insira uma cor em formato hexadecimal"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:25
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:24
 msgid "Enter colors in different formats"
 msgstr "Insira cores em diferentes formatos"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:26
-#: src/widgets/about_window.rs:86
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:25
+#: src/widgets/about_window.rs:76
 msgid "View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format"
 msgstr "Visualize cores nos formatos Hex, RGB, HSV, HSL, CMYK, XYZ e CIE-Lab"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:27
-#: src/widgets/about_window.rs:87
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:26
+#: src/widgets/about_window.rs:77
 msgid "Customize which formats appear as well as their order"
 msgstr "Personalize quais formatos aparecem, assim como sua ordem"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:28
-#: src/widgets/about_window.rs:88
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:27
+#: src/widgets/about_window.rs:78
 msgid "Generate a palette of different shades"
 msgstr "Gere uma paleta de tons diferentes"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:34
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:33
 msgid "Main window with a color in different formats"
 msgstr "Janela principal com cores em diferentes formatos"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:38
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:37
 msgid "Main window with customized formats"
 msgstr "Janela principal com formatos personalizados"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:42
-msgid "Dialog showing generated color palettes"
-msgstr "Caixa de diálogo mostrando paletas de cores geradas"
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:41
+msgid "Editor with an HSL editor"
+msgstr "Editor com um editor HSL"
 
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:46
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:45
 msgid "Status page stating to pick a color to get started"
 msgstr "Página de status indicando para selecionar uma cor para começar"
 
-#: data/resources/ui/palette-window.blp:7
-msgctxt "Adobes palette format"
-msgid "Adobe Swatch Exchange"
-msgstr "Adobe Swatch Exchange"
+#: data/resources/ui/history-item.blp:5
+msgid "Remove"
+msgstr "Remover"
 
-#: data/resources/ui/palette-window.blp:13
-msgctxt "LibreOffice/OpenOffice palette file"
-msgid "LibreOffice Palette"
-msgstr "Paleta do LibreOffice"
-
-#: data/resources/ui/palette-window.blp:19
-msgctxt "Gimp/Inkscape palette format"
-msgid "Gimp Palette"
-msgstr "Paleta do Gimp"
-
-#: data/resources/ui/palette-window.blp:25
-msgctxt "Paint.net palette format, should most like not be translated"
-msgid "Paint.NET"
-msgstr "Paint.NET"
-
-#: data/resources/ui/palette-window.blp:31
-msgctxt "Palette format file name"
-msgid "Hex"
-msgstr "Hex"
-
-#: data/resources/ui/palette-window.blp:37
-msgctxt "Palette format file name"
-msgid "PAL"
-msgstr "PAL"
-
-#: data/resources/ui/palette-window.blp:46
-msgid "Palettes"
-msgstr "Paletas"
-
-#: data/resources/ui/palette-window.blp:54
-msgid "Save Palettes…"
-msgstr "Salvar paletas…"
-
-#: data/resources/ui/preferences/custom-format-row.blp:12
-msgctxt "Tooltip of the reset button for custom format"
-msgid "Reset Format"
-msgstr "Redefinir formato"
-
-#: data/resources/ui/preferences/name-sources-dialog.blp:5
-#: data/resources/ui/preferences/preferences.blp:29
+#: data/resources/ui/preferences.blp:5 data/resources/ui/preferences.blp:61
 msgid "Name Sources"
 msgstr "Fontes de nomes"
 
-#: data/resources/ui/preferences/name-sources-dialog.blp:17
+#: data/resources/ui/preferences.blp:15
 msgctxt ""
 "Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
 "#html4"
 msgid "Basic"
 msgstr "Básico"
 
-#: data/resources/ui/preferences/name-sources-dialog.blp:18
+#: data/resources/ui/preferences.blp:16
 msgid "Basic web colors"
 msgstr "Cores básicas da web"
 
-#: data/resources/ui/preferences/name-sources-dialog.blp:22
+#: data/resources/ui/preferences.blp:20
 msgctxt ""
 "Name of the extended color keyword set from https://www.w3.org/TR/css-"
 "color-3/#svg-color"
 msgid "Extended"
 msgstr "Estendido"
 
-#: data/resources/ui/preferences/name-sources-dialog.blp:23
+#: data/resources/ui/preferences.blp:21
 msgid "X11 and SVG color values"
 msgstr "Valores de cores X11 e SVG"
 
-#: data/resources/ui/preferences/name-sources-dialog.blp:27
+#: data/resources/ui/preferences.blp:25
 msgctxt ""
 "Name of the color set from the GNOME color palette (https://developer.gnome."
 "org/hig/reference/palette.html)"
 msgid "GNOME Color Palette"
 msgstr "Paleta de cores do GNOME"
 
-#: data/resources/ui/preferences/name-sources-dialog.blp:28
+#: data/resources/ui/preferences.blp:26
 msgid "Colors for GNOME app icons and illustrations"
 msgstr "Cores para ícones e ilustrações de aplicativos GNOME"
 
-#: data/resources/ui/preferences/name-sources-dialog.blp:32
+#: data/resources/ui/preferences.blp:30
 msgctxt "Name of the color set from the xkcd color survey"
 msgid "xkcd Color Survey"
 msgstr "Pesquisa de cores xkcd"
 
-#: data/resources/ui/preferences/name-sources-dialog.blp:33
+#: data/resources/ui/preferences.blp:31
 msgid "954 RGB colors named by volunteers"
 msgstr "954 cores RGB nomeadas por voluntários"
 
-#: data/resources/ui/preferences/preferences.blp:11
+#: data/resources/ui/preferences.blp:43
 msgid "General"
 msgstr "Geral"
 
-#: data/resources/ui/preferences/preferences.blp:14
+#: data/resources/ui/preferences.blp:46
 msgid "Formatting"
 msgstr "Formatação"
 
-#: data/resources/ui/preferences/preferences.blp:17
+#: data/resources/ui/preferences.blp:49
 msgid "Alpha-Value-Position"
 msgstr "Posição do valor alfa"
 
-#: data/resources/ui/preferences/preferences.blp:18
+#: data/resources/ui/preferences.blp:50
 msgid "Where the Alphavalue is positioned in the Hexstring"
 msgstr "Onde o valor alfa está posicionado dentro do valor Hex"
 
-#: data/resources/ui/preferences/preferences.blp:21
+#: data/resources/ui/preferences.blp:53
 msgctxt "Alphavalue is not shown"
 msgid "None"
 msgstr "Nenhum"
 
-#: data/resources/ui/preferences/preferences.blp:22
+#: data/resources/ui/preferences.blp:54
 msgctxt "Alphavalue is shown at the end"
 msgid "End"
 msgstr "Final"
 
-#: data/resources/ui/preferences/preferences.blp:23
+#: data/resources/ui/preferences.blp:55
 msgctxt "Alphavalue is shown at the start"
 msgid "Start"
 msgstr "Início"
 
-#: data/resources/ui/preferences/preferences.blp:30
+#: data/resources/ui/preferences.blp:62
 msgid "Sources for displaying color names"
 msgstr "Fontes para exibição dos nomes das cores"
 
-#: data/resources/ui/preferences/preferences.blp:41
-#: data/resources/ui/preferences/preferences.blp:49
+#: data/resources/ui/preferences.blp:73 data/resources/ui/preferences.blp:81
 msgid "Precision"
 msgstr "Precisão"
 
-#: data/resources/ui/preferences/preferences.blp:57
-msgid "CIE Color Space"
-msgstr "Espaço de cores CIE"
-
-#: data/resources/ui/preferences/preferences.blp:60
-msgid "CIE Illuminants"
-msgstr "Iluminantes CIE"
-
-#: data/resources/ui/preferences/preferences.blp:61
-msgid "Lighting conditions for the CIE color space"
-msgstr "Condições de iluminação para o espaço de cores CIE"
-
-#: data/resources/ui/preferences/preferences.blp:69
-msgid "A (Incandescent/tungsten)"
-msgstr "A (Incandescente/Tungstênio)"
-
-#: data/resources/ui/preferences/preferences.blp:70
-msgid "B (Old direct sunlight at noon)"
-msgstr "B (Luz solar direta ao meio-dia - obsoleto)"
-
-#: data/resources/ui/preferences/preferences.blp:71
-msgid "C (Old daylight)"
-msgstr "C (Luz diurna - obsoleto)"
-
-#: data/resources/ui/preferences/preferences.blp:72
-msgid "D50 (ICC profile PCS)"
-msgstr "D50 (Perfil ICC PCS)"
-
-#: data/resources/ui/preferences/preferences.blp:73
-msgid "D55 (Mid-morning daylight)"
-msgstr "D55 (Luz diurna do meio da manhã)"
-
-#: data/resources/ui/preferences/preferences.blp:74
-msgid "D65 (Daylight, sRGB, Adobe-RGB)"
-msgstr "D65 (Luz diurna, sRGB, Adobe-RGB)"
-
-#: data/resources/ui/preferences/preferences.blp:75
-msgid "D75 (North sky daylight)"
-msgstr "D75 (Luz diurna do céu do norte)"
-
-#: data/resources/ui/preferences/preferences.blp:76
-msgid "E (Equal energy)"
-msgstr "E (Igual energia)"
-
-#: data/resources/ui/preferences/preferences.blp:77
-msgid "F1 (Daylight Fluorescent)"
-msgstr "F1 (Fluorescente à luz diurna)"
-
-#: data/resources/ui/preferences/preferences.blp:78
-msgid "F2 (Cool fluorescent)"
-msgstr "F2 (Fluorescente fria)"
-
-#: data/resources/ui/preferences/preferences.blp:79
-msgid "F3 (White Fluorescent)"
-msgstr "F3 (Fluorescente branca)"
-
-#: data/resources/ui/preferences/preferences.blp:80
-msgid "F4 (Warm White Fluorescent)"
-msgstr "F4 (Fluorescente branca quente)"
-
-#: data/resources/ui/preferences/preferences.blp:81
-msgid "F5 (Daylight Fluorescent)"
-msgstr "F5 (Fluorescente à luz diurna)"
-
-#: data/resources/ui/preferences/preferences.blp:82
-msgid "F6 (Lite White Fluorescent)"
-msgstr "F6 (Fluorescente branca clara)"
-
-#: data/resources/ui/preferences/preferences.blp:83
-msgid "F7 (Daylight fluorescent, D65 simulator)"
-msgstr "F7 (Fluorescente à luz diurna, simulador D65)"
-
-#: data/resources/ui/preferences/preferences.blp:84
-msgid "F8 (Sylvania F40, D50 simulator)"
-msgstr "F8 (Sylvania F40, simulador D50)"
-
-#: data/resources/ui/preferences/preferences.blp:85
-msgid "F9 (Cool White Fluorescent)"
-msgstr "F9 (Fluorescente branca fria)"
-
-#: data/resources/ui/preferences/preferences.blp:86
-msgid "F10 (Ultralume 50, Philips TL85)"
-msgstr "F10 (Ultralume 50, Philips TL85)"
-
-#: data/resources/ui/preferences/preferences.blp:87
-msgid "F11 (Ultralume 40, Philips TL84)"
-msgstr "F11 (Ultralume 40, Philips TL84)"
-
-#: data/resources/ui/preferences/preferences.blp:88
-msgid "F12 (Ultralume 30, Philips TL83)"
-msgstr "F12 (Ultralume 30, Philips TL83)"
-
-#: data/resources/ui/preferences/preferences.blp:100
-msgid "CIE Standard Observer"
-msgstr "Observador padrão CIE"
-
-#: data/resources/ui/preferences/preferences.blp:101
-msgid "The CIE standard observer's field of view"
-msgstr "Campo de visão do observador padrão CIE"
-
-#: data/resources/ui/preferences/preferences.blp:112
+#: data/resources/ui/preferences.blp:89
 msgid "Color Formats"
 msgstr "Formatos de cores"
 
-#: data/resources/ui/preferences/preferences.blp:113
-msgid "Customize the visible formats and in which order they are displayed."
-msgstr "Personalize os formatos visíveis e a ordem em que são exibidos."
+#: data/resources/ui/preferences.blp:90
+msgid "Customize the visible formats and in which order they are displayed"
+msgstr "Personalize os formatos visíveis e em qual ordem eles são exibidos"
 
-#: data/resources/ui/preferences/preferences.blp:118
+#: data/resources/ui/preferences.blp:95
 msgctxt "Tooltip of the button to reset the format order"
 msgid "Reset Order"
 msgstr "Redefinir ordem"
-
-#: data/resources/ui/preferences/preferences.blp:138
-#: data/resources/ui/preferences/preferences.blp:141
-msgid "Formats"
-msgstr "Formatos"
-
-#: data/resources/ui/preferences/preferences.blp:142
-msgid ""
-"Edit how the color formats are displayed. The “{}” will be replaced in with "
-"the values of the formats. Custom formats cannot be used as input."
-msgstr ""
-"Modifique como os formatos de cores são exibidos. O “{}” será substituído "
-"pelos valores dos formatos. Formatos personalizados não podem ser usados "
-"como entrada."
-
-#: data/resources/ui/preferences/preferences.blp:145
-msgid "RGB Format"
-msgstr "Formato RGB"
-
-#: data/resources/ui/preferences/preferences.blp:151
-msgid "HSL Format"
-msgstr "Formato HSL"
-
-#: data/resources/ui/preferences/preferences.blp:157
-msgid "HSV Format"
-msgstr "Formato HSV"
-
-#: data/resources/ui/preferences/preferences.blp:163
-msgid "CMYK Format"
-msgstr "Formato CMYK"
-
-#: data/resources/ui/preferences/preferences.blp:169
-msgid "XYZ Format"
-msgstr "Formato XYZ"
-
-#: data/resources/ui/preferences/preferences.blp:175
-msgid "CIELAB Format"
-msgstr "Formato CIELAB"
-
-#: data/resources/ui/preferences/preferences.blp:181
-msgid "HWB Format"
-msgstr "Formato HWB"
-
-#: data/resources/ui/preferences/preferences.blp:187
-msgid "CIELCh/HCL Format"
-msgstr "Formato CIELCh/HCL"
-
-#: data/resources/ui/preferences/preferences.blp:193
-msgid "LMS Format"
-msgstr "Formato LMS"
-
-#: data/resources/ui/preferences/preferences.blp:199
-msgid "Hunter Lab Format"
-msgstr "Formato Hunter Lab"
-
-#: data/resources/ui/preferences/preferences.blp:205
-msgid "Oklab Format"
-msgstr "Formato Oklab"
-
-#: data/resources/ui/preferences/preferences.blp:211
-msgid "Oklch Format"
-msgstr "Formato Oklch"
 
 #: data/resources/ui/shortcuts.blp:11
 msgctxt "shortcut window"
@@ -443,7 +240,7 @@ msgstr "Cor"
 
 #: data/resources/ui/shortcuts.blp:33
 msgctxt "shortcut window"
-msgid "Pick a new Color"
+msgid "Pick a New Color"
 msgstr "Escolha uma nova cor"
 
 #: data/resources/ui/shortcuts.blp:38
@@ -457,7 +254,7 @@ msgstr "_Limpar histórico"
 
 #: data/resources/ui/window.blp:12
 msgid "_Random Color"
-msgstr "Gerar _cor aleatória"
+msgstr "_Gerar cor aleatória"
 
 #: data/resources/ui/window.blp:19
 msgid "_Preferences"
@@ -465,107 +262,80 @@ msgstr "_Preferências"
 
 #: data/resources/ui/window.blp:24
 msgid "_Keyboard Shortcuts"
-msgstr "_Atalhos de teclado"
+msgstr "Atalhos de _teclado"
 
 #: data/resources/ui/window.blp:29
 msgid "_About Eyedropper"
 msgstr "_Sobre o Eyedropper"
 
-#: data/resources/ui/window.blp:50
+#: data/resources/ui/window.blp:52
 msgid "No Color"
 msgstr "Nenhuma cor selecionada"
 
-#: data/resources/ui/window.blp:51
-msgid "Select a color from the screen to get started."
-msgstr "Selecione uma cor na tela para começar."
-
 #: data/resources/ui/window.blp:53
-msgid "_Pick a Color"
-msgstr "_Selecionar cor"
+msgid "Select a color from the screen to get started"
+msgstr "Selecione uma cor na tela para começar"
 
-#: data/resources/ui/window.blp:78
+#: data/resources/ui/window.blp:56
+msgid "_Pick a Color"
+msgstr "Selecionar _cor"
+
+#: data/resources/ui/window.blp:106
+msgid "Color Picker not Available"
+msgstr "Seletor de cores indisponível"
+
+#: data/resources/ui/window.blp:116
+msgid "The system is not properly configured to allow for color picking"
+msgstr ""
+"O sistema não está corretamente configurado para permitir a seleção de cores"
+
+#: data/resources/ui/window.blp:128
+msgid "_Continue Regardless"
+msgstr "_Continuar de qualquer maneira"
+
+#: data/resources/ui/window.blp:156
 msgctxt "Tooltip of the colorpicker button"
 msgid "Pick a Color"
 msgstr "Selecionar cor"
 
-#: data/resources/ui/window.blp:85
+#: data/resources/ui/window.blp:163
 msgid "Main Menu"
 msgstr "Menu principal"
 
-#: data/resources/ui/window.blp:108
+#: data/resources/ui/window.blp:187
 msgctxt "Tooltip of the palette button"
-msgid "Open Palette Window"
-msgstr "Abrir janela de paletas"
+msgid "Edit Color"
+msgstr "Editar cor"
 
-#: data/resources/ui/window.blp:128
-msgid "Copy Name"
-msgstr "Copiar nome"
+#: data/resources/ui/window.blp:288 src/widgets/color_format_row.rs:170
+msgid "Apply"
+msgstr "Aplicar"
 
-#: data/resources/ui/window.blp:133
+#: src/colors/notation.rs:231
+msgid "Not named"
+msgstr "Sem nome"
+
+#: src/colors/notation.rs:237
 msgid "Copy Hex Code"
 msgstr "Copiar código Hex"
 
-#: data/resources/ui/window.blp:137
-msgid "Copy RGB"
-msgstr "Copiar RGB"
-
-#: data/resources/ui/window.blp:141
-msgid "Copy HSL"
-msgstr "Copiar HSL"
-
-#: data/resources/ui/window.blp:145
-msgid "Copy HSV"
-msgstr "Copiar HSV"
-
-#: data/resources/ui/window.blp:149
-msgid "Copy CMYK"
-msgstr "Copiar CMYK"
-
-#: data/resources/ui/window.blp:153
-msgid "Copy XYZ"
-msgstr "Copiar XYZ"
-
-#: data/resources/ui/window.blp:158
-msgid "Copy CIELAB"
-msgstr "Copiar CIELAB"
-
-#: data/resources/ui/window.blp:163
-msgid "Copy HWB"
-msgstr "Copiar HWB"
-
-#: data/resources/ui/window.blp:168
-msgid "Copy CIELCh / HCL"
-msgstr "Copiar CIELCh/HCL"
-
-#: data/resources/ui/window.blp:173
-msgid "Copy LMS"
-msgstr "Copiar LMS"
-
-#: data/resources/ui/window.blp:178
-msgid "Copy Hunter Lab"
-msgstr "Copiar Hunter Lab"
-
-#: data/resources/ui/window.blp:183
-msgid "Copy Oklab"
-msgstr "Copiar Oklab"
-
-#: data/resources/ui/window.blp:188
-msgid "Copy Oklch"
-msgstr "Copiar Oklch"
+#: src/colors/notation.rs:258
+msgid "Hex Code"
+msgstr "Código Hex"
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
-#: src/widgets/about_window.rs:47
+#: src/widgets/about_window.rs:38
 msgid "translator-credits"
 msgstr ""
 "Ciro Mota <contato.ciromota@outlook.com>\n"
 "Tiago Lucas Flach https://github.com/tiagoFlach\n"
 "Filipe Motta <luizfilipemotta@gmail.com>"
 
-#: src/widgets/about_window.rs:85
+#: src/widgets/about_window.rs:75
 msgid "Parse RGBA/ARGB Hex-Colors"
 msgstr "Analisar cores hexadecimais RGBA/ARGB"
 
-#: src/widgets/about_window.rs:105
+#: src/widgets/about_window.rs:95
 msgctxt ""
 "The changelog of the current version. Should be similar to the CHANGELOG.md "
 "file at the project root. Please ensure that the tags have a matching "
@@ -587,86 +357,266 @@ msgstr ""
 "dos aplicativos GNOME</li><li>Melhorias no código interno e correções de "
 "bugs</li></ul>"
 
-#: src/widgets/color_format_row.rs:179
+#: src/widgets/color_format_row.rs:239
 msgid "Copied “{}”"
 msgstr "“{}” copiado"
 
-#: src/widgets/history_item.rs:118
-msgid "Remove"
-msgstr "Remover"
-
-#: src/widgets/palette_dialog.rs:85
-msgctxt "Name for tints (lighter variants) of the color"
-msgid "Tints"
-msgstr "Matizes"
-
-#: src/widgets/palette_dialog.rs:87
-msgctxt "Name for shades (darker variants) of the color"
-msgid "Shades"
-msgstr "Sombras"
-
-#: src/widgets/palette_dialog.rs:91
-msgctxt "Name for the opposite/complementary color (e.g. blue ⇔ yellow)"
-msgid "Complementary"
-msgstr "Complementar"
-
-#: src/widgets/palette_dialog.rs:96
-msgctxt ""
-"The name of the color palette. Consist of the two opposite colors (e.g. blue "
-"⇔ orange / green)"
-msgid "Split-Complementary"
-msgstr "Complementar dividida"
-
-#: src/widgets/palette_dialog.rs:101
-msgctxt ""
-"Name of the color palette, which would form a triangle above the color wheel"
-msgid "Triadic"
-msgstr "Triádica"
-
-#: src/widgets/palette_dialog.rs:104
-msgctxt "The name of the color palette."
-msgid "Tetradic"
-msgstr "Tetrádica"
-
-#: src/widgets/palette_dialog.rs:108
-msgctxt "Color palette consisting of six slight shifted colors"
-msgid "Analogous"
-msgstr "Análogas"
-
-#: src/widgets/preferences/preferences_window.rs:294
+#: src/widgets/preferences/preferences_window.rs:351
 msgid "Move Up"
 msgstr "Mover para cima"
 
-#: src/widgets/preferences/preferences_window.rs:296
+#: src/widgets/preferences/preferences_window.rs:353
 msgid "Move Down"
 msgstr "Mover para baixo"
 
-#: src/widgets/preferences/preferences_window.rs:392
-msgid "Hex-Code"
-msgstr "Código Hex"
-
-#: src/widgets/preferences/preferences_window.rs:403
-msgid "Name"
-msgstr "Nome"
-
-#: src/widgets/preferences/preferences_window.rs:406 src/window.rs:441
-#: src/window.rs:466 src/window.rs:668 src/window.rs:851
-msgctxt "Information that no name for the color could be found"
-msgid "Not named"
-msgstr "Sem nome"
-
-#: src/window.rs:269
+#: src/window.rs:290
 msgid "Cleared history"
 msgstr "Histórico limpo"
 
-#: src/window.rs:270
+#: src/window.rs:291
 msgid "Undo"
 msgstr "Desfazer"
 
-#: src/window.rs:559
-msgid "Failed to get palette color"
-msgstr "Falha ao obter a cor da paleta"
-
-#: src/window.rs:590
+#: src/window.rs:464
 msgid "Failed to pick a color"
 msgstr "Falha ao selecionar uma cor"
+
+#~ msgid "Dialog showing generated color palettes"
+#~ msgstr "Caixa de diálogo mostrando paletas de cores geradas"
+
+#~ msgctxt "Adobes palette format"
+#~ msgid "Adobe Swatch Exchange"
+#~ msgstr "Adobe Swatch Exchange"
+
+#~ msgctxt "LibreOffice/OpenOffice palette file"
+#~ msgid "LibreOffice Palette"
+#~ msgstr "Paleta do LibreOffice"
+
+#~ msgctxt "Gimp/Inkscape palette format"
+#~ msgid "Gimp Palette"
+#~ msgstr "Paleta do Gimp"
+
+#~ msgctxt "Paint.net palette format, should most like not be translated"
+#~ msgid "Paint.NET"
+#~ msgstr "Paint.NET"
+
+#~ msgctxt "Palette format file name"
+#~ msgid "Hex"
+#~ msgstr "Hex"
+
+#~ msgctxt "Palette format file name"
+#~ msgid "PAL"
+#~ msgstr "PAL"
+
+#~ msgid "Palettes"
+#~ msgstr "Paletas"
+
+#~ msgid "Save Palettes…"
+#~ msgstr "Salvar paletas…"
+
+#~ msgctxt "Tooltip of the reset button for custom format"
+#~ msgid "Reset Format"
+#~ msgstr "Redefinir formato"
+
+#~ msgid "CIE Color Space"
+#~ msgstr "Espaço de cores CIE"
+
+#~ msgid "CIE Illuminants"
+#~ msgstr "Iluminantes CIE"
+
+#~ msgid "Lighting conditions for the CIE color space"
+#~ msgstr "Condições de iluminação para o espaço de cores CIE"
+
+#~ msgid "A (Incandescent/tungsten)"
+#~ msgstr "A (Incandescente/Tungstênio)"
+
+#~ msgid "B (Old direct sunlight at noon)"
+#~ msgstr "B (Luz solar direta ao meio-dia - obsoleto)"
+
+#~ msgid "C (Old daylight)"
+#~ msgstr "C (Luz diurna - obsoleto)"
+
+#~ msgid "D50 (ICC profile PCS)"
+#~ msgstr "D50 (Perfil ICC PCS)"
+
+#~ msgid "D55 (Mid-morning daylight)"
+#~ msgstr "D55 (Luz diurna do meio da manhã)"
+
+#~ msgid "D65 (Daylight, sRGB, Adobe-RGB)"
+#~ msgstr "D65 (Luz diurna, sRGB, Adobe-RGB)"
+
+#~ msgid "D75 (North sky daylight)"
+#~ msgstr "D75 (Luz diurna do céu do norte)"
+
+#~ msgid "E (Equal energy)"
+#~ msgstr "E (Igual energia)"
+
+#~ msgid "F1 (Daylight Fluorescent)"
+#~ msgstr "F1 (Fluorescente à luz diurna)"
+
+#~ msgid "F2 (Cool fluorescent)"
+#~ msgstr "F2 (Fluorescente fria)"
+
+#~ msgid "F3 (White Fluorescent)"
+#~ msgstr "F3 (Fluorescente branca)"
+
+#~ msgid "F4 (Warm White Fluorescent)"
+#~ msgstr "F4 (Fluorescente branca quente)"
+
+#~ msgid "F5 (Daylight Fluorescent)"
+#~ msgstr "F5 (Fluorescente à luz diurna)"
+
+#~ msgid "F6 (Lite White Fluorescent)"
+#~ msgstr "F6 (Fluorescente branca clara)"
+
+#~ msgid "F7 (Daylight fluorescent, D65 simulator)"
+#~ msgstr "F7 (Fluorescente à luz diurna, simulador D65)"
+
+#~ msgid "F8 (Sylvania F40, D50 simulator)"
+#~ msgstr "F8 (Sylvania F40, simulador D50)"
+
+#~ msgid "F9 (Cool White Fluorescent)"
+#~ msgstr "F9 (Fluorescente branca fria)"
+
+#~ msgid "F10 (Ultralume 50, Philips TL85)"
+#~ msgstr "F10 (Ultralume 50, Philips TL85)"
+
+#~ msgid "F11 (Ultralume 40, Philips TL84)"
+#~ msgstr "F11 (Ultralume 40, Philips TL84)"
+
+#~ msgid "F12 (Ultralume 30, Philips TL83)"
+#~ msgstr "F12 (Ultralume 30, Philips TL83)"
+
+#~ msgid "CIE Standard Observer"
+#~ msgstr "Observador padrão CIE"
+
+#~ msgid "The CIE standard observer's field of view"
+#~ msgstr "Campo de visão do observador padrão CIE"
+
+#~ msgid "Formats"
+#~ msgstr "Formatos"
+
+#~ msgid ""
+#~ "Edit how the color formats are displayed. The “{}” will be replaced in "
+#~ "with the values of the formats. Custom formats cannot be used as input."
+#~ msgstr ""
+#~ "Modifique como os formatos de cores são exibidos. O “{}” será substituído "
+#~ "pelos valores dos formatos. Formatos personalizados não podem ser usados "
+#~ "como entrada."
+
+#~ msgid "RGB Format"
+#~ msgstr "Formato RGB"
+
+#~ msgid "HSL Format"
+#~ msgstr "Formato HSL"
+
+#~ msgid "HSV Format"
+#~ msgstr "Formato HSV"
+
+#~ msgid "CMYK Format"
+#~ msgstr "Formato CMYK"
+
+#~ msgid "XYZ Format"
+#~ msgstr "Formato XYZ"
+
+#~ msgid "CIELAB Format"
+#~ msgstr "Formato CIELAB"
+
+#~ msgid "HWB Format"
+#~ msgstr "Formato HWB"
+
+#~ msgid "CIELCh/HCL Format"
+#~ msgstr "Formato CIELCh/HCL"
+
+#~ msgid "LMS Format"
+#~ msgstr "Formato LMS"
+
+#~ msgid "Hunter Lab Format"
+#~ msgstr "Formato Hunter Lab"
+
+#~ msgid "Oklab Format"
+#~ msgstr "Formato Oklab"
+
+#~ msgid "Oklch Format"
+#~ msgstr "Formato Oklch"
+
+#~ msgctxt "Tooltip of the palette button"
+#~ msgid "Open Palette Window"
+#~ msgstr "Abrir janela de paletas"
+
+#~ msgid "Copy Name"
+#~ msgstr "Copiar nome"
+
+#~ msgid "Copy RGB"
+#~ msgstr "Copiar RGB"
+
+#~ msgid "Copy HSL"
+#~ msgstr "Copiar HSL"
+
+#~ msgid "Copy HSV"
+#~ msgstr "Copiar HSV"
+
+#~ msgid "Copy CMYK"
+#~ msgstr "Copiar CMYK"
+
+#~ msgid "Copy XYZ"
+#~ msgstr "Copiar XYZ"
+
+#~ msgid "Copy CIELAB"
+#~ msgstr "Copiar CIELAB"
+
+#~ msgid "Copy HWB"
+#~ msgstr "Copiar HWB"
+
+#~ msgid "Copy CIELCh / HCL"
+#~ msgstr "Copiar CIELCh/HCL"
+
+#~ msgid "Copy LMS"
+#~ msgstr "Copiar LMS"
+
+#~ msgid "Copy Hunter Lab"
+#~ msgstr "Copiar Hunter Lab"
+
+#~ msgid "Copy Oklab"
+#~ msgstr "Copiar Oklab"
+
+#~ msgid "Copy Oklch"
+#~ msgstr "Copiar Oklch"
+
+#~ msgctxt "Name for tints (lighter variants) of the color"
+#~ msgid "Tints"
+#~ msgstr "Matizes"
+
+#~ msgctxt "Name for shades (darker variants) of the color"
+#~ msgid "Shades"
+#~ msgstr "Sombras"
+
+#~ msgctxt "Name for the opposite/complementary color (e.g. blue ⇔ yellow)"
+#~ msgid "Complementary"
+#~ msgstr "Complementar"
+
+#~ msgctxt ""
+#~ "The name of the color palette. Consist of the two opposite colors (e.g. "
+#~ "blue ⇔ orange / green)"
+#~ msgid "Split-Complementary"
+#~ msgstr "Complementar dividida"
+
+#~ msgctxt ""
+#~ "Name of the color palette, which would form a triangle above the color "
+#~ "wheel"
+#~ msgid "Triadic"
+#~ msgstr "Triádica"
+
+#~ msgctxt "The name of the color palette."
+#~ msgid "Tetradic"
+#~ msgstr "Tetrádica"
+
+#~ msgctxt "Color palette consisting of six slight shifted colors"
+#~ msgid "Analogous"
+#~ msgstr "Análogas"
+
+#~ msgid "Name"
+#~ msgstr "Nome"
+
+#~ msgid "Failed to get palette color"
+#~ msgstr "Falha ao obter a cor da paleta"
