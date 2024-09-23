@@ -99,7 +99,7 @@ impl Notation {
                     rgb(color.red),
                     rgb(color.green),
                     rgb(color.blue),
-                    rgb(color.alpha),
+                    pretty_percent(color.alpha),
                 );
                 match alpha_position {
                     AlphaPosition::End => format!("rgba({}, {}, {}, {})", r, g, b, a),
