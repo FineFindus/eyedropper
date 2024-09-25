@@ -52,16 +52,32 @@ template $AppWindow: Adw.ApplicationWindow {
               title: _("No Color");
               description: _("Select a color from the screen to get started");
 
-              child: Button {
-                label: _("_Pick a Color");
-                use-underline: true;
-                halign: center;
-                action-name: "app.pick_color";
+              child: Box {
+                orientation: vertical;
+                spacing: 12;
 
-                styles [
-                  "pill",
-                  "suggested-action",
-                ]
+                Button {
+                  label: _("_Pick a Color");
+                  use-underline: true;
+                  halign: center;
+                  action-name: "app.pick_color";
+
+                  styles [
+                    "pill",
+                    "suggested-action",
+                  ]
+                }
+
+                Button {
+                  label: _("_Random Color");
+                  use-underline: true;
+                  halign: center;
+                  action-name: "app.random_color";
+
+                  styles [
+                    "pill",
+                  ]
+                }
               };
             };
           };
