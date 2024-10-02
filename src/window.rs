@@ -480,6 +480,10 @@ impl AppWindow {
                                 adw::ToastPriority::Normal,
                             );
                             window.imp().portal_error.replace(Some(err));
+                            // show the warning page to indicate to the user that color picking is
+                            // not supported, also disables the color picker to avoid further
+                            // errors
+                            window.imp().show_portal_error_page();
                         }
                     }
                 };
