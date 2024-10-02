@@ -222,27 +222,21 @@ mod imp {
             let Ok(connection) = zbus::Connection::session().await else {
                 return false;
             };
-
-            let Ok(msg) = connection
-                .call_method(
-                    Some("org.freedesktop.portal.Desktop"),
-                    "/org/freedesktop/portal/desktop",
-                    Some("org.freedesktop.DBus.Properties"),
-                    "Get",
-                    &("org.freedesktop.portal.Screenshot", "version"),
-                )
+            let Ok(proxy): zbus::Result<zbus::Proxy> = zbus::ProxyBuilder::new(&connection)
+                .interface("org.freedesktop.portal.Screenshot")
+                .and_then(|b| b.path("/org/freedesktop/portal/desktop"))
+                .and_then(|b| b.destination("org.freedesktop.portal.Desktop"))
+                .expect("ProxyBuilder should be valid")
+                .build()
                 .await
             else {
                 return false;
             };
+            let version = proxy.get_property::<u32>("version").await;
 
             // version 2 indicates that the color picker is supported:
             // see: https://github.com/flatpak/xdg-desktop-portal/pull/766,
-            msg.body()
-                .deserialize::<zbus::zvariant::Value>()
-                .ok()
-                .and_then(|v| v.downcast::<u32>().ok())
-                .is_some_and(|version| version >= 2)
+            version.is_ok_and(|version| version >= 2)
         }
 
         /// Shows a warning page, explaining that the system does not support color picking.
