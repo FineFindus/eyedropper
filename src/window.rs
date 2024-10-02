@@ -173,13 +173,8 @@ mod imp {
                 #[weak(rename_to = window)]
                 self,
                 async move {
-                    if window
-                        .is_color_picker_available()
-                        .await
-                        .is_ok_and(|portal_exists| !portal_exists)
-                    {
-                        window.stack.set_visible_child_name("portal-error");
-                        window.color_picker_button.set_sensitive(false);
+                    if !window.is_color_picker_available().await {
+                        window.show_portal_error_page();
                     }
                 }
             ));
@@ -221,10 +216,16 @@ mod imp {
     impl AdwApplicationWindowImpl for AppWindow {}
 
     impl AppWindow {
-        async fn is_color_picker_available(&self) -> zbus::Result<bool> {
-            let connection = zbus::Connection::session().await?;
+        /// Check if the system supports color picking.
+        ///
+        /// This is done by checking which methods the dbus portal advertises.
+        /// Some portal implementations may lie about the methods that are actually implemented.
+        async fn is_color_picker_available(&self) -> bool {
+            let Ok(connection) = zbus::Connection::session().await else {
+                return false;
+            };
 
-            let msg = connection
+            let Ok(msg) = connection
                 .call_method(
                     Some("org.freedesktop.portal.Desktop"),
                     "/org/freedesktop/portal/desktop",
@@ -232,8 +233,20 @@ mod imp {
                     "Introspect",
                     &(),
                 )
-                .await?;
-            Ok(msg.body().deserialize::<String>()?.contains("PickColor"))
+                .await
+            else {
+                return false;
+            };
+            msg.body()
+                .deserialize::<String>()
+                .unwrap_or_default()
+                .contains("PickColor")
+        }
+
+        /// Shows a warning page, explaining that the system does not support color picking.
+        pub fn show_portal_error_page(&self) {
+            self.stack.set_visible_child_name("portal-error");
+            self.color_picker_button.set_sensitive(false);
         }
     }
 }
