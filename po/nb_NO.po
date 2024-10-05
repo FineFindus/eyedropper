@@ -7,35 +7,38 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2024-10-02 19:56+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2024-10-06 08:16+0000\n"
+"Last-Translator: Brage Fuglseth <brage.fuglseth@gmail.com>\n"
+"Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
+"eyedropper/eyedropper/nb_NO/>\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
 #: data/resources/ui/window.blp:152 src/main.rs:28
 #: src/widgets/about_window.rs:32
 msgid "Eyedropper"
-msgstr ""
+msgstr "Eyedropper"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:4
 msgid "Color Picker"
-msgstr ""
+msgstr "Fargevelger"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
 #: src/widgets/about_window.rs:61
 msgid "Pick and format colors"
-msgstr ""
+msgstr "Velg farger fra skjermen"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
 msgid "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
-msgstr ""
+msgstr "GNOME;GTK;Farger;Fargevelger;Palett;"
 
 #. developer_name tag deprecated with Appstream 1.0
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
@@ -49,276 +52,281 @@ msgid ""
 "picked color or go back to a previously picked color from the history list. "
 "Generate a list of different shades from the picked color."
 msgstr ""
+"Jobb med farger som aldri før! Eyedropper gjør det til en lek å identifisere "
+"og bruke farger fra apper, bilder, dokumenter og nettsteder."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
 #: src/widgets/about_window.rs:69
 msgid "Features"
-msgstr ""
+msgstr "Mulighetene er mange:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
 #: src/widgets/about_window.rs:73
 msgid "Pick a Color"
-msgstr ""
+msgstr "Velg farger fra hvor som helst på skjermen"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:23
 #: src/widgets/about_window.rs:74
 msgid "Enter a color in Hex-Format"
-msgstr ""
+msgstr "Angi farger med heksadesimal-syntaks"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:24
 msgid "Enter colors in different formats"
-msgstr ""
+msgstr "Appen støtter alle de vanlige fargesyntaksene"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:25
 #: src/widgets/about_window.rs:76
 msgid "View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format"
 msgstr ""
+"Se den samme fargen skrevet med heksadesimal-, RGB-, HSL-, CMYK-, XYZ- og "
+"CIE-Lab-syntaksene"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:26
 #: src/widgets/about_window.rs:77
 msgid "Customize which formats appear as well as their order"
-msgstr ""
+msgstr "Endre utvalget av og rekkefølgen på synlige fargesyntakser"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:27
 #: src/widgets/about_window.rs:78
 msgid "Generate a palette of different shades"
-msgstr ""
+msgstr "Generer paletter med forskjellige toner av samme farge"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:33
 msgid "Main window with a color in different formats"
-msgstr ""
+msgstr "Hovedvindu med en farge skrevet med forskjellige syntakser"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:37
 msgid "Main window with customized formats"
-msgstr ""
+msgstr "Hovedvindu med egne syntakser"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:41
 msgid "Editor with an HSL editor"
-msgstr ""
+msgstr "HSL-fargeredigering"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:45
 msgid "Status page stating to pick a color to get started"
-msgstr ""
+msgstr "Startside"
 
 #: data/resources/ui/history-item.blp:5
 msgid "Remove"
-msgstr ""
+msgstr "Fjern"
 
 #: data/resources/ui/preferences.blp:5 data/resources/ui/preferences.blp:61
 msgid "Name Sources"
-msgstr ""
+msgstr "Navnekilder"
 
 #: data/resources/ui/preferences.blp:15
 msgctxt ""
 "Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
 "#html4"
 msgid "Basic"
-msgstr ""
+msgstr "Grunnleggende"
 
 #: data/resources/ui/preferences.blp:16
 msgid "Basic web colors"
-msgstr ""
+msgstr "Grunnleggende farger fra CSS-standarden"
 
 #: data/resources/ui/preferences.blp:20
 msgctxt ""
 "Name of the extended color keyword set from https://www.w3.org/TR/css-"
 "color-3/#svg-color"
 msgid "Extended"
-msgstr ""
+msgstr "Utvidet"
 
 #: data/resources/ui/preferences.blp:21
 msgid "X11 and SVG color values"
-msgstr ""
+msgstr "Farger fra X11-visningssystemet og SVG-standarden"
 
 #: data/resources/ui/preferences.blp:25
 msgctxt ""
 "Name of the color set from the GNOME color palette (https://developer.gnome."
 "org/hig/reference/palette.html)"
 msgid "GNOME Color Palette"
-msgstr ""
+msgstr "GNOME"
 
 #: data/resources/ui/preferences.blp:26
 msgid "Colors for GNOME app icons and illustrations"
-msgstr ""
+msgstr "Farger brukt i GNOME-prosjektets appikoner og illustrasjoner"
 
 #: data/resources/ui/preferences.blp:30
 msgctxt "Name of the color set from the xkcd color survey"
 msgid "xkcd Color Survey"
-msgstr ""
+msgstr "xkcd-fargeundersøkelsen"
 
 #: data/resources/ui/preferences.blp:31
 msgid "954 RGB colors named by volunteers"
-msgstr ""
+msgstr "954 farger navngitt av frivillige"
 
 #: data/resources/ui/preferences.blp:43
 msgid "General"
-msgstr ""
+msgstr "Generelt"
 
 #: data/resources/ui/preferences.blp:46
 msgid "Formatting"
-msgstr ""
+msgstr "Syntaks"
 
 #: data/resources/ui/preferences.blp:49
 msgid "Alpha-Value-Position"
-msgstr ""
+msgstr "Gjennomsiktighet"
 
 #: data/resources/ui/preferences.blp:50
 msgid "Where the Alphavalue is positioned in the Hexstring"
-msgstr ""
+msgstr "Indikering av gjennomsiktighet i heksadesimal-farger"
 
 #: data/resources/ui/preferences.blp:53
 msgctxt "Alphavalue is not shown"
 msgid "None"
-msgstr ""
+msgstr "Ingen"
 
 #: data/resources/ui/preferences.blp:54
 msgctxt "Alphavalue is shown at the end"
 msgid "End"
-msgstr ""
+msgstr "Bak"
 
 #: data/resources/ui/preferences.blp:55
 msgctxt "Alphavalue is shown at the start"
 msgid "Start"
-msgstr ""
+msgstr "Foran"
 
 #: data/resources/ui/preferences.blp:62
 msgid "Sources for displaying color names"
-msgstr ""
+msgstr "Kilder til fargenavn"
 
 #: data/resources/ui/preferences.blp:73 data/resources/ui/preferences.blp:81
 msgid "Precision"
-msgstr ""
+msgstr "Nøyaktighet"
 
 #: data/resources/ui/preferences.blp:89
 msgid "Color Formats"
-msgstr ""
+msgstr "Fargesyntakser"
 
 #: data/resources/ui/preferences.blp:90
 msgid "Customize the visible formats and in which order they are displayed"
-msgstr ""
+msgstr "Hvilke fargesyntakser som vises i hvilken rekkefølge"
 
 #: data/resources/ui/preferences.blp:95
 msgctxt "Tooltip of the button to reset the format order"
 msgid "Reset Order"
-msgstr ""
+msgstr "Tilbakestill rekkefølge"
 
 #: data/resources/ui/shortcuts.blp:11
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "Generelt"
 
 #: data/resources/ui/shortcuts.blp:14
 msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr ""
+msgstr "Vis innstillinger"
 
 #: data/resources/ui/shortcuts.blp:19
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "Vis tastatursnarveier"
 
 #: data/resources/ui/shortcuts.blp:24
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr ""
+msgstr "Avslutt"
 
 #: data/resources/ui/shortcuts.blp:30
 msgctxt "shortcut window"
 msgid "Color"
-msgstr ""
+msgstr "Farge"
 
 #: data/resources/ui/shortcuts.blp:33
 msgctxt "shortcut window"
 msgid "Pick a New Color"
-msgstr ""
+msgstr "Velg ny farge"
 
 #: data/resources/ui/shortcuts.blp:38
 msgctxt "shortcut window"
 msgid "Randomize the Color"
-msgstr ""
+msgstr "Tilfeldig farge"
 
 #: data/resources/ui/window.blp:7
 msgid "_Clear History"
-msgstr ""
+msgstr "Tilbakestill _logg"
 
 #: data/resources/ui/window.blp:12
 msgid "_Random Color"
-msgstr ""
+msgstr "Tilfeldig _farge"
 
 #: data/resources/ui/window.blp:19
 msgid "_Preferences"
-msgstr ""
+msgstr "_Innstillinger"
 
 #: data/resources/ui/window.blp:24
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Tastatursnarveier"
 
 #: data/resources/ui/window.blp:29
 msgid "_About Eyedropper"
-msgstr ""
+msgstr "_Om Eyedropper"
 
 #: data/resources/ui/window.blp:52
 msgid "No Color"
-msgstr ""
+msgstr "Ingen farge"
 
 #: data/resources/ui/window.blp:53
 msgid "Select a color from the screen to get started"
-msgstr ""
+msgstr "Velg en farge fra skjermen for å komme i gang"
 
 #: data/resources/ui/window.blp:56
 msgid "_Pick a Color"
-msgstr ""
+msgstr "_Velg farge"
 
 #: data/resources/ui/window.blp:106
 msgid "Color Picker not Available"
-msgstr ""
+msgstr "Ingen fargevelger"
 
 #: data/resources/ui/window.blp:116
 msgid "The system is not properly configured to allow for color picking"
 msgstr ""
+"Dette systemet er ikke satt opp til å kunne utføre fargevelging fra skjermen"
 
 #: data/resources/ui/window.blp:128
 msgid "_Continue Regardless"
-msgstr ""
+msgstr "_Fortsett uansett"
 
 #: data/resources/ui/window.blp:156
 msgctxt "Tooltip of the colorpicker button"
 msgid "Pick a Color"
-msgstr ""
+msgstr "Velg farge"
 
 #: data/resources/ui/window.blp:163
 msgid "Main Menu"
-msgstr ""
+msgstr "Hovedmeny"
 
 #: data/resources/ui/window.blp:187
 msgctxt "Tooltip of the palette button"
 msgid "Edit Color"
-msgstr ""
+msgstr "Rediger farge"
 
 #: data/resources/ui/window.blp:288 src/widgets/color_format_row.rs:170
 msgid "Apply"
-msgstr ""
+msgstr "Bruk"
 
 #: src/colors/notation.rs:231
 msgid "Not named"
-msgstr ""
+msgstr "Uten navn"
 
 #: src/colors/notation.rs:237
 msgid "Copy Hex Code"
-msgstr ""
+msgstr "Kopier heksadesimaler"
 
 #: src/colors/notation.rs:258
 msgid "Hex Code"
-msgstr ""
+msgstr "Heksadesimaler"
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/widgets/about_window.rs:38
 msgid "translator-credits"
-msgstr ""
+msgstr "Brage Fuglseth https://bragefuglseth.dev"
 
 #: src/widgets/about_window.rs:75
 msgid "Parse RGBA/ARGB Hex-Colors"
-msgstr ""
+msgstr "Bruk heksadesyntaks med innebygd gjennomsiktighet"
 
 #: src/widgets/about_window.rs:95
 msgctxt ""
@@ -334,27 +342,33 @@ msgid ""
 "li><li>Visual refinements to match the state of the art of GNOME apps</"
 "li><li>Internal code improvements and bug fixes</li></ul>"
 msgstr ""
+"<p>Denne oppdateringen kommer med flere nye funksjoner og forbedringer:</p>\n"
+"<ul><li>Skriv inn farger i hvilket som helst format</li><li>Forhåndsvisning "
+"av farger i systemsøk</li><li>Eksportering av paletter til LibreOffice</"
+"li><li>Visuelt skille mellom farge og bakgrunn</li><li>Forbedret "
+"fargekonvertering</li><li>Forbedringer i utseende for å følge moderne GNOME-"
+"konvensjoner</li><li>Interne forbedringer og reparasjoner</li></ul>"
 
 #: src/widgets/color_format_row.rs:239
 msgid "Copied “{}”"
-msgstr ""
+msgstr "«{}» kopiert til utklippstavlen"
 
 #: src/widgets/preferences/preferences_window.rs:351
 msgid "Move Up"
-msgstr ""
+msgstr "Flytt opp"
 
 #: src/widgets/preferences/preferences_window.rs:353
 msgid "Move Down"
-msgstr ""
+msgstr "Flytt ned"
 
 #: src/window.rs:299
 msgid "Cleared history"
-msgstr ""
+msgstr "Logg tilbakestilt"
 
 #: src/window.rs:300
 msgid "Undo"
-msgstr ""
+msgstr "Angre"
 
 #: src/window.rs:473
 msgid "Failed to pick a color"
-msgstr ""
+msgstr "Fargevelging mislyktes"
