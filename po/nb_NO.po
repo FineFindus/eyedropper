@@ -1,0 +1,360 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Eyedropper package.
+# Brage Fuglseth <brage.fuglseth@gmail.com>, 2024.
+msgid ""
+msgstr ""
+"Project-Id-Version: Eyedropper\n"
+"Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
+"POT-Creation-Date: 2024-10-02 19:56+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: nb_NO\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:3
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
+#: data/resources/ui/window.blp:152 src/main.rs:28
+#: src/widgets/about_window.rs:32
+msgid "Eyedropper"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:4
+msgid "Color Picker"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:5
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
+#: src/widgets/about_window.rs:61
+msgid "Pick and format colors"
+msgstr ""
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/com.github.finefindus.eyedropper.desktop.in.in:11
+msgid "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
+msgstr ""
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
+msgid "FineFindus"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:16
+#: src/widgets/about_window.rs:64
+msgid ""
+"Pick any color from your screen and view it in different formats. Change the "
+"picked color or go back to a previously picked color from the history list. "
+"Generate a list of different shades from the picked color."
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
+#: src/widgets/about_window.rs:69
+msgid "Features"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
+#: src/widgets/about_window.rs:73
+msgid "Pick a Color"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:23
+#: src/widgets/about_window.rs:74
+msgid "Enter a color in Hex-Format"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:24
+msgid "Enter colors in different formats"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:25
+#: src/widgets/about_window.rs:76
+msgid "View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:26
+#: src/widgets/about_window.rs:77
+msgid "Customize which formats appear as well as their order"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:27
+#: src/widgets/about_window.rs:78
+msgid "Generate a palette of different shades"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:33
+msgid "Main window with a color in different formats"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:37
+msgid "Main window with customized formats"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:41
+msgid "Editor with an HSL editor"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:45
+msgid "Status page stating to pick a color to get started"
+msgstr ""
+
+#: data/resources/ui/history-item.blp:5
+msgid "Remove"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:5 data/resources/ui/preferences.blp:61
+msgid "Name Sources"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:15
+msgctxt ""
+"Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
+"#html4"
+msgid "Basic"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:16
+msgid "Basic web colors"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:20
+msgctxt ""
+"Name of the extended color keyword set from https://www.w3.org/TR/css-"
+"color-3/#svg-color"
+msgid "Extended"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:21
+msgid "X11 and SVG color values"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:25
+msgctxt ""
+"Name of the color set from the GNOME color palette (https://developer.gnome."
+"org/hig/reference/palette.html)"
+msgid "GNOME Color Palette"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:26
+msgid "Colors for GNOME app icons and illustrations"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:30
+msgctxt "Name of the color set from the xkcd color survey"
+msgid "xkcd Color Survey"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:31
+msgid "954 RGB colors named by volunteers"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:43
+msgid "General"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:46
+msgid "Formatting"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:49
+msgid "Alpha-Value-Position"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:50
+msgid "Where the Alphavalue is positioned in the Hexstring"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:53
+msgctxt "Alphavalue is not shown"
+msgid "None"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:54
+msgctxt "Alphavalue is shown at the end"
+msgid "End"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:55
+msgctxt "Alphavalue is shown at the start"
+msgid "Start"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:62
+msgid "Sources for displaying color names"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:73 data/resources/ui/preferences.blp:81
+msgid "Precision"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:89
+msgid "Color Formats"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:90
+msgid "Customize the visible formats and in which order they are displayed"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:95
+msgctxt "Tooltip of the button to reset the format order"
+msgid "Reset Order"
+msgstr ""
+
+#: data/resources/ui/shortcuts.blp:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr ""
+
+#: data/resources/ui/shortcuts.blp:14
+msgctxt "shortcut window"
+msgid "Show Preferences"
+msgstr ""
+
+#: data/resources/ui/shortcuts.blp:19
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr ""
+
+#: data/resources/ui/shortcuts.blp:24
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr ""
+
+#: data/resources/ui/shortcuts.blp:30
+msgctxt "shortcut window"
+msgid "Color"
+msgstr ""
+
+#: data/resources/ui/shortcuts.blp:33
+msgctxt "shortcut window"
+msgid "Pick a New Color"
+msgstr ""
+
+#: data/resources/ui/shortcuts.blp:38
+msgctxt "shortcut window"
+msgid "Randomize the Color"
+msgstr ""
+
+#: data/resources/ui/window.blp:7
+msgid "_Clear History"
+msgstr ""
+
+#: data/resources/ui/window.blp:12
+msgid "_Random Color"
+msgstr ""
+
+#: data/resources/ui/window.blp:19
+msgid "_Preferences"
+msgstr ""
+
+#: data/resources/ui/window.blp:24
+msgid "_Keyboard Shortcuts"
+msgstr ""
+
+#: data/resources/ui/window.blp:29
+msgid "_About Eyedropper"
+msgstr ""
+
+#: data/resources/ui/window.blp:52
+msgid "No Color"
+msgstr ""
+
+#: data/resources/ui/window.blp:53
+msgid "Select a color from the screen to get started"
+msgstr ""
+
+#: data/resources/ui/window.blp:56
+msgid "_Pick a Color"
+msgstr ""
+
+#: data/resources/ui/window.blp:106
+msgid "Color Picker not Available"
+msgstr ""
+
+#: data/resources/ui/window.blp:116
+msgid "The system is not properly configured to allow for color picking"
+msgstr ""
+
+#: data/resources/ui/window.blp:128
+msgid "_Continue Regardless"
+msgstr ""
+
+#: data/resources/ui/window.blp:156
+msgctxt "Tooltip of the colorpicker button"
+msgid "Pick a Color"
+msgstr ""
+
+#: data/resources/ui/window.blp:163
+msgid "Main Menu"
+msgstr ""
+
+#: data/resources/ui/window.blp:187
+msgctxt "Tooltip of the palette button"
+msgid "Edit Color"
+msgstr ""
+
+#: data/resources/ui/window.blp:288 src/widgets/color_format_row.rs:170
+msgid "Apply"
+msgstr ""
+
+#: src/colors/notation.rs:231
+msgid "Not named"
+msgstr ""
+
+#: src/colors/notation.rs:237
+msgid "Copy Hex Code"
+msgstr ""
+
+#: src/colors/notation.rs:258
+msgid "Hex Code"
+msgstr ""
+
+#. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
+#: src/widgets/about_window.rs:38
+msgid "translator-credits"
+msgstr ""
+
+#: src/widgets/about_window.rs:75
+msgid "Parse RGBA/ARGB Hex-Colors"
+msgstr ""
+
+#: src/widgets/about_window.rs:95
+msgctxt ""
+"The changelog of the current version. Should be similar to the CHANGELOG.md "
+"file at the project root. Please ensure that the tags have a matching "
+"closing tag. Since xgettext does not recognize rust multiline strings, this "
+"should be on a single line using line breaks (\\n) for new lines."
+msgid ""
+"<p>A new release with exciting new features and many improvements.</p>\n"
+"<ul><li>Allow entering any format</li><li>Display color in overview search</"
+"li><li>Export palettes to LibreOffice</li><li>A visual differentiation "
+"between color and background</li><li>Improved color conversion</"
+"li><li>Visual refinements to match the state of the art of GNOME apps</"
+"li><li>Internal code improvements and bug fixes</li></ul>"
+msgstr ""
+
+#: src/widgets/color_format_row.rs:239
+msgid "Copied “{}”"
+msgstr ""
+
+#: src/widgets/preferences/preferences_window.rs:351
+msgid "Move Up"
+msgstr ""
+
+#: src/widgets/preferences/preferences_window.rs:353
+msgid "Move Down"
+msgstr ""
+
+#: src/window.rs:299
+msgid "Cleared history"
+msgstr ""
+
+#: src/window.rs:300
+msgid "Undo"
+msgstr ""
+
+#: src/window.rs:473
+msgid "Failed to pick a color"
+msgstr ""
