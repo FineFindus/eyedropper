@@ -7,35 +7,39 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2024-10-02 19:56+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2024-10-14 19:15+0000\n"
+"Last-Translator: Oskar Kąklewski <oskarkaklewski@gmail.com>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/eyedropper/"
+"eyedropper/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.8-rc\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
 #: data/resources/ui/window.blp:152 src/main.rs:28
 #: src/widgets/about_window.rs:32
 msgid "Eyedropper"
-msgstr ""
+msgstr "Eyedropper"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:4
 msgid "Color Picker"
-msgstr ""
+msgstr "Próbnik kolorów"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
 #: src/widgets/about_window.rs:61
 msgid "Pick and format colors"
-msgstr ""
+msgstr "Pobieraj i formatuj kolory"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
 msgid "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
-msgstr ""
+msgstr "Gnome;GTK;Próbnik kolorów;Próbnik;Paleta;"
 
 #. developer_name tag deprecated with Appstream 1.0
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
@@ -49,276 +53,281 @@ msgid ""
 "picked color or go back to a previously picked color from the history list. "
 "Generate a list of different shades from the picked color."
 msgstr ""
+"Pobierz dowolny kolor z ekranu i wyświetl go w różnych formatach. Zmień "
+"pobrany kolor lub wróć do wcześniej pobranego koloru z listy historii. "
+"Wygeneruj listę różnych odcieni wybranego koloru."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
 #: src/widgets/about_window.rs:69
 msgid "Features"
-msgstr ""
+msgstr "Cechy"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
 #: src/widgets/about_window.rs:73
 msgid "Pick a Color"
-msgstr ""
+msgstr "Pobieranie koloru"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:23
 #: src/widgets/about_window.rs:74
 msgid "Enter a color in Hex-Format"
-msgstr ""
+msgstr "Wprowadzanie koloru w formacie szesnastkowym"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:24
 msgid "Enter colors in different formats"
-msgstr ""
+msgstr "Wprowadzanie kolorów w różnych formatach"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:25
 #: src/widgets/about_window.rs:76
 msgid "View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format"
 msgstr ""
+"Wyświetlanie kolorów w formatach Hex, RGB, HSV, HSL, CMYK, XYZ i CIE-Lab"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:26
 #: src/widgets/about_window.rs:77
 msgid "Customize which formats appear as well as their order"
-msgstr ""
+msgstr "Dostosowywanie wyświetlanych formatów oraz ich kolejności"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:27
 #: src/widgets/about_window.rs:78
 msgid "Generate a palette of different shades"
-msgstr ""
+msgstr "Generowanie palety różnych odcieni"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:33
 msgid "Main window with a color in different formats"
-msgstr ""
+msgstr "Okno główne z kolorem w różnych formatach"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:37
 msgid "Main window with customized formats"
-msgstr ""
+msgstr "Okno główne z niestandardowymi formatami"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:41
 msgid "Editor with an HSL editor"
-msgstr ""
+msgstr "Edytor z dostosowaniem HSL"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:45
 msgid "Status page stating to pick a color to get started"
-msgstr ""
+msgstr "Strona informująca o konieczności wybrania koloru w celu rozpoczęcia"
 
 #: data/resources/ui/history-item.blp:5
 msgid "Remove"
-msgstr ""
+msgstr "Usuń"
 
 #: data/resources/ui/preferences.blp:5 data/resources/ui/preferences.blp:61
 msgid "Name Sources"
-msgstr ""
+msgstr "Źródła nazw"
 
 #: data/resources/ui/preferences.blp:15
 msgctxt ""
 "Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
 "#html4"
 msgid "Basic"
-msgstr ""
+msgstr "Podstawowe"
 
 #: data/resources/ui/preferences.blp:16
 msgid "Basic web colors"
-msgstr ""
+msgstr "Podstawowe kolory stron internetowych"
 
 #: data/resources/ui/preferences.blp:20
 msgctxt ""
 "Name of the extended color keyword set from https://www.w3.org/TR/css-"
 "color-3/#svg-color"
 msgid "Extended"
-msgstr ""
+msgstr "Rozszerzone"
 
 #: data/resources/ui/preferences.blp:21
 msgid "X11 and SVG color values"
-msgstr ""
+msgstr "Wartości kolorów X11 i SVG"
 
 #: data/resources/ui/preferences.blp:25
 msgctxt ""
 "Name of the color set from the GNOME color palette (https://developer.gnome."
 "org/hig/reference/palette.html)"
 msgid "GNOME Color Palette"
-msgstr ""
+msgstr "Paleta kolorów GNOME"
 
 #: data/resources/ui/preferences.blp:26
 msgid "Colors for GNOME app icons and illustrations"
-msgstr ""
+msgstr "Kolory ikon i ilustracji aplikacji GNOME"
 
 #: data/resources/ui/preferences.blp:30
 msgctxt "Name of the color set from the xkcd color survey"
 msgid "xkcd Color Survey"
-msgstr ""
+msgstr "Ankieta kolorów xkcd"
 
 #: data/resources/ui/preferences.blp:31
 msgid "954 RGB colors named by volunteers"
-msgstr ""
+msgstr "954 kolory RGB nazwane przez wolontariuszy"
 
 #: data/resources/ui/preferences.blp:43
 msgid "General"
-msgstr ""
+msgstr "Ogólne"
 
 #: data/resources/ui/preferences.blp:46
 msgid "Formatting"
-msgstr ""
+msgstr "Formatowanie"
 
 #: data/resources/ui/preferences.blp:49
 msgid "Alpha-Value-Position"
-msgstr ""
+msgstr "Pozycja wartości alfa"
 
 #: data/resources/ui/preferences.blp:50
 msgid "Where the Alphavalue is positioned in the Hexstring"
-msgstr ""
+msgstr "Gdzie wartość alfa jest umieszczona w ciągu heksadecymalnym"
 
 #: data/resources/ui/preferences.blp:53
 msgctxt "Alphavalue is not shown"
 msgid "None"
-msgstr ""
+msgstr "Brak"
 
 #: data/resources/ui/preferences.blp:54
 msgctxt "Alphavalue is shown at the end"
 msgid "End"
-msgstr ""
+msgstr "Koniec"
 
 #: data/resources/ui/preferences.blp:55
 msgctxt "Alphavalue is shown at the start"
 msgid "Start"
-msgstr ""
+msgstr "Początek"
 
 #: data/resources/ui/preferences.blp:62
 msgid "Sources for displaying color names"
-msgstr ""
+msgstr "Źródła wyświetlania nazw kolorów"
 
 #: data/resources/ui/preferences.blp:73 data/resources/ui/preferences.blp:81
 msgid "Precision"
-msgstr ""
+msgstr "Precyzja"
 
 #: data/resources/ui/preferences.blp:89
 msgid "Color Formats"
-msgstr ""
+msgstr "Formaty kolorów"
 
 #: data/resources/ui/preferences.blp:90
 msgid "Customize the visible formats and in which order they are displayed"
-msgstr ""
+msgstr "Dostosuj widoczne formaty i kolejność ich wyświetlania"
 
 #: data/resources/ui/preferences.blp:95
 msgctxt "Tooltip of the button to reset the format order"
 msgid "Reset Order"
-msgstr ""
+msgstr "Zresetuj kolejność"
 
 #: data/resources/ui/shortcuts.blp:11
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "Ogólne"
 
 #: data/resources/ui/shortcuts.blp:14
 msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr ""
+msgstr "Pokaż preferencje"
 
 #: data/resources/ui/shortcuts.blp:19
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "Pokaż skróty"
 
 #: data/resources/ui/shortcuts.blp:24
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr ""
+msgstr "Wyjdź"
 
 #: data/resources/ui/shortcuts.blp:30
 msgctxt "shortcut window"
 msgid "Color"
-msgstr ""
+msgstr "Kolor"
 
 #: data/resources/ui/shortcuts.blp:33
 msgctxt "shortcut window"
 msgid "Pick a New Color"
-msgstr ""
+msgstr "Pobierz nowy kolor"
 
 #: data/resources/ui/shortcuts.blp:38
 msgctxt "shortcut window"
 msgid "Randomize the Color"
-msgstr ""
+msgstr "Wylosuj kolor"
 
 #: data/resources/ui/window.blp:7
 msgid "_Clear History"
-msgstr ""
+msgstr "_Wyczyść historię"
 
 #: data/resources/ui/window.blp:12
 msgid "_Random Color"
-msgstr ""
+msgstr "_Losowy kolor"
 
 #: data/resources/ui/window.blp:19
 msgid "_Preferences"
-msgstr ""
+msgstr "_Preferencje"
 
 #: data/resources/ui/window.blp:24
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Skróty klawiaturowe"
 
 #: data/resources/ui/window.blp:29
 msgid "_About Eyedropper"
-msgstr ""
+msgstr "_O programie"
 
 #: data/resources/ui/window.blp:52
 msgid "No Color"
-msgstr ""
+msgstr "Brak koloru"
 
 #: data/resources/ui/window.blp:53
 msgid "Select a color from the screen to get started"
-msgstr ""
+msgstr "Aby rozpocząć, pobierz kolor z ekranu"
 
 #: data/resources/ui/window.blp:56
 msgid "_Pick a Color"
-msgstr ""
+msgstr "_Pobierz kolor"
 
 #: data/resources/ui/window.blp:106
 msgid "Color Picker not Available"
-msgstr ""
+msgstr "Próbnik kolorów nie jest dostępny"
 
 #: data/resources/ui/window.blp:116
 msgid "The system is not properly configured to allow for color picking"
 msgstr ""
+"System nie jest prawidłowo skonfigurowany, aby umożliwić pobieranie kolorów"
 
 #: data/resources/ui/window.blp:128
 msgid "_Continue Regardless"
-msgstr ""
+msgstr "_Kontynuuj mimo tego"
 
 #: data/resources/ui/window.blp:156
 msgctxt "Tooltip of the colorpicker button"
 msgid "Pick a Color"
-msgstr ""
+msgstr "Pobierz kolor"
 
 #: data/resources/ui/window.blp:163
 msgid "Main Menu"
-msgstr ""
+msgstr "Menu główne"
 
 #: data/resources/ui/window.blp:187
 msgctxt "Tooltip of the palette button"
 msgid "Edit Color"
-msgstr ""
+msgstr "Edytuj kolor"
 
 #: data/resources/ui/window.blp:288 src/widgets/color_format_row.rs:170
 msgid "Apply"
-msgstr ""
+msgstr "Zastosuj"
 
 #: src/colors/notation.rs:231
 msgid "Not named"
-msgstr ""
+msgstr "Brak nazwy"
 
 #: src/colors/notation.rs:237
 msgid "Copy Hex Code"
-msgstr ""
+msgstr "Skopiuj kod szesnastkowy"
 
 #: src/colors/notation.rs:258
 msgid "Hex Code"
-msgstr ""
+msgstr "Kod szesnastkowy"
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/widgets/about_window.rs:38
 msgid "translator-credits"
-msgstr ""
+msgstr "kaklewski <oskarkaklewski@gmail.com>"
 
 #: src/widgets/about_window.rs:75
 msgid "Parse RGBA/ARGB Hex-Colors"
-msgstr ""
+msgstr "Analizuj kolory szesnastkowe RGBA/ARGB"
 
 #: src/widgets/about_window.rs:95
 msgctxt ""
@@ -334,27 +343,33 @@ msgid ""
 "li><li>Visual refinements to match the state of the art of GNOME apps</"
 "li><li>Internal code improvements and bug fixes</li></ul>"
 msgstr ""
+"<p>Nowa wersja z ekscytującymi nowymi funkcjami i wieloma ulepszeniami.</p>\n"
+"<ul><li>Umożliwia wprowadzanie dowolnego formatu</li><li>Wyświetlanie koloru "
+"w wyszukiwaniu przeglądowym</li><li>Eksportowanie palet do LibreOffice</"
+"li><li>Wizualne rozróżnienie między kolorem a tłem</li><li>Ulepszona "
+"konwersja kolorów</li><li>Udoskonalenia wizualne, aby wpasować się w styl "
+"aplikacji GNOME</li><li>Ulepszenia kodu i poprawki błędów</li></ul>"
 
 #: src/widgets/color_format_row.rs:239
 msgid "Copied “{}”"
-msgstr ""
+msgstr "Skopiowano „{}”"
 
 #: src/widgets/preferences/preferences_window.rs:351
 msgid "Move Up"
-msgstr ""
+msgstr "W górę"
 
 #: src/widgets/preferences/preferences_window.rs:353
 msgid "Move Down"
-msgstr ""
+msgstr "W dół"
 
 #: src/window.rs:299
 msgid "Cleared history"
-msgstr ""
+msgstr "Wyczyszczono historię"
 
 #: src/window.rs:300
 msgid "Undo"
-msgstr ""
+msgstr "Cofnij"
 
 #: src/window.rs:473
 msgid "Failed to pick a color"
-msgstr ""
+msgstr "Nie udało się pobrać koloru"
