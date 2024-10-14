@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2024-10-02 19:56+0000\n"
+"POT-Creation-Date: 2024-10-14 19:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,6 +41,7 @@ msgstr ""
 
 #. developer_name tag deprecated with Appstream 1.0
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:12
 msgid "FineFindus"
 msgstr ""
 
@@ -100,6 +101,311 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:45
 msgid "Status page stating to pick a color to get started"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:58
+msgid "A small fix for failing metadata"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:63
+msgid "A new release, including major reworks the the UI and the color system"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:65
+msgid "Added a new color editor, allowing to modify colors"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:66
+msgid "Reworked the system handling color conversions"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:67
+msgid "Updated to modern GNOME styling"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:68
+msgid "A warning page is now shown on unsupported systems"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:69
+msgid "Various internal code improvements and bug fixes"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:70
+msgid "Removed the palette dialog"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:71
+msgid "Removed custom color formats"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:77
+msgid "A new release with exciting new features and many improvements."
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:77
+msgid "Allow entering any format"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:77
+msgid "Display color in overview search"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:77
+msgid "Export palettes to LibreOffice"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:77
+msgid "A visual differentiation between color and background"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:77
+msgid "Improved color conversion"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:77
+msgid "Visual refinements to match the state of the art of GNOME apps"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:77
+msgid "Internal code improvements and bug fixes"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:82
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:108
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:127
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:145
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:165
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:177
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:189
+msgid "Added:"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:84
+msgid "Show a toast with an Undo option when clearing the history"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:85
+msgid "Use Ctrl-Q to close the window"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:86
+msgid ""
+"Use a default minimum window size, content should no longer unnecessarily "
+"cut off"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:87
+msgid "New icon by @bertob"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:88
+msgid ""
+"Export palettes as Adobe Swatch Exchange (ASE), hex, PAL, Paint.NET (txt) "
+"files"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:89
+msgid "Minor changes to the store metadata"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:91
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:114
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:136
+msgid "Changed:"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:93
+msgid "Hunter-Lab now displays 0 instead of NaN"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:94
+msgid "Improved tooltips for copying colors"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:95
+msgid ""
+"Palette window now uses a button with a more explicit text instead of an icon"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:96
+msgid "Reworded project description"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:97
+msgid "Updated all screenshots"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:99
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:118
+msgid "Fixed:"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:101
+msgid "Separator is now hidden when the history list is hidden"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:102
+msgid "Improved editing experience when change the Hex color/name"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:110
+msgid "Russian translation"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:111
+msgid "Better optimized releases"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:112
+msgid "Returns the exit code on quitting"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:116
+msgid "History no longer contains duplicated items"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:120
+msgid "Fixed a bug where the wrong rgb format was used"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:121
+msgid "Fixed a bug where LMS and Hunter-Lab had the same setting"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:129
+msgid ""
+"Export the generated palettes from the palette dialog as a GIMP palette file"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:130
+msgid "A .doap file to describe the project"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:131
+msgid "Show a placeholder page when no color is picked"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:132
+msgid "LMS color space can now be shown"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:133
+msgid "Convert to Hunter-Lab color space"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:134
+msgid "Customize color formats"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:138
+msgid "Fixed a bug where the illuminants were not fully shown"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:139
+msgid "The names of the GNOME color palette are now available"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:147
+msgid "Options to show names of color (from w3c basic, extended and xkcd)"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:148
+msgid "Change the color by typing a name in the name field"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:149
+msgid ""
+"Palettes are now shown in the palette dialog, accessible by clicking on the "
+"large color button"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:150
+msgid "The App now uses the AdwAboutWindow"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:151
+msgid "HSL does now support alpha values"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:152
+msgid "HWB and CIELCh are now supported"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:153
+msgid "CIE standard observer for CIELab and CIELCh"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:154
+msgid "Change CIE illuminants"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:159
+msgid "Fixed a few bugs and added Dutch translations."
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:167
+msgid ""
+"Palettes, consisting of darker shades and lighter tints, are now generated "
+"from the currently picked color as well as the previous 3"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:168
+msgid ""
+"Change the order of the color formats by dragging and dropping them in the "
+"settings"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:169
+msgid "The app has been translated into French by rene-coty"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:170
+msgid "A German translation has been added"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:171
+msgid "Adjusted some strings to be easier to understand"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:179
+msgid "Issue and feature-request templates"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:180
+msgid "Change the color using hex values in the hex field"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:181
+msgid "Previous colors are now visible in the history list"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:182
+msgid "Disable unwanted color models"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:183
+msgid "Colors can now be shown as XYZ or CIELAB format"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:191
+msgid "Basic UI"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:192
+msgid "Pick a color using the color picker button"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:193
+msgid "Copy the color in different color models"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:194
+msgid "Change the position of the alpha values in hex values"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:195
+msgid "Added License"
 msgstr ""
 
 #: data/resources/ui/history-item.blp:5
