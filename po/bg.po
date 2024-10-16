@@ -1,0 +1,374 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Eyedropper package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# twlvnn kraftwerk <kraft_werk@tutanota.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Eyedropper\n"
+"Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
+"POT-Creation-Date: 2024-10-02 19:56+0000\n"
+"PO-Revision-Date: 2024-10-12 23:02+0200\n"
+"Last-Translator: twlvnn kraftwerk <kraft_werk@tutanota.com>\n"
+"Language-Team: Bulgarian <dict-notifications@fsa-bg.org>\n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Gtranslator 46.1\n"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:3
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
+#: data/resources/ui/window.blp:152 src/main.rs:28
+#: src/widgets/about_window.rs:32
+msgid "Eyedropper"
+msgstr "Капкомер"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:4
+msgid "Color Picker"
+msgstr "Избор на цвят"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:5
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
+#: src/widgets/about_window.rs:61
+msgid "Pick and format colors"
+msgstr "Избиране и форматиране на цветове"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/com.github.finefindus.eyedropper.desktop.in.in:11
+msgid "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
+msgstr "цвят;избор на цвят;палитра;"
+
+#. developer_name tag deprecated with Appstream 1.0
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
+msgid "FineFindus"
+msgstr "FineFindus"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:16
+#: src/widgets/about_window.rs:64
+msgid ""
+"Pick any color from your screen and view it in different formats. Change the "
+"picked color or go back to a previously picked color from the history list. "
+"Generate a list of different shades from the picked color."
+msgstr ""
+"Изберете случаен цвят от екрана и го вижте в различни формати. Променете "
+"избрания цвят или се върнете към избран преди това цвят от историята. "
+"Генерирайте списък с различни нюанси от избрания цвят."
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
+#: src/widgets/about_window.rs:69
+msgid "Features"
+msgstr "Функции"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
+#: src/widgets/about_window.rs:73
+msgid "Pick a Color"
+msgstr "Изберете цвят"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:23
+#: src/widgets/about_window.rs:74
+msgid "Enter a color in Hex-Format"
+msgstr "Въведете цвят в шестнайсетична форма"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:24
+msgid "Enter colors in different formats"
+msgstr "Въведете цветове в различни формати"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:25
+#: src/widgets/about_window.rs:76
+msgid "View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format"
+msgstr "Преглеждайте цветове в Hex, RGB, HSV, HSL, CMYK, XYZ и CIE-Lab формат"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:26
+#: src/widgets/about_window.rs:77
+msgid "Customize which formats appear as well as their order"
+msgstr "Настройте форматите, които се показват, както и техния ред"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:27
+#: src/widgets/about_window.rs:78
+msgid "Generate a palette of different shades"
+msgstr "Генерирайте палитра от различни нюанси"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:33
+msgid "Main window with a color in different formats"
+msgstr "Основеният прозорец с цвят в различни формати"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:37
+msgid "Main window with customized formats"
+msgstr "Основният прозорец с други формати"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:41
+msgid "Editor with an HSL editor"
+msgstr "Редактор с HSL редактор"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:45
+msgid "Status page stating to pick a color to get started"
+msgstr "Страница, в която се посочва да изберете цвят, за да започнете"
+
+#: data/resources/ui/history-item.blp:5
+msgid "Remove"
+msgstr "Премахване"
+
+#: data/resources/ui/preferences.blp:5 data/resources/ui/preferences.blp:61
+msgid "Name Sources"
+msgstr "Източници на имена"
+
+#: data/resources/ui/preferences.blp:15
+msgctxt ""
+"Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
+"#html4"
+msgid "Basic"
+msgstr "Основен"
+
+#: data/resources/ui/preferences.blp:16
+msgid "Basic web colors"
+msgstr "Основни уеб цветове"
+
+#: data/resources/ui/preferences.blp:20
+msgctxt ""
+"Name of the extended color keyword set from https://www.w3.org/TR/css-"
+"color-3/#svg-color"
+msgid "Extended"
+msgstr "Допълнителни"
+
+#: data/resources/ui/preferences.blp:21
+msgid "X11 and SVG color values"
+msgstr "Цветови стойности на X11 и SVG"
+
+#: data/resources/ui/preferences.blp:25
+msgctxt ""
+"Name of the color set from the GNOME color palette (https://developer.gnome."
+"org/hig/reference/palette.html)"
+msgid "GNOME Color Palette"
+msgstr "GNOME Цветова палитра"
+
+#: data/resources/ui/preferences.blp:26
+msgid "Colors for GNOME app icons and illustrations"
+msgstr "Цветове за иконки и илюстрации на GNOME програми"
+
+#: data/resources/ui/preferences.blp:30
+msgctxt "Name of the color set from the xkcd color survey"
+msgid "xkcd Color Survey"
+msgstr "xkcd цветова анкета"
+
+#: data/resources/ui/preferences.blp:31
+msgid "954 RGB colors named by volunteers"
+msgstr "954 RGB цвята, именовани от доброволци"
+
+#: data/resources/ui/preferences.blp:43
+msgid "General"
+msgstr "Общи"
+
+#: data/resources/ui/preferences.blp:46
+msgid "Formatting"
+msgstr "Форматиране"
+
+#: data/resources/ui/preferences.blp:49
+msgid "Alpha-Value-Position"
+msgstr "Позицията на стойността на прозрачност"
+
+#: data/resources/ui/preferences.blp:50
+msgid "Where the Alphavalue is positioned in the Hexstring"
+msgstr "Къде е позиционирана стойността на прозрачност в шестнадесетичния низ"
+
+#: data/resources/ui/preferences.blp:53
+msgctxt "Alphavalue is not shown"
+msgid "None"
+msgstr "Без"
+
+#: data/resources/ui/preferences.blp:54
+msgctxt "Alphavalue is shown at the end"
+msgid "End"
+msgstr "Край"
+
+#: data/resources/ui/preferences.blp:55
+msgctxt "Alphavalue is shown at the start"
+msgid "Start"
+msgstr "Начало"
+
+#: data/resources/ui/preferences.blp:62
+msgid "Sources for displaying color names"
+msgstr "Източници за показване на имената на цветове"
+
+#: data/resources/ui/preferences.blp:73 data/resources/ui/preferences.blp:81
+msgid "Precision"
+msgstr "Точност"
+
+#: data/resources/ui/preferences.blp:89
+msgid "Color Formats"
+msgstr "Цветови формати"
+
+#: data/resources/ui/preferences.blp:90
+msgid "Customize the visible formats and in which order they are displayed"
+msgstr "Настройте видимите формати и реда, в който се показват"
+
+#: data/resources/ui/preferences.blp:95
+msgctxt "Tooltip of the button to reset the format order"
+msgid "Reset Order"
+msgstr "Връщане на реда"
+
+#: data/resources/ui/shortcuts.blp:11
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Общи"
+
+#: data/resources/ui/shortcuts.blp:14
+msgctxt "shortcut window"
+msgid "Show Preferences"
+msgstr "Показване на настройките"
+
+#: data/resources/ui/shortcuts.blp:19
+msgctxt "shortcut window"
+msgid "Show Shortcuts"
+msgstr "Показване на клавишните комбинации"
+
+#: data/resources/ui/shortcuts.blp:24
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Спиране на програмата"
+
+#: data/resources/ui/shortcuts.blp:30
+msgctxt "shortcut window"
+msgid "Color"
+msgstr "Цвят"
+
+#: data/resources/ui/shortcuts.blp:33
+msgctxt "shortcut window"
+msgid "Pick a New Color"
+msgstr "Избиране на нов цвят"
+
+#: data/resources/ui/shortcuts.blp:38
+msgctxt "shortcut window"
+msgid "Randomize the Color"
+msgstr "Случайно определяне на цвета"
+
+#: data/resources/ui/window.blp:7
+msgid "_Clear History"
+msgstr "_Изчистване на историята"
+
+#: data/resources/ui/window.blp:12
+msgid "_Random Color"
+msgstr "_Случаен цвят"
+
+#: data/resources/ui/window.blp:19
+msgid "_Preferences"
+msgstr "_Настройки"
+
+#: data/resources/ui/window.blp:24
+msgid "_Keyboard Shortcuts"
+msgstr "_Клавишни комбинации"
+
+#: data/resources/ui/window.blp:29
+msgid "_About Eyedropper"
+msgstr "_Относно „Капкомер“"
+
+#: data/resources/ui/window.blp:52
+msgid "No Color"
+msgstr "Без цвят"
+
+#: data/resources/ui/window.blp:53
+msgid "Select a color from the screen to get started"
+msgstr "За да започнете, изберете цвят от екрана"
+
+#: data/resources/ui/window.blp:56
+msgid "_Pick a Color"
+msgstr "_Избиране на цвят"
+
+#: data/resources/ui/window.blp:106
+msgid "Color Picker not Available"
+msgstr "Избор на цвят не е налично"
+
+#: data/resources/ui/window.blp:116
+msgid "The system is not properly configured to allow for color picking"
+msgstr "Системата не е настроена правилно, за да позволява избиране на цвят"
+
+#: data/resources/ui/window.blp:128
+msgid "_Continue Regardless"
+msgstr "_Продължаване въпреки това"
+
+#: data/resources/ui/window.blp:156
+msgctxt "Tooltip of the colorpicker button"
+msgid "Pick a Color"
+msgstr "Избиране на цвят"
+
+#: data/resources/ui/window.blp:163
+msgid "Main Menu"
+msgstr "Основно меню"
+
+#: data/resources/ui/window.blp:187
+msgctxt "Tooltip of the palette button"
+msgid "Edit Color"
+msgstr "Редактиране на цвета"
+
+#: data/resources/ui/window.blp:288 src/widgets/color_format_row.rs:170
+msgid "Apply"
+msgstr "Прилагане"
+
+#: src/colors/notation.rs:231
+msgid "Not named"
+msgstr "Без име"
+
+#: src/colors/notation.rs:237
+msgid "Copy Hex Code"
+msgstr "Копиране на шестнайсетичния код"
+
+#: src/colors/notation.rs:258
+msgid "Hex Code"
+msgstr "Шестнайсетичен код"
+
+#. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
+#: src/widgets/about_window.rs:38
+msgid "translator-credits"
+msgstr "twlvnn kraftwerk <kraft_werk@tutanota.com>"
+
+#: src/widgets/about_window.rs:75
+msgid "Parse RGBA/ARGB Hex-Colors"
+msgstr "Анализиране на шестнайсетични RGBA/ARGB цветове"
+
+#: src/widgets/about_window.rs:95
+msgctxt ""
+"The changelog of the current version. Should be similar to the CHANGELOG.md "
+"file at the project root. Please ensure that the tags have a matching "
+"closing tag. Since xgettext does not recognize rust multiline strings, this "
+"should be on a single line using line breaks (\\n) for new lines."
+msgid ""
+"<p>A new release with exciting new features and many improvements.</p>\n"
+"<ul><li>Allow entering any format</li><li>Display color in overview search</"
+"li><li>Export palettes to LibreOffice</li><li>A visual differentiation "
+"between color and background</li><li>Improved color conversion</"
+"li><li>Visual refinements to match the state of the art of GNOME apps</"
+"li><li>Internal code improvements and bug fixes</li></ul>"
+msgstr ""
+"<p>Ново издание с нови вълнуващи функции и подобрения.</p>\n"
+"<ul><li>Въвеждане на всякакъв формат</li><li>Показване на цвят при прегледа "
+"на търсене</li><li>Изнасяне на палитри в LibreOffice</li><li>Визуално "
+"разграничаване между цвят и фон</li><li>Подобрено преобразуване на "
+"цветовете</li><li>Визуални подобрения, за да съответства на съвременното "
+"състояние на GNOME програмите</li><li>Подобрения на вътрешния код и поправки "
+"на грешки</li></ul>"
+
+#: src/widgets/color_format_row.rs:239
+msgid "Copied “{}”"
+msgstr "„{}“ е копирано"
+
+#: src/widgets/preferences/preferences_window.rs:351
+msgid "Move Up"
+msgstr "Преместване нагоре"
+
+#: src/widgets/preferences/preferences_window.rs:353
+msgid "Move Down"
+msgstr "Преместване надолу"
+
+#: src/window.rs:299
+msgid "Cleared history"
+msgstr "Историята е изчистена"
+
+#: src/window.rs:300
+msgid "Undo"
+msgstr "Отменяне"
+
+#: src/window.rs:473
+msgid "Failed to pick a color"
+msgstr "Избирането на цвят е неуспешно"
