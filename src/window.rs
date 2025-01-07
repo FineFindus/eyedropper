@@ -222,7 +222,7 @@ mod imp {
             let Ok(connection) = zbus::Connection::session().await else {
                 return false;
             };
-            let Ok(proxy): zbus::Result<zbus::Proxy> = zbus::ProxyBuilder::new(&connection)
+            let Ok(proxy): zbus::Result<zbus::Proxy> = zbus::proxy::Builder::new(&connection)
                 .interface("org.freedesktop.portal.Screenshot")
                 .and_then(|b| b.path("/org/freedesktop/portal/desktop"))
                 .and_then(|b| b.destination("org.freedesktop.portal.Desktop"))
