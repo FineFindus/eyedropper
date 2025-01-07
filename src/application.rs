@@ -252,7 +252,7 @@ impl App {
         renderer.realize(gdk::Surface::NONE)?;
         paintable.snapshot_symbolic(&snapshot, SIZE.into(), SIZE.into(), &[color]);
 
-        let texture = renderer.render_texture(&snapshot.to_node().unwrap(), None);
+        let texture = renderer.render_texture(snapshot.to_node().unwrap(), None);
         renderer.unrealize();
 
         gtk::gdk_pixbuf::Pixbuf::from_stream(
@@ -263,11 +263,11 @@ impl App {
 }
 
 impl SearchProviderImpl for App {
-    fn activate_result(&self, identifier: ResultID, _terms: &[String], timestamp: u32) {
+    fn activate_result(&self, identifier: ResultID, _terms: &[String], _timestamp: u32) {
         self.activate();
         let window = self.main_window();
         window.set_color(gdk::RGBA::parse(identifier).unwrap().into());
-        window.present_with_time(timestamp);
+        window.present();
     }
 
     fn initial_result_set(&self, terms: &[String]) -> Vec<ResultID> {

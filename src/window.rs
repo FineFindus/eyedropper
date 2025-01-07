@@ -547,7 +547,7 @@ impl AppWindow {
             // update gradient of the saturation_scale
             self.imp()
                 .css_provider
-                .load_from_data(&format!(":root {{ --saturation-color: {}; }}", gkd_color));
+                .load_from_string(&format!(":root {{ --saturation-color: {}; }}", gkd_color));
         }
     }
 
