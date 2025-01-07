@@ -173,7 +173,7 @@ mod imp {
                 #[weak(rename_to = window)]
                 self,
                 async move {
-                    if !window.is_color_picker_available().await {
+                    if window.is_color_picker_available().await != Ok(true) {
                         log::warn!("System does not support color picking");
                         window.show_portal_error_page();
                     }
@@ -218,25 +218,19 @@ mod imp {
 
     impl AppWindow {
         /// Check if the system supports color picking.
-        async fn is_color_picker_available(&self) -> bool {
-            let Ok(connection) = zbus::Connection::session().await else {
-                return false;
-            };
-            let Ok(proxy): zbus::Result<zbus::Proxy> = zbus::proxy::Builder::new(&connection)
-                .interface("org.freedesktop.portal.Screenshot")
-                .and_then(|b| b.path("/org/freedesktop/portal/desktop"))
-                .and_then(|b| b.destination("org.freedesktop.portal.Desktop"))
-                .expect("ProxyBuilder should be valid")
+        async fn is_color_picker_available(&self) -> zbus::Result<bool> {
+            let connection = zbus::Connection::session().await?;
+            let proxy: zbus::Proxy = zbus::proxy::Builder::new(&connection)
+                .interface("org.freedesktop.portal.Screenshot")?
+                .path("/org/freedesktop/portal/desktop")?
+                .destination("org.freedesktop.portal.Desktop")?
                 .build()
-                .await
-            else {
-                return false;
-            };
-            let version = proxy.get_property::<u32>("version").await;
+                .await?;
+            let version = proxy.get_property::<u32>("version").await?;
 
             // version 2 indicates that the color picker is supported:
             // see: https://github.com/flatpak/xdg-desktop-portal/pull/766,
-            version.is_ok_and(|version| version >= 2)
+            Ok(version >= 2)
         }
 
         /// Shows a warning page, explaining that the system does not support color picking.
