@@ -27,8 +27,6 @@ mod imp {
     #[template(resource = "/com/github/finefindus/eyedropper/ui/window.ui")]
     pub struct AppWindow {
         #[template_child]
-        pub headerbar: TemplateChild<adw::HeaderBar>,
-        #[template_child]
         pub placeholder: TemplateChild<PlaceholderPage>,
         #[template_child]
         pub stack: TemplateChild<gtk::Stack>,
@@ -62,7 +60,6 @@ mod imp {
     impl Default for AppWindow {
         fn default() -> Self {
             Self {
-                headerbar: TemplateChild::default(),
                 placeholder: TemplateChild::default(),
                 stack: TemplateChild::default(),
                 color_button: TemplateChild::default(),
