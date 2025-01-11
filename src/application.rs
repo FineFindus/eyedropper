@@ -139,21 +139,21 @@ impl App {
 
     fn setup_gactions(&self) {
         // Pick a color using the picker button
-        let action_pick_color = gio::ActionEntry::builder("pick_color")
+        let action_pick_color = gio::ActionEntry::builder("pick-color")
             .activate(move |app: &Self, _, _| {
                 app.main_window().pick_color();
             })
             .build();
 
         // Clear the history
-        let action_clear_history = gio::ActionEntry::builder("clear_history")
+        let action_clear_history = gio::ActionEntry::builder("clear-history")
             .activate(|app: &Self, _, _| {
                 app.main_window().clear_history();
             })
             .build();
 
         // Randomize the current color
-        let action_random_color = gio::ActionEntry::builder("random_color")
+        let action_random_color = gio::ActionEntry::builder("random-color")
             .activate(|app: &Self, _, _| {
                 // Set the color to a random color
                 app.main_window().set_color(Color::random());
@@ -195,8 +195,8 @@ impl App {
 
     // Sets up keyboard shortcuts
     fn setup_accels(&self) {
-        self.set_accels_for_action("app.pick_color", &["<Control>p"]);
-        self.set_accels_for_action("app.random_color", &["<Control>r"]);
+        self.set_accels_for_action("app.pick-color", &["<Control>p"]);
+        self.set_accels_for_action("app.random-color", &["<Control>r"]);
         self.set_accels_for_action("app.preferences", &["<Control>comma"]);
         self.set_accels_for_action("app.quit", &["<Control>w", "<Control>q"]);
     }
