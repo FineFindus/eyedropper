@@ -2,7 +2,7 @@
 <schemalist>
   <schema path="/com/github/finefindus/eyedropper/" id="@app-id@" gettext-domain="@gettext-package@">
     <key name="window-dimension" type="(iib)">
-      <default>(300, 445, false)</default>
+      <default>(300, 500, false)</default>
       <summary>Window dimension</summary>
     </key>
     <key name="visible-formats" type="as">
