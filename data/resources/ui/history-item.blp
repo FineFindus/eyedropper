@@ -7,7 +7,7 @@ menu popover_menu {
   }
 }
 
-template $HistoryItem : Button {
+template $HistoryItem: Button {
   margin-start: 2;
   margin-end: 2;
   margin-top: 2;
@@ -15,7 +15,9 @@ template $HistoryItem : Button {
   tooltip-text: bind $tooltip(template.color) as <string>;
   action-name: "history.clicked";
 
-  styles ["shadow"]
+  styles [
+    "shadow"
+  ]
 
   child: Gtk.Box {
     Gtk.GestureClick right_click_gesture {

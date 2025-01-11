@@ -3,9 +3,11 @@ using Adw 1;
 
 Adw.NavigationPage name_source_page {
   title: _("Name Sources");
+
   child: Adw.ToolbarView {
     [top]
     Adw.HeaderBar {}
+
     content: Box {
       orientation: vertical;
 
@@ -36,8 +38,7 @@ Adw.NavigationPage name_source_page {
   };
 }
 
-
-template $PreferencesWindow : Adw.PreferencesDialog {
+template $PreferencesWindow: Adw.PreferencesDialog {
   Adw.PreferencesPage {
     icon-name: "applications-system-symbolic";
     title: _("General");
@@ -48,6 +49,7 @@ template $PreferencesWindow : Adw.PreferencesDialog {
       Adw.ComboRow alpha_pos_box {
         title: _("Alpha-Value-Position");
         subtitle: _("Where the Alphavalue is positioned in the Hexstring");
+
         model: StringList {
           strings [
             C_("Alphavalue is not shown", "None"),
@@ -69,19 +71,20 @@ template $PreferencesWindow : Adw.PreferencesDialog {
         }
       }
 
-      Adw.SpinRow  precision_row {
+      Adw.SpinRow precision_row {
         title: _("Precision");
-          adjustment: Adjustment {
-            value: 2;
-            lower: 0;
-            upper: 15;
-            step-increment: 1;
-          };
 
-          tooltip-text: _("Precision");
-          climb-rate: 1;
-          numeric: true;
-          valign: center;
+        adjustment: Adjustment {
+          value: 2;
+          lower: 0;
+          upper: 15;
+          step-increment: 1;
+        };
+
+        tooltip-text: _("Precision");
+        climb-rate: 1;
+        numeric: true;
+        valign: center;
       }
     }
 

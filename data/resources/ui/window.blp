@@ -62,11 +62,13 @@ template $AppWindow: Adw.ApplicationWindow {
 
           StackPage {
             name: "placeholder";
+
             child: $PlaceholderPage placeholder {};
           }
 
           StackPage {
             name: "portal-error";
+
             child: Adw.Bin {
               css-name: "statuspage";
 
@@ -130,6 +132,7 @@ template $AppWindow: Adw.ApplicationWindow {
 
           StackPage {
             name: "main";
+
             child: Box {
               orientation: horizontal;
 
