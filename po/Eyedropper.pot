@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2025-01-11 23:07+0000\n"
+"POT-Creation-Date: 2025-01-11 23:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -663,6 +663,6 @@ msgstr ""
 msgid "Undo"
 msgstr ""
 
-#: src/window.rs:439
+#: src/window.rs:437
 msgid "Failed to pick a color"
 msgstr ""
