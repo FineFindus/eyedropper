@@ -45,7 +45,7 @@ template $AppWindow: Adw.ApplicationWindow {
       StackPage {
         name: "portal-error";
 
-        child: $AdwToolbarView {
+        child: Adw.ToolbarView {
           [top]
           Adw.HeaderBar {}
 
@@ -118,8 +118,8 @@ template $AppWindow: Adw.ApplicationWindow {
       StackPage {
         name: "main";
 
-        child: $AdwBottomSheet edit_sheet {
-          content: $AdwToolbarView {
+        child: Adw.BottomSheet edit_sheet {
+          content: Adw.ToolbarView {
             [top]
             Adw.HeaderBar headerbar {
               title-widget: Adw.WindowTitle {
@@ -195,7 +195,7 @@ template $AppWindow: Adw.ApplicationWindow {
             };
           };
 
-          sheet: $AdwToolbarView {
+          sheet: Adw.ToolbarView {
             content: Box {
               margin-start: 8;
               margin-end: 8;
