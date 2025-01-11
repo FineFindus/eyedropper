@@ -34,24 +34,39 @@ menu primary_menu {
 
 template $AppWindow: Adw.ApplicationWindow {
   content: Adw.ToastOverlay toast_overlay {
-    child: Stack stack {
-      transition-type: crossfade;
+    child: Adw.BottomSheet edit_sheet {
+      content: Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar {
+          title-widget: Adw.WindowTitle {
+            title: _("Eyedropper");
+          };
 
-      StackPage {
-        name: "placeholder";
-        child:  $PlaceholderPage placeholder {};
-      }
+          Button color_picker_button {
+            tooltip-text: C_("Tooltip of the colorpicker button", "Pick a Color");
+            icon-name: "color-select-symbolic";
+            clicked => $pick_color() swapped;
+          }
 
-      StackPage {
-        name: "portal-error";
+          [end]
+          MenuButton appmenu_button {
+            tooltip-text: _("Main Menu");
+            primary: true;
+            icon-name: "open-menu-symbolic";
+            menu-model: primary_menu;
+          }
+        }
 
-        child: Adw.ToolbarView {
-          [top]
-          Adw.HeaderBar {}
+        content: Stack stack {
+          transition-type: crossfade;
 
-          content: WindowHandle {
-            vexpand: true;
+          StackPage {
+            name: "placeholder";
+            child: $PlaceholderPage placeholder {};
+          }
 
+          StackPage {
+            name: "portal-error";
             child: Adw.Bin {
               css-name: "statuspage";
 
@@ -111,37 +126,11 @@ template $AppWindow: Adw.ApplicationWindow {
                 }
               }
             };
-          };
-        };
-      }
+          }
 
-      StackPage {
-        name: "main";
-
-        child: Adw.BottomSheet edit_sheet {
-          content: Adw.ToolbarView {
-            [top]
-            Adw.HeaderBar {
-              title-widget: Adw.WindowTitle {
-                title: _("Eyedropper");
-              };
-
-              Button color_picker_button {
-                tooltip-text: C_("Tooltip of the colorpicker button", "Pick a Color");
-                icon-name: "color-select-symbolic";
-                clicked => $pick_color() swapped;
-              }
-
-              [end]
-              MenuButton appmenu_button {
-                tooltip-text: _("Main Menu");
-                primary: true;
-                icon-name: "open-menu-symbolic";
-                menu-model: primary_menu;
-              }
-            }
-
-            content: Box {
+          StackPage {
+            name: "main";
+            child: Box {
               orientation: horizontal;
 
               Box format_box {
@@ -193,86 +182,86 @@ template $AppWindow: Adw.ApplicationWindow {
                 }
               }
             };
-          };
-
-          sheet: Adw.ToolbarView {
-            content: Box {
-              margin-start: 8;
-              margin-end: 8;
-              margin-bottom: 12;
-              orientation: vertical;
-
-              ColorDialogButton color_preview {
-                  can-focus: false;
-                  can-target: false;
-              }
-
-              Scale hue_scale {
-                adjustment: Adjustment {
-                  lower: 0;
-                  upper: 360;
-                  step-increment: 1;
-                };
-
-                digits: 0;
-                has-origin: false;
-                draw-value: false;
-                value-changed => $on_color_preview_updated() swapped;
-
-                styles [
-                  "hue-slider",
-                ]
-              }
-
-              Scale saturation_scale {
-                adjustment: Adjustment {
-                  lower: 0;
-                  upper: 100;
-                  step-increment: 1;
-                };
-
-                digits: 0;
-                has-origin: false;
-                draw-value: false;
-                value-changed => $on_color_preview_updated() swapped;
-
-                styles [
-                  "saturation-slider",
-                ]
-              }
-
-              Scale lightness_scale {
-                adjustment: Adjustment {
-                  lower: 0;
-                  upper: 100;
-                  step-increment: 1;
-                };
-                value-changed => $on_color_preview_updated() swapped;
-
-                digits: 0;
-                has-origin: false;
-                draw-value: false;
-
-                styles [
-                  "value-slider",
-                ]
-              }
-
-              Button {
-                label: _("Apply");
-                use-underline: true;
-                halign: center;
-                clicked => $on_color_preview_select() swapped;
-
-                styles [
-                  "pill",
-                  "suggested-action",
-                ]
-              }
-            };
-          };
+          }
         };
-      }
+      };
+
+      sheet: Adw.ToolbarView {
+        content: Box {
+          margin-start: 8;
+          margin-end: 8;
+          margin-bottom: 12;
+          orientation: vertical;
+
+          ColorDialogButton color_preview {
+            can-focus: false;
+            can-target: false;
+          }
+
+          Scale hue_scale {
+            adjustment: Adjustment {
+              lower: 0;
+              upper: 360;
+              step-increment: 1;
+            };
+
+            digits: 0;
+            has-origin: false;
+            draw-value: false;
+            value-changed => $on_color_preview_updated() swapped;
+
+            styles [
+              "hue-slider",
+            ]
+          }
+
+          Scale saturation_scale {
+            adjustment: Adjustment {
+              lower: 0;
+              upper: 100;
+              step-increment: 1;
+            };
+
+            digits: 0;
+            has-origin: false;
+            draw-value: false;
+            value-changed => $on_color_preview_updated() swapped;
+
+            styles [
+              "saturation-slider",
+            ]
+          }
+
+          Scale lightness_scale {
+            adjustment: Adjustment {
+              lower: 0;
+              upper: 100;
+              step-increment: 1;
+            };
+
+            value-changed => $on_color_preview_updated() swapped;
+            digits: 0;
+            has-origin: false;
+            draw-value: false;
+
+            styles [
+              "value-slider",
+            ]
+          }
+
+          Button {
+            label: _("Apply");
+            use-underline: true;
+            halign: center;
+            clicked => $on_color_preview_select() swapped;
+
+            styles [
+              "pill",
+              "suggested-action",
+            ]
+          }
+        };
+      };
     };
   };
 }
