@@ -348,7 +348,7 @@ impl AppWindow {
     fn set_history_list_visible(&self, history: &gio::ListStore) {
         let visible = history.n_items() > 1;
         self.imp().history_list.set_visible(visible);
-        self.action_set_enabled("app.clear_history", visible);
+        self.action_set_enabled("app.clear-history", visible);
     }
 
     /// Save the window size when closing the window
