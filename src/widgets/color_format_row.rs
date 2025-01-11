@@ -20,10 +20,7 @@ mod imp {
     };
 
     use super::*;
-
-    use glib::subclass::Signal;
     use gtk::gio;
-    use once_cell::sync::Lazy;
 
     #[derive(Debug, gtk::CompositeTemplate, glib::Properties)]
     #[template(resource = "/com/github/finefindus/eyedropper/ui/color-format-row.ui")]
@@ -73,15 +70,6 @@ mod imp {
 
     #[glib::derived_properties]
     impl ObjectImpl for ColorFormatRow {
-        fn signals() -> &'static [Signal] {
-            static SIGNALS: Lazy<Vec<Signal>> = Lazy::new(|| {
-                vec![Signal::builder("copied-text")
-                    .param_types([String::static_type()])
-                    .build()]
-            });
-            SIGNALS.as_ref()
-        }
-
         fn constructed(&self) {
             self.parent_constructed();
             let obj = self.obj();
