@@ -6,6 +6,7 @@ data/com.github.finefindus.eyedropper.metainfo.xml.in.in
 # UI files
 data/resources/ui/color-format-row.blp
 data/resources/ui/history-item.blp
+data/resources/ui/placeholder-page.blp
 data/resources/ui/preferences.blp
 data/resources/ui/shortcuts.blp
 data/resources/ui/window.blp
