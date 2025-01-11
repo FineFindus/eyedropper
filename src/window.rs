@@ -291,11 +291,11 @@ impl AppWindow {
     ///
     /// After clearing it, a toast will be shown with the options to 'undo' the clearing.
     pub fn clear_history(&self) {
-        //clear history
+        // clear history
         let history = self.history();
         let items = history.snapshot();
 
-        //show toast to undo
+        // show toast to undo
         let toast = adw::Toast::builder()
             .title(gettext("Cleared history"))
             .button_label(gettext("Undo"))
@@ -381,7 +381,7 @@ impl AppWindow {
         Ok(())
     }
 
-    ///Load the last saved window size and apply it
+    /// Load the last saved window size and apply it
     fn load_window_size(&self) {
         let imp = self.imp();
 
@@ -493,7 +493,7 @@ impl AppWindow {
     /// color, the preceding occurrence will be removed.
     pub fn set_color(&self, color: Color) {
         if self.color() != Some(color) {
-            //TODO remove check once bug is fixed
+            // TODO: remove check once bug is fixed
             if self.history().n_items() > 0 {
                 if let Some(i) = self.history().find_with_equal_func(|item| {
                     item.downcast_ref::<HistoryObject>().unwrap().color() == color.into()

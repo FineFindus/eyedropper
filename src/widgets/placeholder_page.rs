@@ -5,6 +5,7 @@ use gtk::{glib, prelude::ObjectExt};
 mod imp {
 
     use adw::subclass::bin::BinImpl;
+    use rand::seq::SliceRandom;
 
     use crate::colors::color::Color;
 
@@ -43,6 +44,17 @@ mod imp {
                 .transform_to(|_binding, val: String| Some(!val.is_empty()))
                 .invert_boolean()
                 .build();
+
+            // set a random placeholder text, to indicate to the user what possible formats can be
+            // entered
+            const PLACEHOLDER_COLORS: [&str; 4] = [
+                "#2190A4",
+                "Blue",
+                "hsla(40.8, 100%, 39%, 1)",
+                "rgb(58, 148, 74)",
+            ];
+            self.initial_color_entry
+                .set_placeholder_text(PLACEHOLDER_COLORS.choose(&mut rand::thread_rng()).copied());
         }
 
         fn dispose(&self) {
