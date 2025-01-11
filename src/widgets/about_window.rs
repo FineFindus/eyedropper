@@ -12,7 +12,10 @@ pub const WEBSITE: &str = "https://github.com/finefindus/eyedropper/";
 pub const ISSUE_TRACKER: &str = "https://github.com/finefindus/eyedropper/issues/new/choose";
 pub const DEVELOPERS: &[&str] = &["FineFindus https://github.com/FineFindus"];
 pub const DESIGNERS: &[&str] = &["FineFindus https://github.com/FineFindus"];
-pub const ARTISTS: &[&str] = &["bertob https://github.com/bertob", "Brage Fuglseth"];
+pub const ARTISTS: &[&str] = &[
+    "Tobias Bernard  https://tobiasbernard.com",
+    "Brage Fuglseth https://bragefuglseth.dev",
+];
 
 #[derive(Debug)]
 pub struct EyedropperAbout;
