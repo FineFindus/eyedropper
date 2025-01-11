@@ -13,6 +13,7 @@ use crate::config::{APP_ID, PROFILE};
 use crate::model::history::HistoryObject;
 use crate::widgets::color_format_row::ColorFormatRow;
 use crate::widgets::history_item::HistoryItem;
+use crate::widgets::placeholder_page::PlaceholderPage;
 
 mod imp {
     use std::cell::{Cell, OnceCell, RefCell};
@@ -27,6 +28,8 @@ mod imp {
     pub struct AppWindow {
         #[template_child]
         pub headerbar: TemplateChild<adw::HeaderBar>,
+        #[template_child]
+        pub placeholder: TemplateChild<PlaceholderPage>,
         #[template_child]
         pub stack: TemplateChild<gtk::Stack>,
         #[template_child]
@@ -60,6 +63,7 @@ mod imp {
         fn default() -> Self {
             Self {
                 headerbar: TemplateChild::default(),
+                placeholder: TemplateChild::default(),
                 stack: TemplateChild::default(),
                 color_button: TemplateChild::default(),
                 color_picker_button: TemplateChild::default(),
@@ -89,6 +93,10 @@ mod imp {
         fn class_init(klass: &mut Self::Class) {
             Self::bind_template(klass);
             Self::Type::bind_template_callbacks(klass);
+
+            klass.install_action("win.pick-color", None, move |win, _, _var| {
+                win.pick_color();
+            });
 
             klass.install_action(
                 "win.show-toast",
@@ -160,7 +168,6 @@ mod imp {
     impl ObjectImpl for AppWindow {
         fn constructed(&self) {
             self.parent_constructed();
-
             let obj = self.obj();
 
             // Devel Profile

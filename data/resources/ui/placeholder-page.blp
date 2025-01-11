@@ -1,0 +1,49 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $PlaceholderPage : Adw.Bin {
+  $AdwToolbarView {
+    [top]
+    Adw.HeaderBar {
+      Button {
+        tooltip-text: C_("Tooltip of the colorpicker button", "Pick a Color");
+        icon-name: "color-select-symbolic";
+        action-name: "win.pick-color";
+      }
+    }
+
+    content: WindowHandle {
+      vexpand: true;
+
+      child: Adw.StatusPage {
+        icon-name: "color-select-symbolic";
+        title: _("No Color");
+        description: _("Select or enter a color to get started");
+
+        child: Box {
+          hexpand: true;
+          halign: center;
+          spacing: 25;
+          orientation: vertical;
+
+          Entry initial_color_entry {
+            placeholder-text: "#2190A4";
+            activate => $on_color_entry_active() swapped;
+          }
+
+          Button initial_color_button {
+            label: _("View");
+            halign: center;
+            sensitive: false;
+            clicked => $on_color_entry_active() swapped;
+
+            styles [
+              "pill",
+              "suggested-action",
+            ]
+          }
+        };
+      };
+    };
+  }
+}

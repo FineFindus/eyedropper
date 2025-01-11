@@ -4,6 +4,7 @@ blueprints = custom_target(
   input: files(
     'ui/color-format-row.blp',
     'ui/history-item.blp',
+    'ui/placeholder-page.blp',
     'ui/preferences.blp',
     'ui/shortcuts.blp',
     'ui/window.blp',
