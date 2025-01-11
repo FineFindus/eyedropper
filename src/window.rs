@@ -188,7 +188,6 @@ mod imp {
             obj.load_window_size();
             obj.setup_history();
             obj.order_formats();
-            obj.update_stack();
 
             // setup css provider to update the edit sheet scale colors
             gtk::style_context_add_provider_for_display(
@@ -269,14 +268,6 @@ impl AppWindow {
     /// The currently picked color, or `None` if the user hasn't picked one yet.
     fn color(&self) -> Option<Color> {
         self.imp().color.get()
-    }
-
-    /// Update the stack to either show the main page or the placeholder,
-    /// depending on if a color is chosen.
-    fn update_stack(&self) {
-        self.imp()
-            .stack
-            .set_visible_child_name(self.color().map(|_| "main").unwrap_or("placeholder"));
     }
 
     /// Returns the history list store object.
@@ -506,8 +497,8 @@ impl AppWindow {
         let imp = self.imp();
         imp.color.replace(Some(color));
 
-        //stop showing placeholder, when a color is set
-        self.update_stack();
+        //stop showing placeholder page, when a color is set
+        imp.stack.set_visible_child_name("main");
 
         imp.color_button.set_rgba(&color.into());
 
