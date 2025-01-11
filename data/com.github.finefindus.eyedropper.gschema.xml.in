@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <schemalist>
   <schema path="/com/github/finefindus/eyedropper/" id="@app-id@" gettext-domain="@gettext-package@">
-    <key name="window-width" type="i">
-      <default>300</default>
-      <summary>Window width</summary>
-    </key>
-    <key name="window-height" type="i">
-      <default>445</default>
-      <summary>Window height</summary>
-    </key>
-    <key name="is-maximized" type="b">
-      <default>false</default>
-      <summary>Window maximized state</summary>
+    <key name="window-dimension" type="(iib)">
+      <default>(300, 445, false)</default>
+      <summary>Window dimension</summary>
     </key>
     <key name="visible-formats" type="as">
       <default>[ 'name', 'hex', 'rgb', 'hsl', 'hsv', 'cmyk' ]</default>

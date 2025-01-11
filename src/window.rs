@@ -358,11 +358,10 @@ impl AppWindow {
         let (width, height) = self.default_size();
         log::debug!("Window Size: {}x{}", width, height);
 
-        imp.settings.set_int("window-width", width)?;
-        imp.settings.set_int("window-height", height)?;
-
-        imp.settings
-            .set_boolean("is-maximized", self.is_maximized())?;
+        imp.settings.set_value(
+            "window-dimension",
+            &(width, height, self.is_maximized()).to_variant(),
+        )?;
 
         Ok(())
     }
@@ -371,28 +370,11 @@ impl AppWindow {
     fn load_window_size(&self) {
         let imp = self.imp();
 
-        let default_width = imp
-            .settings
-            .default_value("window-width")
-            .expect("Failed to get width widow-width")
-            .get::<i32>()
-            .expect("Failed to get width i32");
-
-        let default_height = imp
-            .settings
-            .default_value("window-height")
-            .expect("Failed to get height window-height")
-            .get::<i32>()
-            .expect("Failed to get height i32");
-
-        let width = imp.settings.int("window-width").max(default_width);
-        let height = imp.settings.int("window-height").max(default_height);
-        let is_maximized = imp.settings.boolean("is-maximized");
-        log::debug!("Window Size: {}x{}", width, height);
-        log::debug!("Maximized: {}", is_maximized);
+        // safe to unwrap, as the settings have default values
+        let (width, height, is_maximized): (i32, i32, bool) =
+            imp.settings.value("window-dimension").get().unwrap();
 
         self.set_default_size(width, height);
-
         if is_maximized {
             self.maximize();
         }
