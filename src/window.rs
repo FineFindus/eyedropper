@@ -375,9 +375,7 @@ impl AppWindow {
             imp.settings.value("window-dimension").get().unwrap();
 
         self.set_default_size(width, height);
-        if is_maximized {
-            self.maximize();
-        }
+        self.set_maximized(is_maximized);
     }
 
     /// Insert the formats in the order in which they are saved in the settings.
