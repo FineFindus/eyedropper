@@ -179,7 +179,7 @@ impl App {
         // About
         let action_about = gio::ActionEntry::builder("about")
             .activate(|app: &Self, _, _| {
-                app.show_about_dialog();
+                EyedropperAbout::show(&app.main_window());
             })
             .build();
 
@@ -199,11 +199,6 @@ impl App {
         self.set_accels_for_action("app.random-color", &["<Control>r"]);
         self.set_accels_for_action("app.preferences", &["<Control>comma"]);
         self.set_accels_for_action("app.quit", &["<Control>w", "<Control>q"]);
-    }
-
-    fn show_about_dialog(&self) {
-        EyedropperAbout::show(self.main_window().imp().portal_error.take())
-            .present(Some(&self.main_window()));
     }
 
     fn show_preferences_dialog(&self) {

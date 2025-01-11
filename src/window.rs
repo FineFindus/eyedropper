@@ -16,7 +16,7 @@ use crate::widgets::history_item::HistoryItem;
 use crate::widgets::placeholder_page::PlaceholderPage;
 
 mod imp {
-    use std::cell::{Cell, OnceCell, RefCell};
+    use std::cell::{Cell, OnceCell};
 
     use super::*;
 
@@ -53,7 +53,6 @@ mod imp {
         pub history: OnceCell<gio::ListStore>,
         pub settings: gio::Settings,
         pub color: Cell<Option<Color>>,
-        pub portal_error: RefCell<Option<ashpd::Error>>,
         pub css_provider: gtk::CssProvider,
     }
 
@@ -75,7 +74,6 @@ mod imp {
                 history: Default::default(),
                 settings: gio::Settings::new(APP_ID),
                 color: Cell::new(None),
-                portal_error: RefCell::new(None),
                 css_provider: Default::default(),
             }
         }
@@ -448,10 +446,7 @@ impl AppWindow {
                     .await;
 
                 match request.and_then(|req| req.response()) {
-                    Ok(color) => {
-                        window.imp().portal_error.replace(None);
-                        window.set_color(Color::from(gtk::gdk::RGBA::from(color)));
-                    }
+                    Ok(color) => window.set_color(Color::from(gtk::gdk::RGBA::from(color))),
                     Err(err) => {
                         log::error!("{}", err);
                         if !matches!(
@@ -462,7 +457,6 @@ impl AppWindow {
                                 gettext("Failed to pick a color"),
                                 adw::ToastPriority::Normal,
                             );
-                            window.imp().portal_error.replace(Some(err));
                             // show the warning page to indicate to the user that color picking is
                             // not supported, also disables the color picker to avoid further
                             // errors

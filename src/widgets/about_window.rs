@@ -18,14 +18,14 @@ pub const ARTISTS: &[&str] = &["bertob https://github.com/bertob", "Brage Fuglse
 pub struct EyedropperAbout;
 
 impl EyedropperAbout {
-    pub fn show(portal_error: Option<ashpd::Error>) -> adw::AboutDialog {
+    pub fn show(parent: &impl IsA<gtk::Widget>) {
         let details = Self::details();
 
         //translatable changelog
         let changelog = Self::changelog();
         let changelog_version = config::VERSION;
 
-        let debug_info = Self::debug_info(portal_error);
+        let debug_info = Self::debug_info();
 
         AboutDialog::builder()
             .application_icon(APP_ID)
@@ -47,6 +47,7 @@ impl EyedropperAbout {
             .debug_info(debug_info)
             .debug_info_filename("eyedropper_debug_info")
             .build()
+            .present(Some(parent));
     }
 
     /// Build the details page text out of single components,
@@ -97,7 +98,7 @@ impl EyedropperAbout {
     }
 
     ///Returns useful information for debugging the application.
-    fn debug_info(portal_error: Option<ashpd::Error>) -> String {
+    fn debug_info() -> String {
         let mut information = String::new();
 
         //information about the app
@@ -135,10 +136,6 @@ impl EyedropperAbout {
         information.push('\n');
 
         information.push_str(&format!("Sandbox: {}\n", Self::sandbox_info()));
-        information.push('\n');
-
-        //add potential portal error
-        information.push_str(&format!("Portal error: {:?}", portal_error));
         information.push('\n');
 
         information
