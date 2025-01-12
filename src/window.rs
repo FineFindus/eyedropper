@@ -179,6 +179,8 @@ mod imp {
                         log::warn!("System does not support color picking");
                         window.show_portal_error_page();
                     }
+                    // disable history clearing action before an item has been added
+                    window.obj().action_set_enabled("app.clear-history", false);
                 }
             ));
 
@@ -311,16 +313,13 @@ impl AppWindow {
 
     /// Setup the history by setting up a model
     fn setup_history(&self) {
-        // Create new model
         let model = gio::ListStore::new::<HistoryObject>();
 
-        // Get state and set model
         self.imp()
             .history
             .set(model)
             .expect("Failed to set history model");
 
-        // Wrap model with selection and pass it to the list view
         let selection_model = gtk::NoSelection::new(Some(self.history().clone()));
         self.imp()
             .history_list
@@ -332,23 +331,16 @@ impl AppWindow {
                 history_item.upcast()
             });
 
-        // Assure that the history list is only visible when it is supposed to
-        self.set_history_list_visible(self.history());
         self.history().connect_items_changed(glib::clone!(
             #[weak(rename_to = window)]
             self,
             move |items, _, _, _| {
-                window.set_history_list_visible(items);
+                // only show history list if there are any items
+                let visible = items.n_items() > 1;
+                window.imp().history_list.set_visible(visible);
+                window.action_set_enabled("app.clear-history", visible);
             }
         ));
-    }
-
-    /// Assure that history is only visible
-    /// if the number of items is greater than 0
-    fn set_history_list_visible(&self, history: &gio::ListStore) {
-        let visible = history.n_items() > 1;
-        self.imp().history_list.set_visible(visible);
-        self.action_set_enabled("app.clear-history", visible);
     }
 
     /// Save the window size when closing the window
