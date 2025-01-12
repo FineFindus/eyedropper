@@ -45,9 +45,8 @@
       <caption>Status page stating to pick a color to get started</caption>
     </screenshot>
   </screenshots>
-  <url type="homepage">https://github.com/FineFindus/eyedropper</url>
+  <url type="homepage">https://apps.gnome.org/Eyedropper</url>
   <url type="bugtracker">https://github.com/FineFindus/eyedropper/issues</url>
-  <url type="help">https://github.com/FineFindus/eyedropper/issues</url>
   <url type="vcs-browser">https://github.com/FineFindus/eyedropper</url>
   <url type="contribute">https://github.com/FineFindus/eyedropper#contributing</url>
   <url type="translate">https://github.com/FineFindus/eyedropper#translation</url>
