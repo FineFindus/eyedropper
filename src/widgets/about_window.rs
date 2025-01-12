@@ -65,7 +65,9 @@ impl EyedropperAbout {
         details.push_str(&gettext("Pick and format colors"));
         details.push_str("</b>\n\n");
 
-        details.push_str(&gettext("Pick any color from your screen and view it in different formats. Change the picked color or go back to a previously picked color from the history list. Generate a list of different shades from the picked color."));
+        details.push_str(&gettext(
+            "Enter or pick a color and view it in different formats.",
+        ));
         details.push_str("\n\n");
 
         //feature list
@@ -75,11 +77,11 @@ impl EyedropperAbout {
 
         let features = vec![
             gettext("Pick a Color"),
-            gettext("Enter a color in Hex-Format"),
-            gettext("Parse RGBA/ARGB Hex-Colors"),
-            gettext("View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format"),
-            gettext("Customize which formats appear as well as their order"),
-            gettext("Generate a palette of different shades"),
+            gettext("Edit the viewed color in a simple HSL editor"),
+            gettext("Enter a color in various formats"),
+            gettext(
+                "Convert colors into other formats such as Hex, RGB, HSV, HSL, CMYK, XYZ, CIE-Lab…",
+            ),
         ];
 
         //push to features as a list with new lines

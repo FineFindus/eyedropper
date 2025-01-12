@@ -14,17 +14,14 @@
   <update_contact>finefindus@proton.me</update_contact>
   <description>
     <p>
-      Pick any color from your screen and view it in different formats. Change the picked color or go back to
-      a previously picked color from the history list. Generate a list of different shades from the picked color.
+      Enter or pick a color and view it in different formats.
     </p>
     <p>Features</p>
     <ul>
       <li>Pick a Color</li>
-      <li>Enter a color in Hex-Format</li>
-      <li>Enter colors in different formats</li>
-      <li>View colors in Hex, RGB, HSV, HSL, CMYK, XYZ and CIE-Lab format</li>
-      <li>Customize which formats appear as well as their order</li>
-      <li>Generate a palette of different shades</li>
+      <li>Edit the viewed color in a simple HSL editor</li>
+      <li>Enter a color in various formats</li>
+      <li>Convert colors into other formats such as Hex, RGB, HSV, HSL, CMYK, XYZ, CIE-Lab…</li>
     </ul>
   </description>
   <screenshots>
