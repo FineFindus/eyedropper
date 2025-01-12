@@ -14,8 +14,5 @@
     <file compressed="true" alias="circle-symbolic.svg">icons/circle-filled-symbolic.svg</file>
     <file compressed="true" alias="check-plain-symbolic.svg">icons/check-plain-symbolic.svg</file>
     <file compressed="true" alias="list-drag-handle-symbolic.svg">icons/list-drag-handle-symbolic.svg</file>
-    <file compressed="true" alias="applications-system-symbolic.svg">icons/applications-system-symbolic.svg</file>
-    <file compressed="true" alias="document-edit-symbolic.svg">icons/document-edit-symbolic.svg</file>
-    <file compressed="true" alias="portal-missing-symbolic.svg">icons/portal-missing-symbolic.svg</file>
   </gresource>
 </gresources>
