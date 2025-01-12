@@ -331,6 +331,15 @@ impl AppWindow {
                 history_item.upcast()
             });
 
+        let gtk_settings = gtk::Settings::default().unwrap();
+        gtk_settings.connect_gtk_overlay_scrolling_notify(glib::clone!(
+            #[weak(rename_to = window)]
+            self,
+            move |settings| {
+                window.adjust_scrollbar_offset(settings);
+            }
+        ));
+
         self.history().connect_items_changed(glib::clone!(
             #[weak(rename_to = window)]
             self,
@@ -339,8 +348,28 @@ impl AppWindow {
                 let visible = items.n_items() > 1;
                 window.imp().history_list.set_visible(visible);
                 window.action_set_enabled("app.clear-history", visible);
+                window.adjust_scrollbar_offset(&gtk_settings);
             }
         ));
+    }
+
+    fn adjust_scrollbar_offset(&self, settings: &gtk::Settings) {
+        // FIXME: remove this workaround once https://gitlab.gnome.org/GNOME/gtk/-/issues/6384 is fixed
+        // calculate how many history items fit into the list, before it begins scrolling
+        let screen_elements = self.imp().history_list.size(gtk::Orientation::Vertical) / 40;
+        // width has not been set yet
+        if screen_elements == 0 {
+            return;
+        }
+        let history_items = self.history().n_items();
+        let scrollbar_width =
+            if !settings.is_gtk_overlay_scrolling() && history_items >= screen_elements as u32 {
+                // size of the scrollbar
+                24
+            } else {
+                0
+            };
+        self.imp().history_list.set_margin_end(scrollbar_width);
     }
 
     /// Save the window size when closing the window
