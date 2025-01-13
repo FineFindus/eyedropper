@@ -260,9 +260,7 @@ impl AppWindow {
     fn show_toast(&self, text: impl AsRef<str>, priority: adw::ToastPriority) {
         let toast = adw::Toast::new(text.as_ref());
         toast.set_priority(priority);
-        self.imp()
-            .toast_overlay
-            .add_toast(adw::Toast::new(text.as_ref()));
+        self.imp().toast_overlay.add_toast(toast);
     }
 
     /// The currently picked color, or `None` if the user hasn't picked one yet.
