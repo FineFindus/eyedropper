@@ -88,7 +88,6 @@ mod imp {
         }
     }
 
-    impl BoxImpl for HistoryItem {}
     impl ButtonImpl for HistoryItem {}
 
     #[gtk::template_callbacks]
@@ -121,7 +120,7 @@ mod imp {
 
 glib::wrapper! {
     pub struct HistoryItem(ObjectSubclass<imp::HistoryItem>)
-    @extends gtk::Box, gtk::Widget, gtk::Button,
+    @extends gtk::Widget, gtk::Button,
     @implements gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget, gtk::Orientable, gtk::Actionable;
 }
 

@@ -62,9 +62,19 @@ mod imp {
 
         fn command_line(&self, command_line: &gio::ApplicationCommandLine) -> ExitCode {
             self.activate();
-            if command_line.arguments().contains(&"--pick-color".into()) {
-                self.window.get().unwrap().upgrade().unwrap().pick_color();
+            if !command_line.arguments().contains(&"--pick-color".into()) {
+                return glib::ExitCode::SUCCESS;
             }
+
+            let ctx = glib::MainContext::default();
+            let window = self.window.get().unwrap().upgrade().unwrap();
+            ctx.spawn_local(glib::clone!(
+                #[weak()]
+                window,
+                async move {
+                    window.pick_color().await;
+                }
+            ));
             glib::ExitCode::SUCCESS
         }
 
@@ -138,13 +148,6 @@ impl App {
     }
 
     fn setup_gactions(&self) {
-        // Pick a color using the picker button
-        let action_pick_color = gio::ActionEntry::builder("pick-color")
-            .activate(move |app: &Self, _, _| {
-                app.main_window().pick_color();
-            })
-            .build();
-
         // Clear the history
         let action_clear_history = gio::ActionEntry::builder("clear-history")
             .activate(|app: &Self, _, _| {
@@ -184,7 +187,6 @@ impl App {
             .build();
 
         self.add_action_entries([
-            action_pick_color,
             action_clear_history,
             action_random_color,
             action_preferences,
@@ -195,7 +197,7 @@ impl App {
 
     // Sets up keyboard shortcuts
     fn setup_accels(&self) {
-        self.set_accels_for_action("app.pick-color", &["<Control>p"]);
+        self.set_accels_for_action("win.pick-color", &["<Control>p"]);
         self.set_accels_for_action("app.random-color", &["<Control>r"]);
         self.set_accels_for_action("app.preferences", &["<Control>comma"]);
         self.set_accels_for_action("app.quit", &["<Control>w", "<Control>q"]);

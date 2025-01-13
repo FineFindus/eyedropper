@@ -89,8 +89,8 @@ mod imp {
             Self::bind_template(klass);
             Self::Type::bind_template_callbacks(klass);
 
-            klass.install_action("win.pick-color", None, move |win, _, _var| {
-                win.pick_color();
+            klass.install_action_async("win.pick-color", None, move |win, _, _var| async move {
+                win.pick_color().await;
             });
 
             klass.install_action(
@@ -419,7 +419,8 @@ impl AppWindow {
         order
             .iter()
             .filter(|item| visible.contains(item))
-            .filter_map(|item| Some(ColorFormatRow::new(&Notation::from_str(item).ok()?)))
+            .flat_map(|item| Notation::from_str(item))
+            .map(|notation| ColorFormatRow::new(&notation))
             .for_each(|widget| {
                 format_box.append(&widget);
                 if let Some(color) = self.color() {
@@ -432,41 +433,34 @@ impl AppWindow {
     ///
     /// It will show a toast when failing to pick a color, for example when the user cancels the action.
     #[template_callback]
-    pub fn pick_color(&self) {
+    pub async fn pick_color(&self) {
         log::debug!("Picking a color using the color picker");
-        let main_context = glib::MainContext::default();
-        main_context.spawn_local(glib::clone!(
-            #[weak(rename_to = window)]
-            self,
-            async move {
-                let root = window.root().expect("Failed to get window root");
-                let identifier = ashpd::WindowIdentifier::from_native(&root).await;
-                let request = ashpd::desktop::screenshot::ColorRequest::default()
-                    .identifier(identifier)
-                    .send()
-                    .await;
+        let root = self.root().expect("Failed to get window root");
+        let identifier = ashpd::WindowIdentifier::from_native(&root).await;
+        let request = ashpd::desktop::screenshot::ColorRequest::default()
+            .identifier(identifier)
+            .send()
+            .await;
 
-                match request.and_then(|req| req.response()) {
-                    Ok(color) => window.set_color(Color::from(gtk::gdk::RGBA::from(color))),
-                    Err(err) => {
-                        log::error!("{}", err);
-                        if !matches!(
-                            err,
-                            ashpd::Error::Response(ashpd::desktop::ResponseError::Cancelled)
-                        ) {
-                            window.show_toast(
-                                gettext("Failed to pick a color"),
-                                adw::ToastPriority::Normal,
-                            );
-                            // show the warning page to indicate to the user that color picking is
-                            // not supported, also disables the color picker to avoid further
-                            // errors
-                            window.imp().show_portal_error_page();
-                        }
-                    }
-                };
+        match request.and_then(|req| req.response()) {
+            Ok(color) => self.set_color(Color::from(gtk::gdk::RGBA::from(color))),
+            Err(err) => {
+                log::error!("{}", err);
+                if !matches!(
+                    err,
+                    ashpd::Error::Response(ashpd::desktop::ResponseError::Cancelled)
+                ) {
+                    self.show_toast(
+                        gettext("Failed to pick a color"),
+                        adw::ToastPriority::Normal,
+                    );
+                    // show the warning page to indicate to the user that color picking is
+                    // not supported, also disables the color picker to avoid further
+                    // errors
+                    self.imp().show_portal_error_page();
+                }
             }
-        ));
+        };
     }
 
     /// Set the current color to the given color.
