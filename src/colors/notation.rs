@@ -68,6 +68,7 @@ impl Notation {
         &self,
         color: Color,
         alpha_position: AlphaPosition,
+        rgb_decimal_notation: bool,
         precision: usize,
         name_sources: ColorNameSources,
     ) -> String {
@@ -94,15 +95,23 @@ impl Notation {
                 }
             }
             Notation::Rgb => {
-                let rgb = |a: f32| (a * 255.0).round() as u8;
+                let format_rgb = |val: f32| {
+                    if rgb_decimal_notation {
+                        format!("{:.2}", val)
+                    } else {
+                        format!("{}", (val * 255.0).round() as u8)
+                    }
+                };
                 let (r, g, b, a) = (
-                    rgb(color.red),
-                    rgb(color.green),
-                    rgb(color.blue),
+                    format_rgb(color.red),
+                    format_rgb(color.green),
+                    format_rgb(color.blue),
                     pretty_percent(color.alpha),
                 );
                 match alpha_position {
-                    AlphaPosition::End => format!("rgba({}, {}, {}, {})", r, g, b, a),
+                    AlphaPosition::End => {
+                        format!("rgba({}, {}, {}, {})", r, g, b, a)
+                    }
                     _ => format!("rgb({}, {}, {})", r, g, b),
                 }
             }
@@ -270,7 +279,13 @@ impl Notation {
                 Notation::Oklch => "Oklch".to_string(),
                 Notation::Name => "Name".to_string(),
             },
-            self.as_str(color, AlphaPosition::None, 2, ColorNameSources::empty()),
+            self.as_str(
+                color,
+                AlphaPosition::None,
+                false,
+                2,
+                ColorNameSources::empty(),
+            ),
         )
     }
 }

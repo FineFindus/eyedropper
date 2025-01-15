@@ -46,7 +46,7 @@ template $PreferencesWindow: Adw.PreferencesDialog {
       title: _("Formatting");
 
       Adw.ComboRow alpha_pos_box {
-        title: _("Alpha-Value-Position");
+        title: _("Alpha-Value Position");
         subtitle: _("Where the Alphavalue is positioned in the Hexstring");
 
         model: StringList {
@@ -54,6 +54,18 @@ template $PreferencesWindow: Adw.PreferencesDialog {
             C_("Alphavalue is not shown", "None"),
             C_("Alphavalue is shown at the end", "End"),
             C_("Alphavalue is shown at the start", "Start"),
+          ]
+        };
+      }
+
+      Adw.ComboRow rgb_format_box {
+        title: _("RGB Notation");
+        subtitle: _("Whether RGB values should be displayed as integers or decimals");
+
+        model: StringList {
+          strings [
+            C_("RGB is format as integers (e.g. 127)", "Integer"),
+            C_("RGB is format as decimals (e.g. 0.1)", "Decimal"),
           ]
         };
       }

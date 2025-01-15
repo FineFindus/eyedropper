@@ -110,6 +110,7 @@ mod imp {
                 Notation::Hex.as_str(
                     color.into(),
                     AlphaPosition::None,
+                    false,
                     2,
                     ColorNameSources::empty(),
                 )

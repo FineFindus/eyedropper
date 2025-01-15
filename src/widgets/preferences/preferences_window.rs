@@ -38,6 +38,8 @@ mod imp {
         #[template_child()]
         pub alpha_pos_box: TemplateChild<adw::ComboRow>,
         #[template_child()]
+        pub rgb_format_box: TemplateChild<adw::ComboRow>,
+        #[template_child()]
         pub precision_row: TemplateChild<adw::SpinRow>,
         #[template_child()]
         pub order_list: TemplateChild<gtk::ListBox>,
@@ -63,6 +65,7 @@ mod imp {
                 settings: gtk::gio::Settings::new(config::APP_ID),
                 name_source_page: TemplateChild::default(),
                 alpha_pos_box: TemplateChild::default(),
+                rgb_format_box: TemplateChild::default(),
                 precision_row: TemplateChild::default(),
                 order_list: TemplateChild::default(),
                 name_source_basic: TemplateChild::default(),
@@ -88,8 +91,19 @@ mod imp {
             self.parent_constructed();
             let obj = self.obj();
             obj.setup_order_list();
-            obj.setup_settings();
             obj.populate_formats();
+
+            self.settings
+                .bind("alpha-position", &*self.alpha_pos_box, "selected")
+                .build();
+
+            self.settings
+                .bind("rgb-notation", &*self.rgb_format_box, "selected")
+                .build();
+
+            self.settings
+                .bind("precision-digits", &*self.precision_row, "value")
+                .build();
 
             self.bind_setting(&self.name_source_basic, ColorNameSources::Html);
             self.bind_setting(&self.name_source_extended, ColorNameSources::Svg);
@@ -146,18 +160,6 @@ impl PreferencesWindow {
     #[allow(clippy::new_without_default)]
     pub fn new() -> Self {
         glib::Object::new::<Self>()
-    }
-
-    fn setup_settings(&self) {
-        let imp = self.imp();
-
-        imp.settings
-            .bind("alpha-position", &*imp.alpha_pos_box, "selected")
-            .build();
-
-        imp.settings
-            .bind("precision-digits", &*imp.precision_row, "value")
-            .build();
     }
 
     /// Resets the current order by resetting the setting and repopulating the list.

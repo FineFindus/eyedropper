@@ -136,12 +136,17 @@ impl ColorFormatRow {
     pub fn display_color(&self, color: Color) {
         let alpha_position = AlphaPosition::from(self.imp().settings.int("alpha-position") as u32);
         let precision = self.imp().settings.uint("precision-digits") as usize;
+        let rgb_decimal_notation = self.imp().settings.int("rgb-notation") == 1;
         let name_sources =
             ColorNameSources::from_bits(self.imp().settings.uint("name-sources-flag"))
                 .unwrap_or(ColorNameSources::empty());
-        let color = self
-            .color_format()
-            .as_str(color, alpha_position, precision, name_sources);
+        let color = self.color_format().as_str(
+            color,
+            alpha_position,
+            rgb_decimal_notation,
+            precision,
+            name_sources,
+        );
         self.set_color(color);
     }
 
