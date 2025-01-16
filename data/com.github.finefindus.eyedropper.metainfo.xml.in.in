@@ -26,19 +26,19 @@
   </description>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/FineFindus/eyedropper/master/data/resources/screenshots/main_default.png</image>
+      <image>https://raw.githubusercontent.com/FineFindus/eyedropper/main/data/resources/screenshots/main_default.png</image>
       <caption>Main window with a color in different formats</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/FineFindus/eyedropper/master/data/resources/screenshots/main_customize.png</image>
+      <image>https://raw.githubusercontent.com/FineFindus/eyedropper/main/data/resources/screenshots/main_customize.png</image>
       <caption>Main window with customized formats</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/FineFindus/eyedropper/master/data/resources/screenshots/edit_sheet.png</image>
+      <image>https://raw.githubusercontent.com/FineFindus/eyedropper/main/data/resources/screenshots/edit_sheet.png</image>
       <caption>Editor with an HSL editor</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/FineFindus/eyedropper/master/data/resources/screenshots/status.png</image>
+      <image>https://raw.githubusercontent.com/FineFindus/eyedropper/main/data/resources/screenshots/status.png</image>
       <caption>Status page stating to pick a color to get started</caption>
     </screenshot>
   </screenshots>

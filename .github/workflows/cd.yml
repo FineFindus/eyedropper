@@ -4,7 +4,7 @@ name: Release
 on:
   #switch for debugging
   # push:
-  #   branches: [master]
+  #   branches: [main]
   release:
     types: [published]
 
