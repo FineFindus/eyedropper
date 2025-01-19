@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Eyedropper package.
 # Jiri Grönroos <jiri.gronroos@iki.fi>, 2024.
+# Ricky Tigg <ricky.tigg@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2024-10-02 19:56+0000\n"
-"PO-Revision-Date: 2024-10-10 20:15+0000\n"
-"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
+"PO-Revision-Date: 2025-01-20 17:00+0000\n"
+"Last-Translator: Ricky Tigg <ricky.tigg@gmail.com>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/fi/>\n"
 "Language: fi\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
@@ -96,15 +97,15 @@ msgstr "Pääikkuna, jossa väri näkyy eri muodoissa"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:37
 msgid "Main window with customized formats"
-msgstr ""
+msgstr "Pääikkuna mukautetuilla muodoilla"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:41
 msgid "Editor with an HSL editor"
-msgstr ""
+msgstr "Muokkain, jossa on HSL-muokkain"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:45
 msgid "Status page stating to pick a color to get started"
-msgstr ""
+msgstr "Tilasivu kehottaa valitsemaan väri aloittamista varten"
 
 #: data/resources/ui/history-item.blp:5
 msgid "Remove"
@@ -340,6 +341,13 @@ msgid ""
 "li><li>Visual refinements to match the state of the art of GNOME apps</"
 "li><li>Internal code improvements and bug fixes</li></ul>"
 msgstr ""
+"<p>Uusi julkaisu, jossa on jännittäviä uusia ominaisuuksia ja monia "
+"parannuksia.</p>\n"
+"<ul><li>Salli minkä tahansa muodon syöttäminen</li><li>Näytä väri "
+"yleiskatsaushaussa</li><li>Vie paletit LibreOfficeen</li><li>Värien ja "
+"taustan visuaalinen ero</li ><li>Parannettu värin muunnos</"
+"li><li>Visuaaliset parannukset vastaamaan GNOME-sovellusten uusinta tasoa</"
+"li><li>Sisäisiä koodin parannuksia ja viankorjauksia</li></ul>"
 
 #: src/widgets/color_format_row.rs:239
 msgid "Copied “{}”"
