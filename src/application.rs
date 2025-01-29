@@ -69,10 +69,11 @@ mod imp {
             let ctx = glib::MainContext::default();
             let window = self.window.get().unwrap().upgrade().unwrap();
             ctx.spawn_local(glib::clone!(
-                #[weak()]
+                #[weak]
                 window,
                 async move {
                     window.pick_color().await;
+                    window.present();
                 }
             ));
             glib::ExitCode::SUCCESS
