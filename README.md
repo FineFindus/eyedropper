@@ -12,7 +12,7 @@ Pick and format colors.
 <details>
   <summary>More screenshots</summary>
 
-![Status page](data/resources/screenshots/status.png)
+![Status page](data/resources/screenshots/status_page.png)
 
 ![Customize the shown formats](data/resources/screenshots/main_customize.png)
 
