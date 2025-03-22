@@ -1,6 +1,6 @@
+use glib::Object;
 use glib::prelude::*;
 use glib::subclass::prelude::*;
-use glib::Object;
 
 use crate::colors::color::Color;
 
@@ -8,8 +8,8 @@ mod imp {
     use std::cell::Cell;
 
     use glib::{
-        subclass::{prelude::ObjectImpl, types::ObjectSubclass},
         Properties,
+        subclass::{prelude::ObjectImpl, types::ObjectSubclass},
     };
     use gtk::gdk;
 

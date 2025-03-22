@@ -9,8 +9,8 @@ use gtk::{gio, glib};
 use palette::{GetHue, IntoColor, SetHue};
 
 use crate::application::App;
-use crate::colors::color::Color;
 use crate::colors::Notation;
+use crate::colors::color::Color;
 use crate::config::{APP_ID, PROFILE};
 use crate::model::history::HistoryObject;
 use crate::widgets::color_format_row::ColorFormatRow;

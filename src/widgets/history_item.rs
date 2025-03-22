@@ -8,7 +8,7 @@ mod imp {
     use std::cell::Cell;
 
     use crate::colors::{
-        color::Color, color_names::ColorNameSources, position::AlphaPosition, Notation,
+        Notation, color::Color, color_names::ColorNameSources, position::AlphaPosition,
     };
 
     use super::*;

@@ -1,4 +1,5 @@
 use nom::{
+    IResult, Parser,
     branch::alt,
     bytes::complete::{tag, tag_no_case, take_while_m_n},
     character::complete::{digit0, digit1, multispace0},
@@ -6,7 +7,6 @@ use nom::{
     error::ParseError,
     multi::many_m_n,
     sequence::{delimited, pair, separated_pair, terminated},
-    IResult, Parser,
 };
 
 use super::{cmyk::Cmyka, color::Color, hunterlab::HunterLab, position::AlphaPosition};

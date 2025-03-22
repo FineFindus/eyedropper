@@ -6,10 +6,10 @@ use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{glib, prelude::ObjectExt};
 
+use crate::colors::Notation;
 use crate::colors::color::Color;
 use crate::colors::color_names::ColorNameSources;
 use crate::colors::position::AlphaPosition;
-use crate::colors::Notation;
 
 mod imp {
     use std::cell::{Cell, RefCell};

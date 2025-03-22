@@ -1,9 +1,9 @@
 use std::marker::PhantomData;
 
 use palette::{
-    convert::FromColorUnclamped,
-    white_point::{WhitePoint, D65},
     Clamp, WithAlpha, Xyz,
+    convert::FromColorUnclamped,
+    white_point::{D65, WhitePoint},
 };
 
 /// HunterLab with an alpha component.

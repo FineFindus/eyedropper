@@ -1,5 +1,5 @@
-use glib::subclass::prelude::*;
 use glib::Object;
+use glib::subclass::prelude::*;
 
 mod imp {
 
@@ -9,8 +9,8 @@ mod imp {
     use super::*;
 
     use glib::{
-        subclass::{prelude::ObjectImpl, types::ObjectSubclass},
         Properties,
+        subclass::{prelude::ObjectImpl, types::ObjectSubclass},
     };
 
     #[derive(Debug, Default, Properties)]

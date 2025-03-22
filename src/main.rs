@@ -6,7 +6,7 @@ mod model;
 mod widgets;
 mod window;
 
-use gettextrs::{gettext, LocaleCategory};
+use gettextrs::{LocaleCategory, gettext};
 use glib::ExitCode;
 use gtk::{gio, glib};
 
@@ -18,7 +18,9 @@ fn main() -> ExitCode {
     pretty_env_logger::init();
 
     // ensure Adwaita will be used
-    std::env::remove_var("GTK_THEME");
+    unsafe {
+        std::env::remove_var("GTK_THEME");
+    }
 
     // Prepare i18n
     gettextrs::setlocale(LocaleCategory::LcAll, "");

@@ -2,13 +2,13 @@
 name = "eyedropper"
 version = "2.0.1"
 authors = ["FineFindus <finefindusgh@gmail.com>"]
-edition = "2021"
+edition = "2024"
 description = "Pick and format colors"
 readme = "README.md"
 license-file = "LICENSE"
 homepage = "https://apps.gnome.org/Eyedropper/"
 repository = "https://github.com/finefindus/eyedropper"
-rust-version = "1.70"
+rust-version = "1.85"
 
 
 #override package level optimization, to always be maximum

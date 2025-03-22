@@ -2,7 +2,7 @@ use std::path::Path;
 
 use crate::config;
 use crate::config::{APP_ID, VERSION};
-use adw::{prelude::*, AboutDialog};
+use adw::{AboutDialog, prelude::*};
 use gettextrs::gettext;
 use gettextrs::pgettext;
 use gtk::License;

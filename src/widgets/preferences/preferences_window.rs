@@ -1,6 +1,7 @@
 use std::str::FromStr;
 
 use gettextrs::gettext;
+use gtk::Switch;
 use gtk::gdk;
 use gtk::gio;
 use gtk::gio::ListStore;
@@ -9,10 +10,9 @@ use gtk::gio::MenuItem;
 use gtk::glib;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
-use gtk::Switch;
 
-use crate::colors::color::Color;
 use crate::colors::Notation;
+use crate::colors::color::Color;
 
 use super::color_format::ColorFormatObject;
 use adw::prelude::ActionRowExt;

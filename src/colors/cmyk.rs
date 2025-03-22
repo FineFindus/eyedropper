@@ -1,4 +1,4 @@
-use palette::{convert::FromColorUnclamped, encoding, rgb::Rgb, Clamp, Srgb, WithAlpha};
+use palette::{Clamp, Srgb, WithAlpha, convert::FromColorUnclamped, encoding, rgb::Rgb};
 
 /// CMYK with a alpha component.
 ///
