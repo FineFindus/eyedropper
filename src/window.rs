@@ -188,7 +188,7 @@ mod imp {
                     // disable history clearing action before an item has been added
                     window.obj().action_set_enabled("app.clear-history", false);
 
-                    // request global shotcut
+                    // request global shortcut
                     if let Err(err) = window.obj().setup_global_shortcuts().await {
                         log::error!("Failed to request global shortcuts: {}", err);
                     }
