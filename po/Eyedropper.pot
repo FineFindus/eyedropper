@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2025-03-22 14:39+0000\n"
+"POT-Creation-Date: 2025-03-22 21:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,8 +19,8 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.blp:42 src/main.rs:28
-#: src/widgets/about_window.rs:35
+#: data/resources/ui/window.blp:42 src/main.rs:30
+#: src/widgets/about_window.rs:29
 msgid "Eyedropper"
 msgstr ""
 
@@ -30,7 +30,7 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
-#: src/widgets/about_window.rs:65
+#: src/widgets/about_window.rs:57
 msgid "Pick and format colors"
 msgstr ""
 
@@ -46,32 +46,32 @@ msgid "FineFindus"
 msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:16
-#: src/widgets/about_window.rs:69
+#: src/widgets/about_window.rs:61
 msgid "Enter or pick a color and view it in different formats."
 msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
-#: src/widgets/about_window.rs:75
+#: src/widgets/about_window.rs:67
 msgid "Features"
 msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
-#: src/widgets/about_window.rs:79
+#: src/widgets/about_window.rs:71
 msgid "Pick a Color"
 msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
-#: src/widgets/about_window.rs:80
+#: src/widgets/about_window.rs:72
 msgid "Edit the viewed color in a simple HSL editor"
 msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:23
-#: src/widgets/about_window.rs:81
+#: src/widgets/about_window.rs:73
 msgid "Enter a color in various formats"
 msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:24
-#: src/widgets/about_window.rs:83
+#: src/widgets/about_window.rs:75
 msgid ""
 "Convert colors into other formats such as Hex, RGB, HSV, HSL, CMYK, XYZ, CIE-"
 "Lab…"
@@ -628,23 +628,8 @@ msgid "Hex Code"
 msgstr ""
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
-#: src/widgets/about_window.rs:41
+#: src/widgets/about_window.rs:35
 msgid "translator-credits"
-msgstr ""
-
-#: src/widgets/about_window.rs:101
-msgctxt ""
-"The changelog of the current version. Should be similar to the CHANGELOG.md "
-"file at the project root. Please ensure that the tags have a matching "
-"closing tag. Since xgettext does not recognize rust multiline strings, this "
-"should be on a single line using line breaks (\\n) for new lines."
-msgid ""
-"<p>A new release with exciting new features and many improvements.</p>\n"
-"<ul><li>Allow entering any format</li><li>Display color in overview search</"
-"li><li>Export palettes to LibreOffice</li><li>A visual differentiation "
-"between color and background</li><li>Improved color conversion</"
-"li><li>Visual refinements to match the state of the art of GNOME apps</"
-"li><li>Internal code improvements and bug fixes</li></ul>"
 msgstr ""
 
 #: src/widgets/color_format_row.rs:232
