@@ -6,7 +6,7 @@ use adw::{AboutDialog, prelude::*};
 use gettextrs::gettext;
 use gtk::License;
 
-pub const COPYRIGHT: &str = "Copyright © 2022 - 2023 FineFindus";
+pub const COPYRIGHT: &str = "Copyright © 2022 - 2025 FineFindus";
 pub const WEBSITE: &str = "https://apps.gnome.org/Eyedropper";
 pub const ISSUE_TRACKER: &str = "https://github.com/finefindus/eyedropper/issues/new/choose";
 pub const DEVELOPERS: &[&str] = &["FineFindus https://github.com/FineFindus"];
