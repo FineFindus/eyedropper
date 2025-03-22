@@ -21,7 +21,7 @@ use super::{cmyk::Cmyka, color::Color, hunterlab::HunterLab, position::AlphaPosi
 /// ```
 fn hex(input: &str) -> IResult<&str, u8> {
     map_res(
-        take_while_m_n(2, 2, |char: char| char.is_digit(16)),
+        take_while_m_n(2, 2, |char: char| char.is_ascii_hexdigit()),
         |str| u8::from_str_radix(str, 16),
     )
     .parse(input)
