@@ -60,25 +60,6 @@ mod imp {
             app.main_window().present();
         }
 
-        fn command_line(&self, command_line: &gio::ApplicationCommandLine) -> ExitCode {
-            self.activate();
-            if !command_line.arguments().contains(&"--pick-color".into()) {
-                return glib::ExitCode::SUCCESS;
-            }
-
-            let ctx = glib::MainContext::default();
-            let window = self.window.get().unwrap().upgrade().unwrap();
-            ctx.spawn_local(glib::clone!(
-                #[weak]
-                window,
-                async move {
-                    window.pick_color().await;
-                    window.present();
-                }
-            ));
-            glib::ExitCode::SUCCESS
-        }
-
         fn startup(&self) {
             debug!("GtkApplication<App>::startup");
             self.parent_startup();
@@ -136,7 +117,6 @@ impl App {
     pub fn new() -> Self {
         glib::Object::builder::<Self>()
             .property("application-id", Some(APP_ID))
-            .property("flags", gio::ApplicationFlags::HANDLES_COMMAND_LINE)
             .property(
                 "resource-base-path",
                 Some("/com/github/finefindus/eyedropper/"),
