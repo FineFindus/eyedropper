@@ -4,7 +4,6 @@ use crate::config;
 use crate::config::{APP_ID, VERSION};
 use adw::{AboutDialog, prelude::*};
 use gettextrs::gettext;
-use gettextrs::pgettext;
 use gtk::License;
 
 pub const COPYRIGHT: &str = "Copyright © 2022 - 2023 FineFindus";
@@ -23,11 +22,6 @@ pub struct EyedropperAbout;
 impl EyedropperAbout {
     pub fn show(parent: &impl IsA<gtk::Widget>) {
         let details = Self::details();
-
-        //translatable changelog
-        let changelog = Self::changelog();
-        let changelog_version = config::VERSION;
-
         let debug_info = Self::debug_info();
 
         AboutDialog::builder()
@@ -45,8 +39,6 @@ impl EyedropperAbout {
             .issue_url(ISSUE_TRACKER)
             .comments(details)
             .copyright(COPYRIGHT)
-            .release_notes(changelog)
-            .release_notes_version(changelog_version)
             .debug_info(debug_info)
             .debug_info_filename("eyedropper_debug_info")
             .build()
@@ -92,14 +84,6 @@ impl EyedropperAbout {
         }
 
         details
-    }
-
-    /// Returns the changelog for the last major version.
-    fn changelog() -> String {
-        pgettext(
-            "The changelog of the current version. Should be similar to the CHANGELOG.md file at the project root. Please ensure that the tags have a matching closing tag. Since xgettext does not recognize rust multiline strings, this should be on a single line using line breaks (\\n) for new lines.",
-            "<p>A new release with exciting new features and many improvements.</p>\n<ul><li>Allow entering any format</li><li>Display color in overview search</li><li>Export palettes to LibreOffice</li><li>A visual differentiation between color and background</li><li>Improved color conversion</li><li>Visual refinements to match the state of the art of GNOME apps</li><li>Internal code improvements and bug fixes</li></ul>",
-        )
     }
 
     ///Returns useful information for debugging the application.
