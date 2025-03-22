@@ -1,15 +1,12 @@
 use nom::{
     branch::alt,
     bytes::complete::{tag, tag_no_case, take_while_m_n},
-    character::{
-        complete::{digit0, digit1, multispace0},
-        is_hex_digit,
-    },
+    character::complete::{digit0, digit1, multispace0},
     combinator::{map, map_res, opt, recognize, value},
     error::ParseError,
     multi::many_m_n,
-    sequence::{delimited, pair, separated_pair, terminated, Tuple},
-    AsChar, IResult, InputTakeAtPosition, Parser,
+    sequence::{delimited, pair, separated_pair, terminated},
+    IResult, Parser,
 };
 
 use super::{cmyk::Cmyka, color::Color, hunterlab::HunterLab, position::AlphaPosition};
@@ -24,9 +21,10 @@ use super::{cmyk::Cmyka, color::Color, hunterlab::HunterLab, position::AlphaPosi
 /// ```
 fn hex(input: &str) -> IResult<&str, u8> {
     map_res(
-        take_while_m_n(2, 2, |char| is_hex_digit(char as u8)),
+        take_while_m_n(2, 2, |char: char| char.is_digit(16)),
         |str| u8::from_str_radix(str, 16),
-    )(input)
+    )
+    .parse(input)
 }
 /// Parses a relative percentage displayed as a decimal, such as `0.5`.
 /// The leading digits before the decimal dot are optional.
@@ -39,7 +37,7 @@ fn hex(input: &str) -> IResult<&str, u8> {
 /// assert_eq!(result, Ok(("", 0.5)));
 /// ```
 fn relative_percentage(input: &str) -> IResult<&str, f32> {
-    let (input, digits) = recognize(separated_pair(digit0, tag("."), digit1))(input)?;
+    let (input, digits) = recognize(separated_pair(digit0, tag("."), digit1)).parse(input)?;
     let (_, value) = nom::number::complete::float(digits)?;
     Ok((input, value.clamp(0.0, 1.0)))
 }
@@ -53,7 +51,7 @@ fn relative_percentage(input: &str) -> IResult<&str, f32> {
 /// assert_eq!(result, Ok(("", 0.5)));
 /// ```
 fn percentage(input: &str) -> IResult<&str, f32> {
-    let (input, digits) = terminated(digit1, tag("%"))(input)?;
+    let (input, digits) = terminated(digit1, tag("%")).parse(input)?;
     let (_input, value) = nom::number::complete::float(digits)?;
     Ok((input, (value / 100f32).clamp(0.0, 1.0)))
 }
@@ -80,7 +78,8 @@ fn parse_percentage(input: &str) -> IResult<&str, f32> {
             let float_str = format!("{}{}.{}", sign.unwrap_or(""), int, frac);
             float_str.parse::<f32>()
         },
-    )(input)?;
+    )
+    .parse(input)?;
     Ok((input, (digits / 100f32)))
 }
 /// Parses different separators used to separate values.
@@ -98,7 +97,7 @@ fn parse_percentage(input: &str) -> IResult<&str, f32> {
 /// assert_eq!(result, Ok(("", "/")));
 ///```
 fn separator(input: &str) -> IResult<&str, &str> {
-    alt((tag(","), tag("|"), tag("/")))(input)
+    alt((tag(","), tag("|"), tag("/"))).parse(input)
 }
 
 /// Parses a CSS-like hue value from a string and returns it as a floating-point number.
@@ -124,7 +123,8 @@ fn hue(input: &str) -> IResult<&str, f32> {
             nom::number::complete::float,
             opt(alt((tag("deg"), tag("°")))),
         ),
-    ))(input)
+    ))
+    .parse(input)
 }
 
 /// Removes whitespace around the given parser, returning the result of the parser.
@@ -144,17 +144,17 @@ fn hue(input: &str) -> IResult<&str, f32> {
 ///
 /// assert_eq!(parser("   a   "), Ok(("", "a")));
 /// ```
-pub fn whitespace<I, O, E: ParseError<I>, F>(inner: F) -> impl FnMut(I) -> IResult<I, O, E>
+pub fn whitespace<'a, O, E: ParseError<&'a str>, F>(
+    inner: F,
+) -> impl Parser<&'a str, Output = O, Error = E>
 where
-    F: Parser<I, O, E>,
-    I: InputTakeAtPosition + Clone,
-    <I as InputTakeAtPosition>::Item: AsChar + Clone,
+    F: Parser<&'a str, Output = O, Error = E>,
 {
     delimited(opt(multispace0), inner, opt(multispace0))
 }
 
 pub fn hex_color(input: &str, alpha_position: AlphaPosition) -> IResult<&str, Color> {
-    let (input, _) = opt(whitespace(tag("#")))(input)?;
+    let (input, _) = opt(whitespace(tag("#"))).parse(input)?;
 
     let (input, first_alpha) = if alpha_position == AlphaPosition::Start && input.len() >= 8 {
         hex(input)?
@@ -168,7 +168,7 @@ pub fn hex_color(input: &str, alpha_position: AlphaPosition) -> IResult<&str, Co
     let alpha = match alpha_position {
         AlphaPosition::None => 255,
         AlphaPosition::Start => first_alpha,
-        AlphaPosition::End => opt(hex)(input)?.1.unwrap_or(255),
+        AlphaPosition::End => opt(hex).parse(input)?.1.unwrap_or(255),
     };
 
     let color = Color::rgba(red, green, blue, alpha);
@@ -249,7 +249,8 @@ pub fn rgb(input: &str) -> IResult<&str, Color> {
         value(AlphaPosition::None, tag("rgb(")),
         value(AlphaPosition::End, tag("rgba(")),
         value(AlphaPosition::Start, tag("argb(")),
-    )))(input)?;
+    )))
+    .parse(input)?;
 
     let minimum_length = if alpha == AlphaPosition::None { 3 } else { 4 };
 
@@ -265,9 +266,10 @@ pub fn rgb(input: &str) -> IResult<&str, Color> {
             ))),
             opt(whitespace(separator)),
         ),
-    )(input)?;
+    )
+    .parse(input)?;
 
-    let (input, _output) = opt(whitespace(tag(")")))(input)?;
+    let (input, _output) = opt(whitespace(tag(")"))).parse(input)?;
 
     if alpha == AlphaPosition::Start {
         assert!(color_values.len() == 4);
@@ -325,22 +327,24 @@ mod parse_rgb {
 ///
 /// Mixed value types are allowed.
 pub fn hsl(input: &str) -> IResult<&str, Color> {
-    let (input, _) = whitespace(alt((tag("hsl("), tag("hsla("))))(input)?;
+    let (input, _) = whitespace(alt((tag("hsl("), tag("hsla(")))).parse(input)?;
 
-    let (input, hue) = terminated(whitespace(hue), opt(whitespace(separator)))(input)?;
+    let (input, hue) = terminated(whitespace(hue), opt(whitespace(separator))).parse(input)?;
 
     let (input, color_values) = many_m_n(
         2,
         2,
         terminated(whitespace(percentage), opt(whitespace(separator))),
-    )(input)?;
+    )
+    .parse(input)?;
 
     let (input, alpha) = opt(map(
         whitespace(alt((percentage, relative_percentage))),
         |percent| percent,
-    ))(input)?;
+    ))
+    .parse(input)?;
 
-    let (input, _output) = opt(whitespace(tag(")")))(input)?;
+    let (input, _output) = opt(whitespace(tag(")"))).parse(input)?;
 
     let color = Color::from_palette(palette::Hsla::new(
         hue,
@@ -358,7 +362,10 @@ mod parse_hsl {
 
     #[test]
     fn it_parses_basic() {
-        assert_eq!(Ok(("", Color::rgb(47, 53, 65))), hsl("hsl(220, 16%, 22%)"));
+        assert_eq!(
+            Ok(("", Color::rgba(47, 53, 65, 255))),
+            hsl("hsl(220, 16%, 22%)")
+        );
         assert_eq!(
             Ok(("", Color::rgba(47, 53, 65, 99))),
             hsl("hsl(220, 16%, 22%, 39%)")
@@ -380,22 +387,24 @@ mod parse_hsl {
 ///
 /// Mixed value types are allowed.
 pub fn hsv(input: &str) -> IResult<&str, Color> {
-    let (input, _) = whitespace(alt((tag("hsv("), tag("hsva("))))(input)?;
+    let (input, _) = whitespace(alt((tag("hsv("), tag("hsva(")))).parse(input)?;
 
-    let (input, hue) = terminated(whitespace(hue), opt(whitespace(separator)))(input)?;
+    let (input, hue) = terminated(whitespace(hue), opt(whitespace(separator))).parse(input)?;
 
     let (input, color_values) = many_m_n(
         2,
         2,
         terminated(whitespace(percentage), opt(whitespace(separator))),
-    )(input)?;
+    )
+    .parse(input)?;
 
     let (input, alpha) = opt(map(
         whitespace(alt((percentage, relative_percentage))),
         |percent| percent,
-    ))(input)?;
+    ))
+    .parse(input)?;
 
-    let (input, _output) = opt(whitespace(tag(")")))(input)?;
+    let (input, _output) = opt(whitespace(tag(")"))).parse(input)?;
 
     let color = palette::Hsva::new(hue, color_values[0], color_values[1], alpha.unwrap_or(1.0));
 
@@ -430,7 +439,8 @@ pub fn cmyk(input: &str) -> IResult<&str, Color> {
             terminated(whitespace(percentage), opt(whitespace(separator))),
         ),
         opt(whitespace(tag(")"))),
-    )(input)?;
+    )
+    .parse(input)?;
 
     let color = Cmyka::new(
         color_values[0],
@@ -469,7 +479,8 @@ pub fn xyz(input: &str) -> IResult<&str, Color> {
             ),
         ),
         opt(whitespace(tag(")"))),
-    )(input)?;
+    )
+    .parse(input)?;
 
     let color = palette::Xyz::new(color_values[0], color_values[1], color_values[2]);
 
@@ -491,7 +502,7 @@ mod parse_xyz {
 
 /// Parses a cielab representation of a color.
 pub fn cielab(input: &str) -> IResult<&str, Color> {
-    let (input, _) = whitespace(alt((tag_no_case("lab("), tag_no_case("cielab("))))(input)?;
+    let (input, _) = whitespace(alt((tag_no_case("lab("), tag_no_case("cielab(")))).parse(input)?;
 
     //can either be an percentage or a number between 0 and 100
     let (input, cie_l) = terminated(
@@ -502,7 +513,8 @@ pub fn cielab(input: &str) -> IResult<&str, Color> {
             nom::number::complete::float,
         ))),
         opt(whitespace(separator)),
-    )(input)?;
+    )
+    .parse(input)?;
 
     //both CIE a and CIE b can either be an percentage between -100% and 100% or a number between -125 and 125
     let (input, cie_a_b) = many_m_n(
@@ -517,14 +529,16 @@ pub fn cielab(input: &str) -> IResult<&str, Color> {
             ))),
             opt(whitespace(separator)),
         ),
-    )(input)?;
+    )
+    .parse(input)?;
 
     let (input, alpha) = opt(whitespace(map(
         alt((percentage, relative_percentage)),
         |percentage| percentage,
-    )))(input)?;
+    )))
+    .parse(input)?;
 
-    let (input, _) = opt(whitespace(tag(")")))(input)?;
+    let (input, _) = opt(whitespace(tag(")"))).parse(input)?;
 
     let color = Color::from_palette(palette::Laba::new(
         cie_l.clamp(0.0, 100.0),
@@ -555,19 +569,20 @@ mod parse_cie_lab {
 
 /// Parses a hwb representation of a color.
 pub fn hwb(input: &str) -> IResult<&str, Color> {
-    let (input, _) = tag("hwb(")(input)?;
+    let (input, _) = tag("hwb(").parse(input)?;
 
-    let (input, hue) = terminated(whitespace(hue), opt(whitespace(separator)))(input)?;
+    let (input, hue) = terminated(whitespace(hue), opt(whitespace(separator))).parse(input)?;
 
     let (input, color_values) = many_m_n(
         2,
         2,
         terminated(whitespace(percentage), opt(whitespace(separator))),
-    )(input)?;
+    )
+    .parse(input)?;
 
-    let (input, alpha) = opt(whitespace(alt((percentage, relative_percentage))))(input)?;
+    let (input, alpha) = opt(whitespace(alt((percentage, relative_percentage)))).parse(input)?;
 
-    let (input, _output) = opt(whitespace(tag(")")))(input)?;
+    let (input, _output) = opt(whitespace(tag(")"))).parse(input)?;
 
     let color = Color::from_palette(palette::Hwba::new(
         hue,
@@ -595,7 +610,7 @@ mod parse_hwb {
 
 /// Parses a lch representation of a color.
 pub fn lch(input: &str) -> IResult<&str, Color> {
-    let (input, _) = tag("lch(")(input)?;
+    let (input, _) = tag("lch(").parse(input)?;
 
     let (input, lightness) = terminated(
         alt((
@@ -603,7 +618,8 @@ pub fn lch(input: &str) -> IResult<&str, Color> {
             nom::number::complete::float,
         )),
         opt(whitespace(separator)),
-    )(input)?;
+    )
+    .parse(input)?;
 
     let (input, chroma) = terminated(
         alt((
@@ -611,13 +627,14 @@ pub fn lch(input: &str) -> IResult<&str, Color> {
             nom::number::complete::float,
         )),
         opt(whitespace(separator)),
-    )(input)?;
+    )
+    .parse(input)?;
 
-    let (input, hue) = terminated(hue, opt(whitespace(separator)))(input)?;
+    let (input, hue) = terminated(hue, opt(whitespace(separator))).parse(input)?;
 
-    let (input, alpha) = opt(whitespace(alt((percentage, relative_percentage))))(input)?;
+    let (input, alpha) = opt(whitespace(alt((percentage, relative_percentage)))).parse(input)?;
 
-    let (input, _) = opt(whitespace(tag(")")))(input)?;
+    let (input, _) = opt(whitespace(tag(")"))).parse(input)?;
 
     let color = Color::from_palette(palette::Lcha::new(
         lightness,
@@ -652,17 +669,20 @@ pub fn lms(input: &str) -> IResult<&str, Color> {
         whitespace(tag("L:")),
         whitespace(nom::number::complete::float),
         opt(whitespace(separator)),
-    )(input)?;
+    )
+    .parse(input)?;
     let (input, medium) = delimited(
         whitespace(tag("M:")),
         whitespace(nom::number::complete::float),
         opt(whitespace(separator)),
-    )(input)?;
+    )
+    .parse(input)?;
     let (input, short) = delimited(
         whitespace(tag("S:")),
         whitespace(nom::number::complete::float),
         opt(whitespace(separator)),
-    )(input)?;
+    )
+    .parse(input)?;
 
     let color = Color::from_lms(long, medium, short, 255);
 
@@ -688,17 +708,20 @@ pub fn hunter_lab(input: &str) -> IResult<&str, Color> {
         whitespace(tag("L:")),
         whitespace(nom::number::complete::float),
         opt(whitespace(separator)),
-    )(input)?;
+    )
+    .parse(input)?;
     let (input, a) = delimited(
         whitespace(tag("a:")),
         whitespace(nom::number::complete::float),
         opt(whitespace(separator)),
-    )(input)?;
+    )
+    .parse(input)?;
     let (input, b) = delimited(
         whitespace(tag("b:")),
         whitespace(nom::number::complete::float),
         opt(whitespace(separator)),
-    )(input)?;
+    )
+    .parse(input)?;
 
     let color = HunterLab::new(l, a, b);
 
@@ -719,7 +742,7 @@ mod tests {
 }
 
 pub fn oklab(input: &str) -> IResult<&str, Color> {
-    let (input, _) = tag("oklab(")(input)?;
+    let (input, _) = tag("oklab(").parse(input)?;
 
     //lightness can either be a percentage or a number between 0 and 1
     let (input, lightness) = terminated(
@@ -728,7 +751,8 @@ pub fn oklab(input: &str) -> IResult<&str, Color> {
             nom::number::complete::float,
         ))),
         opt(whitespace(separator)),
-    )(input)?;
+    )
+    .parse(input)?;
 
     //both a and b can either be an percentage between -100% and 100% or a number between -0.4 and 0.4
     let (input, ok_a_b) = many_m_n(
@@ -743,11 +767,12 @@ pub fn oklab(input: &str) -> IResult<&str, Color> {
             ))),
             opt(whitespace(separator)),
         ),
-    )(input)?;
+    )
+    .parse(input)?;
 
-    let (input, alpha) = opt(whitespace(alt((percentage, relative_percentage))))(input)?;
+    let (input, alpha) = opt(whitespace(alt((percentage, relative_percentage)))).parse(input)?;
 
-    let (input, _) = opt(whitespace(tag(")")))(input)?;
+    let (input, _) = opt(whitespace(tag(")"))).parse(input)?;
 
     let color = Color::from_palette(palette::Oklaba::new(
         lightness,
@@ -773,7 +798,7 @@ mod parse_oklab {
 }
 
 pub fn oklch(input: &str) -> IResult<&str, Color> {
-    let (input, _) = tag("oklch(")(input)?;
+    let (input, _) = tag("oklch(").parse(input)?;
 
     //lightness can either be a percentage or a number between 0 and 1
     let (input, lightness) = terminated(
@@ -782,7 +807,8 @@ pub fn oklch(input: &str) -> IResult<&str, Color> {
             nom::number::complete::float,
         ))),
         opt(whitespace(separator)),
-    )(input)?;
+    )
+    .parse(input)?;
 
     //chroma can be percentage or a value between 0 and 0.4
     let (input, chroma) = terminated(
@@ -791,7 +817,8 @@ pub fn oklch(input: &str) -> IResult<&str, Color> {
             nom::number::complete::float,
         ))),
         opt(whitespace(separator)),
-    )(input)?;
+    )
+    .parse(input)?;
 
     //hue can be percentage between 0% and 100% or value between 0 and 360
     let (input, hue) = terminated(
@@ -802,11 +829,12 @@ pub fn oklch(input: &str) -> IResult<&str, Color> {
             nom::number::complete::float,
         ))),
         opt(whitespace(separator)),
-    )(input)?;
+    )
+    .parse(input)?;
 
-    let (input, alpha) = opt(whitespace(alt((percentage, relative_percentage))))(input)?;
+    let (input, alpha) = opt(whitespace(alt((percentage, relative_percentage)))).parse(input)?;
 
-    let (input, _) = opt(whitespace(tag(")")))(input)?;
+    let (input, _) = opt(whitespace(tag(")"))).parse(input)?;
 
     let color = Color::from_palette(palette::Oklcha::new(
         lightness,

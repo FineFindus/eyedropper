@@ -5,7 +5,7 @@ use gtk::{glib, prelude::ObjectExt};
 mod imp {
 
     use adw::subclass::bin::BinImpl;
-    use rand::seq::SliceRandom;
+    use rand::seq::IndexedRandom;
 
     use crate::colors::color::Color;
 
@@ -54,7 +54,7 @@ mod imp {
                 "rgb(58, 148, 74)",
             ];
             self.initial_color_entry
-                .set_placeholder_text(PLACEHOLDER_COLORS.choose(&mut rand::thread_rng()).copied());
+                .set_placeholder_text(PLACEHOLDER_COLORS.choose(&mut rand::rng()).copied());
         }
 
         fn dispose(&self) {

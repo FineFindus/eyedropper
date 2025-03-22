@@ -38,10 +38,10 @@ ashpd = { version = "0.10", default-features = false, features = [
     "gtk4",
 ] }
 futures = "0.3"
-rand = "0.8"
+rand = "0.9"
 bytes = "1.4"
-search-provider = { version = "0.10", features = ["gdk-pixbuf"] }
-nom = "7.1"
+search-provider = { version = "0.11", features = ["gdk-pixbuf"] }
+nom = "8.0"
 phf = { version = "0.11.2", features = ["macros"] }
 zbus = "5.2"
 palette = "0.7.2"
