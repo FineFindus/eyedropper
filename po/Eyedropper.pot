@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2025-01-16 16:33+0000\n"
+"POT-Creation-Date: 2025-03-22 14:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -659,14 +659,18 @@ msgstr ""
 msgid "Move Down"
 msgstr ""
 
-#: src/window.rs:286
+#: src/window.rs:302
+msgid "Pick a New Color"
+msgstr ""
+
+#: src/window.rs:338
 msgid "Cleared history"
 msgstr ""
 
-#: src/window.rs:287
+#: src/window.rs:339
 msgid "Undo"
 msgstr ""
 
-#: src/window.rs:452
+#: src/window.rs:504
 msgid "Failed to pick a color"
 msgstr ""
