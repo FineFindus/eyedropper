@@ -2,18 +2,22 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Eyedropper package.
 # Priit Jõerüüt <hwlate@joeruut.com>, 2024.
+# mondstern <mondstern@monocles.de>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2024-10-14 19:47+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-03-23 18:20+0000\n"
+"Last-Translator: mondstern <mondstern@monocles.de>\n"
+"Language-Team: Estonian <https://hosted.weblate.org/projects/eyedropper/"
+"eyedropper/et/>\n"
 "Language: et\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.11-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
@@ -24,13 +28,13 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:4
 msgid "Color Picker"
-msgstr ""
+msgstr "Värvi valija"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
 #: src/widgets/about_window.rs:61
 msgid "Pick and format colors"
-msgstr ""
+msgstr "Valige ja vormindage värvid"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
@@ -54,12 +58,12 @@ msgstr ""
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
 #: src/widgets/about_window.rs:69
 msgid "Features"
-msgstr ""
+msgstr "Omadused"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
 #: src/widgets/about_window.rs:73
 msgid "Pick a Color"
-msgstr ""
+msgstr "Vali värv"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:23
 #: src/widgets/about_window.rs:74
@@ -87,7 +91,7 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:33
 msgid "Main window with a color in different formats"
-msgstr ""
+msgstr "Põhiaken värviga erinevates formaatides"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:37
 msgid "Main window with customized formats"
