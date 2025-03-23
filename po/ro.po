@@ -7,13 +7,17 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2025-03-23 09:02+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-03-24 00:25+0000\n"
+"Last-Translator: David <david.eremia@proton.me>\n"
+"Language-Team: Romanian <https://hosted.weblate.org/projects/eyedropper/"
+"eyedropper/ro/>\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2;\n"
+"X-Generator: Weblate 5.11-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
@@ -24,18 +28,18 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:4
 msgid "Color Picker"
-msgstr ""
+msgstr "Selector de culori"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
 #: src/widgets/about_window.rs:57
 msgid "Pick and format colors"
-msgstr ""
+msgstr "Alegeți și formatați culorile"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
 msgid "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
-msgstr ""
+msgstr "Gnome;GTK;Culoare;Selector de Culori;Selector;Paletă;"
 
 #. developer_name tag deprecated with Appstream 1.0
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
@@ -46,27 +50,27 @@ msgstr ""
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:16
 #: src/widgets/about_window.rs:61
 msgid "Enter or pick a color and view it in different formats."
-msgstr ""
+msgstr "Introduceți sau alegeți o culoare și vizualizați-o în diferite formate."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
 #: src/widgets/about_window.rs:67
 msgid "Features"
-msgstr ""
+msgstr "Funcții"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
 #: src/widgets/about_window.rs:71
 msgid "Pick a Color"
-msgstr ""
+msgstr "Selectați o culoare"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
 #: src/widgets/about_window.rs:72
 msgid "Edit the viewed color in a simple HSL editor"
-msgstr ""
+msgstr "Modificați culoarea vizualizată într-un editor HSL simplu"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:23
 #: src/widgets/about_window.rs:73
 msgid "Enter a color in various formats"
-msgstr ""
+msgstr "Introduceți o culoare în diverse formate"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:24
 #: src/widgets/about_window.rs:75
@@ -74,14 +78,16 @@ msgid ""
 "Convert colors into other formats such as Hex, RGB, HSV, HSL, CMYK, XYZ, CIE-"
 "Lab…"
 msgstr ""
+"Convertiți culorile în alte formate, cum ar fi Hex, RGB, HSV, HSL, CMYK, "
+"XYZ, CIE-Lab…"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:30
 msgid "Main window with a color in different formats"
-msgstr ""
+msgstr "Fereastră principală cu o culoare în diferite formate"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:34
 msgid "Main window with customized formats"
-msgstr ""
+msgstr "Fereastră principală cu formate personalizate"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:38
 msgid "Editor with an HSL editor"
@@ -90,14 +96,15 @@ msgstr ""
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:42
 msgid "Status page stating to pick a color to get started"
 msgstr ""
+"Pagina de stare care afirmă că trebuie să alegeți o culoare pentru a începe"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:55
 msgid "RGB can now be displayed in decimal notation"
-msgstr ""
+msgstr "RGB poate fi acum afișat în notație zecimală"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:56
 msgid "Colors can now be directly entered, without picking a color first"
-msgstr ""
+msgstr "Culorile pot fi acum introduse direct, fără a alege mai întâi o culoare"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:57
 msgid "Support for focus-independent (global) shortcuts"
@@ -106,19 +113,21 @@ msgstr ""
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:58
 msgid "Fixed an layout issue on systems where scrollbars are always shown"
 msgstr ""
+"A fost rezolvată o problemă de aspect pe sistemele în care sunt afișate "
+"întotdeauna bare de derulare"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:59
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:75
 msgid "Updated to modern GNOME styling"
-msgstr ""
+msgstr "Actualizat la stilul GNOME modern"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:60
 msgid "Improved checking for unsupported systems"
-msgstr ""
+msgstr "Verificare îmbunătățită pentru sistemele incompatibile"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:66
 msgid "A small fix for failing metadata"
-msgstr ""
+msgstr "O mică corecție pentru metadatele care eșuează"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:71
 msgid "A new release, including major reworks the the UI and the color system"
