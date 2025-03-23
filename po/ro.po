@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2025-03-23 09:02+0000\n"
-"PO-Revision-Date: 2025-03-24 00:25+0000\n"
+"PO-Revision-Date: 2025-06-04 14:03+0000\n"
 "Last-Translator: David <david.eremia@proton.me>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/ro/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 5.11-dev\n"
+"X-Generator: Weblate 5.12-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
