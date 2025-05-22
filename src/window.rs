@@ -1,7 +1,5 @@
 use std::str::FromStr;
 
-use ashpd::desktop::global_shortcuts::NewShortcut;
-use futures::StreamExt;
 use gettextrs::gettext;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
@@ -16,9 +14,6 @@ use crate::model::history::HistoryObject;
 use crate::widgets::color_format_row::ColorFormatRow;
 use crate::widgets::history_item::HistoryItem;
 use crate::widgets::placeholder_page::PlaceholderPage;
-
-/// Identifier of color picking shortcut.
-const SHORTCUT_PICK_COLOR: &str = "EyedropperColorPick";
 
 mod imp {
     use std::cell::{Cell, OnceCell};
@@ -187,11 +182,6 @@ mod imp {
 
                     // disable history clearing action before an item has been added
                     window.obj().action_set_enabled("app.clear-history", false);
-
-                    // request global shortcut
-                    if let Err(err) = window.obj().setup_global_shortcuts().await {
-                        log::error!("Failed to request global shortcuts: {}", err);
-                    }
                 }
             ));
 
@@ -282,47 +272,6 @@ impl AppWindow {
     /// Returns the history list store object.
     fn history(&self) -> &gio::ListStore {
         self.imp().history.get().expect("Failed to get history")
-    }
-
-    /// Setup global shortcuts.
-    ///
-    /// A global shortcut can be used when the application is not focused.
-    /// Uses the [Global Shortcuts portal](https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.GlobalShortcuts.html).
-    async fn setup_global_shortcuts(&self) -> ashpd::Result<()> {
-        let root = self.root().expect("Failed to get window root");
-        let identifier = ashpd::WindowIdentifier::from_native(&root).await;
-
-        let global_shortcuts = ashpd::desktop::global_shortcuts::GlobalShortcuts::new().await?;
-        let session = global_shortcuts.create_session().await?;
-
-        let request = global_shortcuts
-            .bind_shortcuts(
-                &session,
-                &[
-                    NewShortcut::new(SHORTCUT_PICK_COLOR, gettext("Pick a New Color"))
-                        .preferred_trigger(Some("CTRL+p")),
-                ],
-                identifier.as_ref(),
-            )
-            .await?;
-
-        let shortcuts = global_shortcuts
-            .list_shortcuts(&session)
-            .await?
-            .response()?;
-
-        if shortcuts.shortcuts().is_empty() {
-            // request to set shortcuts if none have been set so far
-            request.response()?;
-        }
-
-        let mut stream = global_shortcuts.receive_activated().await?;
-        while let Some(shortcut) = stream.next().await {
-            if shortcut.shortcut_id() == SHORTCUT_PICK_COLOR {
-                self.pick_color().await;
-            }
-        }
-        session.close().await
     }
 
     /// Clear the history by removing all items from the list.

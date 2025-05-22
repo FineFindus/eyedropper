@@ -1,3 +1,6 @@
+use ashpd::desktop::global_shortcuts::NewShortcut;
+use futures::StreamExt;
+use gettextrs::gettext;
 use glib::ExitCode;
 use log::{debug, info};
 
@@ -12,6 +15,9 @@ use crate::config::{self, APP_ID, PKGDATADIR, PROFILE, VERSION};
 use crate::widgets::about_window::EyedropperAbout;
 use crate::widgets::preferences::preferences_window::PreferencesWindow;
 use crate::window::AppWindow;
+
+/// Identifier of color picking shortcut.
+const SHORTCUT_PICK_COLOR: &str = "EyedropperColorPick";
 
 mod imp {
 
@@ -69,10 +75,20 @@ mod imp {
                 #[weak]
                 app,
                 async move {
+                    // spawn indefinitely running task
+                    futures::future::join(
+                        async {
+                            if let Err(err) = app.setup_global_shortcuts().await {
+                                log::error!("Failed to request global shortcuts: {err}");
+                            }
+                        },
+                        async {
                             if let Err(err) = app.setup_search_provider().await {
                                 log::error!("Failed to start search provider: {err}");
                             }
+                        },
                     )
+                    .await;
                 }
             ));
 
@@ -227,6 +243,52 @@ impl App {
             search_provider_path
         );
         SearchProvider::new(self.clone(), search_provider_name, search_provider_path).await
+    }
+
+    /// Setup global shortcuts.
+    ///
+    /// A global shortcut can be used when the application is not focused.
+    /// Uses the [Global Shortcuts portal](https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.GlobalShortcuts.html).
+    async fn setup_global_shortcuts(&self) -> ashpd::Result<()> {
+        let root = self
+            .main_window()
+            .root()
+            .expect("Failed to get window root");
+        let identifier = ashpd::WindowIdentifier::from_native(&root).await;
+
+        let global_shortcuts = ashpd::desktop::global_shortcuts::GlobalShortcuts::new().await?;
+        let session = global_shortcuts.create_session().await?;
+
+        let request = global_shortcuts
+            .bind_shortcuts(
+                &session,
+                &[
+                    NewShortcut::new(SHORTCUT_PICK_COLOR, gettext("Pick a New Color"))
+                        .preferred_trigger(Some("CTRL+p")),
+                ],
+                identifier.as_ref(),
+            )
+            .await?;
+
+        let shortcuts = global_shortcuts
+            .list_shortcuts(&session)
+            .await?
+            .response()?;
+
+        if shortcuts.shortcuts().is_empty() {
+            // request to set shortcuts if none have been set so far
+            request.response()?;
+        }
+
+        log::debug!("Listening for global shortcuts");
+        let mut stream = global_shortcuts.receive_activated().await?;
+        while let Some(shortcut) = stream.next().await {
+            if shortcut.shortcut_id() == SHORTCUT_PICK_COLOR {
+                self.main_window().pick_color().await;
+                self.main_window().present();
+            }
+        }
+        session.close().await
     }
 }
 
