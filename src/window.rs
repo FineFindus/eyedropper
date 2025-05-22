@@ -144,7 +144,7 @@ mod imp {
                     // if the removed item was the current color/first item, show the next color
                     // otherwise the current (removed) color would still be shown
                     // safe to unwrap as the user should only be able to click the remove option when
-                    // the list is showm, which is only the case for 2+ colors
+                    // the list is shown, which is only the case for 2+ colors
                     if index == 0 {
                         let next_color = win
                             .history()
@@ -200,7 +200,7 @@ mod imp {
             obj.setup_history();
             obj.order_formats();
 
-            // setup css provider to update the edit sheet scale colors
+            // setup CSS provider to update the edit sheet scale colors
             gtk::style_context_add_provider_for_display(
                 &obj.display(),
                 &self.css_provider,
