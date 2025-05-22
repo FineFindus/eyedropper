@@ -5,29 +5,25 @@ use adw::prelude::AdwDialogExt;
 use gtk::prelude::*;
 use gtk::subclass::prelude::*;
 use gtk::{gdk, gio, glib};
-use search_provider::{IconData, ResultID, ResultMeta, SearchProviderImpl};
+use search_provider::{IconData, ResultID, ResultMeta, SearchProvider, SearchProviderImpl};
 
 use crate::colors::color::Color;
-use crate::config::{APP_ID, PKGDATADIR, PROFILE, VERSION};
+use crate::config::{self, APP_ID, PKGDATADIR, PROFILE, VERSION};
 use crate::widgets::about_window::EyedropperAbout;
 use crate::widgets::preferences::preferences_window::PreferencesWindow;
 use crate::window::AppWindow;
 
 mod imp {
 
-    use std::cell::{Cell, OnceCell};
-
-    use crate::config;
+    use std::cell::OnceCell;
 
     use super::*;
     use adw::subclass::prelude::AdwApplicationImpl;
     use glib::WeakRef;
-    use search_provider::SearchProvider;
 
     #[derive(Default)]
     pub struct App {
         pub window: OnceCell<WeakRef<AppWindow>>,
-        pub search_provider: Cell<Option<SearchProvider<super::App>>>,
     }
 
     #[glib::object_subclass]
@@ -69,31 +65,14 @@ mod imp {
             let app = self.obj();
 
             let ctx = glib::MainContext::default();
-
-            let search_provider_path = config::OBJECT_PATH;
-            let search_provider_name = format!("{}.SearchProvider", config::APP_ID);
-            log::debug!(
-                "Starting search provider as {} on {}",
-                search_provider_name,
-                search_provider_path
-            );
-
             ctx.spawn_local(glib::clone!(
                 #[weak]
                 app,
                 async move {
-                    match SearchProvider::new(
-                        app.clone(),
-                        search_provider_name,
-                        search_provider_path,
+                            if let Err(err) = app.setup_search_provider().await {
+                                log::error!("Failed to start search provider: {err}");
+                            }
                     )
-                    .await
-                    {
-                        Ok(search_provider) => {
-                            app.imp().search_provider.replace(Some(search_provider));
-                        }
-                        Err(err) => log::debug!("Could not start search provider: {}", err),
-                    };
                 }
             ));
 
@@ -237,6 +216,17 @@ impl App {
             &gio::MemoryInputStream::from_bytes(&texture.save_to_png_bytes()),
             gio::Cancellable::NONE,
         )
+    }
+
+    async fn setup_search_provider(&self) -> zbus::Result<SearchProvider<App>> {
+        let search_provider_path = config::OBJECT_PATH;
+        let search_provider_name = format!("{}.SearchProvider", config::APP_ID);
+        log::debug!(
+            "Starting search provider as {} on {}",
+            search_provider_name,
+            search_provider_path
+        );
+        SearchProvider::new(self.clone(), search_provider_name, search_provider_path).await
     }
 }
 
