@@ -7,35 +7,38 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2025-03-23 09:02+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-05-24 03:02+0000\n"
+"Last-Translator: On By Will <onbywill@gmail.com>\n"
+"Language-Team: Bengali <https://hosted.weblate.org/projects/eyedropper/"
+"eyedropper/bn/>\n"
 "Language: bn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.12-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
 #: data/resources/ui/window.blp:42 src/main.rs:30
 #: src/widgets/about_window.rs:29
 msgid "Eyedropper"
-msgstr ""
+msgstr "Eyedropper"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:4
 msgid "Color Picker"
-msgstr ""
+msgstr "রঙ বাছাইকারী"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
 #: src/widgets/about_window.rs:57
 msgid "Pick and format colors"
-msgstr ""
+msgstr "রঙ নির্বাচন করুন এবং বিন্যাস করুন"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
 msgid "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
-msgstr ""
+msgstr "Gnome;GTK;রঙ;রঙ বাছাইকারী;বাছাইকারী;প্যালেট;"
 
 #. developer_name tag deprecated with Appstream 1.0
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
@@ -46,27 +49,27 @@ msgstr ""
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:16
 #: src/widgets/about_window.rs:61
 msgid "Enter or pick a color and view it in different formats."
-msgstr ""
+msgstr "একটি রঙ লিখুন বা বেছে নিন এবং এটি বিভিন্ন বিন্যাসে দেখুন।"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
 #: src/widgets/about_window.rs:67
 msgid "Features"
-msgstr ""
+msgstr "বৈশিষ্ট্যসমূহ"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
 #: src/widgets/about_window.rs:71
 msgid "Pick a Color"
-msgstr ""
+msgstr "একটি রঙ বেছে নিন"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
 #: src/widgets/about_window.rs:72
 msgid "Edit the viewed color in a simple HSL editor"
-msgstr ""
+msgstr "দেখানো রঙটি একটি সাধারণ HSL এডিটরে সম্পাদনা করুন"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:23
 #: src/widgets/about_window.rs:73
 msgid "Enter a color in various formats"
-msgstr ""
+msgstr "বিভিন্ন ফর্ম্যাটে একটি রঙ লিখুন"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:24
 #: src/widgets/about_window.rs:75
@@ -74,111 +77,115 @@ msgid ""
 "Convert colors into other formats such as Hex, RGB, HSV, HSL, CMYK, XYZ, CIE-"
 "Lab…"
 msgstr ""
+"রঙগুলিকে অন্যান্য ফর্ম্যাটে রূপান্তর করুন যেমন Hex, RGB, HSV, HSL, CMYK, XYZ, CIE-"
+"Lab…"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:30
 msgid "Main window with a color in different formats"
-msgstr ""
+msgstr "বিভিন্ন ফরম্যাটের রঙের প্রধান উইন্ডো"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:34
 msgid "Main window with customized formats"
-msgstr ""
+msgstr "কাস্টমাইজড ফর্ম্যাট সহ প্রধান উইন্ডো"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:38
 msgid "Editor with an HSL editor"
-msgstr ""
+msgstr "HSL এডিটর সহ এডিটর"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:42
 msgid "Status page stating to pick a color to get started"
-msgstr ""
+msgstr "শুরু করার জন্য একটি রঙ বেছে নেওয়ার কথা উল্লেখ করে প্রধান পৃষ্ঠা"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:55
 msgid "RGB can now be displayed in decimal notation"
-msgstr ""
+msgstr "RGB এখন দশমিক সংখ্যায় প্রদর্শিত হতে পারে"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:56
 msgid "Colors can now be directly entered, without picking a color first"
-msgstr ""
+msgstr "প্রথমে কোনো রঙ নির্বাচন না করেই, এখন সরাসরি রঙ প্রবেশ করানো যাবে"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:57
 msgid "Support for focus-independent (global) shortcuts"
-msgstr ""
+msgstr "ফোকাস-বিহীন (গ্লোবাল) শর্টকাটের জন্য সমর্থন"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:58
 msgid "Fixed an layout issue on systems where scrollbars are always shown"
 msgstr ""
+"যেসব সিস্টেমে স্ক্রলবার সর্বদা প্রদর্শিত হয়, সেখানে লেআউটের সমস্যা সমাধান করা হয়েছে"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:59
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:75
 msgid "Updated to modern GNOME styling"
-msgstr ""
+msgstr "আধুনিক GNOME স্টাইলিংয়ে আপডেট করা হয়েছে"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:60
 msgid "Improved checking for unsupported systems"
-msgstr ""
+msgstr "অসমর্থিত সিস্টেমের জন্য পরীক্ষা উন্নত করা হয়েছে"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:66
 msgid "A small fix for failing metadata"
-msgstr ""
+msgstr "মেটাডেটা ব্যর্থ হওয়ার জন্য একটি ছোট সমাধান"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:71
 msgid "A new release, including major reworks the the UI and the color system"
 msgstr ""
+"একটি নতুন রিলিজ, যার মধ্যে UI এবং রঙ সিস্টেমের প্রধান পুনর্গঠন অন্তর্ভুক্ত রয়েছে"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:73
 msgid "Added a new color editor, allowing to modify colors"
-msgstr ""
+msgstr "রঙ পরিবর্তন করার জন্য একটি নতুন রঙ এডিটর যোগ করা হলো"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:74
 msgid "Reworked the system handling color conversions"
-msgstr ""
+msgstr "রঙ রূপান্তরের সিস্টেমটি পুনরায় তৈরি করা হয়েছে"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:76
 msgid "A warning page is now shown on unsupported systems"
-msgstr ""
+msgstr "অসমর্থিত সিস্টেমগুলিতে এখন একটি সতর্কতামূলক পৃষ্ঠা দেখানো হচ্ছে"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:77
 msgid "Various internal code improvements and bug fixes"
-msgstr ""
+msgstr "বিভিন্ন অভ্যন্তরীণ কোড উন্নতি এবং বাগ সংশোধন"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:78
 msgid "Removed the palette dialog"
-msgstr ""
+msgstr "প্যালেট ডায়ালগটি সরানো হয়েছে"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:79
 msgid "Removed custom color formats"
-msgstr ""
+msgstr "কাস্টম রঙের ফর্ম্যাটগুলি সরানো হয়েছে"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:85
 msgid "A new release with exciting new features and many improvements."
-msgstr ""
+msgstr "অনেক নতুন বৈশিষ্ট্য এবং উন্নতি সহ, নতুন রিলিজ।"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:85
 msgid "Allow entering any format"
-msgstr ""
+msgstr "যেকোনো ফর্ম্যাটে ব্যবহার করতে দিন"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:85
 msgid "Display color in overview search"
-msgstr ""
+msgstr "ওভারভিউ অনুসন্ধানে রঙ প্রদর্শন করুন"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:85
 msgid "Export palettes to LibreOffice"
-msgstr ""
+msgstr "প্যালেটগুলি LibreOffice এ রপ্তানি করুন"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:85
 msgid "A visual differentiation between color and background"
-msgstr ""
+msgstr "রঙ এবং পটভূমির মধ্যে একটি দৃশ্যমান পার্থক্য"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:85
 msgid "Improved color conversion"
-msgstr ""
+msgstr "উন্নত রঙ রূপান্তর"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:85
 msgid "Visual refinements to match the state of the art of GNOME apps"
-msgstr ""
+msgstr "GNOME অ্যাপের অত্যাধুনিকতার সাথে মিল রেখে দৃশ্যমান পরিমার্জন"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:85
 msgid "Internal code improvements and bug fixes"
-msgstr ""
+msgstr "অভ্যন্তরীণ কোডের উন্নতি এবং বাগ সংশোধন"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:90
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:116
@@ -188,493 +195,502 @@ msgstr ""
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:185
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:197
 msgid "Added:"
-msgstr ""
+msgstr "যোগ করা হয়েছে:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:92
 msgid "Show a toast with an Undo option when clearing the history"
-msgstr ""
+msgstr "ইতিহাস সাফ করার সময় পূর্বাবস্থায় ফেরানোর বিকল্প সহ একটি টোস্ট দেখান"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:93
 msgid "Use Ctrl-Q to close the window"
-msgstr ""
+msgstr "উইন্ডোটি বন্ধ করতে Ctrl-Q ব্যবহার করুন"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:94
 msgid ""
 "Use a default minimum window size, content should no longer unnecessarily "
 "cut off"
 msgstr ""
+"একটি ডিফল্ট ন্যূনতম উইন্ডো আকার ব্যবহারের সময়, কন্টেন্ট আর অপ্রয়োজনীয়ভাবে কাটবে না"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:95
 msgid "New icon by @bertob"
-msgstr ""
+msgstr "@bertob এর নতুন আইকন"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:96
 msgid ""
 "Export palettes as Adobe Swatch Exchange (ASE), hex, PAL, Paint.NET (txt) "
 "files"
 msgstr ""
+"প্যালেটগুলি অ্যাডোবি সোয়াচ এক্সচেঞ্জ (ASE), hex, PAL, Paint.NET (txt) ফাইল হিসাবে "
+"রপ্তানি করুন"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:97
 msgid "Minor changes to the store metadata"
-msgstr ""
+msgstr "স্টোর মেটাডেটায় ছোটখাটো পরিবর্তন"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:99
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:122
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:144
 msgid "Changed:"
-msgstr ""
+msgstr "পরিবর্তিত:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:101
 msgid "Hunter-Lab now displays 0 instead of NaN"
-msgstr ""
+msgstr "হান্টার-ল্যাব এখন NaN এর পরিবর্তে 0 প্রদর্শন করে"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:102
 msgid "Improved tooltips for copying colors"
-msgstr ""
+msgstr "রঙ কপি করার জন্য উন্নত টুলটিপস"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:103
 msgid ""
 "Palette window now uses a button with a more explicit text instead of an icon"
 msgstr ""
+"প্যালেট উইন্ডো এখন আইকনের পরিবর্তে আরও স্পষ্ট লেখা সহ একটি বাটন ব্যবহার করে"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:104
 msgid "Reworded project description"
-msgstr ""
+msgstr "পুনঃশব্দযুক্ত প্রকল্পের বর্ণনা"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:105
 msgid "Updated all screenshots"
-msgstr ""
+msgstr "সকল স্ক্রিনশট আপডেট করা হয়েছে"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:107
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:126
 msgid "Fixed:"
-msgstr ""
+msgstr "সারানো:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:109
 msgid "Separator is now hidden when the history list is hidden"
-msgstr ""
+msgstr "ইতিহাস তালিকা লুকানো থাকলে বিভাজক এখন লুকানো থাকে"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:110
 msgid "Improved editing experience when change the Hex color/name"
-msgstr ""
+msgstr "Hex রঙ/নাম পরিবর্তন করার সময় উন্নত সম্পাদনার অভিজ্ঞতা"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:118
 msgid "Russian translation"
-msgstr ""
+msgstr "রুশ অনুবাদ"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:119
 msgid "Better optimized releases"
-msgstr ""
+msgstr "আরও ভালো অপ্টিমাইজ করা রিলিজ"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:120
 msgid "Returns the exit code on quitting"
-msgstr ""
+msgstr "প্রস্থান করার সময় প্রস্থান কোডটি ফেরত পাঠায়"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:124
 msgid "History no longer contains duplicated items"
-msgstr ""
+msgstr "ইতিহাসে আর ডুপ্লিকেট করা আইটেম থাকে না"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:128
 msgid "Fixed a bug where the wrong rgb format was used"
-msgstr ""
+msgstr "ভুল RGB ফর্ম্যাট ব্যবহার করা হতো এমন একটি বাগ ঠিক করা হয়েছে"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:129
 msgid "Fixed a bug where LMS and Hunter-Lab had the same setting"
-msgstr ""
+msgstr "একটি বাগ ঠিক করা হয়েছে যেখানে LMS এবং Hunter-Lab এর একই সেটিং থাকতো"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:137
 msgid ""
 "Export the generated palettes from the palette dialog as a GIMP palette file"
 msgstr ""
+"প্যালেট ডায়ালগ থেকে জেনারেট করা প্যালেটগুলিকে GIMP প্যালেট ফাইল হিসেবে রপ্তানি করুন"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:138
 msgid "A .doap file to describe the project"
-msgstr ""
+msgstr "প্রকল্পটি বর্ণনা করার জন্য একটি .doap ফাইল"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:139
 msgid "Show a placeholder page when no color is picked"
-msgstr ""
+msgstr "যখন কোনও রঙ নির্বাচন করা না হয় তখন একটি স্থানধারক পৃষ্ঠা দেখান"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:140
 msgid "LMS color space can now be shown"
-msgstr ""
+msgstr "LMS কালার স্পেস এখন দেখানো যাবে"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:141
 msgid "Convert to Hunter-Lab color space"
-msgstr ""
+msgstr "Hunter-Lab কালার স্পেসে রূপান্তর করুন"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:142
 msgid "Customize color formats"
-msgstr ""
+msgstr "রঙের ফর্ম্যাট কাস্টমাইজ করুন"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:146
 msgid "Fixed a bug where the illuminants were not fully shown"
-msgstr ""
+msgstr "আলোকসজ্জা সম্পূর্ণরূপে প্রদর্শিত না হওয়া একটি বাগ সংশোধন করা হয়েছে"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:147
 msgid "The names of the GNOME color palette are now available"
-msgstr ""
+msgstr "GNOME কালার প্যালেটের নামগুলি এখন উপলব্ধ"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:155
 msgid "Options to show names of color (from w3c basic, extended and xkcd)"
-msgstr ""
+msgstr "রঙের নাম দেখানোর বিকল্প (w3c বেসিক, বর্ধিত এবং xkcd থেকে)"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:156
 msgid "Change the color by typing a name in the name field"
-msgstr ""
+msgstr "নাম ক্ষেত্রে একটি নাম লিখে রঙ পরিবর্তন করুন"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:157
 msgid ""
 "Palettes are now shown in the palette dialog, accessible by clicking on the "
 "large color button"
 msgstr ""
+"প্যালেটগুলি এখন প্যালেট ডায়ালগে দেখানো হয়, যা বড় রঙের বাটনে ক্লিক করে অ্যাক্সেসযোগ্য"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:158
 msgid "The App now uses the AdwAboutWindow"
-msgstr ""
+msgstr "অ্যাপটি এখন AdwAboutWindow ব্যবহার করে"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:159
 msgid "HSL does now support alpha values"
-msgstr ""
+msgstr "HSL এখন আলফা মান সমর্থন করে"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:160
 msgid "HWB and CIELCh are now supported"
-msgstr ""
+msgstr "HWB এবং CIELCh এখন সমর্থিত"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:161
 msgid "CIE standard observer for CIELab and CIELCh"
-msgstr ""
+msgstr "CIELab এবং CIELCh এর জন্য CIE স্ট্যান্ডার্ড পর্যবেক্ষক"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:162
 msgid "Change CIE illuminants"
-msgstr ""
+msgstr "CIE আলোকসজ্জা পরিবর্তন করুন"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:167
 msgid "Fixed a few bugs and added Dutch translations."
-msgstr ""
+msgstr "কিছু বাগ সংশোধন করা হয়েছে এবং ডাচ অনুবাদ যোগ করা হয়েছে।"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:175
 msgid ""
 "Palettes, consisting of darker shades and lighter tints, are now generated "
 "from the currently picked color as well as the previous 3"
 msgstr ""
+"গাঢ় শেড এবং হালকা আভা দিয়ে গঠিত প্যালেটগুলি এখন বর্তমানে নির্বাচিত রঙ এবং পূর্ববর্তী"
+" ৩টি রঙ থেকে তৈরি করা হয়"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:176
 msgid ""
 "Change the order of the color formats by dragging and dropping them in the "
 "settings"
-msgstr ""
+msgstr "সেটিংসে টেনে এনে ফেলে দিয়ে রঙের বিন্যাসের ক্রম পরিবর্তন করুন"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:177
 msgid "The app has been translated into French by rene-coty"
-msgstr ""
+msgstr "অ্যাপটি rene-coty দ্বারা ফরাসি ভাষায় অনুবাদ করা হয়েছে"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:178
 msgid "A German translation has been added"
-msgstr ""
+msgstr "একটি জার্মান অনুবাদ যোগ করা হয়েছে"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:179
 msgid "Adjusted some strings to be easier to understand"
-msgstr ""
+msgstr "সহজে বোঝার জন্য কিছু স্ট্রিং সমন্বয় করা হয়েছে"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:187
 msgid "Issue and feature-request templates"
-msgstr ""
+msgstr "ইস্যু এবং বৈশিষ্ট্য-অনুরোধ টেমপ্লেট"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:188
 msgid "Change the color using hex values in the hex field"
-msgstr ""
+msgstr "হেক্স ক্ষেত্রে হেক্স মান ব্যবহার করে রঙ পরিবর্তন করুন"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:189
 msgid "Previous colors are now visible in the history list"
-msgstr ""
+msgstr "পূর্ববর্তী রঙগুলি এখন ইতিহাসের তালিকায় দৃশ্যমান"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:190
 msgid "Disable unwanted color models"
-msgstr ""
+msgstr "অবাঞ্ছিত রঙের মডেলগুলি অক্ষম করুন"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:191
 msgid "Colors can now be shown as XYZ or CIELAB format"
-msgstr ""
+msgstr "রঙগুলি এখন XYZ বা CIELAB ফর্ম্যাটে দেখানো যাবে"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:199
 msgid "Basic UI"
-msgstr ""
+msgstr "প্রাথমিক UI"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:200
 msgid "Pick a color using the color picker button"
-msgstr ""
+msgstr "কালার পিকার বাটন ব্যবহার করে একটি রঙ বেছে নিন"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:201
 msgid "Copy the color in different color models"
-msgstr ""
+msgstr "বিভিন্ন রঙের মডেলে রঙটি অনুলিপি করুন"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:202
 msgid "Change the position of the alpha values in hex values"
-msgstr ""
+msgstr "হেক্স মানের মধ্যে আলফা মানের অবস্থান পরিবর্তন করুন"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:203
 msgid "Added License"
-msgstr ""
+msgstr "লাইসেন্স যোগ করা হয়েছে"
 
 #: data/resources/ui/history-item.blp:5
 msgid "Remove"
-msgstr ""
+msgstr "অপসারণ"
 
 #: data/resources/ui/placeholder-page.blp:7
 msgid "No Color"
-msgstr ""
+msgstr "কোনো রঙ নেই"
 
 #: data/resources/ui/placeholder-page.blp:8
 msgid "Select or enter a color to get started"
-msgstr ""
+msgstr "শুরু করতে একটি রঙ নির্বাচন করুন বা লিখুন"
 
 #: data/resources/ui/placeholder-page.blp:22
 msgid "View"
-msgstr ""
+msgstr "দৃশ্য"
 
 #: data/resources/ui/preferences.blp:5 data/resources/ui/preferences.blp:74
 msgid "Name Sources"
-msgstr ""
+msgstr "নাম সূত্র"
 
 #: data/resources/ui/preferences.blp:17
 msgctxt ""
 "Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
 "#html4"
 msgid "Basic"
-msgstr ""
+msgstr "মৌলিক"
 
 #: data/resources/ui/preferences.blp:18
 msgid "Basic web colors"
-msgstr ""
+msgstr "মৌলিক ওয়েব রঙ"
 
 #: data/resources/ui/preferences.blp:22
 msgctxt ""
 "Name of the extended color keyword set from https://www.w3.org/TR/css-"
 "color-3/#svg-color"
 msgid "Extended"
-msgstr ""
+msgstr "বর্ধিত"
 
 #: data/resources/ui/preferences.blp:23
 msgid "X11 and SVG color values"
-msgstr ""
+msgstr "X11 এবং SVG রঙের মান"
 
 #: data/resources/ui/preferences.blp:27
 msgctxt ""
 "Name of the color set from the GNOME color palette (https://developer.gnome."
 "org/hig/reference/palette.html)"
 msgid "GNOME Color Palette"
-msgstr ""
+msgstr "GNOME কালার প্যালেট"
 
 #: data/resources/ui/preferences.blp:28
 msgid "Colors for GNOME app icons and illustrations"
-msgstr ""
+msgstr "GNOME অ্যাপ আইকন এবং চিত্রের জন্য রঙ"
 
 #: data/resources/ui/preferences.blp:32
 msgctxt "Name of the color set from the xkcd color survey"
 msgid "xkcd Color Survey"
-msgstr ""
+msgstr "xkcd রঙ জরিপ"
 
 #: data/resources/ui/preferences.blp:33
 msgid "954 RGB colors named by volunteers"
-msgstr ""
+msgstr "স্বেচ্ছাসেবকদের দ্বারা নামকরণ করা ৯৫৪টি RGB রঙ"
 
 #: data/resources/ui/preferences.blp:43
 msgid "General"
-msgstr ""
+msgstr "সাধারণ"
 
 #: data/resources/ui/preferences.blp:46
 msgid "Formatting"
-msgstr ""
+msgstr "বিন্যাসকরণ"
 
 #: data/resources/ui/preferences.blp:49
 msgid "Alpha-Value Position"
-msgstr ""
+msgstr "আলফা মানের অবস্থান"
 
 #: data/resources/ui/preferences.blp:50
 msgid "Where the Alphavalue is positioned in the Hexstring"
-msgstr ""
+msgstr "হেক্স স্ট্রিং-এ আলফা মান যেখানে অবস্থিত"
 
 #: data/resources/ui/preferences.blp:54
 msgctxt "Alphavalue is not shown"
 msgid "None"
-msgstr ""
+msgstr "কোনটিই নয়"
 
 #: data/resources/ui/preferences.blp:55
 msgctxt "Alphavalue is shown at the end"
 msgid "End"
-msgstr ""
+msgstr "শেষ"
 
 #: data/resources/ui/preferences.blp:56
 msgctxt "Alphavalue is shown at the start"
 msgid "Start"
-msgstr ""
+msgstr "শুরু"
 
 #: data/resources/ui/preferences.blp:62
 msgid "RGB Notation"
-msgstr ""
+msgstr "RGB নোটেশন"
 
 #: data/resources/ui/preferences.blp:63
 msgid "Whether RGB values should be displayed as integers or decimals"
-msgstr ""
+msgstr "RGB মান পূর্ণসংখ্যা বা দশমিক হিসাবে প্রদর্শিত হবে কিনা"
 
 #: data/resources/ui/preferences.blp:67
 msgctxt "RGB is format as integers (e.g. 127)"
 msgid "Integer"
-msgstr ""
+msgstr "পূর্ণসংখ্যা"
 
 #: data/resources/ui/preferences.blp:68
 msgctxt "RGB is format as decimals (e.g. 0.1)"
 msgid "Decimal"
-msgstr ""
+msgstr "দশমিক সংখ্যা"
 
 #: data/resources/ui/preferences.blp:75
 msgid "Sources for displaying color names"
-msgstr ""
+msgstr "রঙের নাম প্রদর্শনের উৎস"
 
 #: data/resources/ui/preferences.blp:86 data/resources/ui/preferences.blp:95
 msgid "Precision"
-msgstr ""
+msgstr "নির্ভুলতা"
 
 #: data/resources/ui/preferences.blp:103
 msgid "Color Formats"
-msgstr ""
+msgstr "রঙের বিন্যাস"
 
 #: data/resources/ui/preferences.blp:104
 msgid "Customize the visible formats and in which order they are displayed"
 msgstr ""
+"দৃশ্যমান ফর্ম্যাটগুলি এবং সেগুলি কোন ক্রমে প্রদর্শিত হবে তা কাস্টমাইজ করুন"
 
 #: data/resources/ui/preferences.blp:109
 msgctxt "Tooltip of the button to reset the format order"
 msgid "Reset Order"
-msgstr ""
+msgstr "অনুক্রম রিসেট করুন"
 
 #: data/resources/ui/shortcuts.blp:11
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "সাধারণ"
 
 #: data/resources/ui/shortcuts.blp:14
 msgctxt "shortcut window"
 msgid "Show Preferences"
-msgstr ""
+msgstr "পছন্দগুলি দেখান"
 
 #: data/resources/ui/shortcuts.blp:19
 msgctxt "shortcut window"
 msgid "Show Shortcuts"
-msgstr ""
+msgstr "শর্টকাট দেখান"
 
 #: data/resources/ui/shortcuts.blp:24
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr ""
+msgstr "প্রস্থান করুন"
 
 #: data/resources/ui/shortcuts.blp:30
 msgctxt "shortcut window"
 msgid "Color"
-msgstr ""
+msgstr "রঙ"
 
 #: data/resources/ui/shortcuts.blp:33
 msgctxt "shortcut window"
 msgid "Pick a New Color"
-msgstr ""
+msgstr "একটি নতুন রঙ বেছে নিন"
 
 #: data/resources/ui/shortcuts.blp:38
 msgctxt "shortcut window"
 msgid "Randomize the Color"
-msgstr ""
+msgstr "রঙ এলোমেলো করুন"
 
 #: data/resources/ui/window.blp:7
 msgid "_Clear History"
-msgstr ""
+msgstr "_ইতিহাস সাফ করুন"
 
 #: data/resources/ui/window.blp:12
 msgid "_Random Color"
-msgstr ""
+msgstr "_এলোমেলো রঙ"
 
 #: data/resources/ui/window.blp:19
 msgid "_Preferences"
-msgstr ""
+msgstr "_পছন্দগুলি"
 
 #: data/resources/ui/window.blp:24
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_কীবোর্ড শর্টকাট"
 
 #: data/resources/ui/window.blp:29
 msgid "_About Eyedropper"
-msgstr ""
+msgstr "_Eyedropper সম্পর্কে"
 
 #: data/resources/ui/window.blp:46
 msgctxt "Tooltip of the colorpicker button"
 msgid "Pick a Color"
-msgstr ""
+msgstr "একটি রঙ বেছে নিন"
 
 #: data/resources/ui/window.blp:53
 msgid "Main Menu"
-msgstr ""
+msgstr "প্রধান মেনু"
 
 #: data/resources/ui/window.blp:97
 msgid "Color Picker not Available"
-msgstr ""
+msgstr "কালার পিকার উপলব্ধ নেই"
 
 #: data/resources/ui/window.blp:107
 msgid "The system is not properly configured to allow for color picking"
-msgstr ""
+msgstr "রঙ বাছাই করার জন্য সিস্টেমটি সঠিকভাবে কনফিগার করা হয়নি"
 
 #: data/resources/ui/window.blp:119
 msgid "_Continue Regardless"
-msgstr ""
+msgstr "_যাই হোক না কেন চালিয়ে যান"
 
 #: data/resources/ui/window.blp:153
 msgctxt "Tooltip of the palette button"
 msgid "Edit Color"
-msgstr ""
+msgstr "রঙ সম্পাদনা করুন"
 
 #: data/resources/ui/window.blp:256 src/widgets/color_format_row.rs:163
 msgid "Apply"
-msgstr ""
+msgstr "প্রয়োগ করুন"
 
 #: src/colors/notation.rs:240
 msgid "Not named"
-msgstr ""
+msgstr "নামকরণ করা হয়নি"
 
 #: src/colors/notation.rs:246
 msgid "Copy Hex Code"
-msgstr ""
+msgstr "হেক্স কোড অনুলিপি করুন"
 
 #: src/colors/notation.rs:267
 msgid "Hex Code"
-msgstr ""
+msgstr "হেক্স কোড"
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/widgets/about_window.rs:35
 msgid "translator-credits"
-msgstr ""
+msgstr "OnByWill <onbywill@gmail.com>"
 
 #: src/widgets/color_format_row.rs:232
 msgid "Copied “{}”"
-msgstr ""
+msgstr "“{}” কপি করা হয়েছে"
 
 #: src/widgets/preferences/preferences_window.rs:353
 msgid "Move Up"
-msgstr ""
+msgstr "উপরে সরান"
 
 #: src/widgets/preferences/preferences_window.rs:355
 msgid "Move Down"
-msgstr ""
+msgstr "নিচে সরান"
 
 #: src/window.rs:302
 msgid "Pick a New Color"
-msgstr ""
+msgstr "একটি নতুন রঙ বেছে নিন"
 
 #: src/window.rs:338
 msgid "Cleared history"
-msgstr ""
+msgstr "ইতিহাস সাফ করা হয়েছে"
 
 #: src/window.rs:339
 msgid "Undo"
-msgstr ""
+msgstr "পূর্বাবস্থায় ফেরান"
 
 #: src/window.rs:504
 msgid "Failed to pick a color"
-msgstr ""
+msgstr "রঙ বেছে নিতে ব্যর্থ হয়েছে"
