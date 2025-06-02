@@ -4,13 +4,14 @@
 # Automatically generated, 2022.
 # Philip Goto <philip.goto@gmail.com>, 2023.
 # Milo Ivir <mail@milotype.de>, 2023.
+# Cirilla <cirilla@tuta.io>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-11-14 19:29+0000\n"
-"PO-Revision-Date: 2023-12-16 16:35+0000\n"
-"Last-Translator: Milo Ivir <mail@milotype.de>\n"
+"PO-Revision-Date: 2025-06-03 17:39+0000\n"
+"Last-Translator: Cirilla <cirilla@tuta.io>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/nl/>\n"
 "Language: nl\n"
@@ -18,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.3\n"
+"X-Generator: Weblate 5.12-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
@@ -187,7 +188,7 @@ msgctxt ""
 "Name of the color set from the GNOME color palette (https://developer.gnome."
 "org/hig/reference/palette.html)"
 msgid "GNOME Color Palette"
-msgstr ""
+msgstr "GNOME Kleurenpalet"
 
 #: data/resources/ui/preferences/name-sources-dialog.blp:28
 msgid "Colors for GNOME app icons and illustrations"
@@ -497,7 +498,7 @@ msgstr "Kleur kiezen"
 
 #: data/resources/ui/window.blp:85
 msgid "Main Menu"
-msgstr ""
+msgstr "Hoofdmenu"
 
 #: data/resources/ui/window.blp:108
 msgctxt "Tooltip of the palette button"
