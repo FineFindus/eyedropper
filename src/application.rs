@@ -75,6 +75,9 @@ mod imp {
                 #[weak]
                 app,
                 async move {
+                    if let Err(err) = app.request_background_access().await {
+                        log::error!("Failed to request background access: {err}");
+                    }
                     // spawn indefinitely running task
                     futures::future::join(
                         async {
@@ -232,6 +235,27 @@ impl App {
             &gio::MemoryInputStream::from_bytes(&texture.save_to_png_bytes()),
             gio::Cancellable::NONE,
         )
+    }
+
+    /// Requests the system to allow the application to run in the background.
+    ///
+    /// This is used for receiving global shortcuts, while the app is not opened.
+    async fn request_background_access(&self) -> ashpd::Result<()> {
+        let response = ashpd::desktop::background::Background::request()
+            .reason(&*gettext(
+                "Allow color selection while the application runs in the background",
+            ))
+            .command(["eyedropper", "--gapplication-service"])
+            .auto_start(true)
+            .dbus_activatable(false)
+            .send()
+            .await?
+            .response()?;
+        log::info!(
+            "Application has background access: {}",
+            response.run_in_background()
+        );
+        Ok(())
     }
 
     async fn setup_search_provider(&self) -> zbus::Result<SearchProvider<App>> {

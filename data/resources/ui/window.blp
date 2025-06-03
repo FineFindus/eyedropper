@@ -33,6 +33,7 @@ menu primary_menu {
 }
 
 template $AppWindow: Adw.ApplicationWindow {
+  hide-on-close: true;
   content: Adw.ToastOverlay toast_overlay {
     child: Adw.BottomSheet edit_sheet {
       content: Adw.ToolbarView {

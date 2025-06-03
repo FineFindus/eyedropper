@@ -212,7 +212,7 @@ mod imp {
                 log::warn!("Failed to save window state, {}", &err);
             }
 
-            // Pass close request on to the parent
+            // pass close request on to the parent
             self.parent_close_request()
         }
     }
