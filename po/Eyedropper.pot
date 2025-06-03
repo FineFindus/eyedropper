@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2025-03-23 09:02+0000\n"
+"POT-Creation-Date: 2025-06-03 17:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -636,16 +636,20 @@ msgstr ""
 msgid "Apply"
 msgstr ""
 
-#: src/colors/notation.rs:240
+#: src/colors/notation.rs:241
 msgid "Not named"
 msgstr ""
 
-#: src/colors/notation.rs:246
+#: src/colors/notation.rs:248
 msgid "Copy Hex Code"
 msgstr ""
 
-#: src/colors/notation.rs:267
+#: src/colors/notation.rs:269
 msgid "Hex Code"
+msgstr ""
+
+#: src/colors/notation.rs:282
+msgid "Name"
 msgstr ""
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
