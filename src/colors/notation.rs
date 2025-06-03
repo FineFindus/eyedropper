@@ -1,5 +1,6 @@
 use std::str::FromStr;
 
+use gettextrs::gettext;
 use gtk::{gio, prelude::SettingsExt};
 use palette::IntoColor;
 
@@ -236,13 +237,14 @@ impl Notation {
                     ),
                 }
             }
-            Notation::Name => color_names::name(color, name_sources)
-                .unwrap_or_else(|| gettextrs::gettext("Not named")),
+            Notation::Name => {
+                color_names::name(color, name_sources).unwrap_or_else(|| gettext("Not named"))
+            }
         }
     }
 
     pub fn display_copy_string(&self) -> String {
-        gettextrs::gettext(match self {
+        gettext(match self {
             Notation::Hex => "Copy Hex Code",
             Notation::Rgb => "Copy RGB",
             Notation::Hsl => "Copy HSL",
@@ -264,7 +266,7 @@ impl Notation {
         ColorFormatObject::new(
             identifier,
             match self {
-                Notation::Hex => gettextrs::gettext("Hex Code"),
+                Notation::Hex => gettext("Hex Code"),
                 Notation::Rgb => "RGB".to_string(),
                 Notation::Hsl => "HSL".to_string(),
                 Notation::Hsv => "HSV".to_string(),
@@ -277,7 +279,7 @@ impl Notation {
                 Notation::HunterLab => "Hunter Lab".to_string(),
                 Notation::Oklab => "Oklab".to_string(),
                 Notation::Oklch => "Oklch".to_string(),
-                Notation::Name => "Name".to_string(),
+                Notation::Name => gettext("Name"),
             },
             self.as_str(
                 color,
