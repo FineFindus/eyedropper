@@ -11,7 +11,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2024-09-18 17:02+0000\n"
 "PO-Revision-Date: 2025-06-04 14:02+0000\n"
-"Last-Translator: Filipe Motta <luiz_filipe_motta@hotmail.com>\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "eyedropper/eyedropper/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -42,8 +42,8 @@ msgstr "Selecione e formate cores"
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
 msgid "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
 msgstr ""
-"Gnome;GTK;Color;Color Picker;Picker;Palette;Cor;Cores;Seletor;Seletor de Cor;"
-"Paleta;Paleta de Cor;Paleta de Cores;Conta-Gotas;Selecionar;Escolher;"
+"Gnome;GTK;Color;Color Picker;Picker;Palette;Cor;Cores;Seletor;Seletor de "
+"Cor;Paleta;Paleta de Cor;Paleta de Cores;Conta-Gotas;Selecionar;Escolher;"
 
 #. developer_name tag deprecated with Appstream 1.0
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
