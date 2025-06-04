@@ -8,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2024-09-18 17:02+0000\n"
 "PO-Revision-Date: 2025-06-04 14:02+0000\n"
-"Last-Translator: Davide <davide.ferracin@protonmail.com>\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/it/>\n"
 "Language: it\n"
@@ -38,8 +38,7 @@ msgstr "Preleva e sistema i colori"
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
 msgid "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
-msgstr ""
-"Gnome;GTK;Colore;Selettore;Tavolozza;"
+msgstr "Gnome;GTK;Colore;Selettore;Tavolozza;"
 
 #. developer_name tag deprecated with Appstream 1.0
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
@@ -344,15 +343,15 @@ msgid ""
 "li><li>Visual refinements to match the state of the art of GNOME apps</"
 "li><li>Internal code improvements and bug fixes</li></ul>"
 msgstr ""
-"<p>Una nuova versione con nuove funzionalità entusiasmanti e miglioramenti.</"
-"p>\n"
+"<p>Una nuova versione con nuove funzionalità entusiasmanti e "
+"miglioramenti.</p>\n"
 "<ul><li>Possibilità di inserire qualsiasi formato</li><li>Visualizzazione "
 "del colore nella ricerca nella panoramica</li><li>Esportazione delle "
 "tavolozze in LibreOffice</li><li>Differenziazione visiva tra colore e "
 "sfondo</li><li>Conversione tra colori migliorata</li><li>Ritocchi grafici "
 "per aderire allo stato dell'arte delle applicazioni di GNOME</"
-"li><li>Miglioramenti interni al codice e correzione di alcuni errori</li></"
-"ul>"
+"li><li>Miglioramenti interni al codice e correzione di alcuni "
+"errori</li></ul>"
 
 #: src/widgets/color_format_row.rs:239
 msgid "Copied “{}”"
