@@ -173,10 +173,7 @@
     </release>
     <release version="0.3.1" date="2022-09-23">
       <description translatable="no">
-        <p>Bugfixes release</p>
-        <ul>
-          <li>Fixed a few bugs and added Dutch translations.</li>
-        </ul>      
+        <p>Fixed a few bugs and added Dutch translations.</p>
       </description>
     </release>
     <release version="0.3.0" date="2022-09-21">
