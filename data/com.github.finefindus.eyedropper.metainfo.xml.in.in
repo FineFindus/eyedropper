@@ -49,7 +49,7 @@
   <releases>
     <release version="2.1.0" date="2025-03-23">
       <description translatable="no">
-        <p>New feature, fixed bug and update in GNOME styling:</p>
+        <p>New features, fixed bugs and updates to modern GNOME styling:</p>
         <ul>
           <li>RGB can now be displayed in decimal notation</li>
           <li>Colors can now be directly entered, without picking a color first</li>
