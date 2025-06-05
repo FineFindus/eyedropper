@@ -49,6 +49,7 @@
   <releases>
     <release version="2.1.0" date="2025-03-23">
       <description translatable="no">
+        <p>New features, fixed bugs and updates to modern GNOME styling:</p>
         <ul>
           <li>RGB can now be displayed in decimal notation</li>
           <li>Colors can now be directly entered, without picking a color first</li>
@@ -80,7 +81,16 @@
     </release>
     <release version="1.0.0" date="2023-09-27">
       <description translatable="no">
-        <p>A new release with exciting new features and many improvements.</p>\n<ul><li>Allow entering any format</li><li>Display color in overview search</li><li>Export palettes to LibreOffice</li><li>A visual differentiation between color and background</li><li>Improved color conversion</li><li>Visual refinements to match the state of the art of GNOME apps</li><li>Internal code improvements and bug fixes</li></ul>
+        <p>A new release with exciting new features and many improvements.</p>
+          <ul>
+            <li>Allow entering any format</li>
+            <li>Display color in overview search</li>
+            <li>Export palettes to LibreOffice</li>
+            <li>A visual differentiation between color and background</li>
+            <li>Improved color conversion</li>
+            <li>Visual refinements to match the state of the art of GNOME apps</li>
+            <li>Internal code improvements and bug fixes</li>
+          </ul>
       </description>
     </release>
     <release version="0.6.0" date="2023-02-24">
@@ -163,7 +173,7 @@
     </release>
     <release version="0.3.1" date="2022-09-23">
       <description translatable="no">
-        Fixed a few bugs and added Dutch translations.
+        <p>Fixed a few bugs and added Dutch translations.</p>
       </description>
     </release>
     <release version="0.3.0" date="2022-09-21">
