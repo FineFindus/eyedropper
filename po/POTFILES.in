@@ -11,6 +11,7 @@ data/resources/ui/preferences.blp
 data/resources/ui/shortcuts.blp
 data/resources/ui/window.blp
 # RUST files
+src/application.rs
 src/colors/notation.rs
 src/main.rs
 src/widgets/about_window.rs
