@@ -5,13 +5,14 @@
 # Philip Goto <philip.goto@gmail.com>, 2023.
 # Milo Ivir <mail@milotype.de>, 2023.
 # Cirilla <cirilla@tuta.io>, 2025.
+# Dick Groskamp <dikgro@yahoo.co.uk>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-11-14 19:29+0000\n"
-"PO-Revision-Date: 2025-06-03 17:39+0000\n"
-"Last-Translator: Cirilla <cirilla@tuta.io>\n"
+"PO-Revision-Date: 2025-06-22 10:10+0000\n"
+"Last-Translator: Dick Groskamp <dikgro@yahoo.co.uk>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/nl/>\n"
 "Language: nl\n"
@@ -19,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.12-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
@@ -36,7 +37,7 @@ msgstr "Kleurenkiezer"
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
 #: src/widgets/about_window.rs:71
 msgid "Pick and format colors"
-msgstr "Kies en formatteer kleuren"
+msgstr "Kleuren kiezen en opmaken"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
@@ -159,7 +160,7 @@ msgstr "Formaat resetten"
 #: data/resources/ui/preferences/name-sources-dialog.blp:5
 #: data/resources/ui/preferences/preferences.blp:29
 msgid "Name Sources"
-msgstr ""
+msgstr "Naam bronnen"
 
 #: data/resources/ui/preferences/name-sources-dialog.blp:17
 msgctxt ""
@@ -170,7 +171,7 @@ msgstr "Basis"
 
 #: data/resources/ui/preferences/name-sources-dialog.blp:18
 msgid "Basic web colors"
-msgstr ""
+msgstr "Basis webkleuren"
 
 #: data/resources/ui/preferences/name-sources-dialog.blp:22
 msgctxt ""
@@ -181,7 +182,7 @@ msgstr "Uitgebreid"
 
 #: data/resources/ui/preferences/name-sources-dialog.blp:23
 msgid "X11 and SVG color values"
-msgstr ""
+msgstr "X11 en SVG kleurwaarden"
 
 #: data/resources/ui/preferences/name-sources-dialog.blp:27
 msgctxt ""
@@ -192,16 +193,16 @@ msgstr "GNOME Kleurenpalet"
 
 #: data/resources/ui/preferences/name-sources-dialog.blp:28
 msgid "Colors for GNOME app icons and illustrations"
-msgstr ""
+msgstr "Kleuren voor GNOME app pictogrammen en afbeeldingen"
 
 #: data/resources/ui/preferences/name-sources-dialog.blp:32
 msgctxt "Name of the color set from the xkcd color survey"
 msgid "xkcd Color Survey"
-msgstr ""
+msgstr "xkcd kleuronderzoek"
 
 #: data/resources/ui/preferences/name-sources-dialog.blp:33
 msgid "954 RGB colors named by volunteers"
-msgstr ""
+msgstr "954 RGB-kleuren, benoemd door vrijwilligers"
 
 #: data/resources/ui/preferences/preferences.blp:11
 msgid "General"
@@ -222,21 +223,21 @@ msgstr "Waar de alfawaarde is gepositioneerd in de hexstring"
 #: data/resources/ui/preferences/preferences.blp:21
 msgctxt "Alphavalue is not shown"
 msgid "None"
-msgstr ""
+msgstr "Geen"
 
 #: data/resources/ui/preferences/preferences.blp:22
 msgctxt "Alphavalue is shown at the end"
 msgid "End"
-msgstr ""
+msgstr "Einde"
 
 #: data/resources/ui/preferences/preferences.blp:23
 msgctxt "Alphavalue is shown at the start"
 msgid "Start"
-msgstr ""
+msgstr "Begin"
 
 #: data/resources/ui/preferences/preferences.blp:30
 msgid "Sources for displaying color names"
-msgstr ""
+msgstr "Bronnen voor weergeven van kleurnamen"
 
 #: data/resources/ui/preferences/preferences.blp:41
 #: data/resources/ui/preferences/preferences.blp:49
@@ -587,11 +588,11 @@ msgstr ""
 
 #: src/widgets/color_format_row.rs:190
 msgid "Copied “{}”"
-msgstr ""
+msgstr "Gekopieerd “{}”"
 
 #: src/widgets/history_item.rs:118
 msgid "Remove"
-msgstr ""
+msgstr "Verwijderen"
 
 #: src/widgets/palette_dialog.rs:85
 msgctxt "Name for tints (lighter variants) of the color"
