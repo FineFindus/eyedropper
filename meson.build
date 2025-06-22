@@ -3,7 +3,6 @@ project(
   'rust',
   version: '2.1.0',
   meson_version: '>= 0.59',
-  # license: 'MIT',
 )
 
 i18n = import('i18n')
@@ -16,6 +15,7 @@ dependency('gio-2.0', version: '>= 2.66')
 dependency('gtk4', version: '>= 4.14.0')
 dependency('libadwaita-1', version: '>= 1.7')
 
+blueprint_compiler = find_program('blueprint-compiler', version: '>= 0.16', required: true)
 glib_compile_resources = find_program('glib-compile-resources', required: true)
 glib_compile_schemas = find_program('glib-compile-schemas', required: true)
 desktop_file_validate = find_program('desktop-file-validate', required: false)
