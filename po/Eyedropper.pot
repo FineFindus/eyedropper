@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2025-06-07 16:24+0000\n"
+"POT-Creation-Date: 2025-06-24 18:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.blp:43 src/main.rs:30
+#: data/resources/ui/window.blp:37 src/main.rs:30
 #: src/widgets/about_window.rs:29
 msgid "Eyedropper"
 msgstr ""
@@ -553,41 +553,6 @@ msgctxt "Tooltip of the button to reset the format order"
 msgid "Reset Order"
 msgstr ""
 
-#: data/resources/ui/shortcuts.blp:11
-msgctxt "shortcut window"
-msgid "General"
-msgstr ""
-
-#: data/resources/ui/shortcuts.blp:14
-msgctxt "shortcut window"
-msgid "Show Preferences"
-msgstr ""
-
-#: data/resources/ui/shortcuts.blp:19
-msgctxt "shortcut window"
-msgid "Show Shortcuts"
-msgstr ""
-
-#: data/resources/ui/shortcuts.blp:24
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr ""
-
-#: data/resources/ui/shortcuts.blp:30
-msgctxt "shortcut window"
-msgid "Color"
-msgstr ""
-
-#: data/resources/ui/shortcuts.blp:33
-msgctxt "shortcut window"
-msgid "Pick a New Color"
-msgstr ""
-
-#: data/resources/ui/shortcuts.blp:38
-msgctxt "shortcut window"
-msgid "Randomize the Color"
-msgstr ""
-
 #: data/resources/ui/window.blp:7
 msgid "_Clear History"
 msgstr ""
@@ -600,41 +565,37 @@ msgstr ""
 msgid "_Preferences"
 msgstr ""
 
-#: data/resources/ui/window.blp:24
-msgid "_Keyboard Shortcuts"
-msgstr ""
-
-#: data/resources/ui/window.blp:29
+#: data/resources/ui/window.blp:23
 msgid "_About Eyedropper"
 msgstr ""
 
-#: data/resources/ui/window.blp:47
+#: data/resources/ui/window.blp:41
 msgctxt "Tooltip of the colorpicker button"
 msgid "Pick a Color"
 msgstr ""
 
-#: data/resources/ui/window.blp:54
+#: data/resources/ui/window.blp:48
 msgid "Main Menu"
 msgstr ""
 
-#: data/resources/ui/window.blp:98
+#: data/resources/ui/window.blp:92
 msgid "Color Picker not Available"
 msgstr ""
 
-#: data/resources/ui/window.blp:108
+#: data/resources/ui/window.blp:102
 msgid "The system is not properly configured to allow for color picking"
 msgstr ""
 
-#: data/resources/ui/window.blp:120
+#: data/resources/ui/window.blp:114
 msgid "_Continue Regardless"
 msgstr ""
 
-#: data/resources/ui/window.blp:154
+#: data/resources/ui/window.blp:148
 msgctxt "Tooltip of the palette button"
 msgid "Edit Color"
 msgstr ""
 
-#: data/resources/ui/window.blp:257 src/widgets/color_format_row.rs:163
+#: data/resources/ui/window.blp:251 src/widgets/color_format_row.rs:163
 msgid "Apply"
 msgstr ""
 
