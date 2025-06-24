@@ -6,7 +6,6 @@ blueprints = custom_target(
     'ui/history-item.blp',
     'ui/placeholder-page.blp',
     'ui/preferences.blp',
-    'ui/shortcuts.blp',
     'ui/window.blp',
   ),
   output: '.',
