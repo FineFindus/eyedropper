@@ -155,6 +155,8 @@ template $AppWindow: Adw.ApplicationWindow {
                     width-request: 267;
 
                     ColorDialogButton color_button {
+                      // this button cannot be clicked, so we hide it from screenreaders
+                      accessible-role: presentation;
                       can-focus: false;
                     }
 
