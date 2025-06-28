@@ -19,6 +19,7 @@ menu primary_menu {
       label: _("_Preferences");
       action: "app.preferences";
     }
+
     item {
       label: _("_About Eyedropper");
       action: "app.about";
@@ -84,6 +85,7 @@ template $AppWindow: Adw.ApplicationWindow {
                         Picture {
                           can-shrink: false;
                           margin-bottom: 25;
+                          accessible-role: presentation;
                           file: "resource:///com/github/finefindus/eyedropper/shattered-picker.svg";
                         }
                       }
