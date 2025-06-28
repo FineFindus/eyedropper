@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2025-06-24 18:34+0000\n"
+"POT-Creation-Date: 2025-06-28 19:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.blp:37 src/main.rs:30
+#: data/resources/ui/window.blp:38 src/main.rs:30
 #: src/widgets/about_window.rs:29
 msgid "Eyedropper"
 msgstr ""
@@ -565,37 +565,37 @@ msgstr ""
 msgid "_Preferences"
 msgstr ""
 
-#: data/resources/ui/window.blp:23
+#: data/resources/ui/window.blp:24
 msgid "_About Eyedropper"
 msgstr ""
 
-#: data/resources/ui/window.blp:41
+#: data/resources/ui/window.blp:42
 msgctxt "Tooltip of the colorpicker button"
 msgid "Pick a Color"
 msgstr ""
 
-#: data/resources/ui/window.blp:48
+#: data/resources/ui/window.blp:49
 msgid "Main Menu"
 msgstr ""
 
-#: data/resources/ui/window.blp:92
+#: data/resources/ui/window.blp:94
 msgid "Color Picker not Available"
 msgstr ""
 
-#: data/resources/ui/window.blp:102
+#: data/resources/ui/window.blp:104
 msgid "The system is not properly configured to allow for color picking"
 msgstr ""
 
-#: data/resources/ui/window.blp:114
+#: data/resources/ui/window.blp:116
 msgid "_Continue Regardless"
 msgstr ""
 
-#: data/resources/ui/window.blp:148
+#: data/resources/ui/window.blp:150
 msgctxt "Tooltip of the palette button"
 msgid "Edit Color"
 msgstr ""
 
-#: data/resources/ui/window.blp:251 src/widgets/color_format_row.rs:163
+#: data/resources/ui/window.blp:255 src/widgets/color_format_row.rs:163
 msgid "Apply"
 msgstr ""
 
