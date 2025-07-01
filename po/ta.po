@@ -1,13 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Eyedropper package.
-# தமிழ்நேரம் <anishprabu.t@gmail.com>, 2024.
+# தமிழ்நேரம் <anishprabu.t@gmail.com>, 2024, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2024-11-25 07:02+0000\n"
-"PO-Revision-Date: 2024-12-26 20:50+0000\n"
+"PO-Revision-Date: 2025-07-02 04:01+0000\n"
 "Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/ta/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
@@ -38,7 +38,7 @@ msgstr "வண்ணங்களைத் தேர்ந்தெடுத்�
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
 msgid "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
-msgstr "க்னோம்; சி.டி.கே; வண்ணம்; கலர் பிக்கர்; பிக்கர்; தட்டு;"
+msgstr "க்னோம்; சி.டி.கே; வண்ணம்; நிறம்எடு; எடு; தட்டு;"
 
 #. developer_name tag deprecated with Appstream 1.0
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
