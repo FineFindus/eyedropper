@@ -7,37 +7,41 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2025-06-28 19:30+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-07-24 05:03+0000\n"
+"Last-Translator: Ahmed Najmawi <iramosu@protonmail.com>\n"
+"Language-Team: Arabic <https://hosted.weblate.org/projects/eyedropper/"
+"eyedropper/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
 #: data/resources/ui/window.blp:38 src/main.rs:30
 #: src/widgets/about_window.rs:29
 msgid "Eyedropper"
-msgstr ""
+msgstr "قطَّارة"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:4
 msgid "Color Picker"
-msgstr ""
+msgstr "منتقي الألوان"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
 #: src/widgets/about_window.rs:57
 msgid "Pick and format colors"
-msgstr ""
+msgstr "انتقِ الألوان ونسِّقها"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
 msgid "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
 msgstr ""
+"جنوم;جتك;لون;منتقي ألوان;منتقي;لوحة "
+"ألوان;قطارة;Gnome;GTK;Color;Colorpicker;Picker;Palette;"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
 msgid "FineFindus"
@@ -46,27 +50,27 @@ msgstr ""
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
 #: src/widgets/about_window.rs:61
 msgid "Enter or pick a color and view it in different formats."
-msgstr ""
+msgstr "أدخل لونًا أو انتقهِ واستعرضه بتنسيقات مختلفة."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
 #: src/widgets/about_window.rs:67
 msgid "Features"
-msgstr ""
+msgstr "المزايا"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
 #: src/widgets/about_window.rs:71
 msgid "Pick a Color"
-msgstr ""
+msgstr "انتقِ لونًا"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
 #: src/widgets/about_window.rs:72
 msgid "Edit the viewed color in a simple HSL editor"
-msgstr ""
+msgstr "حرَّر اللون المعروض في محرِّر HSL بسيط"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
 #: src/widgets/about_window.rs:73
 msgid "Enter a color in various formats"
-msgstr ""
+msgstr "أدخل لونًا بتنسيقات متنوِّعة"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
 #: src/widgets/about_window.rs:75
@@ -74,115 +78,117 @@ msgid ""
 "Convert colors into other formats such as Hex, RGB, HSV, HSL, CMYK, XYZ, CIE-"
 "Lab…"
 msgstr ""
+"حوِّل الألوان إلى تنسيقات أخرى مثل Hex و RGB و HSV و HSL و CMYK و XYZ و CIE-"
+"Lab وغيرها…"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:28
 msgid "Main window with a color in different formats"
-msgstr ""
+msgstr "النافذة الرئيسة مع لون بتنسيقات مختلفة"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:32
 msgid "Main window with customized formats"
-msgstr ""
+msgstr "النافذة الرئيسة مع تنسيقات مخصَّصة"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:36
 msgid "Editor with an HSL editor"
-msgstr ""
+msgstr "المحرِّر مع محرِّر HSL"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:40
 msgid "Status page stating to pick a color to get started"
-msgstr ""
+msgstr "صفحة الحالة التي تفيد بضرورة انتقاء لون للبدء"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:52
 msgid "New features, fixed bugs and updates to modern GNOME styling:"
-msgstr ""
+msgstr "مزايا جديدة وإصلاحات للأخطاء وتحديثات لتصميم جنوم الحديث:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:54
 msgid "RGB can now be displayed in decimal notation"
-msgstr ""
+msgstr "يمكن الآن عرض RGB بالترميز العشري"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:55
 msgid "Colors can now be directly entered, without picking a color first"
-msgstr ""
+msgstr "يمكن الآن إدخال الألوان مباشرة، دون الحاجة لانتقاء لون أولًا"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:56
 msgid "Support for focus-independent (global) shortcuts"
-msgstr ""
+msgstr "دعم الاختصارات المستقلة عن التركيز (العامة)"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:57
 msgid "Fixed an layout issue on systems where scrollbars are always shown"
-msgstr ""
+msgstr "أُصلحت مشكلة في التخطيط على الأنظمة التي تظهر فيها أشرطة التمرير دائمًا"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:58
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:74
 msgid "Updated to modern GNOME styling"
-msgstr ""
+msgstr "حُدِّث إلى تصميم جنوم الحديث"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:59
 msgid "Improved checking for unsupported systems"
-msgstr ""
+msgstr "تحسين التحقُّق من الأنظمة غير المدعومة"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:65
 msgid "A small fix for failing metadata"
-msgstr ""
+msgstr "إصلاح بسيط للبيانات الوصفية المتعذَّرة"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:70
 msgid "A new release, including major reworks the the UI and the color system"
-msgstr ""
+msgstr "إصدار جديد، يتضمَّن تعديلات جذرية على واجهة المستخدم ونظام الألوان"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:72
 msgid "Added a new color editor, allowing to modify colors"
-msgstr ""
+msgstr "أُضيف محرِّر ألوان جديد، يسمح بتعديل الألوان"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:73
 msgid "Reworked the system handling color conversions"
-msgstr ""
+msgstr "أُعيد تصميم نظام معالجة تحويلات الألوان"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:75
 msgid "A warning page is now shown on unsupported systems"
-msgstr ""
+msgstr "تُعرض الآن صفحة تحذير على الأنظمة غير المدعومة"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:76
 msgid "Various internal code improvements and bug fixes"
-msgstr ""
+msgstr "تحسينات متنوّعة على الكود الداخلي وإصلاحات للأخطاء"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:77
 msgid "Removed the palette dialog"
-msgstr ""
+msgstr "أُزيلت حواريَّة لوحة الألوان"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:78
 msgid "Removed custom color formats"
-msgstr ""
+msgstr "أُزيلت تنسيقات الألوان المخصَّصة"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:84
 msgid "A new release with exciting new features and many improvements."
-msgstr ""
+msgstr "إصدار جديد بمزايا جديدة ومثيرة والعديد من التحسينات."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:86
 msgid "Allow entering any format"
-msgstr ""
+msgstr "السماح بإدخال أي تنسيق"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:87
 msgid "Display color in overview search"
-msgstr ""
+msgstr "عرض اللون في بحث النظرة العامة"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:88
 msgid "Export palettes to LibreOffice"
-msgstr ""
+msgstr "صدِّر لوحات الألوان إلى ليبر أوفيس"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:89
 msgid "A visual differentiation between color and background"
-msgstr ""
+msgstr "تمييز مرئي بين اللون والخلفية"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:90
 msgid "Improved color conversion"
-msgstr ""
+msgstr "تحسين تحويل الألوان"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:91
 msgid "Visual refinements to match the state of the art of GNOME apps"
-msgstr ""
+msgstr "تحسينات مرئية لتواكب أحدث تطبيقات جنوم"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:92
 msgid "Internal code improvements and bug fixes"
-msgstr ""
+msgstr "تحسينات على الشيفرة الداخلية وإصلاحات للأخطاء"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:98
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:124
@@ -192,462 +198,469 @@ msgstr ""
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:193
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:205
 msgid "Added:"
-msgstr ""
+msgstr "أُضيف:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:100
 msgid "Show a toast with an Undo option when clearing the history"
-msgstr ""
+msgstr "إظهار تنبيه منبثق مع خيار تراجع عند محو التأريخ"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:101
 msgid "Use Ctrl-Q to close the window"
-msgstr ""
+msgstr "استخدام Ctrl-Q لإغلاق النافذة"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:102
 msgid ""
 "Use a default minimum window size, content should no longer unnecessarily "
 "cut off"
-msgstr ""
+msgstr "استخدام حجم نافذة أدنى مبدئي، لن يُقتطع المحتوى بعد الآن دون داعٍ"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:103
 msgid "New icon by @bertob"
-msgstr ""
+msgstr "أيقونة جديدة من تصميم @bertob"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:104
 msgid ""
 "Export palettes as Adobe Swatch Exchange (ASE), hex, PAL, Paint.NET (txt) "
 "files"
 msgstr ""
+"صدِّر لوحات الألوان كملفات Adobe Swatch Exchange (ASE) و hex و PAL و Paint.NET "
+"(txt)"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:105
 msgid "Minor changes to the store metadata"
-msgstr ""
+msgstr "تغييرات طفيفة على البيانات الوصفية للمتجر"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:107
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:130
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:152
 msgid "Changed:"
-msgstr ""
+msgstr "غُيِّر:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:109
 msgid "Hunter-Lab now displays 0 instead of NaN"
-msgstr ""
+msgstr "يعرض Hunter-Lab الآن 0 بدلًا من NaN"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:110
 msgid "Improved tooltips for copying colors"
-msgstr ""
+msgstr "تحسين التلميحات عند نسخ الألوان"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:111
 msgid ""
 "Palette window now uses a button with a more explicit text instead of an icon"
-msgstr ""
+msgstr "تستخدم نافذة لوحة الألوان الآن زرًا بنص أوضح بدلًا من أيقونة"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:112
 msgid "Reworded project description"
-msgstr ""
+msgstr "أُعيدت صياغة وصف المشروع"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:113
 msgid "Updated all screenshots"
-msgstr ""
+msgstr "حُدِّثت كل لقطات الشاشة"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:115
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:134
 msgid "Fixed:"
-msgstr ""
+msgstr "أُصلح:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:117
 msgid "Separator is now hidden when the history list is hidden"
-msgstr ""
+msgstr "يُخفى الفاصل الآن عندما تكون قائمة التأريخ مخفية"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:118
 msgid "Improved editing experience when change the Hex color/name"
-msgstr ""
+msgstr "تحسين تجربة التحرير عند تغيير لون/اسم Hex"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:126
 msgid "Russian translation"
-msgstr ""
+msgstr "ترجمة روسية"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:127
 msgid "Better optimized releases"
-msgstr ""
+msgstr "إصدارات محسَّنة بشكل أفضل"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:128
 msgid "Returns the exit code on quitting"
-msgstr ""
+msgstr "إرجاع رمز الخروج عند الإقلاع"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:132
 msgid "History no longer contains duplicated items"
-msgstr ""
+msgstr "لم يعد التأريخ يحتوي على عناصر مكرَّرة"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:136
 msgid "Fixed a bug where the wrong rgb format was used"
-msgstr ""
+msgstr "أُصلح خطأ كان يُستخدم فيه تنسيق rgb الخاطئ"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:137
 msgid "Fixed a bug where LMS and Hunter-Lab had the same setting"
-msgstr ""
+msgstr "أُصلح خطأ حيث كان لـ LMS و Hunter-Lab نفس الإعداد"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:145
 msgid ""
 "Export the generated palettes from the palette dialog as a GIMP palette file"
 msgstr ""
+"صدِّر لوحات الألوان المولَّدة من حواريَّة لوحة الألوان كملف لوحة ألوان جمب"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:146
 msgid "A .doap file to describe the project"
-msgstr ""
+msgstr "ملف .doap لوصف المشروع"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:147
 msgid "Show a placeholder page when no color is picked"
-msgstr ""
+msgstr "عرض صفحة نائبة عند عدم انتقاء أي لون"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:148
 msgid "LMS color space can now be shown"
-msgstr ""
+msgstr "يمكن الآن عرض فضاء الألوان LMS"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:149
 msgid "Convert to Hunter-Lab color space"
-msgstr ""
+msgstr "التحويل إلى فضاء الألوان Hunter-Lab"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:150
 msgid "Customize color formats"
-msgstr ""
+msgstr "خصِّص تنسيقات الألوان"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:154
 msgid "Fixed a bug where the illuminants were not fully shown"
-msgstr ""
+msgstr "أُصلح خطأ حيث لم تكن الإضاءات تُعرض بالكامل"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:155
 msgid "The names of the GNOME color palette are now available"
-msgstr ""
+msgstr "أسماء لوحة ألوان جنوم متاحة الآن"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:163
 msgid "Options to show names of color (from w3c basic, extended and xkcd)"
-msgstr ""
+msgstr "خيارات لإظهار أسماء الألوان (من w3c الأساسية والموسَّعة وxkcd)"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:164
 msgid "Change the color by typing a name in the name field"
-msgstr ""
+msgstr "غيِّر اللون بكتابة اسم في حقل الاسم"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:165
 msgid ""
 "Palettes are now shown in the palette dialog, accessible by clicking on the "
 "large color button"
 msgstr ""
+"تُعرض لوحات الألوان الآن في مربّع حوار لوحة الألوان، ويمكن الوصول إليها بالضغط "
+"على زر اللون الكبير"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:166
 msgid "The App now uses the AdwAboutWindow"
-msgstr ""
+msgstr "يستخدم التطبيق الآن AdwAboutWindow"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:167
 msgid "HSL does now support alpha values"
-msgstr ""
+msgstr "يدعم HSL الآن قيم ألفا"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:168
 msgid "HWB and CIELCh are now supported"
-msgstr ""
+msgstr "HWB وCIELCh مدعومان الآن"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:169
 msgid "CIE standard observer for CIELab and CIELCh"
-msgstr ""
+msgstr "مراقب CIE القياسي لـ CIELab و CIELCh"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:170
 msgid "Change CIE illuminants"
-msgstr ""
+msgstr "غيِّر إضاءات CIE"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:176
 msgid "Fixed a few bugs and added Dutch translations."
-msgstr ""
+msgstr "أُصلحت بعض الأخطاء وأُضيفت الترجمة الهولندية."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:183
 msgid ""
 "Palettes, consisting of darker shades and lighter tints, are now generated "
 "from the currently picked color as well as the previous 3"
 msgstr ""
+"تُولَّد الآن لوحات الألوان، والتي تتكوَّن من ظلال أغمق ودرجات أفتح، من اللون "
+"المنتقى حاليًا بالإضافة إلى الألوان الثلاثة السابقة"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:184
 msgid ""
 "Change the order of the color formats by dragging and dropping them in the "
 "settings"
-msgstr ""
+msgstr "غيِّر ترتيب تنسيقات الألوان بسحبها وإفلاتها في الإعدادات"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:185
 msgid "The app has been translated into French by rene-coty"
-msgstr ""
+msgstr "ترجم rene-coty التطبيق إلى الفرنسية"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:186
 msgid "A German translation has been added"
-msgstr ""
+msgstr "أُضيفت ترجمة ألمانية"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:187
 msgid "Adjusted some strings to be easier to understand"
-msgstr ""
+msgstr "عُدِّلت بعض النصوص لتكون أسهل في الفهم"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:195
 msgid "Issue and feature-request templates"
-msgstr ""
+msgstr "قوالب المشاكل وطلبات المزايا"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:196
 msgid "Change the color using hex values in the hex field"
-msgstr ""
+msgstr "غيِّر اللون باستخدام قيم hex في حقل hex"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:197
 msgid "Previous colors are now visible in the history list"
-msgstr ""
+msgstr "الألوان السابقة مرئية الآن في قائمة التأريخ"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:198
 msgid "Disable unwanted color models"
-msgstr ""
+msgstr "عطِّل نماذج الألوان غير المرغوب فيها"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:199
 msgid "Colors can now be shown as XYZ or CIELAB format"
-msgstr ""
+msgstr "يمكن الآن عرض الألوان بتنسيق XYZ أو CIELAB"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:207
 msgid "Basic UI"
-msgstr ""
+msgstr "واجهة مستخدم أساسية"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:208
 msgid "Pick a color using the color picker button"
-msgstr ""
+msgstr "انتقِ لونًا باستخدام زر منتقي الألوان"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:209
 msgid "Copy the color in different color models"
-msgstr ""
+msgstr "انسخ اللون في نماذج ألوان مختلفة"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:210
 msgid "Change the position of the alpha values in hex values"
-msgstr ""
+msgstr "غيِّر موضع قيم ألفا في قيم hex"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:211
 msgid "Added License"
-msgstr ""
+msgstr "أُضيفت الرخصة"
 
 #: data/resources/ui/history-item.blp:5
 msgid "Remove"
-msgstr ""
+msgstr "أزل"
 
 #: data/resources/ui/placeholder-page.blp:7
 msgid "No Color"
-msgstr ""
+msgstr "لا يوجد لون"
 
 #: data/resources/ui/placeholder-page.blp:8
 msgid "Select or enter a color to get started"
-msgstr ""
+msgstr "حدِّد لونًا أو أدخله للبدء"
 
 #: data/resources/ui/placeholder-page.blp:22
 msgid "View"
-msgstr ""
+msgstr "استعرض"
 
 #: data/resources/ui/preferences.blp:5 data/resources/ui/preferences.blp:74
 msgid "Name Sources"
-msgstr ""
+msgstr "مصادر الأسماء"
 
 #: data/resources/ui/preferences.blp:17
 msgctxt ""
 "Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
 "#html4"
 msgid "Basic"
-msgstr ""
+msgstr "أساسي"
 
 #: data/resources/ui/preferences.blp:18
 msgid "Basic web colors"
-msgstr ""
+msgstr "ألوان الوِب الأساسية"
 
 #: data/resources/ui/preferences.blp:22
 msgctxt ""
 "Name of the extended color keyword set from https://www.w3.org/TR/css-"
 "color-3/#svg-color"
 msgid "Extended"
-msgstr ""
+msgstr "موسَّع"
 
 #: data/resources/ui/preferences.blp:23
 msgid "X11 and SVG color values"
-msgstr ""
+msgstr "قيم ألوان X11 و SVG"
 
 #: data/resources/ui/preferences.blp:27
 msgctxt ""
 "Name of the color set from the GNOME color palette (https://developer.gnome."
 "org/hig/reference/palette.html)"
 msgid "GNOME Color Palette"
-msgstr ""
+msgstr "لوحة ألوان جنوم"
 
 #: data/resources/ui/preferences.blp:28
 msgid "Colors for GNOME app icons and illustrations"
-msgstr ""
+msgstr "ألوان أيقونات ورسوميات تطبيقات جنوم"
 
 #: data/resources/ui/preferences.blp:32
 msgctxt "Name of the color set from the xkcd color survey"
 msgid "xkcd Color Survey"
-msgstr ""
+msgstr "استطلاع ألوان xkcd"
 
 #: data/resources/ui/preferences.blp:33
 msgid "954 RGB colors named by volunteers"
-msgstr ""
+msgstr "954 لونًا بنظام RGB سمَّاها متطوِّعون"
 
 #: data/resources/ui/preferences.blp:43
 msgid "General"
-msgstr ""
+msgstr "عام"
 
 #: data/resources/ui/preferences.blp:46
 msgid "Formatting"
-msgstr ""
+msgstr "التنسيق"
 
 #: data/resources/ui/preferences.blp:49
 msgid "Alpha-Value Position"
-msgstr ""
+msgstr "موضع قيمة ألفا"
 
 #: data/resources/ui/preferences.blp:50
 msgid "Where the Alphavalue is positioned in the Hexstring"
-msgstr ""
+msgstr "أين توضع قيمة ألفا في سلسلة Hex"
 
 #: data/resources/ui/preferences.blp:54
 msgctxt "Alphavalue is not shown"
 msgid "None"
-msgstr ""
+msgstr "بلا"
 
 #: data/resources/ui/preferences.blp:55
 msgctxt "Alphavalue is shown at the end"
 msgid "End"
-msgstr ""
+msgstr "النهاية"
 
 #: data/resources/ui/preferences.blp:56
 msgctxt "Alphavalue is shown at the start"
 msgid "Start"
-msgstr ""
+msgstr "البداية"
 
 #: data/resources/ui/preferences.blp:62
 msgid "RGB Notation"
-msgstr ""
+msgstr "ترميز RGB"
 
 #: data/resources/ui/preferences.blp:63
 msgid "Whether RGB values should be displayed as integers or decimals"
-msgstr ""
+msgstr "فيما إذا وجب عرض قيم RGB كأعداد صحيحة أو عشرية"
 
 #: data/resources/ui/preferences.blp:67
 msgctxt "RGB is format as integers (e.g. 127)"
 msgid "Integer"
-msgstr ""
+msgstr "صحيح"
 
 #: data/resources/ui/preferences.blp:68
 msgctxt "RGB is format as decimals (e.g. 0.1)"
 msgid "Decimal"
-msgstr ""
+msgstr "عشري"
 
 #: data/resources/ui/preferences.blp:75
 msgid "Sources for displaying color names"
-msgstr ""
+msgstr "مصادر عرض أسماء الألوان"
 
 #: data/resources/ui/preferences.blp:86 data/resources/ui/preferences.blp:95
 msgid "Precision"
-msgstr ""
+msgstr "الدقة"
 
 #: data/resources/ui/preferences.blp:103
 msgid "Color Formats"
-msgstr ""
+msgstr "تنسيقات الألوان"
 
 #: data/resources/ui/preferences.blp:104
 msgid "Customize the visible formats and in which order they are displayed"
-msgstr ""
+msgstr "خصِّص التنسيقات المرئية والترتيب الذي تُعرض به"
 
 #: data/resources/ui/preferences.blp:109
 msgctxt "Tooltip of the button to reset the format order"
 msgid "Reset Order"
-msgstr ""
+msgstr "تصفير الترتيب"
 
 #: data/resources/ui/window.blp:7
 msgid "_Clear History"
-msgstr ""
+msgstr "امحُ ال_تأريخ"
 
 #: data/resources/ui/window.blp:12
 msgid "_Random Color"
-msgstr ""
+msgstr "لون عش_وائي"
 
 #: data/resources/ui/window.blp:19
 msgid "_Preferences"
-msgstr ""
+msgstr "الت_فضيلات"
 
 #: data/resources/ui/window.blp:24
 msgid "_About Eyedropper"
-msgstr ""
+msgstr "_عَنْ «قطَّارة»"
 
 #: data/resources/ui/window.blp:42
 msgctxt "Tooltip of the colorpicker button"
 msgid "Pick a Color"
-msgstr ""
+msgstr "انتقِ لونًا"
 
 #: data/resources/ui/window.blp:49
 msgid "Main Menu"
-msgstr ""
+msgstr "القائمة الرئيسة"
 
 #: data/resources/ui/window.blp:94
 msgid "Color Picker not Available"
-msgstr ""
+msgstr "منتقِ الألوان غير متاح"
 
 #: data/resources/ui/window.blp:104
 msgid "The system is not properly configured to allow for color picking"
-msgstr ""
+msgstr "لم يُهيَّأ النظام على النحو الصحيح للسماح بانتقاء الألوان"
 
 #: data/resources/ui/window.blp:116
 msgid "_Continue Regardless"
-msgstr ""
+msgstr "استمر على أي _حال"
 
 #: data/resources/ui/window.blp:150
 msgctxt "Tooltip of the palette button"
 msgid "Edit Color"
-msgstr ""
+msgstr "حرِّر اللون"
 
 #: data/resources/ui/window.blp:255 src/widgets/color_format_row.rs:163
 msgid "Apply"
-msgstr ""
+msgstr "طبِّق"
 
 #: src/application.rs:246
 msgid "Allow color selection while the application runs in the background"
-msgstr ""
+msgstr "اسمح بانتقاء الألوان أثناء تشغيل التطبيق في الخلفية"
 
 #: src/application.rs:290
 msgid "Pick a New Color"
-msgstr ""
+msgstr "انتقِ لونًا جديدًا"
 
 #: src/colors/notation.rs:241
 msgid "Not named"
-msgstr ""
+msgstr "غير مسمَّى"
 
 #: src/colors/notation.rs:248
 msgid "Copy Hex Code"
-msgstr ""
+msgstr "انسخ ترميز Hex"
 
 #: src/colors/notation.rs:269
 msgid "Hex Code"
-msgstr ""
+msgstr "ترميز Hex"
 
 #: src/colors/notation.rs:282
 msgid "Name"
-msgstr ""
+msgstr "الاسم"
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/widgets/about_window.rs:35
 msgid "translator-credits"
-msgstr ""
+msgstr "أحمد النجماوي <iramosu@protonmail.com>"
 
 #: src/widgets/color_format_row.rs:232
 msgid "Copied “{}”"
-msgstr ""
+msgstr "نُسخ «{}»"
 
 #: src/widgets/preferences/preferences_window.rs:353
 msgid "Move Up"
-msgstr ""
+msgstr "حرِّك لأعلى"
 
 #: src/widgets/preferences/preferences_window.rs:355
 msgid "Move Down"
-msgstr ""
+msgstr "حرِّك لأسفل"
 
 #: src/window.rs:287
 msgid "Cleared history"
-msgstr ""
+msgstr "مُحي التأريخ"
 
 #: src/window.rs:288
 msgid "Undo"
-msgstr ""
+msgstr "تراجع"
 
 #: src/window.rs:453
 msgid "Failed to pick a color"
-msgstr ""
+msgstr "تعذَّر انتقاء اللون"
