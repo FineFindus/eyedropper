@@ -75,11 +75,17 @@ if glib_compile_schemas.found()
   )
 endif
 
-# Search Provider
+# D-Bus service file and Search Provider
 service_conf = configuration_data()
 service_conf.set('appid', application_id)
 service_conf.set('name', meson.project_name())
 service_conf.set('bindir', bindir)
+configure_file(
+  input: '@0@.service.in'.format(base_id),
+  output: '@0@.service'.format(application_id),
+  configuration: service_conf,
+  install_dir: datadir / 'dbus-1' / 'services'
+)
 configure_file(
   input: '@0@.SearchProvider.service.in'.format(base_id),
   output: '@0@.SearchProvider.service'.format(application_id),
