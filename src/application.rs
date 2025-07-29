@@ -320,7 +320,11 @@ impl SearchProviderImpl for App {
     fn activate_result(&self, identifier: ResultID, _terms: &[String], _timestamp: u32) {
         self.activate();
         let window = self.main_window();
-        window.set_color(gdk::RGBA::parse(identifier).unwrap().into());
+
+        if let Ok(rgba) = gdk::RGBA::parse(identifier) {
+            window.set_color(rgba.into());
+        }
+
         window.present();
     }
 
@@ -335,15 +339,14 @@ impl SearchProviderImpl for App {
     fn result_metas(&self, identifiers: &[ResultID]) -> Vec<ResultMeta> {
         identifiers
             .iter()
-            .map(|identifier| {
-                ResultMeta::builder(identifier.to_owned(), identifier)
-                    .icon_data(IconData::from(
-                        &App::icon(
-                            gdk::RGBA::parse(identifier).expect("Failed to parse identifier color"),
-                        )
-                        .expect("Failed to render search icon"),
-                    ))
-                    .build()
+            .filter_map(|identifier| {
+                Some(
+                    ResultMeta::builder(identifier.to_owned(), identifier)
+                        .icon_data(IconData::from(
+                            &App::icon(gdk::RGBA::parse(identifier).ok()?).ok()?,
+                        ))
+                        .build(),
+                )
             })
             .collect::<Vec<_>>()
     }
