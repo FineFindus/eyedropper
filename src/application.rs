@@ -165,12 +165,20 @@ impl App {
             })
             .build();
 
+        // Switch to placeholder page
+        let action_placeholder = gio::ActionEntry::builder("placeholder")
+            .activate(|app: &Self, _, _| {
+                app.main_window().show_placeholder_page();
+            })
+            .build();
+
         self.add_action_entries([
             action_clear_history,
             action_random_color,
             action_preferences,
             action_quit,
             action_about,
+            action_placeholder,
         ]);
     }
 

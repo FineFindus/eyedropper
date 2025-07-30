@@ -541,4 +541,9 @@ impl AppWindow {
         self.set_color(color);
         self.imp().edit_sheet.set_open(false);
     }
+
+    /// Shows the placeholder page.
+    pub fn show_placeholder_page(&self) {
+        self.imp().stack.set_visible_child_name("placeholder");
+    }
 }
