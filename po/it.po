@@ -2,13 +2,14 @@
 # Copyright (C) 2022 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Eyedropper package.
 # Davide Ferracin <davide.ferracin@protonmail.com>, 2022, 2024.
+# Cristian Andreani <trisk3llx@gmail.com>, 2025.
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper master\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2024-09-18 17:02+0000\n"
-"PO-Revision-Date: 2024-09-20 23:48+0300\n"
-"Last-Translator: Davide <davide.ferracin@protonmail.com>\n"
+"PO-Revision-Date: 2025-08-10 09:02+0000\n"
+"Last-Translator: Cristian Andreani <trisk3llx@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/it/>\n"
 "Language: it\n"
@@ -16,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.13-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
@@ -26,8 +27,19 @@ msgid "Eyedropper"
 msgstr "Contagocce"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:4
+#, fuzzy
 msgid "Color Picker"
-msgstr "Selettore di colori"
+msgstr ""
+"Selettore di colori\n"
+"Inserisci o seleziona un colore e visualizzalo in diversi formati.\n"
+"\n"
+"Funzionalità\n"
+"\n"
+"• Seleziona un colore\n"
+"• Modifica il colore visualizzato in un semplice editor HSL\n"
+"• Inserisci un colore in diversi formati\n"
+"• Converti i colori in altri formati come Hex, RGB, HSV, HSL, CMYK, XYZ, CIE-"
+"Lab"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
@@ -134,7 +146,7 @@ msgctxt ""
 "Name of the extended color keyword set from https://www.w3.org/TR/css-"
 "color-3/#svg-color"
 msgid "Extended"
-msgstr "Estesi"
+msgstr "Esteso"
 
 #: data/resources/ui/preferences.blp:21
 msgid "X11 and SVG color values"
