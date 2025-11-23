@@ -12,8 +12,8 @@ base_id = 'com.github.finefindus.eyedropper'
 
 dependency('glib-2.0', version: '>= 2.66')
 dependency('gio-2.0', version: '>= 2.66')
-dependency('gtk4', version: '>= 4.14.0')
-dependency('libadwaita-1', version: '>= 1.7')
+dependency('gtk4', version: '>= 4.20.0')
+dependency('libadwaita-1', version: '>= 1.8')
 
 blueprint_compiler = find_program('blueprint-compiler', version: '>= 0.16', required: true)
 glib_compile_resources = find_program('glib-compile-resources', required: true)

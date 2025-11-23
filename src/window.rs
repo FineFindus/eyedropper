@@ -192,7 +192,7 @@ mod imp {
 
             // setup CSS provider to update the edit sheet scale colors
             gtk::style_context_add_provider_for_display(
-                &obj.display(),
+                &gtk::Widget::display(self.obj().upcast_ref()),
                 &self.css_provider,
                 gtk::STYLE_PROVIDER_PRIORITY_APPLICATION,
             );
@@ -248,7 +248,7 @@ mod imp {
 glib::wrapper! {
     pub struct AppWindow(ObjectSubclass<imp::AppWindow>)
         @extends gtk::Widget, gtk::Window,  gtk::ApplicationWindow, adw::ApplicationWindow,
-        @implements gio::ActionMap;
+        @implements gio::ActionMap, gio::ActionGroup, gtk::Native, gtk::Root, gtk::Accessible, gtk::Buildable, gtk::ConstraintTarget, gtk::ShortcutManager;
 }
 
 #[gtk::template_callbacks]

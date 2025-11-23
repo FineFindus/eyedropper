@@ -56,12 +56,12 @@ fn generate_map<T: AsRef<Path>>(
         .filter_map(|line| line.split_once(','))
         .map(|(name, val)| (name.trim(), val.trim()))
         .for_each(|(name, hex)| {
-            map.entry(name.to_ascii_lowercase(), &format!("\"{}ff\"", hex));
+            map.entry(name.to_ascii_lowercase(), format!("\"{}ff\"", hex));
 
             if !DUPLICATED_COLORS.contains(&name) {
                 reverse_map.entry(
                     format!("{}ff", hex.to_ascii_lowercase()),
-                    &format!("\"{}\"", name),
+                    format!("\"{}\"", name),
                 );
             }
         });

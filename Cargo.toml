@@ -22,26 +22,26 @@ codegen-units = 1
 strip = true
 
 [build-dependencies]
-phf = { version = "0.11.2", default-features = false }
-phf_codegen = "0.11.1"
+phf = { version = "0.13", default-features = false }
+phf_codegen = "0.13"
 
 [dependencies]
 log = "0.4"
 pretty_env_logger = "0.5"
 gettext-rs = { version = "0.7", features = ["gettext-system"] }
 once_cell = "1.18.0"
-gtk = { version = "0.9", package = "gtk4", features = ["gnome_47"] }
-glib = "0.20"
-adw = { package = "libadwaita", version = "0.7", features = ["v1_7"] }
-ashpd = { version = "0.10", default-features = false, features = [
+gtk = { version = "0.10", package = "gtk4", features = ["gnome_49"] }
+glib = "0.21"
+adw = { package = "libadwaita", version = "0.8", features = ["v1_8"] }
+ashpd = { version = "0.12", default-features = false, features = [
     "async-std",
     "gtk4",
 ] }
 futures = "0.3"
 rand = "0.9"
 bytes = "1.4"
-search-provider = { version = "0.11", features = ["gdk-pixbuf"] }
+search-provider = { version = "0.12", features = ["gdk-pixbuf"] }
 nom = "8.0"
-phf = { version = "0.11.2", features = ["macros"] }
+phf = { version = "0.13", features = ["macros"] }
 zbus = "5.2"
 palette = "0.7.2"
