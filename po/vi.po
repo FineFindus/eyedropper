@@ -1,0 +1,652 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Eyedropper package.
+# Loc Huynh <huynhloc.contact@gmail.com>, 2025.
+msgid ""
+msgstr ""
+"Project-Id-Version: Eyedropper\n"
+"Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
+"POT-Creation-Date: 2025-11-23 20:01+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:3
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
+#: data/resources/ui/window.blp:38 src/main.rs:30
+#: src/widgets/about_window.rs:29
+msgid "Eyedropper"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:4
+msgid "Color Picker"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:5
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
+#: src/widgets/about_window.rs:57
+msgid "Pick and format colors"
+msgstr ""
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/com.github.finefindus.eyedropper.desktop.in.in:11
+msgid "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
+msgid "FineFindus"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
+#: src/widgets/about_window.rs:61
+msgid "Enter or pick a color and view it in different formats."
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
+#: src/widgets/about_window.rs:67
+msgid "Features"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
+#: src/widgets/about_window.rs:71
+msgid "Pick a Color"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
+#: src/widgets/about_window.rs:72
+msgid "Edit the viewed color in a simple HSL editor"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
+#: src/widgets/about_window.rs:73
+msgid "Enter a color in various formats"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
+#: src/widgets/about_window.rs:75
+msgid ""
+"Convert colors into other formats such as Hex, RGB, HSV, HSL, CMYK, XYZ, CIE-"
+"Lab…"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:28
+msgid "Main window with a color in different formats"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:32
+msgid "Main window with customized formats"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:36
+msgid "Editor with an HSL editor"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:40
+msgid "Status page stating to pick a color to get started"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:52
+msgid "New features, fixed bugs and updates to modern GNOME styling:"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:54
+msgid "RGB can now be displayed in decimal notation"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:55
+msgid "Colors can now be directly entered, without picking a color first"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:56
+msgid "Support for focus-independent (global) shortcuts"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:57
+msgid "Fixed an layout issue on systems where scrollbars are always shown"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:58
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:74
+msgid "Updated to modern GNOME styling"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:59
+msgid "Improved checking for unsupported systems"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:65
+msgid "A small fix for failing metadata"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:70
+msgid "A new release, including major reworks the the UI and the color system"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:72
+msgid "Added a new color editor, allowing to modify colors"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:73
+msgid "Reworked the system handling color conversions"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:75
+msgid "A warning page is now shown on unsupported systems"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:76
+msgid "Various internal code improvements and bug fixes"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:77
+msgid "Removed the palette dialog"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:78
+msgid "Removed custom color formats"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:84
+msgid "A new release with exciting new features and many improvements."
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:86
+msgid "Allow entering any format"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:87
+msgid "Display color in overview search"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:88
+msgid "Export palettes to LibreOffice"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:89
+msgid "A visual differentiation between color and background"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:90
+msgid "Improved color conversion"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:91
+msgid "Visual refinements to match the state of the art of GNOME apps"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:92
+msgid "Internal code improvements and bug fixes"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:98
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:124
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:143
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:161
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:181
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:193
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:205
+msgid "Added:"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:100
+msgid "Show a toast with an Undo option when clearing the history"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:101
+msgid "Use Ctrl-Q to close the window"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:102
+msgid ""
+"Use a default minimum window size, content should no longer unnecessarily "
+"cut off"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:103
+msgid "New icon by @bertob"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:104
+msgid ""
+"Export palettes as Adobe Swatch Exchange (ASE), hex, PAL, Paint.NET (txt) "
+"files"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:105
+msgid "Minor changes to the store metadata"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:107
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:130
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:152
+msgid "Changed:"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:109
+msgid "Hunter-Lab now displays 0 instead of NaN"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:110
+msgid "Improved tooltips for copying colors"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:111
+msgid ""
+"Palette window now uses a button with a more explicit text instead of an icon"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:112
+msgid "Reworded project description"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:113
+msgid "Updated all screenshots"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:115
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:134
+msgid "Fixed:"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:117
+msgid "Separator is now hidden when the history list is hidden"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:118
+msgid "Improved editing experience when change the Hex color/name"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:126
+msgid "Russian translation"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:127
+msgid "Better optimized releases"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:128
+msgid "Returns the exit code on quitting"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:132
+msgid "History no longer contains duplicated items"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:136
+msgid "Fixed a bug where the wrong rgb format was used"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:137
+msgid "Fixed a bug where LMS and Hunter-Lab had the same setting"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:145
+msgid ""
+"Export the generated palettes from the palette dialog as a GIMP palette file"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:146
+msgid "A .doap file to describe the project"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:147
+msgid "Show a placeholder page when no color is picked"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:148
+msgid "LMS color space can now be shown"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:149
+msgid "Convert to Hunter-Lab color space"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:150
+msgid "Customize color formats"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:154
+msgid "Fixed a bug where the illuminants were not fully shown"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:155
+msgid "The names of the GNOME color palette are now available"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:163
+msgid "Options to show names of color (from w3c basic, extended and xkcd)"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:164
+msgid "Change the color by typing a name in the name field"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:165
+msgid ""
+"Palettes are now shown in the palette dialog, accessible by clicking on the "
+"large color button"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:166
+msgid "The App now uses the AdwAboutWindow"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:167
+msgid "HSL does now support alpha values"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:168
+msgid "HWB and CIELCh are now supported"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:169
+msgid "CIE standard observer for CIELab and CIELCh"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:170
+msgid "Change CIE illuminants"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:176
+msgid "Fixed a few bugs and added Dutch translations."
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:183
+msgid ""
+"Palettes, consisting of darker shades and lighter tints, are now generated "
+"from the currently picked color as well as the previous 3"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:184
+msgid ""
+"Change the order of the color formats by dragging and dropping them in the "
+"settings"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:185
+msgid "The app has been translated into French by rene-coty"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:186
+msgid "A German translation has been added"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:187
+msgid "Adjusted some strings to be easier to understand"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:195
+msgid "Issue and feature-request templates"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:196
+msgid "Change the color using hex values in the hex field"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:197
+msgid "Previous colors are now visible in the history list"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:198
+msgid "Disable unwanted color models"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:199
+msgid "Colors can now be shown as XYZ or CIELAB format"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:207
+msgid "Basic UI"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:208
+msgid "Pick a color using the color picker button"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:209
+msgid "Copy the color in different color models"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:210
+msgid "Change the position of the alpha values in hex values"
+msgstr ""
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:211
+msgid "Added License"
+msgstr ""
+
+#: data/resources/ui/history-item.blp:5
+msgid "Remove"
+msgstr ""
+
+#: data/resources/ui/placeholder-page.blp:7
+msgid "No Color"
+msgstr ""
+
+#: data/resources/ui/placeholder-page.blp:8
+msgid "Select or enter a color to get started"
+msgstr ""
+
+#: data/resources/ui/placeholder-page.blp:22
+msgid "View"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:5 data/resources/ui/preferences.blp:74
+msgid "Name Sources"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:17
+msgctxt ""
+"Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
+"#html4"
+msgid "Basic"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:18
+msgid "Basic web colors"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:22
+msgctxt ""
+"Name of the extended color keyword set from https://www.w3.org/TR/css-"
+"color-3/#svg-color"
+msgid "Extended"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:23
+msgid "X11 and SVG color values"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:27
+msgctxt ""
+"Name of the color set from the GNOME color palette (https://developer.gnome."
+"org/hig/reference/palette.html)"
+msgid "GNOME Color Palette"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:28
+msgid "Colors for GNOME app icons and illustrations"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:32
+msgctxt "Name of the color set from the xkcd color survey"
+msgid "xkcd Color Survey"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:33
+msgid "954 RGB colors named by volunteers"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:43
+msgid "General"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:46
+msgid "Formatting"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:49
+msgid "Alpha-Value Position"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:50
+msgid "Where the Alphavalue is positioned in the Hexstring"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:54
+msgctxt "Alphavalue is not shown"
+msgid "None"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:55
+msgctxt "Alphavalue is shown at the end"
+msgid "End"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:56
+msgctxt "Alphavalue is shown at the start"
+msgid "Start"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:62
+msgid "RGB Notation"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:63
+msgid "Whether RGB values should be displayed as integers or decimals"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:67
+msgctxt "RGB is format as integers (e.g. 127)"
+msgid "Integer"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:68
+msgctxt "RGB is format as decimals (e.g. 0.1)"
+msgid "Decimal"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:75
+msgid "Sources for displaying color names"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:86 data/resources/ui/preferences.blp:95
+msgid "Precision"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:103
+msgid "Color Formats"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:104
+msgid "Customize the visible formats and in which order they are displayed"
+msgstr ""
+
+#: data/resources/ui/preferences.blp:109
+msgctxt "Tooltip of the button to reset the format order"
+msgid "Reset Order"
+msgstr ""
+
+#: data/resources/ui/window.blp:7
+msgid "_Clear History"
+msgstr ""
+
+#: data/resources/ui/window.blp:12
+msgid "_Random Color"
+msgstr ""
+
+#: data/resources/ui/window.blp:19
+msgid "_Preferences"
+msgstr ""
+
+#: data/resources/ui/window.blp:24
+msgid "_About Eyedropper"
+msgstr ""
+
+#: data/resources/ui/window.blp:42
+msgctxt "Tooltip of the colorpicker button"
+msgid "Pick a Color"
+msgstr ""
+
+#: data/resources/ui/window.blp:49
+msgid "Main Menu"
+msgstr ""
+
+#: data/resources/ui/window.blp:94
+msgid "Color Picker not Available"
+msgstr ""
+
+#: data/resources/ui/window.blp:104
+msgid "The system is not properly configured to allow for color picking"
+msgstr ""
+
+#: data/resources/ui/window.blp:116
+msgid "_Continue Regardless"
+msgstr ""
+
+#: data/resources/ui/window.blp:150
+msgctxt "Tooltip of the palette button"
+msgid "Edit Color"
+msgstr ""
+
+#: data/resources/ui/window.blp:255 src/widgets/color_format_row.rs:163
+msgid "Apply"
+msgstr ""
+
+#: src/application.rs:254
+msgid "Allow color selection while the application runs in the background"
+msgstr ""
+
+#: src/application.rs:298
+msgid "Pick a New Color"
+msgstr ""
+
+#: src/colors/notation.rs:241
+msgid "Not named"
+msgstr ""
+
+#: src/colors/notation.rs:248
+msgid "Copy Hex Code"
+msgstr ""
+
+#: src/colors/notation.rs:269
+msgid "Hex Code"
+msgstr ""
+
+#: src/colors/notation.rs:282
+msgid "Name"
+msgstr ""
+
+#. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
+#: src/widgets/about_window.rs:35
+msgid "translator-credits"
+msgstr ""
+
+#: src/widgets/color_format_row.rs:232
+msgid "Copied “{}”"
+msgstr ""
+
+#: src/widgets/preferences/preferences_window.rs:355
+msgid "Move Up"
+msgstr ""
+
+#: src/widgets/preferences/preferences_window.rs:357
+msgid "Move Down"
+msgstr ""
+
+#: src/window.rs:287
+msgid "Cleared history"
+msgstr ""
+
+#: src/window.rs:288
+msgid "Undo"
+msgstr ""
+
+#: src/window.rs:453
+msgid "Failed to pick a color"
+msgstr ""
