@@ -5,7 +5,7 @@
     "sdk": "org.gnome.Sdk",
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.rust-stable",
-        "org.freedesktop.Sdk.Extension.llvm20"
+        "org.freedesktop.Sdk.Extension.llvm21"
     ],
     "command": "eyedropper",
     "finish-args": [
@@ -17,7 +17,7 @@
         "--env=RUST_BACKTRACE=1"
     ],
     "build-options": {
-        "append-path": "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm20/bin",
+        "append-path": "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm21/bin",
         "build-args": [
             "--share=network"
         ],
