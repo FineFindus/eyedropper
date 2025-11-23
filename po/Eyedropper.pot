@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2025-07-30 18:17+0000\n"
+"POT-Creation-Date: 2025-11-23 20:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -632,11 +632,11 @@ msgstr ""
 msgid "Copied “{}”"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:353
+#: src/widgets/preferences/preferences_window.rs:355
 msgid "Move Up"
 msgstr ""
 
-#: src/widgets/preferences/preferences_window.rs:355
+#: src/widgets/preferences/preferences_window.rs:357
 msgid "Move Down"
 msgstr ""
 
