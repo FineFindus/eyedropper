@@ -7,31 +7,33 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2025-11-23 20:01+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-11-24 22:51+0000\n"
+"Last-Translator: Loc Huynh <huynhloc.contact@gmail.com>\n"
+"Language-Team: Vietnamese <https://hosted.weblate.org/projects/eyedropper/"
+"eyedropper/vi/>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
 #: data/resources/ui/window.blp:38 src/main.rs:30
 #: src/widgets/about_window.rs:29
 msgid "Eyedropper"
-msgstr ""
+msgstr "Nhỏ Mắt"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:4
 msgid "Color Picker"
-msgstr ""
+msgstr "Bộ Chọn Màu"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
 #: src/widgets/about_window.rs:57
 msgid "Pick and format colors"
-msgstr ""
+msgstr "Chọn và định dạng màu"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
@@ -45,7 +47,7 @@ msgstr ""
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
 #: src/widgets/about_window.rs:61
 msgid "Enter or pick a color and view it in different formats."
-msgstr ""
+msgstr "Nhập hoặc chọn một màu và xem nó ở các định dạng khác nhau."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
 #: src/widgets/about_window.rs:67
