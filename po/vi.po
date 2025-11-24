@@ -1,0 +1,638 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Eyedropper package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Eyedropper\n"
+"Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
+"POT-Creation-Date: 2025-11-23 20:01+0000\n"
+"PO-Revision-Date: 2025-11-24 07:03+0700\n"
+"Last-Translator: Loc Huynh <huynhloc.contact@gmail.com>\n"
+"Language-Team: \n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:3
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7 data/resources/ui/window.blp:38
+#: src/main.rs:30 src/widgets/about_window.rs:29
+msgid "Eyedropper"
+msgstr "Eyedropper"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:4
+msgid "Color Picker"
+msgstr "Bộ Chọn Màu"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:5
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8 src/widgets/about_window.rs:57
+msgid "Pick and format colors"
+msgstr "Chọn và định dạng màu sắc"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/com.github.finefindus.eyedropper.desktop.in.in:11
+msgid "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
+msgstr "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
+msgid "FineFindus"
+msgstr "FineFindus"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14 src/widgets/about_window.rs:61
+msgid "Enter or pick a color and view it in different formats."
+msgstr "Nhập hoặc chọn một màu và xem nó ở các định dạng khác nhau."
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17 src/widgets/about_window.rs:67
+msgid "Features"
+msgstr "Tính Năng"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19 src/widgets/about_window.rs:71
+msgid "Pick a Color"
+msgstr "Chọn một Màu"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20 src/widgets/about_window.rs:72
+msgid "Edit the viewed color in a simple HSL editor"
+msgstr "Chỉnh sửa màu đang xem trong trình chỉnh sửa HSL đơn giản"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21 src/widgets/about_window.rs:73
+msgid "Enter a color in various formats"
+msgstr "Nhập một màu ở các định dạng khác nhau"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22 src/widgets/about_window.rs:75
+msgid "Convert colors into other formats such as Hex, RGB, HSV, HSL, CMYK, XYZ, CIE-Lab…"
+msgstr "Chuyển đổi màu sang các định dạng khác như Hex, RGB, HSV, HSL, CMYK, XYZ, CIE-Lab…"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:28
+msgid "Main window with a color in different formats"
+msgstr "Cửa sổ chính với một màu ở các định dạng khác nhau"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:32
+msgid "Main window with customized formats"
+msgstr "Cửa sổ chính với các định dạng tùy chỉnh"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:36
+msgid "Editor with an HSL editor"
+msgstr "Trình chỉnh sửa với trình chỉnh sửa HSL"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:40
+msgid "Status page stating to pick a color to get started"
+msgstr "Trang trạng thái chỉ ra việc chọn một màu để bắt đầu"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:52
+msgid "New features, fixed bugs and updates to modern GNOME styling:"
+msgstr "Tính năng mới, sửa lỗi và cập nhật phong cách GNOME hiện đại:"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:54
+msgid "RGB can now be displayed in decimal notation"
+msgstr "RGB giờ có thể được hiển thị ở ký hiệu thập phân"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:55
+msgid "Colors can now be directly entered, without picking a color first"
+msgstr "Màu giờ có thể được nhập trực tiếp, mà không cần chọn màu trước"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:56
+msgid "Support for focus-independent (global) shortcuts"
+msgstr "Hỗ trợ cho phím tắt độc lập với tiêu điểm (toàn cục)"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:57
+msgid "Fixed an layout issue on systems where scrollbars are always shown"
+msgstr "Sửa vấn đề bố cục trên hệ thống nơi thanh cuộn luôn được hiển thị"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:58
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:74
+msgid "Updated to modern GNOME styling"
+msgstr "Cập nhật phong cách GNOME hiện đại"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:59
+msgid "Improved checking for unsupported systems"
+msgstr "Cải thiện kiểm tra cho hệ thống không được hỗ trợ"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:65
+msgid "A small fix for failing metadata"
+msgstr "Sửa nhỏ cho siêu dữ liệu thất bại"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:70
+msgid "A new release, including major reworks the the UI and the color system"
+msgstr "Bản phát hành mới, bao gồm làm lại lớn cho UI và hệ thống màu"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:72
+msgid "Added a new color editor, allowing to modify colors"
+msgstr "Thêm trình chỉnh sửa màu mới, cho phép sửa đổi màu"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:73
+msgid "Reworked the system handling color conversions"
+msgstr "Làm lại hệ thống xử lý chuyển đổi màu"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:75
+msgid "A warning page is now shown on unsupported systems"
+msgstr "Trang cảnh báo giờ được hiển thị trên hệ thống không được hỗ trợ"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:76
+msgid "Various internal code improvements and bug fixes"
+msgstr "Các cải thiện mã nội bộ đa dạng và sửa lỗi"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:77
+msgid "Removed the palette dialog"
+msgstr "Xóa hộp thoại bảng màu"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:78
+msgid "Removed custom color formats"
+msgstr "Xóa định dạng màu tùy chỉnh"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:84
+msgid "A new release with exciting new features and many improvements."
+msgstr "Bản phát hành mới với tính năng mới thú vị và nhiều cải thiện."
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:86
+msgid "Allow entering any format"
+msgstr "Cho phép nhập bất kỳ định dạng nào"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:87
+msgid "Display color in overview search"
+msgstr "Hiển thị màu trong tìm kiếm tổng quan"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:88
+msgid "Export palettes to LibreOffice"
+msgstr "Xuất bảng màu sang LibreOffice"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:89
+msgid "A visual differentiation between color and background"
+msgstr "Sự phân biệt hình ảnh giữa màu và nền"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:90
+msgid "Improved color conversion"
+msgstr "Cải thiện chuyển đổi màu"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:91
+msgid "Visual refinements to match the state of the art of GNOME apps"
+msgstr "Cải thiện hình ảnh để phù hợp với tình trạng nghệ thuật của ứng dụng GNOME"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:92
+msgid "Internal code improvements and bug fixes"
+msgstr "Cải thiện mã nội bộ và sửa lỗi"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:98
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:124
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:143
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:161
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:181
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:193
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:205
+msgid "Added:"
+msgstr "Đã Thêm:"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:100
+msgid "Show a toast with an Undo option when clearing the history"
+msgstr "Hiển thị thông báo với tùy chọn Hoàn tác khi xóa lịch sử"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:101
+msgid "Use Ctrl-Q to close the window"
+msgstr "Sử dụng Ctrl-Q để đóng cửa sổ"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:102
+msgid "Use a default minimum window size, content should no longer unnecessarily cut off"
+msgstr ""
+"Sử dụng kích thước cửa sổ tối thiểu mặc định, nội dung không còn bị cắt không cần thiết nữa"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:103
+msgid "New icon by @bertob"
+msgstr "Biểu tượng mới bởi @bertob"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:104
+msgid "Export palettes as Adobe Swatch Exchange (ASE), hex, PAL, Paint.NET (txt) files"
+msgstr "Xuất bảng màu dưới dạng Adobe Swatch Exchange (ASE), hex, PAL, Paint.NET (txt) tệp"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:105
+msgid "Minor changes to the store metadata"
+msgstr "Thay đổi nhỏ cho siêu dữ liệu cửa hàng"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:107
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:130
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:152
+msgid "Changed:"
+msgstr "Đã Thay Đổi:"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:109
+msgid "Hunter-Lab now displays 0 instead of NaN"
+msgstr "Hunter-Lab giờ hiển thị 0 thay vì NaN"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:110
+msgid "Improved tooltips for copying colors"
+msgstr "Cải thiện chú thích công cụ cho việc sao chép màu"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:111
+msgid "Palette window now uses a button with a more explicit text instead of an icon"
+msgstr "Cửa sổ bảng màu giờ sử dụng nút với văn bản rõ ràng hơn thay vì biểu tượng"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:112
+msgid "Reworded project description"
+msgstr "Viết lại mô tả dự án"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:113
+msgid "Updated all screenshots"
+msgstr "Cập nhật tất cả ảnh chụp màn hình"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:115
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:134
+msgid "Fixed:"
+msgstr "Đã Sửa:"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:117
+msgid "Separator is now hidden when the history list is hidden"
+msgstr "Dấu phân cách giờ bị ẩn khi danh sách lịch sử bị ẩn"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:118
+msgid "Improved editing experience when change the Hex color/name"
+msgstr "Cải thiện trải nghiệm chỉnh sửa khi thay đổi màu/tên Hex"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:126
+msgid "Russian translation"
+msgstr "Bản dịch tiếng Nga"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:127
+msgid "Better optimized releases"
+msgstr "Bản phát hành được tối ưu hóa tốt hơn"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:128
+msgid "Returns the exit code on quitting"
+msgstr "Trả về mã thoát khi thoát"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:132
+msgid "History no longer contains duplicated items"
+msgstr "Lịch sử không còn chứa các mục trùng lặp"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:136
+msgid "Fixed a bug where the wrong rgb format was used"
+msgstr "Sửa lỗi nơi định dạng rgb sai được sử dụng"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:137
+msgid "Fixed a bug where LMS and Hunter-Lab had the same setting"
+msgstr "Sửa lỗi nơi LMS và Hunter-Lab có cùng cài đặt"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:145
+msgid "Export the generated palettes from the palette dialog as a GIMP palette file"
+msgstr "Xuất bảng màu được tạo từ hộp thoại bảng màu dưới dạng tệp bảng màu GIMP"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:146
+msgid "A .doap file to describe the project"
+msgstr "Tệp .doap để mô tả dự án"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:147
+msgid "Show a placeholder page when no color is picked"
+msgstr "Hiển thị trang placeholder khi không có màu được chọn"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:148
+msgid "LMS color space can now be shown"
+msgstr "Không gian màu LMS giờ có thể được hiển thị"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:149
+msgid "Convert to Hunter-Lab color space"
+msgstr "Chuyển đổi sang không gian màu Hunter-Lab"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:150
+msgid "Customize color formats"
+msgstr "Tùy chỉnh định dạng màu"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:154
+msgid "Fixed a bug where the illuminants were not fully shown"
+msgstr "Sửa lỗi nơi các illuminant không được hiển thị đầy đủ"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:155
+msgid "The names of the GNOME color palette are now available"
+msgstr "Tên của bảng màu GNOME giờ có sẵn"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:163
+msgid "Options to show names of color (from w3c basic, extended and xkcd)"
+msgstr "Tùy chọn để hiển thị tên màu (từ w3c basic, extended và xkcd)"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:164
+msgid "Change the color by typing a name in the name field"
+msgstr "Thay đổi màu bằng cách nhập tên vào trường tên"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:165
+msgid ""
+"Palettes are now shown in the palette dialog, accessible by clicking on the large color "
+"button"
+msgstr ""
+"Bảng màu giờ được hiển thị trong hộp thoại bảng màu, có thể truy cập bằng cách nhấp vào "
+"nút màu lớn"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:166
+msgid "The App now uses the AdwAboutWindow"
+msgstr "Ứng dụng giờ sử dụng AdwAboutWindow"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:167
+msgid "HSL does now support alpha values"
+msgstr "HSL giờ hỗ trợ giá trị alpha"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:168
+msgid "HWB and CIELCh are now supported"
+msgstr "HWB và CIELCh giờ được hỗ trợ"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:169
+msgid "CIE standard observer for CIELab and CIELCh"
+msgstr "Quan sát viên tiêu chuẩn CIE cho CIELab và CIELCh"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:170
+msgid "Change CIE illuminants"
+msgstr "Thay đổi illuminant CIE"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:176
+msgid "Fixed a few bugs and added Dutch translations."
+msgstr "Sửa một vài lỗi và thêm bản dịch tiếng Hà Lan."
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:183
+msgid ""
+"Palettes, consisting of darker shades and lighter tints, are now generated from the "
+"currently picked color as well as the previous 3"
+msgstr ""
+"Bảng màu, gồm các sắc tối hơn và tông sáng hơn, giờ được tạo từ màu đang chọn cũng như 3 "
+"màu trước"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:184
+msgid "Change the order of the color formats by dragging and dropping them in the settings"
+msgstr "Thay đổi thứ tự của định dạng màu bằng cách kéo và thả chúng trong cài đặt"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:185
+msgid "The app has been translated into French by rene-coty"
+msgstr "Ứng dụng đã được dịch sang tiếng Pháp bởi rene-coty"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:186
+msgid "A German translation has been added"
+msgstr "Bản dịch tiếng Đức đã được thêm"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:187
+msgid "Adjusted some strings to be easier to understand"
+msgstr "Điều chỉnh một số chuỗi để dễ hiểu hơn"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:195
+msgid "Issue and feature-request templates"
+msgstr "Mẫu yêu cầu vấn đề và tính năng"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:196
+msgid "Change the color using hex values in the hex field"
+msgstr "Thay đổi màu bằng cách sử dụng giá trị hex trong trường hex"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:197
+msgid "Previous colors are now visible in the history list"
+msgstr "Màu trước giờ hiển thị trong danh sách lịch sử"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:198
+msgid "Disable unwanted color models"
+msgstr "Tắt các mô hình màu không mong muốn"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:199
+msgid "Colors can now be shown as XYZ or CIELAB format"
+msgstr "Màu giờ có thể được hiển thị dưới dạng XYZ hoặc CIELAB"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:207
+msgid "Basic UI"
+msgstr "UI Cơ Bản"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:208
+msgid "Pick a color using the color picker button"
+msgstr "Chọn một màu bằng nút bộ chọn màu"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:209
+msgid "Copy the color in different color models"
+msgstr "Sao chép màu ở các mô hình màu khác nhau"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:210
+msgid "Change the position of the alpha values in hex values"
+msgstr "Thay đổi vị trí của giá trị alpha trong giá trị hex"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:211
+msgid "Added License"
+msgstr "Đã Thêm Giấy Phép"
+
+#: data/resources/ui/history-item.blp:5
+msgid "Remove"
+msgstr "Xóa"
+
+#: data/resources/ui/placeholder-page.blp:7
+msgid "No Color"
+msgstr "Không Có Màu"
+
+#: data/resources/ui/placeholder-page.blp:8
+msgid "Select or enter a color to get started"
+msgstr "Chọn hoặc nhập một màu để bắt đầu"
+
+#: data/resources/ui/placeholder-page.blp:22
+msgid "View"
+msgstr "Xem"
+
+#: data/resources/ui/preferences.blp:5 data/resources/ui/preferences.blp:74
+msgid "Name Sources"
+msgstr "Nguồn Tên"
+
+#: data/resources/ui/preferences.blp:17
+msgctxt "Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/#html4"
+msgid "Basic"
+msgstr "Cơ Bản"
+
+#: data/resources/ui/preferences.blp:18
+msgid "Basic web colors"
+msgstr "Màu web cơ bản"
+
+#: data/resources/ui/preferences.blp:22
+msgctxt ""
+"Name of the extended color keyword set from https://www.w3.org/TR/css-color-3/#svg-color"
+msgid "Extended"
+msgstr "Mở Rộng"
+
+#: data/resources/ui/preferences.blp:23
+msgid "X11 and SVG color values"
+msgstr "Giá trị màu X11 và SVG"
+
+#: data/resources/ui/preferences.blp:27
+msgctxt ""
+"Name of the color set from the GNOME color palette (https://developer.gnome.org/hig/"
+"reference/palette.html)"
+msgid "GNOME Color Palette"
+msgstr "Bảng Màu GNOME"
+
+#: data/resources/ui/preferences.blp:28
+msgid "Colors for GNOME app icons and illustrations"
+msgstr "Màu cho biểu tượng ứng dụng và minh họa GNOME"
+
+#: data/resources/ui/preferences.blp:32
+msgctxt "Name of the color set from the xkcd color survey"
+msgid "xkcd Color Survey"
+msgstr "Khảo Sát Màu xkcd"
+
+#: data/resources/ui/preferences.blp:33
+msgid "954 RGB colors named by volunteers"
+msgstr "954 màu RGB được đặt tên bởi tình nguyện viên"
+
+#: data/resources/ui/preferences.blp:43
+msgid "General"
+msgstr "Chung"
+
+#: data/resources/ui/preferences.blp:46
+msgid "Formatting"
+msgstr "Định Dạng"
+
+#: data/resources/ui/preferences.blp:49
+msgid "Alpha-Value Position"
+msgstr "Vị Trí Giá Trị Alpha"
+
+#: data/resources/ui/preferences.blp:50
+msgid "Where the Alphavalue is positioned in the Hexstring"
+msgstr "Nơi giá trị Alpha được đặt trong chuỗi Hex"
+
+#: data/resources/ui/preferences.blp:54
+msgctxt "Alphavalue is not shown"
+msgid "None"
+msgstr "Không"
+
+#: data/resources/ui/preferences.blp:55
+msgctxt "Alphavalue is shown at the end"
+msgid "End"
+msgstr "Cuối"
+
+#: data/resources/ui/preferences.blp:56
+msgctxt "Alphavalue is shown at the start"
+msgid "Start"
+msgstr "Đầu"
+
+#: data/resources/ui/preferences.blp:62
+msgid "RGB Notation"
+msgstr "Ký Hiệu RGB"
+
+#: data/resources/ui/preferences.blp:63
+msgid "Whether RGB values should be displayed as integers or decimals"
+msgstr "Giá trị RGB nên được hiển thị dưới dạng số nguyên hay thập phân"
+
+#: data/resources/ui/preferences.blp:67
+msgctxt "RGB is format as integers (e.g. 127)"
+msgid "Integer"
+msgstr "Số Nguyên"
+
+#: data/resources/ui/preferences.blp:68
+msgctxt "RGB is format as decimals (e.g. 0.1)"
+msgid "Decimal"
+msgstr "Thập Phân"
+
+#: data/resources/ui/preferences.blp:75
+msgid "Sources for displaying color names"
+msgstr "Nguồn để hiển thị tên màu"
+
+#: data/resources/ui/preferences.blp:86 data/resources/ui/preferences.blp:95
+msgid "Precision"
+msgstr "Độ Chính Xác"
+
+#: data/resources/ui/preferences.blp:103
+msgid "Color Formats"
+msgstr "Định Dạng Màu"
+
+#: data/resources/ui/preferences.blp:104
+msgid "Customize the visible formats and in which order they are displayed"
+msgstr "Tùy chỉnh định dạng hiển thị và thứ tự chúng được hiển thị"
+
+#: data/resources/ui/preferences.blp:109
+msgctxt "Tooltip of the button to reset the format order"
+msgid "Reset Order"
+msgstr "Đặt Lại Thứ Tự"
+
+#: data/resources/ui/window.blp:7
+msgid "_Clear History"
+msgstr "_Xóa Lịch Sử"
+
+#: data/resources/ui/window.blp:12
+msgid "_Random Color"
+msgstr "_Màu Ngẫu Nhiên"
+
+#: data/resources/ui/window.blp:19
+msgid "_Preferences"
+msgstr "_Tùy Chỉnh"
+
+#: data/resources/ui/window.blp:24
+msgid "_About Eyedropper"
+msgstr "_Về Eyedropper"
+
+#: data/resources/ui/window.blp:42
+msgctxt "Tooltip of the colorpicker button"
+msgid "Pick a Color"
+msgstr "Chọn Một Màu"
+
+#: data/resources/ui/window.blp:49
+msgid "Main Menu"
+msgstr "Menu Chính"
+
+#: data/resources/ui/window.blp:94
+msgid "Color Picker not Available"
+msgstr "Bộ Chọn Màu Không Khả Dụng"
+
+#: data/resources/ui/window.blp:104
+msgid "The system is not properly configured to allow for color picking"
+msgstr "Hệ thống không được cấu hình đúng để cho phép chọn màu"
+
+#: data/resources/ui/window.blp:116
+msgid "_Continue Regardless"
+msgstr "_Tiếp Tục Bất Chấp"
+
+#: data/resources/ui/window.blp:150
+msgctxt "Tooltip of the palette button"
+msgid "Edit Color"
+msgstr "Chỉnh Sửa Màu"
+
+#: data/resources/ui/window.blp:255 src/widgets/color_format_row.rs:163
+msgid "Apply"
+msgstr "Áp Dụng"
+
+#: src/application.rs:254
+msgid "Allow color selection while the application runs in the background"
+msgstr "Cho phép chọn màu trong khi ứng dụng chạy ở nền"
+
+#: src/application.rs:298
+msgid "Pick a New Color"
+msgstr "Chọn Một Màu Mới"
+
+#: src/colors/notation.rs:241
+msgid "Not named"
+msgstr "Không có tên"
+
+#: src/colors/notation.rs:248
+msgid "Copy Hex Code"
+msgstr "Sao Chép Mã Hex"
+
+#: src/colors/notation.rs:269
+msgid "Hex Code"
+msgstr "Mã Hex"
+
+#: src/colors/notation.rs:282
+msgid "Name"
+msgstr "Tên"
+
+#. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
+#: src/widgets/about_window.rs:35
+msgid "translator-credits"
+msgstr "Loc Huynh <huynhloc.contact@gmail.com>"
+
+#: src/widgets/color_format_row.rs:232
+msgid "Copied “{}”"
+msgstr "Đã sao chép “{}”"
+
+#: src/widgets/preferences/preferences_window.rs:355
+msgid "Move Up"
+msgstr "Di Chuyển Lên"
+
+#: src/widgets/preferences/preferences_window.rs:357
+msgid "Move Down"
+msgstr "Di Chuyển Xuống"
+
+#: src/window.rs:287
+msgid "Cleared history"
+msgstr "Đã xóa lịch sử"
+
+#: src/window.rs:288
+msgid "Undo"
+msgstr "Hoàn Tác"
+
+#: src/window.rs:453
+msgid "Failed to pick a color"
+msgstr "Không thể chọn màu"
