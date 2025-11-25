@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-11-14 19:29+0000\n"
-"PO-Revision-Date: 2025-07-24 05:03+0000\n"
+"PO-Revision-Date: 2025-11-27 05:00+0000\n"
 "Last-Translator: Fjuro <fjuro@alius.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/cs/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
-"X-Generator: Weblate 5.13-dev\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
@@ -74,7 +74,7 @@ msgstr "Vložte barvu v Hex-Formátu"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
 msgid "Enter colors in different formats"
-msgstr ""
+msgstr "Zadejte barvy v různých formátech"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
 #: src/widgets/about_window.rs:86
@@ -579,6 +579,12 @@ msgid ""
 "li><li>Visual refinements to match the state of the art of GNOME apps</"
 "li><li>Internal code improvements and bug fixes</li></ul>"
 msgstr ""
+"<p>Nové vydání se zajímavými novými funkcemi a spoustou vylepšení.</p>\n"
+"<ul><li>Umožnění zadání v jakémkoli formátu</li><li>Zobrazení barvy ve "
+"vyhledávání</li><li>Exportování palet do LibreOffice</li><li>Vizuální "
+"rozlišení mezi barvou a pozadím</li><li>Vylepšený převod barev</"
+"li><li>Vylepšení vzhledu tak, aby odpovídal nejaktuálnějším aplikacím GNOME</"
+"li><li>Interní zlepšení kódu a opravy chyb</li></ul>"
 
 #: src/widgets/color_format_row.rs:190
 msgid "Copied “{}”"
