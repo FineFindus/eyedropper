@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2025-11-23 20:01+0000\n"
-"PO-Revision-Date: 2025-11-27 05:01+0000\n"
+"PO-Revision-Date: 2025-12-12 01:00+0000\n"
 "Last-Translator: Loc Huynh <huynhloc.contact@gmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/vi/>\n"
@@ -26,7 +26,7 @@ msgstr "Eyedropper"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:4
 msgid "Color Picker"
-msgstr "Bộ Chọn Màu"
+msgstr "Trình chọn màu"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8 src/widgets/about_window.rs:57
@@ -37,8 +37,8 @@ msgstr "Chọn và định dạng màu sắc"
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
 msgid "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
 msgstr ""
-"Gnome;GTK;Color;Colorpicker;Picker;Palette;Màu sắc;Bộ chọn màu;Bộ chọn;Bảng "
-"màu;"
+"Gnome;GTK;Color;Colorpicker;Picker;Palette;Màu sắc;Trình chọn màu;Trình "
+"chọn;Bảng màu;"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
 msgid "FineFindus"
@@ -50,11 +50,11 @@ msgstr "Nhập hoặc chọn một màu và xem nó ở các định dạng khá
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17 src/widgets/about_window.rs:67
 msgid "Features"
-msgstr "Tính Năng"
+msgstr "Tính năng"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19 src/widgets/about_window.rs:71
 msgid "Pick a Color"
-msgstr "Chọn một Màu"
+msgstr "Chọn một màu"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20 src/widgets/about_window.rs:72
 msgid "Edit the viewed color in a simple HSL editor"
@@ -185,7 +185,7 @@ msgstr "Cải thiện mã nội bộ và sửa lỗi"
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:193
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:205
 msgid "Added:"
-msgstr "Đã Thêm:"
+msgstr "Đã thêm:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:100
 msgid "Show a toast with an Undo option when clearing the history"
@@ -216,7 +216,7 @@ msgstr "Thay đổi nhỏ cho siêu dữ liệu cửa hàng"
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:130
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:152
 msgid "Changed:"
-msgstr "Đã Thay Đổi:"
+msgstr "Đã thay đổi:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:109
 msgid "Hunter-Lab now displays 0 instead of NaN"
@@ -241,7 +241,7 @@ msgstr "Cập nhật tất cả ảnh chụp màn hình"
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:115
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:134
 msgid "Fixed:"
-msgstr "Đã Sửa:"
+msgstr "Đã sửa:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:117
 msgid "Separator is now hidden when the history list is hidden"
@@ -393,11 +393,11 @@ msgstr "Màu giờ có thể được hiển thị dưới dạng XYZ hoặc CIE
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:207
 msgid "Basic UI"
-msgstr "UI Cơ Bản"
+msgstr "UI cơ bản"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:208
 msgid "Pick a color using the color picker button"
-msgstr "Chọn một màu bằng nút bộ chọn màu"
+msgstr "Chọn một màu bằng nút trình chọn màu"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:209
 msgid "Copy the color in different color models"
@@ -409,7 +409,7 @@ msgstr "Thay đổi vị trí của giá trị alpha trong giá trị hex"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:211
 msgid "Added License"
-msgstr "Đã Thêm Giấy Phép"
+msgstr "Đã thêm Giấy phép"
 
 #: data/resources/ui/history-item.blp:5
 msgid "Remove"
@@ -417,7 +417,7 @@ msgstr "Xóa"
 
 #: data/resources/ui/placeholder-page.blp:7
 msgid "No Color"
-msgstr "Không Có Màu"
+msgstr "Không màu"
 
 #: data/resources/ui/placeholder-page.blp:8
 msgid "Select or enter a color to get started"
@@ -429,12 +429,12 @@ msgstr "Xem"
 
 #: data/resources/ui/preferences.blp:5 data/resources/ui/preferences.blp:74
 msgid "Name Sources"
-msgstr "Nguồn Tên"
+msgstr "Nguồn tên"
 
 #: data/resources/ui/preferences.blp:17
 msgctxt "Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/#html4"
 msgid "Basic"
-msgstr "Cơ Bản"
+msgstr "Cơ bản"
 
 #: data/resources/ui/preferences.blp:18
 msgid "Basic web colors"
@@ -444,7 +444,7 @@ msgstr "Màu web cơ bản"
 msgctxt ""
 "Name of the extended color keyword set from https://www.w3.org/TR/css-color-3/#svg-color"
 msgid "Extended"
-msgstr "Mở Rộng"
+msgstr "Mở rộng"
 
 #: data/resources/ui/preferences.blp:23
 msgid "X11 and SVG color values"
@@ -455,7 +455,7 @@ msgctxt ""
 "Name of the color set from the GNOME color palette (https://developer.gnome.org/hig/"
 "reference/palette.html)"
 msgid "GNOME Color Palette"
-msgstr "Bảng Màu GNOME"
+msgstr "Bảng màu GNOME"
 
 #: data/resources/ui/preferences.blp:28
 msgid "Colors for GNOME app icons and illustrations"
@@ -464,7 +464,7 @@ msgstr "Màu cho biểu tượng ứng dụng và minh họa GNOME"
 #: data/resources/ui/preferences.blp:32
 msgctxt "Name of the color set from the xkcd color survey"
 msgid "xkcd Color Survey"
-msgstr "Khảo Sát Màu xkcd"
+msgstr "Khảo sát màu xkcd"
 
 #: data/resources/ui/preferences.blp:33
 msgid "954 RGB colors named by volunteers"
@@ -476,11 +476,11 @@ msgstr "Chung"
 
 #: data/resources/ui/preferences.blp:46
 msgid "Formatting"
-msgstr "Định Dạng"
+msgstr "Định dạng"
 
 #: data/resources/ui/preferences.blp:49
 msgid "Alpha-Value Position"
-msgstr "Vị Trí Giá Trị Alpha"
+msgstr "Vị trí giá trị Alpha"
 
 #: data/resources/ui/preferences.blp:50
 msgid "Where the Alphavalue is positioned in the Hexstring"
@@ -503,7 +503,7 @@ msgstr "Đầu"
 
 #: data/resources/ui/preferences.blp:62
 msgid "RGB Notation"
-msgstr "Ký Hiệu RGB"
+msgstr "Ký hiệu RGB"
 
 #: data/resources/ui/preferences.blp:63
 msgid "Whether RGB values should be displayed as integers or decimals"
@@ -512,12 +512,12 @@ msgstr "Giá trị RGB nên được hiển thị dưới dạng số nguyên ha
 #: data/resources/ui/preferences.blp:67
 msgctxt "RGB is format as integers (e.g. 127)"
 msgid "Integer"
-msgstr "Số Nguyên"
+msgstr "Số nguyên"
 
 #: data/resources/ui/preferences.blp:68
 msgctxt "RGB is format as decimals (e.g. 0.1)"
 msgid "Decimal"
-msgstr "Thập Phân"
+msgstr "Thập phân"
 
 #: data/resources/ui/preferences.blp:75
 msgid "Sources for displaying color names"
@@ -525,11 +525,11 @@ msgstr "Nguồn để hiển thị tên màu"
 
 #: data/resources/ui/preferences.blp:86 data/resources/ui/preferences.blp:95
 msgid "Precision"
-msgstr "Độ Chính Xác"
+msgstr "Độ chính xác"
 
 #: data/resources/ui/preferences.blp:103
 msgid "Color Formats"
-msgstr "Định Dạng Màu"
+msgstr "Định dạng màu"
 
 #: data/resources/ui/preferences.blp:104
 msgid "Customize the visible formats and in which order they are displayed"
@@ -538,36 +538,36 @@ msgstr "Tùy chỉnh định dạng hiển thị và thứ tự chúng được 
 #: data/resources/ui/preferences.blp:109
 msgctxt "Tooltip of the button to reset the format order"
 msgid "Reset Order"
-msgstr "Đặt Lại Thứ Tự"
+msgstr "Đặt lại thứ tự"
 
 #: data/resources/ui/window.blp:7
 msgid "_Clear History"
-msgstr "_Xóa Lịch Sử"
+msgstr "_Xóa lịch sử"
 
 #: data/resources/ui/window.blp:12
 msgid "_Random Color"
-msgstr "_Màu Ngẫu Nhiên"
+msgstr "_Màu ngẫu nhiên"
 
 #: data/resources/ui/window.blp:19
 msgid "_Preferences"
-msgstr "_Tùy Chỉnh"
+msgstr "_Tùy chỉnh"
 
 #: data/resources/ui/window.blp:24
 msgid "_About Eyedropper"
-msgstr "_Về Eyedropper"
+msgstr "_Giới thiệu về Eyedropper"
 
 #: data/resources/ui/window.blp:42
 msgctxt "Tooltip of the colorpicker button"
 msgid "Pick a Color"
-msgstr "Chọn Một Màu"
+msgstr "Chọn một màu"
 
 #: data/resources/ui/window.blp:49
 msgid "Main Menu"
-msgstr "Menu Chính"
+msgstr "Menu chính"
 
 #: data/resources/ui/window.blp:94
 msgid "Color Picker not Available"
-msgstr "Bộ Chọn Màu Không Khả Dụng"
+msgstr "Trình chọn màu không khả dụng"
 
 #: data/resources/ui/window.blp:104
 msgid "The system is not properly configured to allow for color picking"
@@ -575,16 +575,16 @@ msgstr "Hệ thống không được cấu hình đúng để cho phép chọn m
 
 #: data/resources/ui/window.blp:116
 msgid "_Continue Regardless"
-msgstr "_Tiếp Tục Bất Chấp"
+msgstr "_Tiếp tục bất chấp"
 
 #: data/resources/ui/window.blp:150
 msgctxt "Tooltip of the palette button"
 msgid "Edit Color"
-msgstr "Chỉnh Sửa Màu"
+msgstr "Chỉnh sửa màu"
 
 #: data/resources/ui/window.blp:255 src/widgets/color_format_row.rs:163
 msgid "Apply"
-msgstr "Áp Dụng"
+msgstr "Áp dụng"
 
 #: src/application.rs:254
 msgid "Allow color selection while the application runs in the background"
@@ -592,15 +592,15 @@ msgstr "Cho phép chọn màu trong khi ứng dụng chạy ở nền"
 
 #: src/application.rs:298
 msgid "Pick a New Color"
-msgstr "Chọn Một Màu Mới"
+msgstr "Chọn một màu mới"
 
 #: src/colors/notation.rs:241
 msgid "Not named"
-msgstr "Không có tên"
+msgstr "Không tên"
 
 #: src/colors/notation.rs:248
 msgid "Copy Hex Code"
-msgstr "Sao Chép Mã Hex"
+msgstr "Sao chép mã Hex"
 
 #: src/colors/notation.rs:269
 msgid "Hex Code"
@@ -613,7 +613,9 @@ msgstr "Tên"
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/widgets/about_window.rs:35
 msgid "translator-credits"
-msgstr "Loc Huynh <huynhloc.contact@gmail.com>"
+msgstr ""
+"Vietnam Linux L10n <https://github.com/linux-l10n-vi>\n"
+"Loc Huynh <https://github.com/hthienloc>"
 
 #: src/widgets/color_format_row.rs:232
 msgid "Copied “{}”"
@@ -621,11 +623,11 @@ msgstr "Đã sao chép “{}”"
 
 #: src/widgets/preferences/preferences_window.rs:355
 msgid "Move Up"
-msgstr "Di Chuyển Lên"
+msgstr "Di chuyển lên"
 
 #: src/widgets/preferences/preferences_window.rs:357
 msgid "Move Down"
-msgstr "Di Chuyển Xuống"
+msgstr "Di chuyển xuống"
 
 #: src/window.rs:287
 msgid "Cleared history"
@@ -633,7 +635,7 @@ msgstr "Đã xóa lịch sử"
 
 #: src/window.rs:288
 msgid "Undo"
-msgstr "Hoàn Tác"
+msgstr "Hoàn tác"
 
 #: src/window.rs:453
 msgid "Failed to pick a color"
