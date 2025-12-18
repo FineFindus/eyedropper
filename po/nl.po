@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2023-11-14 19:29+0000\n"
-"PO-Revision-Date: 2025-06-22 10:10+0000\n"
+"PO-Revision-Date: 2025-12-19 11:00+0000\n"
 "Last-Translator: Dick Groskamp <dikgro@yahoo.co.uk>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/nl/>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.13-dev\n"
+"X-Generator: Weblate 5.15.1\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
@@ -79,7 +79,7 @@ msgstr "Voer een kleur in als hex-formaat"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
 msgid "Enter colors in different formats"
-msgstr ""
+msgstr "Kleuren invoeren in verschillende indelingen"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
 #: src/widgets/about_window.rs:86
@@ -258,71 +258,71 @@ msgstr "Lichtomstandigheden voor de CIE-kleurenruimte"
 
 #: data/resources/ui/preferences/preferences.blp:69
 msgid "A (Incandescent/tungsten)"
-msgstr ""
+msgstr "A (wolfraam gloeilamp)"
 
 #: data/resources/ui/preferences/preferences.blp:70
 msgid "B (Old direct sunlight at noon)"
-msgstr ""
+msgstr "B (Oud direct zonlicht om 12.00 uur)"
 
 #: data/resources/ui/preferences/preferences.blp:71
 msgid "C (Old daylight)"
-msgstr ""
+msgstr "C (Oud daglicht)"
 
 #: data/resources/ui/preferences/preferences.blp:72
 msgid "D50 (ICC profile PCS)"
-msgstr ""
+msgstr "D50 (ICC profiel PCS)"
 
 #: data/resources/ui/preferences/preferences.blp:73
 msgid "D55 (Mid-morning daylight)"
-msgstr ""
+msgstr "D55 (Midden ochtend daglicht)"
 
 #: data/resources/ui/preferences/preferences.blp:74
 msgid "D65 (Daylight, sRGB, Adobe-RGB)"
-msgstr ""
+msgstr "D65 (Daglicht, sRGB, Adobe-RGB)"
 
 #: data/resources/ui/preferences/preferences.blp:75
 msgid "D75 (North sky daylight)"
-msgstr ""
+msgstr "D75 (Noorderlicht daglicht)"
 
 #: data/resources/ui/preferences/preferences.blp:76
 msgid "E (Equal energy)"
-msgstr ""
+msgstr "E (Gelijkmatige energie)"
 
 #: data/resources/ui/preferences/preferences.blp:77
 msgid "F1 (Daylight Fluorescent)"
-msgstr ""
+msgstr "F1 (Daglicht fluoriserend)"
 
 #: data/resources/ui/preferences/preferences.blp:78
 msgid "F2 (Cool fluorescent)"
-msgstr ""
+msgstr "F2 (Koel fluoriserend)"
 
 #: data/resources/ui/preferences/preferences.blp:79
 msgid "F3 (White Fluorescent)"
-msgstr ""
+msgstr "F3 (Wit fluoriserend)"
 
 #: data/resources/ui/preferences/preferences.blp:80
 msgid "F4 (Warm White Fluorescent)"
-msgstr ""
+msgstr "F4 (Warmwit fluoriserend)"
 
 #: data/resources/ui/preferences/preferences.blp:81
 msgid "F5 (Daylight Fluorescent)"
-msgstr ""
+msgstr "F5 (Daglicht fluoriserend)"
 
 #: data/resources/ui/preferences/preferences.blp:82
 msgid "F6 (Lite White Fluorescent)"
-msgstr ""
+msgstr "F6 (Lichtwit fluoriserend)"
 
 #: data/resources/ui/preferences/preferences.blp:83
 msgid "F7 (Daylight fluorescent, D65 simulator)"
-msgstr ""
+msgstr "F7 (Daglicht fluoriserend, D65-simulatie)"
 
 #: data/resources/ui/preferences/preferences.blp:84
 msgid "F8 (Sylvania F40, D50 simulator)"
-msgstr ""
+msgstr "F8 (Sylvania F40, D50-simulatie)"
 
 #: data/resources/ui/preferences/preferences.blp:85
 msgid "F9 (Cool White Fluorescent)"
-msgstr ""
+msgstr "F9 (Koel wit fluoriserend)"
 
 #: data/resources/ui/preferences/preferences.blp:86
 msgid "F10 (Ultralume 50, Philips TL85)"
@@ -376,6 +376,9 @@ msgid ""
 "Edit how the color formats are displayed. The “{}” will be replaced in with "
 "the values of the formats. Custom formats cannot be used as input."
 msgstr ""
+"Bewerk hoe de kleuropmaak zal worden weergegeven. De “{}” zal worden "
+"vervangen door de waarden van de opmaak. Aangepaste opmaka kan niet worden "
+"gebruikt als invoer."
 
 #: data/resources/ui/preferences/preferences.blp:145
 msgid "RGB Format"
@@ -585,6 +588,14 @@ msgid ""
 "li><li>Visual refinements to match the state of the art of GNOME apps</"
 "li><li>Internal code improvements and bug fixes</li></ul>"
 msgstr ""
+"<p>Een nieuwe uitgave met opwindende nieuwe mogelijkheden en veel "
+"verbeteringen.</p>\n"
+"<ul><li>Toestaan van het invoeren van elke opmaak</li><li>Weergeven van "
+"kleur in overzicht Zoeken</li><li>Paletten exporteren naar LibreOffice</li>"
+"<li>Een visueel onderscheid tussen kleur en achtergrond</li><li>Verbeterd "
+"converteren van kleuren</li><li>Visuele verfijningen om overeen te komen met "
+"de uitstekende GNOME apps</li><li>Interne codeverbeteringen en repareren van "
+"problemen</li></ul>"
 
 #: src/widgets/color_format_row.rs:190
 msgid "Copied “{}”"
