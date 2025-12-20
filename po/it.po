@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Eyedropper master\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2024-09-18 17:02+0000\n"
-"PO-Revision-Date: 2025-08-10 09:02+0000\n"
+"PO-Revision-Date: 2025-12-21 15:00+0000\n"
 "Last-Translator: Cristian Andreani <trisk3llx@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/it/>\n"
@@ -17,14 +17,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.13-dev\n"
+"X-Generator: Weblate 5.15.1\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
 #: data/resources/ui/window.blp:152 src/main.rs:28
 #: src/widgets/about_window.rs:32
 msgid "Eyedropper"
-msgstr "Contagocce"
+msgstr ""
+"Contagocce \n"
+"Inserisci o seleziona un colore e visualizzalo in diversi formati.\n"
+"\n"
+"Funzionalità\n"
+"\n"
+"• Seleziona un colore\n"
+"• Modifica il colore visualizzato in un semplice editor HSL\n"
+"• Inserisci un colore in diversi formati\n"
+"• Converti i colori in altri formati come Hex, RGB, HSV, HSL, CMYK, XYZ, CIE-"
+"Lab"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:4
 #, fuzzy
