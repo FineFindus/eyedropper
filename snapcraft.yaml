@@ -1,0 +1,74 @@
+name: eyedropper
+title: Eyedropper
+icon: usr/share/icons/hicolor/scalable/apps/com.github.finefindus.eyedropper.svg
+license: GPL-3.0+
+contact: ubuntu.battering321@passmail.net
+issues: https://github.com/Soupolait/eyedropper-snap/issues
+source-code: https://github.com/Soupolait/eyedropper-snap
+
+base: core24
+version: "2.1.0"
+summary: Simple color picker
+description: |
+  Eyedropper is a simple and modern color picker for GNOME.
+
+grade: stable
+confinement: strict
+
+slots:
+  eyedropper:
+    interface: dbus
+    bus: session
+    name: com.github.finefindus.eyedropper
+
+apps:
+  eyedropper:
+    extensions: [gnome]
+    command: usr/bin/eyedropper
+    desktop: usr/share/applications/com.github.finefindus.eyedropper.desktop
+    common-id: com.github.finefindus.eyedropper
+    plugs:
+      - desktop
+      - wayland
+      - x11
+
+layout:
+  /usr/share/eyedropper:
+    bind: $SNAP/usr/share/eyedropper
+
+parts:
+  eyedropper:
+    plugin: meson
+    source: https://github.com/FineFindus/eyedropper.git
+    source-tag: v2.1.0
+    meson-parameters:
+      - --prefix=/usr
+    build-packages:
+      - blueprint-compiler
+      - meson
+      - ninja-build
+      - pkg-config
+      - libadwaita-1-dev
+    stage-packages:
+      - glib-networking
+      - libproxy1v5
+    build-environment:
+      - PATH: "/root/.cargo/bin:$PATH"
+    stage:
+      - usr/share/icons/hicolor/scalable/apps/com.github.finefindus.eyedropper.svg
+      - "*"
+    prime:
+      - usr/share/icons/hicolor/scalable/apps/com.github.finefindus.eyedropper.svg
+      - "*"
+    
+    override-build: |
+      curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+      ln -sf /root/.cargo/bin/* /usr/local/bin/
+      craftctl default
+      
+    override-prime: |
+      craftctl default
+
+      sed -i.bak -e \
+      's|Icon=com.github.finefindus.eyedropper.svg|Icon=usr/share/icons/hicolor/scalable/apps/com.github.finefindus.eyedropper.svg|g' \
+      $SNAPCRAFT_STAGE/usr/share/applications/com.github.finefindus.eyedropper.desktop
