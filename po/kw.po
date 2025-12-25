@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2025-11-23 20:01+0000\n"
-"PO-Revision-Date: 2025-12-10 23:00+0000\n"
+"PO-Revision-Date: 2025-12-26 16:00+0000\n"
 "Last-Translator: Flynn <cirilla@tuta.io>\n"
 "Language-Team: Cornish <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/kw/>\n"
@@ -22,29 +22,29 @@ msgstr ""
 "1000000 == 100000) ? 2 : ((n % 100 == 3 || n % 100 == 23 || n % 100 == 43 || "
 "n % 100 == 63 || n % 100 == 83) ? 3 : ((n != 1 && (n % 100 == 1 || n % 100 "
 "== 21 || n % 100 == 41 || n % 100 == 61 || n % 100 == 81)) ? 4 : 5))));\n"
-"X-Generator: Weblate 5.15-dev\n"
+"X-Generator: Weblate 5.15.1\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
 #: data/resources/ui/window.blp:38 src/main.rs:30
 #: src/widgets/about_window.rs:29
 msgid "Eyedropper"
-msgstr ""
+msgstr "Eyedropper"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:4
 msgid "Color Picker"
-msgstr ""
+msgstr "Kunteller Kolor"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
 #: src/widgets/about_window.rs:57
 msgid "Pick and format colors"
-msgstr ""
+msgstr "Kuntel ha furvasa kolors"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
 msgid "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
-msgstr ""
+msgstr "Gnome;GTK;Kolor;Kunteller Kolor;Kunteller;"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
 msgid "FineFindus"
@@ -53,7 +53,7 @@ msgstr ""
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
 #: src/widgets/about_window.rs:61
 msgid "Enter or pick a color and view it in different formats."
-msgstr ""
+msgstr "Ynworra po kuntel unn kolor ha furvasa y yn furvasow dyffrans."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
 #: src/widgets/about_window.rs:67
@@ -63,17 +63,17 @@ msgstr "Nasyow"
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
 #: src/widgets/about_window.rs:71
 msgid "Pick a Color"
-msgstr ""
+msgstr "Kuntel unn Kolor"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
 #: src/widgets/about_window.rs:72
 msgid "Edit the viewed color in a simple HSL editor"
-msgstr ""
+msgstr "Golego an kolor gwelow yn unn chanjyell simpel HSL"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
 #: src/widgets/about_window.rs:73
 msgid "Enter a color in various formats"
-msgstr ""
+msgstr "Ynworra unn kolor yn furvasow dyffrans"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
 #: src/widgets/about_window.rs:75
@@ -81,115 +81,120 @@ msgid ""
 "Convert colors into other formats such as Hex, RGB, HSV, HSL, CMYK, XYZ, CIE-"
 "Lab…"
 msgstr ""
+"Treylya kolors yn furvasow aral kepar ha Hex, RGB, HSV, CMYK, XYZ, CIE-Lab…"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:28
 msgid "Main window with a color in different formats"
-msgstr ""
+msgstr "Fenester chif gans unn kolor yn furvasow dyffrans"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:32
 msgid "Main window with customized formats"
-msgstr ""
+msgstr "Fenester chif gans furvasow personelhys"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:36
 msgid "Editor with an HSL editor"
-msgstr ""
+msgstr "Chanjyell gans unn chanjell HSL"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:40
 msgid "Status page stating to pick a color to get started"
-msgstr ""
+msgstr "Folen studh menegesow dhe kuntel unn kolor dhe mos dallethys"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:52
 msgid "New features, fixed bugs and updates to modern GNOME styling:"
-msgstr ""
+msgstr "Nasyow nowydh, ewnhys kudynnow, ha nowedhys dhe gis arnowydh GNOME:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:54
 msgid "RGB can now be displayed in decimal notation"
-msgstr ""
+msgstr "RGB gallos bos displetys yn nosyans degeth"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:55
 msgid "Colors can now be directly entered, without picking a color first"
-msgstr ""
+msgstr "Kolors gallos bos ynworrys distowgh, heb kuntellow unn kolor a-dherag"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:56
 msgid "Support for focus-independent (global) shortcuts"
-msgstr ""
+msgstr "Skoodhyans dhe kesunyansow bysowek ollvysel"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:57
 msgid "Fixed an layout issue on systems where scrollbars are always shown"
 msgstr ""
+"Ewnhys unn kudyn aray yn amontyellow le may barrys scroll yw diskwedhesys "
+"pub prys"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:58
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:74
 msgid "Updated to modern GNOME styling"
-msgstr ""
+msgstr "Nowedhys dhe gis GNOME arnowydh"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:59
 msgid "Improved checking for unsupported systems"
-msgstr ""
+msgstr "Gwellhys checkyow dhe amontyellow anskooydhys"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:65
 msgid "A small fix for failing metadata"
-msgstr ""
+msgstr "Unn ewnans byghan rag data fyllellow"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:70
 msgid "A new release, including major reworks the the UI and the color system"
 msgstr ""
+"Unn versyon nowydh, komprehendow nowedhys brassa dhe an ynterfas ha an "
+"system kolor"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:72
 msgid "Added a new color editor, allowing to modify colors"
-msgstr ""
+msgstr "Addys unn chanjyell nowydh kolor, gasow dhe chanjya kolors"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:73
 msgid "Reworked the system handling color conversions"
-msgstr ""
+msgstr "Dasoberi an system mayth handlow treylyans kolor"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:75
 msgid "A warning page is now shown on unsupported systems"
-msgstr ""
+msgstr "Unn folen gwarnyans yw lemmyn diskwedhesys yn amontyellow anskoodhys"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:76
 msgid "Various internal code improvements and bug fixes"
-msgstr ""
+msgstr "Gwellheansow divers dhe kod ha ewnhys kudynnow"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:77
 msgid "Removed the palette dialog"
-msgstr ""
+msgstr "Removys an fenester liwvord"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:78
 msgid "Removed custom color formats"
-msgstr ""
+msgstr "Removys furvasow a-vusur kolor"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:84
 msgid "A new release with exciting new features and many improvements."
-msgstr ""
+msgstr "Unn versyon nowydh gans nasyow nowydh yntanus ha meur a gwellheansow."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:86
 msgid "Allow entering any format"
-msgstr ""
+msgstr "Alowa ynworrow neb furvas"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:87
 msgid "Display color in overview search"
-msgstr ""
+msgstr "Diskwedhes kolor yn hwithrans system"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:88
 msgid "Export palettes to LibreOffice"
-msgstr ""
+msgstr "Esporthya liwvordow dhe LibreOffice"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:89
 msgid "A visual differentiation between color and background"
-msgstr ""
+msgstr "Unn dihevelepter gwelesek tredh kolor ha kilva"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:90
 msgid "Improved color conversion"
-msgstr ""
+msgstr "Gwellhys treylyans kolor"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:91
 msgid "Visual refinements to match the state of the art of GNOME apps"
-msgstr ""
+msgstr "Gwellheansow gwelesek dhe omdhesedha an appys GNOME flamm nowydh"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:92
 msgid "Internal code improvements and bug fixes"
-msgstr ""
+msgstr "Gwellheansow kod ha ewnhys kudynnow"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:98
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:124
@@ -203,17 +208,19 @@ msgstr "Keworrys:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:100
 msgid "Show a toast with an Undo option when clearing the history"
-msgstr ""
+msgstr "Diskwedhes unn tardhik gans unn dewis digelmi pan dileow an istori"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:101
 msgid "Use Ctrl-Q to close the window"
-msgstr ""
+msgstr "Devnydhya Ctrl-Q dhe degea an fenester"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:102
 msgid ""
 "Use a default minimum window size, content should no longer unnecessarily "
 "cut off"
 msgstr ""
+"Devnydhya unn braster fenester lyha defowt, dalgh na fella treghi dhe-ves "
+"heb res"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:103
 msgid "New icon by @bertob"
@@ -224,10 +231,12 @@ msgid ""
 "Export palettes as Adobe Swatch Exchange (ASE), hex, PAL, Paint.NET (txt) "
 "files"
 msgstr ""
+"Esporthya liwvordow dhe restrennow Adobe Swatch Exchange (ASE), hex, PAL, "
+"Paint.NET (txt)"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:105
 msgid "Minor changes to the store metadata"
-msgstr ""
+msgstr "Chanjyow le dhe an data gwerthji"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:107
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:130
@@ -237,37 +246,38 @@ msgstr "Janjyas:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:109
 msgid "Hunter-Lab now displays 0 instead of NaN"
-msgstr ""
+msgstr "Hunter-Lab diskwedhes lemmyn 0 yn le NaN"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:110
 msgid "Improved tooltips for copying colors"
-msgstr ""
+msgstr "Gwellys deskrifansow toulys dhe kopiow kolorys"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:111
 msgid ""
 "Palette window now uses a button with a more explicit text instead of an icon"
 msgstr ""
+"Fenester liwvord gulys lemmyn devnydh a unn boton gans tekst yn le unn ikon"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:112
 msgid "Reworded project description"
-msgstr ""
+msgstr "Dassrifys deskrifans ragdres"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:113
 msgid "Updated all screenshots"
-msgstr ""
+msgstr "Nowedhys oll imajys"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:115
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:134
 msgid "Fixed:"
-msgstr ""
+msgstr "Ewnhys:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:117
 msgid "Separator is now hidden when the history list is hidden"
-msgstr ""
+msgstr "Diberther yw kudh lemmyn pan an rol istori yw kudh"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:118
 msgid "Improved editing experience when change the Hex color/name"
-msgstr ""
+msgstr "Gwellys klewans chanjyell pan chanjow an kanow kolor"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:126
 msgid "Russian translation"
@@ -275,44 +285,46 @@ msgstr "Treylyans Russek"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:127
 msgid "Better optimized releases"
-msgstr ""
+msgstr "Versyons gans gwrythyans gwell"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:128
 msgid "Returns the exit code on quitting"
-msgstr ""
+msgstr "Derivas an kod kwityans pan kwytyow"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:132
 msgid "History no longer contains duplicated items"
-msgstr ""
+msgstr "Istori yn le kontaynya enworrans dasskrifys"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:136
 msgid "Fixed a bug where the wrong rgb format was used"
-msgstr ""
+msgstr "Ewnhys unn kudyn pan an furvas rgb kamm yw devnydhys"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:137
 msgid "Fixed a bug where LMS and Hunter-Lab had the same setting"
-msgstr ""
+msgstr "Ewnys unn kudyn pan LMS hag Hunter-Lab kavosys an settyans keth"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:145
 msgid ""
 "Export the generated palettes from the palette dialog as a GIMP palette file"
 msgstr ""
+"Esporthya an liwvord dinythys a an fenester liwvord avel unn restren liwvord "
+"GIMP"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:146
 msgid "A .doap file to describe the project"
-msgstr ""
+msgstr "Unn restren .doap dhe deskrifa an ragdres"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:147
 msgid "Show a placeholder page when no color is picked"
-msgstr ""
+msgstr "Diskwedhes unn folen wolkom mar kolor vyth yw kuntelys"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:148
 msgid "LMS color space can now be shown"
-msgstr ""
+msgstr "Efander kolor LMS gallos lemmyn bos diskwedhys"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:149
 msgid "Convert to Hunter-Lab color space"
-msgstr ""
+msgstr "Treylya dhe efander kolor Hunter-Lab"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:150
 msgid "Customize color formats"
@@ -320,19 +332,19 @@ msgstr "Personelhe furvasow kolors"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:154
 msgid "Fixed a bug where the illuminants were not fully shown"
-msgstr ""
+msgstr "Ewnhe unn kudyn pan an illuminansyow yw na diskwedhes yn leun"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:155
 msgid "The names of the GNOME color palette are now available"
-msgstr ""
+msgstr "An henwyn a an liwvord GNOME yw kavadow lemmyn"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:163
 msgid "Options to show names of color (from w3c basic, extended and xkcd)"
-msgstr ""
+msgstr "Dewisyow dhe diskwedhes henwyn kolor (a w3c elvennek, hirhes, ha xkcd)"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:164
 msgid "Change the color by typing a name in the name field"
-msgstr ""
+msgstr "Chanjya an kolor erbynn jynnskrifow unn hanow yn an kist hanow"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:165
 msgid ""
