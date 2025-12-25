@@ -54,12 +54,6 @@ parts:
       - libproxy1v5
     build-environment:
       - PATH: "/root/.cargo/bin:$PATH"
-    stage:
-      - usr/share/icons/hicolor/scalable/apps/com.github.finefindus.eyedropper.svg
-      - "*"
-    prime:
-      - usr/share/icons/hicolor/scalable/apps/com.github.finefindus.eyedropper.svg
-      - "*"
     
     override-build: |
       curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
