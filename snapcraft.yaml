@@ -28,7 +28,6 @@ apps:
     desktop: usr/share/applications/com.github.finefindus.eyedropper.desktop
     common-id: com.github.finefindus.eyedropper
     plugs:
-      - desktop
       - wayland
       - x11
 
