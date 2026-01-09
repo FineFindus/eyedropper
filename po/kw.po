@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2025-11-23 20:01+0000\n"
-"PO-Revision-Date: 2026-01-06 15:01+0000\n"
+"PO-Revision-Date: 2026-01-10 13:01+0000\n"
 "Last-Translator: Flynn <cirilla@tuta.io>\n"
 "Language-Team: Cornish <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/kw/>\n"
@@ -97,7 +97,7 @@ msgstr "Chanjyell gans unn chanjell HSL"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:40
 msgid "Status page stating to pick a color to get started"
-msgstr "Folen studh menegesow dhe kuntel unn kolor dhe mos dallethys"
+msgstr "Folen studh ow meneges dhe kuntel unn kolor dhe mos dallethys"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:52
 msgid "New features, fixed bugs and updates to modern GNOME styling:"
@@ -109,7 +109,7 @@ msgstr "RGB gallos bos displetys yn nosyans degeth"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:55
 msgid "Colors can now be directly entered, without picking a color first"
-msgstr "Kolors gallos bos ynworrys distowgh, heb kuntellow unn kolor a-dherag"
+msgstr "Kolors gallos bos ynworrys distowgh, heb ow kuntel unn kolor a-dherag"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:56
 msgid "Support for focus-independent (global) shortcuts"
@@ -128,25 +128,25 @@ msgstr "Nowedhys dhe gis GNOME arnowydh"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:59
 msgid "Improved checking for unsupported systems"
-msgstr "Gwellhys checkyow dhe amontyellow anskooydhys"
+msgstr "Gwellhys ow checkya dhe amontyellow anskooydhys"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:65
 msgid "A small fix for failing metadata"
-msgstr "Unn ewnans byghan rag data fyllellow"
+msgstr "Unn ewnans byghan rag data ow fyllell"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:70
 msgid "A new release, including major reworks the the UI and the color system"
 msgstr ""
-"Unn versyon nowydh, komprehendow nowedhys brassa dhe an ynterfas ha an "
+"Unn versyon nowydh, ow komprehendya nowedhys brassa dhe an ynterfas ha an "
 "system kolor"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:72
 msgid "Added a new color editor, allowing to modify colors"
-msgstr "Addys unn chanjyell nowydh kolor, gasow dhe chanjya kolors"
+msgstr "Addys unn chanjyell nowydh kolor, ow gasa dhe chanjya kolors"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:73
 msgid "Reworked the system handling color conversions"
-msgstr "Dasoberi an system mayth handlow treylyans kolor"
+msgstr "Dasoberi an system mayth ow handla treylyans kolor"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:75
 msgid "A warning page is now shown on unsupported systems"
@@ -170,7 +170,7 @@ msgstr "Unn versyon nowydh gans nasyow nowydh yntanus ha meur a gwellheansow."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:86
 msgid "Allow entering any format"
-msgstr "Alowa ynworrow neb furvas"
+msgstr "Alowa owth ynworra neb furvas"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:87
 msgid "Display color in overview search"
@@ -208,7 +208,7 @@ msgstr "Keworrys:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:100
 msgid "Show a toast with an Undo option when clearing the history"
-msgstr "Diskwedhes unn tardhik gans unn dewis digelmi pan dileow an istori"
+msgstr "Diskwedhes unn tardhik gans unn dewis digelmi pan ow dilea an istori"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:101
 msgid "Use Ctrl-Q to close the window"
@@ -250,7 +250,7 @@ msgstr "Hunter-Lab diskwedhes lemmyn 0 yn le NaN"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:110
 msgid "Improved tooltips for copying colors"
-msgstr "Gwellys deskrifansow toulys dhe kopiow kolorys"
+msgstr "Gwellys deskrifansow toulys dhe ow kopia kolorys"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:111
 msgid ""
@@ -289,7 +289,7 @@ msgstr "Versyons gans gwrythyans gwell"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:128
 msgid "Returns the exit code on quitting"
-msgstr "Derivas an kod kwityans pan kwytyow"
+msgstr "Derivas an kod kwityans pan ow kwytya"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:132
 msgid "History no longer contains duplicated items"
@@ -344,15 +344,15 @@ msgstr "Dewisyow dhe diskwedhes henwyn kolor (a w3c elvennek, hirhes, ha xkcd)"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:164
 msgid "Change the color by typing a name in the name field"
-msgstr "Chanjya an kolor erbynn jynnskrifow unn hanow yn an kist hanow"
+msgstr "Chanjya an kolor erbynn ow jynnskrifa unn hanow yn an kist hanow"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:165
 msgid ""
 "Palettes are now shown in the palette dialog, accessible by clicking on the "
 "large color button"
 msgstr ""
-"Liwvordow yw diskwedhys lemmyn yn an fenester liwvord, hedhadow gans klyckya "
-"war an boton bras kolor"
+"Liwvordow yw diskwedhys lemmyn yn an fenester liwvord, hedhadow gans ow "
+"klyckya war an boton bras kolor"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:166
 msgid "The App now uses the AdwAboutWindow"
@@ -559,7 +559,7 @@ msgstr "Na Kowlniverow"
 
 #: data/resources/ui/preferences.blp:75
 msgid "Sources for displaying color names"
-msgstr "Devedhyansow rag diskwedhes henwyn kolor"
+msgstr "Devedhyansow rag ow diskwedhes henwyn kolor"
 
 #: data/resources/ui/preferences.blp:86 data/resources/ui/preferences.blp:95
 msgid "Precision"
