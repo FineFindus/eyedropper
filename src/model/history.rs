@@ -1,6 +1,7 @@
 use glib::Object;
 use glib::prelude::*;
 use glib::subclass::prelude::*;
+use gtk::glib;
 
 use crate::colors::color::Color;
 

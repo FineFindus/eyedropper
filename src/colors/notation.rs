@@ -1,7 +1,7 @@
 use std::str::FromStr;
 
 use gettextrs::gettext;
-use gtk::{gio, prelude::SettingsExt};
+use gtk::{gio, glib, prelude::SettingsExt};
 use palette::IntoColor;
 
 use crate::{

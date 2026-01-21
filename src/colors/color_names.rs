@@ -1,3 +1,4 @@
+use gtk::glib;
 use std::str::FromStr;
 
 use crate::colors::color::Color;

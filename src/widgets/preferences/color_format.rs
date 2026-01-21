@@ -1,5 +1,6 @@
 use glib::Object;
 use glib::subclass::prelude::*;
+use gtk::glib;
 
 mod imp {
 
