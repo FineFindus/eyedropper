@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2025-11-23 20:01+0000\n"
-"PO-Revision-Date: 2026-01-10 13:01+0000\n"
+"PO-Revision-Date: 2026-01-23 04:52+0000\n"
 "Last-Translator: Flynn <cirilla@tuta.io>\n"
 "Language-Team: Cornish <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/kw/>\n"
@@ -22,7 +22,7 @@ msgstr ""
 "1000000 == 100000) ? 2 : ((n % 100 == 3 || n % 100 == 23 || n % 100 == 43 || "
 "n % 100 == 63 || n % 100 == 83) ? 3 : ((n != 1 && (n % 100 == 1 || n % 100 "
 "== 21 || n % 100 == 41 || n % 100 == 61 || n % 100 == 81)) ? 4 : 5))));\n"
-"X-Generator: Weblate 5.15.1\n"
+"X-Generator: Weblate 5.16-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
@@ -344,14 +344,14 @@ msgstr "Dewisyow dhe diskwedhes henwyn kolor (a w3c elvennek, hirhes, ha xkcd)"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:164
 msgid "Change the color by typing a name in the name field"
-msgstr "Chanjya an kolor erbynn ow jynnskrifa unn hanow yn an kist hanow"
+msgstr "Chanjya an kolor erbynn ow jynnskrifa unn hanow y'n kist hanow"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:165
 msgid ""
 "Palettes are now shown in the palette dialog, accessible by clicking on the "
 "large color button"
 msgstr ""
-"Liwvordow yw diskwedhys lemmyn yn an fenester liwvord, hedhadow gans ow "
+"Liwvordow yw diskwedhys lemmyn y'n fenester liwvord, hedhadow gans ow "
 "klyckya war an boton bras kolor"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:166
@@ -391,7 +391,7 @@ msgid ""
 "Change the order of the color formats by dragging and dropping them in the "
 "settings"
 msgstr ""
-"Chanjya an aray a an furvasow kolor gans draylys ha droppys y's yn an "
+"Chanjya an aray a an furvasow kolor gans draylys ha droppys y's y'n "
 "settyansow"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:185
@@ -412,11 +412,11 @@ msgstr "Ensampelys rag kudynnow ha govynnow nas"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:196
 msgid "Change the color using hex values in the hex field"
-msgstr "Chanjya an kolor gans niverow hex yn an ynworrans hex"
+msgstr "Chanjya an kolor gans niverow hex y'n ynworrans hex"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:197
 msgid "Previous colors are now visible in the history list"
-msgstr "Kolors kyns yw gweladow lemmyn yn an rol istori"
+msgstr "Kolors kyns yw gweladow lemmyn y'n rol istori"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:198
 msgid "Disable unwanted color models"
@@ -522,7 +522,7 @@ msgstr "Le Niver Klerder"
 
 #: data/resources/ui/preferences.blp:50
 msgid "Where the Alphavalue is positioned in the Hexstring"
-msgstr "Py tyller an niver klerer yw leys yn an niver Hex"
+msgstr "Py tyller an niver klerer yw leys y'n niver Hex"
 
 #: data/resources/ui/preferences.blp:54
 msgctxt "Alphavalue is not shown"
