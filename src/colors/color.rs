@@ -1,6 +1,8 @@
 use core::fmt;
-use std::str::FromStr;
+use std::{borrow::Cow, str::FromStr};
 
+use glib::variant::{FromVariant, ToVariant};
+use gtk::glib::{self, Variant, variant::StaticVariantType};
 use palette::IntoColor;
 
 use super::parser;
@@ -117,6 +119,43 @@ impl From<gtk::gdk::RGBA> for Color {
 impl From<Color> for gtk::gdk::RGBA {
     fn from(color: Color) -> Self {
         gtk::gdk::RGBA::new(color.red, color.green, color.blue, color.alpha)
+    }
+}
+
+impl StaticVariantType for Color {
+    fn static_variant_type() -> Cow<'static, glib::VariantTy> {
+        <(f64, f64, f64, f64)>::static_variant_type()
+    }
+}
+
+impl ToVariant for Color {
+    fn to_variant(&self) -> gtk::glib::Variant {
+        (
+            self.red as f64,
+            self.green as f64,
+            self.blue as f64,
+            self.alpha as f64,
+        )
+            .to_variant()
+    }
+}
+
+impl From<Color> for Variant {
+    fn from(color: Color) -> Self {
+        color.to_variant()
+    }
+}
+
+impl FromVariant for Color {
+    fn from_variant(variant: &gtk::glib::Variant) -> Option<Self> {
+        let (red, green, blue, alpha) = variant.get::<(f64, f64, f64, f64)>()?;
+
+        Some(Self(palette::Srgba::new(
+            red as f32,
+            green as f32,
+            blue as f32,
+            alpha as f32,
+        )))
     }
 }
 

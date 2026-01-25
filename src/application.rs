@@ -21,16 +21,11 @@ const SHORTCUT_PICK_COLOR: &str = "EyedropperColorPick";
 
 mod imp {
 
-    use std::cell::OnceCell;
-
     use super::*;
     use adw::subclass::prelude::AdwApplicationImpl;
-    use glib::WeakRef;
 
     #[derive(Default)]
-    pub struct App {
-        pub window: OnceCell<WeakRef<AppWindow>>,
-    }
+    pub struct App {}
 
     #[glib::object_subclass]
     impl ObjectSubclass for App {
@@ -46,20 +41,11 @@ mod imp {
             debug!("GtkApplication<App>::activate");
             self.parent_activate();
 
-            let app = self.obj();
-
-            if let Some(window) = self.window.get() {
-                let window = window.upgrade().unwrap();
-                window.present();
-                return;
-            }
-
-            let window = AppWindow::new(&app);
-            self.window
-                .set(window.downgrade())
-                .expect("Window already set.");
-
-            app.main_window().present();
+            let window = self
+                .obj()
+                .active_window()
+                .unwrap_or_else(|| AppWindow::new(&self.obj()).into());
+            window.present();
         }
 
         fn startup(&self) {
@@ -100,7 +86,13 @@ mod imp {
         }
     }
 
-    impl GtkApplicationImpl for App {}
+    impl GtkApplicationImpl for App {
+        fn restore_window(&self, reason: gtk::RestoreReason, state: &glib::Variant) {
+            let window = AppWindow::new(&self.obj());
+            window.restore_state(reason, state);
+            window.present();
+        }
+    }
     impl AdwApplicationImpl for App {}
 }
 
@@ -119,18 +111,19 @@ impl App {
                 "resource-base-path",
                 Some("/com/github/finefindus/eyedropper/"),
             )
+            .property("support-save", true)
             .build()
     }
 
-    fn main_window(&self) -> AppWindow {
-        self.imp().window.get().unwrap().upgrade().unwrap()
+    fn active_app_window(&self) -> AppWindow {
+        self.active_window().and_downcast::<AppWindow>().unwrap()
     }
 
     fn setup_gactions(&self) {
         // Clear the history
         let action_clear_history = gio::ActionEntry::builder("clear-history")
             .activate(|app: &Self, _, _| {
-                app.main_window().clear_history();
+                app.active_app_window().clear_history();
             })
             .build();
 
@@ -138,7 +131,7 @@ impl App {
         let action_random_color = gio::ActionEntry::builder("random-color")
             .activate(|app: &Self, _, _| {
                 // Set the color to a random color
-                app.main_window().set_color(Color::random());
+                app.active_app_window().set_color(Color::random());
             })
             .build();
 
@@ -153,7 +146,7 @@ impl App {
         let action_quit = gio::ActionEntry::builder("quit")
             .activate(|app: &Self, _, _| {
                 // This is needed to trigger the delete event and saving the window state
-                app.main_window().close();
+                app.active_app_window().close();
                 app.quit();
             })
             .build();
@@ -161,14 +154,14 @@ impl App {
         // About
         let action_about = gio::ActionEntry::builder("about")
             .activate(|app: &Self, _, _| {
-                EyedropperAbout::show(&app.main_window());
+                EyedropperAbout::show(&app.active_app_window());
             })
             .build();
 
         // Switch to placeholder page
         let action_placeholder = gio::ActionEntry::builder("placeholder")
             .activate(|app: &Self, _, _| {
-                app.main_window().show_placeholder_page();
+                app.active_app_window().show_placeholder_page();
             })
             .build();
 
@@ -192,12 +185,12 @@ impl App {
 
     fn show_preferences_dialog(&self) {
         let preferences = PreferencesWindow::new();
-        preferences.present(Some(&self.main_window()));
+        preferences.present(Some(&self.active_app_window()));
         preferences.connect_closed(glib::clone!(
             #[weak(rename_to = app)]
             self,
             move |_| {
-                app.main_window().order_formats();
+                app.active_app_window().order_formats();
             }
         ));
     }
@@ -283,7 +276,7 @@ impl App {
     /// Uses the [Global Shortcuts portal](https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.GlobalShortcuts.html).
     async fn setup_global_shortcuts(&self) -> ashpd::Result<()> {
         let root = self
-            .main_window()
+            .active_app_window()
             .root()
             .expect("Failed to get window root");
         let identifier = ashpd::WindowIdentifier::from_native(&root).await;
@@ -316,8 +309,8 @@ impl App {
         let mut stream = global_shortcuts.receive_activated().await?;
         while let Some(shortcut) = stream.next().await {
             if shortcut.shortcut_id() == SHORTCUT_PICK_COLOR {
-                self.main_window().pick_color().await;
-                self.main_window().present();
+                self.active_app_window().pick_color().await;
+                self.active_app_window().present();
             }
         }
         session.close().await
@@ -327,7 +320,7 @@ impl App {
 impl SearchProviderImpl for App {
     fn activate_result(&self, identifier: ResultID, _terms: &[String], _timestamp: u32) {
         self.activate();
-        let window = self.main_window();
+        let window = self.active_app_window();
 
         if let Ok(rgba) = gdk::RGBA::parse(identifier) {
             window.set_color(rgba.into());

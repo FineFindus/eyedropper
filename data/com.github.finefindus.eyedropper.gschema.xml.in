@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <schemalist>
   <schema path="/com/github/finefindus/eyedropper/" id="@app-id@" gettext-domain="@gettext-package@">
-    <key name="window-dimension" type="(iib)">
-      <default>(300, 500, false)</default>
-      <summary>Window dimension</summary>
-    </key>
     <key name="visible-formats" type="as">
       <default>[ 'name', 'hex', 'rgb', 'hsl', 'hsv', 'cmyk' ]</default>
       <summary>Visible formats</summary>

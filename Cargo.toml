@@ -8,7 +8,7 @@ readme = "README.md"
 license-file = "LICENSE"
 homepage = "https://apps.gnome.org/Eyedropper/"
 repository = "https://github.com/finefindus/eyedropper"
-rust-version = "1.85"
+rust-version = "1.92"
 
 
 # override package level optimization, to always be maximum
@@ -30,16 +30,19 @@ log = "0.4"
 pretty_env_logger = "0.5"
 gettext-rs = { version = "0.7", features = ["gettext-system"] }
 once_cell = "1.18.0"
-gtk = { version = "0.10", package = "gtk4", features = ["gnome_49"] }
-adw = { package = "libadwaita", version = "0.8", features = ["v1_8"] }
-ashpd = { version = "0.12", default-features = false, features = [
-    "async-std",
+gtk = { version = "0.11.0-alpha.2", package = "gtk4", features = ["v4_22", "gnome_49"] }
+adw = { package = "libadwaita", version = "0.9.0-alpha.0", features = ["v1_9"] }
+ashpd = { version = "0.13.0-alpha", default-features = false, features = [
+    "async-io",
     "gtk4",
+    "global_shortcuts",
+    "screenshot",
+    "background",
 ] }
 futures = "0.3"
 rand = "0.9"
 bytes = "1.4"
-search-provider = { version = "0.12", features = ["gdk-pixbuf"] }
+search-provider = { version = "0.13.0-alpha.0", features = ["gdk-pixbuf"] }
 nom = "8.0"
 phf = { version = "0.13", features = ["macros"] }
 zbus = "5.2"

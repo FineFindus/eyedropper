@@ -18,6 +18,8 @@ use crate::widgets::placeholder_page::PlaceholderPage;
 mod imp {
     use std::cell::{Cell, OnceCell};
 
+    use crate::config;
+
     use super::*;
 
     use adw::subclass::prelude::AdwApplicationWindowImpl;
@@ -137,7 +139,7 @@ mod imp {
                     win.history().remove(index);
 
                     // if the removed item was the current color/first item, show the next color
-                    // otherwise the current (removed) color would still be shown
+                    // otherwise the current (removed) color would still be shown.
                     // safe to unwrap as the user should only be able to click the remove option when
                     // the list is shown, which is only the case for 2+ colors
                     if index == 0 {
@@ -186,7 +188,6 @@ mod imp {
             ));
 
             // Load latest window state
-            obj.load_window_size();
             obj.setup_history();
             obj.order_formats();
 
@@ -204,20 +205,30 @@ mod imp {
     }
 
     impl WidgetImpl for AppWindow {}
-    impl WindowImpl for AppWindow {
-        // Save window state on delete event
-        fn close_request(&self) -> glib::Propagation {
-            //save current window size
-            if let Err(err) = self.obj().save_window_size() {
-                log::warn!("Failed to save window state, {}", &err);
+    impl WindowImpl for AppWindow {}
+
+    impl ApplicationWindowImpl for AppWindow {
+        fn save_state(&self, state: &glib::VariantDict) -> bool {
+            let obj = self.obj();
+
+            state.insert("version", config::VERSION);
+
+            if let Some(color) = obj.color() {
+                state.insert("color", color);
             }
 
-            // pass close request on to the parent
-            self.parent_close_request()
+            let history = obj
+                .history()
+                .snapshot()
+                .iter()
+                .filter_map(|obj| obj.downcast_ref::<HistoryObject>())
+                .map(|obj| Color::from(obj.color()))
+                .collect::<Vec<_>>();
+            state.insert("history", history);
+
+            true
         }
     }
-
-    impl ApplicationWindowImpl for AppWindow {}
     impl AdwApplicationWindowImpl for AppWindow {}
 
     impl AppWindow {
@@ -255,6 +266,32 @@ glib::wrapper! {
 impl AppWindow {
     pub fn new(app: &App) -> Self {
         glib::Object::builder().property("application", app).build()
+    }
+
+    /// Restores the state of the window from a previous session.
+    pub fn restore_state(&self, reason: gtk::RestoreReason, state: &glib::Variant) -> Option<()> {
+        let state = state.get::<glib::VariantDict>()?;
+
+        // we only want to restore data if the full session is being restored,
+        // no restoring for crashes or normal launches
+        if reason != gtk::RestoreReason::Restore {
+            return Some(());
+        }
+
+        let version = state.lookup::<String>("version").ok()??;
+        log::debug!("Restoring state from version: {version}");
+
+        let color = state.lookup::<Color>("color").ok()??;
+        self.set_color(color);
+
+        let history = state.lookup::<Vec<Color>>("history").ok()??;
+        self.history()
+            // we need to clone here, as `extend` requires a mutable reference
+            .clone()
+            .extend(history.into_iter().map(|color| HistoryObject::new(color)));
+
+        log::debug!("Finished restoring");
+        Some(())
     }
 
     /// Shows a basic toast with the given text.
@@ -371,33 +408,6 @@ impl AppWindow {
         self.imp().history_list.set_margin_end(scrollbar_width);
     }
 
-    /// Save the window size when closing the window
-    fn save_window_size(&self) -> Result<(), glib::BoolError> {
-        let imp = self.imp();
-
-        let (width, height) = self.default_size();
-        log::debug!("Window Size: {}x{}", width, height);
-
-        imp.settings.set_value(
-            "window-dimension",
-            &(width, height, self.is_maximized()).to_variant(),
-        )?;
-
-        Ok(())
-    }
-
-    /// Load the last saved window size and apply it
-    fn load_window_size(&self) {
-        let imp = self.imp();
-
-        // safe to unwrap, as the settings have default values
-        let (width, height, is_maximized): (i32, i32, bool) =
-            imp.settings.value("window-dimension").get().unwrap();
-
-        self.set_default_size(width, height);
-        self.set_maximized(is_maximized);
-    }
-
     /// Insert the formats in the order in which they are saved in the settings.
     pub fn order_formats(&self) {
         let imp = self.imp();
@@ -498,7 +508,7 @@ impl AppWindow {
             .for_each(|row| row.display_color(color));
     }
 
-    /// Opens a bototm sheet with an HSL color picker.
+    /// Opens a bottom sheet with an HSL color picker.
     #[template_callback]
     fn open_sheet(&self) {
         let imp = self.imp();
