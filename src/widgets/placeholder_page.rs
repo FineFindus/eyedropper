@@ -78,7 +78,7 @@ mod imp {
                         .expect("Failed to set color");
                 }
                 Err(_) => {
-                    log::debug!("Failed to parse color: {}", text);
+                    tracing::debug!("Failed to parse color: {}", text);
                     const STYLE_CLASS: &str = "error";
                     self.initial_color_entry.add_css_class(STYLE_CLASS);
                     glib::timeout_future(std::time::Duration::from_millis(350)).await;

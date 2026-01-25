@@ -14,8 +14,7 @@ use self::application::App;
 use self::config::{GETTEXT_PACKAGE, LOCALEDIR, RESOURCES_FILE};
 
 fn main() -> ExitCode {
-    // Initialize logger
-    pretty_env_logger::init();
+    tracing_subscriber::fmt::init();
 
     // ensure Adwaita will be used
     unsafe {

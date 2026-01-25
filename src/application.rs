@@ -2,7 +2,7 @@ use ashpd::desktop::global_shortcuts::NewShortcut;
 use futures::StreamExt;
 use gettextrs::gettext;
 use glib::ExitCode;
-use log::{debug, info};
+use tracing::{debug, info};
 
 use adw::prelude::AdwDialogExt;
 use gtk::prelude::*;
@@ -62,18 +62,18 @@ mod imp {
                 app,
                 async move {
                     if let Err(err) = app.request_background_access().await {
-                        log::error!("Failed to request background access: {err}");
+                        tracing::error!("Failed to request background access: {err}");
                     }
                     // spawn indefinitely running task
                     futures::future::join(
                         async {
                             if let Err(err) = app.setup_global_shortcuts().await {
-                                log::error!("Failed to request global shortcuts: {err}");
+                                tracing::error!("Failed to request global shortcuts: {err}");
                             }
                         },
                         async {
                             if let Err(err) = app.setup_search_provider().await {
-                                log::error!("Failed to start search provider: {err}");
+                                tracing::error!("Failed to start search provider: {err}");
                             }
                         },
                     )
@@ -252,7 +252,7 @@ impl App {
             .send()
             .await?
             .response()?;
-        log::info!(
+        tracing::info!(
             "Application has background access: {}",
             response.run_in_background()
         );
@@ -262,7 +262,7 @@ impl App {
     async fn setup_search_provider(&self) -> zbus::Result<SearchProvider<App>> {
         let search_provider_path = config::OBJECT_PATH;
         let search_provider_name = format!("{}.SearchProvider", config::APP_ID);
-        log::debug!(
+        tracing::debug!(
             "Starting search provider as {} on {}",
             search_provider_name,
             search_provider_path
@@ -305,7 +305,7 @@ impl App {
             request.response()?;
         }
 
-        log::debug!("Listening for global shortcuts");
+        tracing::debug!("Listening for global shortcuts");
         let mut stream = global_shortcuts.receive_activated().await?;
         while let Some(shortcut) = stream.next().await {
             if shortcut.shortcut_id() == SHORTCUT_PICK_COLOR {

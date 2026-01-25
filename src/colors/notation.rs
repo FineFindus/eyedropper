@@ -312,7 +312,7 @@ impl FromStr for Notation {
             "oklab" => Self::Oklab,
             "oklch" => Self::Oklch,
             _ => {
-                log::error!("Failed to parse notation: {}", s);
+                tracing::error!("Failed to parse notation: {}", s);
                 return Err(ColorError::ParsingError(
                     "Failed to get color notation".to_owned(),
                 ));

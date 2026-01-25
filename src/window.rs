@@ -178,7 +178,7 @@ mod imp {
                 self,
                 async move {
                     if window.is_color_picker_available().await != Ok(true) {
-                        log::warn!("System does not support color picking");
+                        tracing::warn!("System does not support color picking");
                         window.show_portal_error_page();
                     }
 
@@ -279,7 +279,7 @@ impl AppWindow {
         }
 
         let version = state.lookup::<String>("version").ok()??;
-        log::debug!("Restoring state from version: {version}");
+        tracing::debug!("Restoring state from version: {version}");
 
         let color = state.lookup::<Color>("color").ok()??;
         self.set_color(color);
@@ -290,7 +290,7 @@ impl AppWindow {
             .clone()
             .extend(history.into_iter().map(|color| HistoryObject::new(color)));
 
-        log::debug!("Finished restoring");
+        tracing::debug!("Finished restoring");
         Some(())
     }
 
@@ -333,7 +333,7 @@ impl AppWindow {
             items,
             move |_toast| {
                 window.history().extend_from_slice(&items);
-                log::debug!("Undo clicked: {}", items.len());
+                tracing::debug!("Undo clicked: {}", items.len());
             }
         ));
 
@@ -422,8 +422,8 @@ impl AppWindow {
 
         let order: Vec<String> = imp.settings.get("format-order");
         let visible: Vec<String> = imp.settings.get("visible-formats");
-        log::debug!("Formats: {:?}", order);
-        log::debug!("Visible: {:?}", visible);
+        tracing::debug!("Formats: {:?}", order);
+        tracing::debug!("Visible: {:?}", visible);
 
         order
             .iter()
@@ -443,7 +443,7 @@ impl AppWindow {
     /// It will show a toast when failing to pick a color, for example when the user cancels the action.
     #[template_callback]
     pub async fn pick_color(&self) {
-        log::debug!("Picking a color using the color picker");
+        tracing::debug!("Picking a color using the color picker");
         let root = self.root().expect("Failed to get window root");
         let identifier = ashpd::WindowIdentifier::from_native(&root).await;
         let request = ashpd::desktop::screenshot::ColorRequest::default()
@@ -454,7 +454,7 @@ impl AppWindow {
         match request.and_then(|req| req.response()) {
             Ok(color) => self.set_color(Color::from(gtk::gdk::RGBA::from(color))),
             Err(err) => {
-                log::error!("{}", err);
+                tracing::error!("{}", err);
                 if !matches!(
                     err,
                     ashpd::Error::Response(ashpd::desktop::ResponseError::Cancelled)

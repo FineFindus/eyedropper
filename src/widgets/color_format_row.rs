@@ -84,7 +84,7 @@ mod imp {
                         ColorNameSources::from_bits(widget.settings.uint("name-sources-flag"))
                             .unwrap_or(ColorNameSources::empty());
                     let Ok(color) = obj.color_format().parse(text.as_str(), name_flags) else {
-                        log::debug!("Failed to parse color: {}", text);
+                        tracing::debug!("Failed to parse color: {}", text);
                         obj.show_error();
                         return;
                     };
@@ -218,11 +218,11 @@ impl ColorFormatRow {
     fn on_button_pressed(&self, _button: &gtk::Button) {
         let text = self.imp().entry.buffer().text();
         if self.text_changed() {
-            log::debug!("Applied entry content: {}", text);
+            tracing::debug!("Applied entry content: {}", text);
             self.switch_button(false);
             self.imp().entry.emit_activate();
         } else {
-            log::debug!("Copied text: {text}");
+            tracing::debug!("Copied text: {text}");
             let clipboard = self.clipboard();
             clipboard.set_text(&text);
             self.activate_action(

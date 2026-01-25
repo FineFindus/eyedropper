@@ -167,7 +167,7 @@ impl PreferencesWindow {
     /// Resets the current order by resetting the setting and repopulating the list.
     #[template_callback]
     fn on_reset_pressed(&self, _button: &gtk::Button) {
-        log::debug!("Resetting order");
+        tracing::debug!("Resetting order");
         self.formats().remove_all();
         self.imp().settings.reset("format-order");
         self.populate_formats();
@@ -322,7 +322,7 @@ impl PreferencesWindow {
             item,
             move |_, _| {
                 if let Some(index) = window.formats().find(&item) {
-                    log::debug!("Moving {} up", item.label());
+                    tracing::debug!("Moving {} up", item.label());
                     window.formats().remove(index);
                     window.formats().insert(index.saturating_sub(1), &item);
                     window.save_format_order();
@@ -339,7 +339,7 @@ impl PreferencesWindow {
             item,
             move |_, _| {
                 if let Some(index) = window.formats().find(&item) {
-                    log::debug!("Moving {} down", item.label());
+                    tracing::debug!("Moving {} down", item.label());
                     window.formats().remove(index);
                     //index should not be larger than the largest index
                     window
@@ -420,12 +420,12 @@ impl PreferencesWindow {
 
                 match (widget.formats().find(&value), widget.formats().find(&item)) {
                     (Some(source_index), Some(target_index)) => {
-                        log::debug!("Source: {} Target: {}", source_index, target_index);
+                        tracing::debug!("Source: {} Target: {}", source_index, target_index);
                         widget.formats().remove(source_index);
                         widget.formats().insert(target_index, &value);
                         widget.save_format_order();
                     }
-                    (source, target) => log::error!(
+                    (source, target) => tracing::error!(
                         "Failed to find indices for dragged row, source: {:?}, target: {:?}",
                         source,
                         target
@@ -443,7 +443,7 @@ impl PreferencesWindow {
         let example_color = Color::random();
 
         let mut order = self.imp().settings.get::<Vec<String>>("format-order");
-        log::debug!("Order: {:?}", order);
+        tracing::debug!("Order: {:?}", order);
 
         let default_order = self
             .imp()
@@ -460,11 +460,11 @@ impl PreferencesWindow {
             .enumerate()
         {
             if !order.contains(&item.to_owned()) {
-                log::debug!("Saved order does not contain {} at index {}", item, index);
+                tracing::debug!("Saved order does not contain {} at index {}", item, index);
                 order.insert(index, item.to_owned());
                 //override previously saved order
                 self.save_format_order();
-                log::debug!("Order with new items: {:?}", order);
+                tracing::debug!("Order with new items: {:?}", order);
             }
         }
 
