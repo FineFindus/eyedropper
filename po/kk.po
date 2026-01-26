@@ -7,36 +7,38 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2025-11-23 20:01+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-01-26 02:15+0000\n"
+"Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
+"Language-Team: Kazakh <https://hosted.weblate.org/projects/eyedropper/"
+"eyedropper/kk/>\n"
 "Language: kk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.16-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
 #: data/resources/ui/window.blp:38 src/main.rs:30
 #: src/widgets/about_window.rs:29
 msgid "Eyedropper"
-msgstr ""
+msgstr "Көзтамызғыш"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:4
 msgid "Color Picker"
-msgstr ""
+msgstr "Түс таңдаушы"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
 #: src/widgets/about_window.rs:57
 msgid "Pick and format colors"
-msgstr ""
+msgstr "Түстерді таңдау және пішімдеу"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
 msgid "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
-msgstr ""
+msgstr "Gnome;GTK;Түс;Түс таңдаушы;Таңдаушы;Палитра;"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
 msgid "FineFindus"
@@ -45,27 +47,27 @@ msgstr ""
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
 #: src/widgets/about_window.rs:61
 msgid "Enter or pick a color and view it in different formats."
-msgstr ""
+msgstr "Түсті енгізіңіз немесе таңдаңыз және оны әртүрлі пішімдерде көріңіз."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
 #: src/widgets/about_window.rs:67
 msgid "Features"
-msgstr ""
+msgstr "Мүмкіндіктер"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
 #: src/widgets/about_window.rs:71
 msgid "Pick a Color"
-msgstr ""
+msgstr "Түсті таңдау"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
 #: src/widgets/about_window.rs:72
 msgid "Edit the viewed color in a simple HSL editor"
-msgstr ""
+msgstr "Көрінген түсті қарапайым HSL редакторында түзету"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
 #: src/widgets/about_window.rs:73
 msgid "Enter a color in various formats"
-msgstr ""
+msgstr "Түсті әртүрлі пішімдерде енгізу"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
 #: src/widgets/about_window.rs:75
@@ -73,115 +75,120 @@ msgid ""
 "Convert colors into other formats such as Hex, RGB, HSV, HSL, CMYK, XYZ, CIE-"
 "Lab…"
 msgstr ""
+"Түстерді Hex, RGB, HSV, HSL, CMYK, XYZ, CIE-Lab… сияқты басқа пішімдерге "
+"түрлендіру…"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:28
 msgid "Main window with a color in different formats"
-msgstr ""
+msgstr "Түсі әртүрлі пішімдердегі негізгі терезе"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:32
 msgid "Main window with customized formats"
-msgstr ""
+msgstr "Реттелген пішімдері бар негізгі терезе"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:36
 msgid "Editor with an HSL editor"
-msgstr ""
+msgstr "HSL редакторы бар редактор"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:40
 msgid "Status page stating to pick a color to get started"
-msgstr ""
+msgstr "Жұмысты бастау үшін түсті таңдауды сұрайтын күй беті"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:52
 msgid "New features, fixed bugs and updates to modern GNOME styling:"
 msgstr ""
+"Жаңа мүмкіндіктер, түзетілген қателер және заманауи GNOME стиліне жаңартулар:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:54
 msgid "RGB can now be displayed in decimal notation"
-msgstr ""
+msgstr "RGB енді ондық жүйеде көрсетіле алады"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:55
 msgid "Colors can now be directly entered, without picking a color first"
-msgstr ""
+msgstr "Түстерді енді алдымен түсті таңдамай-ақ, тікелей енгізуге болады"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:56
 msgid "Support for focus-independent (global) shortcuts"
-msgstr ""
+msgstr "Фокусқа тәуелсіз (глобалды) жарлықтарды қолдау"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:57
 msgid "Fixed an layout issue on systems where scrollbars are always shown"
 msgstr ""
+"Айналдыру жолақтары әрқашан көрсетілетін жүйелердегі жайма мәселесі түзетілді"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:58
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:74
 msgid "Updated to modern GNOME styling"
-msgstr ""
+msgstr "Заманауи GNOME стиліне жаңартылды"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:59
 msgid "Improved checking for unsupported systems"
-msgstr ""
+msgstr "Қолдау көрсетілмейтін жүйелерді тексеру жақсартылды"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:65
 msgid "A small fix for failing metadata"
-msgstr ""
+msgstr "Сәтсіз метадеректер үшін кішігірім түзету"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:70
 msgid "A new release, including major reworks the the UI and the color system"
-msgstr ""
+msgstr "Интерфейс пен түс жүйесін ауқымды қайта өңдеуді қамтитын жаңа шығарылым"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:72
 msgid "Added a new color editor, allowing to modify colors"
-msgstr ""
+msgstr "Түстерді өзгертуге мүмкіндік беретін жаңа түс редакторы қосылды"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:73
 msgid "Reworked the system handling color conversions"
-msgstr ""
+msgstr "Түстерді түрлендіруді өңдейтін жүйе қайта өңделді"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:75
 msgid "A warning page is now shown on unsupported systems"
-msgstr ""
+msgstr "Қолдау көрсетілмейтін жүйелерде енді ескерту беті көрсетіледі"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:76
 msgid "Various internal code improvements and bug fixes"
-msgstr ""
+msgstr "Ішкі кодты әртүрлі жақсартулар мен қателерді түзетулер"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:77
 msgid "Removed the palette dialog"
-msgstr ""
+msgstr "Палитра сұхбат терезесі өшірілді"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:78
 msgid "Removed custom color formats"
-msgstr ""
+msgstr "Пайдаланушылық түс пішімдері өшірілді"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:84
 msgid "A new release with exciting new features and many improvements."
 msgstr ""
+"Қызықты жаңа мүмкіндіктері мен көптеген жақсартулары бар жаңа шығарылым."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:86
 msgid "Allow entering any format"
-msgstr ""
+msgstr "Кез келген пішімді енгізуге рұқсат беру"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:87
 msgid "Display color in overview search"
-msgstr ""
+msgstr "Түсті шолу іздеуінде көрсету"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:88
 msgid "Export palettes to LibreOffice"
-msgstr ""
+msgstr "Палитраларды LibreOffice-ке экспорттау"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:89
 msgid "A visual differentiation between color and background"
-msgstr ""
+msgstr "Түс пен фон арасындағы визуалды айырмашылық"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:90
 msgid "Improved color conversion"
-msgstr ""
+msgstr "Түстерді түрлендіру жақсартылды"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:91
 msgid "Visual refinements to match the state of the art of GNOME apps"
-msgstr ""
+msgstr "GNOME қолданбаларының заманауи деңгейіне сәйкес визуалды жақсартулар"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:92
 msgid "Internal code improvements and bug fixes"
-msgstr ""
+msgstr "Ішкі кодты жақсартулар мен қателерді түзетулер"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:98
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:124
@@ -191,462 +198,475 @@ msgstr ""
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:193
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:205
 msgid "Added:"
-msgstr ""
+msgstr "Қосылды:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:100
 msgid "Show a toast with an Undo option when clearing the history"
-msgstr ""
+msgstr "Тарихты тазалау кезінде Болдырмау опциясы бар хабарламаны көрсету"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:101
 msgid "Use Ctrl-Q to close the window"
-msgstr ""
+msgstr "Терезені жабу үшін Ctrl-Q пайдаланыңыз"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:102
 msgid ""
 "Use a default minimum window size, content should no longer unnecessarily "
 "cut off"
 msgstr ""
+"Терезенің әдепкі минималды өлшемін пайдалану, мазмұн енді қажетсіз кесілмеуі "
+"керек"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:103
 msgid "New icon by @bertob"
-msgstr ""
+msgstr "@bertob жасаған жаңа таңбаша"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:104
 msgid ""
 "Export palettes as Adobe Swatch Exchange (ASE), hex, PAL, Paint.NET (txt) "
 "files"
 msgstr ""
+"Палитраларды Adobe Swatch Exchange (ASE), hex, PAL, Paint.NET (txt) файлдары "
+"ретінде экспорттау"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:105
 msgid "Minor changes to the store metadata"
-msgstr ""
+msgstr "Дүкен метадеректеріндегі кішігірім өзгерістер"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:107
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:130
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:152
 msgid "Changed:"
-msgstr ""
+msgstr "Өзгертілді:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:109
 msgid "Hunter-Lab now displays 0 instead of NaN"
-msgstr ""
+msgstr "Hunter-Lab енді NaN орнына 0 көрсетеді"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:110
 msgid "Improved tooltips for copying colors"
-msgstr ""
+msgstr "Түстерді көшіруге арналған құралдардың кеңестері жақсартылды"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:111
 msgid ""
 "Palette window now uses a button with a more explicit text instead of an icon"
 msgstr ""
+"Палитра терезесі енді таңбашаның орнына айқынырақ мәтіні бар батырманы "
+"пайдаланады"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:112
 msgid "Reworded project description"
-msgstr ""
+msgstr "Жоба сипаттамасының сөзі өзгертілді"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:113
 msgid "Updated all screenshots"
-msgstr ""
+msgstr "Барлық скриншоттар жаңартылды"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:115
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:134
 msgid "Fixed:"
-msgstr ""
+msgstr "Түзетілді:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:117
 msgid "Separator is now hidden when the history list is hidden"
-msgstr ""
+msgstr "Тарих тізімі жасырылғанда, ажыратқыш та жасырылады"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:118
 msgid "Improved editing experience when change the Hex color/name"
-msgstr ""
+msgstr "Hex түсін/атын өзгерткендегі түзету тәжірибесі жақсартылды"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:126
 msgid "Russian translation"
-msgstr ""
+msgstr "Орыс тіліндегі аударма"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:127
 msgid "Better optimized releases"
-msgstr ""
+msgstr "Жақсырақ оңтайландырылған шығарылымдар"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:128
 msgid "Returns the exit code on quitting"
-msgstr ""
+msgstr "Шығу кезінде шығу кодын қайтарады"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:132
 msgid "History no longer contains duplicated items"
-msgstr ""
+msgstr "Тарихта енді қайталанатын элементтер жоқ"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:136
 msgid "Fixed a bug where the wrong rgb format was used"
-msgstr ""
+msgstr "Қате rgb пішімі пайдаланылған қате түзетілді"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:137
 msgid "Fixed a bug where LMS and Hunter-Lab had the same setting"
-msgstr ""
+msgstr "LMS пен Hunter-Lab-та бірдей параметр болған қате түзетілді"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:145
 msgid ""
 "Export the generated palettes from the palette dialog as a GIMP palette file"
 msgstr ""
+"Жасалған палитраларды палитра сұхбат терезесінен GIMP палитра файлы ретінде "
+"экспорттау"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:146
 msgid "A .doap file to describe the project"
-msgstr ""
+msgstr "Жобаны сипаттауға арналған .doap файлы"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:147
 msgid "Show a placeholder page when no color is picked"
-msgstr ""
+msgstr "Ешбір түс таңдалмағанда орын толтырғыш бетін көрсету"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:148
 msgid "LMS color space can now be shown"
-msgstr ""
+msgstr "Енді LMS түс кеңістігі көрсетіле алады"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:149
 msgid "Convert to Hunter-Lab color space"
-msgstr ""
+msgstr "Hunter-Lab түс кеңістігіне түрлендіру"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:150
 msgid "Customize color formats"
-msgstr ""
+msgstr "Түс пішімдерін реттеу"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:154
 msgid "Fixed a bug where the illuminants were not fully shown"
-msgstr ""
+msgstr "Жарықтандырғыштар толық көрсетілмеген қате түзетілді"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:155
 msgid "The names of the GNOME color palette are now available"
-msgstr ""
+msgstr "Енді GNOME түс палитрасының атаулары қолжетімді"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:163
 msgid "Options to show names of color (from w3c basic, extended and xkcd)"
 msgstr ""
+"Түс атауларын көрсету опциялары (w3c негізгі, кеңейтілген және xkcd-ден)"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:164
 msgid "Change the color by typing a name in the name field"
-msgstr ""
+msgstr "Атау өрісіне атауды енгізу арқылы түсті өзгерту"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:165
 msgid ""
 "Palettes are now shown in the palette dialog, accessible by clicking on the "
 "large color button"
 msgstr ""
+"Палитралар енді үлкен түс батырмасын шерту арқылы қол жеткізуге болатын "
+"палитра сұхбат терезесінде көрсетіледі"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:166
 msgid "The App now uses the AdwAboutWindow"
-msgstr ""
+msgstr "Қолданба енді AdwAboutWindow пайдаланады"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:167
 msgid "HSL does now support alpha values"
-msgstr ""
+msgstr "HSL енді альфа мәндерін қолдайды"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:168
 msgid "HWB and CIELCh are now supported"
-msgstr ""
+msgstr "Енді HWB және CIELCh қолдау көрсетіледі"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:169
 msgid "CIE standard observer for CIELab and CIELCh"
-msgstr ""
+msgstr "CIELab және CIELCh үшін CIE стандартты бақылаушысы"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:170
 msgid "Change CIE illuminants"
-msgstr ""
+msgstr "CIE жарықтандырғыштарын өзгерту"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:176
 msgid "Fixed a few bugs and added Dutch translations."
-msgstr ""
+msgstr "Бірнеше қате түзетілді және голланд тіліндегі аудармалар қосылды."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:183
 msgid ""
 "Palettes, consisting of darker shades and lighter tints, are now generated "
 "from the currently picked color as well as the previous 3"
 msgstr ""
+"Қою көлеңкелер мен ашық реңктерден тұратын палитралар енді ағымдағы "
+"таңдалған түстен, сондай-ақ алдыңғы 3 түстен жасалады"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:184
 msgid ""
 "Change the order of the color formats by dragging and dropping them in the "
 "settings"
-msgstr ""
+msgstr "Баптауларда түс пішімдерінің ретін сүйреп апару арқылы өзгертіңіз"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:185
 msgid "The app has been translated into French by rene-coty"
-msgstr ""
+msgstr "rene-coty қолданбаны француз тіліне аударды"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:186
 msgid "A German translation has been added"
-msgstr ""
+msgstr "Неміс тіліндегі аударма қосылды"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:187
 msgid "Adjusted some strings to be easier to understand"
-msgstr ""
+msgstr "Түсінуге оңай болуы үшін кейбір жолдар түзетілді"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:195
 msgid "Issue and feature-request templates"
-msgstr ""
+msgstr "Мәселелер мен мүмкіндіктерге сұраныс үлгілері"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:196
 msgid "Change the color using hex values in the hex field"
-msgstr ""
+msgstr "Hex өрісіндегі hex мәндерін пайдаланып түсті өзгерту"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:197
 msgid "Previous colors are now visible in the history list"
-msgstr ""
+msgstr "Алдыңғы түстер енді тарих тізімінде көрінеді"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:198
 msgid "Disable unwanted color models"
-msgstr ""
+msgstr "Қажет емес түс модельдерін сөндіру"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:199
 msgid "Colors can now be shown as XYZ or CIELAB format"
-msgstr ""
+msgstr "Түстерді енді XYZ немесе CIELAB пішімінде көрсетуге болады"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:207
 msgid "Basic UI"
-msgstr ""
+msgstr "Негізгі интерфейс"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:208
 msgid "Pick a color using the color picker button"
-msgstr ""
+msgstr "Түс таңдаушы батырмасын пайдаланып түсті таңдау"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:209
 msgid "Copy the color in different color models"
-msgstr ""
+msgstr "Түсті әртүрлі түс модельдерінде көшіру"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:210
 msgid "Change the position of the alpha values in hex values"
-msgstr ""
+msgstr "Hex мәндеріндегі альфа мәндерінің орнын өзгерту"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:211
 msgid "Added License"
-msgstr ""
+msgstr "Лицензия қосылды"
 
 #: data/resources/ui/history-item.blp:5
 msgid "Remove"
-msgstr ""
+msgstr "Өшіру"
 
 #: data/resources/ui/placeholder-page.blp:7
 msgid "No Color"
-msgstr ""
+msgstr "Түс жоқ"
 
 #: data/resources/ui/placeholder-page.blp:8
 msgid "Select or enter a color to get started"
-msgstr ""
+msgstr "Жұмысты бастау үшін түсті таңдаңыз немесе енгізіңіз"
 
 #: data/resources/ui/placeholder-page.blp:22
 msgid "View"
-msgstr ""
+msgstr "Көрініс"
 
 #: data/resources/ui/preferences.blp:5 data/resources/ui/preferences.blp:74
 msgid "Name Sources"
-msgstr ""
+msgstr "Атау көздері"
 
 #: data/resources/ui/preferences.blp:17
 msgctxt ""
 "Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
 "#html4"
 msgid "Basic"
-msgstr ""
+msgstr "Негізгі"
 
 #: data/resources/ui/preferences.blp:18
 msgid "Basic web colors"
-msgstr ""
+msgstr "Негізгі веб түстері"
 
 #: data/resources/ui/preferences.blp:22
 msgctxt ""
 "Name of the extended color keyword set from https://www.w3.org/TR/css-"
 "color-3/#svg-color"
 msgid "Extended"
-msgstr ""
+msgstr "Кеңейтілген"
 
 #: data/resources/ui/preferences.blp:23
 msgid "X11 and SVG color values"
-msgstr ""
+msgstr "X11 және SVG түс мәндері"
 
 #: data/resources/ui/preferences.blp:27
 msgctxt ""
 "Name of the color set from the GNOME color palette (https://developer.gnome."
 "org/hig/reference/palette.html)"
 msgid "GNOME Color Palette"
-msgstr ""
+msgstr "GNOME түстер палитрасы"
 
 #: data/resources/ui/preferences.blp:28
 msgid "Colors for GNOME app icons and illustrations"
-msgstr ""
+msgstr "GNOME қолданба таңбашалары мен иллюстрацияларына арналған түстер"
 
 #: data/resources/ui/preferences.blp:32
 msgctxt "Name of the color set from the xkcd color survey"
 msgid "xkcd Color Survey"
-msgstr ""
+msgstr "xkcd түстер сауалнамасы"
 
 #: data/resources/ui/preferences.blp:33
 msgid "954 RGB colors named by volunteers"
-msgstr ""
+msgstr "Еріктілер атаған 954 RGB түсі"
 
 #: data/resources/ui/preferences.blp:43
 msgid "General"
-msgstr ""
+msgstr "Жалпы"
 
 #: data/resources/ui/preferences.blp:46
 msgid "Formatting"
-msgstr ""
+msgstr "Пішімдеу"
 
 #: data/resources/ui/preferences.blp:49
 msgid "Alpha-Value Position"
-msgstr ""
+msgstr "Альфа-мәнінің орны"
 
 #: data/resources/ui/preferences.blp:50
 msgid "Where the Alphavalue is positioned in the Hexstring"
-msgstr ""
+msgstr "Hex жолындағы альфа-мәнінің орны"
 
 #: data/resources/ui/preferences.blp:54
 msgctxt "Alphavalue is not shown"
 msgid "None"
-msgstr ""
+msgstr "Ешқандай"
 
 #: data/resources/ui/preferences.blp:55
 msgctxt "Alphavalue is shown at the end"
 msgid "End"
-msgstr ""
+msgstr "Соңы"
 
 #: data/resources/ui/preferences.blp:56
 msgctxt "Alphavalue is shown at the start"
 msgid "Start"
-msgstr ""
+msgstr "Басы"
 
 #: data/resources/ui/preferences.blp:62
 msgid "RGB Notation"
-msgstr ""
+msgstr "RGB нотациясы"
 
 #: data/resources/ui/preferences.blp:63
 msgid "Whether RGB values should be displayed as integers or decimals"
-msgstr ""
+msgstr "RGB мәндерін бүтін немесе ондық сан ретінде көрсету керек пе"
 
 #: data/resources/ui/preferences.blp:67
 msgctxt "RGB is format as integers (e.g. 127)"
 msgid "Integer"
-msgstr ""
+msgstr "Бүтін сан"
 
 #: data/resources/ui/preferences.blp:68
 msgctxt "RGB is format as decimals (e.g. 0.1)"
 msgid "Decimal"
-msgstr ""
+msgstr "Ондық сан"
 
 #: data/resources/ui/preferences.blp:75
 msgid "Sources for displaying color names"
-msgstr ""
+msgstr "Түс атауларын көрсетуге арналған дереккөздер"
 
 #: data/resources/ui/preferences.blp:86 data/resources/ui/preferences.blp:95
 msgid "Precision"
-msgstr ""
+msgstr "Дәлдік"
 
 #: data/resources/ui/preferences.blp:103
 msgid "Color Formats"
-msgstr ""
+msgstr "Түс пішімдері"
 
 #: data/resources/ui/preferences.blp:104
 msgid "Customize the visible formats and in which order they are displayed"
-msgstr ""
+msgstr "Көрінетін пішімдерді және олардың көрсетілу ретін баптау"
 
 #: data/resources/ui/preferences.blp:109
 msgctxt "Tooltip of the button to reset the format order"
 msgid "Reset Order"
-msgstr ""
+msgstr "Ретті тастау"
 
 #: data/resources/ui/window.blp:7
 msgid "_Clear History"
-msgstr ""
+msgstr "Тарихты та_зарту"
 
 #: data/resources/ui/window.blp:12
 msgid "_Random Color"
-msgstr ""
+msgstr "К_ездейсоқ түс"
 
 #: data/resources/ui/window.blp:19
 msgid "_Preferences"
-msgstr ""
+msgstr "Қа_лаулар"
 
 #: data/resources/ui/window.blp:24
 msgid "_About Eyedropper"
-msgstr ""
+msgstr "Eyedropper т_уралы"
 
 #: data/resources/ui/window.blp:42
 msgctxt "Tooltip of the colorpicker button"
 msgid "Pick a Color"
-msgstr ""
+msgstr "Түсті таңдау"
 
 #: data/resources/ui/window.blp:49
 msgid "Main Menu"
-msgstr ""
+msgstr "Негізгі мәзір"
 
 #: data/resources/ui/window.blp:94
 msgid "Color Picker not Available"
-msgstr ""
+msgstr "Түс таңдау құралы қолжетімді емес"
 
 #: data/resources/ui/window.blp:104
 msgid "The system is not properly configured to allow for color picking"
-msgstr ""
+msgstr "Түс таңдауға рұқсат беру үшін жүйе дұрыс бапталмаған"
 
 #: data/resources/ui/window.blp:116
 msgid "_Continue Regardless"
-msgstr ""
+msgstr "Соған қарамастан жа_лғастыру"
 
 #: data/resources/ui/window.blp:150
 msgctxt "Tooltip of the palette button"
 msgid "Edit Color"
-msgstr ""
+msgstr "Түсті түзету"
 
 #: data/resources/ui/window.blp:255 src/widgets/color_format_row.rs:163
 msgid "Apply"
-msgstr ""
+msgstr "Іске асыру"
 
 #: src/application.rs:254
 msgid "Allow color selection while the application runs in the background"
-msgstr ""
+msgstr "Қолданба фонда жұмыс істеп тұрған кезде түс таңдауға рұқсат беру"
 
 #: src/application.rs:298
 msgid "Pick a New Color"
-msgstr ""
+msgstr "Жаңа түсті таңдау"
 
 #: src/colors/notation.rs:241
 msgid "Not named"
-msgstr ""
+msgstr "Аталмаған"
 
 #: src/colors/notation.rs:248
 msgid "Copy Hex Code"
-msgstr ""
+msgstr "Hex кодын көшіру"
 
 #: src/colors/notation.rs:269
 msgid "Hex Code"
-msgstr ""
+msgstr "Hex коды"
 
 #: src/colors/notation.rs:282
 msgid "Name"
-msgstr ""
+msgstr "Аты"
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/widgets/about_window.rs:35
 msgid "translator-credits"
-msgstr ""
+msgstr "Baurzhan Muftakhidinov <baurthefirst@gmail.com>"
 
 #: src/widgets/color_format_row.rs:232
 msgid "Copied “{}”"
-msgstr ""
+msgstr "“{}” көшірілді"
 
 #: src/widgets/preferences/preferences_window.rs:355
 msgid "Move Up"
-msgstr ""
+msgstr "Жоғары жылжыту"
 
 #: src/widgets/preferences/preferences_window.rs:357
 msgid "Move Down"
-msgstr ""
+msgstr "Төмен жылжыту"
 
 #: src/window.rs:287
 msgid "Cleared history"
-msgstr ""
+msgstr "Тарих тазартылды"
 
 #: src/window.rs:288
 msgid "Undo"
-msgstr ""
+msgstr "Болдырмау"
 
 #: src/window.rs:453
 msgid "Failed to pick a color"
-msgstr ""
+msgstr "Түсті таңдау сәтсіз аяқталды"
