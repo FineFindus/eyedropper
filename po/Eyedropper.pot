@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2025-11-23 20:01+0000\n"
+"POT-Creation-Date: 2026-01-26 19:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.blp:38 src/main.rs:30
+#: data/resources/ui/window.blp:38 src/main.rs:29
 #: src/widgets/about_window.rs:29
 msgid "Eyedropper"
 msgstr ""
@@ -599,11 +599,11 @@ msgstr ""
 msgid "Apply"
 msgstr ""
 
-#: src/application.rs:254
+#: src/application.rs:247
 msgid "Allow color selection while the application runs in the background"
 msgstr ""
 
-#: src/application.rs:298
+#: src/application.rs:291
 msgid "Pick a New Color"
 msgstr ""
 
@@ -640,14 +640,14 @@ msgstr ""
 msgid "Move Down"
 msgstr ""
 
-#: src/window.rs:287
+#: src/window.rs:326
 msgid "Cleared history"
 msgstr ""
 
-#: src/window.rs:288
+#: src/window.rs:327
 msgid "Undo"
 msgstr ""
 
-#: src/window.rs:453
+#: src/window.rs:467
 msgid "Failed to pick a color"
 msgstr ""
