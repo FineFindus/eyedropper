@@ -285,7 +285,12 @@ impl AppWindow {
         self.history()
             // we need to clone here, as `extend` requires a mutable reference
             .clone()
-            .extend(history.into_iter().map(|color| HistoryObject::new(color)));
+            .extend(
+                history
+                    .into_iter()
+                    .skip(1)
+                    .map(|color| HistoryObject::new(color)),
+            );
 
         tracing::debug!("Finished restoring");
         Some(())
