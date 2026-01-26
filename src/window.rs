@@ -181,9 +181,6 @@ mod imp {
                         tracing::warn!("System does not support color picking");
                         window.show_portal_error_page();
                     }
-
-                    // disable history clearing action before an item has been added
-                    window.obj().action_set_enabled("app.clear-history", false);
                 }
             ));
 
@@ -376,6 +373,8 @@ impl AppWindow {
             }
         ));
 
+        // disable history clearing action before an item has been added
+        self.action_set_enabled("app.clear-history", false);
         self.history().connect_items_changed(glib::clone!(
             #[weak(rename_to = window)]
             self,
