@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2025-11-23 20:01+0000\n"
-"PO-Revision-Date: 2026-01-23 04:52+0000\n"
+"PO-Revision-Date: 2026-01-28 11:18+0000\n"
 "Last-Translator: Flynn <cirilla@tuta.io>\n"
 "Language-Team: Cornish <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/kw/>\n"
@@ -137,7 +137,7 @@ msgstr "Unn ewnans byghan rag data ow fyllell"
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:70
 msgid "A new release, including major reworks the the UI and the color system"
 msgstr ""
-"Unn versyon nowydh, ow komprehendya nowedhys brassa dhe an ynterfas ha an "
+"Unn versyon nowydh, ow komprehendya nowedhys brassa dhe'n ynterfas ha an "
 "system kolor"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:72
@@ -236,7 +236,7 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:105
 msgid "Minor changes to the store metadata"
-msgstr "Chanjyow le dhe an data gwerthji"
+msgstr "Chanjyow le dhe'n data gwerthji"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:107
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:130
@@ -307,7 +307,7 @@ msgstr "Ewnys unn kudyn pan LMS hag Hunter-Lab kavosys an settyans keth"
 msgid ""
 "Export the generated palettes from the palette dialog as a GIMP palette file"
 msgstr ""
-"Esporthya an liwvord dinythys a an fenester liwvord avel unn restren liwvord "
+"Esporthya an liwvord dinythys a'n fenester liwvord avel unn restren liwvord "
 "GIMP"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:146
@@ -336,7 +336,7 @@ msgstr "Ewnhe unn kudyn pan an illuminansyow yw na diskwedhes yn leun"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:155
 msgid "The names of the GNOME color palette are now available"
-msgstr "An henwyn a an liwvord GNOME yw kavadow lemmyn"
+msgstr "An henwyn a'n liwvord GNOME yw kavadow lemmyn"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:163
 msgid "Options to show names of color (from w3c basic, extended and xkcd)"
@@ -352,7 +352,7 @@ msgid ""
 "large color button"
 msgstr ""
 "Liwvordow yw diskwedhys lemmyn y'n fenester liwvord, hedhadow gans ow "
-"klyckya war an boton bras kolor"
+"klyckya war'n boton bras kolor"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:166
 msgid "The App now uses the AdwAboutWindow"
@@ -384,15 +384,14 @@ msgid ""
 "from the currently picked color as well as the previous 3"
 msgstr ""
 "Liwvordow, konsystya a skeusliwyow du ha arliwyow gwynn, yw dinthys lemmyn "
-"dhyworth an kolor dewisys a'n jydh hag an tri kyns"
+"dhyworth an kolor dewisys a-lemmyn hag an tri kyns"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:184
 msgid ""
 "Change the order of the color formats by dragging and dropping them in the "
 "settings"
 msgstr ""
-"Chanjya an aray a an furvasow kolor gans draylys ha droppys y's y'n "
-"settyansow"
+"Chanjya an aray a'n furvasow kolor gans draylys ha droppys y's y'n settyansow"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:185
 msgid "The app has been translated into French by rene-coty"
@@ -440,7 +439,7 @@ msgstr "Kopia an kolor yn systemow kolor dyffrans"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:210
 msgid "Change the position of the alpha values in hex values"
-msgstr "Chanjya an le a an niverow klerder yn niverow hex"
+msgstr "Chanjya an le a'n niverow klerder yn niverow hex"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:211
 msgid "Added License"
