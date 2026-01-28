@@ -171,6 +171,7 @@ mod imp {
             if PROFILE == "Devel" {
                 obj.add_css_class("devel");
             }
+            obj.settings().set_gtk_icon_theme_name(Some("Adwaita"));
 
             let main_context = glib::MainContext::default();
             main_context.spawn_local(glib::clone!(
