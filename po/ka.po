@@ -7,25 +7,27 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2026-01-28 13:38+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-02-02 11:01+0000\n"
+"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
+"Language-Team: Georgian <https://hosted.weblate.org/projects/eyedropper/"
+"eyedropper/ka/>\n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.16-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
 #: data/resources/ui/window.blp:38 src/main.rs:29
 #: src/widgets/about_window.rs:29
 msgid "Eyedropper"
-msgstr ""
+msgstr "Eyedropper"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:4
 msgid "Color Picker"
-msgstr ""
+msgstr "ფერის ამრჩევი"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
@@ -36,7 +38,7 @@ msgstr ""
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
 msgid "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
-msgstr ""
+msgstr "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
 msgid "FineFindus"
@@ -50,12 +52,12 @@ msgstr ""
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
 #: src/widgets/about_window.rs:67
 msgid "Features"
-msgstr ""
+msgstr "თვისებები"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
 #: src/widgets/about_window.rs:71
 msgid "Pick a Color"
-msgstr ""
+msgstr "აირჩიეთ ფერი"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
 #: src/widgets/about_window.rs:72
@@ -191,7 +193,7 @@ msgstr ""
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:193
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:205
 msgid "Added:"
-msgstr ""
+msgstr "დამატებულია:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:100
 msgid "Show a toast with an Undo option when clearing the history"
@@ -225,7 +227,7 @@ msgstr ""
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:130
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:152
 msgid "Changed:"
-msgstr ""
+msgstr "შეცვლილი:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:109
 msgid "Hunter-Lab now displays 0 instead of NaN"
@@ -251,7 +253,7 @@ msgstr ""
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:115
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:134
 msgid "Fixed:"
-msgstr ""
+msgstr "ჩასწორებულია:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:117
 msgid "Separator is now hidden when the history list is hidden"
@@ -263,7 +265,7 @@ msgstr ""
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:126
 msgid "Russian translation"
-msgstr ""
+msgstr "რუსული თარგმანი"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:127
 msgid "Better optimized releases"
@@ -422,11 +424,11 @@ msgstr ""
 
 #: data/resources/ui/history-item.blp:5
 msgid "Remove"
-msgstr ""
+msgstr "წაშლა"
 
 #: data/resources/ui/placeholder-page.blp:7
 msgid "No Color"
-msgstr ""
+msgstr "ფერის გარეშე"
 
 #: data/resources/ui/placeholder-page.blp:8
 msgid "Select or enter a color to get started"
@@ -434,7 +436,7 @@ msgstr ""
 
 #: data/resources/ui/placeholder-page.blp:22
 msgid "View"
-msgstr ""
+msgstr "ხედი"
 
 #: data/resources/ui/preferences.blp:5 data/resources/ui/preferences.blp:74
 msgid "Name Sources"
@@ -445,7 +447,7 @@ msgctxt ""
 "Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
 "#html4"
 msgid "Basic"
-msgstr ""
+msgstr "საწყისი"
 
 #: data/resources/ui/preferences.blp:18
 msgid "Basic web colors"
@@ -456,7 +458,7 @@ msgctxt ""
 "Name of the extended color keyword set from https://www.w3.org/TR/css-"
 "color-3/#svg-color"
 msgid "Extended"
-msgstr ""
+msgstr "გაფართოებული"
 
 #: data/resources/ui/preferences.blp:23
 msgid "X11 and SVG color values"
@@ -484,11 +486,11 @@ msgstr ""
 
 #: data/resources/ui/preferences.blp:43
 msgid "General"
-msgstr ""
+msgstr "ზოგადი"
 
 #: data/resources/ui/preferences.blp:46
 msgid "Formatting"
-msgstr ""
+msgstr "დაფორმატება"
 
 #: data/resources/ui/preferences.blp:49
 msgid "Alpha-Value Position"
@@ -501,17 +503,17 @@ msgstr ""
 #: data/resources/ui/preferences.blp:54
 msgctxt "Alphavalue is not shown"
 msgid "None"
-msgstr ""
+msgstr "არცერთი"
 
 #: data/resources/ui/preferences.blp:55
 msgctxt "Alphavalue is shown at the end"
 msgid "End"
-msgstr ""
+msgstr "დასასრული"
 
 #: data/resources/ui/preferences.blp:56
 msgctxt "Alphavalue is shown at the start"
 msgid "Start"
-msgstr ""
+msgstr "დაწყება"
 
 #: data/resources/ui/preferences.blp:62
 msgid "RGB Notation"
@@ -524,12 +526,12 @@ msgstr ""
 #: data/resources/ui/preferences.blp:67
 msgctxt "RGB is format as integers (e.g. 127)"
 msgid "Integer"
-msgstr ""
+msgstr "მთელი რიცხვი"
 
 #: data/resources/ui/preferences.blp:68
 msgctxt "RGB is format as decimals (e.g. 0.1)"
 msgid "Decimal"
-msgstr ""
+msgstr "ათობითი"
 
 #: data/resources/ui/preferences.blp:75
 msgid "Sources for displaying color names"
@@ -537,7 +539,7 @@ msgstr ""
 
 #: data/resources/ui/preferences.blp:86 data/resources/ui/preferences.blp:95
 msgid "Precision"
-msgstr ""
+msgstr "სიზუსტე"
 
 #: data/resources/ui/preferences.blp:103
 msgid "Color Formats"
@@ -550,11 +552,11 @@ msgstr ""
 #: data/resources/ui/preferences.blp:109
 msgctxt "Tooltip of the button to reset the format order"
 msgid "Reset Order"
-msgstr ""
+msgstr "შებრუნებული მიმდევრობით"
 
 #: data/resources/ui/window.blp:7
 msgid "_Clear History"
-msgstr ""
+msgstr "ისტორიის _გასუფთავება"
 
 #: data/resources/ui/window.blp:12
 msgid "_Random Color"
@@ -562,7 +564,7 @@ msgstr ""
 
 #: data/resources/ui/window.blp:19
 msgid "_Preferences"
-msgstr ""
+msgstr "_მორგება"
 
 #: data/resources/ui/window.blp:24
 msgid "_About Eyedropper"
@@ -571,11 +573,11 @@ msgstr ""
 #: data/resources/ui/window.blp:42
 msgctxt "Tooltip of the colorpicker button"
 msgid "Pick a Color"
-msgstr ""
+msgstr "აირჩიეთ ფერი"
 
 #: data/resources/ui/window.blp:49
 msgid "Main Menu"
-msgstr ""
+msgstr "მთავარი მენიუ"
 
 #: data/resources/ui/window.blp:94
 msgid "Color Picker not Available"
@@ -596,7 +598,7 @@ msgstr ""
 
 #: data/resources/ui/window.blp:255 src/widgets/color_format_row.rs:163
 msgid "Apply"
-msgstr ""
+msgstr "გადატარება"
 
 #: src/application.rs:247
 msgid "Allow color selection while the application runs in the background"
@@ -616,16 +618,16 @@ msgstr ""
 
 #: src/colors/notation.rs:269
 msgid "Hex Code"
-msgstr ""
+msgstr "თექვსმეტობითი კოდი"
 
 #: src/colors/notation.rs:282
 msgid "Name"
-msgstr ""
+msgstr "სახელი"
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/widgets/about_window.rs:35
 msgid "translator-credits"
-msgstr ""
+msgstr "თემური დოღონაძე"
 
 #: src/widgets/color_format_row.rs:232
 msgid "Copied “{}”"
@@ -633,11 +635,11 @@ msgstr ""
 
 #: src/widgets/preferences/preferences_window.rs:355
 msgid "Move Up"
-msgstr ""
+msgstr "აწევა"
 
 #: src/widgets/preferences/preferences_window.rs:357
 msgid "Move Down"
-msgstr ""
+msgstr "ჩამოწევა"
 
 #: src/window.rs:327
 msgid "Cleared history"
@@ -645,7 +647,7 @@ msgstr ""
 
 #: src/window.rs:328
 msgid "Undo"
-msgstr ""
+msgstr "გაუქმება"
 
 #: src/window.rs:468
 msgid "Failed to pick a color"
