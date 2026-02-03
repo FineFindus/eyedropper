@@ -7,22 +7,24 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2026-01-26 19:15+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-02-04 12:01+0000\n"
+"Last-Translator: Yoav <y07r1987@gmail.com>\n"
+"Language-Team: Hebrew <https://hosted.weblate.org/projects/eyedropper/"
+"eyedropper/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
+"X-Generator: Weblate 5.16-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
 #: data/resources/ui/window.blp:38 src/main.rs:29
 #: src/widgets/about_window.rs:29
 msgid "Eyedropper"
-msgstr ""
+msgstr "Eyedropper"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:4
 msgid "Color Picker"
