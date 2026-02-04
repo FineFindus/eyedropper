@@ -2,13 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Eyedropper package.
 # Ahmed Najmawi <iramosu@protonmail.com>, 2025.
+# ULTRA LEGENDS <ahmedbmw123watergmil.com@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2025-06-28 19:30+0000\n"
-"PO-Revision-Date: 2025-07-24 05:03+0000\n"
-"Last-Translator: Ahmed Najmawi <iramosu@protonmail.com>\n"
+"PO-Revision-Date: 2026-02-05 22:01+0000\n"
+"Last-Translator: ULTRA LEGENDS <ahmedbmw123watergmil.com@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/eyedropper/"
 "eyedropper/ar/>\n"
 "Language: ar\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 5.13-dev\n"
+"X-Generator: Weblate 5.16-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
@@ -152,7 +153,7 @@ msgstr "تحسينات متنوّعة على الكود الداخلي وإصل�
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:77
 msgid "Removed the palette dialog"
-msgstr "أُزيلت حواريَّة لوحة الألوان"
+msgstr "تمت إزالة مربع حوار اللوحة"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:78
 msgid "Removed custom color formats"
@@ -234,7 +235,7 @@ msgstr "تغييرات طفيفة على البيانات الوصفية للم�
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:130
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:152
 msgid "Changed:"
-msgstr "غُيِّر:"
+msgstr "تم التغيير:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:109
 msgid "Hunter-Lab now displays 0 instead of NaN"
@@ -255,7 +256,7 @@ msgstr "أُعيدت صياغة وصف المشروع"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:113
 msgid "Updated all screenshots"
-msgstr "حُدِّثت كل لقطات الشاشة"
+msgstr "تم تحديث جميع لقطات الشاشة"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:115
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:134
@@ -436,7 +437,7 @@ msgstr "أُضيفت الرخصة"
 
 #: data/resources/ui/history-item.blp:5
 msgid "Remove"
-msgstr "أزل"
+msgstr "إزالة"
 
 #: data/resources/ui/placeholder-page.blp:7
 msgid "No Color"
@@ -515,7 +516,7 @@ msgstr "أين توضع قيمة ألفا في سلسلة Hex"
 #: data/resources/ui/preferences.blp:54
 msgctxt "Alphavalue is not shown"
 msgid "None"
-msgstr "بلا"
+msgstr "لا شيء"
 
 #: data/resources/ui/preferences.blp:55
 msgctxt "Alphavalue is shown at the end"
