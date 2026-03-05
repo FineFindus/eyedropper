@@ -1,4 +1,7 @@
+use ashpd::desktop::CreateSessionOptions;
 use ashpd::desktop::global_shortcuts::NewShortcut;
+use ashpd::desktop::global_shortcuts::{BindShortcutsOptions, ListShortcutsOptions};
+
 use futures::StreamExt;
 use gettextrs::gettext;
 use glib::ExitCode;
@@ -275,7 +278,9 @@ impl App {
         let identifier = ashpd::WindowIdentifier::from_native(&root).await;
 
         let global_shortcuts = ashpd::desktop::global_shortcuts::GlobalShortcuts::new().await?;
-        let session = global_shortcuts.create_session().await?;
+        let session = global_shortcuts
+            .create_session(CreateSessionOptions::default())
+            .await?;
 
         let request = global_shortcuts
             .bind_shortcuts(
@@ -285,11 +290,12 @@ impl App {
                         .preferred_trigger(Some("CTRL+p")),
                 ],
                 identifier.as_ref(),
+                BindShortcutsOptions::default(),
             )
             .await?;
 
         let shortcuts = global_shortcuts
-            .list_shortcuts(&session)
+            .list_shortcuts(&session, ListShortcutsOptions::default())
             .await?
             .response()?;
 
