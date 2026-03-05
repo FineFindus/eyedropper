@@ -18,8 +18,6 @@ use crate::widgets::placeholder_page::PlaceholderPage;
 mod imp {
     use std::cell::{Cell, OnceCell};
 
-    use crate::config;
-
     use super::*;
 
     use adw::subclass::prelude::AdwApplicationWindowImpl;
@@ -204,28 +202,7 @@ mod imp {
     impl WidgetImpl for AppWindow {}
     impl WindowImpl for AppWindow {}
 
-    impl ApplicationWindowImpl for AppWindow {
-        fn save_state(&self, state: &glib::VariantDict) -> bool {
-            let obj = self.obj();
-
-            state.insert("version", config::VERSION);
-
-            if let Some(color) = obj.color() {
-                state.insert("color", color);
-            }
-
-            let history = obj
-                .history()
-                .snapshot()
-                .iter()
-                .filter_map(|obj| obj.downcast_ref::<HistoryObject>())
-                .map(|obj| Color::from(obj.color()))
-                .collect::<Vec<_>>();
-            state.insert("history", history);
-
-            true
-        }
-    }
+    impl ApplicationWindowImpl for AppWindow {}
     impl AdwApplicationWindowImpl for AppWindow {}
 
     impl AppWindow {
@@ -263,37 +240,6 @@ glib::wrapper! {
 impl AppWindow {
     pub fn new(app: &App) -> Self {
         glib::Object::builder().property("application", app).build()
-    }
-
-    /// Restores the state of the window from a previous session.
-    pub fn restore_state(&self, reason: gtk::RestoreReason, state: &glib::Variant) -> Option<()> {
-        let state = state.get::<glib::VariantDict>()?;
-
-        // we only want to restore data if the full session is being restored,
-        // no restoring for crashes or normal launches
-        if reason != gtk::RestoreReason::Restore {
-            return Some(());
-        }
-
-        let version = state.lookup::<String>("version").ok()??;
-        tracing::debug!("Restoring state from version: {version}");
-
-        let color = state.lookup::<Color>("color").ok()??;
-        self.set_color(color);
-
-        let history = state.lookup::<Vec<Color>>("history").ok()??;
-        self.history()
-            // we need to clone here, as `extend` requires a mutable reference
-            .clone()
-            .extend(
-                history
-                    .into_iter()
-                    .skip(1)
-                    .map(|color| HistoryObject::new(color)),
-            );
-
-        tracing::debug!("Finished restoring");
-        Some(())
     }
 
     /// Shows a basic toast with the given text.

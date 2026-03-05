@@ -86,13 +86,7 @@ mod imp {
         }
     }
 
-    impl GtkApplicationImpl for App {
-        fn restore_window(&self, reason: gtk::RestoreReason, state: &glib::Variant) {
-            let window = AppWindow::new(&self.obj());
-            window.restore_state(reason, state);
-            window.present();
-        }
-    }
+    impl GtkApplicationImpl for App {}
     impl AdwApplicationImpl for App {}
 }
 
@@ -111,7 +105,6 @@ impl App {
                 "resource-base-path",
                 Some("/com/github/finefindus/eyedropper/"),
             )
-            .property("support-save", true)
             .build()
     }
 
