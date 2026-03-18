@@ -397,7 +397,6 @@ dependencies = [
  "search-provider",
  "tracing",
  "tracing-subscriber",
- "zbus",
 ]
 
 [[package]]

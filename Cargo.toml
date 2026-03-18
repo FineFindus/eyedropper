@@ -45,5 +45,4 @@ bytes = "1.4"
 search-provider = { version = "0.13", features = ["gdk-pixbuf"] }
 nom = "8.0"
 phf = { version = "0.13", features = ["macros"] }
-zbus = "5.2"
 palette = "0.7.2"

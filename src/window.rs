@@ -175,7 +175,7 @@ mod imp {
                 #[weak(rename_to = window)]
                 self,
                 async move {
-                    if window.is_color_picker_available().await != Ok(true) {
+                    if !window.is_color_picker_available().await {
                         tracing::warn!("System does not support color picking");
                         window.show_portal_error_page();
                     }
@@ -207,19 +207,14 @@ mod imp {
 
     impl AppWindow {
         /// Check if the system supports color picking.
-        async fn is_color_picker_available(&self) -> zbus::Result<bool> {
-            let connection = zbus::Connection::session().await?;
-            let proxy: zbus::Proxy = zbus::proxy::Builder::new(&connection)
-                .interface("org.freedesktop.portal.Screenshot")?
-                .path("/org/freedesktop/portal/desktop")?
-                .destination("org.freedesktop.portal.Desktop")?
-                .build()
-                .await?;
-            let version = proxy.get_property::<u32>("version").await?;
+        async fn is_color_picker_available(&self) -> bool {
+            let Ok(proxy) = ashpd::desktop::screenshot::ScreenshotProxy::new().await else {
+                return false;
+            };
 
             // version 2 indicates that the color picker is supported:
             // see: https://github.com/flatpak/xdg-desktop-portal/pull/766,
-            Ok(version >= 2)
+            proxy.version() >= 2
         }
 
         /// Shows a warning page, explaining that the system does not support color picking.

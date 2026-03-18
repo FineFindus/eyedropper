@@ -2,6 +2,7 @@ use ashpd::desktop::CreateSessionOptions;
 use ashpd::desktop::global_shortcuts::NewShortcut;
 use ashpd::desktop::global_shortcuts::{BindShortcutsOptions, ListShortcutsOptions};
 
+use ashpd::zbus;
 use futures::StreamExt;
 use gettextrs::gettext;
 use glib::ExitCode;
