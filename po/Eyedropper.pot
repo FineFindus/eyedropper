@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2026-03-18 16:40+0000\n"
+"POT-Creation-Date: 2026-03-18 21:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -606,11 +606,11 @@ msgstr ""
 msgid "Apply"
 msgstr ""
 
-#: src/application.rs:243
+#: src/application.rs:244
 msgid "Allow color selection while the application runs in the background"
 msgstr ""
 
-#: src/application.rs:289
+#: src/application.rs:290
 msgid "Pick a New Color"
 msgstr ""
 
@@ -647,14 +647,14 @@ msgstr ""
 msgid "Move Down"
 msgstr ""
 
-#: src/window.rs:272
+#: src/window.rs:267
 msgid "Cleared history"
 msgstr ""
 
-#: src/window.rs:273
+#: src/window.rs:268
 msgid "Undo"
 msgstr ""
 
-#: src/window.rs:413
+#: src/window.rs:408
 msgid "Failed to pick a color"
 msgstr ""
