@@ -47,6 +47,19 @@
   <url type="translate">https://github.com/FineFindus/eyedropper#translation</url>
   <content_rating type="oars-1.1" />
   <releases>
+    <release version="2.2.0" date="2026-03-18">
+      <description translatable="no">
+        <p>New features, fixed bugs and updates to modern GNOME styling:</p>
+        <ul>
+          <li>RGB can now be displayed in decimal notation</li>
+          <li>Colors can now be directly entered, without picking a color first</li>
+          <li>Support for focus-independent (global) shortcuts</li>
+          <li>Fixed an layout issue on systems where scrollbars are always shown</li>
+          <li>Updated to modern GNOME styling</li>
+          <li>Improved checking for unsupported systems</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.1.0" date="2025-03-23">
       <description translatable="no">
         <p>New features, fixed bugs and updates to modern GNOME styling:</p>
