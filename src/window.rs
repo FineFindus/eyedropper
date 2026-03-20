@@ -208,13 +208,15 @@ mod imp {
     impl AppWindow {
         /// Check if the system supports color picking.
         async fn is_color_picker_available(&self) -> bool {
-            let Ok(proxy) = ashpd::desktop::screenshot::ScreenshotProxy::new().await else {
-                return false;
-            };
+            let desktop = std::env::var("XDG_CURRENT_DESKTOP")
+                .unwrap_or_default()
+                .to_lowercase();
 
-            // version 2 indicates that the color picker is supported:
-            // see: https://github.com/flatpak/xdg-desktop-portal/pull/766,
-            proxy.version() >= 2
+            // FIXME: out of the major desktop portal implementations, COSMIC is the only one that
+            // pretends to support color picking (i.e. has a `PickColor` method), but will always
+            // return an error.
+            // See https://github.com/pop-os/xdg-desktop-portal-cosmic/blob/a246f482a4a02bcc8c5525b33f451a3a7d7f45d9/src/screenshot.rs#L568
+            desktop != "cosmic"
         }
 
         /// Shows a warning page, explaining that the system does not support color picking.
