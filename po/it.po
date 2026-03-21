@@ -24,32 +24,12 @@ msgstr ""
 #: data/resources/ui/window.blp:152 src/main.rs:28
 #: src/widgets/about_window.rs:32
 msgid "Eyedropper"
-msgstr ""
-"Contagocce \n"
-"Inserisci o seleziona un colore e visualizzalo in diversi formati.\n"
-"\n"
-"Funzionalità\n"
-"\n"
-"• Seleziona un colore\n"
-"• Modifica il colore visualizzato in un semplice editor HSL\n"
-"• Inserisci un colore in diversi formati\n"
-"• Converti i colori in altri formati come Hex, RGB, HSV, HSL, CMYK, XYZ, CIE-"
-"Lab"
+msgstr "Contagocce"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:4
 #, fuzzy
 msgid "Color Picker"
-msgstr ""
-"Selettore di colori\n"
-"Inserisci o seleziona un colore e visualizzalo in diversi formati.\n"
-"\n"
-"Funzionalità\n"
-"\n"
-"• Seleziona un colore\n"
-"• Modifica il colore visualizzato in un semplice editor HSL\n"
-"• Inserisci un colore in diversi formati\n"
-"• Converti i colori in altri formati come Hex, RGB, HSV, HSL, CMYK, XYZ, CIE-"
-"Lab"
+msgstr "Selettore di colori"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
