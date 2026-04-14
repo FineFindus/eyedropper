@@ -4,14 +4,14 @@
 # Ciro Mota <contato.ciromota@outlook.com>, 2024.
 # Tiago Lucas Flach <tiagolucas9830@gmail.com>, 2024.
 # Filipe Motta <luizfilipemotta@gmail.com>, 2024.
-#
+# Luan Oyera <oyera.dev@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2024-09-18 17:02+0000\n"
-"PO-Revision-Date: 2024-09-19 03:04-0300\n"
-"Last-Translator: Filipe Motta <luizfilipemotta@gmail.com>\n"
+"POT-Creation-Date: 2026-04-14 17:02+0000\n"
+"PO-Revision-Date: 2026-04-14 03:04-0300\n"
+"Last-Translator: Luan Oyera <oyera.dev@gmail.com>\n"
 "Language-Team: Brazilian Portuguese\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -49,6 +49,11 @@ msgstr ""
 msgid "FineFindus"
 msgstr "FineFindus"
 
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
+#: src/widgets/about_window.rs:61
+msgid "Enter or pick a color and view it in different formats."
+msgstr "Insira ou selecione uma cor e a veja em diferentes formatos."
+
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:16
 #: src/widgets/about_window.rs:64
 msgid ""
@@ -66,6 +71,16 @@ msgstr ""
 msgid "Features"
 msgstr "Funções"
 
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
+#: src/widgets/about_window.rs:72
+msgid "Edit the viewed color in a simple HSL editor"
+msgstr "Edite a cor visualizada em um editor HSL simples"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
+#: src/widgets/about_window.rs:73
+msgid "Enter a color in various formats"
+msgstr "Insira uma cor em vários formatos"
+
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
 #: src/widgets/about_window.rs:73
 msgid "Pick a Color"
@@ -75,6 +90,15 @@ msgstr "Selecione uma cor na tela"
 #: src/widgets/about_window.rs:74
 msgid "Enter a color in Hex-Format"
 msgstr "Insira uma cor em formato hexadecimal"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
+#: src/widgets/about_window.rs:75
+msgid ""
+"Convert colors into other formats such as Hex, RGB, HSV, HSL, CMYK, XYZ, CIE-"
+"Lab…"
+msgstr "Converta cores em outros formatos, como Hexadecial, RGB, HSV, HSL, CMYK, XYZ, CIE-"
+"Lab…"
+
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:24
 msgid "Enter colors in different formats"
@@ -169,9 +193,9 @@ msgstr "Geral"
 msgid "Formatting"
 msgstr "Formatação"
 
-#: data/resources/ui/preferences.blp:49
-msgid "Alpha-Value-Position"
-msgstr "Posição do valor alfa"
+#: data/resources/ui/preferences/preferences.blp:17
+msgid "Alpha-Value Position"
+msgstr "Posição do Valor Alpha"
 
 #: data/resources/ui/preferences.blp:50
 msgid "Where the Alphavalue is positioned in the Hexstring"
@@ -195,6 +219,25 @@ msgstr "Início"
 #: data/resources/ui/preferences.blp:62
 msgid "Sources for displaying color names"
 msgstr "Fontes para exibição dos nomes das cores"
+
+#: data/resources/ui/preferences.blp:62
+msgid "RGB Notation"
+msgstr "Notação RGB"
+
+#: data/resources/ui/preferences.blp:63
+msgid "Whether RGB values should be displayed as integers or decimals"
+msgstr "Os valores RGB devem ser exibidos como números "
+"inteiros ou decimais"
+
+#: data/resources/ui/preferences.blp:67
+msgctxt "RGB is format as integers (e.g. 127)"
+msgid "Integer"
+msgstr "Inteiro"
+
+#: data/resources/ui/preferences.blp:68
+msgctxt "RGB is format as decimals (e.g. 0.1)"
+msgid "Decimal"
+msgstr "Decimal"
 
 #: data/resources/ui/preferences.blp:73 data/resources/ui/preferences.blp:81
 msgid "Precision"
@@ -330,6 +373,7 @@ msgstr ""
 "Ciro Mota <contato.ciromota@outlook.com>\n"
 "Tiago Lucas Flach https://github.com/tiagoFlach\n"
 "Filipe Motta <luizfilipemotta@gmail.com>"
+"Luan Oyera <oyera.dev@gmail.com>"
 
 #: src/widgets/about_window.rs:75
 msgid "Parse RGBA/ARGB Hex-Colors"
@@ -380,6 +424,15 @@ msgstr "Desfazer"
 #: src/window.rs:464
 msgid "Failed to pick a color"
 msgstr "Falha ao selecionar uma cor"
+
+#: data/resources/ui/placeholder-page.blp:8
+msgid "Select or enter a color to get started"
+msgstr "Selecione ou insira uma cor para começar"
+
+#: data/resources/ui/placeholder-page.blp:22
+msgid "View"
+msgstr "Visualizar"
+
 
 #~ msgid "Dialog showing generated color palettes"
 #~ msgstr "Caixa de diálogo mostrando paletas de cores geradas"
