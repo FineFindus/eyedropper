@@ -7,21 +7,23 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2026-03-29 11:39+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-04-24 13:09+0000\n"
+"Last-Translator: camegone <kuroneko0308kw@gmail.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/eyedropper/"
+"eyedropper/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.17.1-dev\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
 #: data/resources/ui/window.blp:38 src/main.rs:29
 #: src/widgets/about_window.rs:29
 msgid "Eyedropper"
-msgstr ""
+msgstr "Eyedropper"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:4
 msgid "Color Picker"
@@ -31,7 +33,7 @@ msgstr ""
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
 #: src/widgets/about_window.rs:57
 msgid "Pick and format colors"
-msgstr ""
+msgstr "色を選択してフォーマットを確認"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
@@ -45,27 +47,27 @@ msgstr ""
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
 #: src/widgets/about_window.rs:61
 msgid "Enter or pick a color and view it in different formats."
-msgstr ""
+msgstr "色を選択もしくは入力して、別の形式で確認できます。"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
 #: src/widgets/about_window.rs:67
 msgid "Features"
-msgstr ""
+msgstr "機能"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
 #: src/widgets/about_window.rs:71
 msgid "Pick a Color"
-msgstr ""
+msgstr "色をスポイトで選択"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
 #: src/widgets/about_window.rs:72
 msgid "Edit the viewed color in a simple HSL editor"
-msgstr ""
+msgstr "表示中の色をシンプルな HSL 形式のエディターで編集する"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
 #: src/widgets/about_window.rs:73
 msgid "Enter a color in various formats"
-msgstr ""
+msgstr "様々なフォーマットで色を入力する"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
 #: src/widgets/about_window.rs:75
@@ -73,22 +75,24 @@ msgid ""
 "Convert colors into other formats such as Hex, RGB, HSV, HSL, CMYK, XYZ, CIE-"
 "Lab…"
 msgstr ""
+"色を様々な形式に変換して確認する。(例: 16進数, RGB, HSV, HSL, CMYK, XYZ, CIE-"
+"Lab…)"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:28
 msgid "Main window with a color in different formats"
-msgstr ""
+msgstr "色をたくさんのフォーマットで表示しているメインウィンドウ"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:32
 msgid "Main window with customized formats"
-msgstr ""
+msgstr "カスタムの形式を表示しているメインウィンドウ"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:36
 msgid "Editor with an HSL editor"
-msgstr ""
+msgstr "HSL エディターで色を編集している画面"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:40
 msgid "Status page stating to pick a color to get started"
-msgstr ""
+msgstr "色を選択して開始する前のステータスページ"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:52
 msgid "Fixes an issue with the italian translation"
@@ -433,56 +437,56 @@ msgstr ""
 
 #: data/resources/ui/history-item.blp:5
 msgid "Remove"
-msgstr ""
+msgstr "削除"
 
 #: data/resources/ui/placeholder-page.blp:7
 msgid "No Color"
-msgstr ""
+msgstr "色がありません"
 
 #: data/resources/ui/placeholder-page.blp:8
 msgid "Select or enter a color to get started"
-msgstr ""
+msgstr "色をスポイトするか、入力して開始しよう"
 
 #: data/resources/ui/placeholder-page.blp:22
 msgid "View"
-msgstr ""
+msgstr "一覧"
 
 #: data/resources/ui/preferences.blp:5 data/resources/ui/preferences.blp:74
 msgid "Name Sources"
-msgstr ""
+msgstr "色名のソース"
 
 #: data/resources/ui/preferences.blp:17
 msgctxt ""
 "Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
 "#html4"
 msgid "Basic"
-msgstr ""
+msgstr "基本"
 
 #: data/resources/ui/preferences.blp:18
 msgid "Basic web colors"
-msgstr ""
+msgstr "基本的な Web カラー"
 
 #: data/resources/ui/preferences.blp:22
 msgctxt ""
 "Name of the extended color keyword set from https://www.w3.org/TR/css-"
 "color-3/#svg-color"
 msgid "Extended"
-msgstr ""
+msgstr "拡張"
 
 #: data/resources/ui/preferences.blp:23
 msgid "X11 and SVG color values"
-msgstr ""
+msgstr "X11 や SVG の色の値"
 
 #: data/resources/ui/preferences.blp:27
 msgctxt ""
 "Name of the color set from the GNOME color palette (https://developer.gnome."
 "org/hig/reference/palette.html)"
 msgid "GNOME Color Palette"
-msgstr ""
+msgstr "GNOME のカラーパレット"
 
 #: data/resources/ui/preferences.blp:28
 msgid "Colors for GNOME app icons and illustrations"
-msgstr ""
+msgstr "GNOME のアプリアイコンや画像に使用される色"
 
 #: data/resources/ui/preferences.blp:32
 msgctxt "Name of the color set from the xkcd color survey"
@@ -491,147 +495,149 @@ msgstr ""
 
 #: data/resources/ui/preferences.blp:33
 msgid "954 RGB colors named by volunteers"
-msgstr ""
+msgstr "ボランティアによって名付けられた 954 個の RGB カラー"
 
 #: data/resources/ui/preferences.blp:43
 msgid "General"
-msgstr ""
+msgstr "一般"
 
 #: data/resources/ui/preferences.blp:46
 msgid "Formatting"
-msgstr ""
+msgstr "フォーマット"
 
 #: data/resources/ui/preferences.blp:49
 msgid "Alpha-Value Position"
-msgstr ""
+msgstr "アルファ値の場所"
 
 #: data/resources/ui/preferences.blp:50
 msgid "Where the Alphavalue is positioned in the Hexstring"
-msgstr ""
+msgstr "16進数表記の中で、アルファ値をどこに表示するか"
 
 #: data/resources/ui/preferences.blp:54
 msgctxt "Alphavalue is not shown"
 msgid "None"
-msgstr ""
+msgstr "なし"
 
 #: data/resources/ui/preferences.blp:55
 msgctxt "Alphavalue is shown at the end"
 msgid "End"
-msgstr ""
+msgstr "末尾"
 
 #: data/resources/ui/preferences.blp:56
 msgctxt "Alphavalue is shown at the start"
 msgid "Start"
-msgstr ""
+msgstr "先頭"
 
 #: data/resources/ui/preferences.blp:62
 msgid "RGB Notation"
-msgstr ""
+msgstr "RGB の表示形式"
 
 #: data/resources/ui/preferences.blp:63
 msgid "Whether RGB values should be displayed as integers or decimals"
-msgstr ""
+msgstr "RGB の値を整数 (0~255) で表示するか、小数 (0.0~1.0) で表示するか"
 
 #: data/resources/ui/preferences.blp:67
 msgctxt "RGB is format as integers (e.g. 127)"
 msgid "Integer"
-msgstr ""
+msgstr "整数"
 
 #: data/resources/ui/preferences.blp:68
 msgctxt "RGB is format as decimals (e.g. 0.1)"
 msgid "Decimal"
-msgstr ""
+msgstr "小数"
 
 #: data/resources/ui/preferences.blp:75
 msgid "Sources for displaying color names"
-msgstr ""
+msgstr "表示する色名のソース"
 
 #: data/resources/ui/preferences.blp:86 data/resources/ui/preferences.blp:95
 msgid "Precision"
-msgstr ""
+msgstr "精度"
 
 #: data/resources/ui/preferences.blp:103
 msgid "Color Formats"
-msgstr ""
+msgstr "色の表示形式"
 
 #: data/resources/ui/preferences.blp:104
 msgid "Customize the visible formats and in which order they are displayed"
-msgstr ""
+msgstr "色の表示形式のうち、どれをどの順番で表示するかをカスタマイズする"
 
 #: data/resources/ui/preferences.blp:109
 msgctxt "Tooltip of the button to reset the format order"
 msgid "Reset Order"
-msgstr ""
+msgstr "順番をリセット"
 
 #: data/resources/ui/window.blp:7
 msgid "_Clear History"
-msgstr ""
+msgstr "履歴を削除(_C)"
 
 #: data/resources/ui/window.blp:12
 msgid "_Random Color"
-msgstr ""
+msgstr "ランダムな色(_C)"
 
 #: data/resources/ui/window.blp:19
 msgid "_Preferences"
-msgstr ""
+msgstr "設定(_P)"
 
 #: data/resources/ui/window.blp:24
 msgid "_About Eyedropper"
-msgstr ""
+msgstr "Eyedropper について(_A)"
 
 #: data/resources/ui/window.blp:42
 msgctxt "Tooltip of the colorpicker button"
 msgid "Pick a Color"
-msgstr ""
+msgstr "色をスポイトで取得"
 
 #: data/resources/ui/window.blp:49
 msgid "Main Menu"
-msgstr ""
+msgstr "メインメニュー"
 
 #: data/resources/ui/window.blp:94
 msgid "Color Picker not Available"
-msgstr ""
+msgstr "色のスポイトが利用不能"
 
 #: data/resources/ui/window.blp:104
 msgid "The system is not properly configured to allow for color picking"
 msgstr ""
+"使用しているシステムは色のスポイトが適切に機能するようにセットアップされてい"
+"ません"
 
 #: data/resources/ui/window.blp:116
 msgid "_Continue Regardless"
-msgstr ""
+msgstr "それでも続ける(_C)"
 
 #: data/resources/ui/window.blp:150
 msgctxt "Tooltip of the palette button"
 msgid "Edit Color"
-msgstr ""
+msgstr "色を編集"
 
 #: data/resources/ui/window.blp:255 src/widgets/color_format_row.rs:163
 msgid "Apply"
-msgstr ""
+msgstr "適用"
 
 #: src/application.rs:244
 msgid "Allow color selection while the application runs in the background"
-msgstr ""
+msgstr "このアプリケーションがバックグラウンドで動いているときでも色の選択を許可する"
 
 #: src/application.rs:290
 msgid "Pick a New Color"
-msgstr ""
+msgstr "新たな色を選択"
 
 #: src/colors/notation.rs:241
 msgid "Not named"
-msgstr ""
+msgstr "色名無し"
 
 #: src/colors/notation.rs:248
 msgid "Copy Hex Code"
-msgstr ""
+msgstr "16進数コードをコピー"
 
 #: src/colors/notation.rs:269
 msgid "Hex Code"
-msgstr ""
+msgstr "16進数コード"
 
 #: src/colors/notation.rs:282
 msgid "Name"
-msgstr ""
+msgstr "色名"
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/widgets/about_window.rs:35
@@ -640,7 +646,7 @@ msgstr ""
 
 #: src/widgets/color_format_row.rs:232
 msgid "Copied “{}”"
-msgstr ""
+msgstr "「{}」をコピーしました"
 
 #: src/widgets/preferences/preferences_window.rs:355
 msgid "Move Up"
@@ -652,7 +658,7 @@ msgstr ""
 
 #: src/window.rs:269
 msgid "Cleared history"
-msgstr ""
+msgstr "履歴を削除しました"
 
 #: src/window.rs:270
 msgid "Undo"
@@ -660,4 +666,4 @@ msgstr ""
 
 #: src/window.rs:410
 msgid "Failed to pick a color"
-msgstr ""
+msgstr "色の取得に失敗しました"
