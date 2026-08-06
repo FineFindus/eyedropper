@@ -7,36 +7,38 @@ msgstr ""
 "Project-Id-Version: Eyedropper\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
 "POT-Creation-Date: 2026-03-29 11:39+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-08-06 08:02+0000\n"
+"Last-Translator: Doyoung Park <doyoungp.00@gmail.com>\n"
+"Language-Team: Korean <https://hosted.weblate.org/projects/eyedropper/"
+"eyedropper/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2026.8.1.dev0\n"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:3
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
 #: data/resources/ui/window.blp:38 src/main.rs:29
 #: src/widgets/about_window.rs:29
 msgid "Eyedropper"
-msgstr ""
+msgstr "Eyedropper"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:4
 msgid "Color Picker"
-msgstr ""
+msgstr "색상 선택기"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
 #: src/widgets/about_window.rs:57
 msgid "Pick and format colors"
-msgstr ""
+msgstr "색상을 선택하고 형식을 바꿉니다"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:11
 msgid "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
-msgstr ""
+msgstr "그놈;GTK;컬러;색상;색상선택기;선택기;팔레트;"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
 msgid "FineFindus"
@@ -45,154 +47,154 @@ msgstr ""
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
 #: src/widgets/about_window.rs:61
 msgid "Enter or pick a color and view it in different formats."
-msgstr ""
+msgstr "색상을 입력하거나 고른 후 다른 형식으로 봅니다."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
 #: src/widgets/about_window.rs:67
 msgid "Features"
-msgstr ""
+msgstr "기능"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
 #: src/widgets/about_window.rs:71
 msgid "Pick a Color"
-msgstr ""
+msgstr "색상 선택"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
 #: src/widgets/about_window.rs:72
 msgid "Edit the viewed color in a simple HSL editor"
-msgstr ""
+msgstr "간단한 HSL 에디터에서 색상 수정"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
 #: src/widgets/about_window.rs:73
 msgid "Enter a color in various formats"
-msgstr ""
+msgstr "여러 형식으로 색상 입력"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
 #: src/widgets/about_window.rs:75
 msgid ""
 "Convert colors into other formats such as Hex, RGB, HSV, HSL, CMYK, XYZ, CIE-"
 "Lab…"
-msgstr ""
+msgstr "Hex, RGB, HSV, HSL, CMYK, XYZ, CIE-Lab 등의 형식으로 변환"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:28
 msgid "Main window with a color in different formats"
-msgstr ""
+msgstr "색상을 다른 형식으로 보여주는 메인 윈도우"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:32
 msgid "Main window with customized formats"
-msgstr ""
+msgstr "색상을 커스텀 형식으로 보여주는 메인 윈도우"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:36
 msgid "Editor with an HSL editor"
-msgstr ""
+msgstr "HSL 에디터가 포함된 에디터"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:40
 msgid "Status page stating to pick a color to get started"
-msgstr ""
+msgstr "시작하기 위해 색상을 선택하라는 내용의 상태 페이지"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:52
 msgid "Fixes an issue with the italian translation"
-msgstr ""
+msgstr "이탈리아어 번역에 있는 문제 해결"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:57
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:70
 msgid "New features, fixed bugs and updates to modern GNOME styling:"
-msgstr ""
+msgstr "새로운 기능, 버그 해결 및 현대 GNOME 스타일링에 맞춘 업데이트:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:59
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:72
 msgid "RGB can now be displayed in decimal notation"
-msgstr ""
+msgstr "RGB를 이제 십진법으로 표기할 수 있음"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:60
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:73
 msgid "Colors can now be directly entered, without picking a color first"
-msgstr ""
+msgstr "먼저 색상을 선택할 필요 없이 직접 입력 가능"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:61
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:74
 msgid "Support for focus-independent (global) shortcuts"
-msgstr ""
+msgstr "포커스와 무관한 전역 단축키 지원"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:62
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:75
 msgid "Fixed an layout issue on systems where scrollbars are always shown"
-msgstr ""
+msgstr "스크롤 바가 항상 보이는 몇몇 시스템에서의 레이아웃 이슈 해결"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:63
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:76
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:92
 msgid "Updated to modern GNOME styling"
-msgstr ""
+msgstr "현대 GNOME 스타일링에 맞게 업데이트"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:64
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:77
 msgid "Improved checking for unsupported systems"
-msgstr ""
+msgstr "미지원 시스템에 대한 확인 개선"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:83
 msgid "A small fix for failing metadata"
-msgstr ""
+msgstr "메타데이터가 실패하는 작은 오류 해결"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:88
 msgid "A new release, including major reworks the the UI and the color system"
-msgstr ""
+msgstr "UI와 색상 시스템을 대대적으로 개편한 신규 버전"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:90
 msgid "Added a new color editor, allowing to modify colors"
-msgstr ""
+msgstr "색상을 수정할 수 있는 신규 에디터 추가"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:91
 msgid "Reworked the system handling color conversions"
-msgstr ""
+msgstr "색상 변환 시스템 개편"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:93
 msgid "A warning page is now shown on unsupported systems"
-msgstr ""
+msgstr "미지원 시스템에서 경고 페이지 노출"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:94
 msgid "Various internal code improvements and bug fixes"
-msgstr ""
+msgstr "여러 내부 코드 개선 및 버그 수정"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:95
 msgid "Removed the palette dialog"
-msgstr ""
+msgstr "팔레트 다이얼로그 삭제"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:96
 msgid "Removed custom color formats"
-msgstr ""
+msgstr "커스텀 색상 형식 삭제"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:102
 msgid "A new release with exciting new features and many improvements."
-msgstr ""
+msgstr "새로운 기능과 다양한 개선 사항이 포함된 최신 릴리즈입니다."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:104
 msgid "Allow entering any format"
-msgstr ""
+msgstr "아무 형식이나 입력 허용"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:105
 msgid "Display color in overview search"
-msgstr ""
+msgstr "검색에서 색상 표시"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:106
 msgid "Export palettes to LibreOffice"
-msgstr ""
+msgstr "리브레오피스로 팔레트 내보내기"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:107
 msgid "A visual differentiation between color and background"
-msgstr ""
+msgstr "색상과 배경의 시각적 구분"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:108
 msgid "Improved color conversion"
-msgstr ""
+msgstr "개선된 색상 변환"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:109
 msgid "Visual refinements to match the state of the art of GNOME apps"
-msgstr ""
+msgstr "GNOME 앱의 최신 트렌드에 부합하도록 시각적 요소를 세련되게 다듬음"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:110
 msgid "Internal code improvements and bug fixes"
-msgstr ""
+msgstr "내부 코드 개선 및 버그 수정"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:116
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:142
@@ -202,462 +204,468 @@ msgstr ""
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:211
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:223
 msgid "Added:"
-msgstr ""
+msgstr "추가됨:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:118
 msgid "Show a toast with an Undo option when clearing the history"
-msgstr ""
+msgstr "기록 삭제 시 되돌리기 옵션이 있는 토스트 표시"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:119
 msgid "Use Ctrl-Q to close the window"
-msgstr ""
+msgstr "Ctrl-Q로 창 닫기"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:120
 msgid ""
 "Use a default minimum window size, content should no longer unnecessarily "
 "cut off"
-msgstr ""
+msgstr "기본 최소 윈도우 크기를 사용해 콘텐츠가 더 이상 불필요하게 잘리지 않음"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:121
 msgid "New icon by @bertob"
-msgstr ""
+msgstr "@bertob 님이 만든 새로운 아이콘"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:122
 msgid ""
 "Export palettes as Adobe Swatch Exchange (ASE), hex, PAL, Paint.NET (txt) "
 "files"
 msgstr ""
+"팔레트를 Adobe Swatch Exchange(ASE), 16진수, PAL, Paint.NET(txt) 파일로 "
+"내보내기"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:123
 msgid "Minor changes to the store metadata"
-msgstr ""
+msgstr "스토어 메타데이터에 대한 사소한 변경 사항"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:125
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:148
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:170
 msgid "Changed:"
-msgstr ""
+msgstr "변경됨:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:127
 msgid "Hunter-Lab now displays 0 instead of NaN"
-msgstr ""
+msgstr "Hunter-Lab에서 이제 NaN 대신 0으로 표시"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:128
 msgid "Improved tooltips for copying colors"
-msgstr ""
+msgstr "색상 복사 툴팁 개선"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:129
 msgid ""
 "Palette window now uses a button with a more explicit text instead of an icon"
-msgstr ""
+msgstr "팔레트 창에서 아이콘 대신 명확한 텍스트와 버튼 사용"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:130
 msgid "Reworded project description"
-msgstr ""
+msgstr "프로젝트 설명 재작성"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:131
 msgid "Updated all screenshots"
-msgstr ""
+msgstr "모든 스크린샷 업데이트"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:133
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:152
 msgid "Fixed:"
-msgstr ""
+msgstr "수정됨:"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:135
 msgid "Separator is now hidden when the history list is hidden"
-msgstr ""
+msgstr "기록 리스트를 숨기면 구분자도 숨겨짐"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:136
 msgid "Improved editing experience when change the Hex color/name"
-msgstr ""
+msgstr "16진수 색상/이름을 변경할 때의 편집 편의성 개선"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:144
 msgid "Russian translation"
-msgstr ""
+msgstr "러시아어 번역"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:145
 msgid "Better optimized releases"
-msgstr ""
+msgstr "개선된 릴리즈"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:146
 msgid "Returns the exit code on quitting"
-msgstr ""
+msgstr "종료 시 종료 코드 반환"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:150
 msgid "History no longer contains duplicated items"
-msgstr ""
+msgstr "기록에 더 이상 중복되는 항목을 포함하지 않음"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:154
 msgid "Fixed a bug where the wrong rgb format was used"
-msgstr ""
+msgstr "잘못된 RGB 형식을 사용하던 버그 수정"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:155
 msgid "Fixed a bug where LMS and Hunter-Lab had the same setting"
-msgstr ""
+msgstr "LMS와 Hunter-Lab이 같은 설정을 사용하는 버그 수정"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:163
 msgid ""
 "Export the generated palettes from the palette dialog as a GIMP palette file"
-msgstr ""
+msgstr "팔레트 창에서 만든 팔레트를 GIMP 팔레트 파일로 내보내기"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:164
 msgid "A .doap file to describe the project"
-msgstr ""
+msgstr "프로젝트를 설명하기 위한 .doap 파일"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:165
 msgid "Show a placeholder page when no color is picked"
-msgstr ""
+msgstr "색상 미선택 시 보기 페이지 표시"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:166
 msgid "LMS color space can now be shown"
-msgstr ""
+msgstr "LMS 색공간 표시 가능"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:167
 msgid "Convert to Hunter-Lab color space"
-msgstr ""
+msgstr "Hunter-Lab 색공간으로 변환"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:168
 msgid "Customize color formats"
-msgstr ""
+msgstr "색상 형식 커스터마이징"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:172
 msgid "Fixed a bug where the illuminants were not fully shown"
-msgstr ""
+msgstr "광원이 제대로 표시되지 않던 버그 수정"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:173
 msgid "The names of the GNOME color palette are now available"
-msgstr ""
+msgstr "GNOME 색상 팔레트 이름 사용 가능"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:181
 msgid "Options to show names of color (from w3c basic, extended and xkcd)"
-msgstr ""
+msgstr "색상 이름을 표시하는 옵션 (W3C 기본, 확장 및 xkcd 기준)"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:182
 msgid "Change the color by typing a name in the name field"
-msgstr ""
+msgstr "이름 필드에 입력하여 색상 변경"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:183
 msgid ""
 "Palettes are now shown in the palette dialog, accessible by clicking on the "
 "large color button"
 msgstr ""
+"이제 팔레트 대화 상자에 팔레트가 표시되며, 큰 색상 버튼을 클릭하면 접근할 수 "
+"있습니다"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:184
 msgid "The App now uses the AdwAboutWindow"
-msgstr ""
+msgstr "앱에서 이제 AdwAboutWindow를 사용합니다"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:185
 msgid "HSL does now support alpha values"
-msgstr ""
+msgstr "HSL에서 이제 알파값 지원"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:186
 msgid "HWB and CIELCh are now supported"
-msgstr ""
+msgstr "HWB 및 CIELCh 지원 시작"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:187
 msgid "CIE standard observer for CIELab and CIELCh"
-msgstr ""
+msgstr "CIELab 및 CIELCh용 CIE 표준 관측자"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:188
 msgid "Change CIE illuminants"
-msgstr ""
+msgstr "CIE 광원 변경"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:194
 msgid "Fixed a few bugs and added Dutch translations."
-msgstr ""
+msgstr "버그 수정 및 네덜란드어 번역을 추가했습니다."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:201
 msgid ""
 "Palettes, consisting of darker shades and lighter tints, are now generated "
 "from the currently picked color as well as the previous 3"
 msgstr ""
+"어두운 색조와 밝은 색조로 구성된 팔레트는 이제 현재 선택된 색상과 이전 3개의 "
+"색상을 바탕으로 생성됨"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:202
 msgid ""
 "Change the order of the color formats by dragging and dropping them in the "
 "settings"
-msgstr ""
+msgstr "설정에서 색상 형식을 드래그하여 정렬"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:203
 msgid "The app has been translated into French by rene-coty"
-msgstr ""
+msgstr "이 앱은 rene-coty에 의해 프랑스어로 번역되었습니다"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:204
 msgid "A German translation has been added"
-msgstr ""
+msgstr "독일어 번역 추가"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:205
 msgid "Adjusted some strings to be easier to understand"
-msgstr ""
+msgstr "몇 가지 문자열을 이해하기 쉽도록 수정"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:213
 msgid "Issue and feature-request templates"
-msgstr ""
+msgstr "이슈 및 기능 제안 템플릿"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:214
 msgid "Change the color using hex values in the hex field"
-msgstr ""
+msgstr "16진수 입력란에 16진수 값을 입력하여 색상을 변경하세요"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:215
 msgid "Previous colors are now visible in the history list"
-msgstr ""
+msgstr "이전 색상은 기록에서 확인할 수 있습니다"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:216
 msgid "Disable unwanted color models"
-msgstr ""
+msgstr "원하지 않는 색상 모델 비활성화"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:217
 msgid "Colors can now be shown as XYZ or CIELAB format"
-msgstr ""
+msgstr "색상을 이제 XYZ 및 CIELAB 형식으로 표현 가능"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:225
 msgid "Basic UI"
-msgstr ""
+msgstr "기본 UI"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:226
 msgid "Pick a color using the color picker button"
-msgstr ""
+msgstr "색상 선택 버튼으로 색상 선택"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:227
 msgid "Copy the color in different color models"
-msgstr ""
+msgstr "다양한 색상 모델로 색상 복사"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:228
 msgid "Change the position of the alpha values in hex values"
-msgstr ""
+msgstr "16진수 값으로 표시된 알파 값의 위치 변경"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:229
 msgid "Added License"
-msgstr ""
+msgstr "라이선스 추가"
 
 #: data/resources/ui/history-item.blp:5
 msgid "Remove"
-msgstr ""
+msgstr "제거"
 
 #: data/resources/ui/placeholder-page.blp:7
 msgid "No Color"
-msgstr ""
+msgstr "색상 없음"
 
 #: data/resources/ui/placeholder-page.blp:8
 msgid "Select or enter a color to get started"
-msgstr ""
+msgstr "시작하려면 색상을 고르거나 입력하세요"
 
 #: data/resources/ui/placeholder-page.blp:22
 msgid "View"
-msgstr ""
+msgstr "보기"
 
 #: data/resources/ui/preferences.blp:5 data/resources/ui/preferences.blp:74
 msgid "Name Sources"
-msgstr ""
+msgstr "이름 출처"
 
 #: data/resources/ui/preferences.blp:17
 msgctxt ""
 "Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
 "#html4"
 msgid "Basic"
-msgstr ""
+msgstr "기본"
 
 #: data/resources/ui/preferences.blp:18
 msgid "Basic web colors"
-msgstr ""
+msgstr "기본 웹 색상"
 
 #: data/resources/ui/preferences.blp:22
 msgctxt ""
 "Name of the extended color keyword set from https://www.w3.org/TR/css-"
 "color-3/#svg-color"
 msgid "Extended"
-msgstr ""
+msgstr "확장됨"
 
 #: data/resources/ui/preferences.blp:23
 msgid "X11 and SVG color values"
-msgstr ""
+msgstr "X11 및 SVG 색상값"
 
 #: data/resources/ui/preferences.blp:27
 msgctxt ""
 "Name of the color set from the GNOME color palette (https://developer.gnome."
 "org/hig/reference/palette.html)"
 msgid "GNOME Color Palette"
-msgstr ""
+msgstr "GNOME 색상 팔레트"
 
 #: data/resources/ui/preferences.blp:28
 msgid "Colors for GNOME app icons and illustrations"
-msgstr ""
+msgstr "GNOME 앱 아이콘 및 그림 색상"
 
 #: data/resources/ui/preferences.blp:32
 msgctxt "Name of the color set from the xkcd color survey"
 msgid "xkcd Color Survey"
-msgstr ""
+msgstr "xkcd 색상 설문조사"
 
 #: data/resources/ui/preferences.blp:33
 msgid "954 RGB colors named by volunteers"
-msgstr ""
+msgstr "자원봉사자들이 이름을 지어준 954가지 RGB 색상"
 
 #: data/resources/ui/preferences.blp:43
 msgid "General"
-msgstr ""
+msgstr "일반"
 
 #: data/resources/ui/preferences.blp:46
 msgid "Formatting"
-msgstr ""
+msgstr "형식"
 
 #: data/resources/ui/preferences.blp:49
 msgid "Alpha-Value Position"
-msgstr ""
+msgstr "알파값 위치"
 
 #: data/resources/ui/preferences.blp:50
 msgid "Where the Alphavalue is positioned in the Hexstring"
-msgstr ""
+msgstr "16진수 내 알파값이 위치한 곳"
 
 #: data/resources/ui/preferences.blp:54
 msgctxt "Alphavalue is not shown"
 msgid "None"
-msgstr ""
+msgstr "없음"
 
 #: data/resources/ui/preferences.blp:55
 msgctxt "Alphavalue is shown at the end"
 msgid "End"
-msgstr ""
+msgstr "끝"
 
 #: data/resources/ui/preferences.blp:56
 msgctxt "Alphavalue is shown at the start"
 msgid "Start"
-msgstr ""
+msgstr "시작"
 
 #: data/resources/ui/preferences.blp:62
 msgid "RGB Notation"
-msgstr ""
+msgstr "RGB 표기"
 
 #: data/resources/ui/preferences.blp:63
 msgid "Whether RGB values should be displayed as integers or decimals"
-msgstr ""
+msgstr "RGB 값을 정수 또는 소수로 표현할지 여부"
 
 #: data/resources/ui/preferences.blp:67
 msgctxt "RGB is format as integers (e.g. 127)"
 msgid "Integer"
-msgstr ""
+msgstr "정수"
 
 #: data/resources/ui/preferences.blp:68
 msgctxt "RGB is format as decimals (e.g. 0.1)"
 msgid "Decimal"
-msgstr ""
+msgstr "소수"
 
 #: data/resources/ui/preferences.blp:75
 msgid "Sources for displaying color names"
-msgstr ""
+msgstr "색상 이름 출처"
 
 #: data/resources/ui/preferences.blp:86 data/resources/ui/preferences.blp:95
 msgid "Precision"
-msgstr ""
+msgstr "정확도"
 
 #: data/resources/ui/preferences.blp:103
 msgid "Color Formats"
-msgstr ""
+msgstr "색상 형식"
 
 #: data/resources/ui/preferences.blp:104
 msgid "Customize the visible formats and in which order they are displayed"
-msgstr ""
+msgstr "표시되는 형식과 표시 순서 커스터마이징"
 
 #: data/resources/ui/preferences.blp:109
 msgctxt "Tooltip of the button to reset the format order"
 msgid "Reset Order"
-msgstr ""
+msgstr "순서 초기화"
 
 #: data/resources/ui/window.blp:7
 msgid "_Clear History"
-msgstr ""
+msgstr "기록 지우기 (_C)"
 
 #: data/resources/ui/window.blp:12
 msgid "_Random Color"
-msgstr ""
+msgstr "무작위 색상 (_R)"
 
 #: data/resources/ui/window.blp:19
 msgid "_Preferences"
-msgstr ""
+msgstr "설정 (_P)"
 
 #: data/resources/ui/window.blp:24
 msgid "_About Eyedropper"
-msgstr ""
+msgstr "Eyedropper 정보 (_A)"
 
 #: data/resources/ui/window.blp:42
 msgctxt "Tooltip of the colorpicker button"
 msgid "Pick a Color"
-msgstr ""
+msgstr "색상 선택"
 
 #: data/resources/ui/window.blp:49
 msgid "Main Menu"
-msgstr ""
+msgstr "메인 메뉴"
 
 #: data/resources/ui/window.blp:94
 msgid "Color Picker not Available"
-msgstr ""
+msgstr "색상 선택기 사용 불가"
 
 #: data/resources/ui/window.blp:104
 msgid "The system is not properly configured to allow for color picking"
-msgstr ""
+msgstr "색상을 선택할 수 있도록 시스템이 구성되지 않았습니다"
 
 #: data/resources/ui/window.blp:116
 msgid "_Continue Regardless"
-msgstr ""
+msgstr "무시하고 계속 (_C)"
 
 #: data/resources/ui/window.blp:150
 msgctxt "Tooltip of the palette button"
 msgid "Edit Color"
-msgstr ""
+msgstr "색상 수정"
 
 #: data/resources/ui/window.blp:255 src/widgets/color_format_row.rs:163
 msgid "Apply"
-msgstr ""
+msgstr "적용"
 
 #: src/application.rs:244
 msgid "Allow color selection while the application runs in the background"
-msgstr ""
+msgstr "앱이 백그라운드에서 실행되는 동안 색상 선택"
 
 #: src/application.rs:290
 msgid "Pick a New Color"
-msgstr ""
+msgstr "새로운 색상 선택"
 
 #: src/colors/notation.rs:241
 msgid "Not named"
-msgstr ""
+msgstr "이름 없음"
 
 #: src/colors/notation.rs:248
 msgid "Copy Hex Code"
-msgstr ""
+msgstr "16진수 코드 복사"
 
 #: src/colors/notation.rs:269
 msgid "Hex Code"
-msgstr ""
+msgstr "16진수 코드"
 
 #: src/colors/notation.rs:282
 msgid "Name"
-msgstr ""
+msgstr "이름"
 
 #. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
 #: src/widgets/about_window.rs:35
 msgid "translator-credits"
-msgstr ""
+msgstr "Doyoung Park <doyoungp.00@gmail.com>"
 
 #: src/widgets/color_format_row.rs:232
 msgid "Copied “{}”"
-msgstr ""
+msgstr "“{}” 복사함"
 
 #: src/widgets/preferences/preferences_window.rs:355
 msgid "Move Up"
-msgstr ""
+msgstr "위로 이동"
 
 #: src/widgets/preferences/preferences_window.rs:357
 msgid "Move Down"
-msgstr ""
+msgstr "아래로 이동"
 
 #: src/window.rs:269
 msgid "Cleared history"
-msgstr ""
+msgstr "기록 삭제됨"
 
 #: src/window.rs:270
 msgid "Undo"
-msgstr ""
+msgstr "되돌리기"
 
 #: src/window.rs:410
 msgid "Failed to pick a color"
-msgstr ""
+msgstr "색상 선택 실패"
