@@ -58,8 +58,8 @@ mod imp {
 
             // Set icons for shell
             gtk::Window::set_default_icon_name(APP_ID);
-            let app = self.obj();
 
+            let app = self.obj();
             let ctx = glib::MainContext::default();
             ctx.spawn_local(glib::clone!(
                 #[weak]
@@ -273,9 +273,12 @@ impl App {
     /// Uses the [Global Shortcuts portal](https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.GlobalShortcuts.html).
     async fn setup_global_shortcuts(&self) -> ashpd::Result<()> {
         let root = self
-            .active_app_window()
-            .root()
-            .expect("Failed to get window root");
+            .active_window()
+            .and_downcast::<AppWindow>()
+            .and_then(|window| window.root())
+            .ok_or(ashpd::Error::ParseError(
+                "Enabled to retrieve application root window",
+            ))?;
         let identifier = ashpd::WindowIdentifier::from_native(&root).await;
 
         let global_shortcuts = ashpd::desktop::global_shortcuts::GlobalShortcuts::new().await?;
