@@ -13,6 +13,18 @@ template $PlaceholderPage: Adw.Bin {
       spacing: 25;
       orientation: vertical;
 
+      Button {
+        label: _("_Pick a Color");
+        use-underline: true;
+        halign: center;
+        action-name: "win.pick-color";
+
+        styles [
+          "pill",
+          "suggested-action",
+        ]
+      }
+
       Entry initial_color_entry {
         placeholder-text: "#2190A4";
         activate => $on_color_entry_active() swapped;
@@ -26,7 +38,6 @@ template $PlaceholderPage: Adw.Bin {
 
         styles [
           "pill",
-          "suggested-action",
         ]
       }
     };
