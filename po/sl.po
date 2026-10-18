@@ -1,0 +1,325 @@
+# Slovenian translation for eyedropper.
+# Copyright (C) 2026 eyedropper's COPYRIGHT HOLDER
+# This file is distributed under the same license as the eyedropper package.
+# Martin Srebotnjak <miles@filmsi.net>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: eyedropper main\n"
+"Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper/issues\n"
+"POT-Creation-Date: 2026-10-02 20:17+0000\n"
+"PO-Revision-Date: 2026-10-18 16:25+0200\n"
+"Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
+"Language-Team: Slovenian <Slovenian>\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
+"n%100==4 ? 3 : 0);\n"
+"X-Generator: Poedit 3.8\n"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:2
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
+#: data/resources/ui/window.blp:38 src/main.rs:29
+#: src/widgets/about_window.rs:29
+msgid "Eyedropper"
+msgstr "Kapalka"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:3
+msgid "Color Picker"
+msgstr "Kapalka"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:4
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
+#: src/widgets/about_window.rs:57
+msgid "Pick and format colors"
+msgstr "Izberite in oblikujte barve"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/com.github.finefindus.eyedropper.desktop.in.in:10
+msgid "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
+msgstr "Gnome;GTK;barva;kapalka;paleta;"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
+#: src/widgets/about_window.rs:61
+msgid "Enter or pick a color and view it in different formats."
+msgstr "Vnesite ali izberite barvo, da si jo ogledate v različnih oblikah."
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
+#: src/widgets/about_window.rs:67
+msgid "Features"
+msgstr "Funkcionalnosti"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
+#: src/widgets/about_window.rs:71
+msgid "Pick a Color"
+msgstr "Izberite barvo"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
+#: src/widgets/about_window.rs:72
+msgid "Edit the viewed color in a simple HSL editor"
+msgstr "Uredi ogledano barvo v enostavnem urejevalniku HSL"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
+#: src/widgets/about_window.rs:73
+msgid "Enter a color in various formats"
+msgstr "Vnesite barvo v različnih oblikah"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
+#: src/widgets/about_window.rs:75
+msgid ""
+"Convert colors into other formats such as Hex, RGB, HSV, HSL, CMYK, XYZ, CIE-"
+"Lab…"
+msgstr ""
+"Pretvori barve v druge oblike, kot so šestn. (HEX), RGB, HSV, HSL, CMYK, "
+"XYZ, CIE-Lab…"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:28
+msgid "Main window with a color in different formats"
+msgstr "Glavno okno z barvo v različnih oblikah"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:32
+msgid "Main window with customized formats"
+msgstr "Glavno okno s prilagojenimi oblikami"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:36
+msgid "Editor with an HSL editor"
+msgstr "Urejevalnik z urejevalnikom HSL"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:40
+msgid "Status page stating to pick a color to get started"
+msgstr "Stran stanja, ki usmerja k izboru barve za začetek dela"
+
+#: data/resources/ui/history-item.blp:5
+msgid "Remove"
+msgstr "Odstrani"
+
+#: data/resources/ui/placeholder-page.blp:7
+msgid "No Color"
+msgstr "Brez barve"
+
+#: data/resources/ui/placeholder-page.blp:8
+msgid "Select or enter a color to get started"
+msgstr "Izberite ali vnesite barvo za začetek"
+
+#: data/resources/ui/placeholder-page.blp:22
+msgid "View"
+msgstr "Pogled"
+
+#: data/resources/ui/preferences.blp:5 data/resources/ui/preferences.blp:74
+msgid "Name Sources"
+msgstr "Viri imen"
+
+#: data/resources/ui/preferences.blp:17
+msgctxt ""
+"Name of the basic color keyword set from https://www.w3.org/TR/css-color-3/"
+"#html4"
+msgid "Basic"
+msgstr "Osnovno"
+
+#: data/resources/ui/preferences.blp:18
+msgid "Basic web colors"
+msgstr "Osnovne spletne barve"
+
+#: data/resources/ui/preferences.blp:22
+msgctxt ""
+"Name of the extended color keyword set from https://www.w3.org/TR/css-"
+"color-3/#svg-color"
+msgid "Extended"
+msgstr "Razširjeno"
+
+#: data/resources/ui/preferences.blp:23
+msgid "X11 and SVG color values"
+msgstr "Barvne vrednosti X11 in SVG"
+
+#: data/resources/ui/preferences.blp:27
+msgctxt ""
+"Name of the color set from the GNOME color palette (https://"
+"developer.gnome.org/hig/reference/palette.html)"
+msgid "GNOME Color Palette"
+msgstr "Barvna paleta GNOME"
+
+#: data/resources/ui/preferences.blp:28
+msgid "Colors for GNOME app icons and illustrations"
+msgstr "Barve za ikone programov in ilustracije GNOME"
+
+#: data/resources/ui/preferences.blp:32
+#, fuzzy
+msgctxt "Name of the color set from the xkcd color survey"
+msgid "xkcd Color Survey"
+msgstr "Barvna anketa xkcd"
+
+#: data/resources/ui/preferences.blp:33
+msgid "954 RGB colors named by volunteers"
+msgstr "954 barv RGB, ki so jih poimenovali prostovoljci"
+
+#: data/resources/ui/preferences.blp:43
+msgid "General"
+msgstr "Splošno"
+
+#: data/resources/ui/preferences.blp:46
+msgid "Formatting"
+msgstr "Oblikovanje"
+
+#: data/resources/ui/preferences.blp:49
+msgid "Alpha-Value Position"
+msgstr "Položaj vrednosti alfe"
+
+#: data/resources/ui/preferences.blp:50
+msgid "Where the Alphavalue is positioned in the Hexstring"
+msgstr "Kje je umeščena vrednost alfe v šestnajstiškem nizu"
+
+#: data/resources/ui/preferences.blp:54
+msgctxt "Alphavalue is not shown"
+msgid "None"
+msgstr "Brez"
+
+#: data/resources/ui/preferences.blp:55
+msgctxt "Alphavalue is shown at the end"
+msgid "End"
+msgstr "Konec"
+
+#: data/resources/ui/preferences.blp:56
+msgctxt "Alphavalue is shown at the start"
+msgid "Start"
+msgstr "Začetek"
+
+#: data/resources/ui/preferences.blp:62
+#, fuzzy
+msgid "RGB Notation"
+msgstr "Zapis RGB"
+
+#: data/resources/ui/preferences.blp:63
+msgid "Whether RGB values should be displayed as integers or decimals"
+msgstr ""
+"Ali naj bodo vrednosti RGB prikazane kot cela števila ali števila z "
+"decimalkami"
+
+#: data/resources/ui/preferences.blp:67
+msgctxt "RGB is format as integers (e.g. 127)"
+msgid "Integer"
+msgstr "Celo število"
+
+#: data/resources/ui/preferences.blp:68
+msgctxt "RGB is format as decimals (e.g. 0.1)"
+msgid "Decimal"
+msgstr "Decimalno število"
+
+#: data/resources/ui/preferences.blp:75
+msgid "Sources for displaying color names"
+msgstr "Viri za prikaz imen barv"
+
+#: data/resources/ui/preferences.blp:86 data/resources/ui/preferences.blp:95
+msgid "Precision"
+msgstr "Natančnost"
+
+#: data/resources/ui/preferences.blp:103
+#, fuzzy
+msgid "Color Formats"
+msgstr "Barvne oblike"
+
+#: data/resources/ui/preferences.blp:104
+msgid "Customize the visible formats and in which order they are displayed"
+msgstr "Prilagodite vidne oblike in zaporedje, v katerem so prikazane."
+
+#: data/resources/ui/preferences.blp:109
+msgctxt "Tooltip of the button to reset the format order"
+msgid "Reset Order"
+msgstr "Ponastavi zaporedje"
+
+#: data/resources/ui/window.blp:7
+msgid "_Clear History"
+msgstr "_Počisti zgodovino"
+
+#: data/resources/ui/window.blp:12
+msgid "_Random Color"
+msgstr "_Naključna barva"
+
+#: data/resources/ui/window.blp:19
+msgid "_Preferences"
+msgstr "_Nastavitve"
+
+#: data/resources/ui/window.blp:24
+msgid "_About Eyedropper"
+msgstr "_O Kapalki"
+
+#: data/resources/ui/window.blp:42
+msgctxt "Tooltip of the colorpicker button"
+msgid "Pick a Color"
+msgstr "Izberite barvo"
+
+#: data/resources/ui/window.blp:49
+msgid "Main Menu"
+msgstr "Glavni meni"
+
+#: data/resources/ui/window.blp:94
+msgid "Color Picker not Available"
+msgstr "Izbirnik barv ni na voljo"
+
+#: data/resources/ui/window.blp:104
+msgid "The system is not properly configured to allow for color picking"
+msgstr "Sistem ni ustrezno prilagojen, da bi omogočal izbor barv"
+
+#: data/resources/ui/window.blp:116
+msgid "_Continue Regardless"
+msgstr "_Nadaljuj ne glede na to"
+
+#: data/resources/ui/window.blp:150
+msgctxt "Tooltip of the palette button"
+msgid "Edit Color"
+msgstr "Uredi barvo"
+
+#: data/resources/ui/window.blp:255 src/widgets/color_format_row.rs:163
+msgid "Apply"
+msgstr "Uveljavi"
+
+#: src/application.rs:244
+msgid "Allow color selection while the application runs in the background"
+msgstr "Dovoli izbor barv, medtem ko program teče v ozadju"
+
+#: src/application.rs:293
+msgid "Pick a New Color"
+msgstr "Izberite novo barvo"
+
+#: src/colors/notation.rs:241
+msgid "Not named"
+msgstr "Neimenovano"
+
+#: src/colors/notation.rs:269
+msgid "Hex Code"
+msgstr "Šestnajstiška koda"
+
+#: src/colors/notation.rs:282
+msgid "Name"
+msgstr "Ime"
+
+#. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
+#: src/widgets/about_window.rs:35
+msgid "translator-credits"
+msgstr "Martin Srebotnjak <miles@filmsi.net>"
+
+#: src/widgets/color_format_row.rs:232
+#, rust-format
+msgid "Copied “{}”"
+msgstr "Kopirano »{}«"
+
+#: src/widgets/preferences/preferences_window.rs:355
+msgid "Move Up"
+msgstr "Premakni navzgor"
+
+#: src/widgets/preferences/preferences_window.rs:357
+msgid "Move Down"
+msgstr "Premakni navzdol"
+
+#: src/window.rs:269
+msgid "Cleared history"
+msgstr "Zgodovina počiščena"
+
+#: src/window.rs:270
+msgid "Undo"
+msgstr "Razveljavi"
+
+#: src/window.rs:410
+msgid "Failed to pick a color"
+msgstr "Izbor barve je spodletel"
