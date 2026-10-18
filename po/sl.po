@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: eyedropper main\n"
 "Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper/issues\n"
 "POT-Creation-Date: 2026-10-02 20:17+0000\n"
-"PO-Revision-Date: 2026-10-18 16:25+0200\n"
+"PO-Revision-Date: 2026-10-18 21:05+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <Slovenian>\n"
 "Language: sl\n"
@@ -145,10 +145,9 @@ msgid "Colors for GNOME app icons and illustrations"
 msgstr "Barve za ikone programov in ilustracije GNOME"
 
 #: data/resources/ui/preferences.blp:32
-#, fuzzy
 msgctxt "Name of the color set from the xkcd color survey"
 msgid "xkcd Color Survey"
-msgstr "Barvna anketa xkcd"
+msgstr "Raziskava barv xkcd"
 
 #: data/resources/ui/preferences.blp:33
 msgid "954 RGB colors named by volunteers"
@@ -186,7 +185,6 @@ msgid "Start"
 msgstr "Začetek"
 
 #: data/resources/ui/preferences.blp:62
-#, fuzzy
 msgid "RGB Notation"
 msgstr "Zapis RGB"
 
@@ -215,7 +213,6 @@ msgid "Precision"
 msgstr "Natančnost"
 
 #: data/resources/ui/preferences.blp:103
-#, fuzzy
 msgid "Color Formats"
 msgstr "Barvne oblike"
 
