@@ -2,58 +2,55 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Eyedropper package.
 # Flynn <cirilla@tuta.io>, 2025, 2026.
+# Flynn Peck <cirilla@tuta.io>, 2026.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Eyedropper\n"
-"Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper\n"
-"POT-Creation-Date: 2025-11-23 20:01+0000\n"
-"PO-Revision-Date: 2026-01-28 11:18+0000\n"
-"Last-Translator: Flynn <cirilla@tuta.io>\n"
-"Language-Team: Cornish <https://hosted.weblate.org/projects/eyedropper/"
-"eyedropper/kw/>\n"
+"Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper/issues\n"
+"POT-Creation-Date: 2026-10-02 20:17+0000\n"
+"PO-Revision-Date: 2026-10-22 02:10+0100\n"
+"Last-Translator: Flynn Peck <cirilla@tuta.io>\n"
+"Language-Team: Cornish\n"
 "Language: kw\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=(n == 0) ? 0 : ((n == 1) ? 1 : (((n % 100 "
-"== 2 || n % 100 == 22 || n % 100 == 42 || n % 100 == 62 || n % 100 == 82) || "
-"n % 1000 == 0 && (n % 100000 >= 1000 && n % 100000 <= 20000 || n % 100000 == "
-"40000 || n % 100000 == 60000 || n % 100000 == 80000) || n != 0 && n % "
-"1000000 == 100000) ? 2 : ((n % 100 == 3 || n % 100 == 23 || n % 100 == 43 || "
-"n % 100 == 63 || n % 100 == 83) ? 3 : ((n != 1 && (n % 100 == 1 || n % 100 "
-"== 21 || n % 100 == 41 || n % 100 == 61 || n % 100 == 81)) ? 4 : 5))));\n"
-"X-Generator: Weblate 5.16-dev\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 51.0\n"
+"X-DL-VCS-Web: https://github.com/FineFindus/eyedropper\n"
+"X-DL-Lang: kw\n"
+"X-DL-Module: eyedropper\n"
+"X-DL-Branch: main\n"
+"X-DL-Domain: po\n"
+"X-DL-State: Translating\n"
 
-#: data/com.github.finefindus.eyedropper.desktop.in.in:3
+#: data/com.github.finefindus.eyedropper.desktop.in.in:2
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
-#: data/resources/ui/window.blp:38 src/main.rs:30
+#: data/resources/ui/window.blp:38 src/main.rs:29
 #: src/widgets/about_window.rs:29
 msgid "Eyedropper"
-msgstr "Eyedropper"
+msgstr "Dagrell"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:3
+msgid "Color Picker"
+msgstr "Kunteller Liw"
 
 #: data/com.github.finefindus.eyedropper.desktop.in.in:4
-msgid "Color Picker"
-msgstr "Kunteller Kolor"
-
-#: data/com.github.finefindus.eyedropper.desktop.in.in:5
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
 #: src/widgets/about_window.rs:57
 msgid "Pick and format colors"
-msgstr "Kuntel ha furvasa kolors"
+msgstr "Kuntel ha furvasa liwyow"
 
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
-#: data/com.github.finefindus.eyedropper.desktop.in.in:11
+#: data/com.github.finefindus.eyedropper.desktop.in.in:10
 msgid "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
-msgstr "Gnome;GTK;Kolor;Kunteller Kolor;Kunteller;"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:10
-msgid "FineFindus"
-msgstr ""
+msgstr "Gnome;GTK;Liw;Kunteller Liw;Kunteller;Liwvord;"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
 #: src/widgets/about_window.rs:61
 msgid "Enter or pick a color and view it in different formats."
-msgstr "Ynworra po kuntel unn kolor ha furvasa y yn furvasow dyffrans."
+msgstr "Ynworra po kuntel liw hag y furvasa yn furvasow dyffrans."
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
 #: src/widgets/about_window.rs:67
@@ -63,17 +60,17 @@ msgstr "Nasyow"
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
 #: src/widgets/about_window.rs:71
 msgid "Pick a Color"
-msgstr "Kuntel unn Kolor"
+msgstr "Kuntel Liw"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
 #: src/widgets/about_window.rs:72
 msgid "Edit the viewed color in a simple HSL editor"
-msgstr "Golego an kolor gwelow yn unn chanjyell simpel HSL"
+msgstr "Golegi an liw gwelys yn chanjyell sempel HSL"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
 #: src/widgets/about_window.rs:73
 msgid "Enter a color in various formats"
-msgstr "Ynworra unn kolor yn furvasow dyffrans"
+msgstr "Ynworra liw yn furvasow dyffrans"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
 #: src/widgets/about_window.rs:75
@@ -81,369 +78,23 @@ msgid ""
 "Convert colors into other formats such as Hex, RGB, HSV, HSL, CMYK, XYZ, CIE-"
 "Lab…"
 msgstr ""
-"Treylya kolors yn furvasow aral kepar ha Hex, RGB, HSV, CMYK, XYZ, CIE-Lab…"
+"Treylya liwyow yn furvasow erel kepar ha Hex, RGB, HSV, CMYK, XYZ, CIE-Lab…"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:28
 msgid "Main window with a color in different formats"
-msgstr "Fenester chif gans unn kolor yn furvasow dyffrans"
+msgstr "Pennfenester gans liw yn furvasow dyffrans"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:32
 msgid "Main window with customized formats"
-msgstr "Fenester chif gans furvasow personelhys"
+msgstr "Pennfenester gans furvasow personelhys"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:36
 msgid "Editor with an HSL editor"
-msgstr "Chanjyell gans unn chanjell HSL"
+msgstr "Chanjyell gans chanjell HSL"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:40
 msgid "Status page stating to pick a color to get started"
-msgstr "Folen studh ow meneges dhe kuntel unn kolor dhe mos dallethys"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:52
-msgid "New features, fixed bugs and updates to modern GNOME styling:"
-msgstr "Nasyow nowydh, ewnhys kudynnow, ha nowedhys dhe gis arnowydh GNOME:"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:54
-msgid "RGB can now be displayed in decimal notation"
-msgstr "RGB gallos bos displetys yn nosyans degeth"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:55
-msgid "Colors can now be directly entered, without picking a color first"
-msgstr "Kolors gallos bos ynworrys distowgh, heb ow kuntel unn kolor a-dherag"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:56
-msgid "Support for focus-independent (global) shortcuts"
-msgstr "Skoodhyans dhe kesunyansow bysowek ollvysel"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:57
-msgid "Fixed an layout issue on systems where scrollbars are always shown"
-msgstr ""
-"Ewnhys unn kudyn aray yn amontyellow le may barrys scroll yw diskwedhesys "
-"pub prys"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:58
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:74
-msgid "Updated to modern GNOME styling"
-msgstr "Nowedhys dhe gis GNOME arnowydh"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:59
-msgid "Improved checking for unsupported systems"
-msgstr "Gwellhys ow checkya dhe amontyellow anskooydhys"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:65
-msgid "A small fix for failing metadata"
-msgstr "Unn ewnans byghan rag data ow fyllell"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:70
-msgid "A new release, including major reworks the the UI and the color system"
-msgstr ""
-"Unn versyon nowydh, ow komprehendya nowedhys brassa dhe'n ynterfas ha an "
-"system kolor"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:72
-msgid "Added a new color editor, allowing to modify colors"
-msgstr "Addys unn chanjyell nowydh kolor, ow gasa dhe chanjya kolors"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:73
-msgid "Reworked the system handling color conversions"
-msgstr "Dasoberi an system mayth ow handla treylyans kolor"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:75
-msgid "A warning page is now shown on unsupported systems"
-msgstr "Unn folen gwarnyans yw lemmyn diskwedhesys yn amontyellow anskoodhys"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:76
-msgid "Various internal code improvements and bug fixes"
-msgstr "Gwellheansow divers dhe kod ha ewnhys kudynnow"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:77
-msgid "Removed the palette dialog"
-msgstr "Removys an fenester liwvord"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:78
-msgid "Removed custom color formats"
-msgstr "Removys furvasow a-vusur kolor"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:84
-msgid "A new release with exciting new features and many improvements."
-msgstr "Unn versyon nowydh gans nasyow nowydh yntanus ha meur a gwellheansow."
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:86
-msgid "Allow entering any format"
-msgstr "Alowa owth ynworra neb furvas"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:87
-msgid "Display color in overview search"
-msgstr "Diskwedhes kolor yn hwithrans system"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:88
-msgid "Export palettes to LibreOffice"
-msgstr "Esporthya liwvordow dhe LibreOffice"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:89
-msgid "A visual differentiation between color and background"
-msgstr "Unn dihevelepter gwelesek tredh kolor ha kilva"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:90
-msgid "Improved color conversion"
-msgstr "Gwellhys treylyans kolor"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:91
-msgid "Visual refinements to match the state of the art of GNOME apps"
-msgstr "Gwellheansow gwelesek dhe omdhesedha an appys GNOME flamm nowydh"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:92
-msgid "Internal code improvements and bug fixes"
-msgstr "Gwellheansow kod ha ewnhys kudynnow"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:98
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:124
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:143
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:161
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:181
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:193
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:205
-msgid "Added:"
-msgstr "Keworrys:"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:100
-msgid "Show a toast with an Undo option when clearing the history"
-msgstr "Diskwedhes unn tardhik gans unn dewis digelmi pan ow dilea an istori"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:101
-msgid "Use Ctrl-Q to close the window"
-msgstr "Devnydhya Ctrl-Q dhe degea an fenester"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:102
-msgid ""
-"Use a default minimum window size, content should no longer unnecessarily "
-"cut off"
-msgstr ""
-"Devnydhya unn braster fenester lyha defowt, dalgh na fella treghi dhe-ves "
-"heb res"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:103
-msgid "New icon by @bertob"
-msgstr "Arwodhik nowydh gans @bertob"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:104
-msgid ""
-"Export palettes as Adobe Swatch Exchange (ASE), hex, PAL, Paint.NET (txt) "
-"files"
-msgstr ""
-"Esporthya liwvordow dhe restrennow Adobe Swatch Exchange (ASE), hex, PAL, "
-"Paint.NET (txt)"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:105
-msgid "Minor changes to the store metadata"
-msgstr "Chanjyow le dhe'n data gwerthji"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:107
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:130
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:152
-msgid "Changed:"
-msgstr "Janjyas:"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:109
-msgid "Hunter-Lab now displays 0 instead of NaN"
-msgstr "Hunter-Lab diskwedhes lemmyn 0 yn le NaN"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:110
-msgid "Improved tooltips for copying colors"
-msgstr "Gwellys deskrifansow toulys dhe ow kopia kolorys"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:111
-msgid ""
-"Palette window now uses a button with a more explicit text instead of an icon"
-msgstr ""
-"Fenester liwvord gulys lemmyn devnydh a unn boton gans tekst yn le unn ikon"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:112
-msgid "Reworded project description"
-msgstr "Dassrifys deskrifans ragdres"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:113
-msgid "Updated all screenshots"
-msgstr "Nowedhys oll imajys"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:115
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:134
-msgid "Fixed:"
-msgstr "Ewnhys:"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:117
-msgid "Separator is now hidden when the history list is hidden"
-msgstr "Diberther yw kudh lemmyn pan an rol istori yw kudh"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:118
-msgid "Improved editing experience when change the Hex color/name"
-msgstr "Gwellys klewans chanjyell pan chanjow an kanow kolor"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:126
-msgid "Russian translation"
-msgstr "Treylyans Russek"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:127
-msgid "Better optimized releases"
-msgstr "Versyons gans gwrythyans gwell"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:128
-msgid "Returns the exit code on quitting"
-msgstr "Derivas an kod kwityans pan ow kwytya"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:132
-msgid "History no longer contains duplicated items"
-msgstr "Istori yn le kontaynya enworrans dasskrifys"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:136
-msgid "Fixed a bug where the wrong rgb format was used"
-msgstr "Ewnhys unn kudyn pan an furvas rgb kamm yw devnydhys"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:137
-msgid "Fixed a bug where LMS and Hunter-Lab had the same setting"
-msgstr "Ewnys unn kudyn pan LMS hag Hunter-Lab kavosys an settyans keth"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:145
-msgid ""
-"Export the generated palettes from the palette dialog as a GIMP palette file"
-msgstr ""
-"Esporthya an liwvord dinythys a'n fenester liwvord avel unn restren liwvord "
-"GIMP"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:146
-msgid "A .doap file to describe the project"
-msgstr "Unn restren .doap dhe deskrifa an ragdres"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:147
-msgid "Show a placeholder page when no color is picked"
-msgstr "Diskwedhes unn folen wolkom mar kolor vyth yw kuntelys"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:148
-msgid "LMS color space can now be shown"
-msgstr "Efander kolor LMS gallos lemmyn bos diskwedhys"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:149
-msgid "Convert to Hunter-Lab color space"
-msgstr "Treylya dhe efander kolor Hunter-Lab"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:150
-msgid "Customize color formats"
-msgstr "Personelhe furvasow kolors"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:154
-msgid "Fixed a bug where the illuminants were not fully shown"
-msgstr "Ewnhe unn kudyn pan an illuminansyow yw na diskwedhes yn leun"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:155
-msgid "The names of the GNOME color palette are now available"
-msgstr "An henwyn a'n liwvord GNOME yw kavadow lemmyn"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:163
-msgid "Options to show names of color (from w3c basic, extended and xkcd)"
-msgstr "Dewisyow dhe diskwedhes henwyn kolor (a w3c elvennek, hirhes, ha xkcd)"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:164
-msgid "Change the color by typing a name in the name field"
-msgstr "Chanjya an kolor erbynn ow jynnskrifa unn hanow y'n kist hanow"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:165
-msgid ""
-"Palettes are now shown in the palette dialog, accessible by clicking on the "
-"large color button"
-msgstr ""
-"Liwvordow yw diskwedhys lemmyn y'n fenester liwvord, hedhadow gans ow "
-"klyckya war'n boton bras kolor"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:166
-msgid "The App now uses the AdwAboutWindow"
-msgstr "An app devnydhya lemmyn an AdwAboutWindow"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:167
-msgid "HSL does now support alpha values"
-msgstr "HSL skoodhya lemmyn niverow klerder"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:168
-msgid "HWB and CIELCh are now supported"
-msgstr "HWB ha CIELCh yw skoodhys lemmyn"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:169
-msgid "CIE standard observer for CIELab and CIELCh"
-msgstr "Aspier savonek CIE rag CLIELab ha CIELCh"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:170
-msgid "Change CIE illuminants"
-msgstr "Chanjya illuminantys CIE"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:176
-msgid "Fixed a few bugs and added Dutch translations."
-msgstr "Ewnhys nebes kudynnow ha addys treylyans Iseldiryek."
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:183
-msgid ""
-"Palettes, consisting of darker shades and lighter tints, are now generated "
-"from the currently picked color as well as the previous 3"
-msgstr ""
-"Liwvordow, konsystya a skeusliwyow du ha arliwyow gwynn, yw dinthys lemmyn "
-"dhyworth an kolor dewisys a-lemmyn hag an tri kyns"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:184
-msgid ""
-"Change the order of the color formats by dragging and dropping them in the "
-"settings"
-msgstr ""
-"Chanjya an aray a'n furvasow kolor gans draylys ha droppys y's y'n settyansow"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:185
-msgid "The app has been translated into French by rene-coty"
-msgstr "An app yw treylys yn Frynkek gans rene-coty"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:186
-msgid "A German translation has been added"
-msgstr "Unn treylyans Almaynek yw addys"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:187
-msgid "Adjusted some strings to be easier to understand"
-msgstr "Chanjys nebes lavarow rag konvedhes esya"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:195
-msgid "Issue and feature-request templates"
-msgstr "Ensampelys rag kudynnow ha govynnow nas"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:196
-msgid "Change the color using hex values in the hex field"
-msgstr "Chanjya an kolor gans niverow hex y'n ynworrans hex"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:197
-msgid "Previous colors are now visible in the history list"
-msgstr "Kolors kyns yw gweladow lemmyn y'n rol istori"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:198
-msgid "Disable unwanted color models"
-msgstr "Ungallosegi systemow kolor anmynnesys"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:199
-msgid "Colors can now be shown as XYZ or CIELAB format"
-msgstr "Kolors gallos lemmyn bos diskwedhes avel furvas XYZ po CIELAB"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:207
-msgid "Basic UI"
-msgstr "Ynterfas Selvenel"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:208
-msgid "Pick a color using the color picker button"
-msgstr "Dewis unn kolor gans an boton kunteller kolor"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:209
-msgid "Copy the color in different color models"
-msgstr "Kopia an kolor yn systemow kolor dyffrans"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:210
-msgid "Change the position of the alpha values in hex values"
-msgstr "Chanjya an le a'n niverow klerder yn niverow hex"
-
-#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:211
-msgid "Added License"
-msgstr "Addys Kummyas"
+msgstr "Folen studh ow meneges dhe guntel liw rag dalleth"
 
 #: data/resources/ui/history-item.blp:5
 msgid "Remove"
@@ -451,11 +102,11 @@ msgstr "Dilea"
 
 #: data/resources/ui/placeholder-page.blp:7
 msgid "No Color"
-msgstr "Kolor Vyth"
+msgstr "Liw Vyth"
 
 #: data/resources/ui/placeholder-page.blp:8
 msgid "Select or enter a color to get started"
-msgstr "Dewis po ynworra unn kolor rag dalleth"
+msgstr "Dewisewgh po ynworrewgh liw rag dalleth"
 
 #: data/resources/ui/placeholder-page.blp:22
 msgid "View"
@@ -474,7 +125,7 @@ msgstr "Selvenek"
 
 #: data/resources/ui/preferences.blp:18
 msgid "Basic web colors"
-msgstr "Kolors gwi elvennek"
+msgstr "Liwyow gwi elvennek"
 
 #: data/resources/ui/preferences.blp:22
 msgctxt ""
@@ -485,27 +136,27 @@ msgstr "Ynstynnys"
 
 #: data/resources/ui/preferences.blp:23
 msgid "X11 and SVG color values"
-msgstr "Niverow kolor X11 ha SVG"
+msgstr "Niverow liw X11 ha SVG"
 
 #: data/resources/ui/preferences.blp:27
 msgctxt ""
-"Name of the color set from the GNOME color palette (https://developer.gnome."
-"org/hig/reference/palette.html)"
+"Name of the color set from the GNOME color palette (https://"
+"developer.gnome.org/hig/reference/palette.html)"
 msgid "GNOME Color Palette"
 msgstr "Liwvord GNOME"
 
 #: data/resources/ui/preferences.blp:28
 msgid "Colors for GNOME app icons and illustrations"
-msgstr "Kolors rag arwodhigow appys GNOME ha lymnansow"
+msgstr "Liwyow rag arwodhigow appys GNOME ha lymnansow"
 
 #: data/resources/ui/preferences.blp:32
 msgctxt "Name of the color set from the xkcd color survey"
 msgid "xkcd Color Survey"
-msgstr "Arhwithrans Kolor xkcd"
+msgstr "Arhwithrans Liw xkcd"
 
 #: data/resources/ui/preferences.blp:33
 msgid "954 RGB colors named by volunteers"
-msgstr "954 kolors RGB henwelys gans bodhogyon"
+msgstr "954 liwyow RGB henwys gans bodhogyon"
 
 #: data/resources/ui/preferences.blp:43
 msgid "General"
@@ -517,7 +168,7 @@ msgstr "Furvas"
 
 #: data/resources/ui/preferences.blp:49
 msgid "Alpha-Value Position"
-msgstr "Le Niver Klerder"
+msgstr "Tyller Niver Klerder"
 
 #: data/resources/ui/preferences.blp:50
 msgid "Where the Alphavalue is positioned in the Hexstring"
@@ -531,7 +182,7 @@ msgstr "Vyth"
 #: data/resources/ui/preferences.blp:55
 msgctxt "Alphavalue is shown at the end"
 msgid "End"
-msgstr "Diwedhva"
+msgstr "Gorfen"
 
 #: data/resources/ui/preferences.blp:56
 msgctxt "Alphavalue is shown at the start"
@@ -540,11 +191,11 @@ msgstr "Dalleth"
 
 #: data/resources/ui/preferences.blp:62
 msgid "RGB Notation"
-msgstr "Nosyans RGB"
+msgstr "Notennans RGB"
 
 #: data/resources/ui/preferences.blp:63
 msgid "Whether RGB values should be displayed as integers or decimals"
-msgstr "Mar niverow RGB a wra diskwedhes avel kowlniverow po na"
+msgstr "Mar niverow RGB a wra diskwedhes avel kowlniverow"
 
 #: data/resources/ui/preferences.blp:67
 msgctxt "RGB is format as integers (e.g. 127)"
@@ -554,11 +205,11 @@ msgstr "Kowlniver"
 #: data/resources/ui/preferences.blp:68
 msgctxt "RGB is format as decimals (e.g. 0.1)"
 msgid "Decimal"
-msgstr "Na Kowlniverow"
+msgstr "Degedhek"
 
 #: data/resources/ui/preferences.blp:75
 msgid "Sources for displaying color names"
-msgstr "Devedhyansow rag ow diskwedhes henwyn kolor"
+msgstr "Devedhyansow rag diskwedhes henwyn liw"
 
 #: data/resources/ui/preferences.blp:86 data/resources/ui/preferences.blp:95
 msgid "Precision"
@@ -566,11 +217,11 @@ msgstr "Kewerder"
 
 #: data/resources/ui/preferences.blp:103
 msgid "Color Formats"
-msgstr "Furvasow Kolor"
+msgstr "Furvasow Liw"
 
 #: data/resources/ui/preferences.blp:104
 msgid "Customize the visible formats and in which order they are displayed"
-msgstr "Personelhe an furvasow gweladow hag yn py aray i yw diskwedhys"
+msgstr "Personelhe an furvasow gweladow hag yn py aray ymons i diskwedhys"
 
 #: data/resources/ui/preferences.blp:109
 msgctxt "Tooltip of the button to reset the format order"
@@ -583,7 +234,7 @@ msgstr "_Dilea Istori"
 
 #: data/resources/ui/window.blp:12
 msgid "_Random Color"
-msgstr "_Kolor Chonsus"
+msgstr "_Liw Chonsus"
 
 #: data/resources/ui/window.blp:19
 msgid "_Preferences"
@@ -591,24 +242,24 @@ msgstr "_Settyansow"
 
 #: data/resources/ui/window.blp:24
 msgid "_About Eyedropper"
-msgstr "_A-dro Eyedropper"
+msgstr "_A-dro dhe Dhagrell"
 
 #: data/resources/ui/window.blp:42
 msgctxt "Tooltip of the colorpicker button"
 msgid "Pick a Color"
-msgstr "Dewis unn Kolor"
+msgstr "Dewisewgh Liw"
 
 #: data/resources/ui/window.blp:49
 msgid "Main Menu"
-msgstr "Penn Rol"
+msgstr "Pennrol"
 
 #: data/resources/ui/window.blp:94
 msgid "Color Picker not Available"
-msgstr "Kunteller Kolor Ankavadow"
+msgstr "Kunteller Liw Ankavadow"
 
 #: data/resources/ui/window.blp:104
 msgid "The system is not properly configured to allow for color picking"
-msgstr "An system na selys yn fas rag kuntellyans kolor"
+msgstr "Nyns yw an kevreyth selys yn fas rag kuntel liw"
 
 #: data/resources/ui/window.blp:116
 msgid "_Continue Regardless"
@@ -617,27 +268,23 @@ msgstr "_Pesya yn neb Kas"
 #: data/resources/ui/window.blp:150
 msgctxt "Tooltip of the palette button"
 msgid "Edit Color"
-msgstr "Golegi Kolor"
+msgstr "Golegi Liw"
 
 #: data/resources/ui/window.blp:255 src/widgets/color_format_row.rs:163
 msgid "Apply"
-msgstr "Gorra"
+msgstr "Gweytha"
 
-#: src/application.rs:254
+#: src/application.rs:244
 msgid "Allow color selection while the application runs in the background"
-msgstr "Alowa dewis kolor hag an app eksekutya yn kilva"
+msgstr "Alowa dewis liw hag yma'n app owth eksekutya y'n gilva"
 
-#: src/application.rs:298
+#: src/application.rs:293
 msgid "Pick a New Color"
-msgstr "Dewis unn Kolor Nowydh"
+msgstr "Dewis Liw Nowydh"
 
 #: src/colors/notation.rs:241
 msgid "Not named"
 msgstr "Na henwys"
-
-#: src/colors/notation.rs:248
-msgid "Copy Hex Code"
-msgstr "Kopia Kod Hex"
 
 #: src/colors/notation.rs:269
 msgid "Hex Code"
@@ -653,6 +300,7 @@ msgid "translator-credits"
 msgstr "Flynn <cirilla@tuta.io>"
 
 #: src/widgets/color_format_row.rs:232
+#, rust-format
 msgid "Copied “{}”"
 msgstr "Kopys “{}”"
 
@@ -662,16 +310,288 @@ msgstr "Gwaya War-vann"
 
 #: src/widgets/preferences/preferences_window.rs:357
 msgid "Move Down"
-msgstr "Gwaya War-woles"
+msgstr "Gwaya Yn-nans"
 
-#: src/window.rs:287
+#: src/window.rs:269
 msgid "Cleared history"
-msgstr "Dileys istori"
+msgstr "Klerhys istori"
 
-#: src/window.rs:288
+#: src/window.rs:270
 msgid "Undo"
 msgstr "Diswul"
 
-#: src/window.rs:453
+#: src/window.rs:410
 msgid "Failed to pick a color"
-msgstr "Y fyllis dhe dewis unn kolor"
+msgstr "Y fyllis dhe dhewis liw"
+
+#~ msgid "New features, fixed bugs and updates to modern GNOME styling:"
+#~ msgstr "Nasyow nowydh, ewnhys kudynnow, ha nowedhys dhe gis arnowydh GNOME:"
+
+#~ msgid "RGB can now be displayed in decimal notation"
+#~ msgstr "RGB gallos bos displetys yn nosyans degeth"
+
+#~ msgid "Colors can now be directly entered, without picking a color first"
+#~ msgstr ""
+#~ "Kolors gallos bos ynworrys distowgh, heb ow kuntel unn kolor a-dherag"
+
+#~ msgid "Support for focus-independent (global) shortcuts"
+#~ msgstr "Skoodhyans dhe kesunyansow bysowek ollvysel"
+
+#~ msgid "Fixed an layout issue on systems where scrollbars are always shown"
+#~ msgstr ""
+#~ "Ewnhys unn kudyn aray yn amontyellow le may barrys scroll yw diskwedhesys "
+#~ "pub prys"
+
+#~ msgid "Updated to modern GNOME styling"
+#~ msgstr "Nowedhys dhe gis GNOME arnowydh"
+
+#~ msgid "Improved checking for unsupported systems"
+#~ msgstr "Gwellhys ow checkya dhe amontyellow anskooydhys"
+
+#~ msgid "A small fix for failing metadata"
+#~ msgstr "Unn ewnans byghan rag data ow fyllell"
+
+#~ msgid ""
+#~ "A new release, including major reworks the the UI and the color system"
+#~ msgstr ""
+#~ "Unn versyon nowydh, ow komprehendya nowedhys brassa dhe'n ynterfas ha an "
+#~ "system kolor"
+
+#~ msgid "Added a new color editor, allowing to modify colors"
+#~ msgstr "Addys unn chanjyell nowydh kolor, ow gasa dhe chanjya kolors"
+
+#~ msgid "Reworked the system handling color conversions"
+#~ msgstr "Dasoberi an system mayth ow handla treylyans kolor"
+
+#~ msgid "A warning page is now shown on unsupported systems"
+#~ msgstr ""
+#~ "Unn folen gwarnyans yw lemmyn diskwedhesys yn amontyellow anskoodhys"
+
+#~ msgid "Various internal code improvements and bug fixes"
+#~ msgstr "Gwellheansow divers dhe kod ha ewnhys kudynnow"
+
+#~ msgid "Removed the palette dialog"
+#~ msgstr "Removys an fenester liwvord"
+
+#~ msgid "Removed custom color formats"
+#~ msgstr "Removys furvasow a-vusur kolor"
+
+#~ msgid "A new release with exciting new features and many improvements."
+#~ msgstr ""
+#~ "Unn versyon nowydh gans nasyow nowydh yntanus ha meur a gwellheansow."
+
+#~ msgid "Allow entering any format"
+#~ msgstr "Alowa owth ynworra neb furvas"
+
+#~ msgid "Display color in overview search"
+#~ msgstr "Diskwedhes kolor yn hwithrans system"
+
+#~ msgid "Export palettes to LibreOffice"
+#~ msgstr "Esporthya liwvordow dhe LibreOffice"
+
+#~ msgid "A visual differentiation between color and background"
+#~ msgstr "Unn dihevelepter gwelesek tredh kolor ha kilva"
+
+#~ msgid "Improved color conversion"
+#~ msgstr "Gwellhys treylyans kolor"
+
+#~ msgid "Visual refinements to match the state of the art of GNOME apps"
+#~ msgstr "Gwellheansow gwelesek dhe omdhesedha an appys GNOME flamm nowydh"
+
+#~ msgid "Internal code improvements and bug fixes"
+#~ msgstr "Gwellheansow kod ha ewnhys kudynnow"
+
+#~ msgid "Added:"
+#~ msgstr "Keworrys:"
+
+#~ msgid "Show a toast with an Undo option when clearing the history"
+#~ msgstr ""
+#~ "Diskwedhes unn tardhik gans unn dewis digelmi pan ow dilea an istori"
+
+#~ msgid "Use Ctrl-Q to close the window"
+#~ msgstr "Devnydhya Ctrl-Q dhe degea an fenester"
+
+#~ msgid ""
+#~ "Use a default minimum window size, content should no longer unnecessarily "
+#~ "cut off"
+#~ msgstr ""
+#~ "Devnydhya unn braster fenester lyha defowt, dalgh na fella treghi dhe-ves "
+#~ "heb res"
+
+#~ msgid "New icon by @bertob"
+#~ msgstr "Arwodhik nowydh gans @bertob"
+
+#~ msgid ""
+#~ "Export palettes as Adobe Swatch Exchange (ASE), hex, PAL, Paint.NET (txt) "
+#~ "files"
+#~ msgstr ""
+#~ "Esporthya liwvordow dhe restrennow Adobe Swatch Exchange (ASE), hex, PAL, "
+#~ "Paint.NET (txt)"
+
+#~ msgid "Minor changes to the store metadata"
+#~ msgstr "Chanjyow le dhe'n data gwerthji"
+
+#~ msgid "Changed:"
+#~ msgstr "Janjyas:"
+
+#~ msgid "Hunter-Lab now displays 0 instead of NaN"
+#~ msgstr "Hunter-Lab diskwedhes lemmyn 0 yn le NaN"
+
+#~ msgid "Improved tooltips for copying colors"
+#~ msgstr "Gwellys deskrifansow toulys dhe ow kopia kolorys"
+
+#~ msgid ""
+#~ "Palette window now uses a button with a more explicit text instead of an "
+#~ "icon"
+#~ msgstr ""
+#~ "Fenester liwvord gulys lemmyn devnydh a unn boton gans tekst yn le unn "
+#~ "ikon"
+
+#~ msgid "Reworded project description"
+#~ msgstr "Dassrifys deskrifans ragdres"
+
+#~ msgid "Updated all screenshots"
+#~ msgstr "Nowedhys oll imajys"
+
+#~ msgid "Fixed:"
+#~ msgstr "Ewnhys:"
+
+#~ msgid "Separator is now hidden when the history list is hidden"
+#~ msgstr "Diberther yw kudh lemmyn pan an rol istori yw kudh"
+
+#~ msgid "Improved editing experience when change the Hex color/name"
+#~ msgstr "Gwellys klewans chanjyell pan chanjow an kanow kolor"
+
+#~ msgid "Russian translation"
+#~ msgstr "Treylyans Russek"
+
+#~ msgid "Better optimized releases"
+#~ msgstr "Versyons gans gwrythyans gwell"
+
+#~ msgid "Returns the exit code on quitting"
+#~ msgstr "Derivas an kod kwityans pan ow kwytya"
+
+#~ msgid "History no longer contains duplicated items"
+#~ msgstr "Istori yn le kontaynya enworrans dasskrifys"
+
+#~ msgid "Fixed a bug where the wrong rgb format was used"
+#~ msgstr "Ewnhys unn kudyn pan an furvas rgb kamm yw devnydhys"
+
+#~ msgid "Fixed a bug where LMS and Hunter-Lab had the same setting"
+#~ msgstr "Ewnys unn kudyn pan LMS hag Hunter-Lab kavosys an settyans keth"
+
+#~ msgid ""
+#~ "Export the generated palettes from the palette dialog as a GIMP palette "
+#~ "file"
+#~ msgstr ""
+#~ "Esporthya an liwvord dinythys a'n fenester liwvord avel unn restren "
+#~ "liwvord GIMP"
+
+#~ msgid "A .doap file to describe the project"
+#~ msgstr "Unn restren .doap dhe deskrifa an ragdres"
+
+#~ msgid "Show a placeholder page when no color is picked"
+#~ msgstr "Diskwedhes unn folen wolkom mar kolor vyth yw kuntelys"
+
+#~ msgid "LMS color space can now be shown"
+#~ msgstr "Efander kolor LMS gallos lemmyn bos diskwedhys"
+
+#~ msgid "Convert to Hunter-Lab color space"
+#~ msgstr "Treylya dhe efander kolor Hunter-Lab"
+
+#~ msgid "Customize color formats"
+#~ msgstr "Personelhe furvasow kolors"
+
+#~ msgid "Fixed a bug where the illuminants were not fully shown"
+#~ msgstr "Ewnhe unn kudyn pan an illuminansyow yw na diskwedhes yn leun"
+
+#~ msgid "The names of the GNOME color palette are now available"
+#~ msgstr "An henwyn a'n liwvord GNOME yw kavadow lemmyn"
+
+#~ msgid "Options to show names of color (from w3c basic, extended and xkcd)"
+#~ msgstr ""
+#~ "Dewisyow dhe diskwedhes henwyn kolor (a w3c elvennek, hirhes, ha xkcd)"
+
+#~ msgid "Change the color by typing a name in the name field"
+#~ msgstr "Chanjya an kolor erbynn ow jynnskrifa unn hanow y'n kist hanow"
+
+#~ msgid ""
+#~ "Palettes are now shown in the palette dialog, accessible by clicking on "
+#~ "the large color button"
+#~ msgstr ""
+#~ "Liwvordow yw diskwedhys lemmyn y'n fenester liwvord, hedhadow gans ow "
+#~ "klyckya war'n boton bras kolor"
+
+#~ msgid "The App now uses the AdwAboutWindow"
+#~ msgstr "An app devnydhya lemmyn an AdwAboutWindow"
+
+#~ msgid "HSL does now support alpha values"
+#~ msgstr "HSL skoodhya lemmyn niverow klerder"
+
+#~ msgid "HWB and CIELCh are now supported"
+#~ msgstr "HWB ha CIELCh yw skoodhys lemmyn"
+
+#~ msgid "CIE standard observer for CIELab and CIELCh"
+#~ msgstr "Aspier savonek CIE rag CLIELab ha CIELCh"
+
+#~ msgid "Change CIE illuminants"
+#~ msgstr "Chanjya illuminantys CIE"
+
+#~ msgid "Fixed a few bugs and added Dutch translations."
+#~ msgstr "Ewnhys nebes kudynnow ha addys treylyans Iseldiryek."
+
+#~ msgid ""
+#~ "Palettes, consisting of darker shades and lighter tints, are now "
+#~ "generated from the currently picked color as well as the previous 3"
+#~ msgstr ""
+#~ "Liwvordow, konsystya a skeusliwyow du ha arliwyow gwynn, yw dinthys "
+#~ "lemmyn dhyworth an kolor dewisys a-lemmyn hag an tri kyns"
+
+#~ msgid ""
+#~ "Change the order of the color formats by dragging and dropping them in "
+#~ "the settings"
+#~ msgstr ""
+#~ "Chanjya an aray a'n furvasow kolor gans draylys ha droppys y's y'n "
+#~ "settyansow"
+
+#~ msgid "The app has been translated into French by rene-coty"
+#~ msgstr "An app yw treylys yn Frynkek gans rene-coty"
+
+#~ msgid "A German translation has been added"
+#~ msgstr "Unn treylyans Almaynek yw addys"
+
+#~ msgid "Adjusted some strings to be easier to understand"
+#~ msgstr "Chanjys nebes lavarow rag konvedhes esya"
+
+#~ msgid "Issue and feature-request templates"
+#~ msgstr "Ensampelys rag kudynnow ha govynnow nas"
+
+#~ msgid "Change the color using hex values in the hex field"
+#~ msgstr "Chanjya an kolor gans niverow hex y'n ynworrans hex"
+
+#~ msgid "Previous colors are now visible in the history list"
+#~ msgstr "Kolors kyns yw gweladow lemmyn y'n rol istori"
+
+#~ msgid "Disable unwanted color models"
+#~ msgstr "Ungallosegi systemow kolor anmynnesys"
+
+#~ msgid "Colors can now be shown as XYZ or CIELAB format"
+#~ msgstr "Kolors gallos lemmyn bos diskwedhes avel furvas XYZ po CIELAB"
+
+#~ msgid "Basic UI"
+#~ msgstr "Ynterfas Selvenel"
+
+#~ msgid "Pick a color using the color picker button"
+#~ msgstr "Dewis unn kolor gans an boton kunteller kolor"
+
+#~ msgid "Copy the color in different color models"
+#~ msgstr "Kopia an kolor yn systemow kolor dyffrans"
+
+#~ msgid "Change the position of the alpha values in hex values"
+#~ msgstr "Chanjya an le a'n niverow klerder yn niverow hex"
+
+#~ msgid "Added License"
+#~ msgstr "Addys Kummyas"
+
+#~ msgid "Copy Hex Code"
+#~ msgstr "Kopia Kod Hex"
