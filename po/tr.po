@@ -41,7 +41,7 @@ msgstr "Renkleri seç ve biçimlendir"
 #. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/com.github.finefindus.eyedropper.desktop.in.in:10
 msgid "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
-msgstr "Gnome;GTK;Renk;Renk Seçici;Seçici;Palet;Tabla;Yakalayıcı;Alıcı;"
+msgstr "Gnome;GTK;Renk;Renk Seçici;Seçici;Palet;Tabla;Yakalayıcı;Alıcı;Eyedropper;"
 
 #: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
 #: src/widgets/about_window.rs:61
