@@ -1,0 +1,321 @@
+# Indonesian translation for eyedropper.
+# Copyright (C) 2026 eyedropper's COPYRIGHT HOLDER
+# This file is distributed under the same license as the eyedropper package.
+# Herpiko Dwi Aguno <herpiko@gmail.com>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: eyedropper main\n"
+"Report-Msgid-Bugs-To: https://github.com/FineFindus/eyedropper/issues\n"
+"POT-Creation-Date: 2026-10-02 20:17+0000\n"
+"PO-Revision-Date: 2026-11-09 05:09+0000\n"
+"Last-Translator: herpiko <herpiko@gmail.com>\n"
+"Language-Team: Indonesian <Indonesian>\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Pelokalan\n"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:2
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:7
+#: data/resources/ui/window.blp:38 src/main.rs:29
+#: src/widgets/about_window.rs:29
+msgid "Eyedropper"
+msgstr "Eyedropper"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:3
+msgid "Color Picker"
+msgstr "Pemilih Warna"
+
+#: data/com.github.finefindus.eyedropper.desktop.in.in:4
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:8
+#: src/widgets/about_window.rs:57
+msgid "Pick and format colors"
+msgstr "Ambil dan atur warna"
+
+#. Translators: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+#: data/com.github.finefindus.eyedropper.desktop.in.in:10
+msgid "Gnome;GTK;Color;Colorpicker;Picker;Palette;"
+msgstr "Gnome;GTK;Warna;Pipet;Pemilih;Palet;"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:14
+#: src/widgets/about_window.rs:61
+msgid "Enter or pick a color and view it in different formats."
+msgstr "Pilih warna dan lihat dalam format yang berbeda."
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:17
+#: src/widgets/about_window.rs:67
+msgid "Features"
+msgstr "Fitur"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:19
+#: src/widgets/about_window.rs:71
+msgid "Pick a Color"
+msgstr "Pilih Warna"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:20
+#: src/widgets/about_window.rs:72
+msgid "Edit the viewed color in a simple HSL editor"
+msgstr "Sunting warna dalam penyunting HSL biasa"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:21
+#: src/widgets/about_window.rs:73
+msgid "Enter a color in various formats"
+msgstr "Masukkan warna dalam berbagai format"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:22
+#: src/widgets/about_window.rs:75
+msgid ""
+"Convert colors into other formats such as Hex, RGB, HSV, HSL, CMYK, XYZ, "
+"CIE-Lab…"
+msgstr ""
+"Konversikan warna ke format lain seperti Hex, RGB, HSV, HSL, CMYK, XYZ, "
+"CIE-Lab…"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:28
+msgid "Main window with a color in different formats"
+msgstr "Jendela utama dengan warna dalam format yang berbeda"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:32
+msgid "Main window with customized formats"
+msgstr "Jendela utama dengan format yang disesuaikan"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:36
+msgid "Editor with an HSL editor"
+msgstr "Penyunting dengan HSL"
+
+#: data/com.github.finefindus.eyedropper.metainfo.xml.in.in:40
+msgid "Status page stating to pick a color to get started"
+msgstr "Halaman status menyarankan untuk ambil warna untuk memulai"
+
+#: data/resources/ui/history-item.blp:5
+msgid "Remove"
+msgstr "Hapus"
+
+#: data/resources/ui/placeholder-page.blp:7
+msgid "No Color"
+msgstr "Tidak Ada Warna"
+
+#: data/resources/ui/placeholder-page.blp:8
+msgid "Select or enter a color to get started"
+msgstr "Pilih atau masukkan warna untuk memulai"
+
+#: data/resources/ui/placeholder-page.blp:22
+msgid "View"
+msgstr "Tampilan"
+
+#: data/resources/ui/preferences.blp:5 data/resources/ui/preferences.blp:74
+msgid "Name Sources"
+msgstr "Sumber Nama"
+
+#: data/resources/ui/preferences.blp:17
+msgctxt ""
+"Name of the basic color keyword set from "
+"https://www.w3.org/TR/css-color-3/#html4"
+msgid "Basic"
+msgstr "Dasar"
+
+#: data/resources/ui/preferences.blp:18
+msgid "Basic web colors"
+msgstr "Warna web dasar"
+
+#: data/resources/ui/preferences.blp:22
+msgctxt ""
+"Name of the extended color keyword set from "
+"https://www.w3.org/TR/css-color-3/#svg-color"
+msgid "Extended"
+msgstr "Tambahan"
+
+#: data/resources/ui/preferences.blp:23
+msgid "X11 and SVG color values"
+msgstr "Nilai warna X11 dan SVG"
+
+#: data/resources/ui/preferences.blp:27
+msgctxt ""
+"Name of the color set from the GNOME color palette "
+"(https://developer.gnome.org/hig/reference/palette.html)"
+msgid "GNOME Color Palette"
+msgstr "Palet Warna GNOME"
+
+#: data/resources/ui/preferences.blp:28
+msgid "Colors for GNOME app icons and illustrations"
+msgstr "Warna untuk ikon aplikasi dan ilustrasi GNOME"
+
+#: data/resources/ui/preferences.blp:32
+msgctxt "Name of the color set from the xkcd color survey"
+msgid "xkcd Color Survey"
+msgstr "Survei Warna xkcd"
+
+#: data/resources/ui/preferences.blp:33
+msgid "954 RGB colors named by volunteers"
+msgstr "954 warna RGB yang dinamai oleh kontributor"
+
+#: data/resources/ui/preferences.blp:43
+msgid "General"
+msgstr "Umum"
+
+#: data/resources/ui/preferences.blp:46
+msgid "Formatting"
+msgstr "Pemformatan"
+
+#: data/resources/ui/preferences.blp:49
+msgid "Alpha-Value Position"
+msgstr "Posisi Nilai Alpha"
+
+#: data/resources/ui/preferences.blp:50
+msgid "Where the Alphavalue is positioned in the Hexstring"
+msgstr "Di mana nilai Alpha diposisikan dalam string Hex"
+
+#: data/resources/ui/preferences.blp:54
+msgctxt "Alphavalue is not shown"
+msgid "None"
+msgstr "Nihil"
+
+#: data/resources/ui/preferences.blp:55
+msgctxt "Alphavalue is shown at the end"
+msgid "End"
+msgstr "Akhir"
+
+#: data/resources/ui/preferences.blp:56
+msgctxt "Alphavalue is shown at the start"
+msgid "Start"
+msgstr "Mula"
+
+#: data/resources/ui/preferences.blp:62
+msgid "RGB Notation"
+msgstr "Notasi RGB"
+
+#: data/resources/ui/preferences.blp:63
+msgid "Whether RGB values should be displayed as integers or decimals"
+msgstr ""
+"Apakah nilai RGB seharusnya ditampilkan sebagai bilangan bulat atau desimal"
+
+#: data/resources/ui/preferences.blp:67
+msgctxt "RGB is format as integers (e.g. 127)"
+msgid "Integer"
+msgstr "Bilangan bulat"
+
+#: data/resources/ui/preferences.blp:68
+msgctxt "RGB is format as decimals (e.g. 0.1)"
+msgid "Decimal"
+msgstr "Desimal"
+
+#: data/resources/ui/preferences.blp:75
+msgid "Sources for displaying color names"
+msgstr "Sumber untuk menampilkan nama warna"
+
+#: data/resources/ui/preferences.blp:86 data/resources/ui/preferences.blp:95
+msgid "Precision"
+msgstr "Ketepatan"
+
+#: data/resources/ui/preferences.blp:103
+msgid "Color Formats"
+msgstr "Format Warna"
+
+#: data/resources/ui/preferences.blp:104
+msgid "Customize the visible formats and in which order they are displayed"
+msgstr "Ubah format yang terlihat dan urutan tampilannya"
+
+#: data/resources/ui/preferences.blp:109
+msgctxt "Tooltip of the button to reset the format order"
+msgid "Reset Order"
+msgstr "Reset Urutan"
+
+#: data/resources/ui/window.blp:7
+msgid "_Clear History"
+msgstr "_Bersihkan Riwayat"
+
+#: data/resources/ui/window.blp:12
+msgid "_Random Color"
+msgstr "Wa_rna Acak"
+
+#: data/resources/ui/window.blp:19
+msgid "_Preferences"
+msgstr "_Preferensi"
+
+#: data/resources/ui/window.blp:24
+msgid "_About Eyedropper"
+msgstr "Tent_ang Pipet Warna"
+
+#: data/resources/ui/window.blp:42
+msgctxt "Tooltip of the colorpicker button"
+msgid "Pick a Color"
+msgstr "Ambil Warna"
+
+#: data/resources/ui/window.blp:49
+msgid "Main Menu"
+msgstr "Menu Utama"
+
+#: data/resources/ui/window.blp:94
+msgid "Color Picker not Available"
+msgstr "Pemilih Warna tidak Tersedia"
+
+#: data/resources/ui/window.blp:104
+msgid "The system is not properly configured to allow for color picking"
+msgstr ""
+"Sistem tidak dikonfigurasi dengan benar untuk mengizinkan pengambilan warna"
+
+#: data/resources/ui/window.blp:116
+msgid "_Continue Regardless"
+msgstr "_Lanjutkan saja"
+
+#: data/resources/ui/window.blp:150
+msgctxt "Tooltip of the palette button"
+msgid "Edit Color"
+msgstr "Sunting Warna"
+
+#: data/resources/ui/window.blp:255 src/widgets/color_format_row.rs:163
+msgid "Apply"
+msgstr "Terapkan"
+
+#: src/application.rs:244
+msgid "Allow color selection while the application runs in the background"
+msgstr "Izinkan pemilihan warna saat aplikasi berjalan di latar belakang"
+
+#: src/application.rs:293
+msgid "Pick a New Color"
+msgstr "Ambil Warna Baru"
+
+#: src/colors/notation.rs:241
+msgid "Not named"
+msgstr "Tidak bernama"
+
+#: src/colors/notation.rs:269
+msgid "Hex Code"
+msgstr "Kode Hex"
+
+#: src/colors/notation.rs:282
+msgid "Name"
+msgstr "Nama"
+
+#. Translators: This should not be translate, Please enter your credits here instead (format: "Name https://example.com" or "Name <email@example.com>", no quotes)
+#: src/widgets/about_window.rs:35
+msgid "translator-credits"
+msgstr "Herpiko Dwi Aguno <herpiko@gmail.com>, 2026."
+
+#: src/widgets/color_format_row.rs:232
+#, rust-format
+msgid "Copied “{}”"
+msgstr "Tersalin “{}”"
+
+#: src/widgets/preferences/preferences_window.rs:355
+msgid "Move Up"
+msgstr "Naikkan"
+
+#: src/widgets/preferences/preferences_window.rs:357
+msgid "Move Down"
+msgstr "Turunkan"
+
+#: src/window.rs:269
+msgid "Cleared history"
+msgstr "Riwayat telah dibersihkan"
+
+#: src/window.rs:270
+msgid "Undo"
+msgstr "Tak Jadi"
+
+#: src/window.rs:410
+msgid "Failed to pick a color"
+msgstr "Gagal mengambil warna"
