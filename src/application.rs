@@ -277,7 +277,7 @@ impl App {
             .and_downcast::<AppWindow>()
             .and_then(|window| window.root())
             .ok_or(ashpd::Error::ParseError(
-                "Enabled to retrieve application root window",
+                "Unable to retrieve application root window",
             ))?;
         let identifier = ashpd::WindowIdentifier::from_native(&root).await;
 
