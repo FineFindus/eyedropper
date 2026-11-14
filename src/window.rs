@@ -427,12 +427,12 @@ impl AppWindow {
     pub fn set_color(&self, color: Color) {
         if self.color() != Some(color) {
             // TODO: remove check once bug is fixed
-            if self.history().n_items() > 0 {
-                if let Some(i) = self.history().find_with_equal_func(|item| {
+            if self.history().n_items() > 0
+                && let Some(i) = self.history().find_with_equal_func(|item| {
                     item.downcast_ref::<HistoryObject>().unwrap().color() == color.into()
-                }) {
-                    self.history().remove(i);
-                }
+                })
+            {
+                self.history().remove(i);
             }
 
             let history_item = HistoryObject::new(color);
