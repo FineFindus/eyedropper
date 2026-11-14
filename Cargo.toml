@@ -41,7 +41,10 @@ ashpd = { version = "0.14", default-features = false, features = [
 ] }
 futures = "0.3"
 rand = "0.10"
-search-provider = { version = "0.13", features = ["gdk-pixbuf"] }
+search-provider = { git = "https://gitlab.gnome.org/FineFindus/search-provider.git", rev = "388b9668e734b45307bac66d522333d60ab2a305", features = [
+    "gdk-pixbuf",
+] }
+
 nom = "8.0"
 phf = "0.14"
 palette = "0.7"
