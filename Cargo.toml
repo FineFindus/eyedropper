@@ -8,7 +8,7 @@ readme = "README.md"
 license-file = "LICENSE"
 homepage = "https://apps.gnome.org/Eyedropper/"
 repository = "https://github.com/finefindus/eyedropper"
-rust-version = "1.92"
+rust-version = "1.98"
 
 
 # override package level optimization, to always be maximum
@@ -41,8 +41,7 @@ ashpd = { version = "0.13", default-features = false, features = [
 ] }
 futures = "0.3"
 rand = "0.10"
-bytes = "1.11"
 search-provider = { version = "0.13", features = ["gdk-pixbuf"] }
 nom = "8.0"
-phf = { version = "0.14", features = ["macros"] }
+phf = "0.14"
 palette = "0.7"
