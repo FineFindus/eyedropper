@@ -29,7 +29,9 @@ mod imp {
     use adw::subclass::prelude::AdwApplicationImpl;
 
     #[derive(Default)]
-    pub struct App {}
+    pub struct App {
+        hold_guard: std::cell::RefCell<Option<gio::ApplicationHoldGuard>>,
+    }
 
     #[glib::object_subclass]
     impl ObjectSubclass for App {
@@ -60,6 +62,11 @@ mod imp {
             gtk::Window::set_default_icon_name(APP_ID);
 
             let app = self.obj();
+
+            if app.flags().contains(gio::ApplicationFlags::IS_SERVICE) {
+                self.hold_guard.replace(Some(app.hold()));
+            }
+
             let ctx = glib::MainContext::default();
             ctx.spawn_local(glib::clone!(
                 #[weak]
