@@ -31,6 +31,8 @@ mod imp {
     #[derive(Default)]
     pub struct App {
         hold_guard: std::cell::RefCell<Option<gio::ApplicationHoldGuard>>,
+        settings: std::cell::OnceCell<gio::Settings>,
+        shortcuts_started: std::cell::Cell<bool>,
     }
 
     #[glib::object_subclass]
@@ -62,9 +64,57 @@ mod imp {
             gtk::Window::set_default_icon_name(APP_ID);
 
             let app = self.obj();
+            let settings = gio::Settings::new(APP_ID);
+            let _ = self.settings.set(settings.clone());
+            let run_in_background = settings.boolean("run-in-background");
+
+            settings.connect_changed(
+                Some("run-in-background"),
+                glib::clone!(
+                    #[weak]
+                    app,
+                    move |settings, _key| {
+                        let run_in_background = settings.boolean("run-in-background");
+                        let app = app.clone();
+
+                        if app.flags().contains(gio::ApplicationFlags::IS_SERVICE) {
+                            let imp = app.imp();
+
+                            if run_in_background {
+                                if imp.hold_guard.borrow().is_none() {
+                                    imp.hold_guard.replace(Some(app.hold()));
+                                }
+                            } else {
+                                imp.hold_guard.borrow_mut().take();
+                            }
+                        }
+
+                        glib::MainContext::default().spawn_local(async move {
+                            if let Err(err) = app.request_background_access(run_in_background).await
+                            {
+                                tracing::error!("Failed to update background access: {err}");
+                            }
+                            if run_in_background && !app.imp().shortcuts_started.get() {
+                                app.imp().shortcuts_started.set(true);
+
+                                if let Err(err) = app.setup_global_shortcuts().await {
+                                    app.imp().shortcuts_started.set(false);
+                                    tracing::error!("Failed to request global shortcuts: {err}");
+                                }
+                            }
+                        });
+                    }
+                ),
+            );
 
             if app.flags().contains(gio::ApplicationFlags::IS_SERVICE) {
-                self.hold_guard.replace(Some(app.hold()));
+                if run_in_background {
+                    if self.hold_guard.borrow().is_none() {
+                        self.hold_guard.replace(Some(app.hold()));
+                    }
+                } else {
+                    self.hold_guard.borrow_mut().take();
+                }
             }
 
             let ctx = glib::MainContext::default();
@@ -72,14 +122,21 @@ mod imp {
                 #[weak]
                 app,
                 async move {
-                    if let Err(err) = app.request_background_access().await {
+                    if let Err(err) = app.request_background_access(run_in_background).await {
                         tracing::error!("Failed to request background access: {err}");
                     }
                     // spawn indefinitely running task
                     futures::future::join(
                         async {
-                            if let Err(err) = app.setup_global_shortcuts().await {
-                                tracing::error!("Failed to request global shortcuts: {err}");
+                            if run_in_background && !app.imp().shortcuts_started.get() {
+                                app.imp().shortcuts_started.set(true);
+
+                                if let Err(err) = app.setup_global_shortcuts().await {
+                                    app.imp().shortcuts_started.set(false);
+                                    tracing::error!("Failed to request global shortcuts: {err}");
+                                }
+                            } else {
+                                futures::future::pending::<()>().await;
                             }
                         },
                         async {
@@ -245,13 +302,13 @@ impl App {
     /// Requests the system to allow the application to run in the background.
     ///
     /// This is used for receiving global shortcuts, while the app is not opened.
-    async fn request_background_access(&self) -> ashpd::Result<()> {
+    async fn request_background_access(&self, auto_start: bool) -> ashpd::Result<()> {
         let response = ashpd::desktop::background::Background::request()
             .reason(&*gettext(
                 "Allow color selection while the application runs in the background",
             ))
             .command(["eyedropper", "--gapplication-service"])
-            .auto_start(true)
+            .auto_start(auto_start)
             .dbus_activatable(false)
             .send()
             .await?

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <schemalist>
   <schema path="/com/github/finefindus/eyedropper/" id="@app-id@" gettext-domain="@gettext-package@">
+    <key name="run-in-background" type="b">
+      <default>false</default>
+      <summary>Run in the Background</summary>
+      <description>Keep the application running after closing its window and enable global keyboard shortcuts.</description>
+    </key>
     <key name="visible-formats" type="as">
       <default>[ 'name', 'hex', 'rgb', 'hsl', 'hsv', 'cmyk' ]</default>
       <summary>Visible formats</summary>

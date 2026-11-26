@@ -100,6 +100,15 @@ template $PreferencesWindow: Adw.PreferencesDialog {
     }
 
     Adw.PreferencesGroup {
+      title: _("Background");
+
+      Adw.SwitchRow run_in_background {
+        title: _("Run in the Background");
+        subtitle: _("Keep the application running after closing its window and enable global keyboard shortcuts");
+      }
+    }
+
+    Adw.PreferencesGroup {
       title: _("Color Formats");
       description: _("Customize the visible formats and in which order they are displayed");
 

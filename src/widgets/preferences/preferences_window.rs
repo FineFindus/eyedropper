@@ -51,6 +51,8 @@ mod imp {
         pub(super) name_source_gnome: TemplateChild<adw::SwitchRow>,
         #[template_child]
         pub(super) name_source_xkcd: TemplateChild<adw::SwitchRow>,
+        #[template_child]
+        pub(super) run_in_background: TemplateChild<adw::SwitchRow>,
         pub format_order: RefCell<Option<gio::ListStore>>,
     }
 
@@ -72,6 +74,7 @@ mod imp {
                 name_source_extended: TemplateChild::default(),
                 name_source_gnome: TemplateChild::default(),
                 name_source_xkcd: TemplateChild::default(),
+                run_in_background: TemplateChild::default(),
                 format_order: Default::default(),
             }
         }
@@ -92,6 +95,10 @@ mod imp {
             let obj = self.obj();
             obj.setup_order_list();
             obj.populate_formats();
+
+            self.settings
+                .bind("run-in-background", &*self.run_in_background, "active")
+                .build();
 
             self.settings
                 .bind("alpha-position", &*self.alpha_pos_box, "selected")
