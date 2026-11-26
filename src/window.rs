@@ -387,36 +387,50 @@ impl AppWindow {
 
     /// Pick a color from the desktop using [ashpd].
     ///
-    /// It will show a toast when failing to pick a color, for example when the user cancels the action.
+    /// It will show a toast when the color picker fails, except when the user cancels the action.
     #[template_callback]
     pub async fn pick_color(&self) {
+        match self.try_pick_color().await {
+            Ok(()) => {}
+            Err(ashpd::Error::Response(ashpd::desktop::ResponseError::Cancelled)) => {
+                tracing::debug!("Color picking cancelled");
+            }
+            Err(err) => {
+                tracing::error!("{}", err);
+                self.show_toast(
+                    gettext("Failed to pick a color"),
+                    adw::ToastPriority::Normal,
+                );
+
+                // Show the warning page to indicate that color picking is not
+                // supported, and disable the color picker to prevent further errors.
+                self.imp().show_portal_error_page();
+            }
+        }
+    }
+
+    /// Attempts to pick a color using the desktop color picker portal.
+    ///
+    /// Returns an error if the operation fails or is cancelled.
+    pub async fn try_pick_color(&self) -> ashpd::Result<()> {
         tracing::debug!("Picking a color using the color picker");
-        let root = self.root().expect("Failed to get window root");
-        let identifier = ashpd::WindowIdentifier::from_native(&root).await;
+
+        let identifier = if self.is_mapped() {
+            let root = self.root().expect("Failed to get window root");
+            ashpd::WindowIdentifier::from_native(&root).await
+        } else {
+            None
+        };
+
         let request = ashpd::desktop::screenshot::ColorRequest::default()
             .identifier(identifier)
             .send()
-            .await;
+            .await?;
 
-        match request.and_then(|req| req.response()) {
-            Ok(color) => self.set_color(Color::from(gtk::gdk::RGBA::from(color))),
-            Err(err) => {
-                tracing::error!("{}", err);
-                if !matches!(
-                    err,
-                    ashpd::Error::Response(ashpd::desktop::ResponseError::Cancelled)
-                ) {
-                    self.show_toast(
-                        gettext("Failed to pick a color"),
-                        adw::ToastPriority::Normal,
-                    );
-                    // show the warning page to indicate to the user that color picking is
-                    // not supported, also disables the color picker to avoid further
-                    // errors
-                    self.imp().show_portal_error_page();
-                }
-            }
-        };
+        let color = request.response()?;
+        self.set_color(Color::from(gtk::gdk::RGBA::from(color)));
+
+        Ok(())
     }
 
     /// Set the current color to the given color.
