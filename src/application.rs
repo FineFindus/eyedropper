@@ -279,14 +279,15 @@ impl App {
     /// A global shortcut can be used when the application is not focused.
     /// Uses the [Global Shortcuts portal](https://flatpak.github.io/xdg-desktop-portal/docs/doc-org.freedesktop.portal.GlobalShortcuts.html).
     async fn setup_global_shortcuts(&self) -> ashpd::Result<()> {
-        let root = self
+        let identifier = if let Some(root) = self
             .active_window()
             .and_downcast::<AppWindow>()
             .and_then(|window| window.root())
-            .ok_or(ashpd::Error::ParseError(
-                "Unable to retrieve application root window",
-            ))?;
-        let identifier = ashpd::WindowIdentifier::from_native(&root).await;
+        {
+            ashpd::WindowIdentifier::from_native(&root).await
+        } else {
+            None
+        };
 
         let global_shortcuts = ashpd::desktop::global_shortcuts::GlobalShortcuts::new().await?;
         let session = global_shortcuts
@@ -319,8 +320,22 @@ impl App {
         let mut stream = global_shortcuts.receive_activated().await?;
         while let Some(shortcut) = stream.next().await {
             if shortcut.shortcut_id() == SHORTCUT_PICK_COLOR {
-                self.active_app_window().pick_color().await;
-                self.active_app_window().present();
+                let window = self
+                    .active_window()
+                    .and_downcast::<AppWindow>()
+                    .unwrap_or_else(|| AppWindow::new(self));
+
+                match window.try_pick_color().await {
+                    Ok(()) => {
+                        window.present();
+                    }
+                    Err(ashpd::Error::Response(ashpd::desktop::ResponseError::Cancelled)) => {
+                        tracing::debug!("Color picking cancelled");
+                    }
+                    Err(err) => {
+                        tracing::error!("{}", err);
+                    }
+                }
             }
         }
         session.close().await
