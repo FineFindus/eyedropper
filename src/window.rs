@@ -165,6 +165,10 @@ mod imp {
             self.parent_constructed();
             let obj = self.obj();
 
+            self.settings
+                .bind("run-in-background", &*obj, "hide-on-close")
+                .build();
+
             // Devel Profile
             if PROFILE == "Devel" {
                 obj.add_css_class("devel");
