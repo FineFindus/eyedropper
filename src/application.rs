@@ -65,6 +65,13 @@ mod imp {
                 #[weak]
                 app,
                 async move {
+                    let app_id =
+                        ashpd::AppID::try_from(config::APP_ID).expect("Invalid application ID");
+
+                    if let Err(err) = ashpd::register_host_app(app_id).await {
+                        tracing::error!("Failed to register host application: {err}");
+                    }
+
                     if let Err(err) = app.request_background_access().await {
                         tracing::error!("Failed to request background access: {err}");
                     }
